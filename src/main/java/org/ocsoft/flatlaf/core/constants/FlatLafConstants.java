@@ -17,12 +17,8 @@
 
 package org.ocsoft.flatlaf.core.constants;
 
-import java.awt.geom.AffineTransform;
 import java.util.Arrays;
 import java.util.List;
-
-import org.ocsoft.flatlaf.utils.file.FileComparator;
-
 
 
 public final class FlatLafConstants {
@@ -41,9 +37,10 @@ public final class FlatLafConstants {
      */
     public static final String PROPERTY_HONOR_USER_BORDERS = "WebLookAndFeel.honorUserBorders";
     
-    /**
+    /*
      * Some known UI constants.
      */
+    
     public static final String LOOK_AND_FEEL_PROPERTY = "lookAndFeel";
     public static final String ORIENTATION_PROPERTY = "componentOrientation";
     public static final String MARGIN_PROPERTY = "margin";
@@ -68,23 +65,6 @@ public final class FlatLafConstants {
     public static final List<String> IMAGE_FORMATS = Arrays.asList("png",
             "apng", "gif", "agif", "jpg", "jpeg", "jpeg2000", "bmp");
     
-    /**
-     * Comparators.
-     */
-    public static final FileComparator FILE_COMPARATOR = new FileComparator();
-    
-    /**
-     * Drawing constants.
-     */
-    public static final AffineTransform moveX = new AffineTransform();
-    public static final AffineTransform moveY = new AffineTransform();
-    public static final AffineTransform moveXY = new AffineTransform();
-    
-    static {
-        moveX.translate(1, 0);
-        moveY.translate(0, 1);
-        moveXY.translate(1, 1);
-    }
     
     /**
      * Debugging mode mark.

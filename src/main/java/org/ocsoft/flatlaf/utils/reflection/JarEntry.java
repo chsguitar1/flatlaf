@@ -23,8 +23,8 @@ import java.util.zip.ZipEntry;
 
 import javax.swing.ImageIcon;
 
-import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.TextUtils;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 
 /**
  * User: mgarin Date: 02.03.12 Time: 15:59

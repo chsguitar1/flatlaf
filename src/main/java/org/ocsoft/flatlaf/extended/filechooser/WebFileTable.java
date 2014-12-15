@@ -28,7 +28,7 @@ import java.util.List;
 import javax.swing.table.TableColumn;
 
 import org.ocsoft.flatlaf.laf.table.WebTable;
-import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 
 /**

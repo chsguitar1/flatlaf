@@ -21,16 +21,26 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.Comparator;
 
-import org.ocsoft.flatlaf.utils.FileUtils;
-
 /**
  * File name and type comparator. This comparator is used by some file
  * components by default.
  *
  * @author Mikle Garin
  */
-
 public class FileComparator implements Comparator<File>, Serializable {
+    
+    private static final long serialVersionUID = -752102502083393307L;
+    
+    private static FileComparator instance;
+    
+    public static FileComparator getInstance() {
+        if(instance == null)
+            instance = new FileComparator();
+        return instance;
+    }
+    
+    private FileComparator() {}
+    
     /**
      * Compares two files by their names and type.
      *

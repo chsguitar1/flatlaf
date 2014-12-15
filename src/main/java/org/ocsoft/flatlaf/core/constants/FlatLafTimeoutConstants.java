@@ -1,7 +1,7 @@
 package org.ocsoft.flatlaf.core.constants;
 
 public class FlatLafTimeoutConstants {
-    /**
+    /*
      * Timeout delays.
      */
     public static final int SHORT_TIMEOUT = 3000;

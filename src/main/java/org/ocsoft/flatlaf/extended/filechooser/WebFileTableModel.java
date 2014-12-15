@@ -26,8 +26,8 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
-import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 
 /**
  * Data model for WebFileTable.

@@ -37,8 +37,8 @@ import javax.swing.plaf.FileChooserUI;
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.core.constants.FlatLafFileFilters;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
-import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 
 /**

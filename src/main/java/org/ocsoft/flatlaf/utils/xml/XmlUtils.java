@@ -40,8 +40,8 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
-import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.collection.ValuesTable;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 import org.ocsoft.flatlaf.utils.general.Pair;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;

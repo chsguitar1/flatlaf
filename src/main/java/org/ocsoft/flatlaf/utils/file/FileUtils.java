@@ -15,7 +15,7 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils;
+package org.ocsoft.flatlaf.utils.file;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,15 +53,12 @@ import javax.swing.ImageIcon;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.text.JTextComponent;
 
-import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.core.constants.FlatLafFileFilters;
 import org.ocsoft.flatlaf.core.constants.FlatLafTimeoutConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.proxy.ProxyManager;
-import org.ocsoft.flatlaf.utils.file.FileDescription;
-import org.ocsoft.flatlaf.utils.file.FileDownloadListener;
-import org.ocsoft.flatlaf.utils.file.SystemFileListener;
+import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 import org.ocsoft.flatlaf.utils.filefilter.CustomFileFilter;
 import org.ocsoft.flatlaf.utils.general.Filter;
@@ -635,7 +632,7 @@ public final class FileUtils {
      * @return true if list of files or file paths contains the specified file,
      *         false otherwise
      */
-    public static boolean containtsFile(final List files, final File file) {
+    public static boolean containtsFile(List<File> files, File file) {
         for (final Object f : files) {
             if (f instanceof File) {
                 if (((File) f).getAbsolutePath().equals(file.getAbsolutePath())) {
@@ -860,9 +857,9 @@ public final class FileUtils {
      *            list of files to sort
      * @return sorted list of files
      */
-    public static List sortFiles(final List<File> files) {
+    public static List<File> sortFiles(List<File> files) {
         if (files != null) {
-            Collections.sort(files, FlatLafConstants.FILE_COMPARATOR);
+            Collections.sort(files, FileComparator.getInstance());
         }
         return files;
     }
@@ -874,9 +871,9 @@ public final class FileUtils {
      *            array of files to sort
      * @return sorted array of files
      */
-    public static File[] sortFiles(final File[] files) {
+    public static File[] sortFiles(File[] files) {
         if (files != null) {
-            Arrays.sort(files, FlatLafConstants.FILE_COMPARATOR);
+            Arrays.sort(files, FileComparator.getInstance());
         }
         return files;
     }

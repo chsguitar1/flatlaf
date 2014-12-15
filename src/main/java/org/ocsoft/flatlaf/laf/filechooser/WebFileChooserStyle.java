@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.filechooser;
 
-import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 
 /**
  * WebFileChooser style class.

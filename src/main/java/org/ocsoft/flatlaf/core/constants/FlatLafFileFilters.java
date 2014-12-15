@@ -14,7 +14,7 @@ import org.ocsoft.flatlaf.utils.filefilter.NonHiddenFilter;
 
 public class FlatLafFileFilters {
     
-    /**
+    /*
      * File filters.
      */
     public static final AllFilesFilter ALL_FILES_FILTER = new AllFilesFilter();
@@ -27,7 +27,7 @@ public class FlatLafFileFilters {
     public static final GroupedFileFilter IMAGES_AND_FOLDERS_FILTER = new GroupedFileFilter(
             FilterGroupType.OR, IMAGES_FILTER, DIRECTORIES_FILTER);
     
-    /**
+    /*
      * Default file filters.
      */
     public static final List<AbstractFileFilter> DEFAULT_FILTERS = Arrays

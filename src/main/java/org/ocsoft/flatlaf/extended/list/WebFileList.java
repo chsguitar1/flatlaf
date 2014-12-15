@@ -32,7 +32,7 @@ import javax.swing.ListCellRenderer;
 import org.ocsoft.flatlaf.laf.list.WebList;
 import org.ocsoft.flatlaf.laf.list.editor.ListCellEditor;
 import org.ocsoft.flatlaf.laf.scroll.WebScrollPane;
-import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 
 /**
  * Special list component that simplifies files rendering.

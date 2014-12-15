@@ -26,7 +26,7 @@ import java.util.zip.ZipFile;
 
 import javax.swing.ImageIcon;
 
-import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 import org.ocsoft.flatlaf.utils.general.Filter;
 
 /**

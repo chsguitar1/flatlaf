@@ -32,9 +32,9 @@ import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 
+import org.ocsoft.flatlaf.core.defaults.FlatLafFontDefaults;
 import org.ocsoft.flatlaf.extended.panel.BorderPanel;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.WebFonts;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -115,7 +115,7 @@ public class WebInternalFrameTitlePane extends BasicInternalFrameTitlePane {
             {
                 setOpaque(false);
                 setForeground(Color.WHITE);
-                setFont(WebFonts.getSystemTitleFont());
+                setFont(FlatLafFontDefaults.getSystemTitleFont());
             }
         }, isFrameTitle() ? 3 : 1, 3, 0, 3), BorderLayout.CENTER);
         

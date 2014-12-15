@@ -48,7 +48,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 
-import org.ocsoft.flatlaf.laf.WebFonts;
+import org.ocsoft.flatlaf.core.defaults.FlatLafFontDefaults;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
@@ -195,7 +195,7 @@ public class WebCustomTooltip extends JComponent implements ShapeProvider {
         
         // Tooltip hotkey preview component
         hotkey = new HotkeyTipLabel();
-        hotkey.setFont(WebFonts.getSystemAcceleratorFont());
+        hotkey.setFont(FlatLafFontDefaults.getSystemAcceleratorFont());
         
         // Components placement on tooltip
         setLayout(new BorderLayout(6, 6));
@@ -1095,7 +1095,7 @@ public class WebCustomTooltip extends JComponent implements ShapeProvider {
             final String tooltip) {
         final WebLabel label = new WebLabel(tooltip, icon);
         label.setStyleId("custom-tooltip-label");
-        label.setFont(WebFonts.getSystemTooltipFont());
+        label.setFont(FlatLafFontDefaults.getSystemTooltipFont());
         return label;
     }
 }

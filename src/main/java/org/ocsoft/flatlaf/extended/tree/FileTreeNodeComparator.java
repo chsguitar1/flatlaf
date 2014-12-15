@@ -19,21 +19,20 @@ package org.ocsoft.flatlaf.extended.tree;
 
 import java.util.Comparator;
 
-import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
+import org.ocsoft.flatlaf.utils.file.FileComparator;
 
 /**
  * Custom comparator for file tree nodes.
  *
  * @author Mikle Garin
  */
-
 public class FileTreeNodeComparator implements Comparator<FileTreeNode> {
     /**
      * {@inheritDoc}
      */
     @Override
     public int compare(final FileTreeNode o1, final FileTreeNode o2) {
-        return FlatLafConstants.FILE_COMPARATOR.compare(o1.getFile(),
+        return FileComparator.getInstance().compare(o1.getFile(),
                 o2.getFile());
     }
 }

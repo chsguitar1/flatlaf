@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.tree;
 
 import java.io.File;
 
-import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 
 /**
  * Custom AsyncUniqueNode for WebFileTree.

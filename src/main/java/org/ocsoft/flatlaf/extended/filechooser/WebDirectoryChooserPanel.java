@@ -44,8 +44,8 @@ import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
-import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 
 /**

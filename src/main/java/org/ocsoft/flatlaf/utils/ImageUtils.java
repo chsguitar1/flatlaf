@@ -45,6 +45,7 @@ import javax.swing.ImageIcon;
 
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 import org.ocsoft.flatlaf.utils.filters.ImageFilterUtils;
 import org.ocsoft.flatlaf.utils.filters.ShadowFilter;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;

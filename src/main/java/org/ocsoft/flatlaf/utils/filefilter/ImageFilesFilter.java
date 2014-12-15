@@ -23,7 +23,7 @@ import javax.swing.ImageIcon;
 
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
-import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 
 /**
  * Custom file filter that accepts only image files.

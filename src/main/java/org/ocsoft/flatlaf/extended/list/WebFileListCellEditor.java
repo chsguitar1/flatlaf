@@ -29,7 +29,7 @@ import org.ocsoft.flatlaf.laf.list.WebListStyle;
 import org.ocsoft.flatlaf.laf.list.editor.AbstractListCellEditor;
 import org.ocsoft.flatlaf.laf.text.WebTextField;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
-import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 
 /**
  * Custom list cell editor used in WebFileList component.

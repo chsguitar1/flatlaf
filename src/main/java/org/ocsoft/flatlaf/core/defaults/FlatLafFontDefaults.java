@@ -15,7 +15,7 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.laf;
+package org.ocsoft.flatlaf.core.defaults;
 
 import java.awt.Font;
 import java.util.HashMap;
@@ -35,22 +35,7 @@ import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
  * @author Mikle Garin
  */
 
-public class WebFonts {
-    /**
-     * Windows fonts.
-     */
-    public static final String TAHOMA = "Tahoma";
-    public static final String SEGOE_UI = "Segoe UI";
-    
-    /**
-     * Mac OS X fonts.
-     */
-    public static final String LUCIDA_GRANDE = "Lucida Grande";
-    
-    /**
-     * Unix fonts.
-     */
-    public static final String SANS_SERIF = Font.SANS_SERIF;
+public class FlatLafFontDefaults {
     
     /**
      * Control components font (buttons, sliders and such).
@@ -99,35 +84,35 @@ public class WebFonts {
         if (FlatLafSystemUtils.isWindows()) {
             // Win8
             // Win7
-            fonts.put(CONTROL, new FontUIResource(TAHOMA, Font.PLAIN, 12));
-            fonts.put(ALERT, new FontUIResource(SEGOE_UI, Font.PLAIN, 13));
-            fonts.put(MENU, new FontUIResource(SEGOE_UI, Font.PLAIN, 12));
-            fonts.put(ACCELERATOR, new FontUIResource(SEGOE_UI, Font.PLAIN, 12));
-            fonts.put(TITLE, new FontUIResource(SEGOE_UI, Font.PLAIN, 14));
-            fonts.put(TEXT, new FontUIResource(TAHOMA, Font.PLAIN, 12));
-            fonts.put(TOOLTIP, new FontUIResource(SEGOE_UI, Font.PLAIN, 12));
+            fonts.put(CONTROL, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 12));
+            fonts.put(ALERT, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 13));
+            fonts.put(MENU, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 12));
+            fonts.put(ACCELERATOR, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 12));
+            fonts.put(TITLE, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 14));
+            fonts.put(TEXT, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 12));
+            fonts.put(TOOLTIP, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 12));
         } else if (FlatLafSystemUtils.isMac()) {
             // Mac OS X
             fonts.put(CONTROL,
-                    new FontUIResource(LUCIDA_GRANDE, Font.PLAIN, 13));
-            fonts.put(ALERT, new FontUIResource(LUCIDA_GRANDE, Font.PLAIN, 11));
-            fonts.put(MENU, new FontUIResource(LUCIDA_GRANDE, Font.PLAIN, 14));
-            fonts.put(ACCELERATOR, new FontUIResource(LUCIDA_GRANDE,
+                    new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 13));
+            fonts.put(ALERT, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 11));
+            fonts.put(MENU, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 14));
+            fonts.put(ACCELERATOR, new FontUIResource(Font.SANS_SERIF,
                     Font.PLAIN, 13));
-            fonts.put(TITLE, new FontUIResource(LUCIDA_GRANDE, Font.BOLD, 14));
-            fonts.put(TEXT, new FontUIResource(LUCIDA_GRANDE, Font.PLAIN, 13));
+            fonts.put(TITLE, new FontUIResource(Font.SANS_SERIF, Font.BOLD, 14));
+            fonts.put(TEXT, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 13));
             fonts.put(TOOLTIP,
-                    new FontUIResource(LUCIDA_GRANDE, Font.PLAIN, 11));
+                    new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 11));
         } else {
             // Unix systems
-            fonts.put(CONTROL, new FontUIResource(SANS_SERIF, Font.PLAIN, 12));
-            fonts.put(ALERT, new FontUIResource(SANS_SERIF, Font.PLAIN, 12));
-            fonts.put(MENU, new FontUIResource(SANS_SERIF, Font.PLAIN, 12));
-            fonts.put(ACCELERATOR, new FontUIResource(SANS_SERIF, Font.PLAIN,
+            fonts.put(CONTROL, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 12));
+            fonts.put(ALERT, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 12));
+            fonts.put(MENU, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 12));
+            fonts.put(ACCELERATOR, new FontUIResource(Font.SANS_SERIF, Font.PLAIN,
                     11));
-            fonts.put(TITLE, new FontUIResource(SANS_SERIF, Font.BOLD, 12));
-            fonts.put(TEXT, new FontUIResource(SANS_SERIF, Font.PLAIN, 12));
-            fonts.put(TOOLTIP, new FontUIResource(SANS_SERIF, Font.PLAIN, 12));
+            fonts.put(TITLE, new FontUIResource(Font.SANS_SERIF, Font.BOLD, 12));
+            fonts.put(TEXT, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 12));
+            fonts.put(TOOLTIP, new FontUIResource(Font.SANS_SERIF, Font.PLAIN, 12));
         }
     }
     

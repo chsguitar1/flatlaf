@@ -22,7 +22,7 @@ import java.io.File;
 import org.ocsoft.flatlaf.extended.image.WebImage;
 import org.ocsoft.flatlaf.laf.text.WebTextField;
 import org.ocsoft.flatlaf.laf.tree.WebTreeCellEditor;
-import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 
 /**
  * Custom cell editor for WebFileTree.

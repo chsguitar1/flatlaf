@@ -40,9 +40,9 @@ import org.ocsoft.flatlaf.extended.layout.AbstractLayoutManager;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.list.WebListCellRenderer;
 import org.ocsoft.flatlaf.utils.DaemonThreadFactory;
-import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.file.FileDescription;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 
 /**
  * Custom list cell renderer for WebFileList component. This renderer is also

@@ -26,8 +26,8 @@ import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
 import org.ocsoft.flatlaf.extended.drag.FileDragAndDropHandler;
-import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 import org.ocsoft.flatlaf.utils.general.Filter;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 

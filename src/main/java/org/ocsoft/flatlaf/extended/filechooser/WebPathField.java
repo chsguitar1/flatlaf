@@ -70,9 +70,9 @@ import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyRunnable;
-import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+import org.ocsoft.flatlaf.utils.file.FileUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
 

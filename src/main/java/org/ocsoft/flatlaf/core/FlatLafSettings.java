@@ -2,12 +2,12 @@ package org.ocsoft.flatlaf.core;
 
 import java.awt.Font;
 
+import org.ocsoft.flatlaf.core.defaults.FlatLafFontDefaults;
 import org.ocsoft.flatlaf.extended.button.WebSplitButtonUI;
 import org.ocsoft.flatlaf.extended.checkbox.WebTristateCheckBoxUI;
 import org.ocsoft.flatlaf.extended.label.WebMultiLineLabelUI;
 import org.ocsoft.flatlaf.extended.label.WebStyledLabelUI;
 import org.ocsoft.flatlaf.extended.label.WebVerticalLabelUI;
-import org.ocsoft.flatlaf.laf.WebFonts;
 import org.ocsoft.flatlaf.laf.button.WebButtonUI;
 import org.ocsoft.flatlaf.laf.button.WebToggleButtonUI;
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxUI;
@@ -54,7 +54,7 @@ import org.ocsoft.flatlaf.laf.viewport.WebViewportUI;
 
 public class FlatLafSettings {
     
-    /**
+    /*
      * Label-related components.
      */
     public static String labelUI = WebLabelUI.class.getCanonicalName();
@@ -67,7 +67,7 @@ public class FlatLafSettings {
             .getCanonicalName();
     public static String toolTipUI = WebToolTipUI.class.getCanonicalName();
     
-    /**
+    /*
      * Button-related components.
      */
     public static String buttonUI = WebButtonUI.class.getCanonicalName();
@@ -81,7 +81,7 @@ public class FlatLafSettings {
     public static String radioButtonUI = WebRadioButtonUI.class
             .getCanonicalName();
     
-    /**
+    /*
      * Menu-related components.
      */
     public static String menuBarUI = WebMenuBarUI.class.getCanonicalName();
@@ -95,12 +95,12 @@ public class FlatLafSettings {
     public static String popupMenuSeparatorUI = WebPopupMenuSeparatorUI.class
             .getCanonicalName();
     
-    /**
+    /*
      * Separator component.
      */
     public static String separatorUI = WebSeparatorUI.class.getCanonicalName();
     
-    /**
+    /*
      * Scroll-related components.
      */
     public static String scrollBarUI = WebScrollBarUI.class.getCanonicalName();
@@ -108,7 +108,7 @@ public class FlatLafSettings {
             .getCanonicalName();
     public static String viewportUI = WebViewportUI.class.getCanonicalName();
     
-    /**
+    /*
      * Text-related components.
      */
     public static String textFieldUI = WebTextFieldUI.class.getCanonicalName();
@@ -121,21 +121,21 @@ public class FlatLafSettings {
             .getCanonicalName();
     public static String textPaneUI = WebTextPaneUI.class.getCanonicalName();
     
-    /**
+    /*
      * Toolbar-related components.
      */
     public static String toolBarUI = WebToolBarUI.class.getCanonicalName();
     public static String toolBarSeparatorUI = WebToolBarSeparatorUI.class
             .getCanonicalName();
     
-    /**
+    /*
      * Table-related components.
      */
     public static String tableUI = WebTableUI.class.getCanonicalName();
     public static String tableHeaderUI = WebTableHeaderUI.class
             .getCanonicalName();
     
-    /**
+    /*
      * Chooser components.
      */
     public static String colorChooserUI = WebColorChooserUI.class
@@ -143,7 +143,7 @@ public class FlatLafSettings {
     public static String fileChooserUI = WebFileChooserUI.class
             .getCanonicalName();
     
-    /**
+    /*
      * Container-related components.
      */
     public static String panelUI = WebPanelUI.class.getCanonicalName();
@@ -152,7 +152,7 @@ public class FlatLafSettings {
             .getCanonicalName();
     public static String splitPaneUI = WebSplitPaneUI.class.getCanonicalName();
     
-    /**
+    /*
      * Other data-related components.
      */
     public static String progressBarUI = WebProgressBarUI.class
@@ -163,7 +163,7 @@ public class FlatLafSettings {
     public static String listUI = WebListUI.class.getCanonicalName();
     public static String comboBoxUI = WebComboBoxUI.class.getCanonicalName();
     
-    /**
+    /*
      * Desktop-pane-related components.
      */
     public static String desktopPaneUI = WebDesktopPaneUI.class
@@ -173,7 +173,7 @@ public class FlatLafSettings {
     public static String internalFrameUI = WebInternalFrameUI.class
             .getCanonicalName();
     
-    /**
+    /*
      * Option pane component.
      */
     public static String optionPaneUI = WebOptionPaneUI.class
@@ -184,7 +184,7 @@ public class FlatLafSettings {
      */
     
     // Text components fonts
-    public static Font globalControlFont = WebFonts.getSystemControlFont();
+    public static Font globalControlFont = FlatLafFontDefaults.getSystemControlFont();
     public static Font buttonFont;
     public static Font toggleButtonFont;
     public static Font radioButtonFont;
@@ -204,15 +204,15 @@ public class FlatLafSettings {
     public static Font toolBarFont;
     public static Font treeFont;
     
-    public static Font globalTooltipFont = WebFonts.getSystemTooltipFont();
+    public static Font globalTooltipFont = FlatLafFontDefaults.getSystemTooltipFont();
     public static Font toolTipFont;
     
     // Option pane font
-    public static Font globalAlertFont = WebFonts.getSystemAlertFont();
+    public static Font globalAlertFont = FlatLafFontDefaults.getSystemAlertFont();
     public static Font optionPaneFont;
     
     // Menu font
-    public static Font globalMenuFont = WebFonts.getSystemMenuFont();
+    public static Font globalMenuFont = FlatLafFontDefaults.getSystemMenuFont();
     public static Font menuBarFont;
     public static Font menuFont;
     public static Font menuItemFont;
@@ -221,7 +221,7 @@ public class FlatLafSettings {
     public static Font popupMenuFont;
     
     // Component's accelerators fonts
-    public static Font globalAcceleratorFont = WebFonts
+    public static Font globalAcceleratorFont = FlatLafFontDefaults
             .getSystemAcceleratorFont();
     public static Font menuItemAcceleratorFont;
     public static Font radioButtonMenuItemAcceleratorFont;
@@ -229,11 +229,11 @@ public class FlatLafSettings {
     public static Font menuAcceleratorFont;
     
     // Title components fonts
-    public static Font globalTitleFont = WebFonts.getSystemTitleFont();
+    public static Font globalTitleFont = FlatLafFontDefaults.getSystemTitleFont();
     public static Font internalFrameFont;
     
     // Editor components fonts
-    public static Font globalTextFont = WebFonts.getSystemTextFont();
+    public static Font globalTextFont = FlatLafFontDefaults.getSystemTextFont();
     public static Font comboBoxFont;
     public static Font spinnerFont;
     public static Font textFieldFont;
@@ -243,10 +243,7 @@ public class FlatLafSettings {
     public static Font textPaneFont;
     public static Font editorPaneFont;
     
-    /**
-     * instantiate from flatlookandfeel only
-     */
-    FlatLafSettings() {
-    }
+    
+    private FlatLafSettings() {}
     
 }
