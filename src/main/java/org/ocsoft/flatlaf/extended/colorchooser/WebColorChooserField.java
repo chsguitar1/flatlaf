@@ -20,6 +20,7 @@ package org.ocsoft.flatlaf.extended.colorchooser;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.image.WebImage;
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.extended.window.PopOverAlignment;
@@ -606,7 +607,7 @@ public class WebColorChooserField extends WebTextField {
                 }
             });
             ancestor.addPropertyChangeListener(
-                    FlatLookAndFeel.ORIENTATION_PROPERTY,
+                    FlatLafConstants.ORIENTATION_PROPERTY,
                     new PropertyChangeListener() {
                         @Override
                         public void propertyChange(final PropertyChangeEvent evt) {

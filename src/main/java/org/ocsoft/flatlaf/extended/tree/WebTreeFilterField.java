@@ -23,6 +23,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.text.Document;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.image.WebImage;
 import org.ocsoft.flatlaf.laf.menu.WebCheckBoxMenuItem;
 import org.ocsoft.flatlaf.laf.menu.WebPopupMenu;
@@ -266,7 +267,7 @@ public class WebTreeFilterField<E extends UniqueNode> extends WebTextField {
         updateDocumentListener();
         
         // Field document change listener
-        addPropertyChangeListener(FlatLookAndFeel.DOCUMENT_PROPERTY,
+        addPropertyChangeListener(FlatLafConstants.DOCUMENT_PROPERTY,
                 new PropertyChangeListener() {
                     @Override
                     public void propertyChange(final PropertyChangeEvent e) {

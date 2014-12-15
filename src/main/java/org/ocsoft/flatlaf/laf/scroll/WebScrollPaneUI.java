@@ -23,6 +23,7 @@ import javax.swing.plaf.ScrollBarUI;
 import javax.swing.plaf.basic.BasicScrollPaneUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
@@ -79,7 +80,7 @@ public class WebScrollPaneUI extends BasicScrollPaneUI implements ShapeProvider 
         // Default settings
         SwingUtils.setOrientation(scrollpane);
         LookAndFeel.installProperty(scrollpane,
-                FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE);
+                FlatLafConstants.OPAQUE_PROPERTY, Boolean.FALSE);
         scrollpane.setBackground(FlatLafStyleConstants.backgroundColor);
         
         // Updating scroll bars
@@ -170,7 +171,7 @@ public class WebScrollPaneUI extends BasicScrollPaneUI implements ShapeProvider 
             }
         };
         scrollpane.addPropertyChangeListener(
-                FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener);
+                FlatLafConstants.ORIENTATION_PROPERTY, propertyChangeListener);
         
         // Focus tracker for the scroll pane content
         focusTracker = new DefaultFocusTracker() {
@@ -191,7 +192,7 @@ public class WebScrollPaneUI extends BasicScrollPaneUI implements ShapeProvider 
     @Override
     public void uninstallUI(final JComponent c) {
         scrollpane.removePropertyChangeListener(
-                FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener);
+                FlatLafConstants.ORIENTATION_PROPERTY, propertyChangeListener);
         scrollpane.remove(getLowerLeadingCorner());
         scrollpane.remove(getLowerTrailingCorner());
         scrollpane.remove(getUpperTrailing());

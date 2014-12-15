@@ -17,11 +17,20 @@
 
 package org.ocsoft.flatlaf.laf.menu;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Shape;
+import java.awt.geom.Line2D;
+
+import javax.swing.JComponent;
+import javax.swing.LookAndFeel;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicMenuBarUI;
 
-import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -29,9 +38,6 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
-
-import java.awt.*;
-import java.awt.geom.Line2D;
 
 /**
  * User: mgarin Date: 15.08.11 Time: 20:24
@@ -45,7 +51,6 @@ public class WebMenuBarUI extends BasicMenuBarUI implements ShapeProvider,
     private MenuBarStyle menuBarStyle = WebMenuBarStyle.menuBarStyle;
     private Color borderColor = WebMenuBarStyle.borderColor;
     
-    @SuppressWarnings("UnusedParameters")
     public static ComponentUI createUI(final JComponent c) {
         return new WebMenuBarUI();
     }
@@ -56,7 +61,7 @@ public class WebMenuBarUI extends BasicMenuBarUI implements ShapeProvider,
         
         // Default settings
         SwingUtils.setOrientation(menuBar);
-        LookAndFeel.installProperty(menuBar, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(menuBar, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
         menuBar.setLayout(new ToolbarLayout(0));
         

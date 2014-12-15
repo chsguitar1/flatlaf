@@ -97,6 +97,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.JTextComponent;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.date.WebCalendar;
 import org.ocsoft.flatlaf.extended.date.WebDateField;
 import org.ocsoft.flatlaf.extended.filechooser.WebFileChooserField;
@@ -201,10 +202,10 @@ public final class SwingUtils {
      *         component, false otherwise
      */
     public static boolean getHonorUserBorders(final JComponent component) {
-        return Boolean.getBoolean(FlatLookAndFeel.PROPERTY_HONOR_USER_BORDERS)
+        return Boolean.getBoolean(FlatLafConstants.PROPERTY_HONOR_USER_BORDERS)
                 || Boolean.TRUE
                         .equals(component
-                                .getClientProperty(FlatLookAndFeel.PROPERTY_HONOR_USER_BORDER));
+                                .getClientProperty(FlatLafConstants.PROPERTY_HONOR_USER_BORDER));
     }
     
     /**

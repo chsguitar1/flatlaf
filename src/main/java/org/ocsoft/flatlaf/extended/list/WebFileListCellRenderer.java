@@ -142,7 +142,7 @@ public class WebFileListCellRenderer extends WebListCellRenderer {
         add(descriptionLabel);
         add(sizeLabel);
         
-        fileList.addPropertyChangeListener(FlatLookAndFeel.ENABLED_PROPERTY,
+        fileList.addPropertyChangeListener(FlatLafConstants.ENABLED_PROPERTY,
                 new PropertyChangeListener() {
                     @Override
                     public void propertyChange(final PropertyChangeEvent evt) {
@@ -155,7 +155,7 @@ public class WebFileListCellRenderer extends WebListCellRenderer {
                 });
         
         fileList.addPropertyChangeListener(
-                FlatLookAndFeel.ORIENTATION_PROPERTY,
+                FlatLafConstants.ORIENTATION_PROPERTY,
                 new PropertyChangeListener() {
                     @Override
                     public void propertyChange(final PropertyChangeEvent evt) {

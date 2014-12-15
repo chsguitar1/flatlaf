@@ -24,6 +24,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicToolBarUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
@@ -85,7 +86,7 @@ public class WebToolBarUI extends BasicToolBarUI implements ShapeProvider,
         
         // Default settings
         SwingUtils.setOrientation(toolBar);
-        LookAndFeel.installProperty(toolBar, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(toolBar, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
         PainterSupport.installPainter(toolBar, this.painter);
         
@@ -110,7 +111,7 @@ public class WebToolBarUI extends BasicToolBarUI implements ShapeProvider,
             }
         };
         toolBar.addPropertyChangeListener(
-                FlatLookAndFeel.TOOLBAR_FLOATABLE_PROPERTY,
+                FlatLafConstants.TOOLBAR_FLOATABLE_PROPERTY,
                 propertyChangeListener);
         componentOrientationListener = new PropertyChangeListener() {
             @Override
@@ -118,7 +119,7 @@ public class WebToolBarUI extends BasicToolBarUI implements ShapeProvider,
                 updateBorder();
             }
         };
-        toolBar.addPropertyChangeListener(FlatLookAndFeel.ORIENTATION_PROPERTY,
+        toolBar.addPropertyChangeListener(FlatLafConstants.ORIENTATION_PROPERTY,
                 componentOrientationListener);
     }
     
@@ -128,9 +129,9 @@ public class WebToolBarUI extends BasicToolBarUI implements ShapeProvider,
         
         c.removeAncestorListener(ancestorListener);
         c.removePropertyChangeListener(
-                FlatLookAndFeel.TOOLBAR_FLOATABLE_PROPERTY,
+                FlatLafConstants.TOOLBAR_FLOATABLE_PROPERTY,
                 propertyChangeListener);
-        c.removePropertyChangeListener(FlatLookAndFeel.ORIENTATION_PROPERTY,
+        c.removePropertyChangeListener(FlatLafConstants.ORIENTATION_PROPERTY,
                 componentOrientationListener);
         
         super.uninstallUI(c);

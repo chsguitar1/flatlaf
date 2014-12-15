@@ -27,6 +27,7 @@ import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.tree.*;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.tree.WebCheckBoxTree;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.*;
@@ -171,7 +172,7 @@ public class WebTreeUI extends BasicTreeUI {
                 leftToRight = tree.getComponentOrientation().isLeftToRight();
             }
         };
-        tree.addPropertyChangeListener(FlatLookAndFeel.ORIENTATION_PROPERTY,
+        tree.addPropertyChangeListener(FlatLafConstants.ORIENTATION_PROPERTY,
                 orientationChangeListener);
         SwingUtils.setOrientation(tree);
         
@@ -196,7 +197,7 @@ public class WebTreeUI extends BasicTreeUI {
                 }
             }
         };
-        tree.addPropertyChangeListener(FlatLookAndFeel.DROP_LOCATION,
+        tree.addPropertyChangeListener(FlatLafConstants.DROP_LOCATION,
                 dropLocationChangeListener);
         
         // Selection listener
@@ -502,9 +503,9 @@ public class WebTreeUI extends BasicTreeUI {
      */
     @Override
     public void uninstallUI(final JComponent c) {
-        tree.removePropertyChangeListener(FlatLookAndFeel.ORIENTATION_PROPERTY,
+        tree.removePropertyChangeListener(FlatLafConstants.ORIENTATION_PROPERTY,
                 orientationChangeListener);
-        tree.removePropertyChangeListener(FlatLookAndFeel.DROP_LOCATION,
+        tree.removePropertyChangeListener(FlatLafConstants.DROP_LOCATION,
                 dropLocationChangeListener);
         tree.removeTreeSelectionListener(treeSelectionListener);
         tree.removeTreeExpansionListener(treeExpansionListener);

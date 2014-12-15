@@ -17,26 +17,47 @@
 
 package org.ocsoft.flatlaf.laf.menu;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Composite;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Paint;
+import java.awt.Rectangle;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.Map;
+
+import javax.swing.ButtonModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JMenu;
+import javax.swing.JPopupMenu;
+import javax.swing.LookAndFeel;
+import javax.swing.SwingConstants;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicHTML;
 import javax.swing.plaf.basic.BasicMenuUI;
 import javax.swing.text.View;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.utils.*;
+import org.ocsoft.flatlaf.utils.ImageUtils;
+import org.ocsoft.flatlaf.utils.LafUtils;
+import org.ocsoft.flatlaf.utils.MathUtils;
+import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
-
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.Map;
 
 /**
  * Custom UI for JMenu component.
@@ -105,7 +126,7 @@ public class WebMenuUI extends BasicMenuUI implements BorderMethods {
         
         // Default settings
         SwingUtils.setOrientation(menuItem);
-        LookAndFeel.installProperty(menuItem, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(menuItem, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
         menuItem.setBackground(selectedBottomBg);
         menuItem.setIconTextGap(WebMenuItemStyle.iconTextGap);
@@ -120,7 +141,7 @@ public class WebMenuUI extends BasicMenuUI implements BorderMethods {
             }
         };
         menuItem.addPropertyChangeListener(
-                FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener);
+                FlatLafConstants.ORIENTATION_PROPERTY, propertyChangeListener);
         
         // Rollover listener
         mouseAdapter = new MouseAdapter() {
@@ -155,7 +176,7 @@ public class WebMenuUI extends BasicMenuUI implements BorderMethods {
         
         // Removing listeners
         menuItem.removePropertyChangeListener(
-                FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener);
+                FlatLafConstants.ORIENTATION_PROPERTY, propertyChangeListener);
         propertyChangeListener = null;
         menuItem.removeMouseListener(mouseAdapter);
         mouseAdapter = null;

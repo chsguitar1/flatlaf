@@ -22,6 +22,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicRootPaneUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.panel.WebButtonGroup;
 import org.ocsoft.flatlaf.extended.window.ComponentMoveAdapter;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
@@ -432,7 +433,7 @@ public class WebRootPaneUI extends BasicRootPaneUI implements SwingConstants {
         
         // Install decorations
         if (propertyName
-                .equals(FlatLookAndFeel.WINDOW_DECORATION_STYLE_PROPERTY)) {
+                .equals(FlatLafConstants.WINDOW_DECORATION_STYLE_PROPERTY)) {
             final JRootPane root = (JRootPane) e.getSource();
             final int style = root.getWindowDecorationStyle();
             
@@ -525,9 +526,9 @@ public class WebRootPaneUI extends BasicRootPaneUI implements SwingConstants {
                 titleComponent.repaint();
             }
         };
-        window.addPropertyChangeListener(FlatLookAndFeel.WINDOW_ICON_PROPERTY,
+        window.addPropertyChangeListener(FlatLafConstants.WINDOW_ICON_PROPERTY,
                 titleChangeListener);
-        window.addPropertyChangeListener(FlatLookAndFeel.WINDOW_TITLE_PROPERTY,
+        window.addPropertyChangeListener(FlatLafConstants.WINDOW_TITLE_PROPERTY,
                 titleChangeListener);
         
         // Listen to window resizability changes
@@ -538,7 +539,7 @@ public class WebRootPaneUI extends BasicRootPaneUI implements SwingConstants {
             }
         };
         window.addPropertyChangeListener(
-                FlatLookAndFeel.WINDOW_RESIZABLE_PROPERTY,
+                FlatLafConstants.WINDOW_RESIZABLE_PROPERTY,
                 resizableChangeListener);
         
         if (isFrame()) {
@@ -557,11 +558,11 @@ public class WebRootPaneUI extends BasicRootPaneUI implements SwingConstants {
     protected void uninstallListeners() {
         window.removeWindowFocusListener(windowFocusListener);
         window.removePropertyChangeListener(
-                FlatLookAndFeel.WINDOW_ICON_PROPERTY, titleChangeListener);
+                FlatLafConstants.WINDOW_ICON_PROPERTY, titleChangeListener);
         window.removePropertyChangeListener(
-                FlatLookAndFeel.WINDOW_TITLE_PROPERTY, titleChangeListener);
+                FlatLafConstants.WINDOW_TITLE_PROPERTY, titleChangeListener);
         window.removePropertyChangeListener(
-                FlatLookAndFeel.WINDOW_RESIZABLE_PROPERTY,
+                FlatLafConstants.WINDOW_RESIZABLE_PROPERTY,
                 resizableChangeListener);
         if (isFrame()) {
             window.removeWindowStateListener(windowStateListener);

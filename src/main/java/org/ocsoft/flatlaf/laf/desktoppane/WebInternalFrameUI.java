@@ -17,11 +17,20 @@
 
 package org.ocsoft.flatlaf.laf.desktoppane;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.geom.RoundRectangle2D;
+
+import javax.swing.JComponent;
+import javax.swing.JInternalFrame;
+import javax.swing.LookAndFeel;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
-import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
@@ -29,9 +38,6 @@ import org.ocsoft.flatlaf.managers.focus.FocusTracker;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
-
-import java.awt.*;
-import java.awt.geom.RoundRectangle2D;
 
 /**
  * Custom UI for JInternalFrame component.
@@ -90,7 +96,7 @@ public class WebInternalFrameUI extends BasicInternalFrameUI {
         
         // Default settings
         SwingUtils.setOrientation(frame);
-        LookAndFeel.installProperty(frame, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(frame, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
         frame.setBackground(new Color(90, 90, 90, 220));
         frame.setBorder(LafUtils.createWebBorder(0, 0, 0, 0));

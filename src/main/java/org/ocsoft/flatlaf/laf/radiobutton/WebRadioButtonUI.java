@@ -22,6 +22,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicRadioButtonUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.list.WebListElement;
 import org.ocsoft.flatlaf.laf.tree.WebTreeElement;
@@ -109,7 +110,7 @@ public class WebRadioButtonUI extends BasicRadioButtonUI implements
         // Default settings
         SwingUtils.setOrientation(radioButton);
         LookAndFeel.installProperty(radioButton,
-                FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE);
+                FlatLafConstants.OPAQUE_PROPERTY, Boolean.FALSE);
         
         // Initial check state
         checkIcon = radioButton.isSelected() ? CHECK_STATES.size() - 1 : 0;

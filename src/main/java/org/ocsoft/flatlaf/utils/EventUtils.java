@@ -22,6 +22,7 @@ import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.tab.*;
 import org.ocsoft.flatlaf.extended.window.PopOverAdapter;
 import org.ocsoft.flatlaf.extended.window.PopOverEventRunnable;
@@ -492,7 +493,7 @@ public class EventUtils {
             }
         };
         textComponent.addPropertyChangeListener(
-                FlatLookAndFeel.DOCUMENT_PROPERTY, propertyChangeListener);
+                FlatLafConstants.DOCUMENT_PROPERTY, propertyChangeListener);
         
         return new Pair<DocumentChangeListener, PropertyChangeListener>(
                 documentChangeListener, propertyChangeListener);

@@ -29,6 +29,7 @@ import javax.swing.plaf.basic.BasicComboPopup;
 import javax.swing.plaf.basic.ComboPopup;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.layout.AbstractLayoutManager;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
@@ -97,7 +98,7 @@ public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider,
         // Default settings
         SwingUtils.setOrientation(comboBox);
         comboBox.setFocusable(true);
-        LookAndFeel.installProperty(comboBox, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(comboBox, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
         
         // Updating border
@@ -151,7 +152,7 @@ public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider,
                 installRendererListener(e.getNewValue());
             }
         };
-        comboBox.addPropertyChangeListener(FlatLookAndFeel.RENDERER_PROPERTY,
+        comboBox.addPropertyChangeListener(FlatLafConstants.RENDERER_PROPERTY,
                 rendererChangeListener);
         
         // Enabled property change listener
@@ -163,7 +164,7 @@ public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider,
                 listBox.setEnabled(comboBox.isEnabled());
             }
         };
-        comboBox.addPropertyChangeListener(FlatLookAndFeel.ENABLED_PROPERTY,
+        comboBox.addPropertyChangeListener(FlatLafConstants.ENABLED_PROPERTY,
                 enabledStateListener);
     }
     
@@ -172,11 +173,11 @@ public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider,
      */
     @Override
     public void uninstallUI(final JComponent c) {
-        comboBox.removePropertyChangeListener(FlatLookAndFeel.ENABLED_PROPERTY,
+        comboBox.removePropertyChangeListener(FlatLafConstants.ENABLED_PROPERTY,
                 enabledStateListener);
         
         comboBox.removePropertyChangeListener(
-                FlatLookAndFeel.RENDERER_PROPERTY, rendererChangeListener);
+                FlatLafConstants.RENDERER_PROPERTY, rendererChangeListener);
         uninstallRendererListener(comboBox.getRenderer());
         rendererListener = null;
         

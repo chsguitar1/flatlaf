@@ -22,6 +22,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicPanelUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
 import org.ocsoft.flatlaf.extended.painter.PartialDecoration;
@@ -113,7 +114,7 @@ public class WebPanelUI extends BasicPanelUI implements Styleable,
                 updateBorder();
             }
         };
-        panel.addPropertyChangeListener(FlatLookAndFeel.ORIENTATION_PROPERTY,
+        panel.addPropertyChangeListener(FlatLafConstants.ORIENTATION_PROPERTY,
                 propertyChangeListener);
     }
     
@@ -127,7 +128,7 @@ public class WebPanelUI extends BasicPanelUI implements Styleable,
     public void uninstallUI(final JComponent c) {
         // Removing listeners
         panel.removePropertyChangeListener(
-                FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener);
+                FlatLafConstants.ORIENTATION_PROPERTY, propertyChangeListener);
         
         // Uninstalling applied skin
         StyleManager.removeSkin(panel);

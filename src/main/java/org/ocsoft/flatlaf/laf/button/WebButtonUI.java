@@ -24,6 +24,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicButtonUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
 import org.ocsoft.flatlaf.extended.panel.WebButtonGroup;
@@ -144,7 +145,7 @@ public class WebButtonUI extends BasicButtonUI implements ShapeProvider,
         button.setContentAreaFilled(false);
         button.setBorderPainted(false);
         button.setFocusable(true);
-        LookAndFeel.installProperty(button, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(button, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
         PainterSupport.installPainter(button, this.painter);
         
@@ -297,7 +298,7 @@ public class WebButtonUI extends BasicButtonUI implements ShapeProvider,
                 updateBorder();
             }
         };
-        c.addPropertyChangeListener(FlatLookAndFeel.ORIENTATION_PROPERTY,
+        c.addPropertyChangeListener(FlatLafConstants.ORIENTATION_PROPERTY,
                 propertyChangeListener);
     }
     
@@ -308,7 +309,7 @@ public class WebButtonUI extends BasicButtonUI implements ShapeProvider,
         c.removeMouseListener(mouseAdapter);
         c.removeMouseMotionListener(mouseAdapter);
         c.removeAncestorListener(ancestorListener);
-        c.removePropertyChangeListener(FlatLookAndFeel.ORIENTATION_PROPERTY,
+        c.removePropertyChangeListener(FlatLafConstants.ORIENTATION_PROPERTY,
                 propertyChangeListener);
         
         button.setBorderPainted(oldBorderPainted);

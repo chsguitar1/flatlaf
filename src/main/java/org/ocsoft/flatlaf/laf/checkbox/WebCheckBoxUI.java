@@ -23,6 +23,7 @@ import javax.swing.plaf.basic.BasicCheckBoxUI;
 import javax.swing.tree.TreeCellRenderer;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.checkbox.CheckState;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.list.WebListElement;
@@ -147,7 +148,7 @@ public class WebCheckBoxUI extends BasicCheckBoxUI implements ShapeProvider {
         
         // Default settings
         SwingUtils.setOrientation(checkBox);
-        LookAndFeel.installProperty(checkBox, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(checkBox, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
         checkBox.setIcon(createIcon());
         setAnimated(isAnimatedByDefault());
@@ -198,7 +199,7 @@ public class WebCheckBoxUI extends BasicCheckBoxUI implements ShapeProvider {
                 checkIcon.setEnabled(checkBox.isEnabled());
             }
         };
-        checkBox.addPropertyChangeListener(FlatLookAndFeel.ENABLED_PROPERTY,
+        checkBox.addPropertyChangeListener(FlatLafConstants.ENABLED_PROPERTY,
                 enabledStateListener);
     }
     
@@ -206,7 +207,7 @@ public class WebCheckBoxUI extends BasicCheckBoxUI implements ShapeProvider {
      * Uninstalls enabled state listeners.
      */
     protected void uninstallEnabledStateListeners() {
-        checkBox.removePropertyChangeListener(FlatLookAndFeel.ENABLED_PROPERTY,
+        checkBox.removePropertyChangeListener(FlatLafConstants.ENABLED_PROPERTY,
                 enabledStateListener);
     }
     
@@ -296,7 +297,7 @@ public class WebCheckBoxUI extends BasicCheckBoxUI implements ShapeProvider {
                 performStateChanged();
             }
         };
-        checkBox.addPropertyChangeListener(FlatLookAndFeel.MODEL_PROPERTY,
+        checkBox.addPropertyChangeListener(FlatLafConstants.MODEL_PROPERTY,
                 modelChangeListener);
     }
     

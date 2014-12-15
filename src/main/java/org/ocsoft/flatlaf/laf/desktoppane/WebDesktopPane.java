@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.desktoppane;
 
-import javax.swing.*;
+import javax.swing.JDesktopPane;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;

@@ -20,6 +20,7 @@ package org.ocsoft.flatlaf.extended.panel;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.label.WebVerticalLabel;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
@@ -344,7 +345,7 @@ public class WebCollapsiblePane extends WebPanel implements SwingConstants,
             contentPanel.add(this.content, BorderLayout.CENTER);
         }
         
-        addPropertyChangeListener(FlatLookAndFeel.ORIENTATION_PROPERTY,
+        addPropertyChangeListener(FlatLafConstants.ORIENTATION_PROPERTY,
                 new PropertyChangeListener() {
                     @Override
                     public void propertyChange(final PropertyChangeEvent evt) {

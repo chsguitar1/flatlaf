@@ -22,6 +22,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicOptionPaneUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.managers.language.LM;
@@ -59,7 +60,7 @@ public class WebOptionPaneUI extends BasicOptionPaneUI {
         // Default settings
         SwingUtils.setOrientation(optionPane);
         LookAndFeel.installProperty(optionPane,
-                FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE);
+                FlatLafConstants.OPAQUE_PROPERTY, Boolean.FALSE);
         optionPane.setBackground(WebOptionPaneStyle.backgroundColor);
         optionPane.setBorder(LafUtils.createWebBorder(15, 15, 15, 15));
     }

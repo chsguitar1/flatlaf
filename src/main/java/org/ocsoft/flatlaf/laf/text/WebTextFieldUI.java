@@ -23,6 +23,7 @@ import javax.swing.plaf.basic.BasicTextFieldUI;
 import javax.swing.text.JTextComponent;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
@@ -89,7 +90,7 @@ public class WebTextFieldUI extends BasicTextFieldUI implements ShapeProvider,
         
         // Default settings
         SwingUtils.setOrientation(textField);
-        LookAndFeel.installProperty(textField, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(textField, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
         textField.putClientProperty(SwingUtils.HANDLES_ENABLE_STATE, true);
         textField.setFocusable(true);
@@ -124,7 +125,7 @@ public class WebTextFieldUI extends BasicTextFieldUI implements ShapeProvider,
                 updateInnerComponents();
             }
         };
-        textField.addPropertyChangeListener(FlatLookAndFeel.ENABLED_PROPERTY,
+        textField.addPropertyChangeListener(FlatLafConstants.ENABLED_PROPERTY,
                 accessibleChangeListener);
         
         orientationChangeListener = new PropertyChangeListener() {
@@ -135,7 +136,7 @@ public class WebTextFieldUI extends BasicTextFieldUI implements ShapeProvider,
         };
         textField
                 .addPropertyChangeListener(
-                        FlatLookAndFeel.ORIENTATION_PROPERTY,
+                        FlatLafConstants.ORIENTATION_PROPERTY,
                         orientationChangeListener);
         
         marginChangeListener = new PropertyChangeListener() {
@@ -144,7 +145,7 @@ public class WebTextFieldUI extends BasicTextFieldUI implements ShapeProvider,
                 updateBorder();
             }
         };
-        textField.addPropertyChangeListener(FlatLookAndFeel.MARGIN_PROPERTY,
+        textField.addPropertyChangeListener(FlatLafConstants.MARGIN_PROPERTY,
                 marginChangeListener);
         
         componentResizeListener = new ComponentAdapter() {
@@ -163,12 +164,12 @@ public class WebTextFieldUI extends BasicTextFieldUI implements ShapeProvider,
         
         textField.removeFocusListener(focusListener);
         textField.removePropertyChangeListener(
-                FlatLookAndFeel.ENABLED_PROPERTY, accessibleChangeListener);
+                FlatLafConstants.ENABLED_PROPERTY, accessibleChangeListener);
         textField
                 .removePropertyChangeListener(
-                        FlatLookAndFeel.ORIENTATION_PROPERTY,
+                        FlatLafConstants.ORIENTATION_PROPERTY,
                         orientationChangeListener);
-        textField.removePropertyChangeListener(FlatLookAndFeel.MARGIN_PROPERTY,
+        textField.removePropertyChangeListener(FlatLafConstants.MARGIN_PROPERTY,
                 marginChangeListener);
         
         cleanupLeadingComponent();
@@ -184,7 +185,7 @@ public class WebTextFieldUI extends BasicTextFieldUI implements ShapeProvider,
     protected void propertyChange(final PropertyChangeEvent evt) {
         super.propertyChange(evt);
         
-        if (evt.getPropertyName().equals(FlatLookAndFeel.ENABLED_PROPERTY)) {
+        if (evt.getPropertyName().equals(FlatLafConstants.ENABLED_PROPERTY)) {
             SwingUtils.setEnabledRecursively(leadingComponent,
                     textField.isEnabled());
             SwingUtils.setEnabledRecursively(trailingComponent,

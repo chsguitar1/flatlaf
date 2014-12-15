@@ -22,6 +22,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicPopupMenuSeparatorUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 
 import java.awt.*;
@@ -64,7 +65,7 @@ public class WebPopupMenuSeparatorUI extends BasicPopupMenuSeparatorUI {
     @Override
     public void installUI(final JComponent c) {
         super.installUI(c);
-        LookAndFeel.installProperty(c, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(c, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
     }
     

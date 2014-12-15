@@ -17,22 +17,22 @@
 
 package org.ocsoft.flatlaf.laf.desktoppane;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+
+import javax.swing.JComponent;
+import javax.swing.LookAndFeel;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicDesktopIconUI;
 
-import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
 
 /**
  * User: mgarin Date: 17.08.11 Time: 23:14
  */
 
 public class WebDesktopIconUI extends BasicDesktopIconUI {
-    @SuppressWarnings("UnusedParameters")
     public static ComponentUI createUI(final JComponent c) {
         return new WebDesktopIconUI();
     }
@@ -44,7 +44,7 @@ public class WebDesktopIconUI extends BasicDesktopIconUI {
         // Default settings
         SwingUtils.setOrientation(c);
         c.setBorder(LafUtils.createWebBorder(0, 0, 0, 0));
-        LookAndFeel.installProperty(c, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(c, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
     }
     

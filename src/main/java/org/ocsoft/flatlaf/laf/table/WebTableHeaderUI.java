@@ -25,6 +25,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.table.renderers.WebTableHeaderCellRenderer;
 import org.ocsoft.flatlaf.utils.CompareUtils;
@@ -53,7 +54,7 @@ public class WebTableHeaderUI extends BasicTableHeaderUI {
         
         // Default settings
         SwingUtils.setOrientation(header);
-        LookAndFeel.installProperty(header, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(header, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.TRUE);
         
         // Default renderer

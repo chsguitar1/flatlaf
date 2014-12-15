@@ -20,6 +20,7 @@ package org.ocsoft.flatlaf.extended.painter;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.utils.LafUtils;
 
 import java.lang.ref.WeakReference;
@@ -70,7 +71,7 @@ public final class PainterSupport {
             final Boolean opaque = painter.isOpaque(component);
             if (opaque != null) {
                 LookAndFeel.installProperty(component,
-                        FlatLookAndFeel.OPAQUE_PROPERTY, opaque ? Boolean.TRUE
+                        FlatLafConstants.OPAQUE_PROPERTY, opaque ? Boolean.TRUE
                                 : Boolean.FALSE);
             }
             

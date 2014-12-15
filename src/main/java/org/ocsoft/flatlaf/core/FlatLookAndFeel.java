@@ -17,76 +17,60 @@
 
 package org.ocsoft.flatlaf.core;
 
-import javax.swing.*;
-import javax.swing.plaf.InsetsUIResource;
-import javax.swing.plaf.basic.BasicLookAndFeel;
-import javax.swing.text.DefaultEditorKit;
-
-import org.ocsoft.flatlaf.extended.button.WebSplitButtonUI;
-import org.ocsoft.flatlaf.extended.checkbox.WebTristateCheckBoxUI;
-import org.ocsoft.flatlaf.extended.colorchooser.GradientColorData;
-import org.ocsoft.flatlaf.extended.colorchooser.GradientData;
-import org.ocsoft.flatlaf.extended.label.WebMultiLineLabelUI;
-import org.ocsoft.flatlaf.extended.label.WebStyledLabelUI;
-import org.ocsoft.flatlaf.extended.label.WebVerticalLabelUI;
-import org.ocsoft.flatlaf.extended.tab.DocumentPaneState;
-import org.ocsoft.flatlaf.laf.AltProcessor;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.WebLayoutStyle;
-import org.ocsoft.flatlaf.laf.button.WebButtonUI;
-import org.ocsoft.flatlaf.laf.button.WebToggleButtonUI;
-import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxUI;
-import org.ocsoft.flatlaf.laf.colorchooser.HSBColor;
-import org.ocsoft.flatlaf.laf.colorchooser.WebColorChooserUI;
-import org.ocsoft.flatlaf.laf.combobox.WebComboBoxUI;
-import org.ocsoft.flatlaf.laf.desktoppane.WebDesktopIconUI;
-import org.ocsoft.flatlaf.laf.desktoppane.WebDesktopPaneUI;
-import org.ocsoft.flatlaf.laf.desktoppane.WebInternalFrameUI;
-import org.ocsoft.flatlaf.laf.filechooser.WebFileChooserUI;
-import org.ocsoft.flatlaf.laf.label.WebLabelUI;
-import org.ocsoft.flatlaf.laf.list.WebListCellRenderer;
-import org.ocsoft.flatlaf.laf.list.WebListStyle;
-import org.ocsoft.flatlaf.laf.list.WebListUI;
-import org.ocsoft.flatlaf.laf.menu.*;
-import org.ocsoft.flatlaf.laf.optionpane.WebOptionPaneUI;
-import org.ocsoft.flatlaf.laf.panel.WebPanelUI;
-import org.ocsoft.flatlaf.laf.progressbar.WebProgressBarUI;
-import org.ocsoft.flatlaf.laf.radiobutton.WebRadioButtonUI;
-import org.ocsoft.flatlaf.laf.rootpane.WebRootPaneUI;
-import org.ocsoft.flatlaf.laf.scroll.WebScrollBarStyle;
-import org.ocsoft.flatlaf.laf.scroll.WebScrollBarUI;
-import org.ocsoft.flatlaf.laf.scroll.WebScrollPaneUI;
-import org.ocsoft.flatlaf.laf.separator.WebSeparatorUI;
-import org.ocsoft.flatlaf.laf.slider.WebSliderUI;
-import org.ocsoft.flatlaf.laf.spinner.WebSpinnerUI;
-import org.ocsoft.flatlaf.laf.splitpane.WebSplitPaneUI;
-import org.ocsoft.flatlaf.laf.tabbedpane.WebTabbedPaneUI;
-import org.ocsoft.flatlaf.laf.table.WebTableHeaderUI;
-import org.ocsoft.flatlaf.laf.table.WebTableStyle;
-import org.ocsoft.flatlaf.laf.table.WebTableUI;
-import org.ocsoft.flatlaf.laf.text.*;
-import org.ocsoft.flatlaf.laf.toolbar.WebToolBarSeparatorUI;
-import org.ocsoft.flatlaf.laf.toolbar.WebToolBarUI;
-import org.ocsoft.flatlaf.laf.tooltip.WebToolTipUI;
-import org.ocsoft.flatlaf.laf.tree.NodeState;
-import org.ocsoft.flatlaf.laf.tree.TreeState;
-import org.ocsoft.flatlaf.laf.tree.WebTreeUI;
-import org.ocsoft.flatlaf.laf.viewport.WebViewportStyle;
-import org.ocsoft.flatlaf.laf.viewport.WebViewportUI;
-import org.ocsoft.flatlaf.managers.FlatLafManagers;
-import org.ocsoft.flatlaf.utils.*;
-import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-import org.ocsoft.flatlaf.utils.swing.SwingLazyValue;
-import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
-import org.ocsoft.flatlaf.utils.xml.XmlUtils;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.KeyboardFocusManager;
+import java.awt.Window;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.WeakHashMap;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.JViewport;
+import javax.swing.LayoutStyle;
+import javax.swing.SwingUtilities;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
+import javax.swing.plaf.InsetsUIResource;
+import javax.swing.plaf.basic.BasicLookAndFeel;
+import javax.swing.text.DefaultEditorKit;
+
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
+import org.ocsoft.flatlaf.extended.colorchooser.GradientColorData;
+import org.ocsoft.flatlaf.extended.colorchooser.GradientData;
+import org.ocsoft.flatlaf.extended.tab.DocumentPaneState;
+import org.ocsoft.flatlaf.laf.AltProcessor;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.WebLayoutStyle;
+import org.ocsoft.flatlaf.laf.colorchooser.HSBColor;
+import org.ocsoft.flatlaf.laf.list.WebListCellRenderer;
+import org.ocsoft.flatlaf.laf.list.WebListStyle;
+import org.ocsoft.flatlaf.laf.scroll.WebScrollBarStyle;
+import org.ocsoft.flatlaf.laf.table.WebTableStyle;
+import org.ocsoft.flatlaf.laf.tree.NodeState;
+import org.ocsoft.flatlaf.laf.tree.TreeState;
+import org.ocsoft.flatlaf.laf.tree.WebTreeUI;
+import org.ocsoft.flatlaf.laf.viewport.WebViewportStyle;
+import org.ocsoft.flatlaf.managers.FlatLafManagers;
+import org.ocsoft.flatlaf.utils.ImageUtils;
+import org.ocsoft.flatlaf.utils.LafUtils;
+import org.ocsoft.flatlaf.utils.ProprietaryUtils;
+import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+import org.ocsoft.flatlaf.utils.swing.SwingLazyValue;
+import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
+import org.ocsoft.flatlaf.utils.xml.XmlUtils;
 
 /**
  * This core class contains methods to install, configure and uninstall
@@ -99,47 +83,9 @@ import java.util.WeakHashMap;
  *      href="https://github.com/mgarin/weblaf/wiki/How-to-build-WebLaF-from-sources">How
  *      to build WebLaF from sources</a>
  */
-
+@SuppressWarnings("serial")
 public class FlatLookAndFeel extends BasicLookAndFeel {
-    /**
-     * todo 1. Install default UI classes automatically (not manually) using
-     * SupportedComponent enumeration
-     */
-    
-    /**
-     * If this client property is set to {@link Boolean#TRUE} on a component, UI
-     * delegates should follow the typical Swing behavior of not overriding a
-     * user-defined border on it.
-     */
-    public static final String PROPERTY_HONOR_USER_BORDER = "WebLookAndFeel.honorUserBorder";
-    
-    /**
-     * If this system property is set to {@code true}, UI delegates should
-     * follow the typical Swing behavior of not overriding a user-defined border
-     * if one is installed on components.
-     */
-    public static final String PROPERTY_HONOR_USER_BORDERS = "WebLookAndFeel.honorUserBorders";
-    
-    /**
-     * Some known UI constants.
-     */
-    public static final String LOOK_AND_FEEL_PROPERTY = "lookAndFeel";
-    public static final String ORIENTATION_PROPERTY = "componentOrientation";
-    public static final String MARGIN_PROPERTY = "margin";
-    public static final String ENABLED_PROPERTY = "enabled";
-    public static final String MODEL_PROPERTY = "model";
-    public static final String TOOLBAR_FLOATABLE_PROPERTY = "floatable";
-    public static final String WINDOW_DECORATION_STYLE_PROPERTY = "windowDecorationStyle";
-    public static final String WINDOW_RESIZABLE_PROPERTY = "resizable";
-    public static final String WINDOW_ICON_PROPERTY = "iconImage";
-    public static final String WINDOW_TITLE_PROPERTY = "title";
-    public static final String VISIBLE_PROPERTY = "visible";
-    public static final String DOCUMENT_PROPERTY = "document";
-    public static final String OPAQUE_PROPERTY = "opaque";
-    public static final String PAINTER_PROPERTY = "painter";
-    public static final String RENDERER_PROPERTY = "renderer";
-    public static final String DROP_LOCATION = "dropLocation";
-    
+
     /**
      * List of WebLookAndFeel icons.
      */
@@ -645,7 +591,7 @@ public class FlatLookAndFeel extends BasicLookAndFeel {
         UIManager.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(final PropertyChangeEvent evt) {
-                if (evt.getPropertyName().equals(LOOK_AND_FEEL_PROPERTY)) {
+                if (evt.getPropertyName().equals(FlatLafConstants.LOOK_AND_FEEL_PROPERTY)) {
                     // Initializing managers if WebLaF was installed
                     if (evt.getNewValue() instanceof FlatLookAndFeel) {
                         // Web decoration for frames and dialogs

@@ -24,6 +24,7 @@ import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -81,7 +82,7 @@ public class WebSplitPaneUI extends BasicSplitPaneUI implements BorderMethods {
         
         // Default settings
         SwingUtils.setOrientation(splitPane);
-        LookAndFeel.installProperty(splitPane, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(splitPane, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
         splitPane.setBorder(LafUtils.createWebBorder(0));
         splitPane.setDividerSize(6);
@@ -97,7 +98,7 @@ public class WebSplitPaneUI extends BasicSplitPaneUI implements BorderMethods {
             }
         };
         splitPane.addPropertyChangeListener(
-                FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener);
+                FlatLafConstants.ORIENTATION_PROPERTY, propertyChangeListener);
     }
     
     /**
@@ -109,7 +110,7 @@ public class WebSplitPaneUI extends BasicSplitPaneUI implements BorderMethods {
     @Override
     public void uninstallUI(final JComponent c) {
         splitPane.removePropertyChangeListener(
-                FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener);
+                FlatLafConstants.ORIENTATION_PROPERTY, propertyChangeListener);
         
         super.uninstallUI(c);
     }

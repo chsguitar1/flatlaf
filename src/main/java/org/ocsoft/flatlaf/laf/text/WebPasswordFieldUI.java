@@ -23,6 +23,7 @@ import javax.swing.plaf.basic.BasicPasswordFieldUI;
 import javax.swing.text.JTextComponent;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
@@ -89,7 +90,7 @@ public class WebPasswordFieldUI extends BasicPasswordFieldUI implements
         // Default settings
         SwingUtils.setOrientation(passwordField);
         LookAndFeel.installProperty(passwordField,
-                FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE);
+                FlatLafConstants.OPAQUE_PROPERTY, Boolean.FALSE);
         passwordField.putClientProperty(SwingUtils.HANDLES_ENABLE_STATE, true);
         passwordField.setFocusable(true);
         passwordField.setMargin(WebPasswordFieldStyle.margin);
@@ -125,7 +126,7 @@ public class WebPasswordFieldUI extends BasicPasswordFieldUI implements
             }
         };
         passwordField.addPropertyChangeListener(
-                FlatLookAndFeel.ENABLED_PROPERTY, accessibleChangeListener);
+                FlatLafConstants.ENABLED_PROPERTY, accessibleChangeListener);
         
         orientationChangeListener = new PropertyChangeListener() {
             @Override
@@ -135,7 +136,7 @@ public class WebPasswordFieldUI extends BasicPasswordFieldUI implements
         };
         passwordField
                 .addPropertyChangeListener(
-                        FlatLookAndFeel.ORIENTATION_PROPERTY,
+                        FlatLafConstants.ORIENTATION_PROPERTY,
                         orientationChangeListener);
         
         marginChangeListener = new PropertyChangeListener() {
@@ -145,7 +146,7 @@ public class WebPasswordFieldUI extends BasicPasswordFieldUI implements
             }
         };
         passwordField.addPropertyChangeListener(
-                FlatLookAndFeel.MARGIN_PROPERTY, marginChangeListener);
+                FlatLafConstants.MARGIN_PROPERTY, marginChangeListener);
         
         componentResizeListener = new ComponentAdapter() {
             @Override
@@ -163,13 +164,13 @@ public class WebPasswordFieldUI extends BasicPasswordFieldUI implements
         
         passwordField.removeFocusListener(focusListener);
         passwordField.removePropertyChangeListener(
-                FlatLookAndFeel.ENABLED_PROPERTY, accessibleChangeListener);
+                FlatLafConstants.ENABLED_PROPERTY, accessibleChangeListener);
         passwordField
                 .removePropertyChangeListener(
-                        FlatLookAndFeel.ORIENTATION_PROPERTY,
+                        FlatLafConstants.ORIENTATION_PROPERTY,
                         orientationChangeListener);
         passwordField.removePropertyChangeListener(
-                FlatLookAndFeel.MARGIN_PROPERTY, marginChangeListener);
+                FlatLafConstants.MARGIN_PROPERTY, marginChangeListener);
         
         cleanupLeadingComponent();
         cleanupTrailingComponent();

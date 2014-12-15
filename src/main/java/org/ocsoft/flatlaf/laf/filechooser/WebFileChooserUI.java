@@ -35,6 +35,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.FileChooserUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.core.constants.FlatLafFileFilters;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.utils.FileUtils;
@@ -322,7 +323,7 @@ public class WebFileChooserUI extends FileChooserUI {
                 .equals(JFileChooser.FILE_SELECTION_MODE_CHANGED_PROPERTY)) {
             fileChooserPanel.setMultiSelectionEnabled(fileChooser
                     .isMultiSelectionEnabled());
-        } else if (prop.equals(FlatLookAndFeel.ORIENTATION_PROPERTY)) {
+        } else if (prop.equals(FlatLafConstants.ORIENTATION_PROPERTY)) {
             fileChooserPanel.applyComponentOrientation(fileChooser
                     .getComponentOrientation());
         }

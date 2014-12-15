@@ -24,6 +24,7 @@ import javax.swing.plaf.ScrollBarUI;
 import javax.swing.plaf.basic.BasicButtonUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.AdaptivePainter;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.TexturePainter;
@@ -162,7 +163,7 @@ public final class LafUtils {
             final Painter oldPainter, final Painter newPainter) {
         try {
             ReflectUtils.callMethod(component, "firePropertyChange",
-                    FlatLookAndFeel.PAINTER_PROPERTY, oldPainter, newPainter);
+                    FlatLafConstants.PAINTER_PROPERTY, oldPainter, newPainter);
         } catch (final NoSuchMethodException e) {
             FlatLafLogger.error(LafUtils.class, e);
         } catch (final InvocationTargetException e) {

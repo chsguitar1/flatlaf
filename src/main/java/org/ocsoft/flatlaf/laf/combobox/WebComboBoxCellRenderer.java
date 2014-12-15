@@ -20,6 +20,7 @@ package org.ocsoft.flatlaf.laf.combobox;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.utils.swing.RendererListener;
 
 import java.awt.*;
@@ -71,9 +72,9 @@ public class WebComboBoxCellRenderer implements ListCellRenderer {
             }
         };
         this.boxRenderer.addPropertyChangeListener(
-                FlatLookAndFeel.PAINTER_PROPERTY, listener);
+                FlatLafConstants.PAINTER_PROPERTY, listener);
         this.elementRenderer.addPropertyChangeListener(
-                FlatLookAndFeel.PAINTER_PROPERTY, listener);
+                FlatLafConstants.PAINTER_PROPERTY, listener);
     }
     
     /**

@@ -25,6 +25,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicListUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.managers.tooltip.WebCustomTooltip;
@@ -101,7 +102,7 @@ public class WebListUI extends BasicListUI {
         
         // Default settings
         SwingUtils.setOrientation(list);
-        LookAndFeel.installProperty(list, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(list, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.TRUE);
         list.setBackground(new ColorUIResource(WebListStyle.background));
         list.setForeground(new ColorUIResource(WebListStyle.foreground));

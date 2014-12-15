@@ -22,6 +22,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicToolTipUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
@@ -72,7 +73,7 @@ public class WebToolTipUI extends BasicToolTipUI implements ShapeProvider,
         
         // Default settings
         SwingUtils.setOrientation(tooltip);
-        LookAndFeel.installProperty(tooltip, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(tooltip, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
         tooltip.setBackground(WebTooltipStyle.backgroundColor);
         tooltip.setForeground(WebTooltipStyle.textColor);

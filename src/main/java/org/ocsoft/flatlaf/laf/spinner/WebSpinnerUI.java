@@ -23,6 +23,7 @@ import javax.swing.plaf.basic.BasicSpinnerUI;
 import javax.swing.text.JTextComponent;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.text.WebTextFieldUI;
@@ -62,7 +63,7 @@ public class WebSpinnerUI extends BasicSpinnerUI implements ShapeProvider,
         
         // Default settings
         SwingUtils.setOrientation(spinner);
-        LookAndFeel.installProperty(spinner, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(spinner, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
         spinner.setBackground(Color.WHITE);
         

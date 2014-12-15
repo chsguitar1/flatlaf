@@ -22,6 +22,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicPopupMenuUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
@@ -131,7 +132,7 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants,
                 }
             }
         };
-        popupMenu.addPropertyChangeListener(FlatLookAndFeel.VISIBLE_PROPERTY,
+        popupMenu.addPropertyChangeListener(FlatLafConstants.VISIBLE_PROPERTY,
                 popupMenuTypeUpdater);
         
         // Popup orientation change listener
@@ -143,7 +144,7 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants,
         };
         popupMenu
                 .addPropertyChangeListener(
-                        FlatLookAndFeel.ORIENTATION_PROPERTY,
+                        FlatLafConstants.ORIENTATION_PROPERTY,
                         orientationChangeListener);
         
         // Special listeners which set proper popup window opacity when needed
@@ -180,7 +181,7 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants,
                 }
             };
             popupMenu.addPropertyChangeListener(
-                    FlatLookAndFeel.VISIBLE_PROPERTY, visibilityChangeListener);
+                    FlatLafConstants.VISIBLE_PROPERTY, visibilityChangeListener);
         } else {
             // Workaround for menu with non-opaque parent window
             if (FlatLafSystemUtils.isJava7orAbove()) {
@@ -204,7 +205,7 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants,
                     }
                 };
                 popupMenu.addPropertyChangeListener(
-                        FlatLookAndFeel.VISIBLE_PROPERTY, jdkSevenFixListener);
+                        FlatLafConstants.VISIBLE_PROPERTY, jdkSevenFixListener);
             }
         }
     }
@@ -219,22 +220,22 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants,
     public void uninstallUI(final JComponent c) {
         // Removing listeners
         popupMenu.removePropertyChangeListener(
-                FlatLookAndFeel.VISIBLE_PROPERTY, popupMenuTypeUpdater);
+                FlatLafConstants.VISIBLE_PROPERTY, popupMenuTypeUpdater);
         popupMenuTypeUpdater = null;
         popupMenu
                 .removePropertyChangeListener(
-                        FlatLookAndFeel.ORIENTATION_PROPERTY,
+                        FlatLafConstants.ORIENTATION_PROPERTY,
                         orientationChangeListener);
         orientationChangeListener = null;
         if (transparent) {
             popupMenu.removePropertyChangeListener(
-                    FlatLookAndFeel.VISIBLE_PROPERTY, visibilityChangeListener);
+                    FlatLafConstants.VISIBLE_PROPERTY, visibilityChangeListener);
             visibilityChangeListener = null;
         } else {
             // Workaround for menu with non-opaque parent window
             if (FlatLafSystemUtils.isJava7orAbove()) {
                 popupMenu.removePropertyChangeListener(
-                        FlatLookAndFeel.VISIBLE_PROPERTY, jdkSevenFixListener);
+                        FlatLafConstants.VISIBLE_PROPERTY, jdkSevenFixListener);
                 jdkSevenFixListener = null;
             }
         }

@@ -22,6 +22,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
 import org.ocsoft.flatlaf.laf.button.WebButton;
@@ -114,7 +115,7 @@ public class WebScrollBarUI extends BasicScrollBarUI implements Styleable,
         };
         scrollbar
                 .addPropertyChangeListener(
-                        FlatLookAndFeel.ORIENTATION_PROPERTY,
+                        FlatLafConstants.ORIENTATION_PROPERTY,
                         orientationChangeListener);
     }
     
@@ -129,7 +130,7 @@ public class WebScrollBarUI extends BasicScrollBarUI implements Styleable,
         // Removing listeners
         scrollbar
                 .removePropertyChangeListener(
-                        FlatLookAndFeel.ORIENTATION_PROPERTY,
+                        FlatLafConstants.ORIENTATION_PROPERTY,
                         orientationChangeListener);
         
         // Uninstalling applied skin

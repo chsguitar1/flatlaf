@@ -24,6 +24,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicSliderUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
@@ -107,7 +108,7 @@ public class WebSliderUI extends BasicSliderUI implements BorderMethods {
         
         // Default settings
         SwingUtils.setOrientation(slider);
-        LookAndFeel.installProperty(slider, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(slider, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
         slider.setForeground(FlatLafStyleConstants.textColor);
         PainterSupport.installPainter(slider, this.painter);
@@ -120,7 +121,7 @@ public class WebSliderUI extends BasicSliderUI implements BorderMethods {
                 updateBorder();
             }
         };
-        slider.addPropertyChangeListener(FlatLookAndFeel.ORIENTATION_PROPERTY,
+        slider.addPropertyChangeListener(FlatLafConstants.ORIENTATION_PROPERTY,
                 propertyChangeListener);
         
         // Rollover mouse wheel scroll
@@ -209,7 +210,7 @@ public class WebSliderUI extends BasicSliderUI implements BorderMethods {
         PainterSupport.uninstallPainter(slider, this.painter);
         
         slider.removePropertyChangeListener(
-                FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener);
+                FlatLafConstants.ORIENTATION_PROPERTY, propertyChangeListener);
         slider.removeMouseWheelListener(mouseWheelListener);
         slider.removeChangeListener(changeListener);
         slider.removeMouseListener(mouseAdapter);

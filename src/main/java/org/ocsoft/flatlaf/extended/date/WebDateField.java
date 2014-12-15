@@ -22,6 +22,7 @@ import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.rootpane.WebWindow;
@@ -329,7 +330,7 @@ public class WebDateField extends WebFormattedTextField implements
             // Correct popup positioning
             updatePopupLocation();
             ancestor.addPropertyChangeListener(
-                    FlatLookAndFeel.ORIENTATION_PROPERTY,
+                    FlatLafConstants.ORIENTATION_PROPERTY,
                     new PropertyChangeListener() {
                         @Override
                         public void propertyChange(final PropertyChangeEvent evt) {

@@ -23,6 +23,7 @@ import javax.swing.plaf.basic.BasicTextAreaUI;
 import javax.swing.text.JTextComponent;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
@@ -72,7 +73,7 @@ public class WebTextAreaUI extends BasicTextAreaUI implements BorderMethods,
         // Default settings
         SwingUtils.setOrientation(textComponent);
         LookAndFeel.installProperty(textComponent,
-                FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.TRUE);
+                FlatLafConstants.OPAQUE_PROPERTY, Boolean.TRUE);
         textComponent.setBackground(Color.WHITE);
         textComponent
                 .setSelectionColor(FlatLafStyleConstants.textSelectionColor);
@@ -105,7 +106,7 @@ public class WebTextAreaUI extends BasicTextAreaUI implements BorderMethods,
             }
         };
         textComponent.addPropertyChangeListener(
-                FlatLookAndFeel.MARGIN_PROPERTY, marginChangeListener);
+                FlatLafConstants.MARGIN_PROPERTY, marginChangeListener);
     }
     
     @Override
@@ -115,7 +116,7 @@ public class WebTextAreaUI extends BasicTextAreaUI implements BorderMethods,
         PainterSupport.uninstallPainter(component, this.painter);
         
         component.removeFocusListener(focusListener);
-        component.removePropertyChangeListener(FlatLookAndFeel.MARGIN_PROPERTY,
+        component.removePropertyChangeListener(FlatLafConstants.MARGIN_PROPERTY,
                 marginChangeListener);
         
         super.uninstallUI(c);

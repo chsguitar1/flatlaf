@@ -45,6 +45,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicProgressBarUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
@@ -107,7 +108,7 @@ public class WebProgressBarUI extends BasicProgressBarUI implements
         // Default settings
         SwingUtils.setOrientation(progressBar);
         LookAndFeel.installProperty(progressBar,
-                FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE);
+                FlatLafConstants.OPAQUE_PROPERTY, Boolean.FALSE);
         progressBar.setBorderPainted(false);
         progressBar.setForeground(Color.DARK_GRAY);
         

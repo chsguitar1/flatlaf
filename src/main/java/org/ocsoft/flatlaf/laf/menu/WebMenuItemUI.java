@@ -24,6 +24,7 @@ import javax.swing.plaf.basic.BasicMenuItemUI;
 import javax.swing.text.View;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -92,7 +93,7 @@ public class WebMenuItemUI extends BasicMenuItemUI implements BorderMethods {
         
         // Default settings
         SwingUtils.setOrientation(menuItem);
-        LookAndFeel.installProperty(menuItem, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(menuItem, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
         menuItem.setIconTextGap(WebMenuItemStyle.iconTextGap);
         PainterSupport.installPainter(menuItem, this.painter);
@@ -106,7 +107,7 @@ public class WebMenuItemUI extends BasicMenuItemUI implements BorderMethods {
             }
         };
         menuItem.addPropertyChangeListener(
-                FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener);
+                FlatLafConstants.ORIENTATION_PROPERTY, propertyChangeListener);
         
         // Button model change listener
         buttonModelChangeListener = MenuItemChangeListener.install(menuItem);
@@ -125,7 +126,7 @@ public class WebMenuItemUI extends BasicMenuItemUI implements BorderMethods {
         
         // Removing listeners
         menuItem.removePropertyChangeListener(
-                FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener);
+                FlatLafConstants.ORIENTATION_PROPERTY, propertyChangeListener);
         propertyChangeListener = null;
         MenuItemChangeListener.uninstall(buttonModelChangeListener, menuItem);
         buttonModelChangeListener = null;

@@ -20,6 +20,7 @@ package org.ocsoft.flatlaf.extended.panel;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.layout.HorizontalFlowLayout;
 import org.ocsoft.flatlaf.extended.layout.VerticalFlowLayout;
 import org.ocsoft.flatlaf.extended.painter.Painter;
@@ -303,14 +304,14 @@ public class WebButtonGroup extends WebPanel implements SwingConstants {
     protected void addImpl(final Component comp, final Object constraints,
             final int index) {
         super.addImpl(comp, constraints, index);
-        comp.addPropertyChangeListener(FlatLookAndFeel.ENABLED_PROPERTY,
+        comp.addPropertyChangeListener(FlatLafConstants.ENABLED_PROPERTY,
                 enabledStateListener);
     }
     
     @Override
     public void remove(final int index) {
         getComponent(index).removePropertyChangeListener(
-                FlatLookAndFeel.ENABLED_PROPERTY, enabledStateListener);
+                FlatLafConstants.ENABLED_PROPERTY, enabledStateListener);
         super.remove(index);
     }
     

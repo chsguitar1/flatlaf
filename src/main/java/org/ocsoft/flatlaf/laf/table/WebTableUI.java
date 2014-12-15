@@ -23,6 +23,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicTableUI;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.table.editors.WebBooleanEditor;
 import org.ocsoft.flatlaf.laf.table.editors.WebDateEditor;
 import org.ocsoft.flatlaf.laf.table.editors.WebGenericEditor;
@@ -70,7 +71,7 @@ public class WebTableUI extends BasicTableUI {
         
         // Default settings
         SwingUtils.setOrientation(table);
-        LookAndFeel.installProperty(table, FlatLookAndFeel.OPAQUE_PROPERTY,
+        LookAndFeel.installProperty(table, FlatLafConstants.OPAQUE_PROPERTY,
                 Boolean.FALSE);
         table.setFillsViewportHeight(false);
         table.setBackground(WebTableStyle.background);

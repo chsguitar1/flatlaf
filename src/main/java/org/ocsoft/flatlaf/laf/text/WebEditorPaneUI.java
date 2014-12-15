@@ -17,24 +17,27 @@
 
 package org.ocsoft.flatlaf.laf.text;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.util.Map;
+
+import javax.swing.JComponent;
+import javax.swing.LookAndFeel;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicEditorPaneUI;
 import javax.swing.text.JTextComponent;
 
-import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
-import java.util.Map;
 
 /**
  * User: mgarin Date: 17.08.11 Time: 23:03
  */
 
 public class WebEditorPaneUI extends BasicEditorPaneUI {
-    @SuppressWarnings("UnusedParameters")
     public static ComponentUI createUI(final JComponent c) {
         return new WebEditorPaneUI();
     }
@@ -48,7 +51,7 @@ public class WebEditorPaneUI extends BasicEditorPaneUI {
         // Default settings
         SwingUtils.setOrientation(textComponent);
         LookAndFeel.installProperty(textComponent,
-                FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.TRUE);
+                FlatLafConstants.OPAQUE_PROPERTY, Boolean.TRUE);
         textComponent.setMargin(new Insets(2, 2, 2, 2));
         textComponent.setFocusable(true);
         textComponent.setBackground(Color.WHITE);
