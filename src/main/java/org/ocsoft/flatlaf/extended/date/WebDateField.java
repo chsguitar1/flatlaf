@@ -377,7 +377,7 @@ public class WebDateField extends WebFormattedTextField implements
         calendar.transferFocus();
     }
     
-    @SuppressWarnings("UnusedParameters")
+    
     protected void customizePopup(final WebWindow popup) {
         // You can customize date field popup window here
     }

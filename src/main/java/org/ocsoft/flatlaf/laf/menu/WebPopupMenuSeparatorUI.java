@@ -55,7 +55,7 @@ public class WebPopupMenuSeparatorUI extends BasicPopupMenuSeparatorUI {
      *            component that will use UI instance
      * @return instance of the WebPopupMenuSeparatorUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebPopupMenuSeparatorUI();
     }

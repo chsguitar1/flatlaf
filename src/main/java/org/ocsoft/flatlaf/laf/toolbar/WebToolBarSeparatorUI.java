@@ -27,7 +27,7 @@ import org.ocsoft.flatlaf.laf.separator.WebSeparatorUI;
  */
 
 public class WebToolBarSeparatorUI extends WebSeparatorUI {
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebToolBarSeparatorUI();
     }

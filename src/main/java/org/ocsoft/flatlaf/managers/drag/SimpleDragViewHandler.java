@@ -54,7 +54,7 @@ public abstract class SimpleDragViewHandler<T> implements DragViewHandler<T> {
      *
      * @return font metrics used to display text
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected FontMetrics getFontMetrics(final T object) {
         return SwingUtils.getDefaultLabelFontMetrics();
     }

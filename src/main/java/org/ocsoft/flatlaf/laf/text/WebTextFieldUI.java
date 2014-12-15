@@ -88,7 +88,7 @@ public class WebTextFieldUI extends BasicTextFieldUI implements ShapeProvider,
     private PropertyChangeListener marginChangeListener;
     private ComponentAdapter componentResizeListener;
     
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebTextFieldUI();
     }

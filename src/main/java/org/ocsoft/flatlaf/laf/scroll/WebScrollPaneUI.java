@@ -73,7 +73,7 @@ public class WebScrollPaneUI extends BasicScrollPaneUI implements ShapeProvider 
     
     private boolean focused = false;
     
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebScrollPaneUI();
     }

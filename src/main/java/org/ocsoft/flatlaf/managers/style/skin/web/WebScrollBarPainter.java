@@ -610,7 +610,7 @@ public class WebScrollBarPainter<E extends JScrollBar> extends
      * @param bounds
      *            scroll bar bounds
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected void paintBackground(final Graphics2D g2d, final E scrollbar,
             final Rectangle bounds) {
         if (paintTrack) {
@@ -642,7 +642,7 @@ public class WebScrollBarPainter<E extends JScrollBar> extends
      * @param bounds
      *            track bounds
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected void paintTrack(final Graphics2D g2d, final E scrollbar,
             final Rectangle bounds) {
         // You can paint your own track decoration by overriding this method
@@ -659,7 +659,7 @@ public class WebScrollBarPainter<E extends JScrollBar> extends
      * @param bounds
      *            thumb bounds
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected void paintThumb(final Graphics2D g2d, final E scrollbar,
             final Rectangle bounds) {
         final Insets m = getCurrentThumbMargin(scrollbar);

@@ -77,7 +77,7 @@ public class WebSplitPaneUI extends BasicSplitPaneUI implements BorderMethods {
      *            component that will use UI instance
      * @return instance of the WebSplitPaneUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebSplitPaneUI();
     }

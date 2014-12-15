@@ -58,7 +58,7 @@ public class WebOptionPaneUI extends BasicOptionPaneUI {
     public static final ImageIcon QUESTION_ICON = new ImageIcon(
             WebOptionPaneUI.class.getResource("icons/question.png"));
     
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebOptionPaneUI();
     }

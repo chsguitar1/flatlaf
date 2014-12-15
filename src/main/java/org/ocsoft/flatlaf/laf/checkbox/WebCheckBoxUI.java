@@ -143,7 +143,7 @@ public class WebCheckBoxUI extends BasicCheckBoxUI implements ShapeProvider {
      *            component that will use UI instance
      * @return instance of the WebCheckBoxUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebCheckBoxUI();
     }

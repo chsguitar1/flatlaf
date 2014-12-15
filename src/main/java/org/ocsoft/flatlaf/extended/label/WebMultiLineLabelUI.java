@@ -112,7 +112,7 @@ public class WebMultiLineLabelUI extends BasicLabelUI implements
      *            the component about to be installed
      * @return the shared UI delegate instance
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebMultiLineLabelUI();
     }

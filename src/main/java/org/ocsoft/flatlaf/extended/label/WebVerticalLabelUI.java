@@ -47,7 +47,7 @@ public class WebVerticalLabelUI extends WebLabelUI {
      *            component that will use UI instance
      * @return instance of the WebVerticalLabelUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebVerticalLabelUI();
     }

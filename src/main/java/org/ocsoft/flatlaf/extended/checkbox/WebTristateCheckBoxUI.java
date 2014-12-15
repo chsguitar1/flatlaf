@@ -39,7 +39,7 @@ public class WebTristateCheckBoxUI extends WebCheckBoxUI {
      *            component that will use UI instance
      * @return instance of the WebTristateCheckBoxUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebTristateCheckBoxUI();
     }

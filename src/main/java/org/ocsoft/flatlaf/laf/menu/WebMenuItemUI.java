@@ -90,7 +90,7 @@ public class WebMenuItemUI extends BasicMenuItemUI implements BorderMethods {
      *            component that will use UI instance
      * @return instance of the WebMenuItemUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebMenuItemUI();
     }
@@ -540,7 +540,7 @@ public class WebMenuItemUI extends BasicMenuItemUI implements BorderMethods {
      * @param ltr
      *            whether menu item has left-to-right orientation or not
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected void paintBackground(final Graphics2D g2d,
             final JMenuItem menuItem, final int x, final int y, final int w,
             final int h, final boolean selected, final boolean ltr) {
@@ -575,7 +575,7 @@ public class WebMenuItemUI extends BasicMenuItemUI implements BorderMethods {
      * @param ltr
      *            whether menu item has left-to-right orientation or not
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected void paintIcon(final Graphics2D g2d, final JMenuItem menuItem,
             final int x, final int y, final int w, final int h,
             final boolean selected, final boolean ltr) {
@@ -617,7 +617,7 @@ public class WebMenuItemUI extends BasicMenuItemUI implements BorderMethods {
      * @param ltr
      *            whether menu item has left-to-right orientation or not
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected void paintText(final Graphics2D g2d, final JMenuItem menuItem,
             final FontMetrics fm, final int x, final int y, final int w,
             final int h, final boolean selected, final boolean ltr) {
@@ -660,7 +660,7 @@ public class WebMenuItemUI extends BasicMenuItemUI implements BorderMethods {
      * @param ltr
      *            whether menu item has left-to-right orientation or not
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected void paintAcceleratorText(final Graphics2D g2d,
             final JMenuItem menuItem, final String accText,
             final FontMetrics fm, final int x, final int y, final int w,

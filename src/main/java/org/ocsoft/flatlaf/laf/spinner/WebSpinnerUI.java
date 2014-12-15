@@ -60,7 +60,7 @@ public class WebSpinnerUI extends BasicSpinnerUI implements ShapeProvider,
     private int round = WebSpinnerStyle.round;
     private int shadeWidth = WebSpinnerStyle.shadeWidth;
     
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebSpinnerUI();
     }

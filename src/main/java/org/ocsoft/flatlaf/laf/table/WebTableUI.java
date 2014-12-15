@@ -64,7 +64,7 @@ public class WebTableUI extends BasicTableUI {
      *            component that will use UI instance
      * @return instance of the WebTreeUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebTableUI();
     }

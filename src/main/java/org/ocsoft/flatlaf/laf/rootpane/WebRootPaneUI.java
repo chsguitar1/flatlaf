@@ -158,7 +158,7 @@ public class WebRootPaneUI extends BasicRootPaneUI implements SwingConstants {
      *            component that will use UI instance
      * @return instance of the WebRootPaneUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebRootPaneUI();
     }

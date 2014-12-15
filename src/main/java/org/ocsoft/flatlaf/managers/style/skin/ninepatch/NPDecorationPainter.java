@@ -760,7 +760,7 @@ public class NPDecorationPainter<E extends JComponent> extends
      *            component instance
      * @return bounds within which background 9-patch icon should be painted
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected Rectangle getBackgroundBounds(final NinePatchIcon icon,
             final Rectangle b, final E c) {
         if (!undecorated && icon != null) {

@@ -41,7 +41,7 @@ public class WebViewportUI extends BasicViewportUI {
      *            component that will use UI instance
      * @return instance of the WebViewportUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebViewportUI();
     }

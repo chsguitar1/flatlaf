@@ -36,7 +36,7 @@ public class WebFormattedTextFieldUI extends WebTextFieldUI {
      *            component that will use UI instance
      * @return instance of the WebFormattedTextFieldUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebFormattedTextFieldUI();
     }

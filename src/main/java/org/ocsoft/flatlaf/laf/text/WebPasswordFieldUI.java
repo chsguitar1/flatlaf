@@ -87,7 +87,7 @@ public class WebPasswordFieldUI extends BasicPasswordFieldUI implements
     private PropertyChangeListener marginChangeListener;
     private ComponentAdapter componentResizeListener;
     
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebPasswordFieldUI();
     }

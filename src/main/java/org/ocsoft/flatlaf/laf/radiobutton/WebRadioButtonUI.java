@@ -119,7 +119,7 @@ public class WebRadioButtonUI extends BasicRadioButtonUI implements
     private MouseAdapter mouseAdapter;
     private ItemListener itemListener;
     
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebRadioButtonUI();
     }

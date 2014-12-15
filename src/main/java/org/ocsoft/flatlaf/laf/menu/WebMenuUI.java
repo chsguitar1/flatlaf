@@ -109,7 +109,7 @@ public class WebMenuUI extends BasicMenuUI implements BorderMethods {
      *            component that will use UI instance
      * @return instance of the WebMenuUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebMenuUI();
     }
@@ -546,7 +546,7 @@ public class WebMenuUI extends BasicMenuUI implements BorderMethods {
      * @param ltr
      *            whether menu item has left-to-right orientation or not
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected void paintBackground(final Graphics2D g2d, final JMenu menu,
             final boolean selected, final boolean ltr) {
         if (painter != null) {
@@ -590,7 +590,7 @@ public class WebMenuUI extends BasicMenuUI implements BorderMethods {
      * @param ltr
      *            whether menu item has left-to-right orientation or not
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected void paintIcon(final Graphics2D g2d, final JMenu menu,
             final int x, final int y, final int w, final int h,
             final boolean selected, final boolean ltr) {
@@ -629,7 +629,7 @@ public class WebMenuUI extends BasicMenuUI implements BorderMethods {
      * @param ltr
      *            whether menu item has left-to-right orientation or not
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected void paintText(final Graphics2D g2d, final JMenu menu,
             final FontMetrics fm, final int x, final int y, final int w,
             final int h, final boolean selected, final boolean ltr) {

@@ -643,7 +643,7 @@ public class WebDecorationPainter<E extends JComponent> extends
      * @param borderShape
      *            component border shape
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected void paintShade(final Graphics2D g2d, final Rectangle bounds,
             final E c, final Shape borderShape) {
         if (shadeWidth < 4) {
@@ -682,7 +682,7 @@ public class WebDecorationPainter<E extends JComponent> extends
      * @param backgroundShape
      *            component background shape
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected void paintBackground(final Graphics2D g2d,
             final Rectangle bounds, final E c, final Shape backgroundShape) {
         if (webColoredBackground) {
@@ -709,7 +709,7 @@ public class WebDecorationPainter<E extends JComponent> extends
      * @param borderShape
      *            component border shape
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected void paintBorder(final Graphics2D g2d, final Rectangle bounds,
             final E c, final Shape borderShape) {
         final Stroke os = GraphicsUtils.setupStroke(g2d, borderStroke,
@@ -775,7 +775,7 @@ public class WebDecorationPainter<E extends JComponent> extends
      *            painted component
      * @return an array of shape settings cached along with the shape
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected Object[] getCachedShapeSettings(final E c) {
         return new Object[] { w, h, ltr, round, shadeWidth, paintTop,
                 paintLeft, paintBottom, paintRight, paintTopLine,
@@ -791,7 +791,7 @@ public class WebDecorationPainter<E extends JComponent> extends
      *            whether should return background shape or not
      * @return decoration border shape
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected Shape createShape(final E c, final boolean background) {
         if (background) {
             final Point[] corners = new Point[4];

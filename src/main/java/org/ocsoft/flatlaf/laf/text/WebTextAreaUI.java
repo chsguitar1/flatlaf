@@ -68,7 +68,7 @@ public class WebTextAreaUI extends BasicTextAreaUI implements BorderMethods,
     private FocusListener focusListener;
     private PropertyChangeListener marginChangeListener;
     
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebTextAreaUI();
     }

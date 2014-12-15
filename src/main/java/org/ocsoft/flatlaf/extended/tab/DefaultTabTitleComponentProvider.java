@@ -68,7 +68,7 @@ public class DefaultTabTitleComponentProvider<T extends DocumentData>
      *            document to create tab title component for
      * @return newly created tab title label
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected JComponent createTitleLabel(final PaneData<T> paneData,
             final T document) {
         final WebLabel titleLabel = new WebLabel(document.getTitle(),

@@ -62,13 +62,21 @@ import org.ocsoft.flatlaf.laf.tree.NodeState;
 import org.ocsoft.flatlaf.laf.tree.TreeState;
 import org.ocsoft.flatlaf.laf.tree.WebTreeUI;
 import org.ocsoft.flatlaf.laf.viewport.WebViewportStyle;
-import org.ocsoft.flatlaf.managers.FlatLafManagers;
+import org.ocsoft.flatlaf.managers.drag.DragManager;
+import org.ocsoft.flatlaf.managers.focus.FocusManager;
+import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
+import org.ocsoft.flatlaf.managers.language.WebLanguageManager;
+import org.ocsoft.flatlaf.managers.proxy.WebProxyManager;
+import org.ocsoft.flatlaf.managers.settings.WebSettingsManager;
+import org.ocsoft.flatlaf.managers.style.StyleManager;
+import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.ProprietaryUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.swing.SwingLazyValue;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
 import org.ocsoft.flatlaf.utils.xml.XmlUtils;
 
@@ -703,8 +711,16 @@ public class FlatLookAndFeel extends BasicLookAndFeel {
      * Initializes library managers. Initialization order is strict since some
      * managers require other managers to be loaded.
      */
-    public static void initializeManagers() {
-        FlatLafManagers.initialize();
+    public static synchronized void initializeManagers() {
+        FlatLafLogger.initialize();
+        WebLanguageManager.initialize();
+        WebSettingsManager.initialize();
+        HotkeyManager.initialize();
+        FocusManager.initialize();
+        TooltipManager.initialize();
+        StyleManager.initialize();
+        WebProxyManager.initialize();
+        DragManager.initialize();
     }
     
     /**

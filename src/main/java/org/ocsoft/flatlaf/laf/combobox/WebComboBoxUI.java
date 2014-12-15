@@ -107,7 +107,7 @@ public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider,
     private PropertyChangeListener rendererChangeListener = null;
     private PropertyChangeListener enabledStateListener = null;
     
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebComboBoxUI();
     }

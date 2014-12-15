@@ -45,7 +45,7 @@ public class NeoTabbedPaneUI extends BasicTabbedPaneUI {
     private final Color borderColor = new Color(165, 165, 165);
     private final Color innerBorderColor = new Color(248, 248, 248);
     
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new NeoTabbedPaneUI();
     }
@@ -224,7 +224,7 @@ public class NeoTabbedPaneUI extends BasicTabbedPaneUI {
     // }
     // }
     
-    @SuppressWarnings("UnusedParameters")
+    
     protected void paintTabBackground(final Graphics2D g2d,
             final int tabPlacement, final int row, final int col,
             final int colsInRow, final int tabIndex, final int x, final int y,

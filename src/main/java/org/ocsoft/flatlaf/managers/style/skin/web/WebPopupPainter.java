@@ -46,7 +46,7 @@ import org.ocsoft.flatlaf.utils.swing.DataProvider;
  * @author Mikle Garin
  */
 
-@SuppressWarnings("UnusedParameters")
+
 public class WebPopupPainter<E extends JComponent> extends AbstractPainter<E>
         implements PainterShapeProvider<E>, SwingConstants {
     /**

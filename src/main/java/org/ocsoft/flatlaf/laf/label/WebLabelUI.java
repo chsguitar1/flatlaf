@@ -77,7 +77,7 @@ public class WebLabelUI extends BasicLabelUI implements Styleable,
      *            component that will use UI instance
      * @return instance of the WebLabelUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebLabelUI();
     }

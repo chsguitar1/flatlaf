@@ -82,7 +82,7 @@ public class WebTabbedPaneUI extends BasicTabbedPaneUI implements
     // private MouseAdapter mouseAdapter;
     // private int rolloverTab = -1;
     
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebTabbedPaneUI();
     }

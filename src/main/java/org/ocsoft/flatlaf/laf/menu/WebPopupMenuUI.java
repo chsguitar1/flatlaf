@@ -96,7 +96,7 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants,
      *            component that will use UI instance
      * @return instance of the WebPopupMenuUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebPopupMenuUI();
     }

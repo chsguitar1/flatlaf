@@ -229,7 +229,7 @@ public abstract class AbstractListCellEditor<E extends Component, T> implements
      * @param value
      *            cell value
      */
-    @SuppressWarnings("UnusedParameters")
+    
     protected void createCellEditorListeners(final JList list, final int index,
             final T value) {
         // Editing stop on focus loss event

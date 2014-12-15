@@ -55,7 +55,7 @@ public class WebRadioButtonMenuItemUI extends WebMenuItemUI {
      *            component that will use UI instance
      * @return instance of the WebRadioButtonMenuItemUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebRadioButtonMenuItemUI();
     }

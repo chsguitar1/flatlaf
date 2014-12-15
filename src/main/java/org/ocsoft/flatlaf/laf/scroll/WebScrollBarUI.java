@@ -87,7 +87,7 @@ public class WebScrollBarUI extends BasicScrollBarUI implements Styleable,
      *            component that will use UI instance
      * @return instance of the WebScrollBarUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebScrollBarUI();
     }

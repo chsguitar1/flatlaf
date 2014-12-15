@@ -55,7 +55,7 @@ public class WebCheckBoxMenuItemUI extends WebMenuItemUI {
      *            component that will use UI instance
      * @return instance of the WebCheckBoxMenuItemUI
      */
-    @SuppressWarnings("UnusedParameters")
+    
     public static ComponentUI createUI(final JComponent c) {
         return new WebCheckBoxMenuItemUI();
     }
