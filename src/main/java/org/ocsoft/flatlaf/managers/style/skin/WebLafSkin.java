@@ -30,7 +30,7 @@ import org.ocsoft.flatlaf.managers.style.data.IgnoredValue;
 import org.ocsoft.flatlaf.managers.style.data.PainterStyle;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.SystemUtils;
+import org.ocsoft.flatlaf.utils.FlatLafSystemUtils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -103,7 +103,7 @@ public abstract class WebLafSkin
     {
         final List<String> systems = getSupportedSystems ();
         final boolean supportsAny = systems != null && systems.size () > 0;
-        return supportsAny && ( systems.contains ( ALL_SYSTEMS_SUPPORTED ) || systems.contains ( SystemUtils.getShortOsName () ) );
+        return supportsAny && ( systems.contains ( ALL_SYSTEMS_SUPPORTED ) || systems.contains ( FlatLafSystemUtils.getShortOsName () ) );
     }
 
     /**

@@ -17,22 +17,19 @@
 
 package org.ocsoft.flatlaf.managers.effects;
 
-import javax.swing.*;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
-import org.ocsoft.flatlaf.extended.window.TestFrame;
+import javax.swing.JComponent;
+
 import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
-import org.ocsoft.flatlaf.laf.button.WebButton;
-import org.ocsoft.flatlaf.laf.toolbar.WebToolBar;
 import org.ocsoft.flatlaf.managers.glasspane.GlassPaneManager;
 import org.ocsoft.flatlaf.managers.glasspane.WebGlassPane;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 
 /**
  * This manager provides easy-to-use effects (like "fade in" and "fade out"), applyable to any Swing component without additional efforts.
@@ -84,48 +81,4 @@ public class EffectsManager
         } );
     }
 
-    public static void main ( final String[] args )
-    {
-        FlatLookAndFeel.install ();
-
-        final WebButton b1 = new WebButton ( "1" );
-        b1.addActionListener ( new ActionListener ()
-        {
-            @Override
-            public void actionPerformed ( final ActionEvent e )
-            {
-                EffectsManager.fadeOut ( b1 );
-            }
-        } );
-
-        final WebButton b2 = new WebButton ( "2" );
-        b2.addActionListener ( new ActionListener ()
-        {
-            @Override
-            public void actionPerformed ( final ActionEvent e )
-            {
-                EffectsManager.fadeOut ( b2 );
-            }
-        } );
-
-        final WebButton b3 = new WebButton ( "3" );
-        b3.addActionListener ( new ActionListener ()
-        {
-            @Override
-            public void actionPerformed ( final ActionEvent e )
-            {
-                EffectsManager.fadeOut ( b3 );
-            }
-        } );
-
-        new TestFrame ( new WebToolBar ()
-        {
-            {
-                setFloatable ( false );
-                add ( b1 );
-                add ( b2 );
-                add ( b3 );
-            }
-        }, 50 );
-    }
 }

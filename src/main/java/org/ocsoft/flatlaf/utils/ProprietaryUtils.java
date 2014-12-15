@@ -22,7 +22,7 @@ import javax.swing.*;
 import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.SystemUtils;
+import org.ocsoft.flatlaf.utils.FlatLafSystemUtils;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
@@ -143,10 +143,10 @@ public final class ProprietaryUtils
                 final Class t = ReflectUtils.getInnerClass ( au, "Translucency" );
                 final Object ppt = ReflectUtils.getStaticFieldValue ( t, "PERPIXEL_TRANSPARENT" );
                 final Boolean wts = ReflectUtils.callStaticMethod ( au, "isWindowTranslucencySupported" );
-                final Boolean tc = ReflectUtils.callStaticMethod ( au, "isTranslucencyCapable", SystemUtils.getGraphicsConfiguration () );
+                final Boolean tc = ReflectUtils.callStaticMethod ( au, "isTranslucencyCapable", FlatLafSystemUtils.getGraphicsConfiguration () );
                 final Boolean ppts = ReflectUtils.callStaticMethod ( au, "isTranslucencySupported", ppt );
-                return wts && tc && ppts && ( SystemUtils.isWindows () || SystemUtils.isMac () || SystemUtils.isSolaris () ||
-                        SystemUtils.isUnix () && allowLinuxTransparency );
+                return wts && tc && ppts && ( FlatLafSystemUtils.isWindows () || FlatLafSystemUtils.isMac () || FlatLafSystemUtils.isSolaris () ||
+                        FlatLafSystemUtils.isUnix () && allowLinuxTransparency );
             }
             else
             {
@@ -155,8 +155,8 @@ public final class ProprietaryUtils
         }
         catch ( final Throwable e )
         {
-            return SystemUtils.isWindows () || SystemUtils.isMac () || SystemUtils.isSolaris () ||
-                    SystemUtils.isUnix () && allowLinuxTransparency;
+            return FlatLafSystemUtils.isWindows () || FlatLafSystemUtils.isMac () || FlatLafSystemUtils.isSolaris () ||
+                    FlatLafSystemUtils.isUnix () && allowLinuxTransparency;
         }
     }
 
@@ -183,7 +183,7 @@ public final class ProprietaryUtils
             try
             {
                 // Change system window opacity
-                if ( SystemUtils.isJava7orAbove () )
+                if ( FlatLafSystemUtils.isJava7orAbove () )
                 {
                     // In Java 7 and later we change window background color to make it opaque or non-opaque
                     setupOpacityBackgroundColor ( opaque, window );
@@ -256,7 +256,7 @@ public final class ProprietaryUtils
             try
             {
                 final Boolean isOpaque;
-                if ( SystemUtils.isJava7orAbove () )
+                if ( FlatLafSystemUtils.isJava7orAbove () )
                 {
                     // For Java 7 and later this will work just fine
                     final Color bg = ReflectUtils.callMethod ( window, "getBackground" );
@@ -291,7 +291,7 @@ public final class ProprietaryUtils
         {
             try
             {
-                if ( SystemUtils.isJava7orAbove () )
+                if ( FlatLafSystemUtils.isJava7orAbove () )
                 {
                     // For Java 7 and later this will work just fine
                     ReflectUtils.callMethod ( window, "setOpacity", opacity );
@@ -324,7 +324,7 @@ public final class ProprietaryUtils
             try
             {
                 final Float opacity;
-                if ( SystemUtils.isJava7orAbove () )
+                if ( FlatLafSystemUtils.isJava7orAbove () )
                 {
                     // For Java 7 and later this will work just fine
                     opacity = ReflectUtils.callMethod ( window, "getOpacity" );

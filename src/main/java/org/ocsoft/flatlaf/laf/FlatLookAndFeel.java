@@ -566,7 +566,7 @@ public class FlatLookAndFeel extends BasicLookAndFeel
         // Option pane
         table.put ( "OptionPane.messageAreaBorder",
                 new SwingLazyValue ( "javax.swing.plaf.BorderUIResource$EmptyBorderUIResource", new Object[]{ 0, 0, 5, 0 } ) );
-        table.put ( "OptionPane.isYesLast", SystemUtils.isMac () ? Boolean.TRUE : Boolean.FALSE );
+        table.put ( "OptionPane.isYesLast", FlatLafSystemUtils.isMac () ? Boolean.TRUE : Boolean.FALSE );
 
         // HTML image icons
         table.put ( "html.pendingImage", FlatLafStyleConstants.htmlPendingIcon );

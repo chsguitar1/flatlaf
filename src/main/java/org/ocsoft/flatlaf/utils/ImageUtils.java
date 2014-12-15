@@ -65,12 +65,12 @@ public final class ImageUtils
 
     public static BufferedImage createCompatibleImage ( final int width, final int height )
     {
-        return SystemUtils.getGraphicsConfiguration ().createCompatibleImage ( width, height );
+        return FlatLafSystemUtils.getGraphicsConfiguration ().createCompatibleImage ( width, height );
     }
 
     public static BufferedImage createCompatibleImage ( final int width, final int height, final int transparency )
     {
-        return SystemUtils.getGraphicsConfiguration ().createCompatibleImage ( width, height, transparency );
+        return FlatLafSystemUtils.getGraphicsConfiguration ().createCompatibleImage ( width, height, transparency );
     }
 
     public static BufferedImage createCompatibleImage ( final BufferedImage image )
@@ -112,7 +112,7 @@ public final class ImageUtils
         }
 
         // Create new compatible image
-        final BufferedImage compatibleImage = SystemUtils.getGraphicsConfiguration ()
+        final BufferedImage compatibleImage = FlatLafSystemUtils.getGraphicsConfiguration ()
                 .createCompatibleImage ( image.getWidth (), image.getHeight (), image.getTransparency () );
         final Graphics2D g2d = compatibleImage.createGraphics ();
         g2d.drawImage ( image, 0, 0, null );
@@ -127,7 +127,7 @@ public final class ImageUtils
 
     public static boolean isCompatibleImage ( final BufferedImage image )
     {
-        return image.getColorModel ().equals ( SystemUtils.getGraphicsConfiguration ().getColorModel () );
+        return image.getColorModel ().equals ( FlatLafSystemUtils.getGraphicsConfiguration ().getColorModel () );
     }
 
     /**

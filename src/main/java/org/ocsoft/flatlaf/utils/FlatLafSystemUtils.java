@@ -41,7 +41,7 @@ import java.util.Locale;
  * @author Mikle Garin
  */
 
-public final class SystemUtils
+public final class FlatLafSystemUtils
 {
     /**
      * Windows short name.
@@ -133,7 +133,7 @@ public final class SystemUtils
         }
         catch ( final Throwable e )
         {
-            Log.error ( SystemUtils.class, e );
+            Log.error ( FlatLafSystemUtils.class, e );
         }
     }
 
@@ -314,7 +314,7 @@ public final class SystemUtils
         }
         final String os = getShortOsName ();
         final String mark = color ? "_colored" : "";
-        return os != null ? new ImageIcon ( SystemUtils.class.getResource ( "icons/os/" + size + "/" + os + mark + ".png" ) ) : null;
+        return os != null ? new ImageIcon ( FlatLafSystemUtils.class.getResource ( "icons/os/" + size + "/" + os + mark + ".png" ) ) : null;
     }
 
     /**

@@ -45,7 +45,7 @@ import org.ocsoft.flatlaf.managers.hotkey.HotkeyRunnable;
 import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-import org.ocsoft.flatlaf.utils.SystemUtils;
+import org.ocsoft.flatlaf.utils.FlatLafSystemUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 
 import java.awt.*;
@@ -652,7 +652,7 @@ public class WebPathField extends WebPanel
         final boolean ltr = WebPathField.this.getComponentOrientation ().isLeftToRight ();
 
         // Determining root
-        if ( SystemUtils.isWindows () )
+        if ( FlatLafSystemUtils.isWindows () )
         {
             final WebButton computerButton = getMyComputer ();
             contentPanel.add ( computerButton );
@@ -676,13 +676,13 @@ public class WebPathField extends WebPanel
             for ( final File file : parents )
             {
                 final WebButton wb = new WebButton ();
-                wb.setRound ( !SystemUtils.isWindows () && first ? FlatLafStyleConstants.smallRound : 0 );
+                wb.setRound ( !FlatLafSystemUtils.isWindows () && first ? FlatLafStyleConstants.smallRound : 0 );
                 wb.setShadeWidth ( 0 );
                 wb.setLeftRightSpacing ( 0 );
                 wb.setRolloverDecoratedOnly ( true );
                 wb.setRolloverDarkBorderOnly ( false );
                 wb.setFocusable ( false );
-                if ( !SystemUtils.isWindows () && first )
+                if ( !FlatLafSystemUtils.isWindows () && first )
                 {
                     wb.setIcon ( FileUtils.getMyComputerIcon () );
                     wb.putClientProperty ( FILE_ICON, FileUtils.getMyComputerIcon () );
@@ -726,7 +726,7 @@ public class WebPathField extends WebPanel
                         }
                     }
                 }
-                if ( !SystemUtils.isWindows () && first )
+                if ( !FlatLafSystemUtils.isWindows () && first )
                 {
                     setRootsMenu ( menu, childsCount );
                 }
@@ -786,7 +786,7 @@ public class WebPathField extends WebPanel
         contentPanel.add ( new JLabel () );
 
         // Shortening long elemets
-        if ( !SystemUtils.isWindows () )
+        if ( !FlatLafSystemUtils.isWindows () )
         {
             while ( getRootsMenu ().getComponentCount () > getRootsMenuItemsCount () )
             {

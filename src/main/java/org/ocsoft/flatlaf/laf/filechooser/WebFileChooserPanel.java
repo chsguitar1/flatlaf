@@ -1085,7 +1085,7 @@ public class WebFileChooserPanel extends WebPanel
             file = file.getParentFile ();
         }
         // Replacing root file for non-windows OS
-        if ( file == null && !SystemUtils.isWindows () )
+        if ( file == null && !FlatLafSystemUtils.isWindows () )
         {
             file = FileUtils.getDiskRoots ()[ 0 ];
         }
@@ -1157,7 +1157,7 @@ public class WebFileChooserPanel extends WebPanel
         forward.setEnabled ( currentHistoryIndex + 1 < navigationHistory.size () );
         folderNew.setEnabled ( currentFolder != null );
         folderUp.setEnabled (
-                SystemUtils.isWindows () ? currentFolder != null : currentFolder != null && currentFolder.getParentFile () != null );
+                FlatLafSystemUtils.isWindows () ? currentFolder != null : currentFolder != null && currentFolder.getParentFile () != null );
     }
 
     /**

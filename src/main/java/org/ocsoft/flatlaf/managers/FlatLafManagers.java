@@ -26,7 +26,6 @@ import org.ocsoft.flatlaf.managers.proxy.WebProxyManager;
 import org.ocsoft.flatlaf.managers.settings.WebSettingsManager;
 import org.ocsoft.flatlaf.managers.style.StyleManager;
 import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
-import org.ocsoft.flatlaf.managers.version.VersionManager;
 
 /**
  * WebLaF managers simple initialization class.
@@ -55,7 +54,6 @@ public class FlatLafManagers
     public static synchronized void initialize ()
     {
         Log.initialize ();
-        VersionManager.initialize ();
         WebLanguageManager.initialize ();
         WebSettingsManager.initialize ();
         HotkeyManager.initialize ();

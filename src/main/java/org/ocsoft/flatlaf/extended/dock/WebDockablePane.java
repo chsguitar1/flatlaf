@@ -17,22 +17,19 @@
 
 package org.ocsoft.flatlaf.extended.dock;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
-import org.ocsoft.flatlaf.extended.window.TestFrame;
+import javax.swing.ImageIcon;
+
 import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
-import org.ocsoft.flatlaf.laf.button.WebButtonStyle;
-import org.ocsoft.flatlaf.laf.button.WebToggleButton;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.tabbedpane.TabbedPaneStyle;
 import org.ocsoft.flatlaf.laf.tabbedpane.WebTabbedPane;
 import org.ocsoft.flatlaf.laf.text.WebTextArea;
-
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 /**
  * User: mgarin Date: 28.06.12 Time: 13:31
@@ -105,78 +102,6 @@ public class WebDockablePane extends WebPanel
     private static final ImageIcon left = new ImageIcon ( WebDockablePane.class.getResource ( "icons/dock_left_.png" ) );
     private static final ImageIcon right = new ImageIcon ( WebDockablePane.class.getResource ( "icons/dock_right_.png" ) );
     // private static ImageIcon bottom = new ImageIcon ( WebDockablePane.class.getResource ( "icons/dock_bottom_.png" ) );
-
-    public static void main ( final String[] args )
-    {
-        WebButtonStyle.round = 0;
-        WebButtonStyle.drawFocus = false;
-        //        WebButtonStyle.shadeWidth = 0;
-        FlatLookAndFeel.install ();
-
-
-        final WebDockablePane pane = new WebDockablePane ();
-        //        pane.getActualLayout ().setFramesMargin ( new Insets ( 2, 1, 1, 1 ) );
-
-        pane.add ( new WebToggleButton ( "Top frame", top )
-        {
-            {
-                setSelected ( true );
-            }
-        }, DockingPaneLayout.TOP_LEFT );
-        pane.add ( new WebToggleButton ( "Test 2", top ), DockingPaneLayout.TOP_LEFT );
-        pane.add ( new WebToggleButton ( "Test 3", top ), DockingPaneLayout.TOP_RIGHT );
-        //
-        pane.add ( new WebToggleButton ( left )
-        {
-            {
-                setSelected ( true );
-            }
-        }, DockingPaneLayout.LEFT_TOP );
-        pane.add ( new WebToggleButton ( left ), DockingPaneLayout.LEFT_BOTTOM );
-        pane.add ( new WebToggleButton ( left ), DockingPaneLayout.LEFT_BOTTOM );
-        //
-        pane.add ( new WebToggleButton ( right ), DockingPaneLayout.RIGHT_TOP );
-        pane.add ( new WebToggleButton ( right ), DockingPaneLayout.RIGHT_TOP );
-        pane.add ( new WebToggleButton ( right ), DockingPaneLayout.RIGHT_TOP );
-        pane.add ( new WebToggleButton ( right ), DockingPaneLayout.RIGHT_TOP );
-        pane.add ( new WebToggleButton ( right ), DockingPaneLayout.RIGHT_BOTTOM );
-        pane.add ( new WebToggleButton ( right ), DockingPaneLayout.RIGHT_BOTTOM );
-        //
-        pane.add ( new WebToggleButton ( "Test left", top ), DockingPaneLayout.BOTTOM_LEFT );
-        pane.add ( new WebToggleButton ( "Test right", top ), DockingPaneLayout.BOTTOM_RIGHT );
-        //        pane.add ( new WebToggleButton ( "Test 4", bottom ), DockingPaneLayout.BOTTOM_LEFT );
-        //        pane.add ( new WebToggleButton ( "Test 5", bottom ), DockingPaneLayout.BOTTOM_RIGHT );
-        //        pane.add ( new WebToggleButton ( "Test 6", bottom ), DockingPaneLayout.BOTTOM_RIGHT );
-
-        pane.add ( createTopFrame (), DockingPaneLayout.TOP_FRAME );
-        pane.add ( createLeftFrame (), DockingPaneLayout.LEFT_FRAME );
-        //        pane.add ( new WebToggleButton ( "RIGHT" ), DockingPaneLayout.RIGHT_FRAME );
-        //        pane.add ( new WebToggleButton ( "BOTTOM" ), DockingPaneLayout.BOTTOM_FRAME );
-
-        pane.add ( createContent (), DockingPaneLayout.CONTENT );
-
-        for ( final Component c : pane.getComponents () )
-        {
-            if ( c instanceof AbstractButton )
-            {
-                c.addMouseListener ( new MouseAdapter ()
-                {
-                    @Override
-                    public void mousePressed ( final MouseEvent e )
-                    {
-                        if ( SwingUtilities.isMiddleMouseButton ( e ) )
-                        {
-                            pane.remove ( c );
-                            pane.revalidate ();
-                            pane.repaint ();
-                        }
-                    }
-                } );
-            }
-        }
-
-        TestFrame.show ( pane ).center ( 600, 500 );
-    }
 
     private static Component createLeftFrame ()
     {

@@ -30,7 +30,7 @@ import org.ocsoft.flatlaf.managers.style.skin.web.PopupStyle;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.ProprietaryUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-import org.ocsoft.flatlaf.utils.SystemUtils;
+import org.ocsoft.flatlaf.utils.FlatLafSystemUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.laf.Styleable;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
@@ -172,7 +172,7 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants, 
                         ancestor = SwingUtils.getWindowAncestor ( popupMenu );
 
                         // Workaround to remove Mac OS X shade around the menu window
-                        if ( ancestor instanceof JWindow && SystemUtils.isMac () )
+                        if ( ancestor instanceof JWindow && FlatLafSystemUtils.isMac () )
                         {
                             ( ( JWindow ) ancestor ).getRootPane ().putClientProperty ( "Window.shadow", Boolean.FALSE );
                         }
@@ -198,7 +198,7 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants, 
         else
         {
             // Workaround for menu with non-opaque parent window
-            if ( SystemUtils.isJava7orAbove () )
+            if ( FlatLafSystemUtils.isJava7orAbove () )
             {
                 jdkSevenFixListener = new PropertyChangeListener ()
                 {
@@ -245,7 +245,7 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants, 
         else
         {
             // Workaround for menu with non-opaque parent window
-            if ( SystemUtils.isJava7orAbove () )
+            if ( FlatLafSystemUtils.isJava7orAbove () )
             {
                 popupMenu.removePropertyChangeListener ( FlatLookAndFeel.VISIBLE_PROPERTY, jdkSevenFixListener );
                 jdkSevenFixListener = null;

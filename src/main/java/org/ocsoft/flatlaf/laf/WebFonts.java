@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf;
 
 import javax.swing.plaf.FontUIResource;
 
-import org.ocsoft.flatlaf.utils.SystemUtils;
+import org.ocsoft.flatlaf.utils.FlatLafSystemUtils;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -96,7 +96,7 @@ public class WebFonts
      */
     static
     {
-        if ( SystemUtils.isWindows () )
+        if ( FlatLafSystemUtils.isWindows () )
         {
             // Win8
             // Win7
@@ -108,7 +108,7 @@ public class WebFonts
             fonts.put ( TEXT, new FontUIResource ( TAHOMA, Font.PLAIN, 12 ) );
             fonts.put ( TOOLTIP, new FontUIResource ( SEGOE_UI, Font.PLAIN, 12 ) );
         }
-        else if ( SystemUtils.isMac () )
+        else if ( FlatLafSystemUtils.isMac () )
         {
             // Mac OS X
             fonts.put ( CONTROL, new FontUIResource ( LUCIDA_GRANDE, Font.PLAIN, 13 ) );
