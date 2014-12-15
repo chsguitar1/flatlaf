@@ -74,7 +74,7 @@
 
 package org.ocsoft.flatlaf.utils.encryption;
 
-import org.ocsoft.flatlaf.managers.log.Log;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 /**
  * This class provides encode/decode for RFC 2045 Base64 as

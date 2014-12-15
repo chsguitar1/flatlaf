@@ -22,10 +22,10 @@ import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.style.skin.web.WebLabelPainter;
 import org.ocsoft.flatlaf.utils.FontUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 import java.awt.*;
 import java.util.ArrayList;

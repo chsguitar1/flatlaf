@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.utils.swing;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.managers.log.Log;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 import java.util.HashMap;
 import java.util.Map;

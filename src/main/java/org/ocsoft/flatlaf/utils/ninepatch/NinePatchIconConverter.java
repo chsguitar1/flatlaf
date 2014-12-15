@@ -17,9 +17,9 @@
 
 package org.ocsoft.flatlaf.utils.ninepatch;
 
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.style.data.ComponentStyleConverter;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;

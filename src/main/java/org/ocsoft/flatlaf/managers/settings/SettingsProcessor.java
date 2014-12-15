@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.managers.settings;
 import java.awt.*;
 import java.io.Serializable;
 
-import org.ocsoft.flatlaf.managers.log.Log;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 /**
  * This abstract class represents core component settings tracking functionality.

@@ -22,7 +22,6 @@ import javax.swing.*;
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.settings.DefaultValue;
 import org.ocsoft.flatlaf.managers.settings.SettingsManager;
 import org.ocsoft.flatlaf.managers.settings.SettingsMethods;
@@ -32,6 +31,7 @@ import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.managers.tooltip.WebCustomTooltip;
 import org.ocsoft.flatlaf.utils.*;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.swing.*;
 
 import java.awt.*;

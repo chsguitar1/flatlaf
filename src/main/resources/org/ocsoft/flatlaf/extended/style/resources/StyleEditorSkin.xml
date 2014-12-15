@@ -52,11 +52,4 @@
         </painter>
     </style>
 
-    <!-- Status lael styling -->
-    <style type="label" id="status-message-label" extends="breadcrumb-element">
-        <ui>
-            <margin>2,10,2,5</margin>
-        </ui>
-    </style>
-
 </skin>

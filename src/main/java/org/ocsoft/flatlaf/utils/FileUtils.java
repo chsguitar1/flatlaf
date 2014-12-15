@@ -24,7 +24,6 @@ import javax.swing.text.JTextComponent;
 import org.ocsoft.flatlaf.laf.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.proxy.ProxyManager;
 import org.ocsoft.flatlaf.utils.compare.Filter;
 import org.ocsoft.flatlaf.utils.file.FileDescription;
@@ -32,12 +31,14 @@ import org.ocsoft.flatlaf.utils.file.FileDownloadListener;
 import org.ocsoft.flatlaf.utils.file.SystemFileListener;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 import org.ocsoft.flatlaf.utils.filefilter.CustomFileFilter;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.math.BigInteger;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.channels.FileChannel;
@@ -1799,7 +1800,7 @@ public final class FileUtils
         try
         {
             // Creating connection
-            final URL encodedUrl = new URL ( encodeUrl ? WebUtils.encodeUrl ( url ) : url );
+            final URL encodedUrl = new URL ( encodeUrl ? encodeUrl ( url ) : url );
             final URLConnection uc = ProxyManager.getURLConnection ( encodedUrl );
 
             // Configuring timeouts
@@ -1896,6 +1897,26 @@ public final class FileUtils
                 listener.fileDownloadFailed ( e );
             }
             return null;
+        }
+    }
+    
+    /**
+     * Returns encoded url path.
+     *
+     * @param url the url to encode
+     * @return encoded url
+     */
+    public static String encodeUrl ( final String url )
+    {
+        try
+        {
+            final URL u = new URL ( url );
+            final URI uri = new URI ( u.getProtocol (), u.getHost (), u.getPath (), u.getQuery (), null );
+            return uri.toASCIIString ();
+        }
+        catch ( final Throwable e )
+        {
+            return url;
         }
     }
 

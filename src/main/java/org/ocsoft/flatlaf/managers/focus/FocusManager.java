@@ -25,8 +25,8 @@ import java.util.*;
 import java.util.List;
 
 import org.ocsoft.flatlaf.laf.FlatLafConstants;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.CollectionUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 /**
  * This manager allows you to track certain component their childs focus state by adding your custom FocusTracker or global focus

@@ -25,13 +25,13 @@ import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
 import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.settings.DefaultValue;
 import org.ocsoft.flatlaf.managers.settings.SettingsManager;
 import org.ocsoft.flatlaf.managers.settings.SettingsMethods;
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.swing.FontMethods;
 
 import java.awt.*;

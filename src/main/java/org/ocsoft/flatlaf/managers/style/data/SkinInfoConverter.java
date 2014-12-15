@@ -28,13 +28,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.style.StyleException;
 import org.ocsoft.flatlaf.managers.style.StyleManager;
 import org.ocsoft.flatlaf.managers.style.SupportedComponent;
 import org.ocsoft.flatlaf.utils.MapUtils;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.XmlUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.xml.ResourceFile;
 import org.ocsoft.flatlaf.utils.xml.ResourceLocation;
 

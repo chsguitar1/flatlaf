@@ -20,8 +20,8 @@ package org.ocsoft.flatlaf.laf.viewport;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 /**
  * This JViewport extension class provides a direct access to WebViewportUI methods.

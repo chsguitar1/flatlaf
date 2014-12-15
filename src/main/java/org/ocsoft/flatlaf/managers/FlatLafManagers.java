@@ -21,11 +21,11 @@ import org.ocsoft.flatlaf.managers.drag.DragManager;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
 import org.ocsoft.flatlaf.managers.language.WebLanguageManager;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.proxy.WebProxyManager;
 import org.ocsoft.flatlaf.managers.settings.WebSettingsManager;
 import org.ocsoft.flatlaf.managers.style.StyleManager;
 import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 /**
  * WebLaF managers simple initialization class.
@@ -33,7 +33,7 @@ import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
  *
  * @author Mikle Garin
  * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-WebLaF">How to use WebLaF</a>
- * @see org.ocsoft.flatlaf.managers.log.Log
+ * @see org.ocsoft.flatlaf.utils.log.Log
  * @see org.ocsoft.flatlaf.managers.version.VersionManager
  * @see org.ocsoft.flatlaf.managers.language.WebLanguageManager
  * @see org.ocsoft.flatlaf.managers.settings.WebSettingsManager

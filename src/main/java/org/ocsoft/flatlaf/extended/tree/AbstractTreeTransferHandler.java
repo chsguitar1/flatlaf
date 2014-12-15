@@ -24,7 +24,7 @@ import org.ocsoft.flatlaf.laf.tree.TreeUtils;
 import org.ocsoft.flatlaf.laf.tree.UniqueNode;
 import org.ocsoft.flatlaf.laf.tree.WebTree;
 import org.ocsoft.flatlaf.laf.tree.WebTreeModel;
-import org.ocsoft.flatlaf.managers.log.Log;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;

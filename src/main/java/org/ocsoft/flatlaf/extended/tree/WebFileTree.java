@@ -21,10 +21,10 @@ import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
 import org.ocsoft.flatlaf.extended.drag.FileDragAndDropHandler;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.compare.Filter;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 import java.awt.*;
 import java.io.File;

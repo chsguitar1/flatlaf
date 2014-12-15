@@ -28,7 +28,7 @@ import com.thoughtworks.xstream.mapper.Mapper;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.ocsoft.flatlaf.managers.log.Log;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.xml.XMLChar;
 
 /**

@@ -21,8 +21,8 @@ import javax.swing.*;
 
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBox;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 /**
  * This WebCheckBox extension class provides additional third selection state - mixed state.

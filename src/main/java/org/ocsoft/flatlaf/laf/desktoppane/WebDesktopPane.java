@@ -20,8 +20,8 @@ package org.ocsoft.flatlaf.laf.desktoppane;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 /**
  * User: mgarin Date: 24.08.11 Time: 17:46

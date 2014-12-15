@@ -87,14 +87,6 @@
         </painter>
     </style>
 
-    <!-- WebBreadcrumbLabel styling -->
-    <style type="label" id="breadcrumb-element" extends="default">
-        <ui>
-            <margin>1,5,1,5</margin>
-        </ui>
-        <painter id="painter" class="org.ocsoft.flatlaf.managers.style.skin.web.WebBreadcrumbLabelPainter" />
-    </style>
-
     <!-- WebDockableFrame styling -->
     <style type="label" id="dockable-frame-title" extends="default">
         <ui>

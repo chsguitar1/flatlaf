@@ -20,10 +20,10 @@ package org.ocsoft.flatlaf.laf.tooltip;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.swing.FontMethods;
 
 import java.awt.*;

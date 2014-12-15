@@ -24,9 +24,9 @@ import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
 import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.swing.FontMethods;
 
 import java.awt.*;

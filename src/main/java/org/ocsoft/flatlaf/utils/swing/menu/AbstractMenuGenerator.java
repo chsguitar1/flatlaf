@@ -22,7 +22,7 @@ import javax.swing.*;
 import org.ocsoft.flatlaf.laf.menu.*;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LM;
-import org.ocsoft.flatlaf.managers.log.Log;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.swing.UnselectableButtonGroup;
 
 import java.awt.*;

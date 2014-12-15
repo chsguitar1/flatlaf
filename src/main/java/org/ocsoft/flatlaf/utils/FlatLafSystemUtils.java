@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.utils;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.managers.log.Log;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.system.JavaVersion;
 
 import java.awt.*;
@@ -536,5 +536,22 @@ public final class FlatLafSystemUtils
             transparentCursor = Toolkit.getDefaultToolkit ().createCustomCursor ( image, new Point ( 0, 0 ), "transparent" );
         }
         return transparentCursor;
+    }
+    
+    /**
+     * Causes calling thread to sleep and ignores thrown InterruptedException.
+     *
+     * @param millis time to sleep
+     */
+    public static void sleepSafely ( final long millis )
+    {
+        try
+        {
+            Thread.sleep ( millis );
+        }
+        catch ( final InterruptedException e )
+        {
+            //
+        }
     }
 }

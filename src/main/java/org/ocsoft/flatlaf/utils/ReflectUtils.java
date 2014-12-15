@@ -34,8 +34,8 @@ import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.file.FileDownloadListener;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.reflection.JarEntry;
 import org.ocsoft.flatlaf.utils.reflection.JarEntryType;
 import org.ocsoft.flatlaf.utils.reflection.JarStructure;

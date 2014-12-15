@@ -20,8 +20,8 @@ package org.ocsoft.flatlaf.extended.tab;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.laf.tabbedpane.WebTabbedPane;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 import java.awt.*;
 import java.awt.datatransfer.Transferable;

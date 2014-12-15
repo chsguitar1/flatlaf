@@ -21,7 +21,6 @@ import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.style.StyleException;
 import org.ocsoft.flatlaf.managers.style.StyleManager;
 import org.ocsoft.flatlaf.managers.style.SupportedComponent;
@@ -31,6 +30,7 @@ import org.ocsoft.flatlaf.managers.style.data.PainterStyle;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.FlatLafSystemUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

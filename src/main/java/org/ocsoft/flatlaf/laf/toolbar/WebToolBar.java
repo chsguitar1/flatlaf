@@ -26,11 +26,11 @@ import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.separator.WebSeparator;
 import org.ocsoft.flatlaf.managers.language.LanguageContainerMethods;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SizeUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.swing.SizeMethods;
 
 import java.awt.*;

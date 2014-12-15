@@ -22,10 +22,10 @@ import com.mortennobel.imagescaling.ResampleOp;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.graphics.filters.ShadowFilter;
 import org.ocsoft.flatlaf.laf.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.managers.log.Log;
+import org.ocsoft.flatlaf.utils.filters.ShadowFilter;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 import java.awt.*;
 import java.awt.geom.GeneralPath;

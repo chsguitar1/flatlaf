@@ -18,9 +18,9 @@
 package org.ocsoft.flatlaf.managers;
 
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.proxy.ProxyManager;
 import org.ocsoft.flatlaf.managers.settings.SettingsManager;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 /**
  * Core managers simple initialization class.
@@ -28,7 +28,7 @@ import org.ocsoft.flatlaf.managers.settings.SettingsManager;
  *
  * @author Mikle Garin
  * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-WebLaF">How to use WebLaF</a>
- * @see org.ocsoft.flatlaf.managers.log.Log
+ * @see org.ocsoft.flatlaf.utils.log.Log
  * @see org.ocsoft.flatlaf.managers.language.LanguageManager
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  * @see org.ocsoft.flatlaf.managers.proxy.ProxyManager

@@ -35,10 +35,10 @@ import org.ocsoft.flatlaf.laf.text.WebTextField;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyRunnable;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ColorUtils;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.swing.ChooserListener;
 
 import java.awt.*;

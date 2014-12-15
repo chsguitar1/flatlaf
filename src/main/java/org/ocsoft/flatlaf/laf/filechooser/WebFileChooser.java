@@ -25,12 +25,12 @@ import org.ocsoft.flatlaf.managers.language.LanguageContainerMethods;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
 import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.swing.Customizer;
 
 import java.awt.*;

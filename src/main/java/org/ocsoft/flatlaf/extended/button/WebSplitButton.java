@@ -23,9 +23,9 @@ import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.menu.PopupMenuWay;
 import org.ocsoft.flatlaf.laf.menu.WebPopupMenuUI;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.style.SupportedComponent;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 import java.awt.event.*;
 import java.io.Serializable;

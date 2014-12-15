@@ -21,8 +21,8 @@ import javax.swing.*;
 
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 /**
  * This WebLabel extension class allows you to display text vertically and provides a direct access to WebVerticalLabelUI methods.

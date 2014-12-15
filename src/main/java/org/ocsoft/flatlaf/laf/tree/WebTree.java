@@ -25,7 +25,6 @@ import javax.swing.tree.*;
 
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.settings.DefaultValue;
 import org.ocsoft.flatlaf.managers.settings.SettingsManager;
 import org.ocsoft.flatlaf.managers.settings.SettingsMethods;
@@ -35,6 +34,7 @@ import org.ocsoft.flatlaf.utils.GeometryUtils;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.compare.Filter;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.swing.*;
 
 import java.awt.*;

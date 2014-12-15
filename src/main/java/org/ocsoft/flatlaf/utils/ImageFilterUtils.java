@@ -22,10 +22,10 @@ import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorConvertOp;
 
-import org.ocsoft.flatlaf.graphics.filters.BoxBlurFilter;
-import org.ocsoft.flatlaf.graphics.filters.GaussianFilter;
-import org.ocsoft.flatlaf.graphics.filters.MotionBlurOp;
-import org.ocsoft.flatlaf.graphics.filters.OpacityFilter;
+import org.ocsoft.flatlaf.utils.filters.BoxBlurFilter;
+import org.ocsoft.flatlaf.utils.filters.GaussianFilter;
+import org.ocsoft.flatlaf.utils.filters.MotionBlurOp;
+import org.ocsoft.flatlaf.utils.filters.OpacityFilter;
 
 /**
  * This class provides a set of utilities to perform image filtering.

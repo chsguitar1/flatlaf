@@ -29,7 +29,6 @@ import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.tooltip.ToolTipMethods;
 import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.managers.tooltip.WebCustomTooltip;
@@ -38,6 +37,7 @@ import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SizeUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.swing.*;
 
 import java.awt.*;

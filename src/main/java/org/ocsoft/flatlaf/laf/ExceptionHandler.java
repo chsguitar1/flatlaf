@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf;
 
-import org.ocsoft.flatlaf.managers.log.Log;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 /**
  * Custom exceptions handler.

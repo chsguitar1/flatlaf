@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.utils;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.ocsoft.flatlaf.managers.log.Log;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 /**
  * This class provides a set of utilities for time measurement and comparison.

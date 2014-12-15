@@ -39,14 +39,6 @@
         </painter>
     </style>
 
-    <!-- WebBreadcrumbPanel styling -->
-    <style type="panel" id="breadcrumb-element" extends="default">
-        <ui>
-            <margin>1,5,1,5</margin>
-        </ui>
-        <painter id="painter" class="org.ocsoft.flatlaf.managers.style.skin.web.WebBreadcrumbPanelPainter" />
-    </style>
-
     <!-- WebDocumentPane styling -->
     <style type="panel" id="document-pane" extends="default">
         <component>

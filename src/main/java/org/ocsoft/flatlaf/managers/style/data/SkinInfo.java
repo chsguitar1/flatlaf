@@ -23,9 +23,9 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.style.SupportedComponent;
 import org.ocsoft.flatlaf.utils.TextUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 import java.io.Serializable;
 import java.util.List;

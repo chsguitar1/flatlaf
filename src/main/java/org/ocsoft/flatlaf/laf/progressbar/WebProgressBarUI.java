@@ -17,28 +17,43 @@
 
 package org.ocsoft.flatlaf.laf.progressbar;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.LinearGradientPaint;
+import java.awt.Point;
+import java.awt.RadialGradientPaint;
+import java.awt.Shape;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Area;
+import java.awt.geom.GeneralPath;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.RoundRectangle2D;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+import javax.swing.JComponent;
+import javax.swing.JProgressBar;
+import javax.swing.LookAndFeel;
+import javax.swing.SwingUtilities;
 import javax.swing.event.AncestorEvent;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicProgressBarUI;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.utils.FlatLafSystemUtils;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-import org.ocsoft.flatlaf.utils.ThreadUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 /**
  * User: mgarin Date: 28.04.11 Time: 15:05
@@ -343,7 +358,7 @@ public class WebProgressBarUI extends BasicProgressBarUI implements ShapeProvide
                             {
                                 animationLocation = -determinateAnimationWidth;
                                 refresh ( progressBar );
-                                ThreadUtils.sleepSafely ( determinateAnimationPause );
+                                FlatLafSystemUtils.sleepSafely ( determinateAnimationPause );
                             }
                         }
 

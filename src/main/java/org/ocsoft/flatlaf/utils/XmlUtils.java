@@ -40,9 +40,9 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.collection.ValuesTable;
 import org.ocsoft.flatlaf.utils.general.Pair;
+import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.xml.AliasProvider;
 import org.ocsoft.flatlaf.utils.xml.ColorConverter;
 import org.ocsoft.flatlaf.utils.xml.InsetsConverter;

@@ -27,8 +27,8 @@ import java.util.Map;
 
 import org.ocsoft.flatlaf.managers.glasspane.GlassPaneManager;
 import org.ocsoft.flatlaf.managers.glasspane.WebGlassPane;
-import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.log.Log;
 
 /**
  * This manager simplifies dragged items visual representation creation.

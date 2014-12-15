@@ -20,6 +20,7 @@ package org.ocsoft.flatlaf.managers.language;
 import java.awt.Component;
 import java.awt.Container;
 import java.io.File;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -57,7 +58,6 @@ import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
 import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.CompareUtils;
 import org.ocsoft.flatlaf.utils.MapUtils;
-import org.ocsoft.flatlaf.utils.NetUtils;
 import org.ocsoft.flatlaf.utils.XmlUtils;
 import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
@@ -1205,7 +1205,7 @@ public class LanguageManager implements LanguageConstants
      */
     public static String getDictionaryCacheKey ( final Class nearClass, final String resource )
     {
-        return NetUtils.getAddress ( nearClass.getResource ( resource ) );
+        return getAddress ( nearClass.getResource ( resource ) );
     }
 
     /**
@@ -1246,7 +1246,7 @@ public class LanguageManager implements LanguageConstants
      */
     public static String getDictionaryCacheKey ( final URL url )
     {
-        return NetUtils.getAddress ( url );
+        return getAddress ( url );
     }
 
     /**
@@ -2162,6 +2162,24 @@ public class LanguageManager implements LanguageConstants
                     listener.languageKeyUpdated ( entry.getKey (), value );
                 }
             }
+        }
+    }
+    
+    /**
+     * Returns address represented by the specified URL object.
+     *
+     * @param url URL object to process
+     * @return address represented by the specified URL object
+     */
+    private static String getAddress ( final URL url )
+    {
+        try
+        {
+            return url.toURI ().toASCIIString ();
+        }
+        catch ( final URISyntaxException e )
+        {
+            return url.toExternalForm ();
         }
     }
 }
