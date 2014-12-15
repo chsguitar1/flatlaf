@@ -26,7 +26,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ocsoft.flatlaf.utils.CollectionUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 /**
  * User: mgarin Date: 20.04.12 Time: 15:02

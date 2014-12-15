@@ -32,10 +32,10 @@ import org.ocsoft.flatlaf.laf.button.WebToggleButton;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.separator.WebSeparator;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.CompareUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.TimeUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 import java.awt.*;
 import java.awt.event.*;

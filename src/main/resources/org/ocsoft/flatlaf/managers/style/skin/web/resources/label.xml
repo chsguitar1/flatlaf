@@ -87,12 +87,4 @@
         </painter>
     </style>
 
-    <!-- WebDockableFrame styling -->
-    <style type="label" id="dockable-frame-title" extends="default">
-        <ui>
-            <drawShade>true</drawShade>
-            <margin>3,3,3,10</margin>
-        </ui>
-    </style>
-
 </skin>

@@ -19,8 +19,8 @@ package org.ocsoft.flatlaf.utils.swing;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.TimeUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.log.Log;
 
 import java.awt.event.ActionEvent;

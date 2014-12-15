@@ -15,7 +15,7 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils.drag;
+package org.ocsoft.flatlaf.extended.drag;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;

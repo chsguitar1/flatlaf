@@ -17,19 +17,29 @@
 
 package org.ocsoft.flatlaf.extended.label;
 
-import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.style.skin.web.WebLabelPainter;
-import org.ocsoft.flatlaf.utils.FontUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.map.SoftHashMap;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
+import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
 /**
  * @author Mikle Garin
@@ -296,7 +306,7 @@ public class WebStyledLabelPainter<E extends WebStyledLabel> extends WebLabelPai
             font = StyledLabelUtils.getFont ( label );
             if ( style != null && ( ( style.getStyle () != -1 && font.getStyle () != style.getStyle () ) || font.getSize () != size ) )
             {
-                font = FontUtils.getCachedDerivedFont ( font, style.getStyle () == -1 ? font.getStyle () : style.getStyle (), size );
+                font = getCachedDerivedFont ( font, style.getStyle () == -1 ? font.getStyle () : style.getStyle (), size );
                 fm2 = label.getFontMetrics ( font );
                 maxRowHeight = Math.max ( maxRowHeight, fm2.getHeight () );
                 minStartY = Math.max ( minStartY, fm2.getAscent () );
@@ -380,7 +390,7 @@ public class WebStyledLabelPainter<E extends WebStyledLabel> extends WebLabelPai
                 font = StyledLabelUtils.getFont ( label );
                 if ( style != null && ( ( style.getStyle () != -1 && font.getStyle () != style.getStyle () ) || font.getSize () != size ) )
                 {
-                    font = FontUtils.getCachedDerivedFont ( font, style.getStyle () == -1 ? font.getStyle () : style.getStyle (), size );
+                    font = getCachedDerivedFont ( font, style.getStyle () == -1 ? font.getStyle () : style.getStyle (), size );
                     fm2 = label.getFontMetrics ( font );
                 }
                 else
@@ -535,8 +545,7 @@ public class WebStyledLabelPainter<E extends WebStyledLabel> extends WebLabelPai
                 if ( nextStyle != null &&
                         ( ( nextStyle.getStyle () != -1 && font.getStyle () != nextStyle.getStyle () ) || font.getSize () != size ) )
                 {
-                    font = FontUtils
-                            .getCachedDerivedFont ( font, nextStyle.getStyle () == -1 ? font.getStyle () : nextStyle.getStyle (), size );
+                    font = getCachedDerivedFont ( font, nextStyle.getStyle () == -1 ? font.getStyle () : nextStyle.getStyle (), size );
                     nextFm2 = label.getFontMetrics ( font );
                 }
                 else
@@ -874,7 +883,7 @@ public class WebStyledLabelPainter<E extends WebStyledLabel> extends WebLabelPai
                 font = StyledLabelUtils.getFont ( label );
                 if ( style != null && ( ( style.getStyle () != -1 && font.getStyle () != style.getStyle () ) || font.getSize () != size ) )
                 {
-                    font = FontUtils.getCachedDerivedFont ( font, style.getStyle () == -1 ? font.getStyle () : style.getStyle (), size );
+                    font = getCachedDerivedFont ( font, style.getStyle () == -1 ? font.getStyle () : style.getStyle (), size );
                     fm2 = label.getFontMetrics ( font );
                 }
                 else
@@ -1003,8 +1012,7 @@ public class WebStyledLabelPainter<E extends WebStyledLabel> extends WebLabelPai
                 if ( nextStyle != null &&
                         ( ( nextStyle.getStyle () != -1 && font.getStyle () != nextStyle.getStyle () ) || font.getSize () != size ) )
                 {
-                    font = FontUtils
-                            .getCachedDerivedFont ( font, nextStyle.getStyle () == -1 ? font.getStyle () : nextStyle.getStyle (), size );
+                    font = getCachedDerivedFont ( font, nextStyle.getStyle () == -1 ? font.getStyle () : nextStyle.getStyle (), size );
                     nextFm2 = label.getFontMetrics ( font );
                 }
                 else
@@ -1200,7 +1208,7 @@ public class WebStyledLabelPainter<E extends WebStyledLabel> extends WebLabelPai
             int styleHeight = fm.getHeight ();
             if ( style != null && ( ( style.getStyle () != -1 && font.getStyle () != style.getStyle () ) || font.getSize () != size ) )
             {
-                font = FontUtils.getCachedDerivedFont ( font, style.getStyle () == -1 ? font.getStyle () : style.getStyle (), size );
+                font = getCachedDerivedFont ( font, style.getStyle () == -1 ? font.getStyle () : style.getStyle (), size );
                 fm2 = label.getFontMetrics ( font );
                 styleHeight = fm2.getHeight ();
             }
@@ -1236,7 +1244,7 @@ public class WebStyledLabelPainter<E extends WebStyledLabel> extends WebLabelPai
             }
             if ( style != null && ( ( style.getStyle () != -1 && font.getStyle () != style.getStyle () ) || font.getSize () != size ) )
             {
-                font = FontUtils.getCachedDerivedFont ( font, style.getStyle () == -1 ? font.getStyle () : style.getStyle (), size );
+                font = getCachedDerivedFont ( font, style.getStyle () == -1 ? font.getStyle () : style.getStyle (), size );
                 fm2 = label.getFontMetrics ( font );
                 width += fm2.stringWidth ( s );
             }
@@ -1350,7 +1358,7 @@ public class WebStyledLabelPainter<E extends WebStyledLabel> extends WebLabelPai
             font = StyledLabelUtils.getFont ( label ); // cannot omit this one
             if ( style != null && ( ( style.getStyle () != -1 && font.getStyle () != style.getStyle () ) || font.getSize () != size ) )
             {
-                font = FontUtils.getCachedDerivedFont ( font, style.getStyle () == -1 ? font.getStyle () : style.getStyle (), size );
+                font = getCachedDerivedFont ( font, style.getStyle () == -1 ? font.getStyle () : style.getStyle (), size );
                 fm2 = label.getFontMetrics ( font );
             }
             else
@@ -1518,7 +1526,7 @@ public class WebStyledLabelPainter<E extends WebStyledLabel> extends WebLabelPai
             font = StyledLabelUtils.getFont ( label );
             if ( style != null && ( ( style.getStyle () != -1 && font.getStyle () != style.getStyle () ) || font.getSize () != size ) )
             {
-                font = FontUtils.getCachedDerivedFont ( font, style.getStyle () == -1 ? font.getStyle () : style.getStyle (), size );
+                font = getCachedDerivedFont ( font, style.getStyle () == -1 ? font.getStyle () : style.getStyle (), size );
                 fm2 = label.getFontMetrics ( font );
             }
             else
@@ -1602,5 +1610,56 @@ public class WebStyledLabelPainter<E extends WebStyledLabel> extends WebLabelPai
         }
         preferredRowCount = limited;
         return x;
+    }
+    
+    
+    /**
+     * Derived fonts cache map.
+     */
+    private static final Map<DerivedFontAttributes, Font> derivedFontsCache = new SoftHashMap<DerivedFontAttributes, Font> ();
+
+    /**
+     * Clears derived fonts cache.
+     */
+    public static void clearDerivedFontsCache ()
+    {
+        if ( derivedFontsCache != null )
+        {
+            derivedFontsCache.clear ();
+        }
+    }
+
+    /**
+     * Get derived font by font, style and size. At first it will get the derived font from cache. If it cannot hit the
+     * derived font, it will invoke font.deriveFont to derive a font.
+     *
+     * @param font  original font
+     * @param style new font style
+     * @param size  new font size
+     * @return the derived font.
+     */
+    public static Font getCachedDerivedFont ( final Font font, final int style, final int size )
+    {
+        final DerivedFontAttributes attribute = getFontAttribute ( font, style, size );
+        Font derivedFont = derivedFontsCache.get ( attribute );
+        if ( derivedFont == null )
+        {
+            derivedFont = font.deriveFont ( style, size );
+            derivedFontsCache.put ( attribute, derivedFont );
+        }
+        return derivedFont;
+    }
+
+    /**
+     * Returns derived font attributes object.
+     *
+     * @param font  original font
+     * @param style new font style
+     * @param size  new font size
+     * @return font attributes object
+     */
+    protected static DerivedFontAttributes getFontAttribute ( final Font font, final int style, final int size )
+    {
+        return new DerivedFontAttributes ( font, style, size );
     }
 }

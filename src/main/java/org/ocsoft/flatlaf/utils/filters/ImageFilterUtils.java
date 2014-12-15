@@ -15,17 +15,14 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils;
+package org.ocsoft.flatlaf.utils.filters;
 
 import java.awt.*;
 import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorConvertOp;
 
-import org.ocsoft.flatlaf.utils.filters.BoxBlurFilter;
-import org.ocsoft.flatlaf.utils.filters.GaussianFilter;
-import org.ocsoft.flatlaf.utils.filters.MotionBlurOp;
-import org.ocsoft.flatlaf.utils.filters.OpacityFilter;
+import org.ocsoft.flatlaf.utils.ImageUtils;
 
 /**
  * This class provides a set of utilities to perform image filtering.

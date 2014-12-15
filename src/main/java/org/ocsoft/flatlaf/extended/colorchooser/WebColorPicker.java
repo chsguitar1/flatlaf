@@ -19,8 +19,8 @@ package org.ocsoft.flatlaf.extended.colorchooser;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

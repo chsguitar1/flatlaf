@@ -15,12 +15,12 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils;
+package org.ocsoft.flatlaf.utils.system;
 
 import javax.swing.*;
 
+import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.log.Log;
-import org.ocsoft.flatlaf.utils.system.JavaVersion;
 
 import java.awt.*;
 import java.awt.datatransfer.*;

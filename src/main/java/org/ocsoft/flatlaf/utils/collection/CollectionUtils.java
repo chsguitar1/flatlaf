@@ -15,10 +15,11 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils;
+package org.ocsoft.flatlaf.utils.collection;
 
 import java.util.*;
 
+import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.compare.Filter;
 import org.ocsoft.flatlaf.utils.text.TextProvider;
 

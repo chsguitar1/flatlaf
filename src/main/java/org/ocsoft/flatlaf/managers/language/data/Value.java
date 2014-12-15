@@ -24,9 +24,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.CompareUtils;
 import org.ocsoft.flatlaf.utils.TextUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 /**
  * @author Mikle Garin

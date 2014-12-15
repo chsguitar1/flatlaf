@@ -1,4 +1,4 @@
-package org.ocsoft.flatlaf.utils.concurrent;
+package org.ocsoft.flatlaf.utils;
 
 import java.util.concurrent.ThreadFactory;
 

@@ -28,8 +28,8 @@ import org.ocsoft.flatlaf.laf.filechooser.WebFileChooser;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.scroll.WebScrollPane;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 
 import java.awt.*;

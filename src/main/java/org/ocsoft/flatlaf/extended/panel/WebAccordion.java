@@ -26,7 +26,7 @@ import org.ocsoft.flatlaf.managers.settings.DefaultValue;
 import org.ocsoft.flatlaf.managers.settings.SettingsManager;
 import org.ocsoft.flatlaf.managers.settings.SettingsMethods;
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
 
 import java.awt.*;

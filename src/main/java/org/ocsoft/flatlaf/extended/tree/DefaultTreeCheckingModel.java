@@ -22,7 +22,7 @@ import javax.swing.tree.TreeNode;
 
 import org.ocsoft.flatlaf.extended.checkbox.CheckState;
 import org.ocsoft.flatlaf.laf.tree.TreeUtils;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 import java.util.*;
 

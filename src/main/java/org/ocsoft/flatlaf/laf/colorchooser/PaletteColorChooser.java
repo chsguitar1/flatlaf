@@ -23,8 +23,8 @@ import javax.swing.event.ChangeListener;
 
 import org.ocsoft.flatlaf.extended.layout.TableLayout;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.ImageUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;

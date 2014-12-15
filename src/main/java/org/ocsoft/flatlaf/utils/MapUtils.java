@@ -22,7 +22,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.ocsoft.flatlaf.utils.collection.DoubleMap;
+import org.ocsoft.flatlaf.extended.tree.DoubleMap;
 
 /**
  * This class provides a set of utilities to work with various maps.

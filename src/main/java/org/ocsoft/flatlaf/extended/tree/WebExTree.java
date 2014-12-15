@@ -27,7 +27,7 @@ import org.ocsoft.flatlaf.laf.tree.UniqueNode;
 import org.ocsoft.flatlaf.laf.tree.WebTree;
 import org.ocsoft.flatlaf.laf.tree.WebTreeCellEditor;
 import org.ocsoft.flatlaf.laf.tree.WebTreeCellRenderer;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.compare.Filter;
 
 import java.awt.*;

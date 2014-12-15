@@ -20,9 +20,9 @@ package org.ocsoft.flatlaf.extended.transition;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.transition.effects.TransitionEffect;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.MathUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
 
 import java.awt.*;

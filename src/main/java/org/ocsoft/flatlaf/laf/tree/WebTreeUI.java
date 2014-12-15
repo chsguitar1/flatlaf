@@ -30,6 +30,7 @@ import org.ocsoft.flatlaf.extended.tree.WebCheckBoxTree;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.*;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
 
 import java.awt.*;

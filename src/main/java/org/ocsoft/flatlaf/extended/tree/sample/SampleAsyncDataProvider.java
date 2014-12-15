@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.tree.sample;
 
 import org.ocsoft.flatlaf.extended.tree.AbstractAsyncTreeDataProvider;
 import org.ocsoft.flatlaf.extended.tree.ChildsListener;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 /**
  * Sample asynchronous tree data provider.

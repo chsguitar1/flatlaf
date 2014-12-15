@@ -20,7 +20,6 @@ package org.ocsoft.flatlaf.extended.drag;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.utils.DragUtils;
-import org.ocsoft.flatlaf.utils.drag.FileTransferable;
 
 import java.awt.datatransfer.Transferable;
 import java.io.File;

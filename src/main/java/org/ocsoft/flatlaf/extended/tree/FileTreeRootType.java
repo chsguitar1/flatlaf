@@ -19,8 +19,8 @@ package org.ocsoft.flatlaf.extended.tree;
 
 import javax.swing.filechooser.FileSystemView;
 
-import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 import java.io.File;
 import java.util.List;

@@ -24,9 +24,9 @@ import org.ocsoft.flatlaf.laf.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.list.WebListCellRenderer;
+import org.ocsoft.flatlaf.utils.DaemonThreadFactory;
 import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.ImageUtils;
-import org.ocsoft.flatlaf.utils.concurrent.DaemonThreadFactory;
 import org.ocsoft.flatlaf.utils.file.FileDescription;
 
 import java.awt.*;

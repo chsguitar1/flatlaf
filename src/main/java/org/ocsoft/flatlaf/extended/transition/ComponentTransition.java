@@ -27,8 +27,8 @@ import java.util.List;
 import org.ocsoft.flatlaf.extended.layout.StackLayout;
 import org.ocsoft.flatlaf.extended.transition.effects.TransitionEffect;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 /**
  * User: mgarin Date: 26.10.11 Time: 12:57

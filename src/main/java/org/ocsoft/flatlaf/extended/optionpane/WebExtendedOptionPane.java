@@ -30,8 +30,8 @@ import org.ocsoft.flatlaf.laf.optionpane.WebOptionPaneUI;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.rootpane.WebDialog;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

@@ -27,9 +27,9 @@ import java.util.Collections;
 import java.util.List;
 
 import org.ocsoft.flatlaf.managers.settings.DefaultValue;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.ColorUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 /**
  * Data object for WebGradientColorChooser component.

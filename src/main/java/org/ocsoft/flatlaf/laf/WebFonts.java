@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf;
 
 import javax.swing.plaf.FontUIResource;
 
-import org.ocsoft.flatlaf.utils.FlatLafSystemUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
 
 import java.awt.*;
 import java.util.HashMap;

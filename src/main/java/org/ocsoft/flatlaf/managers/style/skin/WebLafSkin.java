@@ -29,8 +29,8 @@ import org.ocsoft.flatlaf.managers.style.data.IgnoredValue;
 import org.ocsoft.flatlaf.managers.style.data.PainterStyle;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.FlatLafSystemUtils;
 import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

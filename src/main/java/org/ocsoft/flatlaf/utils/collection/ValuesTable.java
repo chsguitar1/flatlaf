@@ -26,8 +26,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.ocsoft.flatlaf.utils.CollectionUtils;
-
 /**
  * This class allows you to create key-value table from which you can either request a key by value or a value by key.
  * Both key and value should be unique and adding same key or value will replace existing one in the lists.

@@ -22,9 +22,9 @@ import javax.swing.*;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.XmlUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 import java.awt.*;
 import java.awt.event.AWTEventListener;

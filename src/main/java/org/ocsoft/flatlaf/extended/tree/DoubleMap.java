@@ -15,7 +15,7 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils.collection;
+package org.ocsoft.flatlaf.extended.tree;
 
 import java.util.Collection;
 import java.util.HashMap;

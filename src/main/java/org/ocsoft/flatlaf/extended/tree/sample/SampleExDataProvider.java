@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.ocsoft.flatlaf.extended.tree.AbstractExTreeDataProvider;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 /**
  * @author Mikle Garin

@@ -28,8 +28,8 @@ import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.managers.popup.PopupAdapter;
 import org.ocsoft.flatlaf.managers.popup.PopupStyle;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.swing.WebHeavyWeightPopup;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
 

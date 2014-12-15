@@ -20,8 +20,8 @@ package org.ocsoft.flatlaf.extended.filechooser;
 import javax.swing.table.AbstractTableModel;
 
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 import java.io.File;
 import java.util.ArrayList;

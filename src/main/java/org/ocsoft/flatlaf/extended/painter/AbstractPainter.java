@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.painter;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.utils.CollectionUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 import java.awt.*;
 import java.util.ArrayList;

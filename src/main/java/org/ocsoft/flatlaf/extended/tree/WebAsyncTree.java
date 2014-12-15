@@ -27,7 +27,7 @@ import org.ocsoft.flatlaf.extended.tree.sample.SampleTreeCellEditor;
 import org.ocsoft.flatlaf.extended.tree.sample.SampleTreeCellRenderer;
 import org.ocsoft.flatlaf.laf.tree.WebTree;
 import org.ocsoft.flatlaf.laf.tree.WebTreeCellEditor;
-import org.ocsoft.flatlaf.utils.CollectionUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.compare.Filter;
 import org.ocsoft.flatlaf.utils.swing.CellEditorAdapter;
 

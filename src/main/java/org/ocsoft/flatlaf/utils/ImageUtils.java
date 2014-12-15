@@ -24,8 +24,10 @@ import javax.swing.*;
 
 import org.ocsoft.flatlaf.laf.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.utils.filters.ImageFilterUtils;
 import org.ocsoft.flatlaf.utils.filters.ShadowFilter;
 import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
 
 import java.awt.*;
 import java.awt.geom.GeneralPath;

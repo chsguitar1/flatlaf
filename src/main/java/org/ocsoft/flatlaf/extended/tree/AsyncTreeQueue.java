@@ -22,7 +22,7 @@ import java.util.WeakHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.ocsoft.flatlaf.utils.concurrent.DaemonThreadFactory;
+import org.ocsoft.flatlaf.utils.DaemonThreadFactory;
 
 /**
  * Asynchronous tree childs loading queue.

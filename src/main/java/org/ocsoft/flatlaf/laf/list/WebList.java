@@ -26,6 +26,7 @@ import org.ocsoft.flatlaf.laf.list.editor.ListCellEditor;
 import org.ocsoft.flatlaf.laf.list.editor.ListEditListener;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.utils.*;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.swing.*;
 

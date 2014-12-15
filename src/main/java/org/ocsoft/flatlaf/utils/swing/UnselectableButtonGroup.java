@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.utils.swing;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.utils.CollectionUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
