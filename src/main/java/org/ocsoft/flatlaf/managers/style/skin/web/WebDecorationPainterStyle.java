@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.managers.style.skin.web;
 import java.awt.Color;
 import java.awt.Stroke;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * @author Mikle Garin

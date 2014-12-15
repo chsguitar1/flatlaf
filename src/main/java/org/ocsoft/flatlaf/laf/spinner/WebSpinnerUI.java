@@ -35,14 +35,16 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicSpinnerUI;
 import javax.swing.text.JTextComponent;
 
+import org.ocsoft.flatlaf.ResourceLoader;
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.text.WebTextFieldUI;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.button.WebButton;
+import org.ocsoft.flatlaf.weblaf.spinner.WebSpinnerStyle;
 
 /**
  * @author Mikle Garin
@@ -50,10 +52,8 @@ import org.ocsoft.flatlaf.utils.swing.BorderMethods;
 
 public class WebSpinnerUI extends BasicSpinnerUI implements ShapeProvider,
         BorderMethods {
-    private static final ImageIcon UP_ICON = new ImageIcon(
-            WebSpinnerUI.class.getResource("icons/up.png"));
-    private static final ImageIcon DOWN_ICON = new ImageIcon(
-            WebSpinnerUI.class.getResource("icons/down.png"));
+    private static final ImageIcon UP_ICON = ResourceLoader.loadIcon("spinner/up.png");
+    private static final ImageIcon DOWN_ICON = ResourceLoader.loadIcon("spinner/down.png");
     
     private boolean drawBorder = WebSpinnerStyle.drawBorder;
     private boolean drawFocus = WebSpinnerStyle.drawFocus;

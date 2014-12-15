@@ -28,11 +28,11 @@ import java.util.WeakHashMap;
 import javax.swing.Icon;
 import javax.swing.SwingConstants;
 
-import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.managers.popup.PopupAdapter;
 import org.ocsoft.flatlaf.managers.popup.PopupLayer;
 import org.ocsoft.flatlaf.managers.popup.PopupManager;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
 
 /**
  * This manager allows you to display custom notification popups within the

@@ -40,8 +40,6 @@ import javax.swing.SwingUtilities;
 
 import org.ocsoft.flatlaf.extended.layout.ComponentPanelLayout;
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
@@ -49,6 +47,8 @@ import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyRunnable;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * User: mgarin Date: 29.02.12 Time: 16:53

@@ -40,15 +40,15 @@ import javax.swing.SwingUtilities;
 import org.ocsoft.flatlaf.extended.drag.FileDragAndDropHandler;
 import org.ocsoft.flatlaf.extended.layout.HorizontalFlowLayout;
 import org.ocsoft.flatlaf.extended.panel.CenterPanel;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.button.WebButton;
-import org.ocsoft.flatlaf.laf.filechooser.WebFileChooser;
-import org.ocsoft.flatlaf.laf.label.WebLabel;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.laf.scroll.WebScrollPane;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.file.FileUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.button.WebButton;
+import org.ocsoft.flatlaf.weblaf.filechooser.WebFileChooser;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.scroll.WebScrollPane;
 
 /**
  * User: mgarin Date: 07.08.11 Time: 15:44

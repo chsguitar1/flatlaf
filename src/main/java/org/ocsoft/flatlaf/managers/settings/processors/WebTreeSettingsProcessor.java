@@ -22,11 +22,11 @@ import javax.swing.event.TreeExpansionListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 
-import org.ocsoft.flatlaf.laf.tree.TreeState;
-import org.ocsoft.flatlaf.laf.tree.UniqueNode;
-import org.ocsoft.flatlaf.laf.tree.WebTree;
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
+import org.ocsoft.flatlaf.weblaf.tree.TreeState;
+import org.ocsoft.flatlaf.weblaf.tree.UniqueNode;
+import org.ocsoft.flatlaf.weblaf.tree.WebTree;
 
 /**
  * Custom SettingsProcessor for WebTree component.

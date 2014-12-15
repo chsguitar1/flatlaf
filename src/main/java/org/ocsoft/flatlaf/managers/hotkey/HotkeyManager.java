@@ -33,12 +33,12 @@ import java.util.WeakHashMap;
 
 import javax.swing.AbstractButton;
 
-import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.xml.XmlUtils;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
 
 /**
  * This manager allows you to quickly register global hotkeys (like accelerators

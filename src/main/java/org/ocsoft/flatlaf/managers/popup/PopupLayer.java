@@ -24,8 +24,8 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 
 import org.ocsoft.flatlaf.extended.layout.MultiLayout;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * This special container is used to place various custom WebLaF popups on it.

@@ -36,16 +36,16 @@ import javax.swing.text.Document;
 
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.image.WebImage;
-import org.ocsoft.flatlaf.laf.menu.WebCheckBoxMenuItem;
-import org.ocsoft.flatlaf.laf.menu.WebPopupMenu;
-import org.ocsoft.flatlaf.laf.text.WebTextField;
-import org.ocsoft.flatlaf.laf.tree.TreeState;
-import org.ocsoft.flatlaf.laf.tree.UniqueNode;
-import org.ocsoft.flatlaf.laf.tree.WebTree;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.utils.general.Filter;
 import org.ocsoft.flatlaf.utils.general.TextProvider;
 import org.ocsoft.flatlaf.utils.swing.StringDocumentChangeListener;
+import org.ocsoft.flatlaf.weblaf.menu.WebCheckBoxMenuItem;
+import org.ocsoft.flatlaf.weblaf.menu.WebPopupMenu;
+import org.ocsoft.flatlaf.weblaf.text.WebTextField;
+import org.ocsoft.flatlaf.weblaf.tree.TreeState;
+import org.ocsoft.flatlaf.weblaf.tree.UniqueNode;
+import org.ocsoft.flatlaf.weblaf.tree.WebTree;
 
 /**
  * Special filter field that can be attached to any WebAsyncTree.

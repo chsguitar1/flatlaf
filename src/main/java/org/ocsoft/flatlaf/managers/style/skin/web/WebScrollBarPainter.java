@@ -30,13 +30,13 @@ import javax.swing.JScrollBar;
 import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.scroll.ScrollBarPainter;
-import org.ocsoft.flatlaf.laf.scroll.WebScrollBarStyle;
 import org.ocsoft.flatlaf.utils.ColorUtils;
 import org.ocsoft.flatlaf.utils.MathUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.scroll.ScrollBarPainter;
+import org.ocsoft.flatlaf.weblaf.scroll.WebScrollBarStyle;
 
 /**
  * Web-style painter for JScrollBar component. It is used as WebScrollBarUI

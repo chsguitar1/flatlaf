@@ -21,9 +21,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import org.ocsoft.flatlaf.laf.tree.UniqueNode;
 import org.ocsoft.flatlaf.utils.general.Filter;
 import org.ocsoft.flatlaf.utils.general.TextProvider;
+import org.ocsoft.flatlaf.weblaf.tree.UniqueNode;
 
 /**
  * Special smart tree filter that doesn't filter out parent nodes which has

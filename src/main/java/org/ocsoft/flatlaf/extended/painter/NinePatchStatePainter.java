@@ -29,9 +29,9 @@ import javax.swing.ButtonModel;
 import javax.swing.JComponent;
 import javax.swing.JToolBar;
 
-import org.ocsoft.flatlaf.laf.toolbar.WebToolBar;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
+import org.ocsoft.flatlaf.weblaf.toolbar.WebToolBar;
 
 /**
  * This painter class allows you to specify multiply 9-patch images for

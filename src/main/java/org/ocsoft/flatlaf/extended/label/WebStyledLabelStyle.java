@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.label;
 
 import java.awt.Insets;
 
-import org.ocsoft.flatlaf.laf.label.WebLabelStyle;
+import org.ocsoft.flatlaf.weblaf.label.WebLabelStyle;
 
 /**
  * @author Mikle Garin

@@ -29,8 +29,8 @@ import javax.swing.JFrame;
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.extended.image.WebImage;
 import org.ocsoft.flatlaf.extended.painter.AlphaLayerPainter;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.laf.rootpane.WebFrame;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.rootpane.WebFrame;
 
 /**
  * @author Mikle Garin

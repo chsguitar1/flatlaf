@@ -25,9 +25,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JComponent;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 11.04.12 Time: 17:30

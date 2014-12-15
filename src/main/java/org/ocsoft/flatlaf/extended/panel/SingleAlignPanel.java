@@ -22,7 +22,7 @@ import java.awt.Component;
 
 import javax.swing.SwingConstants;
 
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * Custom panel that aligns contained component to single side.

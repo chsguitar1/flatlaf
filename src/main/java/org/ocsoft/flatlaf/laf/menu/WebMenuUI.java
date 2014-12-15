@@ -47,17 +47,21 @@ import javax.swing.plaf.basic.BasicHTML;
 import javax.swing.plaf.basic.BasicMenuUI;
 import javax.swing.text.View;
 
+import org.ocsoft.flatlaf.ResourceLoader;
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.MathUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.menu.MenuItemChangeListener;
+import org.ocsoft.flatlaf.weblaf.menu.MenuUtils;
+import org.ocsoft.flatlaf.weblaf.menu.WebMenuItemStyle;
 
 /**
  * Custom UI for JMenu component.
@@ -69,10 +73,8 @@ public class WebMenuUI extends BasicMenuUI implements BorderMethods {
     /**
      * Used icons.
      */
-    public static final ImageIcon arrowRightIcon = new ImageIcon(
-            WebMenuUI.class.getResource("icons/arrowRight.png"));
-    public static final ImageIcon arrowLeftIcon = new ImageIcon(
-            WebMenuUI.class.getResource("icons/arrowLeft.png"));
+    public static final ImageIcon arrowRightIcon = ResourceLoader.loadIcon("menu/arrowRight.png");
+    public static final ImageIcon arrowLeftIcon = ResourceLoader.loadIcon("menu/arrowLeft.png");
     
     /**
      * Style settings.

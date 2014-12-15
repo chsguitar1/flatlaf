@@ -28,8 +28,8 @@ import java.lang.ref.WeakReference;
 
 import javax.swing.ImageIcon;
 
-import org.ocsoft.flatlaf.laf.checkbox.SimpleCheckIcon;
 import org.ocsoft.flatlaf.utils.GeometryUtils;
+import org.ocsoft.flatlaf.weblaf.checkbox.SimpleCheckIcon;
 
 /**
  * Check icon for tristate checkbox.

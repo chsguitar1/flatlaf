@@ -44,16 +44,16 @@ import org.ocsoft.flatlaf.extended.transition.effects.Direction;
 import org.ocsoft.flatlaf.extended.transition.effects.fade.FadeTransitionEffect;
 import org.ocsoft.flatlaf.extended.transition.effects.slide.SlideTransitionEffect;
 import org.ocsoft.flatlaf.extended.transition.effects.slide.SlideType;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.button.WebButton;
-import org.ocsoft.flatlaf.laf.button.WebToggleButton;
-import org.ocsoft.flatlaf.laf.label.WebLabel;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.laf.separator.WebSeparator;
 import org.ocsoft.flatlaf.utils.CompareUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.TimeUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.button.WebButton;
+import org.ocsoft.flatlaf.weblaf.button.WebToggleButton;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.separator.WebSeparator;
 
 /**
  * This is a custom calendar component.

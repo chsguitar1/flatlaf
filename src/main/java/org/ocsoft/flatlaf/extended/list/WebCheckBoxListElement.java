@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.list;
 
 import java.awt.Rectangle;
 
-import org.ocsoft.flatlaf.laf.checkbox.WebCheckBox;
+import org.ocsoft.flatlaf.weblaf.checkbox.WebCheckBox;
 
 /**
  * Component for default checkbox list cell rendering.

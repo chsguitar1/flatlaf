@@ -32,9 +32,6 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.event.AncestorEvent;
 
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.laf.splitpane.WebSplitPane;
-import org.ocsoft.flatlaf.laf.tabbedpane.WebTabbedPane;
 import org.ocsoft.flatlaf.managers.drag.DragManager;
 import org.ocsoft.flatlaf.managers.settings.DefaultValue;
 import org.ocsoft.flatlaf.managers.settings.SettingsManager;
@@ -46,6 +43,9 @@ import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.general.Pair;
 import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
 import org.ocsoft.flatlaf.utils.swing.Customizer;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.splitpane.WebSplitPane;
+import org.ocsoft.flatlaf.weblaf.tabbedpane.WebTabbedPane;
 
 /**
  * This component is basically a special container for customizable documents

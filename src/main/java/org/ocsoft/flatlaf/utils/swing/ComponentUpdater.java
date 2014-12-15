@@ -24,7 +24,7 @@ import javax.swing.JComponent;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * This class allows you to install (and uninstall if needed) component updater

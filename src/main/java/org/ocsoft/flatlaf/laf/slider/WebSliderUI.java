@@ -48,14 +48,15 @@ import javax.swing.plaf.basic.BasicSliderUI;
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.label.WebLabelStyle;
 import org.ocsoft.flatlaf.utils.ColorUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.label.WebLabelStyle;
+import org.ocsoft.flatlaf.weblaf.slider.WebSliderStyle;
 
 /**
  * User: mgarin Date: 26.05.11 Time: 18:03

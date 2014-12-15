@@ -20,9 +20,9 @@ package org.ocsoft.flatlaf.extended.filechooser;
 import java.io.File;
 
 import org.ocsoft.flatlaf.extended.image.WebImage;
-import org.ocsoft.flatlaf.laf.text.WebTextField;
 import org.ocsoft.flatlaf.utils.file.FileUtils;
 import org.ocsoft.flatlaf.utils.swing.WebDefaultCellEditor;
+import org.ocsoft.flatlaf.weblaf.text.WebTextField;
 
 /**
  * File table cell editor.

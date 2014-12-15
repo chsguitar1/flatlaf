@@ -41,7 +41,6 @@ import javax.swing.plaf.basic.BasicPopupMenuUI;
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.style.StyleManager;
 import org.ocsoft.flatlaf.managers.style.skin.web.PopupStyle;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -51,6 +50,12 @@ import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.laf.Styleable;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.menu.AdaptivePopupMenuPainter;
+import org.ocsoft.flatlaf.weblaf.menu.PopupMenuPainter;
+import org.ocsoft.flatlaf.weblaf.menu.PopupMenuType;
+import org.ocsoft.flatlaf.weblaf.menu.PopupMenuWay;
+import org.ocsoft.flatlaf.weblaf.menu.WebPopupMenuStyle;
 
 /**
  * Custom UI for JPopupMenu component.

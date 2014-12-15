@@ -22,7 +22,7 @@ import java.awt.Rectangle;
 
 import javax.swing.JPanel;
 
-import org.ocsoft.flatlaf.laf.panel.PanelPainter;
+import org.ocsoft.flatlaf.weblaf.panel.PanelPainter;
 
 /**
  * Base 9-patch painter for JPanel component.

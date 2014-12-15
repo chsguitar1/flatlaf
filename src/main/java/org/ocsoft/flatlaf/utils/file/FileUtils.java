@@ -55,7 +55,6 @@ import javax.swing.text.JTextComponent;
 
 import org.ocsoft.flatlaf.core.constants.FlatLafFileFilters;
 import org.ocsoft.flatlaf.core.constants.FlatLafTimeoutConstants;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.proxy.ProxyManager;
 import org.ocsoft.flatlaf.utils.ImageUtils;
@@ -64,6 +63,7 @@ import org.ocsoft.flatlaf.utils.filefilter.CustomFileFilter;
 import org.ocsoft.flatlaf.utils.general.Filter;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * This class provides a set of utilities to work with files, file names and

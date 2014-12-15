@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.date;
 
 import java.util.Date;
 
-import org.ocsoft.flatlaf.laf.button.WebToggleButton;
+import org.ocsoft.flatlaf.weblaf.button.WebToggleButton;
 
 /**
  * This interface allows you to provide custom date buttons customizer into

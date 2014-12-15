@@ -27,9 +27,9 @@ import java.util.List;
 
 import javax.swing.table.TableColumn;
 
-import org.ocsoft.flatlaf.laf.table.WebTable;
 import org.ocsoft.flatlaf.utils.file.FileUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
+import org.ocsoft.flatlaf.weblaf.table.WebTable;
 
 /**
  * File table component. It can either display specified folder content or

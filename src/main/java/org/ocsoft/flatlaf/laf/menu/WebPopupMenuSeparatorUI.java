@@ -30,6 +30,7 @@ import javax.swing.plaf.basic.BasicPopupMenuSeparatorUI;
 
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
+import org.ocsoft.flatlaf.weblaf.menu.WebPopupMenuSeparatorStyle;
 
 /**
  * Custom UI for JPopupMenu.Separator component.

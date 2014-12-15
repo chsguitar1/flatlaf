@@ -19,8 +19,8 @@ package org.ocsoft.flatlaf.extended.label;
 
 import java.awt.event.KeyEvent;
 
-import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
 
 /**
  * This class provides a quick access to hotkey-styled label with additional

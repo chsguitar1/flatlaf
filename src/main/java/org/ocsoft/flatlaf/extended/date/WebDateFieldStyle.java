@@ -21,7 +21,7 @@ import java.awt.Color;
 import java.awt.Insets;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * WebDateField style class.

@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.utils.swing.menu;
 
-import org.ocsoft.flatlaf.laf.menu.WebMenu;
+import org.ocsoft.flatlaf.weblaf.menu.WebMenu;
 
 /**
  * Special generator that simplifies and shortens menu creation code.

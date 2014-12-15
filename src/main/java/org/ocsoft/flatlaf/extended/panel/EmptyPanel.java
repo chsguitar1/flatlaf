@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.panel;
 
 import java.awt.Dimension;
 
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * User: mgarin Date: 14.10.11 Time: 19:46

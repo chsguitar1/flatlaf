@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.button;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 04.01.13 Time: 17:09

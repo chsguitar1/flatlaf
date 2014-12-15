@@ -24,7 +24,7 @@ import javax.swing.plaf.ComponentUI;
  * User: mgarin Date: 06.07.11 Time: 11:33
  */
 
-public class WebToggleButtonUI extends WebButtonUI {
+public class WebToggleButtonUI extends FlatButtonUI {
     private final static String propertyPrefix = "ToggleButton" + ".";
     
     

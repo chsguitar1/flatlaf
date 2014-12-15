@@ -43,8 +43,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.colorchooser.WebColorChooser;
 import org.ocsoft.flatlaf.managers.settings.DefaultValue;
 import org.ocsoft.flatlaf.managers.settings.SettingsManager;
 import org.ocsoft.flatlaf.managers.settings.SettingsMethods;
@@ -56,6 +54,8 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.graphics.SizeUtils;
 import org.ocsoft.flatlaf.utils.swing.SizeMethods;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.colorchooser.WebColorChooser;
 
 /**
  * User: mgarin Date: 23.11.12 Time: 19:04

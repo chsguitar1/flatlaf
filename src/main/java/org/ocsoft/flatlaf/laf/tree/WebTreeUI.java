@@ -62,10 +62,10 @@ import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.ocsoft.flatlaf.ResourceLoader;
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.tree.WebCheckBoxTree;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.GeometryUtils;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -74,6 +74,12 @@ import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchUtils;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.tree.TreeSelectionStyle;
+import org.ocsoft.flatlaf.weblaf.tree.TreeUtils;
+import org.ocsoft.flatlaf.weblaf.tree.WebTreeCellEditor;
+import org.ocsoft.flatlaf.weblaf.tree.WebTreeCellRenderer;
+import org.ocsoft.flatlaf.weblaf.tree.WebTreeStyle;
 
 /**
  * Custom UI for JTree component.
@@ -85,10 +91,8 @@ public class WebTreeUI extends BasicTreeUI {
     /**
      * Expand and collapse control icons.
      */
-    public static ImageIcon EXPAND_ICON = new ImageIcon(
-            WebTreeUI.class.getResource("icons/expand.png"));
-    public static ImageIcon COLLAPSE_ICON = new ImageIcon(
-            WebTreeUI.class.getResource("icons/collapse.png"));
+    public static ImageIcon EXPAND_ICON = ResourceLoader.loadIcon("tree/expand.png");
+    public static ImageIcon COLLAPSE_ICON = ResourceLoader.loadIcon("tree/collapse.png");
     public static ImageIcon DISABLED_EXPAND_ICON = ImageUtils
             .createDisabledCopy(EXPAND_ICON);
     public static ImageIcon DISABLED_COLLAPSE_ICON = ImageUtils
@@ -97,14 +101,10 @@ public class WebTreeUI extends BasicTreeUI {
     /**
      * Default node icons.
      */
-    public static ImageIcon ROOT_ICON = new ImageIcon(
-            WebTreeUI.class.getResource("icons/root.png"));
-    public static ImageIcon CLOSED_ICON = new ImageIcon(
-            WebTreeUI.class.getResource("icons/closed.png"));
-    public static ImageIcon OPEN_ICON = new ImageIcon(
-            WebTreeUI.class.getResource("icons/open.png"));
-    public static ImageIcon LEAF_ICON = new ImageIcon(
-            WebTreeUI.class.getResource("icons/leaf.png"));
+    public static ImageIcon ROOT_ICON = ResourceLoader.loadIcon("tree/root.png");
+    public static ImageIcon CLOSED_ICON = ResourceLoader.loadIcon("tree/closed.png");
+    public static ImageIcon OPEN_ICON = ResourceLoader.loadIcon("tree/open.png");
+    public static ImageIcon LEAF_ICON = ResourceLoader.loadIcon("tree/leaf.png");
     
     /**
      * Default drop line gradient fractions.

@@ -45,12 +45,15 @@ import javax.swing.text.View;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.tabbedpane.TabStretchType;
+import org.ocsoft.flatlaf.weblaf.tabbedpane.TabbedPaneStyle;
+import org.ocsoft.flatlaf.weblaf.tabbedpane.WebTabbedPaneStyle;
 
 /**
  * User: mgarin Date: 27.04.11 Time: 18:39

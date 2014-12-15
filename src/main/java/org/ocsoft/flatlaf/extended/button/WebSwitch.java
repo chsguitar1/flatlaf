@@ -25,12 +25,12 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.label.WebLabel;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * This component that allows switching between two states.

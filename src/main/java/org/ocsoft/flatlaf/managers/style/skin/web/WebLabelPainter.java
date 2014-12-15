@@ -36,12 +36,12 @@ import javax.swing.text.View;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.label.LabelPainter;
-import org.ocsoft.flatlaf.laf.label.WebLabelStyle;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.label.LabelPainter;
+import org.ocsoft.flatlaf.weblaf.label.WebLabelStyle;
 
 /**
  * Web-style painter for JLabel component. It is used as WebLabelUI default

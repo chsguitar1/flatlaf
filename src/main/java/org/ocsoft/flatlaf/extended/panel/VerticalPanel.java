@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.panel;
 import java.awt.Component;
 
 import org.ocsoft.flatlaf.extended.layout.VerticalFlowLayout;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * User: mgarin Date: 28.09.12 Time: 16:31

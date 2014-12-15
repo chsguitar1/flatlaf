@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.popup;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 14.06.12 Time: 17:54

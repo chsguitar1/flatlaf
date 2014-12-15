@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.managers.style.skin.web;
 
 import javax.swing.JPanel;
 
-import org.ocsoft.flatlaf.laf.panel.PanelPainter;
+import org.ocsoft.flatlaf.weblaf.panel.PanelPainter;
 
 /**
  * Web-style painter for WebPopOver component. It is used as default WebPopOver

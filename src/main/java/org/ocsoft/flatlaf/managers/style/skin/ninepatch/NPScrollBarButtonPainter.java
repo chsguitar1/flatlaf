@@ -24,8 +24,8 @@ import javax.swing.AbstractButton;
 import javax.swing.JScrollBar;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
-import org.ocsoft.flatlaf.laf.scroll.ScrollBarButtonPainter;
-import org.ocsoft.flatlaf.laf.scroll.ScrollBarButtonType;
+import org.ocsoft.flatlaf.weblaf.scroll.ScrollBarButtonPainter;
+import org.ocsoft.flatlaf.weblaf.scroll.ScrollBarButtonType;
 
 /**
  * Base 9-patch painter for JScrollBar arrow buttons.

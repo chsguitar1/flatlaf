@@ -25,11 +25,11 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.glasspane.GlassPaneManager;
 import org.ocsoft.flatlaf.managers.glasspane.WebGlassPane;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * This manager provides easy-to-use effects (like "fade in" and "fade out"),

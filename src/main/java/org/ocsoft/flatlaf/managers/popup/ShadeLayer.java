@@ -31,9 +31,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.extended.layout.AlignLayout;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * This special popup layer is used to place modal-like popups atop of it. It

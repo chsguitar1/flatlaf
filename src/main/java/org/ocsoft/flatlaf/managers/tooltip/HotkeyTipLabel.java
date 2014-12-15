@@ -17,8 +17,8 @@
 
 package org.ocsoft.flatlaf.managers.tooltip;
 
-import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
 
 /**
  * Custom label used to display hotkey within WebCustomTooltip component.

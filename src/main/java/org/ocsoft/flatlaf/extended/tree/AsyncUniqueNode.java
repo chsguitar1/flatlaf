@@ -21,7 +21,7 @@ import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 
-import org.ocsoft.flatlaf.laf.tree.UniqueNode;
+import org.ocsoft.flatlaf.weblaf.tree.UniqueNode;
 
 /**
  * Custom UniqueNode for WebAsyncTree. In addition to UniqueNode it contains a

@@ -30,6 +30,8 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicColorChooserUI;
 
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
+import org.ocsoft.flatlaf.weblaf.colorchooser.ColorChooserListener;
+import org.ocsoft.flatlaf.weblaf.colorchooser.WebColorChooserPanel;
 
 /**
  * User: mgarin Date: 17.08.11 Time: 22:50

@@ -21,8 +21,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JTree;
 
 import org.ocsoft.flatlaf.extended.tree.WebAsyncTreeCellRenderer;
-import org.ocsoft.flatlaf.laf.tree.WebTreeElement;
 import org.ocsoft.flatlaf.laf.tree.WebTreeUI;
+import org.ocsoft.flatlaf.weblaf.tree.WebTreeElement;
 
 /**
  * Sample asynchronous tree cell renderer.

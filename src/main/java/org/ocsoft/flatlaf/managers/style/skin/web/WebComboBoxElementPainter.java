@@ -22,9 +22,9 @@ import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import org.ocsoft.flatlaf.laf.combobox.ComboBoxElementType;
-import org.ocsoft.flatlaf.laf.combobox.WebComboBoxElement;
-import org.ocsoft.flatlaf.laf.menu.WebMenuItemStyle;
+import org.ocsoft.flatlaf.weblaf.combobox.ComboBoxElementType;
+import org.ocsoft.flatlaf.weblaf.combobox.WebComboBoxElement;
+import org.ocsoft.flatlaf.weblaf.menu.WebMenuItemStyle;
 
 /**
  * Custom painter for default combobox elements renderer. It simply paints

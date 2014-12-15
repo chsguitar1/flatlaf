@@ -39,10 +39,10 @@ import javax.swing.JRootPane;
 import javax.swing.SwingUtilities;
 
 import org.ocsoft.flatlaf.extended.layout.MultiLayout;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.TextUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * This is a specified WebLaF glass pane that is used to display custom

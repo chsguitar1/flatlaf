@@ -28,12 +28,12 @@ import java.util.List;
 
 import javax.swing.ListCellRenderer;
 
-import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxStyle;
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxUI;
-import org.ocsoft.flatlaf.laf.list.WebList;
-import org.ocsoft.flatlaf.laf.list.editor.ListCellEditor;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
+import org.ocsoft.flatlaf.weblaf.checkbox.WebCheckBoxStyle;
+import org.ocsoft.flatlaf.weblaf.list.WebList;
+import org.ocsoft.flatlaf.weblaf.list.editor.ListCellEditor;
 
 /**
  * This component offers a checkbox list functionality. Each cell acts as a

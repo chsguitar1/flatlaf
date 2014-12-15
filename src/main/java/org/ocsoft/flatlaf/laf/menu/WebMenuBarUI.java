@@ -32,12 +32,14 @@ import javax.swing.plaf.basic.BasicMenuBarUI;
 
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.menu.MenuBarStyle;
+import org.ocsoft.flatlaf.weblaf.menu.WebMenuBarStyle;
 
 /**
  * User: mgarin Date: 15.08.11 Time: 20:24

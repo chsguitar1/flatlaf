@@ -31,18 +31,20 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicTableUI;
 
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
-import org.ocsoft.flatlaf.laf.table.editors.WebBooleanEditor;
-import org.ocsoft.flatlaf.laf.table.editors.WebDateEditor;
-import org.ocsoft.flatlaf.laf.table.editors.WebGenericEditor;
-import org.ocsoft.flatlaf.laf.table.editors.WebNumberEditor;
-import org.ocsoft.flatlaf.laf.table.renderers.WebBooleanRenderer;
-import org.ocsoft.flatlaf.laf.table.renderers.WebDateRenderer;
-import org.ocsoft.flatlaf.laf.table.renderers.WebDoubleRenderer;
-import org.ocsoft.flatlaf.laf.table.renderers.WebIconRenderer;
-import org.ocsoft.flatlaf.laf.table.renderers.WebNumberRenderer;
-import org.ocsoft.flatlaf.laf.table.renderers.WebTableCellRenderer;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
+import org.ocsoft.flatlaf.weblaf.table.WebTableCorner;
+import org.ocsoft.flatlaf.weblaf.table.WebTableStyle;
+import org.ocsoft.flatlaf.weblaf.table.editors.WebBooleanEditor;
+import org.ocsoft.flatlaf.weblaf.table.editors.WebDateEditor;
+import org.ocsoft.flatlaf.weblaf.table.editors.WebGenericEditor;
+import org.ocsoft.flatlaf.weblaf.table.editors.WebNumberEditor;
+import org.ocsoft.flatlaf.weblaf.table.renderers.WebBooleanRenderer;
+import org.ocsoft.flatlaf.weblaf.table.renderers.WebDateRenderer;
+import org.ocsoft.flatlaf.weblaf.table.renderers.WebDoubleRenderer;
+import org.ocsoft.flatlaf.weblaf.table.renderers.WebIconRenderer;
+import org.ocsoft.flatlaf.weblaf.table.renderers.WebNumberRenderer;
+import org.ocsoft.flatlaf.weblaf.table.renderers.WebTableCellRenderer;
 
 /**
  * Custom UI for JTable component.

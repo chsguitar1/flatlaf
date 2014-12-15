@@ -21,7 +21,7 @@ import java.util.List;
 
 import javax.swing.SwingUtilities;
 
-import org.ocsoft.flatlaf.laf.tree.UniqueNode;
+import org.ocsoft.flatlaf.weblaf.tree.UniqueNode;
 
 /**
  * Custom TransferHandler for WebAsyncTree that provides a quick and convenient

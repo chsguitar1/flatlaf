@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.painter;
 
 import java.awt.Color;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * AlphaLayerPainter style class.

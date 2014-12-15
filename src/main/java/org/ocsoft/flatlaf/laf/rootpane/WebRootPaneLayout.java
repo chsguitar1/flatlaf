@@ -29,10 +29,10 @@ import javax.swing.JRootPane;
 
 import org.ocsoft.flatlaf.extended.layout.AbstractLayoutManager;
 import org.ocsoft.flatlaf.extended.panel.WebButtonGroup;
-import org.ocsoft.flatlaf.laf.button.WebButtonStyle;
 import org.ocsoft.flatlaf.utils.MathUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
+import org.ocsoft.flatlaf.weblaf.button.WebButtonStyle;
 
 /**
  * Special layout for decorated root pane.

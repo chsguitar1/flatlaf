@@ -39,8 +39,8 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.SwingUtilities;
 
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.utils.LafUtils;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * User: mgarin Date: 23.12.11 Time: 17:28

@@ -22,8 +22,8 @@ import java.io.File;
 
 import javax.swing.JTable;
 
-import org.ocsoft.flatlaf.laf.table.renderers.WebTableCellRenderer;
 import org.ocsoft.flatlaf.utils.file.FileUtils;
+import org.ocsoft.flatlaf.weblaf.table.renderers.WebTableCellRenderer;
 
 /**
  * File table cell renderer.

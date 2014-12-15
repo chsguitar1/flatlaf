@@ -34,15 +34,15 @@ import org.ocsoft.flatlaf.extended.image.WebImage;
 import org.ocsoft.flatlaf.extended.layout.HorizontalFlowLayout;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.panel.AlignPanel;
-import org.ocsoft.flatlaf.laf.button.WebButton;
-import org.ocsoft.flatlaf.laf.label.WebLabel;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.managers.popup.PopupAdapter;
 import org.ocsoft.flatlaf.managers.popup.PopupStyle;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.swing.WebHeavyWeightPopup;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
+import org.ocsoft.flatlaf.weblaf.button.WebButton;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * Custom popup used to display notifications in separate windows.

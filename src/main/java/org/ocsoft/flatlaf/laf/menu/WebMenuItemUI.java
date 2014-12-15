@@ -51,6 +51,9 @@ import org.ocsoft.flatlaf.utils.MathUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
+import org.ocsoft.flatlaf.weblaf.menu.MenuItemChangeListener;
+import org.ocsoft.flatlaf.weblaf.menu.MenuUtils;
+import org.ocsoft.flatlaf.weblaf.menu.WebMenuItemStyle;
 
 /**
  * Custom UI for JMenuItem component.

@@ -25,7 +25,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeCellRenderer;
 
 import org.ocsoft.flatlaf.extended.checkbox.WebTristateCheckBox;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * Custom default cell renderer for WebCheckBoxTree.

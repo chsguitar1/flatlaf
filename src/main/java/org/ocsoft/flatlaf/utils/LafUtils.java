@@ -65,11 +65,7 @@ import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.AdaptivePainter;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.TexturePainter;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.label.WebLabel;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.scroll.WebScrollBarUI;
-import org.ocsoft.flatlaf.laf.text.WebTextField;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.laf.FocusType;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
@@ -81,6 +77,10 @@ import org.ocsoft.flatlaf.utils.swing.BorderMethods;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import org.ocsoft.flatlaf.utils.xml.ResourceFile;
 import org.ocsoft.flatlaf.utils.xml.XmlUtils;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.text.WebTextField;
 
 /**
  * This class provides a set of utilities for core WebLaF components. Created

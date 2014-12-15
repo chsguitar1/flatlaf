@@ -39,13 +39,13 @@ import javax.swing.AbstractButton;
 import javax.swing.event.AncestorEvent;
 
 import org.ocsoft.flatlaf.extended.layout.TableLayout;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.button.WebButton;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.managers.style.skin.web.WebPanelPainter;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.button.WebButton;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * User: mgarin Date: 26.03.12 Time: 17:32

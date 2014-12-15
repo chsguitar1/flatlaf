@@ -38,8 +38,8 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.tree.TreeCellEditor;
 
 import org.ocsoft.flatlaf.laf.combobox.WebComboBoxUI;
-import org.ocsoft.flatlaf.laf.table.WebTableStyle;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
+import org.ocsoft.flatlaf.weblaf.table.WebTableStyle;
 
 /**
  * @author Mikle Garin

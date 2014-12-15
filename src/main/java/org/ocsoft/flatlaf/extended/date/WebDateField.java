@@ -46,10 +46,6 @@ import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.button.WebButton;
-import org.ocsoft.flatlaf.laf.rootpane.WebWindow;
-import org.ocsoft.flatlaf.laf.text.WebFormattedTextField;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.managers.settings.SettingsMethods;
 import org.ocsoft.flatlaf.utils.CompareUtils;
@@ -59,6 +55,10 @@ import org.ocsoft.flatlaf.utils.graphics.SizeUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.swing.Customizer;
 import org.ocsoft.flatlaf.utils.swing.SizeMethods;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.button.WebButton;
+import org.ocsoft.flatlaf.weblaf.rootpane.WebWindow;
+import org.ocsoft.flatlaf.weblaf.text.WebFormattedTextField;
 
 /**
  * This is a custom component that allows date selection.

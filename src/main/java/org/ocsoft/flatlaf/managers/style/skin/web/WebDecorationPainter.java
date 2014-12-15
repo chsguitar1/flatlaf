@@ -31,7 +31,6 @@ import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.extended.painter.PartialDecoration;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.focus.FocusTracker;
@@ -42,6 +41,7 @@ import org.ocsoft.flatlaf.utils.laf.PainterShapeProvider;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchUtils;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * Web-style background painter for any component. Commonly used as a base class

@@ -26,6 +26,8 @@ import javax.swing.JComponent;
 import javax.swing.JMenuItem;
 import javax.swing.plaf.ComponentUI;
 
+import org.ocsoft.flatlaf.weblaf.menu.WebMenuItemStyle;
+
 /**
  * Custom UI for JCheckBoxMenuItem component.
  *

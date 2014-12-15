@@ -40,6 +40,9 @@ import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.file.FileUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
+import org.ocsoft.flatlaf.weblaf.filechooser.FileApproveText;
+import org.ocsoft.flatlaf.weblaf.filechooser.FileChooserType;
+import org.ocsoft.flatlaf.weblaf.filechooser.WebFileChooserPanel;
 
 /**
  * Custom UI for JFileChooser component.

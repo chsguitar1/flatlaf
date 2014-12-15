@@ -37,7 +37,6 @@ import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.utils.SwingUtils;
@@ -49,6 +48,7 @@ import org.ocsoft.flatlaf.utils.swing.EmptyMouseAdapter;
 import org.ocsoft.flatlaf.utils.swing.FadeStateType;
 import org.ocsoft.flatlaf.utils.swing.PopupListener;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * This is base popup class which offers basic popups functionality and contains

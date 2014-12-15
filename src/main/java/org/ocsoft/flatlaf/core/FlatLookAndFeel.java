@@ -50,18 +50,7 @@ import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.colorchooser.GradientColorData;
 import org.ocsoft.flatlaf.extended.colorchooser.GradientData;
 import org.ocsoft.flatlaf.extended.tab.DocumentPaneState;
-import org.ocsoft.flatlaf.laf.AltProcessor;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.WebLayoutStyle;
-import org.ocsoft.flatlaf.laf.colorchooser.HSBColor;
-import org.ocsoft.flatlaf.laf.list.WebListCellRenderer;
-import org.ocsoft.flatlaf.laf.list.WebListStyle;
-import org.ocsoft.flatlaf.laf.scroll.WebScrollBarStyle;
-import org.ocsoft.flatlaf.laf.table.WebTableStyle;
-import org.ocsoft.flatlaf.laf.tree.NodeState;
-import org.ocsoft.flatlaf.laf.tree.TreeState;
 import org.ocsoft.flatlaf.laf.tree.WebTreeUI;
-import org.ocsoft.flatlaf.laf.viewport.WebViewportStyle;
 import org.ocsoft.flatlaf.managers.drag.DragManager;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
@@ -79,6 +68,17 @@ import org.ocsoft.flatlaf.utils.swing.SwingLazyValue;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
 import org.ocsoft.flatlaf.utils.xml.XmlUtils;
+import org.ocsoft.flatlaf.weblaf.AltProcessor;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.WebLayoutStyle;
+import org.ocsoft.flatlaf.weblaf.colorchooser.HSBColor;
+import org.ocsoft.flatlaf.weblaf.list.WebListCellRenderer;
+import org.ocsoft.flatlaf.weblaf.list.WebListStyle;
+import org.ocsoft.flatlaf.weblaf.scroll.WebScrollBarStyle;
+import org.ocsoft.flatlaf.weblaf.table.WebTableStyle;
+import org.ocsoft.flatlaf.weblaf.tree.NodeState;
+import org.ocsoft.flatlaf.weblaf.tree.TreeState;
+import org.ocsoft.flatlaf.weblaf.viewport.WebViewportStyle;
 
 /**
  * This core class contains methods to install, configure and uninstall

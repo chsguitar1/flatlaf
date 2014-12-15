@@ -51,8 +51,6 @@ import javax.swing.tree.TreeCellRenderer;
 
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.checkbox.CheckState;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.list.WebListElement;
 import org.ocsoft.flatlaf.utils.ColorUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
@@ -60,6 +58,11 @@ import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.checkbox.CheckIcon;
+import org.ocsoft.flatlaf.weblaf.checkbox.SimpleCheckIcon;
+import org.ocsoft.flatlaf.weblaf.checkbox.WebCheckBoxStyle;
+import org.ocsoft.flatlaf.weblaf.list.WebListElement;
 
 /**
  * Custom UI for JCheckBox component.

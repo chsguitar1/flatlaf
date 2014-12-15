@@ -32,15 +32,15 @@ import org.ocsoft.flatlaf.extended.image.WebImage;
 import org.ocsoft.flatlaf.extended.layout.HorizontalFlowLayout;
 import org.ocsoft.flatlaf.extended.layout.TableLayout;
 import org.ocsoft.flatlaf.extended.panel.CenterPanel;
-import org.ocsoft.flatlaf.laf.button.WebButton;
-import org.ocsoft.flatlaf.laf.label.WebLabel;
-import org.ocsoft.flatlaf.laf.optionpane.WebOptionPane;
 import org.ocsoft.flatlaf.laf.optionpane.WebOptionPaneUI;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.laf.rootpane.WebDialog;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+import org.ocsoft.flatlaf.weblaf.button.WebButton;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
+import org.ocsoft.flatlaf.weblaf.optionpane.WebOptionPane;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.rootpane.WebDialog;
 
 /**
  * User: mgarin Date: 17.05.12 Time: 13:02

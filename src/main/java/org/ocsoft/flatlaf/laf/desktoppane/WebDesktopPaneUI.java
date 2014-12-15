@@ -23,9 +23,9 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicDesktopPaneUI;
 
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 17.08.11 Time: 23:14

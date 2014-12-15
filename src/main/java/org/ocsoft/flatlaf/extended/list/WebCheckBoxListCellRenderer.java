@@ -25,9 +25,9 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.plaf.ListUI;
 
-import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxStyle;
-import org.ocsoft.flatlaf.laf.list.WebListStyle;
 import org.ocsoft.flatlaf.laf.list.WebListUI;
+import org.ocsoft.flatlaf.weblaf.checkbox.WebCheckBoxStyle;
+import org.ocsoft.flatlaf.weblaf.list.WebListStyle;
 
 /**
  * Custom default checkbox list cell renderer for WebLookAndFeel.

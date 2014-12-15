@@ -55,16 +55,6 @@ import javax.swing.filechooser.FileSystemView;
 import org.ocsoft.flatlaf.core.constants.FlatLafFileFilters;
 import org.ocsoft.flatlaf.extended.drag.FileDragAndDropHandler;
 import org.ocsoft.flatlaf.extended.layout.HorizontalFlowLayout;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.button.WebButton;
-import org.ocsoft.flatlaf.laf.button.WebToggleButton;
-import org.ocsoft.flatlaf.laf.list.WebList;
-import org.ocsoft.flatlaf.laf.list.WebListCellRenderer;
-import org.ocsoft.flatlaf.laf.menu.WebMenuItem;
-import org.ocsoft.flatlaf.laf.menu.WebPopupMenu;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.laf.scroll.WebScrollPane;
-import org.ocsoft.flatlaf.laf.text.WebTextField;
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
@@ -75,6 +65,16 @@ import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.file.FileUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.button.WebButton;
+import org.ocsoft.flatlaf.weblaf.button.WebToggleButton;
+import org.ocsoft.flatlaf.weblaf.list.WebList;
+import org.ocsoft.flatlaf.weblaf.list.WebListCellRenderer;
+import org.ocsoft.flatlaf.weblaf.menu.WebMenuItem;
+import org.ocsoft.flatlaf.weblaf.menu.WebPopupMenu;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.scroll.WebScrollPane;
+import org.ocsoft.flatlaf.weblaf.text.WebTextField;
 
 /**
  * User: mgarin Date: 05.07.11 Time: 18:20

@@ -20,9 +20,9 @@ package org.ocsoft.flatlaf.extended.tree;
 import java.io.File;
 
 import org.ocsoft.flatlaf.extended.image.WebImage;
-import org.ocsoft.flatlaf.laf.text.WebTextField;
-import org.ocsoft.flatlaf.laf.tree.WebTreeCellEditor;
 import org.ocsoft.flatlaf.utils.file.FileUtils;
+import org.ocsoft.flatlaf.weblaf.text.WebTextField;
+import org.ocsoft.flatlaf.weblaf.tree.WebTreeCellEditor;
 
 /**
  * Custom cell editor for WebFileTree.

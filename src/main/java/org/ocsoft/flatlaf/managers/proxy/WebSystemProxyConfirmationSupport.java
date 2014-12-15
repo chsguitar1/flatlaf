@@ -18,10 +18,10 @@
 package org.ocsoft.flatlaf.managers.proxy;
 
 import org.ocsoft.flatlaf.extended.optionpane.WebExtendedOptionPane;
-import org.ocsoft.flatlaf.laf.checkbox.WebCheckBox;
-import org.ocsoft.flatlaf.laf.optionpane.WebOptionPane;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.weblaf.checkbox.WebCheckBox;
+import org.ocsoft.flatlaf.weblaf.optionpane.WebOptionPane;
 
 /**
  * Default WebLaF system proxy detection confirm dialog support.

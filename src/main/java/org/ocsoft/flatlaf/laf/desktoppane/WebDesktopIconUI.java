@@ -27,6 +27,7 @@ import javax.swing.plaf.basic.BasicDesktopIconUI;
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.weblaf.desktoppane.WebInternalFrameIconPane;
 
 /**
  * User: mgarin Date: 17.08.11 Time: 23:14

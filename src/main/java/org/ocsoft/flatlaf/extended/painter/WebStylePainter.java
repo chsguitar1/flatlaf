@@ -23,8 +23,8 @@ import java.awt.Rectangle;
 
 import javax.swing.JComponent;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.LafUtils;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * Custom web-style painter for basic elements like panels, buttons e.t.c.

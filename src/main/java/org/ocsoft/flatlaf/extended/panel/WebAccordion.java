@@ -27,14 +27,14 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.extended.layout.AccordionLayout;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.laf.panel.WebPanelStyle;
 import org.ocsoft.flatlaf.managers.settings.DefaultValue;
 import org.ocsoft.flatlaf.managers.settings.SettingsManager;
 import org.ocsoft.flatlaf.managers.settings.SettingsMethods;
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanelStyle;
 
 /**
  * Accordion groups separate collapsible panes into a single component. It also

@@ -25,11 +25,11 @@ import java.io.File;
 
 import javax.swing.JList;
 
-import org.ocsoft.flatlaf.laf.list.WebListStyle;
-import org.ocsoft.flatlaf.laf.list.editor.AbstractListCellEditor;
-import org.ocsoft.flatlaf.laf.text.WebTextField;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.utils.file.FileUtils;
+import org.ocsoft.flatlaf.weblaf.list.WebListStyle;
+import org.ocsoft.flatlaf.weblaf.list.editor.AbstractListCellEditor;
+import org.ocsoft.flatlaf.weblaf.text.WebTextField;
 
 /**
  * Custom list cell editor used in WebFileList component.

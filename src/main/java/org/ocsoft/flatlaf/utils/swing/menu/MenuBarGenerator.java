@@ -19,11 +19,11 @@ package org.ocsoft.flatlaf.utils.swing.menu;
 
 import java.awt.event.ActionListener;
 
-import org.ocsoft.flatlaf.laf.menu.WebCheckBoxMenuItem;
-import org.ocsoft.flatlaf.laf.menu.WebMenuBar;
-import org.ocsoft.flatlaf.laf.menu.WebMenuItem;
-import org.ocsoft.flatlaf.laf.menu.WebRadioButtonMenuItem;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
+import org.ocsoft.flatlaf.weblaf.menu.WebCheckBoxMenuItem;
+import org.ocsoft.flatlaf.weblaf.menu.WebMenuBar;
+import org.ocsoft.flatlaf.weblaf.menu.WebMenuItem;
+import org.ocsoft.flatlaf.weblaf.menu.WebRadioButtonMenuItem;
 
 /**
  * Special generator that simplifies and shortens menu bar creation code.

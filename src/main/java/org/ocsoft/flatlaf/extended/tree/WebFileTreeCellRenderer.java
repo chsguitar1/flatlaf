@@ -22,8 +22,8 @@ import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JTree;
 
-import org.ocsoft.flatlaf.laf.tree.WebTreeElement;
 import org.ocsoft.flatlaf.utils.file.FileUtils;
+import org.ocsoft.flatlaf.weblaf.tree.WebTreeElement;
 
 /**
  * File tree cell renderer.

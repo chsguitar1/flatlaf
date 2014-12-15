@@ -21,7 +21,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 
 import org.ocsoft.flatlaf.extended.layout.TableLayout;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * User: mgarin Date: 01.07.11 Time: 13:24

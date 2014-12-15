@@ -49,7 +49,6 @@ import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 
 import org.ocsoft.flatlaf.core.defaults.FlatLafFontDefaults;
-import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.utils.SwingUtils;
@@ -60,6 +59,7 @@ import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
 import org.ocsoft.flatlaf.utils.swing.FadeStateType;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
 
 /**
  * @author Mikle Garin

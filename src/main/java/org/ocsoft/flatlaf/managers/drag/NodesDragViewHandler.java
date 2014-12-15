@@ -36,11 +36,11 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.ocsoft.flatlaf.extended.tree.WebAsyncTree;
 import org.ocsoft.flatlaf.extended.tree.WebExTree;
-import org.ocsoft.flatlaf.laf.tree.UniqueNode;
-import org.ocsoft.flatlaf.laf.tree.WebTree;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.weblaf.tree.UniqueNode;
+import org.ocsoft.flatlaf.weblaf.tree.WebTree;
 
 /**
  * @author Mikle Garin

@@ -17,8 +17,8 @@
 
 package org.ocsoft.flatlaf.managers.language.updaters;
 
-import org.ocsoft.flatlaf.laf.text.WebFormattedTextField;
 import org.ocsoft.flatlaf.managers.language.data.Value;
+import org.ocsoft.flatlaf.weblaf.text.WebFormattedTextField;
 
 /**
  * This class provides language default updates for WebFormattedTextField

@@ -29,10 +29,10 @@ import javax.swing.Popup;
 import javax.swing.PopupFactory;
 import javax.swing.UIDefaults;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * This utility class operates only with proprietary API calls. Their usage is

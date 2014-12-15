@@ -49,8 +49,6 @@ import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.rootpane.WebDialog;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.ProprietaryUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
@@ -58,6 +56,11 @@ import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.rootpane.WebDialog;
+import org.ocsoft.flatlaf.weblaf.toolbar.ToolbarStyle;
+import org.ocsoft.flatlaf.weblaf.toolbar.WebToolBar;
+import org.ocsoft.flatlaf.weblaf.toolbar.WebToolBarStyle;
 
 /**
  * User: mgarin Date: 17.08.11 Time: 23:06

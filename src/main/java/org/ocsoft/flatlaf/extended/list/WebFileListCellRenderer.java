@@ -37,12 +37,12 @@ import javax.swing.JList;
 
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.layout.AbstractLayoutManager;
-import org.ocsoft.flatlaf.laf.label.WebLabel;
-import org.ocsoft.flatlaf.laf.list.WebListCellRenderer;
 import org.ocsoft.flatlaf.utils.DaemonThreadFactory;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.file.FileDescription;
 import org.ocsoft.flatlaf.utils.file.FileUtils;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
+import org.ocsoft.flatlaf.weblaf.list.WebListCellRenderer;
 
 /**
  * Custom list cell renderer for WebFileList component. This renderer is also

@@ -28,11 +28,11 @@ import javax.swing.tree.TreePath;
 import org.ocsoft.flatlaf.extended.tree.sample.SampleExDataProvider;
 import org.ocsoft.flatlaf.extended.tree.sample.SampleTreeCellEditor;
 import org.ocsoft.flatlaf.extended.tree.sample.SampleTreeCellRenderer;
-import org.ocsoft.flatlaf.laf.tree.UniqueNode;
-import org.ocsoft.flatlaf.laf.tree.WebTreeCellEditor;
-import org.ocsoft.flatlaf.laf.tree.WebTreeCellRenderer;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.general.Filter;
+import org.ocsoft.flatlaf.weblaf.tree.UniqueNode;
+import org.ocsoft.flatlaf.weblaf.tree.WebTreeCellEditor;
+import org.ocsoft.flatlaf.weblaf.tree.WebTreeCellRenderer;
 
 /**
  * This tree is a hybrid of WebCheckBoxTree and WebExTree. Checking model from

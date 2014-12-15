@@ -27,8 +27,8 @@ import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.extended.layout.OverlayData;
 import org.ocsoft.flatlaf.extended.layout.OverlayLayout;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * User: mgarin Date: 05.06.12 Time: 19:53

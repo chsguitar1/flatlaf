@@ -22,9 +22,9 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.style.skin.web.WebLabelPainter;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * Custom painter for HotkeyTipLabel component.

@@ -32,11 +32,11 @@ import javax.swing.JTree;
 import javax.swing.TransferHandler;
 import javax.swing.tree.TreePath;
 
-import org.ocsoft.flatlaf.laf.tree.TreeUtils;
-import org.ocsoft.flatlaf.laf.tree.UniqueNode;
-import org.ocsoft.flatlaf.laf.tree.WebTree;
-import org.ocsoft.flatlaf.laf.tree.WebTreeModel;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
+import org.ocsoft.flatlaf.weblaf.tree.TreeUtils;
+import org.ocsoft.flatlaf.weblaf.tree.UniqueNode;
+import org.ocsoft.flatlaf.weblaf.tree.WebTree;
+import org.ocsoft.flatlaf.weblaf.tree.WebTreeModel;
 
 /**
  * @author Mikle Garin

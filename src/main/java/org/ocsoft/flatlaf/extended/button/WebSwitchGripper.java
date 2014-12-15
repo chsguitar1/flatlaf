@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.button;
 
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * User: mgarin Date: 02.11.12 Time: 14:37

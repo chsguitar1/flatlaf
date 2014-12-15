@@ -20,9 +20,9 @@ package org.ocsoft.flatlaf.extended.label;
 import javax.swing.Icon;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
-import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
 
 /**
  * This WebLabel extension class allows you to display text vertically and

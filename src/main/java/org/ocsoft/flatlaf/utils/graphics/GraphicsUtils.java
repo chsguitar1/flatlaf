@@ -32,8 +32,8 @@ import java.awt.geom.Area;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.laf.ShadeType;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * This class provides a set of utilities to work with Graphics2D.

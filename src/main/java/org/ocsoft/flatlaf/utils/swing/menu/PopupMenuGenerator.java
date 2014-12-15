@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.utils.swing.menu;
 
-import org.ocsoft.flatlaf.laf.menu.WebPopupMenu;
+import org.ocsoft.flatlaf.weblaf.menu.WebPopupMenu;
 
 /**
  * Special generator that simplifies and shortens popup menu creation code.

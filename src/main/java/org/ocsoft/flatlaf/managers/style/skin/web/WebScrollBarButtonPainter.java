@@ -32,12 +32,12 @@ import javax.swing.SwingConstants;
 import javax.swing.plaf.ButtonUI;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
-import org.ocsoft.flatlaf.laf.button.WebButtonUI;
-import org.ocsoft.flatlaf.laf.scroll.ScrollBarButtonPainter;
-import org.ocsoft.flatlaf.laf.scroll.ScrollBarButtonType;
-import org.ocsoft.flatlaf.laf.scroll.WebScrollBarStyle;
+import org.ocsoft.flatlaf.laf.button.FlatButtonUI;
 import org.ocsoft.flatlaf.utils.graphics.ShapeCache;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
+import org.ocsoft.flatlaf.weblaf.scroll.ScrollBarButtonPainter;
+import org.ocsoft.flatlaf.weblaf.scroll.ScrollBarButtonType;
+import org.ocsoft.flatlaf.weblaf.scroll.WebScrollBarStyle;
 
 /**
  * Base painter for JScrollBar arrow buttons.
@@ -306,7 +306,7 @@ public class WebScrollBarButtonPainter<E extends AbstractButton> extends
         final ButtonUI ui = button.getUI();
         final boolean enabled = button.isEnabled();
         final boolean pressed = model.isPressed() || model.isSelected();
-        final boolean rollover = ui instanceof WebButtonUI ? ((WebButtonUI) ui)
+        final boolean rollover = ui instanceof FlatButtonUI ? ((FlatButtonUI) ui)
                 .isRollover() : model.isRollover();
         
         // Retrieving button shape

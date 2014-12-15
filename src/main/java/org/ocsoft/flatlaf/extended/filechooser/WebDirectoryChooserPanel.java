@@ -34,12 +34,6 @@ import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
 import org.ocsoft.flatlaf.extended.tree.FileTreeNode;
 import org.ocsoft.flatlaf.extended.tree.FileTreeRootType;
 import org.ocsoft.flatlaf.extended.tree.WebFileTree;
-import org.ocsoft.flatlaf.laf.button.WebButton;
-import org.ocsoft.flatlaf.laf.optionpane.WebOptionPane;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.laf.scroll.WebScrollPane;
-import org.ocsoft.flatlaf.laf.toolbar.ToolbarStyle;
-import org.ocsoft.flatlaf.laf.toolbar.WebToolBar;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
@@ -47,6 +41,12 @@ import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.file.FileUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
+import org.ocsoft.flatlaf.weblaf.button.WebButton;
+import org.ocsoft.flatlaf.weblaf.optionpane.WebOptionPane;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.scroll.WebScrollPane;
+import org.ocsoft.flatlaf.weblaf.toolbar.ToolbarStyle;
+import org.ocsoft.flatlaf.weblaf.toolbar.WebToolBar;
 
 /**
  * This custom component provides a directory chooser functionality. It similar

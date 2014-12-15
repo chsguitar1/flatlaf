@@ -38,10 +38,11 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.table.renderers.WebTableHeaderCellRenderer;
 import org.ocsoft.flatlaf.utils.CompareUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.table.WebTableStyle;
+import org.ocsoft.flatlaf.weblaf.table.renderers.WebTableHeaderCellRenderer;
 
 /**
  * User: mgarin Date: 17.08.11 Time: 23:08

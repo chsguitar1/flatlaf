@@ -4,9 +4,9 @@ import java.awt.Font;
 
 import javax.swing.UIDefaults;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.ColorUtils;
 import org.ocsoft.flatlaf.utils.swing.SwingLazyValue;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 public class FlatLafInitializer {
     

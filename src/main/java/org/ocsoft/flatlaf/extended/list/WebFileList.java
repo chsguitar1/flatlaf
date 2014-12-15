@@ -29,10 +29,10 @@ import javax.swing.JList;
 import javax.swing.JScrollBar;
 import javax.swing.ListCellRenderer;
 
-import org.ocsoft.flatlaf.laf.list.WebList;
-import org.ocsoft.flatlaf.laf.list.editor.ListCellEditor;
-import org.ocsoft.flatlaf.laf.scroll.WebScrollPane;
 import org.ocsoft.flatlaf.utils.file.FileUtils;
+import org.ocsoft.flatlaf.weblaf.list.WebList;
+import org.ocsoft.flatlaf.weblaf.list.editor.ListCellEditor;
+import org.ocsoft.flatlaf.weblaf.scroll.WebScrollPane;
 
 /**
  * Special list component that simplifies files rendering.

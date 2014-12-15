@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.button;
 
 import javax.swing.ImageIcon;
 
-import org.ocsoft.flatlaf.laf.menu.PopupMenuWay;
+import org.ocsoft.flatlaf.weblaf.menu.PopupMenuWay;
 
 /**
  * WebSplitButton style class.

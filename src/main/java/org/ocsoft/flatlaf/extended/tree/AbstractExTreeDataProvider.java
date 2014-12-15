@@ -19,8 +19,8 @@ package org.ocsoft.flatlaf.extended.tree;
 
 import java.util.Comparator;
 
-import org.ocsoft.flatlaf.laf.tree.UniqueNode;
 import org.ocsoft.flatlaf.utils.general.Filter;
+import org.ocsoft.flatlaf.weblaf.tree.UniqueNode;
 
 /**
  * Abstract data provider with implemented comparator and filter getters and

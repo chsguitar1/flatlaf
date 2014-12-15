@@ -103,7 +103,6 @@ import org.ocsoft.flatlaf.extended.date.WebDateField;
 import org.ocsoft.flatlaf.extended.filechooser.WebFileChooserField;
 import org.ocsoft.flatlaf.extended.filechooser.WebPathField;
 import org.ocsoft.flatlaf.extended.panel.WebCollapsiblePane;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.rootpane.WebRootPaneUI;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyRunnable;
@@ -113,6 +112,7 @@ import org.ocsoft.flatlaf.utils.swing.EventPump;
 import org.ocsoft.flatlaf.utils.swing.SizeMethods;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * This class provides a set of utilities to work with Swing components, their

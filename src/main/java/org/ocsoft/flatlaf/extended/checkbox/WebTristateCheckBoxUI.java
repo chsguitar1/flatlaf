@@ -20,8 +20,8 @@ package org.ocsoft.flatlaf.extended.checkbox;
 import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
-import org.ocsoft.flatlaf.laf.checkbox.CheckIcon;
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxUI;
+import org.ocsoft.flatlaf.weblaf.checkbox.CheckIcon;
 
 /**
  * Custom UI for WebTristateCheckBox component.

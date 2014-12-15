@@ -34,6 +34,8 @@ import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
+import org.ocsoft.flatlaf.weblaf.separator.WebSeparator;
+import org.ocsoft.flatlaf.weblaf.separator.WebSeparatorStyle;
 
 /**
  * Custom UI for JSeparator component.

@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.panel;
 
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * @author Mikle Garin

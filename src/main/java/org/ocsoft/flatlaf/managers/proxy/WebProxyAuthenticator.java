@@ -28,18 +28,18 @@ import javax.swing.event.AncestorEvent;
 import org.ocsoft.flatlaf.extended.layout.TableLayout;
 import org.ocsoft.flatlaf.extended.optionpane.WebExtendedOptionPane;
 import org.ocsoft.flatlaf.extended.panel.GroupPanel;
-import org.ocsoft.flatlaf.laf.checkbox.WebCheckBox;
-import org.ocsoft.flatlaf.laf.label.WebLabel;
-import org.ocsoft.flatlaf.laf.optionpane.WebOptionPane;
-import org.ocsoft.flatlaf.laf.separator.WebSeparator;
-import org.ocsoft.flatlaf.laf.text.WebPasswordField;
-import org.ocsoft.flatlaf.laf.text.WebTextField;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyRunnable;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
+import org.ocsoft.flatlaf.weblaf.checkbox.WebCheckBox;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
+import org.ocsoft.flatlaf.weblaf.optionpane.WebOptionPane;
+import org.ocsoft.flatlaf.weblaf.separator.WebSeparator;
+import org.ocsoft.flatlaf.weblaf.text.WebPasswordField;
+import org.ocsoft.flatlaf.weblaf.text.WebTextField;
 
 /**
  * This custom proxy authenticator provides an authentication dialog with proxy

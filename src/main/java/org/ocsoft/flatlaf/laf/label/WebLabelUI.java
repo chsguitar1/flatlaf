@@ -38,6 +38,9 @@ import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.laf.Styleable;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
+import org.ocsoft.flatlaf.weblaf.label.AdaptiveLabelPainter;
+import org.ocsoft.flatlaf.weblaf.label.LabelPainter;
+import org.ocsoft.flatlaf.weblaf.label.WebLabelStyle;
 
 /**
  * Custom UI for JLabel component.

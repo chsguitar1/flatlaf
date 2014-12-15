@@ -23,9 +23,9 @@ import java.util.WeakHashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JTree;
 
-import org.ocsoft.flatlaf.laf.tree.WebTreeCellRenderer;
-import org.ocsoft.flatlaf.laf.tree.WebTreeElement;
 import org.ocsoft.flatlaf.utils.ImageUtils;
+import org.ocsoft.flatlaf.weblaf.tree.WebTreeCellRenderer;
+import org.ocsoft.flatlaf.weblaf.tree.WebTreeElement;
 
 /**
  * Custom default tree cell renderer for WebAsyncTree.

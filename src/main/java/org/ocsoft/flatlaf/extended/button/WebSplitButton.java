@@ -30,12 +30,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JPopupMenu;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
-import org.ocsoft.flatlaf.laf.button.WebButton;
-import org.ocsoft.flatlaf.laf.menu.PopupMenuWay;
 import org.ocsoft.flatlaf.laf.menu.WebPopupMenuUI;
 import org.ocsoft.flatlaf.managers.style.SupportedComponent;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
+import org.ocsoft.flatlaf.weblaf.button.WebButton;
+import org.ocsoft.flatlaf.weblaf.menu.PopupMenuWay;
 
 /**
  * Custom button that displays an additional side (split side) that could call a

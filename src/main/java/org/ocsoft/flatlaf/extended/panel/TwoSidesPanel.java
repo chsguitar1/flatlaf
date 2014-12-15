@@ -22,7 +22,7 @@ import java.awt.Component;
 
 import javax.swing.SwingConstants;
 
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * User: mgarin Date: 24.02.12 Time: 16:18

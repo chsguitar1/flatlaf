@@ -42,6 +42,9 @@ import org.ocsoft.flatlaf.utils.laf.PainterShapeProvider;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.laf.Styleable;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
+import org.ocsoft.flatlaf.weblaf.panel.AdaptivePanelPainter;
+import org.ocsoft.flatlaf.weblaf.panel.PanelPainter;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanelStyle;
 
 /**
  * Custom UI for JPanel component.

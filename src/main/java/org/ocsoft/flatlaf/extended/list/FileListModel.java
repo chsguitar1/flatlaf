@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.ocsoft.flatlaf.laf.list.WebListModel;
+import org.ocsoft.flatlaf.weblaf.list.WebListModel;
 
 /**
  * Custom list model for WebFileList component.

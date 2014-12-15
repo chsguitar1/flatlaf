@@ -24,9 +24,9 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 
-import org.ocsoft.flatlaf.laf.splitpane.WebSplitPane;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.swing.Customizer;
+import org.ocsoft.flatlaf.weblaf.splitpane.WebSplitPane;
 
 /**
  * Data for single split pane within document pane. It basically contains split

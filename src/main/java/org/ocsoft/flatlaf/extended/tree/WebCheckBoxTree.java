@@ -35,11 +35,11 @@ import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
 import org.ocsoft.flatlaf.extended.checkbox.CheckState;
-import org.ocsoft.flatlaf.laf.tree.WebTree;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.swing.StateProvider;
+import org.ocsoft.flatlaf.weblaf.tree.WebTree;
 
 /**
  * This WebTree extension class provides additional checkbox tree functionality.

@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.list;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ocsoft.flatlaf.laf.list.WebListModel;
+import org.ocsoft.flatlaf.weblaf.list.WebListModel;
 
 /**
  * Custom list model for checkbox list component. This class overrides a few

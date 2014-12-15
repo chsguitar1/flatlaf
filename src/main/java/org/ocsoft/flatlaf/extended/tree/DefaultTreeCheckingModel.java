@@ -28,8 +28,8 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeNode;
 
 import org.ocsoft.flatlaf.extended.checkbox.CheckState;
-import org.ocsoft.flatlaf.laf.tree.TreeUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+import org.ocsoft.flatlaf.weblaf.tree.TreeUtils;
 
 /**
  * Default checking model for WebCheckBoxTree.

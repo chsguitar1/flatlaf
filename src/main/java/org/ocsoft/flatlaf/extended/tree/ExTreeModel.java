@@ -28,14 +28,14 @@ import java.util.Map;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeNode;
 
-import org.ocsoft.flatlaf.laf.tree.TreeState;
-import org.ocsoft.flatlaf.laf.tree.UniqueNode;
-import org.ocsoft.flatlaf.laf.tree.WebTree;
-import org.ocsoft.flatlaf.laf.tree.WebTreeModel;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.general.Filter;
 import org.ocsoft.flatlaf.utils.general.MapUtils;
+import org.ocsoft.flatlaf.weblaf.tree.TreeState;
+import org.ocsoft.flatlaf.weblaf.tree.UniqueNode;
+import org.ocsoft.flatlaf.weblaf.tree.WebTree;
+import org.ocsoft.flatlaf.weblaf.tree.WebTreeModel;
 
 /**
  * @author Mikle Garin

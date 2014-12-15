@@ -31,9 +31,9 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.TransferHandler;
 
-import org.ocsoft.flatlaf.laf.tabbedpane.WebTabbedPane;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
+import org.ocsoft.flatlaf.weblaf.tabbedpane.WebTabbedPane;
 
 /**
  * Custom TransferHandler for DocumentData object. This TransferHandler is made

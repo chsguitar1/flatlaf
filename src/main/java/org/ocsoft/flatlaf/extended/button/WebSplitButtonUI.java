@@ -25,8 +25,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.button.WebButtonUI;
+import org.ocsoft.flatlaf.laf.button.FlatButtonUI;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * Custom UI for WebSplitButton component. This UI is based on WebButtonUI and
@@ -35,7 +35,7 @@ import org.ocsoft.flatlaf.laf.button.WebButtonUI;
  * @author Mikle Garin
  */
 
-public class WebSplitButtonUI extends WebButtonUI {
+public class WebSplitButtonUI extends FlatButtonUI {
     /**
      * Style settings.
      */

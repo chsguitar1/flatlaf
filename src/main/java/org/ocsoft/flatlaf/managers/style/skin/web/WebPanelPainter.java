@@ -22,7 +22,7 @@ import java.awt.Rectangle;
 
 import javax.swing.JPanel;
 
-import org.ocsoft.flatlaf.laf.panel.PanelPainter;
+import org.ocsoft.flatlaf.weblaf.panel.PanelPainter;
 
 /**
  * Web-style painter for JPanel component. It is used as WebPanelUI default

@@ -57,13 +57,6 @@ import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.extended.window.PopOverAlignment;
 import org.ocsoft.flatlaf.extended.window.PopOverDirection;
 import org.ocsoft.flatlaf.extended.window.WebPopOver;
-import org.ocsoft.flatlaf.laf.button.WebButton;
-import org.ocsoft.flatlaf.laf.colorchooser.ColorChooserListener;
-import org.ocsoft.flatlaf.laf.colorchooser.WebColorChooserPanel;
-import org.ocsoft.flatlaf.laf.label.WebLabel;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.laf.rootpane.WebWindow;
-import org.ocsoft.flatlaf.laf.text.WebTextField;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyRunnable;
@@ -72,6 +65,13 @@ import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.swing.ChooserListener;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
+import org.ocsoft.flatlaf.weblaf.button.WebButton;
+import org.ocsoft.flatlaf.weblaf.colorchooser.ColorChooserListener;
+import org.ocsoft.flatlaf.weblaf.colorchooser.WebColorChooserPanel;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.rootpane.WebWindow;
+import org.ocsoft.flatlaf.weblaf.text.WebTextField;
 
 /**
  * Custom field that offers various ways to select Color. Color can be typed,

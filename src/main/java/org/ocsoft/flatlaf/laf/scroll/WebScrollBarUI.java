@@ -32,12 +32,18 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.managers.style.StyleManager;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.laf.Styleable;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
+import org.ocsoft.flatlaf.weblaf.button.WebButton;
+import org.ocsoft.flatlaf.weblaf.scroll.AdaptiveScrollBarButtonPainter;
+import org.ocsoft.flatlaf.weblaf.scroll.AdaptiveScrollBarPainter;
+import org.ocsoft.flatlaf.weblaf.scroll.ScrollBarButtonPainter;
+import org.ocsoft.flatlaf.weblaf.scroll.ScrollBarButtonType;
+import org.ocsoft.flatlaf.weblaf.scroll.ScrollBarPainter;
+import org.ocsoft.flatlaf.weblaf.scroll.WebScrollBarStyle;
 
 /**
  * Custom UI for JScrollBar component.

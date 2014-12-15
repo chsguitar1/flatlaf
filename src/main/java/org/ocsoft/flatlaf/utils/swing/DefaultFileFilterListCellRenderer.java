@@ -21,9 +21,9 @@ import java.awt.Component;
 
 import javax.swing.JList;
 
-import org.ocsoft.flatlaf.laf.combobox.WebComboBoxCellRenderer;
-import org.ocsoft.flatlaf.laf.combobox.WebComboBoxElement;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
+import org.ocsoft.flatlaf.weblaf.combobox.WebComboBoxCellRenderer;
+import org.ocsoft.flatlaf.weblaf.combobox.WebComboBoxElement;
 
 /**
  * Custom list and combobox cell renderer for file filters data.

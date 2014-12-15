@@ -55,19 +55,22 @@ import javax.swing.SwingConstants;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicRootPaneUI;
 
+import org.ocsoft.flatlaf.ResourceLoader;
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.panel.WebButtonGroup;
 import org.ocsoft.flatlaf.extended.window.ComponentMoveAdapter;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.button.WebButton;
-import org.ocsoft.flatlaf.laf.label.WebLabel;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.ProprietaryUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchUtils;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.button.WebButton;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.rootpane.WebResizeCorner;
+import org.ocsoft.flatlaf.weblaf.rootpane.WebRootPaneStyle;
 
 /**
  * Custom UI for JRootPane component. This UI also includes custom frame and
@@ -84,22 +87,14 @@ public class WebRootPaneUI extends BasicRootPaneUI implements SwingConstants {
     /**
      * Root pane styling icons.
      */
-    public static ImageIcon minimizeIcon = new ImageIcon(
-            WebRootPaneUI.class.getResource("icons/minimize.png"));
-    public static ImageIcon minimizeActiveIcon = new ImageIcon(
-            WebRootPaneUI.class.getResource("icons/minimize_active.png"));
-    public static ImageIcon maximizeIcon = new ImageIcon(
-            WebRootPaneUI.class.getResource("icons/maximize.png"));
-    public static ImageIcon maximizeActiveIcon = new ImageIcon(
-            WebRootPaneUI.class.getResource("icons/maximize_active.png"));
-    public static ImageIcon restoreIcon = new ImageIcon(
-            WebRootPaneUI.class.getResource("icons/restore.png"));
-    public static ImageIcon restoreActiveIcon = new ImageIcon(
-            WebRootPaneUI.class.getResource("icons/restore_active.png"));
-    public static ImageIcon closeIcon = new ImageIcon(
-            WebRootPaneUI.class.getResource("icons/close.png"));
-    public static ImageIcon closeActiveIcon = new ImageIcon(
-            WebRootPaneUI.class.getResource("icons/close_active.png"));
+    public static ImageIcon minimizeIcon = ResourceLoader.loadIcon("rootpane/minimize.png");
+    public static ImageIcon minimizeActiveIcon = ResourceLoader.loadIcon("rootpane/minimize_active.png");
+    public static ImageIcon maximizeIcon = ResourceLoader.loadIcon("rootpane/maximize.png");
+    public static ImageIcon maximizeActiveIcon = ResourceLoader.loadIcon("rootpane/maximize_active.png");
+    public static ImageIcon restoreIcon = ResourceLoader.loadIcon("rootpane/restore.png");
+    public static ImageIcon restoreActiveIcon = ResourceLoader.loadIcon("rootpane/restore_active.png");
+    public static ImageIcon closeIcon = ResourceLoader.loadIcon("rootpane/close.png");
+    public static ImageIcon closeActiveIcon = ResourceLoader.loadIcon("rootpane/close_active.png");
     
     /**
      * Style settings.

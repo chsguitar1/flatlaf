@@ -69,9 +69,9 @@ import javax.swing.text.Segment;
 import javax.swing.text.Utilities;
 import javax.swing.text.View;
 
-import org.ocsoft.flatlaf.laf.label.WebLabelStyle;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.weblaf.label.WebLabelStyle;
 
 /**
  * Label UI delegate that supports multiple lines and line wrapping. Hard line

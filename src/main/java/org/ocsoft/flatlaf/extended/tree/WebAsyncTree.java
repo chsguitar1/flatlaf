@@ -31,11 +31,11 @@ import javax.swing.tree.TreePath;
 import org.ocsoft.flatlaf.extended.tree.sample.SampleAsyncDataProvider;
 import org.ocsoft.flatlaf.extended.tree.sample.SampleTreeCellEditor;
 import org.ocsoft.flatlaf.extended.tree.sample.SampleTreeCellRenderer;
-import org.ocsoft.flatlaf.laf.tree.WebTree;
-import org.ocsoft.flatlaf.laf.tree.WebTreeCellEditor;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.general.Filter;
 import org.ocsoft.flatlaf.utils.swing.CellEditorAdapter;
+import org.ocsoft.flatlaf.weblaf.tree.WebTree;
+import org.ocsoft.flatlaf.weblaf.tree.WebTreeCellEditor;
 
 /**
  * This class provides a custom tree with asynchronous childs loading. All you

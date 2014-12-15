@@ -24,12 +24,12 @@ import java.awt.Window;
 
 import javax.swing.JDialog;
 
-import org.ocsoft.flatlaf.laf.label.WebLabel;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.laf.progressbar.WebProgressBar;
-import org.ocsoft.flatlaf.laf.rootpane.WebDialog;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.weblaf.label.WebLabel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.progressbar.WebProgressBar;
+import org.ocsoft.flatlaf.weblaf.rootpane.WebDialog;
 
 /**
  * User: mgarin Date: 14.02.12 Time: 12:08

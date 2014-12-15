@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.ocsoft.flatlaf.extended.transition.ImageTransition;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 09.11.12 Time: 14:34

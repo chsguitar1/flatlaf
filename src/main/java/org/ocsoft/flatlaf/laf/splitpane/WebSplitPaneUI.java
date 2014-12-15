@@ -40,13 +40,15 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 
+import org.ocsoft.flatlaf.ResourceLoader;
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.button.WebButton;
+import org.ocsoft.flatlaf.weblaf.splitpane.WebSplitPaneStyle;
 
 /**
  * Custom UI for JSplitPane component.
@@ -249,9 +251,8 @@ public class WebSplitPaneUI extends BasicSplitPaneUI implements BorderMethods {
             @Override
             protected JButton createLeftOneTouchButton() {
                 final boolean hor = orientation == JSplitPane.HORIZONTAL_SPLIT;
-                final ImageIcon icon = new ImageIcon(
-                        WebSplitPaneUI.class.getResource(hor ? "icons/left.png"
-                                : "icons/up.png"));
+                final ImageIcon icon = ResourceLoader.loadIcon(hor ? "splitpane/left.png"
+                                : "splitpane/up.png");
                 final WebButton iconWebButton = WebButton.createIconWebButton(
                         icon, 0, 0, 0, false, true, false);
                 iconWebButton.setBorder(BorderFactory.createEmptyBorder(0, 0,
@@ -266,10 +267,8 @@ public class WebSplitPaneUI extends BasicSplitPaneUI implements BorderMethods {
             @Override
             protected JButton createRightOneTouchButton() {
                 final boolean hor = orientation == JSplitPane.HORIZONTAL_SPLIT;
-                final ImageIcon icon = new ImageIcon(
-                        WebSplitPaneUI.class
-                                .getResource(hor ? "icons/right.png"
-                                        : "icons/down.png"));
+                final ImageIcon icon = ResourceLoader.loadIcon(hor ? "splitpane/right.png"
+                                        : "splitpane/down.png");
                 final JButton iconWebButton = WebButton.createIconWebButton(
                         icon, 0, 0, 0, false, true, false);
                 iconWebButton.setBorder(BorderFactory.createEmptyBorder(0, 0,

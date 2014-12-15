@@ -17,8 +17,8 @@
 
 package org.ocsoft.flatlaf.managers.language.updaters;
 
-import org.ocsoft.flatlaf.laf.text.WebPasswordField;
 import org.ocsoft.flatlaf.managers.language.data.Value;
+import org.ocsoft.flatlaf.weblaf.text.WebPasswordField;
 
 /**
  * This class provides language default updates for WebPasswordField component.

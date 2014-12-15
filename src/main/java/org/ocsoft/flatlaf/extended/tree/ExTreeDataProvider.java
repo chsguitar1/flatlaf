@@ -20,8 +20,8 @@ package org.ocsoft.flatlaf.extended.tree;
 import java.util.Comparator;
 import java.util.List;
 
-import org.ocsoft.flatlaf.laf.tree.UniqueNode;
 import org.ocsoft.flatlaf.utils.general.Filter;
+import org.ocsoft.flatlaf.weblaf.tree.UniqueNode;
 
 /**
  * This interface provides methods for ex tree data retrieval.

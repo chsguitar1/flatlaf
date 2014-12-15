@@ -34,10 +34,6 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import org.ocsoft.flatlaf.laf.menu.WebPopupMenu;
-import org.ocsoft.flatlaf.laf.splitpane.WebSplitPane;
-import org.ocsoft.flatlaf.laf.tabbedpane.TabbedPaneStyle;
-import org.ocsoft.flatlaf.laf.tabbedpane.WebTabbedPane;
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
@@ -47,6 +43,10 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.swing.Customizer;
 import org.ocsoft.flatlaf.utils.swing.menu.PopupMenuGenerator;
+import org.ocsoft.flatlaf.weblaf.menu.WebPopupMenu;
+import org.ocsoft.flatlaf.weblaf.splitpane.WebSplitPane;
+import org.ocsoft.flatlaf.weblaf.tabbedpane.TabbedPaneStyle;
+import org.ocsoft.flatlaf.weblaf.tabbedpane.WebTabbedPane;
 
 /**
  * Data for single tabbed pane within document pane. It basically contains

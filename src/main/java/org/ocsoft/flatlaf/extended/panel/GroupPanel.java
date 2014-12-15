@@ -22,7 +22,7 @@ import java.awt.Component;
 import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.extended.layout.GroupLayout;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * This panel allows you to quickly place a small group of components into a row

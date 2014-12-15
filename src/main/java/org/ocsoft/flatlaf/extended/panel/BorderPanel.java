@@ -21,8 +21,8 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Insets;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * User: mgarin Date: 03.06.11 Time: 17:46

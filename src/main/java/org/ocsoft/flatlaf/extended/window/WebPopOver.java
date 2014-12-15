@@ -42,8 +42,6 @@ import javax.swing.JRootPane;
 import javax.swing.event.AncestorEvent;
 
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.laf.rootpane.WebDialog;
 import org.ocsoft.flatlaf.managers.style.StyleManager;
 import org.ocsoft.flatlaf.managers.style.skin.web.PopupStyle;
 import org.ocsoft.flatlaf.managers.style.skin.web.WebPopOverPainter;
@@ -55,6 +53,8 @@ import org.ocsoft.flatlaf.utils.laf.Styleable;
 import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
 import org.ocsoft.flatlaf.utils.swing.WindowFollowAdapter;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
+import org.ocsoft.flatlaf.weblaf.rootpane.WebDialog;
 
 /**
  * Custom stylish pop-over dialog with a special corner that follows invoker

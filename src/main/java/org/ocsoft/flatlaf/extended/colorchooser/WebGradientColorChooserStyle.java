@@ -23,7 +23,7 @@ import java.awt.Font;
 import java.awt.Insets;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 23.11.12 Time: 19:10

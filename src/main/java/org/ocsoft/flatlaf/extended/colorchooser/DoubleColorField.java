@@ -30,13 +30,13 @@ import java.util.Map;
 
 import javax.swing.SwingUtilities;
 
-import org.ocsoft.flatlaf.laf.colorchooser.HSBColor;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.managers.language.LanguageAdapter;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+import org.ocsoft.flatlaf.weblaf.colorchooser.HSBColor;
+import org.ocsoft.flatlaf.weblaf.panel.WebPanel;
 
 /**
  * User: mgarin Date: 08.07.2010 Time: 14:12:13

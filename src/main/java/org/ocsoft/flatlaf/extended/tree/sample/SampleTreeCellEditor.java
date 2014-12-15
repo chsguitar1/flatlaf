@@ -21,8 +21,8 @@ import java.awt.Component;
 
 import javax.swing.JTree;
 
-import org.ocsoft.flatlaf.laf.text.WebTextField;
-import org.ocsoft.flatlaf.laf.tree.WebTreeCellEditor;
+import org.ocsoft.flatlaf.weblaf.text.WebTextField;
+import org.ocsoft.flatlaf.weblaf.tree.WebTreeCellEditor;
 
 /**
  * Sample tree cell editor.

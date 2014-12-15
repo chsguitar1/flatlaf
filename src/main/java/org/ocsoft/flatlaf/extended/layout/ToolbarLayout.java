@@ -26,7 +26,7 @@ import java.util.Map;
 
 import javax.swing.SwingConstants;
 
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 
 /**
  * This layout allows you to quickly and easily place components in a

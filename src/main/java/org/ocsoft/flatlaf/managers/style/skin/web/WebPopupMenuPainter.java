@@ -28,13 +28,13 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-import org.ocsoft.flatlaf.laf.menu.PopupMenuPainter;
-import org.ocsoft.flatlaf.laf.menu.PopupMenuType;
-import org.ocsoft.flatlaf.laf.menu.PopupMenuWay;
 import org.ocsoft.flatlaf.laf.menu.WebMenuItemUI;
 import org.ocsoft.flatlaf.laf.menu.WebMenuUI;
-import org.ocsoft.flatlaf.laf.menu.WebPopupMenuStyle;
 import org.ocsoft.flatlaf.laf.menu.WebPopupMenuUI;
+import org.ocsoft.flatlaf.weblaf.menu.PopupMenuPainter;
+import org.ocsoft.flatlaf.weblaf.menu.PopupMenuType;
+import org.ocsoft.flatlaf.weblaf.menu.PopupMenuWay;
+import org.ocsoft.flatlaf.weblaf.menu.WebPopupMenuStyle;
 
 /**
  * Base painter for JPopupMenu component. It is used as WebPopupMenuUI default

@@ -8,7 +8,7 @@ import org.ocsoft.flatlaf.extended.checkbox.WebTristateCheckBoxUI;
 import org.ocsoft.flatlaf.extended.label.WebMultiLineLabelUI;
 import org.ocsoft.flatlaf.extended.label.WebStyledLabelUI;
 import org.ocsoft.flatlaf.extended.label.WebVerticalLabelUI;
-import org.ocsoft.flatlaf.laf.button.WebButtonUI;
+import org.ocsoft.flatlaf.laf.button.FlatButtonUI;
 import org.ocsoft.flatlaf.laf.button.WebToggleButtonUI;
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxUI;
 import org.ocsoft.flatlaf.laf.colorchooser.WebColorChooserUI;
@@ -70,7 +70,7 @@ public class FlatLafSettings {
     /*
      * Button-related components.
      */
-    public static String buttonUI = WebButtonUI.class.getCanonicalName();
+    public static String buttonUI = FlatButtonUI.class.getCanonicalName();
     public static String splitButtonUI = WebSplitButtonUI.class
             .getCanonicalName();
     public static String toggleButtonUI = WebToggleButtonUI.class
