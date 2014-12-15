@@ -25,14 +25,14 @@ import org.ocsoft.flatlaf.laf.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.proxy.ProxyManager;
-import org.ocsoft.flatlaf.utils.compare.Filter;
 import org.ocsoft.flatlaf.utils.file.FileDescription;
 import org.ocsoft.flatlaf.utils.file.FileDownloadListener;
 import org.ocsoft.flatlaf.utils.file.SystemFileListener;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 import org.ocsoft.flatlaf.utils.filefilter.CustomFileFilter;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.general.Filter;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -325,7 +325,7 @@ public final class FileUtils
         }
         catch ( final Throwable e )
         {
-            Log.error ( FileUtils.class, e );
+            FlatLafLogger.error ( FileUtils.class, e );
             return false;
         }
     }
@@ -1633,11 +1633,11 @@ public final class FileUtils
         }
         catch ( final FileNotFoundException e )
         {
-            Log.error ( FileUtils.class, e );
+            FlatLafLogger.error ( FileUtils.class, e );
         }
         catch ( final UnsupportedEncodingException e )
         {
-            Log.error ( FileUtils.class, e );
+            FlatLafLogger.error ( FileUtils.class, e );
         }
         finally
         {
@@ -1934,7 +1934,7 @@ public final class FileUtils
         }
         catch ( final Throwable e )
         {
-            Log.error ( FileUtils.class, e );
+            FlatLafLogger.error ( FileUtils.class, e );
             return -1;
         }
     }
@@ -1958,7 +1958,7 @@ public final class FileUtils
         }
         catch ( final Throwable e )
         {
-            Log.error ( FileUtils.class, e );
+            FlatLafLogger.error ( FileUtils.class, e );
             return -1;
         }
     }

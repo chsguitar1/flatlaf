@@ -22,8 +22,8 @@ import javax.swing.*;
 import org.ocsoft.flatlaf.laf.menu.*;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LM;
-import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.swing.UnselectableButtonGroup;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -640,7 +640,7 @@ public abstract class AbstractMenuGenerator<E extends JComponent>
                 }
                 catch ( final Throwable e )
                 {
-                    Log.warn ( "Unable to find menu icon for path: " + path + icon + extension, e );
+                    FlatLafLogger.warn ( "Unable to find menu icon for path: " + path + icon + extension, e );
                     return null;
                 }
             }
@@ -662,7 +662,7 @@ public abstract class AbstractMenuGenerator<E extends JComponent>
             }
             else
             {
-                Log.warn ( "Unknown icon object type provided: " + icon );
+                FlatLafLogger.warn ( "Unknown icon object type provided: " + icon );
                 return null;
             }
         }

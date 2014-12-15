@@ -15,7 +15,7 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils;
+package org.ocsoft.flatlaf.utils.reflection;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,11 +34,9 @@ import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.file.FileDownloadListener;
-import org.ocsoft.flatlaf.utils.log.Log;
-import org.ocsoft.flatlaf.utils.reflection.JarEntry;
-import org.ocsoft.flatlaf.utils.reflection.JarEntryType;
-import org.ocsoft.flatlaf.utils.reflection.JarStructure;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * This class provides a set of utilities to simplify work with Reflection API.
@@ -99,7 +97,7 @@ public final class ReflectUtils
         {
             if ( safeMethodsLoggingEnabled )
             {
-                Log.warn ( "ReflectionUtils method failed: getFieldTypeSafely", e );
+                FlatLafLogger.warn ( "ReflectionUtils method failed: getFieldTypeSafely", e );
             }
             return null;
         }
@@ -137,7 +135,7 @@ public final class ReflectUtils
         {
             if ( safeMethodsLoggingEnabled )
             {
-                Log.warn ( "ReflectionUtils method failed: getFieldSafely", e );
+                FlatLafLogger.warn ( "ReflectionUtils method failed: getFieldSafely", e );
             }
             return null;
         }
@@ -209,7 +207,7 @@ public final class ReflectUtils
         {
             if ( safeMethodsLoggingEnabled )
             {
-                Log.warn ( "ReflectionUtils method failed: setFieldValueSafely", e );
+                FlatLafLogger.warn ( "ReflectionUtils method failed: setFieldValueSafely", e );
             }
             return false;
         }
@@ -252,7 +250,7 @@ public final class ReflectUtils
         {
             if ( safeMethodsLoggingEnabled )
             {
-                Log.warn ( "ReflectionUtils method failed: getFieldValueSafely", e );
+                FlatLafLogger.warn ( "ReflectionUtils method failed: getFieldValueSafely", e );
             }
             return null;
         }
@@ -293,7 +291,7 @@ public final class ReflectUtils
         {
             if ( safeMethodsLoggingEnabled )
             {
-                Log.warn ( "ReflectionUtils method failed: getStaticFieldValueSafely", e );
+                FlatLafLogger.warn ( "ReflectionUtils method failed: getStaticFieldValueSafely", e );
             }
             return null;
         }
@@ -330,7 +328,7 @@ public final class ReflectUtils
         {
             if ( safeMethodsLoggingEnabled )
             {
-                Log.warn ( "ReflectionUtils method failed: getClassSafely", e );
+                FlatLafLogger.warn ( "ReflectionUtils method failed: getClassSafely", e );
             }
             return null;
         }
@@ -434,11 +432,11 @@ public final class ReflectUtils
         }
         catch ( final IOException e )
         {
-            Log.error ( ReflectUtils.class, e );
+            FlatLafLogger.error ( ReflectUtils.class, e );
         }
         catch ( final URISyntaxException e )
         {
-            Log.error ( ReflectUtils.class, e );
+            FlatLafLogger.error ( ReflectUtils.class, e );
         }
         return null;
     }
@@ -479,7 +477,7 @@ public final class ReflectUtils
         }
         catch ( final URISyntaxException e )
         {
-            Log.error ( ReflectUtils.class, e );
+            FlatLafLogger.error ( ReflectUtils.class, e );
         }
         return null;
     }
@@ -777,7 +775,7 @@ public final class ReflectUtils
         {
             if ( safeMethodsLoggingEnabled )
             {
-                Log.warn ( "ReflectionUtils method failed: createInstanceSafely", e );
+                FlatLafLogger.warn ( "ReflectionUtils method failed: createInstanceSafely", e );
             }
             return null;
         }
@@ -818,7 +816,7 @@ public final class ReflectUtils
         {
             if ( safeMethodsLoggingEnabled )
             {
-                Log.warn ( "ReflectionUtils method failed: createInstanceSafely", e );
+                FlatLafLogger.warn ( "ReflectionUtils method failed: createInstanceSafely", e );
             }
             return null;
         }
@@ -925,7 +923,7 @@ public final class ReflectUtils
         {
             if ( safeMethodsLoggingEnabled )
             {
-                Log.warn ( "ReflectionUtils method failed: callStaticMethodSafely", e );
+                FlatLafLogger.warn ( "ReflectionUtils method failed: callStaticMethodSafely", e );
             }
             return null;
         }
@@ -969,7 +967,7 @@ public final class ReflectUtils
         {
             if ( safeMethodsLoggingEnabled )
             {
-                Log.warn ( "ReflectionUtils method failed: callStaticMethodSafely", e );
+                FlatLafLogger.warn ( "ReflectionUtils method failed: callStaticMethodSafely", e );
             }
             return null;
         }
@@ -1012,7 +1010,7 @@ public final class ReflectUtils
         {
             if ( safeMethodsLoggingEnabled )
             {
-                Log.warn ( "ReflectionUtils method failed: callMethodsSafely", e );
+                FlatLafLogger.warn ( "ReflectionUtils method failed: callMethodsSafely", e );
             }
             return null;
         }
@@ -1058,7 +1056,7 @@ public final class ReflectUtils
         {
             if ( safeMethodsLoggingEnabled )
             {
-                Log.warn ( "ReflectionUtils method failed: callMethodsSafely", e );
+                FlatLafLogger.warn ( "ReflectionUtils method failed: callMethodsSafely", e );
             }
             return null;
         }
@@ -1104,7 +1102,7 @@ public final class ReflectUtils
         {
             if ( safeMethodsLoggingEnabled )
             {
-                Log.warn ( "ReflectionUtils method failed: callMethodSafely", e );
+                FlatLafLogger.warn ( "ReflectionUtils method failed: callMethodSafely", e );
             }
             return null;
         }
@@ -1234,7 +1232,7 @@ public final class ReflectUtils
         {
             if ( safeMethodsLoggingEnabled )
             {
-                Log.warn ( "ReflectionUtils method failed: getMethodSafely", e );
+                FlatLafLogger.warn ( "ReflectionUtils method failed: getMethodSafely", e );
             }
             return null;
         }

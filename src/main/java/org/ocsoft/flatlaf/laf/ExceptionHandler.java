@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf;
 
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * Custom exceptions handler.
@@ -35,6 +35,6 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler
 
     protected void handleException ( final String tname, final Throwable thrown )
     {
-        Log.error ( ExceptionHandler.class, "Exception in thread " + tname + ": ", thrown );
+        FlatLafLogger.error ( ExceptionHandler.class, "Exception in thread " + tname + ": ", thrown );
     }
 }

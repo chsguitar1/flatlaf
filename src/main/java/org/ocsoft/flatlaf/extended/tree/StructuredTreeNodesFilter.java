@@ -22,9 +22,8 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 import org.ocsoft.flatlaf.laf.tree.UniqueNode;
-import org.ocsoft.flatlaf.utils.compare.Filter;
-import org.ocsoft.flatlaf.utils.text.DefaultTextProvider;
-import org.ocsoft.flatlaf.utils.text.TextProvider;
+import org.ocsoft.flatlaf.utils.general.Filter;
+import org.ocsoft.flatlaf.utils.general.TextProvider;
 
 /**
  * Special smart tree filter that doesn't filter out parent nodes which has childs that are accepted by filter.

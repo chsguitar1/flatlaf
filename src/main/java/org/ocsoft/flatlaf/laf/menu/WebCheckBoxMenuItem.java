@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.menu;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -29,10 +29,10 @@ import org.ocsoft.flatlaf.managers.settings.DefaultValue;
 import org.ocsoft.flatlaf.managers.settings.SettingsManager;
 import org.ocsoft.flatlaf.managers.settings.SettingsMethods;
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.FontMethods;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 
@@ -486,11 +486,11 @@ public class WebCheckBoxMenuItem extends JCheckBoxMenuItem implements LanguageMe
         {
             try
             {
-                setUI ( ( WebCheckBoxMenuItemUI ) ReflectUtils.createInstance ( FlatLookAndFeel.checkBoxMenuItemUI ) );
+                setUI ( ( WebCheckBoxMenuItemUI ) ReflectUtils.createInstance ( FlatLafSettings.checkBoxMenuItemUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebCheckBoxMenuItemUI () );
             }
         }

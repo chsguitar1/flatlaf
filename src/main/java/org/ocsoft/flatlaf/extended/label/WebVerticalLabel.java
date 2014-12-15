@@ -19,10 +19,10 @@ package org.ocsoft.flatlaf.extended.label;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * This WebLabel extension class allows you to display text vertically and provides a direct access to WebVerticalLabelUI methods.
@@ -154,12 +154,12 @@ public class WebVerticalLabel extends WebLabel
         {
             try
             {
-                setUI ( ( WebVerticalLabelUI ) ReflectUtils.createInstance ( FlatLookAndFeel.verticalLabelUI ) );
+                setUI ( ( WebVerticalLabelUI ) ReflectUtils.createInstance ( FlatLafSettings.verticalLabelUI ) );
 
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebVerticalLabelUI () );
             }
         }

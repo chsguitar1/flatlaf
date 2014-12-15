@@ -19,9 +19,9 @@ package org.ocsoft.flatlaf.utils.collection;
 
 import java.util.*;
 
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.compare.Filter;
-import org.ocsoft.flatlaf.utils.text.TextProvider;
+import org.ocsoft.flatlaf.utils.general.Filter;
+import org.ocsoft.flatlaf.utils.general.TextProvider;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 
 /**
  * This class provides a set of utilities to work with collections.

@@ -19,18 +19,18 @@ package org.ocsoft.flatlaf.laf.spinner;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.managers.tooltip.ToolTipMethods;
 import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.managers.tooltip.WebCustomTooltip;
 import org.ocsoft.flatlaf.utils.EventUtils;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.*;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 import java.awt.event.FocusAdapter;
@@ -141,11 +141,11 @@ public class WebSpinner extends JSpinner implements EventMethods, ToolTipMethods
         {
             try
             {
-                setUI ( ( WebSpinnerUI ) ReflectUtils.createInstance ( FlatLookAndFeel.spinnerUI ) );
+                setUI ( ( WebSpinnerUI ) ReflectUtils.createInstance ( FlatLafSettings.spinnerUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebSpinnerUI () );
             }
         }

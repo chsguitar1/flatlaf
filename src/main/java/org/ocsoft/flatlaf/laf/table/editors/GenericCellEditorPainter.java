@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.table.editors;
 import java.awt.*;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
-import org.ocsoft.flatlaf.utils.GraphicsUtils;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 
 /**
  * Custom painter to provide visual feedback for invalid editor cells.

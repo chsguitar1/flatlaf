@@ -19,12 +19,12 @@ package org.ocsoft.flatlaf.laf.tooltip;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.FontMethods;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 
@@ -75,11 +75,11 @@ public class WebToolTip extends JToolTip implements ShapeProvider, FontMethods<W
         {
             try
             {
-                setUI ( ( WebToolTipUI ) ReflectUtils.createInstance ( FlatLookAndFeel.toolTipUI ) );
+                setUI ( ( WebToolTipUI ) ReflectUtils.createInstance ( FlatLafSettings.toolTipUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebToolTipUI () );
             }
         }

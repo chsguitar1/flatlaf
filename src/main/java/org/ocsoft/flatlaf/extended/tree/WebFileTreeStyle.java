@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
-import org.ocsoft.flatlaf.utils.compare.Filter;
+import org.ocsoft.flatlaf.utils.general.Filter;
 
 /**
  * WebFileTree style class.

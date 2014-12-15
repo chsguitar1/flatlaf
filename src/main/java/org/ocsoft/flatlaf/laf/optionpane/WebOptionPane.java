@@ -19,9 +19,9 @@ package org.ocsoft.flatlaf.laf.optionpane;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * User: mgarin Date: 28.08.11 Time: 22:01
@@ -77,11 +77,11 @@ public class WebOptionPane extends JOptionPane
         {
             try
             {
-                setUI ( ( WebOptionPaneUI ) ReflectUtils.createInstance ( FlatLookAndFeel.optionPaneUI ) );
+                setUI ( ( WebOptionPaneUI ) ReflectUtils.createInstance ( FlatLafSettings.optionPaneUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebOptionPaneUI () );
             }
         }

@@ -29,7 +29,9 @@ import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.utils.*;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
+import org.ocsoft.flatlaf.utils.ninepatch.NinePatchUtils;
 
 import java.awt.*;
 import java.awt.event.*;

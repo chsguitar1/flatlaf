@@ -23,7 +23,7 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.settings.DefaultValue;
 import org.ocsoft.flatlaf.managers.settings.SettingsManager;
@@ -31,11 +31,11 @@ import org.ocsoft.flatlaf.managers.settings.SettingsMethods;
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
 import org.ocsoft.flatlaf.utils.EventUtils;
 import org.ocsoft.flatlaf.utils.GeometryUtils;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-import org.ocsoft.flatlaf.utils.compare.Filter;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.general.Filter;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.*;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 import java.awt.event.FocusAdapter;
@@ -1462,11 +1462,11 @@ public class WebTree<E extends DefaultMutableTreeNode> extends JTree implements 
         {
             try
             {
-                setUI ( ( WebTreeUI ) ReflectUtils.createInstance ( FlatLookAndFeel.treeUI ) );
+                setUI ( ( WebTreeUI ) ReflectUtils.createInstance ( FlatLafSettings.treeUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebTreeUI () );
             }
         }

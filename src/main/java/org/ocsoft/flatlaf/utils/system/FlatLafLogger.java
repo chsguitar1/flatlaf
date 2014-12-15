@@ -15,9 +15,9 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils.log;
+package org.ocsoft.flatlaf.utils.system;
 
-import org.ocsoft.flatlaf.utils.ReflectUtils;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +30,7 @@ import java.util.WeakHashMap;
  * @author Mikle Garin
  */
 
-public class Log
+public class FlatLafLogger
 {
     /**
      * todo 1. Add option to log within a separate thread to improve overall performance
@@ -95,7 +95,7 @@ public class Log
     {
         synchronized ( logLock )
         {
-            Log.debugEnabled = debugEnabled;
+            FlatLafLogger.debugEnabled = debugEnabled;
         }
     }
 

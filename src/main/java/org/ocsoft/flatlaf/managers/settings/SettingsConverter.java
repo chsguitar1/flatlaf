@@ -28,7 +28,7 @@ import com.thoughtworks.xstream.mapper.Mapper;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import org.ocsoft.flatlaf.utils.xml.XMLChar;
 
 /**
@@ -182,7 +182,7 @@ public class SettingsConverter extends ReflectionConverter
                 {
                     if ( SettingsManager.isLoggingEnabled () )
                     {
-                        Log.error ( this, "Unable to load settings entry for group \"" +
+                        FlatLafLogger.error ( this, "Unable to load settings entry for group \"" +
                                 settingsGroup.getName () + "\" under key \"" + key + "\" due to unexpected exception:", e );
                     }
                 }

@@ -25,7 +25,7 @@ import org.ocsoft.flatlaf.laf.button.WebButtonUI;
 import org.ocsoft.flatlaf.laf.scroll.ScrollBarButtonPainter;
 import org.ocsoft.flatlaf.laf.scroll.ScrollBarButtonType;
 import org.ocsoft.flatlaf.laf.scroll.WebScrollBarStyle;
-import org.ocsoft.flatlaf.utils.ShapeCache;
+import org.ocsoft.flatlaf.utils.graphics.ShapeCache;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
 
 import java.awt.*;

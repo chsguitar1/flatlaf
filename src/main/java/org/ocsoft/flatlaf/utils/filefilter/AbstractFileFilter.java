@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.utils.filefilter;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.utils.compare.Filter;
+import org.ocsoft.flatlaf.utils.general.Filter;
 
 import java.io.File;
 import java.io.FileFilter;

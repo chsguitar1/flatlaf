@@ -25,7 +25,7 @@ import java.util.Properties;
 import org.ocsoft.flatlaf.managers.settings.SettingsManager;
 import org.ocsoft.flatlaf.utils.CompareUtils;
 import org.ocsoft.flatlaf.utils.EncryptionUtils;
-import org.ocsoft.flatlaf.utils.XmlUtils;
+import org.ocsoft.flatlaf.utils.xml.XmlUtils;
 
 /**
  * This manager allows you to quickly manage application's global proxy settings.

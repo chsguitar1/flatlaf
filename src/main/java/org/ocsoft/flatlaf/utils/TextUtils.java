@@ -17,14 +17,13 @@
 
 package org.ocsoft.flatlaf.utils;
 
-import java.awt.*;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import org.ocsoft.flatlaf.utils.text.SimpleTextProvider;
-import org.ocsoft.flatlaf.utils.text.TextProvider;
+import org.ocsoft.flatlaf.utils.general.TextProvider;
 
 /**
  * This class provides a set of utilities to work with various text usage cases.
@@ -61,6 +60,18 @@ public final class TextUtils
      */
     private static final String defaultIdSuffix = "ID";
 
+    static class SimpleTextProvider implements TextProvider<Object>
+    {
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public String provide ( final Object object )
+        {
+            return object != null ? object.toString () : "null";
+        }
+    }
+    
     /**
      * Returns first number found in text.
      *

@@ -74,7 +74,7 @@
 
 package org.ocsoft.flatlaf.utils.encryption;
 
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * This class provides encode/decode for RFC 2045 Base64 as
@@ -205,7 +205,7 @@ public final class Base64
         int i = 0;
         if ( fDebug )
         {
-            Log.debug ( Base64.class, "number of triplets = " + numberTriplets );
+            FlatLafLogger.debug ( Base64.class, "number of triplets = " + numberTriplets );
         }
 
         for ( int line = 0; line < numberLines - 1; line++ )
@@ -218,7 +218,7 @@ public final class Base64
 
                 if ( fDebug )
                 {
-                    Log.debug ( Base64.class, "b1= " + b1 + ", b2= " + b2 + ", b3= " + b3 );
+                    FlatLafLogger.debug ( Base64.class, "b1= " + b1 + ", b2= " + b2 + ", b3= " + b3 );
                 }
 
                 l = ( byte ) ( b2 & 0x0f );
@@ -231,9 +231,9 @@ public final class Base64
 
                 if ( fDebug )
                 {
-                    Log.debug ( Base64.class, "val2 = " + val2 );
-                    Log.debug ( Base64.class, "k4   = " + ( k << 4 ) );
-                    Log.debug ( Base64.class, "vak  = " + ( val2 | ( k << 4 ) ) );
+                    FlatLafLogger.debug ( Base64.class, "val2 = " + val2 );
+                    FlatLafLogger.debug ( Base64.class, "k4   = " + ( k << 4 ) );
+                    FlatLafLogger.debug ( Base64.class, "vak  = " + ( val2 | ( k << 4 ) ) );
                 }
 
                 encodedData[ encodedIndex++ ] = lookUpBase64Alphabet[ val1 ];
@@ -254,7 +254,7 @@ public final class Base64
 
             if ( fDebug )
             {
-                Log.debug ( Base64.class, "b1= " + b1 + ", b2= " + b2 + ", b3= " + b3 );
+                FlatLafLogger.debug ( Base64.class, "b1= " + b1 + ", b2= " + b2 + ", b3= " + b3 );
             }
 
             l = ( byte ) ( b2 & 0x0f );
@@ -267,9 +267,9 @@ public final class Base64
 
             if ( fDebug )
             {
-                Log.debug ( Base64.class, "val2 = " + val2 );
-                Log.debug ( Base64.class, "k4   = " + ( k << 4 ) );
-                Log.debug ( Base64.class, "vak  = " + ( val2 | ( k << 4 ) ) );
+                FlatLafLogger.debug ( Base64.class, "val2 = " + val2 );
+                FlatLafLogger.debug ( Base64.class, "k4   = " + ( k << 4 ) );
+                FlatLafLogger.debug ( Base64.class, "vak  = " + ( val2 | ( k << 4 ) ) );
             }
 
             encodedData[ encodedIndex++ ] = lookUpBase64Alphabet[ val1 ];
@@ -285,8 +285,8 @@ public final class Base64
             k = ( byte ) ( b1 & 0x03 );
             if ( fDebug )
             {
-                Log.debug ( Base64.class, "b1=" + b1 );
-                Log.debug ( Base64.class, "b1<<2 = " + ( b1 >> 2 ) );
+                FlatLafLogger.debug ( Base64.class, "b1=" + b1 );
+                FlatLafLogger.debug ( Base64.class, "b1<<2 = " + ( b1 >> 2 ) );
             }
             final byte val1 = ( ( b1 & SIGN ) == 0 ) ? ( byte ) ( b1 >> 2 ) : ( byte ) ( b1 >> 2 ^ 0xc0 );
             encodedData[ encodedIndex++ ] = lookUpBase64Alphabet[ val1 ];

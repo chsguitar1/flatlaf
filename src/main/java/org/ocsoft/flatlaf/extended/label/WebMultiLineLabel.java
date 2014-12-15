@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.label;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -29,10 +29,10 @@ import org.ocsoft.flatlaf.managers.tooltip.ToolTipMethods;
 import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.managers.tooltip.WebCustomTooltip;
 import org.ocsoft.flatlaf.utils.EventUtils;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.*;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 import java.awt.event.FocusAdapter;
@@ -120,11 +120,11 @@ public class WebMultiLineLabel extends JLabel implements EventMethods, ToolTipMe
         {
             try
             {
-                setUI ( ( WebMultiLineLabelUI ) ReflectUtils.createInstance ( FlatLookAndFeel.multiLineLabelUI ) );
+                setUI ( ( WebMultiLineLabelUI ) ReflectUtils.createInstance ( FlatLafSettings.multiLineLabelUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebMultiLineLabelUI () );
             }
         }

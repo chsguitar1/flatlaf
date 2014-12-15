@@ -21,7 +21,7 @@ import javax.swing.*;
 
 import org.ocsoft.flatlaf.laf.tabbedpane.WebTabbedPane;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 import java.awt.datatransfer.Transferable;
@@ -172,7 +172,7 @@ public class DocumentDragHandler extends TransferHandler
         }
         catch ( final Throwable e )
         {
-            Log.error ( this, e );
+            FlatLafLogger.error ( this, e );
             return false;
         }
     }
@@ -251,7 +251,7 @@ public class DocumentDragHandler extends TransferHandler
         }
         catch ( final Throwable e )
         {
-            Log.error ( this, e );
+            FlatLafLogger.error ( this, e );
             return false;
         }
     }

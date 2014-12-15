@@ -19,15 +19,15 @@ package org.ocsoft.flatlaf.laf.scroll;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.language.LanguageContainerMethods;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.utils.LafUtils;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.SizeUtils;
+import org.ocsoft.flatlaf.utils.graphics.SizeUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.SizeMethods;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 
@@ -233,11 +233,11 @@ public class WebScrollPane extends JScrollPane implements ShapeProvider, SizeMet
         {
             try
             {
-                setUI ( ( WebScrollPaneUI ) ReflectUtils.createInstance ( FlatLookAndFeel.scrollPaneUI ) );
+                setUI ( ( WebScrollPaneUI ) ReflectUtils.createInstance ( FlatLafSettings.scrollPaneUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebScrollPaneUI () );
             }
         }

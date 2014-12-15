@@ -18,8 +18,8 @@
 package org.ocsoft.flatlaf.utils.ninepatch;
 
 import org.ocsoft.flatlaf.managers.style.data.ComponentStyleConverter;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
@@ -95,7 +95,7 @@ public class NinePatchIconConverter extends ReflectionConverter
                 }
                 catch ( final Throwable e )
                 {
-                    Log.error ( this, "Unable to read 9-patch icon near class \"" + nearClass + "\": " + iconPath, e );
+                    FlatLafLogger.error ( this, "Unable to read 9-patch icon near class \"" + nearClass + "\": " + iconPath, e );
                     return null;
                 }
             }

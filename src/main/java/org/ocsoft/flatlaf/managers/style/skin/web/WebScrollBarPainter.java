@@ -24,8 +24,8 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.scroll.ScrollBarPainter;
 import org.ocsoft.flatlaf.laf.scroll.WebScrollBarStyle;
 import org.ocsoft.flatlaf.utils.ColorUtils;
-import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.MathUtils;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
 
 import java.awt.*;

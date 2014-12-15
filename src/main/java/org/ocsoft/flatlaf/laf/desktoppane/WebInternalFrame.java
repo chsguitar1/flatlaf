@@ -19,12 +19,12 @@ package org.ocsoft.flatlaf.laf.desktoppane;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
 import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.beans.PropertyVetoException;
 
@@ -79,7 +79,7 @@ public class WebInternalFrame extends JInternalFrame implements LanguageMethods
         }
         catch ( final PropertyVetoException e )
         {
-            Log.error ( this, e );
+            FlatLafLogger.error ( this, e );
         }
     }
 
@@ -91,7 +91,7 @@ public class WebInternalFrame extends JInternalFrame implements LanguageMethods
         }
         catch ( final PropertyVetoException e )
         {
-            Log.error ( this, e );
+            FlatLafLogger.error ( this, e );
         }
     }
 
@@ -104,7 +104,7 @@ public class WebInternalFrame extends JInternalFrame implements LanguageMethods
         }
         catch ( final PropertyVetoException e )
         {
-            Log.error ( this, e );
+            FlatLafLogger.error ( this, e );
         }
     }
 
@@ -115,11 +115,11 @@ public class WebInternalFrame extends JInternalFrame implements LanguageMethods
         {
             try
             {
-                setUI ( ( WebInternalFrameUI ) ReflectUtils.createInstance ( FlatLookAndFeel.internalFrameUI, this ) );
+                setUI ( ( WebInternalFrameUI ) ReflectUtils.createInstance ( FlatLafSettings.internalFrameUI, this ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebInternalFrameUI ( this ) );
             }
         }

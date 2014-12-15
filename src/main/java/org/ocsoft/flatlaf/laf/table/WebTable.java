@@ -23,12 +23,12 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.utils.GeometryUtils;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.FontMethods;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 import java.util.EventObject;
@@ -299,11 +299,11 @@ public class WebTable extends JTable implements FontMethods<WebTable>
         {
             try
             {
-                setUI ( ( WebTableUI ) ReflectUtils.createInstance ( FlatLookAndFeel.tableUI ) );
+                setUI ( ( WebTableUI ) ReflectUtils.createInstance ( FlatLafSettings.tableUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebTableUI () );
             }
         }

@@ -28,7 +28,7 @@ import java.util.Map;
 import org.ocsoft.flatlaf.managers.glasspane.GlassPaneManager;
 import org.ocsoft.flatlaf.managers.glasspane.WebGlassPane;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * This manager simplifies dragged items visual representation creation.
@@ -113,7 +113,7 @@ public class DragManager
                             }
                             catch ( final Throwable e )
                             {
-                                Log.error ( DragManager.class, e );
+                                FlatLafLogger.error ( DragManager.class, e );
                             }
                         }
                     }

@@ -31,7 +31,9 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.*;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
+import org.ocsoft.flatlaf.utils.ninepatch.NinePatchUtils;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;

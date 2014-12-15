@@ -27,11 +27,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.ocsoft.flatlaf.utils.FileUtils;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.XmlUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
+import org.ocsoft.flatlaf.utils.xml.XmlUtils;
 
 /**
  * This manager allows you to quickly and easily save any serializable data into settings files using simple XML format.
@@ -48,7 +48,7 @@ import org.ocsoft.flatlaf.utils.swing.WebTimer;
  * @author Mikle Garin
  * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How to use SettingsManager</a>
  * @see org.ocsoft.flatlaf.managers.settings.ComponentSettingsManager
- * @see org.ocsoft.flatlaf.utils.XmlUtils
+ * @see org.ocsoft.flatlaf.utils.xml.XmlUtils
  */
 
 public class SettingsManager
@@ -816,7 +816,7 @@ public class SettingsManager
         }
         catch ( final ClassCastException e )
         {
-            Log.error ( SettingsManager.class, "Unable to load settings value for group \"" + group + "\" and key \"" + key +
+            FlatLafLogger.error ( SettingsManager.class, "Unable to load settings value for group \"" + group + "\" and key \"" + key +
                     "\" because it has inappropriate class type:", e );
 
             // Saving default value if needed
@@ -1031,11 +1031,11 @@ public class SettingsManager
                         groupState.put ( group, new SettingsGroupState ( readFromBackup ? ReadState.restored : ReadState.ok ) );
 
                         final String state = readFromBackup ? "restored from backup" : "loaded";
-                        Log.info ( SettingsManager.class, "Settings group \"" + group + "\" " + state + " successfully" );
+                        FlatLafLogger.info ( SettingsManager.class, "Settings group \"" + group + "\" " + state + " successfully" );
                     }
                     catch ( final Throwable e )
                     {
-                        Log.error ( SettingsManager.class, "Unable to load settings group \"" + group +
+                        FlatLafLogger.error ( SettingsManager.class, "Unable to load settings group \"" + group +
                                 "\" due to unexpected exception:", e );
 
                         // Delete incorrect SettingsGroup file
@@ -1051,7 +1051,7 @@ public class SettingsManager
                 // No group settings file or backup exists, new SettingsGroup will be created
                 groupState.put ( group, new SettingsGroupState ( ReadState.created ) );
 
-                Log.info ( SettingsManager.class, "Settings group \"" + group + "\" created successfully" );
+                FlatLafLogger.info ( SettingsManager.class, "Settings group \"" + group + "\" created successfully" );
             }
         }
         else
@@ -1059,7 +1059,7 @@ public class SettingsManager
             // No group setting dir exists, new SettingsGroup will be created
             groupState.put ( group, new SettingsGroupState ( ReadState.created ) );
 
-            Log.info ( SettingsManager.class, "Settings group \"" + group + "\" created successfully" );
+            FlatLafLogger.info ( SettingsManager.class, "Settings group \"" + group + "\" created successfully" );
         }
 
         // Create new SettingsGroup
@@ -1143,7 +1143,7 @@ public class SettingsManager
 
                     if ( saveLoggingEnabled )
                     {
-                        Log.info ( SettingsManager.class, "Settings group \"" + group + "\" saved successfully" );
+                        FlatLafLogger.info ( SettingsManager.class, "Settings group \"" + group + "\" saved successfully" );
                     }
                 }
                 else
@@ -1153,7 +1153,7 @@ public class SettingsManager
             }
             catch ( final Throwable e )
             {
-                Log.error ( SettingsManager.class, "Unable to save settings group \"" + settingsGroup.getName () +
+                FlatLafLogger.error ( SettingsManager.class, "Unable to save settings group \"" + settingsGroup.getName () +
                         "\" due to unexpected exception:", e );
             }
         }
@@ -1548,7 +1548,7 @@ public class SettingsManager
     public static void setLoggingEnabled ( final boolean loggingEnabled )
     {
         SettingsManager.loggingEnabled = loggingEnabled;
-        Log.setLoggingEnabled ( SettingsManager.class, loggingEnabled );
+        FlatLafLogger.setLoggingEnabled ( SettingsManager.class, loggingEnabled );
     }
 
     /**

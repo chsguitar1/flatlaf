@@ -21,9 +21,9 @@ import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.layout.MultiLayout;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.TextUtils;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 
 import java.awt.*;
 import java.awt.geom.Area;

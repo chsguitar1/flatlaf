@@ -66,7 +66,6 @@ import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
 import org.ocsoft.flatlaf.utils.swing.DefaultFileFilterListCellRenderer;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
-import org.ocsoft.flatlaf.utils.text.FileNameProvider;
 
 import java.awt.*;
 import java.awt.event.*;

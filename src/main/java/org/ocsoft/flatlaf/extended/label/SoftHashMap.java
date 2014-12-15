@@ -15,7 +15,7 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils.map;
+package org.ocsoft.flatlaf.extended.label;
 
 import java.io.Serializable;
 import java.lang.ref.Reference;

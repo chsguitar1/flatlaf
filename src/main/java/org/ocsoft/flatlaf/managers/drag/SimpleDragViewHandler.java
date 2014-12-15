@@ -19,10 +19,10 @@ package org.ocsoft.flatlaf.managers.drag;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 
 import java.awt.*;
 import java.awt.dnd.DragSourceDragEvent;

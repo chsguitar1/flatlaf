@@ -34,17 +34,17 @@ import org.ocsoft.flatlaf.laf.scroll.WebScrollBarUI;
 import org.ocsoft.flatlaf.laf.text.WebTextField;
 import org.ocsoft.flatlaf.utils.ColorUtils;
 import org.ocsoft.flatlaf.utils.GeometryUtils;
-import org.ocsoft.flatlaf.utils.GraphicsUtils;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.XmlUtils;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.laf.FocusType;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.laf.Styleable;
 import org.ocsoft.flatlaf.utils.laf.WeblafBorder;
-import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import org.ocsoft.flatlaf.utils.xml.ResourceFile;
+import org.ocsoft.flatlaf.utils.xml.XmlUtils;
 
 import java.awt.*;
 import java.awt.font.FontRenderContext;
@@ -157,15 +157,15 @@ public final class LafUtils
         }
         catch ( final NoSuchMethodException e )
         {
-            Log.error ( LafUtils.class, e );
+            FlatLafLogger.error ( LafUtils.class, e );
         }
         catch ( final InvocationTargetException e )
         {
-            Log.error ( LafUtils.class, e );
+            FlatLafLogger.error ( LafUtils.class, e );
         }
         catch ( final IllegalAccessException e )
         {
-            Log.error ( LafUtils.class, e );
+            FlatLafLogger.error ( LafUtils.class, e );
         }
     }
 
@@ -1565,7 +1565,7 @@ public final class LafUtils
         }
         catch ( final Throwable e )
         {
-            Log.get ().error ( "Unable to initialize L&F for class name: " + className, e );
+            FlatLafLogger.get ().error ( "Unable to initialize L&F for class name: " + className, e );
             return false;
         }
     }

@@ -23,7 +23,7 @@ import java.util.List;
 
 import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-import org.ocsoft.flatlaf.utils.compare.Filter;
+import org.ocsoft.flatlaf.utils.general.Filter;
 
 /**
  * Asynchronous data provider for WebFileTree.

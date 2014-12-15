@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.painter;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.utils.GraphicsUtils;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;

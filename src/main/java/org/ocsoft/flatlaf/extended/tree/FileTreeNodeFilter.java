@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.tree;
 import java.io.File;
 
 import org.ocsoft.flatlaf.laf.FlatLafConstants;
-import org.ocsoft.flatlaf.utils.compare.Filter;
+import org.ocsoft.flatlaf.utils.general.Filter;
 
 /**
  * Custom filter for file tree nodes.

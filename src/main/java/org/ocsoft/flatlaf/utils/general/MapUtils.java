@@ -15,7 +15,7 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils;
+package org.ocsoft.flatlaf.utils.general;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,6 +23,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.ocsoft.flatlaf.extended.tree.DoubleMap;
+import org.ocsoft.flatlaf.utils.CompareUtils;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 
 /**
  * This class provides a set of utilities to work with various maps.

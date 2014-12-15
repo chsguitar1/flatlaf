@@ -56,11 +56,11 @@ import org.ocsoft.flatlaf.managers.language.updaters.JTabbedPaneLU;
 import org.ocsoft.flatlaf.managers.language.updaters.JTextComponentLU;
 import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
 import org.ocsoft.flatlaf.utils.CompareUtils;
-import org.ocsoft.flatlaf.utils.MapUtils;
-import org.ocsoft.flatlaf.utils.XmlUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+import org.ocsoft.flatlaf.utils.general.MapUtils;
 import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
+import org.ocsoft.flatlaf.utils.xml.XmlUtils;
 
 /**
  * This manager allows you to quickly setup changeable lanugage onto different components and to listen to application-wide language change

@@ -15,22 +15,22 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils.text;
+package org.ocsoft.flatlaf.utils.general;
 
 /**
- * Default simple text provider for any object type
+ * This interface provides a base for filtering any type of objects in any situation.
+ * This class is similar to FileFilter from default file chooser, but it doesn't require any specific object type like File.
  *
  * @author Mikle Garin
  */
 
-public class DefaultTextProvider implements TextProvider
+public interface Filter<E>
 {
     /**
-     * {@inheritDoc}
+     * Returns whether the specified object is accepted by this filter or not.
+     *
+     * @param object object to process
+     * @return true if the specified object is accepted by this filter, false otherwise
      */
-    @Override
-    public String provide ( final Object object )
-    {
-        return object != null ? object.toString () : "";
-    }
+    public boolean accept ( E object );
 }

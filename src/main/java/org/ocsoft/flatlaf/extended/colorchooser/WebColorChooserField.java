@@ -38,8 +38,8 @@ import org.ocsoft.flatlaf.managers.hotkey.HotkeyRunnable;
 import org.ocsoft.flatlaf.utils.ColorUtils;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
 import org.ocsoft.flatlaf.utils.swing.ChooserListener;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -345,7 +345,7 @@ public class WebColorChooserField extends WebTextField
             }
             catch ( final AWTException e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
             }
             if ( robot != null )
             {

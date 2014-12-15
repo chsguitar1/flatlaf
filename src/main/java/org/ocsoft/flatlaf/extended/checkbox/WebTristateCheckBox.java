@@ -19,10 +19,10 @@ package org.ocsoft.flatlaf.extended.checkbox;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBox;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * This WebCheckBox extension class provides additional third selection state - mixed state.
@@ -333,11 +333,11 @@ public class WebTristateCheckBox extends WebCheckBox
         {
             try
             {
-                setUI ( ( WebTristateCheckBoxUI ) ReflectUtils.createInstance ( FlatLookAndFeel.tristateCheckBoxUI ) );
+                setUI ( ( WebTristateCheckBoxUI ) ReflectUtils.createInstance ( FlatLafSettings.tristateCheckBoxUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebTristateCheckBoxUI () );
             }
         }

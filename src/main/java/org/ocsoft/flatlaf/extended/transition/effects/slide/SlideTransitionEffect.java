@@ -23,7 +23,7 @@ import org.ocsoft.flatlaf.extended.transition.ImageTransition;
 import org.ocsoft.flatlaf.extended.transition.TransitionUtils;
 import org.ocsoft.flatlaf.extended.transition.effects.DefaultTransitionEffect;
 import org.ocsoft.flatlaf.extended.transition.effects.Direction;
-import org.ocsoft.flatlaf.utils.GraphicsUtils;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 
 /**
  * User: mgarin Date: 09.11.12 Time: 18:19

@@ -26,7 +26,7 @@ import java.util.List;
 
 import org.ocsoft.flatlaf.laf.FlatLafConstants;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * This manager allows you to track certain component their childs focus state by adding your custom FocusTracker or global focus
@@ -124,7 +124,7 @@ public class FocusManager
                     {
                         final String oldName = oldFocus != null ? oldFocus.getClass ().getName () : null;
                         final String newName = newFocus != null ? newFocus.getClass ().getName () : null;
-                        Log.debug ( this, "Focus changed: " + oldName + " --> " + newName );
+                        FlatLafLogger.debug ( this, "Focus changed: " + oldName + " --> " + newName );
                     }
 
                     // Checking all added trackers

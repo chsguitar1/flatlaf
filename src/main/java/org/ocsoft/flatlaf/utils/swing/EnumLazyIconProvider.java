@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.utils.swing;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -102,7 +102,7 @@ public class EnumLazyIconProvider
             catch ( final Throwable e )
             {
                 final String cn = enumeration.getClass ().getCanonicalName ();
-                Log.error ( EnumLazyIconProvider.class, "Unable to find icon \"" + path + "\" near class: " + cn );
+                FlatLafLogger.error ( EnumLazyIconProvider.class, "Unable to find icon \"" + path + "\" near class: " + cn );
                 stateIcons.put ( state, null );
             }
         }

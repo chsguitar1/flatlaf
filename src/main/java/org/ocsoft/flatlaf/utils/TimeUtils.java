@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.utils;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * This class provides a set of utilities for time measurement and comparison.
@@ -143,7 +143,7 @@ public final class TimeUtils
     public static void showPassedTime ( final boolean total, final String prefix )
     {
         final long time = currentTime ();
-        Log.info ( TimeUtils.class, prefix + ( total ? time - pinnedTime : time - lastTime ) );
+        FlatLafLogger.info ( TimeUtils.class, prefix + ( total ? time - pinnedTime : time - lastTime ) );
         lastTime = time;
     }
 
@@ -249,7 +249,7 @@ public final class TimeUtils
     public static void showPassedNanoTime ( final boolean total, final String prefix )
     {
         final long time = currentNanoTime ();
-        Log.info ( TimeUtils.class, prefix + ( total ? time - pinnedNanoTime : time - lastNanoTime ) );
+        FlatLafLogger.info ( TimeUtils.class, prefix + ( total ? time - pinnedNanoTime : time - lastNanoTime ) );
         lastNanoTime = time;
     }
 

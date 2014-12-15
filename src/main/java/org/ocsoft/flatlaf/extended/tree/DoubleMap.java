@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.ocsoft.flatlaf.utils.MapUtils;
+import org.ocsoft.flatlaf.utils.general.MapUtils;
 
 /**
  * @author Mikle Garin

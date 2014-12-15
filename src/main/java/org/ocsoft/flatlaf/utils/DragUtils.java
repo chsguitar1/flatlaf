@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.utils;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
@@ -220,7 +220,7 @@ public final class DragUtils
             }
             catch ( final Throwable e )
             {
-                Log.error ( DragUtils.class, e );
+                FlatLafLogger.error ( DragUtils.class, e );
             }
         }
         return uriListFlavor;

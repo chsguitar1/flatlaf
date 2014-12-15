@@ -25,7 +25,7 @@ import org.ocsoft.flatlaf.managers.proxy.WebProxyManager;
 import org.ocsoft.flatlaf.managers.settings.WebSettingsManager;
 import org.ocsoft.flatlaf.managers.style.StyleManager;
 import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * WebLaF managers simple initialization class.
@@ -33,7 +33,7 @@ import org.ocsoft.flatlaf.utils.log.Log;
  *
  * @author Mikle Garin
  * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-WebLaF">How to use WebLaF</a>
- * @see org.ocsoft.flatlaf.utils.log.Log
+ * @see org.ocsoft.flatlaf.utils.system.FlatLafLogger
  * @see org.ocsoft.flatlaf.managers.version.VersionManager
  * @see org.ocsoft.flatlaf.managers.language.WebLanguageManager
  * @see org.ocsoft.flatlaf.managers.settings.WebSettingsManager
@@ -53,7 +53,7 @@ public class FlatLafManagers
      */
     public static synchronized void initialize ()
     {
-        Log.initialize ();
+        FlatLafLogger.initialize ();
         WebLanguageManager.initialize ();
         WebSettingsManager.initialize ();
         HotkeyManager.initialize ();

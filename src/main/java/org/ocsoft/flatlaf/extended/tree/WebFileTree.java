@@ -23,8 +23,8 @@ import javax.swing.tree.TreePath;
 import org.ocsoft.flatlaf.extended.drag.FileDragAndDropHandler;
 import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-import org.ocsoft.flatlaf.utils.compare.Filter;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.general.Filter;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 import java.io.File;
@@ -505,7 +505,7 @@ public class WebFileTree extends WebAsyncTree<FileTreeNode>
         }
         catch ( final Throwable e )
         {
-            Log.error ( this, e );
+            FlatLafLogger.error ( this, e );
         }
     }
 

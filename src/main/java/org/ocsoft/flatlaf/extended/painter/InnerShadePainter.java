@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.painter;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.utils.NinePatchUtils;
+import org.ocsoft.flatlaf.utils.ninepatch.NinePatchUtils;
 
 import java.awt.*;
 

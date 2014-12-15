@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.colorchooser;
 import java.awt.*;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 
 /**
  * User: mgarin Date: 23.11.12 Time: 19:10
@@ -56,7 +56,7 @@ public final class WebGradientColorChooserStyle
     /**
      * Default labels font
      */
-    public static Font labelsFont = FlatLookAndFeel.globalControlFont.deriveFont ( 10f );
+    public static Font labelsFont = FlatLafSettings.globalControlFont.deriveFont ( 10f );
 
     /**
      * Default labels foreground

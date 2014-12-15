@@ -21,7 +21,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.ocsoft.flatlaf.laf.tree.UniqueNode;
-import org.ocsoft.flatlaf.utils.compare.Filter;
+import org.ocsoft.flatlaf.utils.general.Filter;
 
 /**
  * This interface provides methods for ex tree data retrieval.

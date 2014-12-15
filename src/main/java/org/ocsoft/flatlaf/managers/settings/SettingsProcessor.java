@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.managers.settings;
 import java.awt.*;
 import java.io.Serializable;
 
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * This abstract class represents core component settings tracking functionality.
@@ -95,7 +95,7 @@ public abstract class SettingsProcessor<C extends Component, V extends Serializa
             {
                 if ( SettingsManager.isLoggingEnabled () )
                 {
-                    Log.error ( this, "Unable to load initial component settings for group \"" + data.getGroup () +
+                    FlatLafLogger.error ( this, "Unable to load initial component settings for group \"" + data.getGroup () +
                             "\" and key \"" + data.getKey () + "\" due to unexpected exception:", e );
                 }
             }
@@ -110,7 +110,7 @@ public abstract class SettingsProcessor<C extends Component, V extends Serializa
         {
             if ( SettingsManager.isLoggingEnabled () )
             {
-                Log.error ( this, "Unable to initialize specific processor settings for component with group \"" +
+                FlatLafLogger.error ( this, "Unable to initialize specific processor settings for component with group \"" +
                         data.getGroup () + "\" and key \"" + data.getKey () + "\" due to unexpected exception:", e );
             }
         }

@@ -22,7 +22,6 @@ import com.thoughtworks.xstream.annotations.XStreamConverter;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.utils.ImageUtils;
-import org.ocsoft.flatlaf.utils.NinePatchUtils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

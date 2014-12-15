@@ -20,7 +20,6 @@ package org.ocsoft.flatlaf.utils.system;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.utils.ImageUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
 
 import java.awt.*;
 import java.awt.datatransfer.*;
@@ -133,7 +132,7 @@ public final class FlatLafSystemUtils
         }
         catch ( final Throwable e )
         {
-            Log.error ( FlatLafSystemUtils.class, e );
+            FlatLafLogger.error ( FlatLafSystemUtils.class, e );
         }
     }
 

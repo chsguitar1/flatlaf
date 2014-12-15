@@ -15,7 +15,7 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils;
+package org.ocsoft.flatlaf.utils.xml;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -40,17 +40,11 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
+import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.collection.ValuesTable;
 import org.ocsoft.flatlaf.utils.general.Pair;
-import org.ocsoft.flatlaf.utils.log.Log;
-import org.ocsoft.flatlaf.utils.xml.AliasProvider;
-import org.ocsoft.flatlaf.utils.xml.ColorConverter;
-import org.ocsoft.flatlaf.utils.xml.InsetsConverter;
-import org.ocsoft.flatlaf.utils.xml.PasswordConverter;
-import org.ocsoft.flatlaf.utils.xml.ResourceFile;
-import org.ocsoft.flatlaf.utils.xml.ResourceList;
-import org.ocsoft.flatlaf.utils.xml.ResourceLocation;
-import org.ocsoft.flatlaf.utils.xml.ResourceMap;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.Converter;
@@ -146,7 +140,7 @@ public final class XmlUtils
         }
         catch ( final Throwable e )
         {
-            Log.error ( XmlUtils.class, e );
+            FlatLafLogger.error ( XmlUtils.class, e );
         }
     }
 
@@ -277,7 +271,7 @@ public final class XmlUtils
         }
         catch ( final IOException e )
         {
-            Log.error ( XmlUtils.class, e );
+            FlatLafLogger.error ( XmlUtils.class, e );
         }
     }
 
@@ -439,7 +433,7 @@ public final class XmlUtils
                 }
                 catch ( final MalformedURLException e )
                 {
-                    Log.error ( XmlUtils.class, e );
+                    FlatLafLogger.error ( XmlUtils.class, e );
                     return null;
                 }
             }
@@ -463,12 +457,12 @@ public final class XmlUtils
                 }
                 catch ( final ClassNotFoundException e )
                 {
-                    Log.error ( XmlUtils.class, e );
+                    FlatLafLogger.error ( XmlUtils.class, e );
                     return null;
                 }
                 catch ( final Throwable e )
                 {
-                    Log.error ( XmlUtils.class, e );
+                    FlatLafLogger.error ( XmlUtils.class, e );
                     return null;
                 }
                 finally
@@ -482,7 +476,7 @@ public final class XmlUtils
                     }
                     catch ( final Throwable e )
                     {
-                        Log.error ( XmlUtils.class, e );
+                        FlatLafLogger.error ( XmlUtils.class, e );
                     }
                 }
             }
@@ -521,7 +515,7 @@ public final class XmlUtils
             }
             catch ( final IOException e )
             {
-                Log.error ( XmlUtils.class, e );
+                FlatLafLogger.error ( XmlUtils.class, e );
                 return null;
             }
         }
@@ -537,7 +531,7 @@ public final class XmlUtils
             }
             catch ( final ClassNotFoundException e )
             {
-                Log.error ( XmlUtils.class, e );
+                FlatLafLogger.error ( XmlUtils.class, e );
                 return null;
             }
         }
@@ -574,7 +568,7 @@ public final class XmlUtils
             }
             catch ( final MalformedURLException e )
             {
-                Log.error ( XmlUtils.class, e );
+                FlatLafLogger.error ( XmlUtils.class, e );
                 return null;
             }
         }
@@ -586,7 +580,7 @@ public final class XmlUtils
             }
             catch ( final IOException e )
             {
-                Log.error ( XmlUtils.class, e );
+                FlatLafLogger.error ( XmlUtils.class, e );
                 return null;
             }
         }
@@ -598,7 +592,7 @@ public final class XmlUtils
             }
             catch ( final ClassNotFoundException e )
             {
-                Log.error ( XmlUtils.class, e );
+                FlatLafLogger.error ( XmlUtils.class, e );
                 return null;
             }
         }

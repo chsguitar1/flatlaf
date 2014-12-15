@@ -27,7 +27,7 @@ import org.ocsoft.flatlaf.utils.swing.SwingMethods;
  * @param <C> component type
  * @author Mikle Garin
  * @see SwingMethods
- * @see org.ocsoft.flatlaf.utils.SizeUtils
+ * @see org.ocsoft.flatlaf.utils.graphics.SizeUtils
  */
 
 public interface SizeMethods<C extends Component> extends SwingMethods

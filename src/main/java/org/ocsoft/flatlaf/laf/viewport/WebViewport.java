@@ -17,11 +17,11 @@
 
 package org.ocsoft.flatlaf.laf.viewport;
 
-import javax.swing.*;
+import javax.swing.JViewport;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * This JViewport extension class provides a direct access to WebViewportUI methods.
@@ -59,11 +59,11 @@ public class WebViewport extends JViewport
         {
             try
             {
-                setUI ( ( WebViewportUI ) ReflectUtils.createInstance ( FlatLookAndFeel.viewportUI ) );
+                setUI ( ( WebViewportUI ) ReflectUtils.createInstance ( FlatLafSettings.viewportUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebViewportUI () );
             }
         }

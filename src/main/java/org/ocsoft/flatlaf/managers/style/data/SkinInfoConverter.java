@@ -31,12 +31,12 @@ import java.util.Map;
 import org.ocsoft.flatlaf.managers.style.StyleException;
 import org.ocsoft.flatlaf.managers.style.StyleManager;
 import org.ocsoft.flatlaf.managers.style.SupportedComponent;
-import org.ocsoft.flatlaf.utils.MapUtils;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.XmlUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.general.MapUtils;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import org.ocsoft.flatlaf.utils.xml.ResourceFile;
 import org.ocsoft.flatlaf.utils.xml.ResourceLocation;
+import org.ocsoft.flatlaf.utils.xml.XmlUtils;
 
 /**
  * Custom XStream converter for SkinInfo class.
@@ -248,7 +248,7 @@ public class SkinInfoConverter extends ReflectionConverter
         }
         catch ( final Throwable e )
         {
-            Log.error ( this, e );
+            FlatLafLogger.error ( this, e );
             return null;
         }
     }

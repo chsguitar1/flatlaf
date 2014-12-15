@@ -20,18 +20,18 @@ package org.ocsoft.flatlaf.laf.filechooser;
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.language.LanguageContainerMethods;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
 import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
 import org.ocsoft.flatlaf.utils.ImageUtils;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.Customizer;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 import java.io.File;
@@ -314,11 +314,11 @@ public class WebFileChooser extends JFileChooser implements LanguageMethods, Lan
         {
             try
             {
-                setUI ( ( WebFileChooserUI ) ReflectUtils.createInstance ( FlatLookAndFeel.fileChooserUI ) );
+                setUI ( ( WebFileChooserUI ) ReflectUtils.createInstance ( FlatLafSettings.fileChooserUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebFileChooserUI () );
             }
         }

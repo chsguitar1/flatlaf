@@ -21,7 +21,7 @@ import javax.swing.*;
 
 import org.ocsoft.flatlaf.utils.TimeUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -883,7 +883,7 @@ public class WebTimer
             }
             catch ( final InterruptedException e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
             }
         }
     }

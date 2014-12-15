@@ -19,9 +19,9 @@ package org.ocsoft.flatlaf.laf.rootpane;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * User: mgarin Date: 01.11.11 Time: 13:31
@@ -46,11 +46,11 @@ public class WebRootPane extends JRootPane
         {
             try
             {
-                setUI ( ( WebRootPaneUI ) ReflectUtils.createInstance ( FlatLookAndFeel.rootPaneUI ) );
+                setUI ( ( WebRootPaneUI ) ReflectUtils.createInstance ( FlatLafSettings.rootPaneUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebRootPaneUI () );
             }
         }

@@ -20,8 +20,7 @@ package org.ocsoft.flatlaf.utils.reflection;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.utils.FileUtils;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.compare.Filter;
+import org.ocsoft.flatlaf.utils.general.Filter;
 
 import java.io.IOException;
 import java.io.InputStream;

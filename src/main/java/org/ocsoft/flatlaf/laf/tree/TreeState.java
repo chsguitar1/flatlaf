@@ -24,7 +24,7 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.ocsoft.flatlaf.utils.MapUtils;
+import org.ocsoft.flatlaf.utils.general.MapUtils;
 
 /**
  * This object might contain tree selection and expand states for all loaded tree nodes.

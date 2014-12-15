@@ -36,8 +36,7 @@ import javax.swing.UIManager;
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.style.skin.web.WebLabelPainter;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
-import org.ocsoft.flatlaf.utils.map.SoftHashMap;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
@@ -477,7 +476,7 @@ public class WebStyledLabelPainter<E extends WebStyledLabel> extends WebLabelPai
                         loopCount++;
                         if ( loopCount > 15 )
                         {
-                            Log.error ( "Styled label paint error: " + textRange );
+                            FlatLafLogger.error ( "Styled label paint error: " + textRange );
                             break;
                         }
                     }
@@ -955,7 +954,7 @@ public class WebStyledLabelPainter<E extends WebStyledLabel> extends WebLabelPai
                         loopCount++;
                         if ( loopCount > 50 )
                         {
-                            Log.error ( "Styled label paint error: " + textRange );
+                            FlatLafLogger.error ( "Styled label paint error: " + textRange );
                             break;
                         }
                     }
@@ -1416,7 +1415,7 @@ public class WebStyledLabelPainter<E extends WebStyledLabel> extends WebLabelPai
                     loopCount++;
                     if ( loopCount > 50 )
                     {
-                        Log.error ( "Styled label paint error: " + textRange );
+                        FlatLafLogger.error ( "Styled label paint error: " + textRange );
                         break;
                     }
                 }

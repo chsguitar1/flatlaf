@@ -21,7 +21,7 @@ import javax.swing.*;
 import javax.swing.text.JTextComponent;
 
 import org.ocsoft.flatlaf.managers.settings.processors.*;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 
 import java.awt.*;
 import java.util.LinkedHashMap;

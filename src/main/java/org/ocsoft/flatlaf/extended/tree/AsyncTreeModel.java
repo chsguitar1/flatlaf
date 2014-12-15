@@ -23,10 +23,10 @@ import javax.swing.tree.TreeNode;
 
 import org.ocsoft.flatlaf.laf.tree.TreeState;
 import org.ocsoft.flatlaf.laf.tree.WebTreeModel;
-import org.ocsoft.flatlaf.utils.MapUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-import org.ocsoft.flatlaf.utils.compare.Filter;
+import org.ocsoft.flatlaf.utils.general.Filter;
+import org.ocsoft.flatlaf.utils.general.MapUtils;
 
 import java.util.*;
 

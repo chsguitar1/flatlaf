@@ -15,24 +15,21 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils.text;
-
-import java.io.File;
+package org.ocsoft.flatlaf.utils.general;
 
 /**
- * Text provider for File objects.
+ * This interface can be used to provide string data for various objects.
  *
  * @author Mikle Garin
  */
 
-public class FileNameProvider implements TextProvider<File>
+public interface TextProvider<T>
 {
     /**
-     * {@inheritDoc}
+     * Returns string value for specified object.
+     *
+     * @param object object to process
+     * @return string value for specified object
      */
-    @Override
-    public String provide ( final File object )
-    {
-        return object.getName ();
-    }
+    public String provide ( T object );
 }

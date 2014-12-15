@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.text;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -29,11 +29,11 @@ import org.ocsoft.flatlaf.managers.settings.SettingsManager;
 import org.ocsoft.flatlaf.managers.settings.SettingsMethods;
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
 import org.ocsoft.flatlaf.utils.EventUtils;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.general.Pair;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.*;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.event.FocusAdapter;
 import java.awt.event.KeyAdapter;
@@ -94,11 +94,11 @@ public class WebEditorPane extends JEditorPane
         {
             try
             {
-                setUI ( ( WebEditorPaneUI ) ReflectUtils.createInstance ( FlatLookAndFeel.editorPaneUI ) );
+                setUI ( ( WebEditorPaneUI ) ReflectUtils.createInstance ( FlatLafSettings.editorPaneUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebEditorPaneUI () );
             }
         }

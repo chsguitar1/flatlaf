@@ -19,13 +19,13 @@ package org.ocsoft.flatlaf.extended.button;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.menu.PopupMenuWay;
 import org.ocsoft.flatlaf.laf.menu.WebPopupMenuUI;
 import org.ocsoft.flatlaf.managers.style.SupportedComponent;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.event.*;
 import java.io.Serializable;
@@ -529,11 +529,11 @@ public class WebSplitButton extends WebButton implements MouseMotionListener, Mo
         {
             try
             {
-                setUI ( ( WebSplitButtonUI ) ReflectUtils.createInstance ( FlatLookAndFeel.splitButtonUI ) );
+                setUI ( ( WebSplitButtonUI ) ReflectUtils.createInstance ( FlatLafSettings.splitButtonUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebSplitButtonUI () );
             }
         }

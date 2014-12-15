@@ -21,11 +21,11 @@ import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.utils.ColorUtils;
-import org.ocsoft.flatlaf.utils.GraphicsUtils;
-import org.ocsoft.flatlaf.utils.NinePatchUtils;
-import org.ocsoft.flatlaf.utils.ShapeCache;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
+import org.ocsoft.flatlaf.utils.graphics.ShapeCache;
 import org.ocsoft.flatlaf.utils.laf.PainterShapeProvider;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
+import org.ocsoft.flatlaf.utils.ninepatch.NinePatchUtils;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
 
 import java.awt.*;

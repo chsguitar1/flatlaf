@@ -25,12 +25,12 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.focus.FocusTracker;
-import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
-import org.ocsoft.flatlaf.utils.NinePatchUtils;
-import org.ocsoft.flatlaf.utils.ShapeCache;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
+import org.ocsoft.flatlaf.utils.graphics.ShapeCache;
 import org.ocsoft.flatlaf.utils.laf.PainterShapeProvider;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
+import org.ocsoft.flatlaf.utils.ninepatch.NinePatchUtils;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
 
 import java.awt.*;

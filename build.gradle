@@ -12,8 +12,8 @@ plugins {
  */
 group = 'org.ocsoft'
 ext.appName = 'flatlaf'
-version = '0.0.1'
-description = ''
+version = '0.0.2'
+description = 'Flat LookAndFeel'
 
 sourceCompatibility = 1.8
 

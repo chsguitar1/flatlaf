@@ -28,8 +28,8 @@ import org.ocsoft.flatlaf.extended.transition.ImageTransition;
 import org.ocsoft.flatlaf.extended.transition.TransitionUtils;
 import org.ocsoft.flatlaf.extended.transition.effects.DefaultTransitionEffect;
 import org.ocsoft.flatlaf.extended.transition.effects.Direction;
-import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.MathUtils;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
 
 /**

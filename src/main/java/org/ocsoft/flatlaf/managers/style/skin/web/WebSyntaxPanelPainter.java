@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.managers.style.skin.web;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.utils.GraphicsUtils;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 
 import java.awt.*;
 

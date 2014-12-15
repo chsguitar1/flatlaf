@@ -19,9 +19,9 @@ package org.ocsoft.flatlaf.laf.desktoppane;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * User: mgarin Date: 24.08.11 Time: 17:46
@@ -46,11 +46,11 @@ public class WebDesktopPane extends JDesktopPane
         {
             try
             {
-                setUI ( ( WebDesktopPaneUI ) ReflectUtils.createInstance ( FlatLookAndFeel.desktopPaneUI ) );
+                setUI ( ( WebDesktopPaneUI ) ReflectUtils.createInstance ( FlatLafSettings.desktopPaneUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebDesktopPaneUI () );
             }
         }

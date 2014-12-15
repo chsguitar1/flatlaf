@@ -31,9 +31,9 @@ import org.ocsoft.flatlaf.laf.tree.TreeState;
 import org.ocsoft.flatlaf.laf.tree.UniqueNode;
 import org.ocsoft.flatlaf.laf.tree.WebTree;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
-import org.ocsoft.flatlaf.utils.compare.Filter;
+import org.ocsoft.flatlaf.utils.general.Filter;
+import org.ocsoft.flatlaf.utils.general.TextProvider;
 import org.ocsoft.flatlaf.utils.swing.StringDocumentChangeListener;
-import org.ocsoft.flatlaf.utils.text.TextProvider;
 
 import java.awt.*;
 import java.awt.event.*;

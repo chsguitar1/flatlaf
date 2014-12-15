@@ -22,7 +22,7 @@ import javax.swing.*;
 import org.ocsoft.flatlaf.managers.style.SupportedComponent;
 import org.ocsoft.flatlaf.managers.style.data.ComponentStyle;
 import org.ocsoft.flatlaf.managers.style.data.SkinInfo;
-import org.ocsoft.flatlaf.utils.XmlUtils;
+import org.ocsoft.flatlaf.utils.xml.XmlUtils;
 
 import java.util.List;
 

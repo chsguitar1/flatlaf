@@ -15,22 +15,26 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils.text;
+package org.ocsoft.flatlaf.laf.filechooser;
+
+import java.io.File;
+
+import org.ocsoft.flatlaf.utils.general.TextProvider;
 
 /**
- * Simple text provider for any type of objects.
+ * Text provider for File objects.
  *
  * @author Mikle Garin
  */
 
-public class SimpleTextProvider implements TextProvider<Object>
+public class FileNameProvider implements TextProvider<File>
 {
     /**
      * {@inheritDoc}
      */
     @Override
-    public String provide ( final Object object )
+    public String provide ( final File object )
     {
-        return object != null ? object.toString () : "null";
+        return object.getName ();
     }
 }

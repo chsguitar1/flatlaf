@@ -28,8 +28,8 @@ import org.ocsoft.flatlaf.managers.style.data.ComponentStyle;
 import org.ocsoft.flatlaf.managers.style.data.IgnoredValue;
 import org.ocsoft.flatlaf.managers.style.data.PainterStyle;
 import org.ocsoft.flatlaf.utils.LafUtils;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
 
 import java.lang.reflect.Field;
@@ -266,7 +266,7 @@ public abstract class WebLafSkin
         }
         catch ( final Throwable e )
         {
-            Log.error ( this, e );
+            FlatLafLogger.error ( this, e );
             return false;
         }
     }
@@ -307,7 +307,7 @@ public abstract class WebLafSkin
         }
         catch ( final Throwable e )
         {
-            Log.error ( this, e );
+            FlatLafLogger.error ( this, e );
             return false;
         }
     }
@@ -468,15 +468,15 @@ public abstract class WebLafSkin
         }
         catch ( final NoSuchMethodException e )
         {
-            Log.error ( WebLafSkin.class, e );
+            FlatLafLogger.error ( WebLafSkin.class, e );
         }
         catch ( final InvocationTargetException e )
         {
-            Log.error ( WebLafSkin.class, e );
+            FlatLafLogger.error ( WebLafSkin.class, e );
         }
         catch ( final IllegalAccessException e )
         {
-            Log.error ( WebLafSkin.class, e );
+            FlatLafLogger.error ( WebLafSkin.class, e );
         }
 
         // Applying field value directly
@@ -489,12 +489,12 @@ public abstract class WebLafSkin
         }
         catch ( final NoSuchFieldException e )
         {
-            Log.error ( WebLafSkin.class, e );
+            FlatLafLogger.error ( WebLafSkin.class, e );
             return false;
         }
         catch ( final IllegalAccessException e )
         {
-            Log.error ( WebLafSkin.class, e );
+            FlatLafLogger.error ( WebLafSkin.class, e );
             return false;
         }
     }
@@ -523,11 +523,11 @@ public abstract class WebLafSkin
         }
         catch ( final InvocationTargetException e )
         {
-            Log.error ( WebLafSkin.class, e );
+            FlatLafLogger.error ( WebLafSkin.class, e );
         }
         catch ( final IllegalAccessException e )
         {
-            Log.error ( WebLafSkin.class, e );
+            FlatLafLogger.error ( WebLafSkin.class, e );
         }
 
         // Retrieving field value directly
@@ -540,12 +540,12 @@ public abstract class WebLafSkin
         }
         catch ( final NoSuchFieldException e )
         {
-            Log.error ( WebLafSkin.class, e );
+            FlatLafLogger.error ( WebLafSkin.class, e );
             return null;
         }
         catch ( final IllegalAccessException e )
         {
-            Log.error ( WebLafSkin.class, e );
+            FlatLafLogger.error ( WebLafSkin.class, e );
             return null;
         }
     }

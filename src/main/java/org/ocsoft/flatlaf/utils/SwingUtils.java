@@ -106,6 +106,7 @@ import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.rootpane.WebRootPaneUI;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyRunnable;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.laf.WeblafBorder;
 import org.ocsoft.flatlaf.utils.swing.EventPump;
 import org.ocsoft.flatlaf.utils.swing.SizeMethods;

@@ -75,6 +75,7 @@ import org.ocsoft.flatlaf.utils.*;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.swing.SwingLazyValue;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
+import org.ocsoft.flatlaf.utils.xml.XmlUtils;
 
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
@@ -129,7 +130,7 @@ public class FlatLookAndFeel extends BasicLookAndFeel
     public static final String PAINTER_PROPERTY = "painter";
     public static final String RENDERER_PROPERTY = "renderer";
     public static final String DROP_LOCATION = "dropLocation";
-
+    
     /**
      * List of WebLookAndFeel icons.
      */
@@ -185,169 +186,6 @@ public class FlatLookAndFeel extends BasicLookAndFeel
      * Reassignable LookAndFeel UI class names.
      */
 
-    /**
-     * Label-related components.
-     */
-    public static String labelUI = WebLabelUI.class.getCanonicalName ();
-    // public static String linkLabelUI = WebLabelUI.class.getCanonicalName ();
-    public static String verticalLabelUI = WebVerticalLabelUI.class.getCanonicalName ();
-    public static String multiLineLabelUI = WebMultiLineLabelUI.class.getCanonicalName ();
-    public static String styledLabelUI = WebStyledLabelUI.class.getCanonicalName ();
-    public static String toolTipUI = WebToolTipUI.class.getCanonicalName ();
-
-    /**
-     * Button-related components.
-     */
-    public static String buttonUI = WebButtonUI.class.getCanonicalName ();
-    public static String splitButtonUI = WebSplitButtonUI.class.getCanonicalName ();
-    public static String toggleButtonUI = WebToggleButtonUI.class.getCanonicalName ();
-    public static String checkBoxUI = WebCheckBoxUI.class.getCanonicalName ();
-    public static String tristateCheckBoxUI = WebTristateCheckBoxUI.class.getCanonicalName ();
-    public static String radioButtonUI = WebRadioButtonUI.class.getCanonicalName ();
-
-    /**
-     * Menu-related components.
-     */
-    public static String menuBarUI = WebMenuBarUI.class.getCanonicalName ();
-    public static String menuUI = WebMenuUI.class.getCanonicalName ();
-    public static String popupMenuUI = WebPopupMenuUI.class.getCanonicalName ();
-    public static String menuItemUI = WebMenuItemUI.class.getCanonicalName ();
-    public static String checkBoxMenuItemUI = WebCheckBoxMenuItemUI.class.getCanonicalName ();
-    public static String radioButtonMenuItemUI = WebRadioButtonMenuItemUI.class.getCanonicalName ();
-    public static String popupMenuSeparatorUI = WebPopupMenuSeparatorUI.class.getCanonicalName ();
-
-    /**
-     * Separator component.
-     */
-    public static String separatorUI = WebSeparatorUI.class.getCanonicalName ();
-
-    /**
-     * Scroll-related components.
-     */
-    public static String scrollBarUI = WebScrollBarUI.class.getCanonicalName ();
-    public static String scrollPaneUI = WebScrollPaneUI.class.getCanonicalName ();
-    public static String viewportUI = WebViewportUI.class.getCanonicalName ();
-
-    /**
-     * Text-related components.
-     */
-    public static String textFieldUI = WebTextFieldUI.class.getCanonicalName ();
-    public static String passwordFieldUI = WebPasswordFieldUI.class.getCanonicalName ();
-    public static String formattedTextFieldUI = WebFormattedTextFieldUI.class.getCanonicalName ();
-    public static String textAreaUI = WebTextAreaUI.class.getCanonicalName ();
-    public static String editorPaneUI = WebEditorPaneUI.class.getCanonicalName ();
-    public static String textPaneUI = WebTextPaneUI.class.getCanonicalName ();
-
-    /**
-     * Toolbar-related components.
-     */
-    public static String toolBarUI = WebToolBarUI.class.getCanonicalName ();
-    public static String toolBarSeparatorUI = WebToolBarSeparatorUI.class.getCanonicalName ();
-
-    /**
-     * Table-related components.
-     */
-    public static String tableUI = WebTableUI.class.getCanonicalName ();
-    public static String tableHeaderUI = WebTableHeaderUI.class.getCanonicalName ();
-
-    /**
-     * Chooser components.
-     */
-    public static String colorChooserUI = WebColorChooserUI.class.getCanonicalName ();
-    public static String fileChooserUI = WebFileChooserUI.class.getCanonicalName ();
-
-    /**
-     * Container-related components.
-     */
-    public static String panelUI = WebPanelUI.class.getCanonicalName ();
-    public static String rootPaneUI = WebRootPaneUI.class.getCanonicalName ();
-    public static String tabbedPaneUI = WebTabbedPaneUI.class.getCanonicalName ();
-    public static String splitPaneUI = WebSplitPaneUI.class.getCanonicalName ();
-
-    /**
-     * Other data-related components.
-     */
-    public static String progressBarUI = WebProgressBarUI.class.getCanonicalName ();
-    public static String sliderUI = WebSliderUI.class.getCanonicalName ();
-    public static String spinnerUI = WebSpinnerUI.class.getCanonicalName ();
-    public static String treeUI = WebTreeUI.class.getCanonicalName ();
-    public static String listUI = WebListUI.class.getCanonicalName ();
-    public static String comboBoxUI = WebComboBoxUI.class.getCanonicalName ();
-
-    /**
-     * Desktop-pane-related components.
-     */
-    public static String desktopPaneUI = WebDesktopPaneUI.class.getCanonicalName ();
-    public static String desktopIconUI = WebDesktopIconUI.class.getCanonicalName ();
-    public static String internalFrameUI = WebInternalFrameUI.class.getCanonicalName ();
-
-    /**
-     * Option pane component.
-     */
-    public static String optionPaneUI = WebOptionPaneUI.class.getCanonicalName ();
-
-    /**
-     * Reassignable LookAndFeel fonts.
-     */
-
-    // Text components fonts
-    public static Font globalControlFont = WebFonts.getSystemControlFont ();
-    public static Font buttonFont;
-    public static Font toggleButtonFont;
-    public static Font radioButtonFont;
-    public static Font checkBoxFont;
-    public static Font colorChooserFont;
-    public static Font labelFont;
-    public static Font listFont;
-    public static Font panelFont;
-    public static Font progressBarFont;
-    public static Font scrollPaneFont;
-    public static Font viewportFont;
-    public static Font sliderFont;
-    public static Font tabbedPaneFont;
-    public static Font tableFont;
-    public static Font tableHeaderFont;
-    public static Font titledBorderFont;
-    public static Font toolBarFont;
-    public static Font treeFont;
-
-    public static Font globalTooltipFont = WebFonts.getSystemTooltipFont ();
-    public static Font toolTipFont;
-
-    // Option pane font
-    public static Font globalAlertFont = WebFonts.getSystemAlertFont ();
-    public static Font optionPaneFont;
-
-    // Menu font
-    public static Font globalMenuFont = WebFonts.getSystemMenuFont ();
-    public static Font menuBarFont;
-    public static Font menuFont;
-    public static Font menuItemFont;
-    public static Font radioButtonMenuItemFont;
-    public static Font checkBoxMenuItemFont;
-    public static Font popupMenuFont;
-
-    // Component's accelerators fonts
-    public static Font globalAcceleratorFont = WebFonts.getSystemAcceleratorFont ();
-    public static Font menuItemAcceleratorFont;
-    public static Font radioButtonMenuItemAcceleratorFont;
-    public static Font checkBoxMenuItemAcceleratorFont;
-    public static Font menuAcceleratorFont;
-
-    // Title components fonts
-    public static Font globalTitleFont = WebFonts.getSystemTitleFont ();
-    public static Font internalFrameFont;
-
-    // Editor components fonts
-    public static Font globalTextFont = WebFonts.getSystemTextFont ();
-    public static Font comboBoxFont;
-    public static Font spinnerFont;
-    public static Font textFieldFont;
-    public static Font formattedTextFieldFont;
-    public static Font passwordFieldFont;
-    public static Font textAreaFont;
-    public static Font textPaneFont;
-    public static Font editorPaneFont;
 
     /**
      * Returns WebLookAndFeel name.
@@ -421,82 +259,8 @@ public class FlatLookAndFeel extends BasicLookAndFeel
      * @param table UIDefaults table
      */
     @Override
-    protected void initClassDefaults ( final UIDefaults table )
-    {
-        // Label
-        table.put ( "LabelUI", labelUI );
-        // table.put ( "LinkLabelUI", linkLabelUI );
-        table.put ( "VerticalLabelUI", verticalLabelUI );
-        table.put ( "MultiLineLabelUI", multiLineLabelUI );
-        table.put ( "StyledLabelUI", styledLabelUI );
-        table.put ( "ToolTipUI", toolTipUI );
-
-        // Button
-        table.put ( "ButtonUI", buttonUI );
-        table.put ( "SplitButtonUI", splitButtonUI );
-        table.put ( "ToggleButtonUI", toggleButtonUI );
-        table.put ( "CheckBoxUI", checkBoxUI );
-        table.put ( "TristateCheckBoxUI", tristateCheckBoxUI );
-        table.put ( "RadioButtonUI", radioButtonUI );
-
-        // Menu
-        table.put ( "MenuBarUI", menuBarUI );
-        table.put ( "MenuUI", menuUI );
-        table.put ( "PopupMenuUI", popupMenuUI );
-        table.put ( "MenuItemUI", menuItemUI );
-        table.put ( "CheckBoxMenuItemUI", checkBoxMenuItemUI );
-        table.put ( "RadioButtonMenuItemUI", radioButtonMenuItemUI );
-        table.put ( "PopupMenuSeparatorUI", popupMenuSeparatorUI );
-
-        // Separator
-        table.put ( "SeparatorUI", separatorUI );
-
-        // Scroll
-        table.put ( "ScrollBarUI", scrollBarUI );
-        table.put ( "ScrollPaneUI", scrollPaneUI );
-        table.put ( "ViewportUI", viewportUI );
-
-        // Text
-        table.put ( "TextFieldUI", textFieldUI );
-        table.put ( "PasswordFieldUI", passwordFieldUI );
-        table.put ( "FormattedTextFieldUI", formattedTextFieldUI );
-        table.put ( "TextAreaUI", textAreaUI );
-        table.put ( "EditorPaneUI", editorPaneUI );
-        table.put ( "TextPaneUI", textPaneUI );
-
-        // Toolbar
-        table.put ( "ToolBarUI", toolBarUI );
-        table.put ( "ToolBarSeparatorUI", toolBarSeparatorUI );
-
-        // Table
-        table.put ( "TableUI", tableUI );
-        table.put ( "TableHeaderUI", tableHeaderUI );
-
-        // Chooser
-        table.put ( "ColorChooserUI", colorChooserUI );
-        table.put ( "FileChooserUI", fileChooserUI );
-
-        // Container
-        table.put ( "PanelUI", panelUI );
-        table.put ( "RootPaneUI", rootPaneUI );
-        table.put ( "TabbedPaneUI", tabbedPaneUI );
-        table.put ( "SplitPaneUI", splitPaneUI );
-
-        // Complex components
-        table.put ( "ProgressBarUI", progressBarUI );
-        table.put ( "SliderUI", sliderUI );
-        table.put ( "SpinnerUI", spinnerUI );
-        table.put ( "TreeUI", treeUI );
-        table.put ( "ListUI", listUI );
-        table.put ( "ComboBoxUI", comboBoxUI );
-
-        // Desktop pane
-        table.put ( "DesktopPaneUI", desktopPaneUI );
-        table.put ( "DesktopIconUI", desktopIconUI );
-        table.put ( "InternalFrameUI", internalFrameUI );
-
-        // Option pane
-        table.put ( "OptionPaneUI", optionPaneUI );
+    protected void initClassDefaults ( final UIDefaults table ) {
+        FlatLafInitializer.initClassDefaults(table);
     }
 
     /**
@@ -506,19 +270,12 @@ public class FlatLookAndFeel extends BasicLookAndFeel
      * @param table UIDefaults table
      */
     @Override
-    protected void initSystemColorDefaults ( final UIDefaults table )
-    {
+    protected void initSystemColorDefaults (UIDefaults table) {
         super.initSystemColorDefaults ( table );
-
-        final String textColor = ColorUtils.getHexColor ( FlatLafStyleConstants.textColor );
-        final String textHighlightColor = ColorUtils.getHexColor ( FlatLafStyleConstants.textSelectionColor );
-        final String inactiveTextColor = ColorUtils.getHexColor ( FlatLafStyleConstants.disabledTextColor );
-
-        final String[] defaultSystemColors =
-                { "menu", "#ffffff", "menuText", textColor, "textHighlight", textHighlightColor, "textHighlightText", textColor,
-                        "textInactiveText", inactiveTextColor, "controlText", textColor, };
-
-        loadSystemColors ( table, defaultSystemColors, isNativeLookAndFeel () );
+        
+        String[] defaultSystemColors = FlatLafInitializer.createSystemColorDefaults(table);
+        
+        loadSystemColors(table, defaultSystemColors, isNativeLookAndFeel());
     }
 
     /**
@@ -527,7 +284,6 @@ public class FlatLookAndFeel extends BasicLookAndFeel
      *
      * @param table UI defaults table
      */
-    @SuppressWarnings ("UnnecessaryBoxing")
     @Override
     protected void initComponentDefaults ( final UIDefaults table )
     {
@@ -752,80 +508,16 @@ public class FlatLookAndFeel extends BasicLookAndFeel
                 new Object[]{ "ESCAPE", "cancelSelection", "F2", "editFileName", "F5", "refresh", "BACK_SPACE", "Go Up", "ENTER",
                         "approveSelection", "ctrl ENTER", "approveSelection" } ) );
     }
-
+    
     /**
      * Initializes all default component fonts.
      *
      * @param table UIDefaults table
      */
-    private static void initializeFonts ( final UIDefaults table )
-    {
-        initializeFont ( table, "Button.font", buttonFont, globalControlFont );
-        initializeFont ( table, "ToggleButton.font", toggleButtonFont, globalControlFont );
-        initializeFont ( table, "RadioButton.font", radioButtonFont, globalControlFont );
-        initializeFont ( table, "CheckBox.font", checkBoxFont, globalControlFont );
-        initializeFont ( table, "ColorChooser.font", colorChooserFont, globalControlFont );
-        initializeFont ( table, "ComboBox.font", comboBoxFont, globalTextFont );
-        initializeFont ( table, "InternalFrame.titleFont", internalFrameFont, globalTitleFont );
-        initializeFont ( table, "Label.font", labelFont, globalControlFont );
-        initializeFont ( table, "List.font", listFont, globalControlFont );
-        initializeFont ( table, "MenuBar.font", menuBarFont, globalMenuFont );
-        initializeFont ( table, "MenuItem.font", menuItemFont, globalMenuFont );
-        initializeFont ( table, "MenuItem.acceleratorFont", menuItemAcceleratorFont, globalAcceleratorFont );
-        initializeFont ( table, "RadioButtonMenuItem.font", radioButtonMenuItemFont, globalMenuFont );
-        initializeFont ( table, "RadioButtonMenuItem.acceleratorFont", radioButtonMenuItemAcceleratorFont, globalAcceleratorFont );
-        initializeFont ( table, "CheckBoxMenuItem.font", checkBoxMenuItemFont, globalMenuFont );
-        initializeFont ( table, "CheckBoxMenuItem.acceleratorFont", checkBoxMenuItemAcceleratorFont, globalAcceleratorFont );
-        initializeFont ( table, "Menu.font", menuFont, globalMenuFont );
-        initializeFont ( table, "Menu.acceleratorFont", menuAcceleratorFont, globalAcceleratorFont );
-        initializeFont ( table, "PopupMenu.font", popupMenuFont, globalMenuFont );
-        initializeFont ( table, "OptionPane.font", optionPaneFont, globalAlertFont );
-        initializeFont ( table, "Panel.font", panelFont, globalControlFont );
-        initializeFont ( table, "ProgressBar.font", progressBarFont, globalControlFont );
-        initializeFont ( table, "ScrollPane.font", scrollPaneFont, globalControlFont );
-        initializeFont ( table, "Viewport.font", viewportFont, globalControlFont );
-        initializeFont ( table, "Slider.font", sliderFont, globalControlFont );
-        initializeFont ( table, "Spinner.font", spinnerFont, globalTextFont );
-        initializeFont ( table, "TabbedPane.font", tabbedPaneFont, globalControlFont );
-        initializeFont ( table, "Table.font", tableFont, globalControlFont );
-        initializeFont ( table, "TableHeader.font", tableHeaderFont, globalControlFont );
-        initializeFont ( table, "TextField.font", textFieldFont, globalTextFont );
-        initializeFont ( table, "FormattedTextField.font", formattedTextFieldFont, globalTextFont );
-        initializeFont ( table, "PasswordField.font", passwordFieldFont, globalTextFont );
-        initializeFont ( table, "TextArea.font", textAreaFont, globalTextFont );
-        initializeFont ( table, "TextPane.font", textPaneFont, globalTextFont );
-        initializeFont ( table, "EditorPane.font", editorPaneFont, globalTextFont );
-        initializeFont ( table, "TitledBorder.font", titledBorderFont, globalControlFont );
-        initializeFont ( table, "ToolBar.font", toolBarFont, globalControlFont );
-        initializeFont ( table, "ToolTip.font", toolTipFont, globalTooltipFont );
-        initializeFont ( table, "Tree.font", treeFont, globalControlFont );
+    private static void initializeFonts (UIDefaults table) {
+        FlatLafInitializer.initializeFonts(table);
     }
-
-    /**
-     * Initializes single component font.
-     *
-     * @param table      UIDefaults table
-     * @param key        component font key
-     * @param font       custom font
-     * @param globalFont global font
-     */
-    protected static void initializeFont ( final UIDefaults table, final String key, final Font font, final Font globalFont )
-    {
-        table.put ( key, createLazyFont ( font != null ? font : globalFont ) );
-    }
-
-    /**
-     * Returns SwingLazyValue for specified font.
-     *
-     * @param font font
-     * @return SwingLazyValue for specified font
-     */
-    protected static SwingLazyValue createLazyFont ( final Font font )
-    {
-        return new SwingLazyValue ( "javax.swing.plaf.FontUIResource", null,
-                new Object[]{ font.getName (), font.getStyle (), font.getSize () } );
-    }
-
+    
     /**
      * Initializes custom WebLookAndFeel features.
      */
@@ -934,9 +626,9 @@ public class FlatLookAndFeel extends BasicLookAndFeel
             // Updating already created components tree
             if ( updateExistingComponents )
             {
-                updateAllComponentUIs ();
+                updateAllComponentUIs();
             }
-
+            
             // LookAndFeel installed sucessfully
             return true;
         }
@@ -1234,4 +926,5 @@ public class FlatLookAndFeel extends BasicLookAndFeel
     {
         setOrientation ( !getOrientation ().isLeftToRight () );
     }
+    
 }

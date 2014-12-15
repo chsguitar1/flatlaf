@@ -15,7 +15,7 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.utils;
+package org.ocsoft.flatlaf.utils.ninepatch;
 
 import java.awt.*;
 import java.awt.geom.Area;
@@ -29,16 +29,13 @@ import java.util.Map;
 import org.ocsoft.flatlaf.extended.painter.NinePatchIconPainter;
 import org.ocsoft.flatlaf.extended.painter.NinePatchStatePainter;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.ImageUtils;
-import org.ocsoft.flatlaf.utils.XmlUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.filters.ShadowFilter;
-import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
-import org.ocsoft.flatlaf.utils.ninepatch.NinePatchInterval;
-import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIntervalType;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.xml.ResourceFile;
 import org.ocsoft.flatlaf.utils.xml.ResourceMap;
+import org.ocsoft.flatlaf.utils.xml.XmlUtils;
 
 /**
  * This class provides a set of utilities to work with various nine-patch images.

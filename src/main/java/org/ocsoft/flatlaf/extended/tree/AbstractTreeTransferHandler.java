@@ -24,7 +24,7 @@ import org.ocsoft.flatlaf.laf.tree.TreeUtils;
 import org.ocsoft.flatlaf.laf.tree.UniqueNode;
 import org.ocsoft.flatlaf.laf.tree.WebTree;
 import org.ocsoft.flatlaf.laf.tree.WebTreeModel;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -102,7 +102,7 @@ public abstract class AbstractTreeTransferHandler<N extends UniqueNode, T extend
         }
         catch ( final ClassNotFoundException e )
         {
-            Log.error ( this, e );
+            FlatLafLogger.error ( this, e );
             return null;
         }
     }
@@ -323,12 +323,12 @@ public abstract class AbstractTreeTransferHandler<N extends UniqueNode, T extend
         }
         catch ( final UnsupportedFlavorException ufe )
         {
-            Log.warn ( this, "UnsupportedFlavor: " + ufe.getMessage () );
+            FlatLafLogger.warn ( this, "UnsupportedFlavor: " + ufe.getMessage () );
             return false;
         }
         catch ( final IOException ioe )
         {
-            Log.error ( this, "I/O exception: " + ioe.getMessage () );
+            FlatLafLogger.error ( this, "I/O exception: " + ioe.getMessage () );
             return false;
         }
     }
@@ -347,12 +347,12 @@ public abstract class AbstractTreeTransferHandler<N extends UniqueNode, T extend
         }
         catch ( final UnsupportedFlavorException ufe )
         {
-            Log.warn ( this, "UnsupportedFlavor: " + ufe.getMessage () );
+            FlatLafLogger.warn ( this, "UnsupportedFlavor: " + ufe.getMessage () );
             return false;
         }
         catch ( final IOException ioe )
         {
-            Log.error ( this, "I/O exception: " + ioe.getMessage () );
+            FlatLafLogger.error ( this, "I/O exception: " + ioe.getMessage () );
             return false;
         }
 

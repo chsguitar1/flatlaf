@@ -20,8 +20,8 @@ package org.ocsoft.flatlaf.utils;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
 
 import java.awt.*;
@@ -105,23 +105,23 @@ public final class ProprietaryUtils
         }
         catch ( final ClassNotFoundException e )
         {
-            Log.error ( ProprietaryUtils.class, e );
+            FlatLafLogger.error ( ProprietaryUtils.class, e );
         }
         catch ( final NoSuchFieldException e )
         {
-            Log.error ( ProprietaryUtils.class, e );
+            FlatLafLogger.error ( ProprietaryUtils.class, e );
         }
         catch ( final IllegalAccessException e )
         {
-            Log.error ( ProprietaryUtils.class, e );
+            FlatLafLogger.error ( ProprietaryUtils.class, e );
         }
         catch ( final NoSuchMethodException e )
         {
-            Log.error ( ProprietaryUtils.class, e );
+            FlatLafLogger.error ( ProprietaryUtils.class, e );
         }
         catch ( final InvocationTargetException e )
         {
-            Log.error ( ProprietaryUtils.class, e );
+            FlatLafLogger.error ( ProprietaryUtils.class, e );
         }
     }
 
@@ -222,7 +222,7 @@ public final class ProprietaryUtils
             {
                 // Ignore any exceptions this native feature might cause
                 // Still, should inform that such actions cause an exception on the underlying system
-                Log.error ( ProprietaryUtils.class, e );
+                FlatLafLogger.error ( ProprietaryUtils.class, e );
             }
         }
     }
@@ -273,7 +273,7 @@ public final class ProprietaryUtils
             {
                 // Ignore any exceptions this native feature might cause
                 // Still, should inform that such actions cause an exception on the underlying system
-                Log.error ( ProprietaryUtils.class, e );
+                FlatLafLogger.error ( ProprietaryUtils.class, e );
             }
         }
         return true;
@@ -306,7 +306,7 @@ public final class ProprietaryUtils
             {
                 // Ignore any exceptions this native feature might cause
                 // Still, should inform that such actions cause an exception on the underlying system
-                Log.error ( ProprietaryUtils.class, e );
+                FlatLafLogger.error ( ProprietaryUtils.class, e );
             }
         }
     }
@@ -340,7 +340,7 @@ public final class ProprietaryUtils
             {
                 // Ignore any exceptions this native feature might cause
                 // Still, should inform that such actions cause an exception on the underlying system
-                Log.error ( ProprietaryUtils.class, e );
+                FlatLafLogger.error ( ProprietaryUtils.class, e );
             }
         }
         return 1f;

@@ -19,9 +19,9 @@ package org.ocsoft.flatlaf.laf.separator;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 
@@ -198,11 +198,11 @@ public class WebSeparator extends JSeparator
         {
             try
             {
-                setUI ( ( WebSeparatorUI ) ReflectUtils.createInstance ( FlatLookAndFeel.separatorUI ) );
+                setUI ( ( WebSeparatorUI ) ReflectUtils.createInstance ( FlatLafSettings.separatorUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebSeparatorUI () );
             }
         }

@@ -26,7 +26,8 @@ import org.ocsoft.flatlaf.laf.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.filters.ImageFilterUtils;
 import org.ocsoft.flatlaf.utils.filters.ShadowFilter;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
 
 import java.awt.*;
@@ -1542,7 +1543,7 @@ public final class ImageUtils
         }
         catch ( final Exception ex )
         {
-            Log.error ( "Unable to decode image icon", ex );
+            FlatLafLogger.error ( "Unable to decode image icon", ex );
             try
             {
                 bis.close ();
@@ -1571,7 +1572,7 @@ public final class ImageUtils
         }
         catch ( final IOException ex )
         {
-            Log.error ( "Unable to encode image icon", ex );
+            FlatLafLogger.error ( "Unable to encode image icon", ex );
             try
             {
                 bos.close ();

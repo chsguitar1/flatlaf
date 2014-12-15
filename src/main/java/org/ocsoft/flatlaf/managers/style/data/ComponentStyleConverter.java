@@ -30,7 +30,7 @@ import java.util.*;
 
 import org.ocsoft.flatlaf.managers.style.StyleException;
 import org.ocsoft.flatlaf.managers.style.SupportedComponent;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 
 /**
  * Custom XStream converter for ComponentStyle class.

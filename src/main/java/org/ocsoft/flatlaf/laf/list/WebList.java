@@ -20,15 +20,17 @@ package org.ocsoft.flatlaf.laf.list;
 import javax.swing.*;
 import javax.swing.event.ListDataListener;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.laf.list.editor.DefaultListCellEditor;
 import org.ocsoft.flatlaf.laf.list.editor.ListCellEditor;
 import org.ocsoft.flatlaf.laf.list.editor.ListEditListener;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.utils.*;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.graphics.SizeUtils;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.*;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.awt.*;
 import java.awt.event.FocusAdapter;
@@ -656,11 +658,11 @@ public class WebList extends JList implements EventMethods, FontMethods<WebList>
         {
             try
             {
-                setUI ( ( WebListUI ) ReflectUtils.createInstance ( FlatLookAndFeel.listUI ) );
+                setUI ( ( WebListUI ) ReflectUtils.createInstance ( FlatLafSettings.listUI ) );
             }
             catch ( final Throwable e )
             {
-                Log.error ( this, e );
+                FlatLafLogger.error ( this, e );
                 setUI ( new WebListUI () );
             }
         }

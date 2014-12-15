@@ -25,7 +25,7 @@ import javax.swing.*;
 
 import org.ocsoft.flatlaf.managers.style.SupportedComponent;
 import org.ocsoft.flatlaf.utils.TextUtils;
-import org.ocsoft.flatlaf.utils.log.Log;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 import java.io.Serializable;
 import java.util.List;
@@ -304,7 +304,7 @@ public final class SkinInfo implements Serializable
             else
             {
                 // Required style cannot be found, using default style
-                Log.error ( this, "Unable to find style with ID \"" + styleId + "\" for component: " + component );
+                FlatLafLogger.error ( this, "Unable to find style with ID \"" + styleId + "\" for component: " + component );
                 return componentStyles.get ( ComponentStyleConverter.DEFAULT_STYLE_ID );
             }
         }

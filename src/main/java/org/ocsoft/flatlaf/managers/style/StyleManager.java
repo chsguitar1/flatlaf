@@ -26,10 +26,10 @@ import org.ocsoft.flatlaf.managers.style.data.SkinInfo;
 import org.ocsoft.flatlaf.managers.style.skin.WebLafSkin;
 import org.ocsoft.flatlaf.managers.style.skin.web.WebSkin;
 import org.ocsoft.flatlaf.utils.LafUtils;
-import org.ocsoft.flatlaf.utils.ReflectUtils;
-import org.ocsoft.flatlaf.utils.XmlUtils;
 import org.ocsoft.flatlaf.utils.laf.Styleable;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.xml.XmlUtils;
 
 import java.awt.*;
 import java.util.HashMap;
