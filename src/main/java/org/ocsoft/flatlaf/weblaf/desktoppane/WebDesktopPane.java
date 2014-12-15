@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.weblaf.desktoppane;
 import javax.swing.JDesktopPane;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
-import org.ocsoft.flatlaf.laf.desktoppane.WebDesktopPaneUI;
+import org.ocsoft.flatlaf.laf.desktoppane.FlatDesktopPaneUI;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
@@ -33,19 +33,19 @@ public class WebDesktopPane extends JDesktopPane {
         super();
     }
     
-    public WebDesktopPaneUI getWebUI() {
-        return (WebDesktopPaneUI) getUI();
+    public FlatDesktopPaneUI getWebUI() {
+        return (FlatDesktopPaneUI) getUI();
     }
     
     @Override
     public void updateUI() {
-        if (getUI() == null || !(getUI() instanceof WebDesktopPaneUI)) {
+        if (getUI() == null || !(getUI() instanceof FlatDesktopPaneUI)) {
             try {
-                setUI((WebDesktopPaneUI) ReflectUtils
+                setUI((FlatDesktopPaneUI) ReflectUtils
                         .createInstance(FlatLafSettings.desktopPaneUI));
             } catch (final Throwable e) {
                 FlatLafLogger.error(this, e);
-                setUI(new WebDesktopPaneUI());
+                setUI(new FlatDesktopPaneUI());
             }
         } else {
             setUI(getUI());

@@ -33,6 +33,7 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.general.Filter;
 import org.ocsoft.flatlaf.utils.general.MapUtils;
+import org.ocsoft.flatlaf.weblaf.tree.AsyncUniqueNode;
 import org.ocsoft.flatlaf.weblaf.tree.TreeState;
 import org.ocsoft.flatlaf.weblaf.tree.WebTreeModel;
 

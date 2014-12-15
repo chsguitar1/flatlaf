@@ -23,7 +23,9 @@ import java.util.WeakHashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JTree;
 
+import org.ocsoft.flatlaf.ResourceLoader;
 import org.ocsoft.flatlaf.utils.ImageUtils;
+import org.ocsoft.flatlaf.weblaf.tree.AsyncUniqueNode;
 import org.ocsoft.flatlaf.weblaf.tree.WebTreeCellRenderer;
 import org.ocsoft.flatlaf.weblaf.tree.WebTreeElement;
 
@@ -41,8 +43,7 @@ public class WebAsyncTreeCellRenderer extends WebTreeCellRenderer {
     /**
      * Special failed state icon.
      */
-    public static final ImageIcon failedStateIcon = new ImageIcon(
-            AsyncUniqueNode.class.getResource("icons/failed.png"));
+    public static final ImageIcon failedStateIcon = ResourceLoader.loadIcon("tree/failed.png");
     
     /**
      * User failed icons cache.

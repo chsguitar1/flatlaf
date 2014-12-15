@@ -28,7 +28,7 @@ import java.util.List;
 
 import javax.swing.ListCellRenderer;
 
-import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxUI;
+import org.ocsoft.flatlaf.laf.checkbox.FlatCheckBoxUI;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
 import org.ocsoft.flatlaf.weblaf.checkbox.WebCheckBoxStyle;
@@ -163,8 +163,8 @@ public class WebCheckBoxList extends WebList {
         if (WebCheckBoxStyle.animated) {
             // For checkbox proper animation
             WebTimer.repeat("WebCheckBoxList.animator",
-                    WebCheckBoxUI.UPDATE_DELAY, new ActionListener() {
-                        private int left = WebCheckBoxUI.MAX_DARKNESS + 1;
+                    FlatCheckBoxUI.UPDATE_DELAY, new ActionListener() {
+                        private int left = FlatCheckBoxUI.MAX_DARKNESS + 1;
                         
                         @Override
                         public void actionPerformed(final ActionEvent e) {

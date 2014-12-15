@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.checkbox;
 import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
-import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxUI;
+import org.ocsoft.flatlaf.laf.checkbox.FlatCheckBoxUI;
 import org.ocsoft.flatlaf.weblaf.checkbox.CheckIcon;
 
 /**
@@ -29,7 +29,7 @@ import org.ocsoft.flatlaf.weblaf.checkbox.CheckIcon;
  * @author Mikle Garin
  */
 
-public class WebTristateCheckBoxUI extends WebCheckBoxUI {
+public class WebTristateCheckBoxUI extends FlatCheckBoxUI {
     /**
      * Returns an instance of the WebTristateCheckBoxUI for the specified
      * component. This tricky method is used by UIManager to create component

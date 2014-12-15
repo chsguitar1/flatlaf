@@ -21,6 +21,8 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
+import org.ocsoft.flatlaf.weblaf.tree.AsyncUniqueNode;
+
 /**
  * Custom image observer class for animated loader icons.
  *

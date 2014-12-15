@@ -20,6 +20,7 @@ package org.ocsoft.flatlaf.extended.tree;
 import java.util.Comparator;
 
 import org.ocsoft.flatlaf.utils.general.Filter;
+import org.ocsoft.flatlaf.weblaf.tree.AsyncUniqueNode;
 
 /**
  * This interface provides methods for asynchronous tree data retrieval.

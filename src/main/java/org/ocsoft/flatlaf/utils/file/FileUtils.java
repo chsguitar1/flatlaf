@@ -53,6 +53,7 @@ import javax.swing.ImageIcon;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.text.JTextComponent;
 
+import org.ocsoft.flatlaf.ResourceLoader;
 import org.ocsoft.flatlaf.core.constants.FlatLafFileFilters;
 import org.ocsoft.flatlaf.core.constants.FlatLafTimeoutConstants;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
@@ -2695,60 +2696,11 @@ public final class FileUtils {
      */
     public static ImageIcon getStandartFileIcon(final boolean large,
             final String extension, final float transparency) {
-        return getIconResource(FileUtils.class, "icons/extensions/"
+        return ResourceLoader.loadIcon("filetype/"
                 + (large ? "32" : "16") + "/file_extension_" + extension
                 + ".png", transparency);
     }
     
-    /**
-     * Returns resource icon. Note that returned icon will be cached using its
-     * placement.
-     *
-     * @param nearClass
-     *            class near which the icon is located
-     * @param resource
-     *            icon location
-     * @return resource icon
-     */
-    public static ImageIcon getIconResource(final Class nearClass,
-            final String resource) {
-        return getIconResource(nearClass, resource, 1f);
-    }
-    
-    /**
-     * Returns resource icon with the specified transparency. Note that returned
-     * icon will be cached using its placement and transparency value.
-     *
-     * @param nearClass
-     *            class near which the icon is located
-     * @param resource
-     *            icon location
-     * @param transparency
-     *            custom icon transparency
-     * @return resource icon
-     */
-    public static ImageIcon getIconResource(final Class nearClass,
-            final String resource, final float transparency) {
-        final String key = nearClass.getCanonicalName()
-                + FlatLafStyleConstants.SEPARATOR + resource
-                + FlatLafStyleConstants.SEPARATOR + transparency;
-        if (resourceIconsCache.containsKey(key)) {
-            return resourceIconsCache.get(key);
-        } else {
-            final URL url = nearClass.getResource(resource);
-            ImageIcon icon;
-            if (url != null) {
-                icon = new ImageIcon(url);
-                if (transparency < 1f) {
-                    icon = ImageUtils.createTransparentCopy(icon, transparency);
-                }
-            } else {
-                icon = null;
-            }
-            resourceIconsCache.put(key, icon);
-            return icon;
-        }
-    }
     
     /**
      * Starts tracking file for possible changes.

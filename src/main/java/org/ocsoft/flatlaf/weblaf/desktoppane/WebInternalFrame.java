@@ -22,7 +22,7 @@ import java.beans.PropertyVetoException;
 import javax.swing.JInternalFrame;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
-import org.ocsoft.flatlaf.laf.desktoppane.WebInternalFrameUI;
+import org.ocsoft.flatlaf.laf.desktoppane.FlatInternalFrameUI;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
 import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
@@ -62,8 +62,8 @@ public class WebInternalFrame extends JInternalFrame implements LanguageMethods 
         super(title, resizable, closable, maximizable, iconifiable);
     }
     
-    public WebInternalFrameUI getWebUI() {
-        return (WebInternalFrameUI) getUI();
+    public FlatInternalFrameUI getWebUI() {
+        return (FlatInternalFrameUI) getUI();
     }
     
     @Override
@@ -94,13 +94,13 @@ public class WebInternalFrame extends JInternalFrame implements LanguageMethods 
     
     @Override
     public void updateUI() {
-        if (getUI() == null || !(getUI() instanceof WebInternalFrameUI)) {
+        if (getUI() == null || !(getUI() instanceof FlatInternalFrameUI)) {
             try {
-                setUI((WebInternalFrameUI) ReflectUtils.createInstance(
+                setUI((FlatInternalFrameUI) ReflectUtils.createInstance(
                         FlatLafSettings.internalFrameUI, this));
             } catch (final Throwable e) {
                 FlatLafLogger.error(this, e);
-                setUI(new WebInternalFrameUI(this));
+                setUI(new FlatInternalFrameUI(this));
             }
         } else {
             setUI(getUI());

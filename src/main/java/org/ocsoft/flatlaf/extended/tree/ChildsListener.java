@@ -19,6 +19,8 @@ package org.ocsoft.flatlaf.extended.tree;
 
 import java.util.List;
 
+import org.ocsoft.flatlaf.weblaf.tree.AsyncUniqueNode;
+
 /**
  * Special listener used within AsyncTreeModel to receive childs when loaded.
  *

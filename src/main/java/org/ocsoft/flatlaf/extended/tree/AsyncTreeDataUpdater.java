@@ -19,6 +19,8 @@ package org.ocsoft.flatlaf.extended.tree;
 
 import java.util.List;
 
+import org.ocsoft.flatlaf.weblaf.tree.AsyncUniqueNode;
+
 /**
  * This interface provides methods for asynchronous tree data update. Basically
  * these methods called when some tree node is renamed, moved or removed. This

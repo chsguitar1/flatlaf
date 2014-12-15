@@ -37,7 +37,7 @@ import javax.swing.JTree;
 import javax.swing.table.TableCellEditor;
 import javax.swing.tree.TreeCellEditor;
 
-import org.ocsoft.flatlaf.laf.combobox.WebComboBoxUI;
+import org.ocsoft.flatlaf.laf.combobox.FlatComboBoxUI;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.weblaf.table.WebTableStyle;
 
@@ -117,8 +117,8 @@ public class WebDefaultCellEditor<C extends JComponent> extends
             checkBox.setRequestFocusEnabled(false);
         } else if (editor instanceof JComboBox) {
             final JComboBox comboBox = (JComboBox) editor;
-            if (comboBox.getUI() instanceof WebComboBoxUI) {
-                final WebComboBoxUI webComboBoxUI = (WebComboBoxUI) comboBox
+            if (comboBox.getUI() instanceof FlatComboBoxUI) {
+                final FlatComboBoxUI webComboBoxUI = (FlatComboBoxUI) comboBox
                         .getUI();
                 webComboBoxUI.setDrawBorder(false);
             }

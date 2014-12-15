@@ -43,6 +43,7 @@ import org.ocsoft.flatlaf.utils.swing.StringDocumentChangeListener;
 import org.ocsoft.flatlaf.weblaf.menu.WebCheckBoxMenuItem;
 import org.ocsoft.flatlaf.weblaf.menu.WebPopupMenu;
 import org.ocsoft.flatlaf.weblaf.text.WebTextField;
+import org.ocsoft.flatlaf.weblaf.tree.AsyncUniqueNode;
 import org.ocsoft.flatlaf.weblaf.tree.TreeState;
 import org.ocsoft.flatlaf.weblaf.tree.UniqueNode;
 import org.ocsoft.flatlaf.weblaf.tree.WebTree;

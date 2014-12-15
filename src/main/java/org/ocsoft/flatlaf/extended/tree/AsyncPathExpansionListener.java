@@ -17,6 +17,8 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
+import org.ocsoft.flatlaf.weblaf.tree.AsyncUniqueNode;
+
 /**
  * This custom listener is used to track async tree path expansion action.
  *

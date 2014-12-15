@@ -26,7 +26,7 @@ import javax.swing.ImageIcon;
 
 import org.ocsoft.flatlaf.ResourceLoader;
 import org.ocsoft.flatlaf.extended.checkbox.CheckState;
-import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxUI;
+import org.ocsoft.flatlaf.laf.checkbox.FlatCheckBoxUI;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 
 /**

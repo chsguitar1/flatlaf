@@ -1,17 +1,109 @@
 package org.ocsoft.flatlaf.core;
 
 import java.awt.Font;
+import java.awt.KeyboardFocusManager;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JSpinner;
 import javax.swing.UIDefaults;
+import javax.swing.UIManager;
 
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
+import org.ocsoft.flatlaf.extended.colorchooser.GradientColorData;
+import org.ocsoft.flatlaf.extended.colorchooser.GradientData;
+import org.ocsoft.flatlaf.extended.tab.DocumentPaneState;
+import org.ocsoft.flatlaf.managers.drag.DragManager;
+import org.ocsoft.flatlaf.managers.focus.FocusManager;
+import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
+import org.ocsoft.flatlaf.managers.language.WebLanguageManager;
+import org.ocsoft.flatlaf.managers.proxy.WebProxyManager;
+import org.ocsoft.flatlaf.managers.settings.WebSettingsManager;
+import org.ocsoft.flatlaf.managers.style.StyleManager;
+import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.utils.ColorUtils;
 import org.ocsoft.flatlaf.utils.swing.SwingLazyValue;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
+import org.ocsoft.flatlaf.utils.xml.XmlUtils;
+import org.ocsoft.flatlaf.weblaf.AltProcessor;
 import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.weblaf.colorchooser.HSBColor;
+import org.ocsoft.flatlaf.weblaf.tree.NodeState;
+import org.ocsoft.flatlaf.weblaf.tree.TreeState;
 
 public class FlatLafInitializer {
     
     private enum FontGroup {
         CONTROL, TEXT, TITLE, MENU, ACCELERATOR, ALERT, TOOLTIP
+    }
+    
+    /**
+     * Alt hotkey processor for application windows with menu.
+     */
+    private static final AltProcessor altProcessor = new AltProcessor();
+    
+    static void initialize() {
+
+        // Listening to ALT key for menubar quick focusing
+        KeyboardFocusManager.getCurrentKeyboardFocusManager()
+                .addKeyEventPostProcessor(altProcessor);
+        
+        // Initialize managers only when L&F was changed
+        UIManager.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(final PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals(FlatLafConstants.LOOK_AND_FEEL_PROPERTY)) {
+                    // Initializing managers if WebLaF was installed
+                    if (evt.getNewValue() instanceof FlatLookAndFeel) {
+                        // Web decoration for frames and dialogs
+                        JFrame.setDefaultLookAndFeelDecorated(FlatLafSettings.isDecorateFrames());
+                        JDialog.setDefaultLookAndFeelDecorated(FlatLafSettings.isDecorateDialogs());
+                        
+                        // Custom WebLaF data aliases
+                        XmlUtils.processAnnotations(DocumentPaneState.class);
+                        XmlUtils.processAnnotations(TreeState.class);
+                        XmlUtils.processAnnotations(NodeState.class);
+                        XmlUtils.processAnnotations(GradientData.class);
+                        XmlUtils.processAnnotations(GradientColorData.class);
+                        XmlUtils.processAnnotations(HSBColor.class);
+                        
+                        // Initializing WebLaF managers
+                        initializeManagers();
+                        
+                        // todo Temporary workaround for JSpinner ENTER update
+                        // issue when created after JTextField
+                        new JSpinner();
+                    }
+                    
+                    // Remove listener in any case
+                    UIManager.removePropertyChangeListener(this);
+                }
+            }
+        });
+    }
+    
+    static void uninitialize() {
+       // Removing alt processor
+        KeyboardFocusManager.getCurrentKeyboardFocusManager()
+                .removeKeyEventPostProcessor(altProcessor);
+    }
+    
+    /**
+     * Initializes library managers. Initialization order is strict since some
+     * managers require other managers to be loaded.
+     */
+    static synchronized void initializeManagers() {
+        FlatLafLogger.initialize();
+        WebLanguageManager.initialize();
+        WebSettingsManager.initialize();
+        HotkeyManager.initialize();
+        FocusManager.initialize();
+        TooltipManager.initialize();
+        StyleManager.initialize();
+        WebProxyManager.initialize();
+        DragManager.initialize();
     }
     
     static String[] createSystemColorDefaults(UIDefaults table) {

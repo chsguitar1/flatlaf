@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.tree.sample;
 
-import org.ocsoft.flatlaf.extended.tree.AsyncUniqueNode;
+import org.ocsoft.flatlaf.weblaf.tree.AsyncUniqueNode;
 
 /**
  * Sample node.

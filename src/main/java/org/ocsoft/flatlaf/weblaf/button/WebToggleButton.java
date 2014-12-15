@@ -36,7 +36,7 @@ import javax.swing.JToggleButton;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.button.WebToggleButtonUI;
+import org.ocsoft.flatlaf.laf.button.FlatToggleButtonUI;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyInfo;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
@@ -538,19 +538,19 @@ public class WebToggleButton extends JToggleButton implements ShapeProvider,
         return getWebUI().provideShape();
     }
     
-    public WebToggleButtonUI getWebUI() {
-        return (WebToggleButtonUI) getUI();
+    public FlatToggleButtonUI getWebUI() {
+        return (FlatToggleButtonUI) getUI();
     }
     
     @Override
     public void updateUI() {
-        if (getUI() == null || !(getUI() instanceof WebToggleButtonUI)) {
+        if (getUI() == null || !(getUI() instanceof FlatToggleButtonUI)) {
             try {
-                setUI((WebToggleButtonUI) ReflectUtils
+                setUI((FlatToggleButtonUI) ReflectUtils
                         .createInstance(FlatLafSettings.toggleButtonUI));
             } catch (final Throwable e) {
                 FlatLafLogger.error(this, e);
-                setUI(new WebToggleButtonUI());
+                setUI(new FlatToggleButtonUI());
             }
         } else {
             setUI(getUI());

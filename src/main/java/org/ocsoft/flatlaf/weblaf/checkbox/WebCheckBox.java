@@ -33,7 +33,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
-import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxUI;
+import org.ocsoft.flatlaf.laf.checkbox.FlatCheckBoxUI;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyInfo;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
@@ -310,19 +310,19 @@ public class WebCheckBox extends JCheckBox implements ShapeProvider,
         return getWebUI().provideShape();
     }
     
-    public WebCheckBoxUI getWebUI() {
-        return (WebCheckBoxUI) getUI();
+    public FlatCheckBoxUI getWebUI() {
+        return (FlatCheckBoxUI) getUI();
     }
     
     @Override
     public void updateUI() {
-        if (getUI() == null || !(getUI() instanceof WebCheckBoxUI)) {
+        if (getUI() == null || !(getUI() instanceof FlatCheckBoxUI)) {
             try {
-                setUI((WebCheckBoxUI) ReflectUtils
+                setUI((FlatCheckBoxUI) ReflectUtils
                         .createInstance(FlatLafSettings.checkBoxUI));
             } catch (final Throwable e) {
                 FlatLafLogger.error(this, e);
-                setUI(new WebCheckBoxUI());
+                setUI(new FlatCheckBoxUI());
             }
         } else {
             setUI(getUI());

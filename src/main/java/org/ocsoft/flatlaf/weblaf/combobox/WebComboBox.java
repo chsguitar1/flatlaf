@@ -33,7 +33,7 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
-import org.ocsoft.flatlaf.laf.combobox.WebComboBoxUI;
+import org.ocsoft.flatlaf.laf.combobox.FlatComboBoxUI;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.managers.settings.DefaultValue;
@@ -234,19 +234,19 @@ public class WebComboBox extends JComboBox implements ShapeProvider,
         return (WebComboBoxCellRenderer) getRenderer();
     }
     
-    public WebComboBoxUI getWebUI() {
-        return (WebComboBoxUI) getUI();
+    public FlatComboBoxUI getWebUI() {
+        return (FlatComboBoxUI) getUI();
     }
     
     @Override
     public void updateUI() {
-        if (getUI() == null || !(getUI() instanceof WebComboBoxUI)) {
+        if (getUI() == null || !(getUI() instanceof FlatComboBoxUI)) {
             try {
-                setUI((WebComboBoxUI) ReflectUtils
+                setUI((FlatComboBoxUI) ReflectUtils
                         .createInstance(FlatLafSettings.comboBoxUI));
             } catch (final Throwable e) {
                 FlatLafLogger.error(this, e);
-                setUI(new WebComboBoxUI());
+                setUI(new FlatComboBoxUI());
             }
         } else {
             setUI(getUI());

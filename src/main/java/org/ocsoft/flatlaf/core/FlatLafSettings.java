@@ -2,6 +2,9 @@ package org.ocsoft.flatlaf.core;
 
 import java.awt.Font;
 
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+
 import org.ocsoft.flatlaf.core.defaults.FlatLafFontDefaults;
 import org.ocsoft.flatlaf.extended.button.WebSplitButtonUI;
 import org.ocsoft.flatlaf.extended.checkbox.WebTristateCheckBoxUI;
@@ -9,13 +12,13 @@ import org.ocsoft.flatlaf.extended.label.WebMultiLineLabelUI;
 import org.ocsoft.flatlaf.extended.label.WebStyledLabelUI;
 import org.ocsoft.flatlaf.extended.label.WebVerticalLabelUI;
 import org.ocsoft.flatlaf.laf.button.FlatButtonUI;
-import org.ocsoft.flatlaf.laf.button.WebToggleButtonUI;
-import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxUI;
-import org.ocsoft.flatlaf.laf.colorchooser.WebColorChooserUI;
-import org.ocsoft.flatlaf.laf.combobox.WebComboBoxUI;
-import org.ocsoft.flatlaf.laf.desktoppane.WebDesktopIconUI;
-import org.ocsoft.flatlaf.laf.desktoppane.WebDesktopPaneUI;
-import org.ocsoft.flatlaf.laf.desktoppane.WebInternalFrameUI;
+import org.ocsoft.flatlaf.laf.button.FlatToggleButtonUI;
+import org.ocsoft.flatlaf.laf.checkbox.FlatCheckBoxUI;
+import org.ocsoft.flatlaf.laf.colorchooser.FlatColorChooserUI;
+import org.ocsoft.flatlaf.laf.combobox.FlatComboBoxUI;
+import org.ocsoft.flatlaf.laf.desktoppane.FlatDesktopIconUI;
+import org.ocsoft.flatlaf.laf.desktoppane.FlatDesktopPaneUI;
+import org.ocsoft.flatlaf.laf.desktoppane.FlatInternalFrameUI;
 import org.ocsoft.flatlaf.laf.filechooser.WebFileChooserUI;
 import org.ocsoft.flatlaf.laf.label.WebLabelUI;
 import org.ocsoft.flatlaf.laf.list.WebListUI;
@@ -54,6 +57,79 @@ import org.ocsoft.flatlaf.laf.viewport.WebViewportUI;
 
 public class FlatLafSettings {
     
+    /**
+     * Whether all frames should be decorated using WebLaF styling by default or
+     * not.
+     */
+    private static boolean decorateFrames = false;
+    
+    /**
+     * Whether all dialogs should be decorated using WebLaF styling by default
+     * or not.
+     */
+    private static boolean decorateDialogs = false;
+    
+    /**
+     * Returns whether look and feel uses custom decoration for newly created
+     * frames or not.
+     *
+     * @return true if look and feel uses custom decoration for newly created
+     *         frames, false otherwise
+     */
+    public static boolean isDecorateFrames() {
+        return decorateFrames;
+    }
+    
+    /**
+     * Sets whether look and feel should use custom decoration for newly created
+     * frames or not.
+     *
+     * @param decorateFrames
+     *            whether look and feel should use custom decoration for newly
+     *            created frames or not
+     */
+    public static void setDecorateFrames(final boolean decorateFrames) {
+        FlatLafSettings.decorateFrames = decorateFrames;
+        JFrame.setDefaultLookAndFeelDecorated(decorateFrames);
+    }
+    
+    /**
+     * Returns whether look and feel uses custom decoration for newly created
+     * dialogs or not.
+     *
+     * @return true if look and feel uses custom decoration for newly created
+     *         dialogs, false otherwise
+     */
+    public static boolean isDecorateDialogs() {
+        return decorateDialogs;
+    }
+    
+    /**
+     * Sets whether look and feel should use custom decoration for newly created
+     * dialogs or not.
+     *
+     * @param decorateDialogs
+     *            whether look and feel should use custom decoration for newly
+     *            created dialogs or not
+     */
+    public static void setDecorateDialogs(final boolean decorateDialogs) {
+        FlatLafSettings.decorateDialogs = decorateDialogs;
+        JDialog.setDefaultLookAndFeelDecorated(decorateDialogs);
+    }
+    
+    /**
+     * Sets whether look and feel should use custom decoration for newly created
+     * frames and dialogs or not.
+     *
+     * @param decorateAllWindows
+     *            whether look and feel should use custom decoration for newly
+     *            created frames and dialogs or not
+     */
+    public static void setDecorateAllWindows(final boolean decorateAllWindows) {
+        setDecorateFrames(decorateAllWindows);
+        setDecorateDialogs(decorateAllWindows);
+    }
+    
     /*
      * Label-related components.
      */
@@ -73,9 +149,9 @@ public class FlatLafSettings {
     public static String buttonUI = FlatButtonUI.class.getCanonicalName();
     public static String splitButtonUI = WebSplitButtonUI.class
             .getCanonicalName();
-    public static String toggleButtonUI = WebToggleButtonUI.class
+    public static String toggleButtonUI = FlatToggleButtonUI.class
             .getCanonicalName();
-    public static String checkBoxUI = WebCheckBoxUI.class.getCanonicalName();
+    public static String checkBoxUI = FlatCheckBoxUI.class.getCanonicalName();
     public static String tristateCheckBoxUI = WebTristateCheckBoxUI.class
             .getCanonicalName();
     public static String radioButtonUI = WebRadioButtonUI.class
@@ -138,7 +214,7 @@ public class FlatLafSettings {
     /*
      * Chooser components.
      */
-    public static String colorChooserUI = WebColorChooserUI.class
+    public static String colorChooserUI = FlatColorChooserUI.class
             .getCanonicalName();
     public static String fileChooserUI = WebFileChooserUI.class
             .getCanonicalName();
@@ -161,16 +237,16 @@ public class FlatLafSettings {
     public static String spinnerUI = WebSpinnerUI.class.getCanonicalName();
     public static String treeUI = WebTreeUI.class.getCanonicalName();
     public static String listUI = WebListUI.class.getCanonicalName();
-    public static String comboBoxUI = WebComboBoxUI.class.getCanonicalName();
+    public static String comboBoxUI = FlatComboBoxUI.class.getCanonicalName();
     
     /*
      * Desktop-pane-related components.
      */
-    public static String desktopPaneUI = WebDesktopPaneUI.class
+    public static String desktopPaneUI = FlatDesktopPaneUI.class
             .getCanonicalName();
-    public static String desktopIconUI = WebDesktopIconUI.class
+    public static String desktopIconUI = FlatDesktopIconUI.class
             .getCanonicalName();
-    public static String internalFrameUI = WebInternalFrameUI.class
+    public static String internalFrameUI = FlatInternalFrameUI.class
             .getCanonicalName();
     
     /*

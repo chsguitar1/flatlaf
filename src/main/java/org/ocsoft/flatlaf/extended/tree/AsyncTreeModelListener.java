@@ -20,6 +20,8 @@ package org.ocsoft.flatlaf.extended.tree;
 import java.util.EventListener;
 import java.util.List;
 
+import org.ocsoft.flatlaf.weblaf.tree.AsyncUniqueNode;
+
 /**
  * This listener interface provide various asynchronous tree model events.
  *

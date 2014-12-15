@@ -24,7 +24,7 @@ import javax.swing.JColorChooser;
 import javax.swing.colorchooser.ColorSelectionModel;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
-import org.ocsoft.flatlaf.laf.colorchooser.WebColorChooserUI;
+import org.ocsoft.flatlaf.laf.colorchooser.FlatColorChooserUI;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.DialogOptions;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
@@ -92,19 +92,19 @@ public class WebColorChooser extends JColorChooser implements DialogOptions {
         getWebUI().removeColorChooserListener(colorChooserListener);
     }
     
-    public WebColorChooserUI getWebUI() {
-        return (WebColorChooserUI) getUI();
+    public FlatColorChooserUI getWebUI() {
+        return (FlatColorChooserUI) getUI();
     }
     
     @Override
     public void updateUI() {
-        if (getUI() == null || !(getUI() instanceof WebColorChooserUI)) {
+        if (getUI() == null || !(getUI() instanceof FlatColorChooserUI)) {
             try {
-                setUI((WebColorChooserUI) ReflectUtils
+                setUI((FlatColorChooserUI) ReflectUtils
                         .createInstance(FlatLafSettings.colorChooserUI));
             } catch (final Throwable e) {
                 FlatLafLogger.error(this, e);
-                setUI(new WebColorChooserUI());
+                setUI(new FlatColorChooserUI());
             }
         } else {
             setUI(getUI());

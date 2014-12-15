@@ -21,10 +21,7 @@ import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.KeyboardFocusManager;
 import java.awt.Window;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -33,9 +30,6 @@ import java.util.WeakHashMap;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.JViewport;
 import javax.swing.LayoutStyle;
@@ -46,38 +40,21 @@ import javax.swing.plaf.InsetsUIResource;
 import javax.swing.plaf.basic.BasicLookAndFeel;
 import javax.swing.text.DefaultEditorKit;
 
-import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
-import org.ocsoft.flatlaf.extended.colorchooser.GradientColorData;
-import org.ocsoft.flatlaf.extended.colorchooser.GradientData;
-import org.ocsoft.flatlaf.extended.tab.DocumentPaneState;
 import org.ocsoft.flatlaf.laf.tree.WebTreeUI;
-import org.ocsoft.flatlaf.managers.drag.DragManager;
-import org.ocsoft.flatlaf.managers.focus.FocusManager;
-import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
-import org.ocsoft.flatlaf.managers.language.WebLanguageManager;
-import org.ocsoft.flatlaf.managers.proxy.WebProxyManager;
-import org.ocsoft.flatlaf.managers.settings.WebSettingsManager;
-import org.ocsoft.flatlaf.managers.style.StyleManager;
-import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.ProprietaryUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.swing.SwingLazyValue;
-import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
 import org.ocsoft.flatlaf.utils.xml.XmlUtils;
-import org.ocsoft.flatlaf.weblaf.AltProcessor;
 import org.ocsoft.flatlaf.weblaf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.weblaf.WebLayoutStyle;
-import org.ocsoft.flatlaf.weblaf.colorchooser.HSBColor;
 import org.ocsoft.flatlaf.weblaf.list.WebListCellRenderer;
 import org.ocsoft.flatlaf.weblaf.list.WebListStyle;
 import org.ocsoft.flatlaf.weblaf.scroll.WebScrollBarStyle;
 import org.ocsoft.flatlaf.weblaf.table.WebTableStyle;
-import org.ocsoft.flatlaf.weblaf.tree.NodeState;
-import org.ocsoft.flatlaf.weblaf.tree.TreeState;
 import org.ocsoft.flatlaf.weblaf.viewport.WebViewportStyle;
 
 /**
@@ -106,26 +83,9 @@ public class FlatLookAndFeel extends BasicLookAndFeel {
             50);
     
     /**
-     * Alt hotkey processor for application windows with menu.
-     */
-    public static final AltProcessor altProcessor = new AltProcessor();
-    
-    /**
      * Whether to hide component mnemonics by default or not.
      */
     private static boolean isMnemonicHidden = true;
-    
-    /**
-     * Whether all frames should be decorated using WebLaF styling by default or
-     * not.
-     */
-    private static boolean decorateFrames = false;
-    
-    /**
-     * Whether all dialogs should be decorated using WebLaF styling by default
-     * or not.
-     */
-    private static boolean decorateDialogs = false;
     
     /**
      * Default scroll mode used by JViewportUI to handle scrolling repaints. It
@@ -590,43 +550,7 @@ public class FlatLookAndFeel extends BasicLookAndFeel {
     @Override
     public void initialize() {
         super.initialize();
-        
-        // Listening to ALT key for menubar quick focusing
-        KeyboardFocusManager.getCurrentKeyboardFocusManager()
-                .addKeyEventPostProcessor(altProcessor);
-        
-        // Initialize managers only when L&F was changed
-        UIManager.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(final PropertyChangeEvent evt) {
-                if (evt.getPropertyName().equals(FlatLafConstants.LOOK_AND_FEEL_PROPERTY)) {
-                    // Initializing managers if WebLaF was installed
-                    if (evt.getNewValue() instanceof FlatLookAndFeel) {
-                        // Web decoration for frames and dialogs
-                        JFrame.setDefaultLookAndFeelDecorated(decorateFrames);
-                        JDialog.setDefaultLookAndFeelDecorated(decorateDialogs);
-                        
-                        // Custom WebLaF data aliases
-                        XmlUtils.processAnnotations(DocumentPaneState.class);
-                        XmlUtils.processAnnotations(TreeState.class);
-                        XmlUtils.processAnnotations(NodeState.class);
-                        XmlUtils.processAnnotations(GradientData.class);
-                        XmlUtils.processAnnotations(GradientColorData.class);
-                        XmlUtils.processAnnotations(HSBColor.class);
-                        
-                        // Initializing WebLaF managers
-                        initializeManagers();
-                        
-                        // todo Temporary workaround for JSpinner ENTER update
-                        // issue when created after JTextField
-                        new JSpinner();
-                    }
-                    
-                    // Remove listener in any case
-                    UIManager.removePropertyChangeListener(this);
-                }
-            }
-        });
+        FlatLafInitializer.initialize();
     }
     
     /**
@@ -635,10 +559,7 @@ public class FlatLookAndFeel extends BasicLookAndFeel {
     @Override
     public void uninitialize() {
         super.uninitialize();
-        
-        // Removing alt processor
-        KeyboardFocusManager.getCurrentKeyboardFocusManager()
-                .removeKeyEventPostProcessor(altProcessor);
+        FlatLafInitializer.uninitialize();
     }
     
     /**
@@ -707,21 +628,7 @@ public class FlatLookAndFeel extends BasicLookAndFeel {
                 .equals(FlatLookAndFeel.class.getCanonicalName());
     }
     
-    /**
-     * Initializes library managers. Initialization order is strict since some
-     * managers require other managers to be loaded.
-     */
-    public static synchronized void initializeManagers() {
-        FlatLafLogger.initialize();
-        WebLanguageManager.initialize();
-        WebSettingsManager.initialize();
-        HotkeyManager.initialize();
-        FocusManager.initialize();
-        TooltipManager.initialize();
-        StyleManager.initialize();
-        WebProxyManager.initialize();
-        DragManager.initialize();
-    }
+    
     
     /**
      * Returns a list of square WebLookAndFeel images that can be used as window
@@ -825,53 +732,7 @@ public class FlatLookAndFeel extends BasicLookAndFeel {
         return WebLayoutStyle.getInstance();
     }
     
-    /**
-     * Returns whether look and feel uses custom decoration for newly created
-     * frames or not.
-     *
-     * @return true if look and feel uses custom decoration for newly created
-     *         frames, false otherwise
-     */
-    public static boolean isDecorateFrames() {
-        return decorateFrames;
-    }
-    
-    /**
-     * Sets whether look and feel should use custom decoration for newly created
-     * frames or not.
-     *
-     * @param decorateFrames
-     *            whether look and feel should use custom decoration for newly
-     *            created frames or not
-     */
-    public static void setDecorateFrames(final boolean decorateFrames) {
-        FlatLookAndFeel.decorateFrames = decorateFrames;
-        JFrame.setDefaultLookAndFeelDecorated(decorateFrames);
-    }
-    
-    /**
-     * Returns whether look and feel uses custom decoration for newly created
-     * dialogs or not.
-     *
-     * @return true if look and feel uses custom decoration for newly created
-     *         dialogs, false otherwise
-     */
-    public static boolean isDecorateDialogs() {
-        return decorateDialogs;
-    }
-    
-    /**
-     * Sets whether look and feel should use custom decoration for newly created
-     * dialogs or not.
-     *
-     * @param decorateDialogs
-     *            whether look and feel should use custom decoration for newly
-     *            created dialogs or not
-     */
-    public static void setDecorateDialogs(final boolean decorateDialogs) {
-        FlatLookAndFeel.decorateDialogs = decorateDialogs;
-        JDialog.setDefaultLookAndFeelDecorated(decorateDialogs);
-    }
+
     
     /**
      * Returns whether per-pixel transparent windows usage is allowed on Linux
@@ -919,18 +780,6 @@ public class FlatLookAndFeel extends BasicLookAndFeel {
         FlatLookAndFeel.scrollMode = scrollMode;
     }
     
-    /**
-     * Sets whether look and feel should use custom decoration for newly created
-     * frames and dialogs or not.
-     *
-     * @param decorateAllWindows
-     *            whether look and feel should use custom decoration for newly
-     *            created frames and dialogs or not
-     */
-    public static void setDecorateAllWindows(final boolean decorateAllWindows) {
-        setDecorateFrames(decorateAllWindows);
-        setDecorateDialogs(decorateAllWindows);
-    }
     
     /**
      * Returns whether LTR is current global component orientation or not.
