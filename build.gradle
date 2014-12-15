@@ -1,0 +1,156 @@
+/* 
+ * plugins
+ */
+plugins {
+    id 'java'
+    id 'maven'
+    id 'eclipse'
+}
+
+/* 
+ * library information
+ */
+group = 'org.ocsoft'
+ext.appName = 'flatlaf'
+version = '0.0.1'
+description = ''
+
+sourceCompatibility = 1.8
+
+ext {
+    defaultEncoding = 'UTF-8'
+    isRunnable = false
+    mainClass = 'org.ocsoft.libname.Launcher'
+    licenseName = 'GNU General Public License Version 3'
+    licenseURL = 'http://www.gnu.org/licenses/gpl-3.0.txt'
+    pomInceptionYear = '2014'
+}
+
+/*
+ * project information
+ */
+
+defaultTasks 'clean', 'build'
+
+//defined on ~/.gradle/gradle.properties
+ext.mvnDeployURL = frowsmvnPath 
+ext.mvnSnapshotDeployURL = m2Repository
+
+/*
+ * dependencies
+ */
+dependencies {
+    compile 'com.thoughtworks.xstream:xstream:1.4.7'
+    compile 'net.htmlparser.jericho:jericho-html:3.3'
+    compile 'com.fifesoft:rsyntaxtextarea:2.5.6'
+    compile 'org.slf4j:slf4j-api:1.7.7'
+    compile 'org.slf4j:slf4j-simple:1.7.7'
+    compile 'com.mortennobel:java-image-scaling:0.8.6'
+    testCompile 'junit:junit:4.+'
+}
+
+/*
+ * repositories
+ */
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+      url "https://frows.github.io/mvn-repo"
+    }
+    //flatDir { dirs 'lib' }
+}
+
+/*
+ * original tasks
+ */
+
+task runMain(type: JavaExec, dependsOn: classes) {
+    description 'Executes main class.'
+    main = mainClass
+    classpath sourceSets.main.output.classesDir
+    classpath configurations.compile
+}
+
+task sourcesJar(type: Jar, dependsOn:classes) {
+    description 'Creates sources jar file.'
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn:javadoc) {
+    description 'Creates javadoc jar file.'
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+task checkPackageNameConvention << {
+    def versionStr = "v" + project.version.toString().replace(".", "_")
+    def dirName = project.group + "." + project.name
+    def pkg = ((dirName + "." + versionStr).replace(".", "/"))
+    if(!file("src/main/java/" + pkg).exists() || !file("src/test/java/" + pkg).exists()) {
+      throw new GradleException('testFrowsPackageNameConvention: Wrong package name detected')
+    }
+}
+
+task testsOnDeploy(dependsOn: checkPackageNameConvention) {
+    description 'Run tests for deploy.'
+}
+
+artifacts {
+    archives sourcesJar
+    //archives javadocJar
+}
+
+/* 
+ * settings
+ */
+
+//deploy
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: mvnDeployURL)
+            snapshotRepository(url: mvnSnapshotDeployURL)
+            pom {
+                version = project.version
+                groupId = project.group
+                artifactId = appName
+                project {
+                    inceptionYear pomInceptionYear
+                    licenses {
+                        license {
+                            name licenseName
+                            url licenseURL
+                            distribution 'repo'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//tests on deploy
+uploadArchives.dependsOn testsOnDeploy
+
+//encoding
+tasks.withType(AbstractCompile) each { it.options.encoding = defaultEncoding }
+tasks.withType(GroovyCompile) each { it.groovyOptions.encoding = defaultEncoding }
+
+//javadoc
+javadoc {
+    options.charSet = 'UTF-8'
+}
+
+//create jar
+jar {
+    //from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    from (configurations.compile.collect { it.isDirectory() ? it : fileTree(it) }) {
+        exclude '**/*.jar'
+    }
+    jar.baseName = appName
+    manifest.attributes("Main-Class" : mainClass)
+}
+
+// ---------------------------------------------------------------
