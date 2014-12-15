@@ -17,13 +17,20 @@
 
 package org.ocsoft.flatlaf.extended.window;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.Window;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JWindow;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+
+import org.ocsoft.flatlaf.utils.SwingUtils;
 
 /**
  * User: mgarin Date: 02.11.11 Time: 15:59

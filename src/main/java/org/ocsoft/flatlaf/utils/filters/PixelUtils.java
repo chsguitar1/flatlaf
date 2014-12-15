@@ -33,7 +33,7 @@
 
 package org.ocsoft.flatlaf.utils.filters;
 
-import java.awt.*;
+import java.awt.Color;
 
 import org.ocsoft.flatlaf.utils.MathUtils;
 

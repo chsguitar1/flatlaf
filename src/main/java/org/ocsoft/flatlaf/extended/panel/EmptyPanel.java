@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.panel;
 
-import java.awt.*;
+import java.awt.Dimension;
 
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 

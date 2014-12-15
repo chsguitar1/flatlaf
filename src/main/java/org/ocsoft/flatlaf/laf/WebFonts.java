@@ -17,13 +17,13 @@
 
 package org.ocsoft.flatlaf.laf;
 
+import java.awt.Font;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.swing.plaf.FontUIResource;
 
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
-
-import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * This class returns base fonts for all component types on various OS. This is

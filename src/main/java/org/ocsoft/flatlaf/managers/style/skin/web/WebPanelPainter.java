@@ -17,11 +17,12 @@
 
 package org.ocsoft.flatlaf.managers.style.skin.web;
 
-import javax.swing.*;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+
+import javax.swing.JPanel;
 
 import org.ocsoft.flatlaf.laf.panel.PanelPainter;
-
-import java.awt.*;
 
 /**
  * Web-style painter for JPanel component. It is used as WebPanelUI default

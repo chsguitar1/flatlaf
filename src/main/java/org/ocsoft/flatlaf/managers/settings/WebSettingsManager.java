@@ -23,9 +23,12 @@ import org.ocsoft.flatlaf.extended.panel.WebAccordion;
 import org.ocsoft.flatlaf.extended.panel.WebCollapsiblePane;
 import org.ocsoft.flatlaf.extended.tab.WebDocumentPane;
 import org.ocsoft.flatlaf.laf.tree.WebTree;
-import org.ocsoft.flatlaf.managers.settings.ComponentSettingsManager;
-import org.ocsoft.flatlaf.managers.settings.SettingsManager;
-import org.ocsoft.flatlaf.managers.settings.processors.*;
+import org.ocsoft.flatlaf.managers.settings.processors.WebAccordionSettingsProcessor;
+import org.ocsoft.flatlaf.managers.settings.processors.WebCollapsiblePaneSettingsProcessor;
+import org.ocsoft.flatlaf.managers.settings.processors.WebDateFieldSettingsProcessor;
+import org.ocsoft.flatlaf.managers.settings.processors.WebDocumentPaneSettingsProcessor;
+import org.ocsoft.flatlaf.managers.settings.processors.WebGradientColorChooserSettingsProcessor;
+import org.ocsoft.flatlaf.managers.settings.processors.WebTreeSettingsProcessor;
 
 /**
  * Minor additions over core SettingsManager.

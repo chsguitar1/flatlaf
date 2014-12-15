@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.layout;
 
-import java.awt.*;
+import java.awt.Rectangle;
 
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
 

@@ -17,7 +17,18 @@
 
 package org.ocsoft.flatlaf.extended.colorchooser;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.SwingUtilities;
 
 import org.ocsoft.flatlaf.laf.colorchooser.HSBColor;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
@@ -26,13 +37,6 @@ import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 /**
  * User: mgarin Date: 08.07.2010 Time: 14:12:13

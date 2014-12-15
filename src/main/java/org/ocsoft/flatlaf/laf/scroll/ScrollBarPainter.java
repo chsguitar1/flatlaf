@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.laf.scroll;
 
-import javax.swing.*;
+import java.awt.Rectangle;
+
+import javax.swing.JScrollBar;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.SpecificPainter;
-
-import java.awt.*;
 
 /**
  * Base interface for JScrollBar component painters.

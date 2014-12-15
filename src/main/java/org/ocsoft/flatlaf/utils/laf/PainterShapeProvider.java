@@ -17,7 +17,9 @@
 
 package org.ocsoft.flatlaf.utils.laf;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Rectangle;
+import java.awt.Shape;
 
 /**
  * This interface provides a single method for requesting painted component

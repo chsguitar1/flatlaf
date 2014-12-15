@@ -17,18 +17,19 @@
 
 package org.ocsoft.flatlaf.extended.list;
 
-import javax.swing.*;
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.File;
+
+import javax.swing.JList;
 
 import org.ocsoft.flatlaf.laf.list.WebListStyle;
 import org.ocsoft.flatlaf.laf.list.editor.AbstractListCellEditor;
 import org.ocsoft.flatlaf.laf.text.WebTextField;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.utils.FileUtils;
-
-import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.io.File;
 
 /**
  * Custom list cell editor used in WebFileList component.

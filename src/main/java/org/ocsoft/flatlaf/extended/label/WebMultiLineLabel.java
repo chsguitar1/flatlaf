@@ -17,7 +17,15 @@
 
 package org.ocsoft.flatlaf.extended.label;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.KeyAdapter;
+import java.awt.event.MouseAdapter;
+import java.util.List;
+
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
@@ -31,14 +39,13 @@ import org.ocsoft.flatlaf.managers.tooltip.WebCustomTooltip;
 import org.ocsoft.flatlaf.utils.EventUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
-import org.ocsoft.flatlaf.utils.swing.*;
+import org.ocsoft.flatlaf.utils.swing.EventMethods;
+import org.ocsoft.flatlaf.utils.swing.FocusEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.FontMethods;
+import org.ocsoft.flatlaf.utils.swing.KeyEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.MouseButton;
+import org.ocsoft.flatlaf.utils.swing.MouseEventRunnable;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.KeyAdapter;
-import java.awt.event.MouseAdapter;
-import java.util.List;
 
 /**
  * @author Mikle Garin

@@ -17,16 +17,30 @@
 
 package org.ocsoft.flatlaf.extended.panel;
 
-import javax.swing.*;
+import static javax.swing.SwingConstants.EAST;
+import static javax.swing.SwingConstants.NORTH;
+import static javax.swing.SwingConstants.NORTH_EAST;
+import static javax.swing.SwingConstants.NORTH_WEST;
+import static javax.swing.SwingConstants.SOUTH;
+import static javax.swing.SwingConstants.SOUTH_EAST;
+import static javax.swing.SwingConstants.SOUTH_WEST;
+import static javax.swing.SwingConstants.WEST;
 
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.utils.LafUtils;
-
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import static javax.swing.SwingConstants.*;
+import javax.swing.SwingUtilities;
+
+import org.ocsoft.flatlaf.laf.panel.WebPanel;
+import org.ocsoft.flatlaf.utils.LafUtils;
 
 /**
  * User: mgarin Date: 23.12.11 Time: 17:28

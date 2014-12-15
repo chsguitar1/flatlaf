@@ -17,28 +17,49 @@
 
 package org.ocsoft.flatlaf.laf.checkbox;
 
-import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicCheckBoxUI;
-import javax.swing.tree.TreeCellRenderer;
-
-import org.ocsoft.flatlaf.core.FlatLookAndFeel;
-import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
-import org.ocsoft.flatlaf.extended.checkbox.CheckState;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.list.WebListElement;
-import org.ocsoft.flatlaf.utils.*;
-import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
-import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
-import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
-import org.ocsoft.flatlaf.utils.swing.WebTimer;
-
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.RadialGradientPaint;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.Stroke;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Map;
+
+import javax.swing.AbstractButton;
+import javax.swing.ButtonModel;
+import javax.swing.Icon;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.LookAndFeel;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.basic.BasicCheckBoxUI;
+import javax.swing.tree.TreeCellRenderer;
+
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
+import org.ocsoft.flatlaf.extended.checkbox.CheckState;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.list.WebListElement;
+import org.ocsoft.flatlaf.utils.ColorUtils;
+import org.ocsoft.flatlaf.utils.LafUtils;
+import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
+import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+import org.ocsoft.flatlaf.utils.swing.WebTimer;
 
 /**
  * Custom UI for JCheckBox component.

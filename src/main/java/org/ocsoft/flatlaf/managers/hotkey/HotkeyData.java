@@ -17,15 +17,15 @@
 
 package org.ocsoft.flatlaf.managers.hotkey;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import java.awt.event.KeyEvent;
+import java.io.Serializable;
 
-import javax.swing.*;
+import javax.swing.KeyStroke;
 
 import org.ocsoft.flatlaf.utils.SwingUtils;
 
-import java.awt.event.KeyEvent;
-import java.io.Serializable;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 /**
  * Single hotkey settings description class.

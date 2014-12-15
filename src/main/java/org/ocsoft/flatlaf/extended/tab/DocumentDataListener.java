@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.extended.tab;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Component;
 
 /**
  * Special listener that tracks DocumentData changes. Its general purpose is to

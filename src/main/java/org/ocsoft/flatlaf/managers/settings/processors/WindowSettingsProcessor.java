@@ -17,7 +17,10 @@
 
 package org.ocsoft.flatlaf.managers.settings.processors;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Window;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 

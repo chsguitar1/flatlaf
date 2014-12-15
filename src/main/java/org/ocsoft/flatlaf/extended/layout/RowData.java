@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.layout;
 
-import java.awt.*;
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 

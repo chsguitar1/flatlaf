@@ -17,17 +17,18 @@
 
 package org.ocsoft.flatlaf.laf.combobox;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.core.FlatLookAndFeel;
-import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
-import org.ocsoft.flatlaf.utils.swing.RendererListener;
-
-import java.awt.*;
+import java.awt.Component;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.Icon;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
+
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
+import org.ocsoft.flatlaf.utils.swing.RendererListener;
 
 /**
  * Custom cell renderer for JComboBox value and popup list and some other

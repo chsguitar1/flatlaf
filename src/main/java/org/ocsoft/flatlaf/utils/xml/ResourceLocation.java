@@ -17,9 +17,9 @@
 
 package org.ocsoft.flatlaf.utils.xml;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
 import java.io.Serializable;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 /**
  * User: mgarin Date: 17.02.12 Time: 11:56

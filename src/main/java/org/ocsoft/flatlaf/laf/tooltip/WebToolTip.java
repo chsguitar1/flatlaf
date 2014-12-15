@@ -17,7 +17,9 @@
 
 package org.ocsoft.flatlaf.laf.tooltip;
 
-import javax.swing.*;
+import java.awt.Shape;
+
+import javax.swing.JToolTip;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.utils.SwingUtils;
@@ -25,8 +27,6 @@ import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.FontMethods;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
 
 /**
  * This JToolTip extension class provides a direct access to WebToolTipUI

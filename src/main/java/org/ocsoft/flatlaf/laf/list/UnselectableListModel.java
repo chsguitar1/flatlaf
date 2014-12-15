@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.list;
 
-import javax.swing.*;
+import javax.swing.DefaultListSelectionModel;
 
 /**
  * Custom list selection model that disables empty selection.

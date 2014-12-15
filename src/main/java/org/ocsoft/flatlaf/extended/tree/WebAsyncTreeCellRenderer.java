@@ -17,14 +17,15 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
-import javax.swing.*;
+import java.util.Map;
+import java.util.WeakHashMap;
+
+import javax.swing.ImageIcon;
+import javax.swing.JTree;
 
 import org.ocsoft.flatlaf.laf.tree.WebTreeCellRenderer;
 import org.ocsoft.flatlaf.laf.tree.WebTreeElement;
 import org.ocsoft.flatlaf.utils.ImageUtils;
-
-import java.util.Map;
-import java.util.WeakHashMap;
 
 /**
  * Custom default tree cell renderer for WebAsyncTree.

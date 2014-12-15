@@ -17,11 +17,12 @@
 
 package org.ocsoft.flatlaf.laf.tree;
 
+import java.util.List;
+
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreePath;
-import java.util.List;
 
 /**
  * Extended Swing DefaultTreeModel. This model contains multiply elements

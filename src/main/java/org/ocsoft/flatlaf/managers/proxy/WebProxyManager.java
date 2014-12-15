@@ -17,7 +17,6 @@
 
 package org.ocsoft.flatlaf.managers.proxy;
 
-import org.ocsoft.flatlaf.managers.proxy.ProxyManager;
 
 /**
  * ProxyManager extension that provides basic visualization for proxy setup.

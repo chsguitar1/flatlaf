@@ -17,14 +17,17 @@
 
 package org.ocsoft.flatlaf.extended.layout;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Insets;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.extended.panel.WebOverlay;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * This is a specific layout for WebOverlay component that allows you to add

@@ -17,7 +17,10 @@
 
 package org.ocsoft.flatlaf.laf.scroll;
 
-import javax.swing.*;
+import java.awt.Dimension;
+import java.awt.Insets;
+
+import javax.swing.JScrollBar;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.extended.painter.Painter;
@@ -27,8 +30,6 @@ import org.ocsoft.flatlaf.utils.laf.Styleable;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.SizeMethods;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
 
 /**
  * This JScrollBar extension class provides a direct access to WebScrollBarUI

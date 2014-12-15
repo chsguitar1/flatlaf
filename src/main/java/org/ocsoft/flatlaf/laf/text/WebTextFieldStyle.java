@@ -17,12 +17,14 @@
 
 package org.ocsoft.flatlaf.laf.text;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Insets;
+
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-
-import java.awt.*;
 
 /**
  * WebTextField style class.

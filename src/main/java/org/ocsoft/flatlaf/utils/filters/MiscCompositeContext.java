@@ -49,7 +49,8 @@
 
 package org.ocsoft.flatlaf.utils.filters;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.CompositeContext;
 import java.awt.image.ColorModel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;

@@ -17,11 +17,11 @@
 
 package org.ocsoft.flatlaf.utils.filefilter;
 
-import javax.swing.*;
+import java.io.File;
+
+import javax.swing.ImageIcon;
 
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
-
-import java.io.File;
 
 /**
  * Custom file filter that accepts all files.

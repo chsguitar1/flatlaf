@@ -17,18 +17,24 @@
 
 package org.ocsoft.flatlaf.laf;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.ColorUtils;
-import org.ocsoft.flatlaf.utils.laf.FocusType;
-import org.ocsoft.flatlaf.utils.laf.ShadeType;
-
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Insets;
+import java.awt.RenderingHints;
+import java.awt.Stroke;
+import java.awt.Toolkit;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Map;
+
+import javax.swing.ImageIcon;
+
+import org.ocsoft.flatlaf.utils.ColorUtils;
+import org.ocsoft.flatlaf.utils.laf.FocusType;
+import org.ocsoft.flatlaf.utils.laf.ShadeType;
 
 /**
  * Global styles class. Most of the styles listed here are used within other

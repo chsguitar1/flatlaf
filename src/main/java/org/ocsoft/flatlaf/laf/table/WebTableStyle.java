@@ -17,7 +17,9 @@
 
 package org.ocsoft.flatlaf.laf.table;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Insets;
 
 /**
  * WebTable style class.

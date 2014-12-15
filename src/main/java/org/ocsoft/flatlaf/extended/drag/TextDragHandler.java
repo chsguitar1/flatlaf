@@ -17,11 +17,14 @@
 
 package org.ocsoft.flatlaf.extended.drag;
 
-import javax.swing.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JComponent;
+import javax.swing.SwingUtilities;
+import javax.swing.TransferHandler;
 
 /**
  * User: mgarin Date: 12.04.12 Time: 18:36

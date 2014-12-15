@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.laf.scroll;
 
-import javax.swing.*;
+import java.awt.Rectangle;
+
+import javax.swing.JScrollBar;
 
 import org.ocsoft.flatlaf.extended.painter.AdaptivePainter;
 import org.ocsoft.flatlaf.extended.painter.Painter;
-
-import java.awt.*;
 
 /**
  * Simple ScrollBarPainter adapter class. It is used to install simple

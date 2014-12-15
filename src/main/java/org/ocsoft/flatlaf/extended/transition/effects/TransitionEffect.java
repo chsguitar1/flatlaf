@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.transition.effects;
 
-import java.awt.*;
+import java.awt.Graphics2D;
 
 import org.ocsoft.flatlaf.extended.transition.ImageTransition;
 

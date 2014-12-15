@@ -17,14 +17,15 @@
 
 package org.ocsoft.flatlaf.laf.checkbox;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.ImageIcon;
 
 import org.ocsoft.flatlaf.extended.checkbox.CheckState;
 import org.ocsoft.flatlaf.utils.ImageUtils;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Check icon for simple checkbox.

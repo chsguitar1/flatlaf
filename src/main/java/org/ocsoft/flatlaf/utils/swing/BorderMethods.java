@@ -17,7 +17,6 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import org.ocsoft.flatlaf.utils.swing.SwingMethods;
 
 /**
  * This interface provides a set of methods that should be added into components

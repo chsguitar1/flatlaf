@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.language;
 
-import java.awt.*;
+import java.awt.Component;
 
 import org.ocsoft.flatlaf.managers.language.data.Value;
 

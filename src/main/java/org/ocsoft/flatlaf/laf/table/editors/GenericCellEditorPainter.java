@@ -17,7 +17,11 @@
 
 package org.ocsoft.flatlaf.laf.table.editors;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Composite;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;

@@ -17,17 +17,17 @@
 
 package org.ocsoft.flatlaf.utils.reflection;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.FileUtils;
-import org.ocsoft.flatlaf.utils.general.Filter;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.zip.ZipFile;
+
+import javax.swing.ImageIcon;
+
+import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.general.Filter;
 
 /**
  * User: mgarin Date: 02.03.12 Time: 15:58

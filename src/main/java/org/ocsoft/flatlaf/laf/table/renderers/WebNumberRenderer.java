@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.table.renderers;
 
-import javax.swing.*;
+import javax.swing.JLabel;
 
 /**
  * User: mgarin Date: 31.10.12 Time: 16:13

@@ -51,7 +51,11 @@
 
 package org.ocsoft.flatlaf.extended.layout;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.ComponentOrientation;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Insets;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;

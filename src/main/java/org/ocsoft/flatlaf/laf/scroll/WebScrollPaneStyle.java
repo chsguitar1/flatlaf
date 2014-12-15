@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.laf.scroll;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Insets;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 

@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.utils;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.Random;
 import java.util.StringTokenizer;
 

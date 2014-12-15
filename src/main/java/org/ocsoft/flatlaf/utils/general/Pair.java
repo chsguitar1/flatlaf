@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.utils.general;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-
 import java.io.Serializable;
 
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 /**
  * This class represents single name-value pair.

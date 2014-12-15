@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.extended.checkbox;
 
-import javax.swing.*;
+import javax.swing.Action;
+import javax.swing.Icon;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBox;

@@ -17,7 +17,22 @@
 
 package org.ocsoft.flatlaf.managers.popup;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JComponent;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 
@@ -28,13 +43,12 @@ import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
-import org.ocsoft.flatlaf.utils.swing.*;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
+import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
+import org.ocsoft.flatlaf.utils.swing.DataProvider;
+import org.ocsoft.flatlaf.utils.swing.EmptyMouseAdapter;
+import org.ocsoft.flatlaf.utils.swing.FadeStateType;
+import org.ocsoft.flatlaf.utils.swing.PopupListener;
+import org.ocsoft.flatlaf.utils.swing.WebTimer;
 
 /**
  * This is base popup class which offers basic popups functionality and contains

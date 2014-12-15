@@ -17,14 +17,14 @@
 
 package org.ocsoft.flatlaf.managers.style.data;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 import org.ocsoft.flatlaf.managers.style.SupportedComponent;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 
 /**
  * Component style information class.

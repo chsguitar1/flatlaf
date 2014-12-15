@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.settings;
 
-import java.awt.*;
+import java.awt.Component;
 import java.io.Serializable;
 
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;

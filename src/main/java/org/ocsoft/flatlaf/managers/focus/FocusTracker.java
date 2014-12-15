@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.focus;
 
-import java.awt.*;
+import java.awt.Component;
 
 /**
  * Advanced interface that allows you to track focus behavior within component

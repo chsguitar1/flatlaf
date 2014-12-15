@@ -17,10 +17,10 @@
 
 package org.ocsoft.flatlaf.laf.tree;
 
+import java.io.Serializable;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-
-import java.io.Serializable;
 
 /**
  * Single node state data class.

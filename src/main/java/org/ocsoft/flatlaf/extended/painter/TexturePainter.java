@@ -17,13 +17,17 @@
 
 package org.ocsoft.flatlaf.extended.painter;
 
-import javax.swing.*;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.TexturePaint;
+import java.awt.image.BufferedImage;
+
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
 
 /**
  * Texure painter. This painter fills component background with a texture based

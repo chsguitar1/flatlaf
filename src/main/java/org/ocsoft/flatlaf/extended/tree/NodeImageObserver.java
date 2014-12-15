@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
-import java.awt.*;
+import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
 /**

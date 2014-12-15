@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.extended.transition.effects.zoom;
 
-import java.awt.*;
+import java.awt.Composite;
+import java.awt.Graphics2D;
 
 import org.ocsoft.flatlaf.extended.transition.ImageTransition;
 import org.ocsoft.flatlaf.extended.transition.TransitionUtils;

@@ -17,18 +17,21 @@
 
 package org.ocsoft.flatlaf.managers.popup;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Window;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.JComponent;
+import javax.swing.JLayeredPane;
+import javax.swing.JRootPane;
+
+import org.ocsoft.flatlaf.extended.painter.Painter;
+import org.ocsoft.flatlaf.utils.SwingUtils;
 
 /**
  * This manager allows you to add your own popups within the window/applet root

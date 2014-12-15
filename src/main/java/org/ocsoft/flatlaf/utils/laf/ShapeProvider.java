@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.utils.laf;
 
-import java.awt.*;
+import java.awt.Shape;
 
 /**
  * This interface provides a single method for requesting shape. This can be

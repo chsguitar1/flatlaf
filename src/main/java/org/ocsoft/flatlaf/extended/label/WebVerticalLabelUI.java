@@ -17,12 +17,14 @@
 
 package org.ocsoft.flatlaf.extended.label;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
 import org.ocsoft.flatlaf.laf.label.WebLabelUI;
-
-import java.awt.*;
 
 /**
  * Custom UI for WebVerticalLabel component.

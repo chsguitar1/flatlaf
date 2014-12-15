@@ -17,11 +17,12 @@
 
 package org.ocsoft.flatlaf.laf.table;
 
-import javax.swing.*;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
 
 /**
  * User: mgarin Date: 22.08.11 Time: 13:07

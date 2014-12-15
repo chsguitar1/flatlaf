@@ -17,13 +17,13 @@
 
 package org.ocsoft.flatlaf.managers.settings.processors;
 
-import javax.swing.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import javax.swing.AbstractButton;
 
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
-
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 /**
  * Custom SettingsProcessor for AbstractButton component.

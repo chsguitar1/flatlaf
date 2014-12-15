@@ -17,14 +17,14 @@
 
 package org.ocsoft.flatlaf.extended.tab;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
-
 import java.io.Serializable;
 import java.util.List;
 
 import org.ocsoft.flatlaf.utils.general.Pair;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 /**
  * Object used to store WebDocumentPane documents structure state.

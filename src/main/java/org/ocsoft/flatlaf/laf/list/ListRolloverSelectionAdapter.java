@@ -17,10 +17,11 @@
 
 package org.ocsoft.flatlaf.laf.list;
 
-import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
+
+import javax.swing.JList;
 
 /**
  * This adapter allows you to install (and uninstall if needed)

@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.laf.optionpane;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.JOptionPane;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;

@@ -17,11 +17,12 @@
 
 package org.ocsoft.flatlaf.laf.tree;
 
-import javax.swing.*;
-import javax.swing.plaf.TreeUI;
-import javax.swing.tree.TreePath;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+
+import javax.swing.JTree;
+import javax.swing.plaf.TreeUI;
+import javax.swing.tree.TreePath;
 
 /**
  * Custom mouse motion listener that provides select-on-rollover behavior for

@@ -17,7 +17,12 @@
 
 package org.ocsoft.flatlaf.managers.style;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.WeakHashMap;
+
+import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
@@ -30,11 +35,6 @@ import org.ocsoft.flatlaf.utils.laf.Styleable;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.xml.XmlUtils;
-
-import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.WeakHashMap;
 
 /**
  * This class manages WebLaF component styles. It also manages available WebLaF

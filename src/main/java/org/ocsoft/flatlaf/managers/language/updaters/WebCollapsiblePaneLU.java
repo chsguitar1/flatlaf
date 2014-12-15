@@ -19,7 +19,6 @@ package org.ocsoft.flatlaf.managers.language.updaters;
 
 import org.ocsoft.flatlaf.extended.panel.WebCollapsiblePane;
 import org.ocsoft.flatlaf.managers.language.data.Value;
-import org.ocsoft.flatlaf.managers.language.updaters.DefaultLanguageUpdater;
 
 /**
  * This class provides language default updates for WebCollapsiblePane

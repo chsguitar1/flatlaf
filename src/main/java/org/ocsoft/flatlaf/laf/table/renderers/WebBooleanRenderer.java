@@ -17,13 +17,14 @@
 
 package org.ocsoft.flatlaf.laf.table.renderers;
 
-import javax.swing.*;
+import java.awt.Component;
+
+import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.plaf.UIResource;
 import javax.swing.table.TableCellRenderer;
 
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBox;
-
-import java.awt.*;
 
 /**
  * User: mgarin Date: 31.10.12 Time: 15:27

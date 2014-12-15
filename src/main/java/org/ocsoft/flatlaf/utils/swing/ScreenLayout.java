@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import java.awt.*;
+import java.awt.Window;
 
 /**
  * Special layout manager which handles window positions and sizes. It is

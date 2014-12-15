@@ -17,13 +17,13 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import javax.swing.*;
+import java.awt.Component;
+
+import javax.swing.JList;
 
 import org.ocsoft.flatlaf.laf.combobox.WebComboBoxCellRenderer;
 import org.ocsoft.flatlaf.laf.combobox.WebComboBoxElement;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
-
-import java.awt.*;
 
 /**
  * Custom list and combobox cell renderer for file filters data.

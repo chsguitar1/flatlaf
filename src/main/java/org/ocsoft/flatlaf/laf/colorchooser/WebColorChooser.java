@@ -17,15 +17,16 @@
 
 package org.ocsoft.flatlaf.laf.colorchooser;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Component;
+
+import javax.swing.JColorChooser;
 import javax.swing.colorchooser.ColorSelectionModel;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.DialogOptions;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
 
 /**
  * User: mgarin Date: 01.02.2010 Time: 15:00:20

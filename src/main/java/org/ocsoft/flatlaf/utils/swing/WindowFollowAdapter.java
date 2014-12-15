@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import java.awt.*;
+import java.awt.Point;
+import java.awt.Window;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 

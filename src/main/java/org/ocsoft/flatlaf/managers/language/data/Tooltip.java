@@ -17,10 +17,10 @@
 
 package org.ocsoft.flatlaf.managers.language.data;
 
+import java.io.Serializable;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
-
-import java.io.Serializable;
 
 /**
  * User: mgarin Date: 27.04.12 Time: 16:15

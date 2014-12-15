@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.drag;
 
-import java.awt.*;
+import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DragSourceDragEvent;
 import java.awt.dnd.DragSourceDropEvent;

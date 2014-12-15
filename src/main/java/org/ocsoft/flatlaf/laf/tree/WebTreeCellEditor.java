@@ -17,7 +17,14 @@
 
 package org.ocsoft.flatlaf.laf.tree;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Insets;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JTree;
 import javax.swing.plaf.TreeUI;
 
 import org.ocsoft.flatlaf.extended.image.WebImage;
@@ -25,10 +32,6 @@ import org.ocsoft.flatlaf.laf.checkbox.WebCheckBox;
 import org.ocsoft.flatlaf.laf.combobox.WebComboBox;
 import org.ocsoft.flatlaf.laf.text.WebTextField;
 import org.ocsoft.flatlaf.utils.swing.WebDefaultCellEditor;
-
-import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 
 /**
  * This class provides a styled default cell editor for trees.

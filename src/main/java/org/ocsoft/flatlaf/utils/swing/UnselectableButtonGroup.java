@@ -17,12 +17,14 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
+
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 /**
  * @author Mikle Garin

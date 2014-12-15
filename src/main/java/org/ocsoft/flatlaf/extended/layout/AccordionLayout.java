@@ -17,15 +17,17 @@
 
 package org.ocsoft.flatlaf.extended.layout;
 
-import javax.swing.*;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Insets;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.extended.panel.AccordionStyle;
 import org.ocsoft.flatlaf.extended.panel.WebAccordion;
 import org.ocsoft.flatlaf.extended.panel.WebCollapsiblePane;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Custom layout for WebAccordion component.

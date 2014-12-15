@@ -17,8 +17,14 @@
 
 package org.ocsoft.flatlaf.laf.list;
 
-import javax.swing.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Vector;
+
+import javax.swing.AbstractListModel;
 
 /**
  * Modified and optimized Swing DefaultListModel. This model contains multiply

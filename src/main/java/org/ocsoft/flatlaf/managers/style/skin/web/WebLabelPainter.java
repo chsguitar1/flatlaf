@@ -17,7 +17,20 @@
 
 package org.ocsoft.flatlaf.managers.style.skin.web;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Composite;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Paint;
+import java.awt.Rectangle;
+import java.util.Map;
+
+import javax.swing.Icon;
+import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicHTML;
 import javax.swing.text.View;
 
@@ -29,9 +42,6 @@ import org.ocsoft.flatlaf.laf.label.WebLabelStyle;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
-
-import java.awt.*;
-import java.util.Map;
 
 /**
  * Web-style painter for JLabel component. It is used as WebLabelUI default

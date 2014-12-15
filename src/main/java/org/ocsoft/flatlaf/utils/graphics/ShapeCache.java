@@ -17,7 +17,11 @@
 
 package org.ocsoft.flatlaf.utils.graphics;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Shape;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.WeakHashMap;

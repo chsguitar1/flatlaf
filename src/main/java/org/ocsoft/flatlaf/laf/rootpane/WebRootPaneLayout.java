@@ -17,7 +17,15 @@
 
 package org.ocsoft.flatlaf.laf.rootpane;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Insets;
+
+import javax.swing.JComponent;
+import javax.swing.JLayeredPane;
+import javax.swing.JMenuBar;
+import javax.swing.JRootPane;
 
 import org.ocsoft.flatlaf.extended.layout.AbstractLayoutManager;
 import org.ocsoft.flatlaf.extended.panel.WebButtonGroup;
@@ -25,8 +33,6 @@ import org.ocsoft.flatlaf.laf.button.WebButtonStyle;
 import org.ocsoft.flatlaf.utils.MathUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
-
-import java.awt.*;
 
 /**
  * Special layout for decorated root pane.

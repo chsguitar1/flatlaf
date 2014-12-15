@@ -17,14 +17,14 @@
 
 package org.ocsoft.flatlaf.managers.settings.processors;
 
-import javax.swing.*;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+
+import javax.swing.JScrollBar;
 
 import org.ocsoft.flatlaf.managers.settings.SettingsManager;
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
-
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
 
 /**
  * Custom SettingsProcessor for JScrollBar component.

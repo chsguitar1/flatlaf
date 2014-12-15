@@ -17,7 +17,16 @@
 
 package org.ocsoft.flatlaf.extended.list;
 
-import javax.swing.*;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
+
+import javax.swing.ListCellRenderer;
 
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxStyle;
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxUI;
@@ -25,10 +34,6 @@ import org.ocsoft.flatlaf.laf.list.WebList;
 import org.ocsoft.flatlaf.laf.list.editor.ListCellEditor;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.util.List;
 
 /**
  * This component offers a checkbox list functionality. Each cell acts as a

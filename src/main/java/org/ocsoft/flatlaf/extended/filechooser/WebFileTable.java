@@ -17,19 +17,19 @@
 
 package org.ocsoft.flatlaf.extended.filechooser;
 
-import javax.swing.table.TableColumn;
-
-import org.ocsoft.flatlaf.laf.table.WebTable;
-import org.ocsoft.flatlaf.utils.FileUtils;
-import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
-
-import java.awt.*;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+
+import javax.swing.table.TableColumn;
+
+import org.ocsoft.flatlaf.laf.table.WebTable;
+import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 
 /**
  * File table component. It can either display specified folder content or

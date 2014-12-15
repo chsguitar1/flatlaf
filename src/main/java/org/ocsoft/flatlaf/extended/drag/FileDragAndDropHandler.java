@@ -17,14 +17,15 @@
 
 package org.ocsoft.flatlaf.extended.drag;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.DragUtils;
-
 import java.awt.datatransfer.Transferable;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.swing.JComponent;
+import javax.swing.TransferHandler;
+
+import org.ocsoft.flatlaf.utils.DragUtils;
 
 /**
  * Custom TransferHandler that provides easy and convenient way to support files

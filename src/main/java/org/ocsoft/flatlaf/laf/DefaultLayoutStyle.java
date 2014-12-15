@@ -17,10 +17,20 @@
 
 package org.ocsoft.flatlaf.laf;
 
-import javax.swing.*;
+import java.awt.Container;
+import java.awt.Insets;
+
+import javax.swing.AbstractButton;
+import javax.swing.Icon;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.LayoutStyle;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.plaf.UIResource;
-import java.awt.*;
 
 /**
  * An implementation of LayoutStyle that returns 6 for related components,

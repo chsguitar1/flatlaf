@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.settings.processors;
 
-import javax.swing.*;
+import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 

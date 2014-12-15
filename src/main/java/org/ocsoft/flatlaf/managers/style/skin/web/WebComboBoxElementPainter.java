@@ -17,7 +17,10 @@
 
 package org.ocsoft.flatlaf.managers.style.skin.web;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 import org.ocsoft.flatlaf.laf.combobox.ComboBoxElementType;
 import org.ocsoft.flatlaf.laf.combobox.WebComboBoxElement;

@@ -17,6 +17,17 @@
 
 package org.ocsoft.flatlaf.managers.style.data;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+import org.ocsoft.flatlaf.managers.style.StyleException;
+import org.ocsoft.flatlaf.managers.style.SupportedComponent;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
+
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
@@ -24,13 +35,6 @@ import com.thoughtworks.xstream.converters.reflection.ReflectionProvider;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.mapper.Mapper;
-
-import java.lang.reflect.Method;
-import java.util.*;
-
-import org.ocsoft.flatlaf.managers.style.StyleException;
-import org.ocsoft.flatlaf.managers.style.SupportedComponent;
-import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 
 /**
  * Custom XStream converter for ComponentStyle class.

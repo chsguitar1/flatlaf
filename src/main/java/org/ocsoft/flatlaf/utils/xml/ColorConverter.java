@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.utils.xml;
 
-import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
-
-import java.awt.*;
+import java.awt.Color;
 
 import org.ocsoft.flatlaf.utils.ColorUtils;
 import org.ocsoft.flatlaf.utils.collection.ValuesTable;
+
+import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
 
 /**
  * Custom Color class converter.

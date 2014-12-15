@@ -17,7 +17,11 @@
 
 package org.ocsoft.flatlaf.managers.popup;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.LayoutManager;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Shape;
 
 import org.ocsoft.flatlaf.extended.layout.MultiLayout;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;

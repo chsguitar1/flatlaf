@@ -17,11 +17,9 @@
 
 package org.ocsoft.flatlaf.utils;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Image;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -33,6 +31,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
+
+import javax.swing.JComponent;
+import javax.swing.TransferHandler;
+
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * This class provides a set of utilities to simplify work with swing drag and

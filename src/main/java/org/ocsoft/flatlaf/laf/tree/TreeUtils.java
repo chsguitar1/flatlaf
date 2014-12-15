@@ -17,10 +17,15 @@
 
 package org.ocsoft.flatlaf.laf.tree;
 
-import javax.swing.*;
-import javax.swing.tree.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
 
 /**
  * This class provides a set of utilities for trees. This is a library utility

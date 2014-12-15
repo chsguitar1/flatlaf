@@ -17,7 +17,14 @@
 
 package org.ocsoft.flatlaf.laf.rootpane;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Frame;
+import java.awt.GraphicsConfiguration;
+import java.awt.Window;
+import java.awt.event.WindowAdapter;
+import java.util.List;
+
+import javax.swing.JWindow;
 
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
@@ -30,11 +37,11 @@ import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
 import org.ocsoft.flatlaf.utils.EventUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.WindowUtils;
-import org.ocsoft.flatlaf.utils.swing.*;
-
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.util.List;
+import org.ocsoft.flatlaf.utils.swing.ComponentEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.WindowCloseAdapter;
+import org.ocsoft.flatlaf.utils.swing.WindowEventMethods;
+import org.ocsoft.flatlaf.utils.swing.WindowEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.WindowMethods;
 
 /**
  * This JWindow extenstion class provides some additional methods and options to

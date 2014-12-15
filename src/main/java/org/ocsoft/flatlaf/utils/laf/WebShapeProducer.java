@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.utils.laf;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Shape;
 
 import org.ocsoft.flatlaf.utils.LafUtils;
 

@@ -17,18 +17,23 @@
 
 package org.ocsoft.flatlaf.extended.colorchooser;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.SwingUtils;
-import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.ImageIcon;
+import javax.swing.JColorChooser;
+import javax.swing.JComponent;
+import javax.swing.SwingUtilities;
+
+import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 /**
  * User: mgarin Date: 10.12.2009 Time: 17:16:13

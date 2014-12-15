@@ -17,12 +17,14 @@
 
 package org.ocsoft.flatlaf.extended.painter;
 
-import javax.swing.*;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
+
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.LafUtils;
-
-import java.awt.*;
 
 /**
  * Custom web-style painter for basic elements like panels, buttons e.t.c.

@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.extended.painter;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Stroke;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 

@@ -17,15 +17,22 @@
 
 package org.ocsoft.flatlaf.utils;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Window;
+import java.lang.reflect.InvocationTargetException;
+
+import javax.swing.JComponent;
+import javax.swing.JRootPane;
+import javax.swing.Popup;
+import javax.swing.PopupFactory;
+import javax.swing.UIDefaults;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
-
-import java.awt.*;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * This utility class operates only with proprietary API calls. Their usage is

@@ -17,11 +17,24 @@
 
 package org.ocsoft.flatlaf.managers.style.skin.web;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Point;
 
-import org.ocsoft.flatlaf.laf.menu.*;
+import javax.swing.JComboBox;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 
-import java.awt.*;
+import org.ocsoft.flatlaf.laf.menu.PopupMenuPainter;
+import org.ocsoft.flatlaf.laf.menu.PopupMenuType;
+import org.ocsoft.flatlaf.laf.menu.PopupMenuWay;
+import org.ocsoft.flatlaf.laf.menu.WebMenuItemUI;
+import org.ocsoft.flatlaf.laf.menu.WebMenuUI;
+import org.ocsoft.flatlaf.laf.menu.WebPopupMenuStyle;
+import org.ocsoft.flatlaf.laf.menu.WebPopupMenuUI;
 
 /**
  * Base painter for JPopupMenu component. It is used as WebPopupMenuUI default

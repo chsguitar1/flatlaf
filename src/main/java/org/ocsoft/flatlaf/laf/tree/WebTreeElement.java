@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.tree;
 
-import java.awt.*;
+import java.awt.Rectangle;
 
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 

@@ -17,7 +17,10 @@
 
 package org.ocsoft.flatlaf.extended.colorchooser;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Insets;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;

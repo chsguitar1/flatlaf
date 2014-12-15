@@ -17,16 +17,15 @@
 
 package org.ocsoft.flatlaf.laf.colorchooser;
 
-import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import org.ocsoft.flatlaf.extended.layout.TableLayout;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.utils.ImageUtils;
-import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Shape;
+import java.awt.Toolkit;
+import java.awt.Transparency;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Area;
@@ -34,6 +33,17 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import org.ocsoft.flatlaf.extended.layout.TableLayout;
+import org.ocsoft.flatlaf.laf.panel.WebPanel;
+import org.ocsoft.flatlaf.utils.ImageUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 /**
  * User: mgarin Date: 07.07.2010 Time: 17:21:44

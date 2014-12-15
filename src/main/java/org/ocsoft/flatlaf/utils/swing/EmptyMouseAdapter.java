@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import java.awt.*;
+import java.awt.Component;
 import java.awt.event.MouseAdapter;
 
 /**

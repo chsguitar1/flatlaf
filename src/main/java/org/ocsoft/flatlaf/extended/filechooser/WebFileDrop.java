@@ -17,22 +17,17 @@
 
 package org.ocsoft.flatlaf.extended.filechooser;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.extended.drag.FileDragAndDropHandler;
-import org.ocsoft.flatlaf.extended.layout.WrapFlowLayout;
-import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.panel.WebPanel;
-import org.ocsoft.flatlaf.managers.language.LanguageManager;
-import org.ocsoft.flatlaf.managers.language.LanguageMethods;
-import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
-import org.ocsoft.flatlaf.utils.*;
-import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
-import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
-import org.ocsoft.flatlaf.utils.swing.WebTimer;
-
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Composite;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Stroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -41,6 +36,24 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import javax.swing.ImageIcon;
+import javax.swing.TransferHandler;
+
+import org.ocsoft.flatlaf.extended.drag.FileDragAndDropHandler;
+import org.ocsoft.flatlaf.extended.layout.WrapFlowLayout;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.panel.WebPanel;
+import org.ocsoft.flatlaf.managers.language.LanguageManager;
+import org.ocsoft.flatlaf.managers.language.LanguageMethods;
+import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
+import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.LafUtils;
+import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
+import org.ocsoft.flatlaf.utils.swing.WebTimer;
 
 /**
  * Custom component that acts as files container and allows drag & drop them.

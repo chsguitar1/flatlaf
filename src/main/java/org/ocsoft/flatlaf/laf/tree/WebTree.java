@@ -17,11 +17,29 @@
 
 package org.ocsoft.flatlaf.laf.tree;
 
-import javax.swing.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.FocusAdapter;
+import java.awt.event.KeyAdapter;
+import java.awt.event.MouseAdapter;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+
+import javax.swing.CellRendererPane;
+import javax.swing.JTree;
 import javax.swing.event.CellEditorListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
-import javax.swing.tree.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeCellEditor;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
+import javax.swing.tree.TreeSelectionModel;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
@@ -34,15 +52,15 @@ import org.ocsoft.flatlaf.utils.GeometryUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.general.Filter;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
-import org.ocsoft.flatlaf.utils.swing.*;
+import org.ocsoft.flatlaf.utils.swing.AutoExpandSingleChildNodeListener;
+import org.ocsoft.flatlaf.utils.swing.EventMethods;
+import org.ocsoft.flatlaf.utils.swing.FocusEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.FontMethods;
+import org.ocsoft.flatlaf.utils.swing.KeyEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.MouseButton;
+import org.ocsoft.flatlaf.utils.swing.MouseEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.StateProvider;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.KeyAdapter;
-import java.awt.event.MouseAdapter;
-import java.util.*;
-import java.util.List;
 
 /**
  * This JTree extension class provides a direct access to WebTreeUI methods.

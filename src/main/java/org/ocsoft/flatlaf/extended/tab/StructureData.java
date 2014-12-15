@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.tab;
 
-import java.awt.*;
+import java.awt.Component;
 
 /**
  * Base interface for visual parts within WebDocumentPane.

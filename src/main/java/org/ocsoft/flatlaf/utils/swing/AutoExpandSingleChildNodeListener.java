@@ -17,11 +17,12 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import javax.swing.*;
+import java.util.Arrays;
+
+import javax.swing.JTree;
 import javax.swing.event.TreeExpansionEvent;
 import javax.swing.event.TreeExpansionListener;
 import javax.swing.tree.TreePath;
-import java.util.Arrays;
 
 /**
  * Tree expansion listener that automatically expands node futher if it has only

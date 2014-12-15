@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.style.skin.web;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 import org.ocsoft.flatlaf.laf.panel.PanelPainter;
 

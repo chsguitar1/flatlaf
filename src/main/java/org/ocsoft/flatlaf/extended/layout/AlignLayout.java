@@ -17,15 +17,18 @@
 
 package org.ocsoft.flatlaf.extended.layout;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Insets;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.swing.SwingConstants;
+
+import org.ocsoft.flatlaf.utils.SwingUtils;
 
 /**
  * This layout allows you to align components inside the container using the

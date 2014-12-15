@@ -17,14 +17,14 @@
 
 package org.ocsoft.flatlaf.utils.reflection;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.FileUtils;
-import org.ocsoft.flatlaf.utils.TextUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
+
+import javax.swing.ImageIcon;
+
+import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.TextUtils;
 
 /**
  * User: mgarin Date: 02.03.12 Time: 15:59

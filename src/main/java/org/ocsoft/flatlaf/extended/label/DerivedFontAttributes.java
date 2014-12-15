@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.label;
 
-import java.awt.*;
+import java.awt.Font;
 
 /**
  * This represents information about derived font.

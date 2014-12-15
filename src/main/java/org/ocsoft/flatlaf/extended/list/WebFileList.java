@@ -17,19 +17,22 @@
 
 package org.ocsoft.flatlaf.extended.list;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.laf.list.WebList;
-import org.ocsoft.flatlaf.laf.list.editor.ListCellEditor;
-import org.ocsoft.flatlaf.laf.scroll.WebScrollPane;
-import org.ocsoft.flatlaf.utils.FileUtils;
-
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Insets;
 import java.io.File;
 import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import javax.swing.JList;
+import javax.swing.JScrollBar;
+import javax.swing.ListCellRenderer;
+
+import org.ocsoft.flatlaf.laf.list.WebList;
+import org.ocsoft.flatlaf.laf.list.editor.ListCellEditor;
+import org.ocsoft.flatlaf.laf.scroll.WebScrollPane;
+import org.ocsoft.flatlaf.utils.FileUtils;
 
 /**
  * Special list component that simplifies files rendering.

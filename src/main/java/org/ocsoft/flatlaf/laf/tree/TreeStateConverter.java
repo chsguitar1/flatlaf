@@ -17,6 +17,9 @@
 
 package org.ocsoft.flatlaf.laf.tree;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
@@ -24,9 +27,6 @@ import com.thoughtworks.xstream.converters.reflection.ReflectionProvider;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.mapper.Mapper;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * Custom converter for TreeState class.

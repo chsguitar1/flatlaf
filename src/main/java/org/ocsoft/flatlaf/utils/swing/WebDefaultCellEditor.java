@@ -17,18 +17,29 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.io.Serializable;
+import java.util.EventObject;
+
+import javax.swing.AbstractCellEditor;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JTree;
 import javax.swing.table.TableCellEditor;
 import javax.swing.tree.TreeCellEditor;
 
 import org.ocsoft.flatlaf.laf.combobox.WebComboBoxUI;
 import org.ocsoft.flatlaf.laf.table.WebTableStyle;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.io.Serializable;
-import java.util.EventObject;
 
 /**
  * @author Mikle Garin

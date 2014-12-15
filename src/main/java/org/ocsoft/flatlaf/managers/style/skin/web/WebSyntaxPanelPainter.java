@@ -17,11 +17,13 @@
 
 package org.ocsoft.flatlaf.managers.style.skin.web;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+
+import javax.swing.JPanel;
 
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
-
-import java.awt.*;
 
 /**
  * Custom painter for WebSyntaxPanel component.

@@ -17,10 +17,15 @@
 
 package org.ocsoft.flatlaf.managers.drag;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
-import java.awt.dnd.*;
+import java.awt.dnd.DragSource;
+import java.awt.dnd.DragSourceAdapter;
+import java.awt.dnd.DragSourceContext;
+import java.awt.dnd.DragSourceDragEvent;
+import java.awt.dnd.DragSourceDropEvent;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;

@@ -17,14 +17,15 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+
+import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeCellRenderer;
 
 import org.ocsoft.flatlaf.extended.checkbox.WebTristateCheckBox;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
-
-import java.awt.*;
 
 /**
  * Custom default cell renderer for WebCheckBoxTree.

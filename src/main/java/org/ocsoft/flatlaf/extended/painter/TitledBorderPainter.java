@@ -17,15 +17,23 @@
 
 package org.ocsoft.flatlaf.extended.painter;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.SwingUtils;
-import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.Stroke;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Map;
+
+import javax.swing.JComponent;
+import javax.swing.SwingConstants;
+
+import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 
 /**
  * Titled border painter.

@@ -19,8 +19,6 @@ package org.ocsoft.flatlaf.utils.swing;
 
 import java.awt.event.WindowAdapter;
 
-import org.ocsoft.flatlaf.utils.swing.SwingMethods;
-
 /**
  * This interface provides a set of methods that should be added into windows
  * that supports custom WebLaF events. Basically all these methods are already

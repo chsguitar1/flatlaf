@@ -17,15 +17,16 @@
 
 package org.ocsoft.flatlaf.extended.tab;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+import javax.swing.JSplitPane;
+import javax.swing.SwingUtilities;
 
 import org.ocsoft.flatlaf.laf.splitpane.WebSplitPane;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.swing.Customizer;
-
-import java.awt.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 /**
  * Data for single split pane within document pane. It basically contains split

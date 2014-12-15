@@ -17,14 +17,16 @@
 
 package org.ocsoft.flatlaf.laf.splitpane;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Insets;
+import java.awt.event.ComponentListener;
+
+import javax.swing.JSplitPane;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
-import java.awt.event.ComponentListener;
 
 /**
  * User: mgarin Date: 08.07.11 Time: 16:16

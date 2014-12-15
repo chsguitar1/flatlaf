@@ -17,17 +17,25 @@
 
 package org.ocsoft.flatlaf.extended.image;
 
-import javax.swing.*;
+import java.awt.AlphaComposite;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Shape;
+import java.awt.Transparency;
+import java.awt.geom.RoundRectangle2D;
+import java.awt.image.BufferedImage;
+import java.util.List;
+
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.extended.drag.ImageDropHandler;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
-
-import java.awt.*;
-import java.awt.geom.RoundRectangle2D;
-import java.awt.image.BufferedImage;
-import java.util.List;
 
 /**
  * This is a custom image drop component. It serves as a drop area for images

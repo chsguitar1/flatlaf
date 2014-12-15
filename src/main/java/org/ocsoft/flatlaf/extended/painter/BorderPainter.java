@@ -17,14 +17,20 @@
 
 package org.ocsoft.flatlaf.extended.painter;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
-
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
+import java.awt.Stroke;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RectangularShape;
 import java.awt.geom.RoundRectangle2D;
+
+import javax.swing.JComponent;
+
+import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 
 /**
  * Simple border painter. This painter might be used instead of LineBorder in

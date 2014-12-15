@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.utils.xml;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-
 import java.io.Serializable;
 
 import org.ocsoft.flatlaf.utils.CompareUtils;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 /**
  * User: mgarin Date: 17.02.12 Time: 11:55

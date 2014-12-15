@@ -17,13 +17,13 @@
 
 package org.ocsoft.flatlaf.extended.filechooser;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.io.File;
+
+import javax.swing.JTable;
 
 import org.ocsoft.flatlaf.laf.table.renderers.WebTableCellRenderer;
 import org.ocsoft.flatlaf.utils.FileUtils;
-
-import java.awt.*;
-import java.io.File;
 
 /**
  * File table cell renderer.

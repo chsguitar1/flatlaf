@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.utils.system;
 
+import java.util.Map;
+import java.util.WeakHashMap;
+
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Map;
-import java.util.WeakHashMap;
 
 /**
  * Base logging class which can be used anywhere to log messages and exceptions.

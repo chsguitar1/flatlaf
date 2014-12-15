@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.menu;
 
-import javax.swing.*;
+import javax.swing.SwingConstants;
 
 /**
  * This enumeration represents default ways of displaying popup menu.

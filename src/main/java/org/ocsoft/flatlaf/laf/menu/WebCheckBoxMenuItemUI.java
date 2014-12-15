@@ -17,9 +17,14 @@
 
 package org.ocsoft.flatlaf.laf.menu;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Paint;
+
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JMenuItem;
 import javax.swing.plaf.ComponentUI;
-import java.awt.*;
 
 /**
  * Custom UI for JCheckBoxMenuItem component.

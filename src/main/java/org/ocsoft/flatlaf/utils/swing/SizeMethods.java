@@ -17,9 +17,8 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import java.awt.*;
-
-import org.ocsoft.flatlaf.utils.swing.SwingMethods;
+import java.awt.Component;
+import java.awt.Dimension;
 
 /**
  * This interface provides a set of methods that should be added into components

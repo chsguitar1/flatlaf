@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.extended.tab;
 
-import javax.swing.*;
+import java.awt.FontMetrics;
+import java.awt.datatransfer.DataFlavor;
+
+import javax.swing.Icon;
 
 import org.ocsoft.flatlaf.managers.drag.SimpleDragViewHandler;
-
-import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
 
 /**
  * Custom DragViewHandler for WebDocumentPane document.

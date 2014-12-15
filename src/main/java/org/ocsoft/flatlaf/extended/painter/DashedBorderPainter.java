@@ -17,8 +17,9 @@
 
 package org.ocsoft.flatlaf.extended.painter;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BasicStroke;
+
+import javax.swing.JComponent;
 
 /**
  * Dashed border painter.

@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.table.editors;
 
-import javax.swing.*;
+import javax.swing.JTextField;
 
 /**
  * User: mgarin Date: 31.10.12 Time: 15:34

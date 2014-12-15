@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.extended.image;
 
-import javax.swing.*;
+import java.awt.Color;
+
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.laf.ShadeType;
-
-import java.awt.*;
 
 /**
  * User: mgarin Date: 05.06.12 Time: 19:28

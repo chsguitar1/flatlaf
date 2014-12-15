@@ -17,7 +17,10 @@
 
 package org.ocsoft.flatlaf.laf.checkbox;
 
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Insets;
+import java.awt.Stroke;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 

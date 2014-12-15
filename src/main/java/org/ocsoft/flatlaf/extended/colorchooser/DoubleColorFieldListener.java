@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.colorchooser;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * DoubleColorField actions listener.

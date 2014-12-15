@@ -17,11 +17,13 @@
 
 package org.ocsoft.flatlaf.managers.notification;
 
-import javax.swing.*;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
+import java.awt.Window;
+
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.utils.swing.AbstractScreenLayout;
-
-import java.awt.*;
 
 /**
  * Custom screen layout for NotificationManager. It properly places notification

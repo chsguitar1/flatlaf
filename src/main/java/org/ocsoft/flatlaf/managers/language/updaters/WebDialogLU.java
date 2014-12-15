@@ -17,13 +17,14 @@
 
 package org.ocsoft.flatlaf.managers.language.updaters;
 
-import javax.swing.*;
+import java.awt.Dialog;
+
+import javax.swing.JComponent;
+import javax.swing.JDialog;
+import javax.swing.JRootPane;
 
 import org.ocsoft.flatlaf.laf.rootpane.WebRootPaneUI;
 import org.ocsoft.flatlaf.managers.language.data.Value;
-import org.ocsoft.flatlaf.managers.language.updaters.DefaultLanguageUpdater;
-
-import java.awt.*;
 
 /**
  * This class provides language default updates for Dialog component.

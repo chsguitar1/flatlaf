@@ -17,9 +17,12 @@
 
 package org.ocsoft.flatlaf.extended.panel;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.net.URL;
+
+import javax.swing.ImageIcon;
 
 /**
  * User: mgarin Date: 08.11.12 Time: 13:20

@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.utils.graphics;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.util.Map;
 import java.util.WeakHashMap;
 

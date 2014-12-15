@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.extended.panel;
 
-import javax.swing.*;
+import java.awt.Component;
+
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.extended.layout.GroupLayout;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
-
-import java.awt.*;
 
 /**
  * This panel allows you to quickly place a small group of components into a row

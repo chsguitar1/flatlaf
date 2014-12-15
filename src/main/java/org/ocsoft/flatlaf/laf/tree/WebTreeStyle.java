@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.laf.tree;
 
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 

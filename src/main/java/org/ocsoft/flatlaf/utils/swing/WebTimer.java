@@ -17,12 +17,6 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.TimeUtils;
-import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
@@ -30,6 +24,12 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+
+import javax.swing.SwingUtilities;
+
+import org.ocsoft.flatlaf.utils.TimeUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * This timer is a small extension for standart javax.swing.Timer. Instead of

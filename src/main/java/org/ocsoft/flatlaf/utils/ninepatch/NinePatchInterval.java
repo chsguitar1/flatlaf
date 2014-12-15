@@ -17,13 +17,13 @@
 
 package org.ocsoft.flatlaf.utils.ninepatch;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-
-import java.awt.*;
+import java.awt.Rectangle;
 import java.io.Serializable;
 
 import org.ocsoft.flatlaf.utils.TextUtils;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 /**
  * User: mgarin Date: 13.12.11 Time: 15:12

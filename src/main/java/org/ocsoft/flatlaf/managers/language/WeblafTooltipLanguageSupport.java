@@ -17,20 +17,19 @@
 
 package org.ocsoft.flatlaf.managers.language;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 
-import org.ocsoft.flatlaf.managers.language.TooltipLanguageSupport;
+import javax.swing.JComponent;
+
 import org.ocsoft.flatlaf.managers.language.data.Tooltip;
 import org.ocsoft.flatlaf.managers.language.data.TooltipType;
 import org.ocsoft.flatlaf.managers.language.data.Value;
 import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.managers.tooltip.WebCustomTooltip;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
 
 /**
  * Swing and WebLaF tooltips language support.

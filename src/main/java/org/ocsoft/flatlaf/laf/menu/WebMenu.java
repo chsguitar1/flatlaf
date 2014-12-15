@@ -17,7 +17,12 @@
 
 package org.ocsoft.flatlaf.laf.menu;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Insets;
+
+import javax.swing.Action;
+import javax.swing.Icon;
+import javax.swing.JMenu;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.extended.painter.Painter;
@@ -28,8 +33,6 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.FontMethods;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
 
 /**
  * This JMenu extension class provides a direct access to WebMenuUI methods.

@@ -17,10 +17,10 @@
 
 package org.ocsoft.flatlaf.utils.xml;
 
-import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
-
-import java.awt.*;
+import java.awt.Insets;
 import java.util.StringTokenizer;
+
+import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
 
 /**
  * Custom Insets class converter.

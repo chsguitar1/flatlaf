@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.laf.menu;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Stroke;
 
 /**
  * WebPopupMenuSeparator style class.

@@ -17,16 +17,16 @@
 
 package org.ocsoft.flatlaf.managers.settings.processors;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
-import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
-import org.ocsoft.flatlaf.utils.EncryptionUtils;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+
+import javax.swing.JPasswordField;
+
+import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
+import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
+import org.ocsoft.flatlaf.utils.EncryptionUtils;
 
 /**
  * Custom SettingsProcessor for JPasswordField component.

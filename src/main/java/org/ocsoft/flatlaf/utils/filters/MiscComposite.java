@@ -49,7 +49,10 @@
 
 package org.ocsoft.flatlaf.utils.filters;
 
-import java.awt.*;
+import java.awt.AlphaComposite;
+import java.awt.Composite;
+import java.awt.CompositeContext;
+import java.awt.RenderingHints;
 import java.awt.image.ColorModel;
 
 public final class MiscComposite implements Composite {

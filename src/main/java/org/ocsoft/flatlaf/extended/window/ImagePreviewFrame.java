@@ -17,17 +17,20 @@
 
 package org.ocsoft.flatlaf.extended.window;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.net.URL;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.extended.image.WebImage;
 import org.ocsoft.flatlaf.extended.painter.AlphaLayerPainter;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.rootpane.WebFrame;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.net.URL;
 
 /**
  * @author Mikle Garin

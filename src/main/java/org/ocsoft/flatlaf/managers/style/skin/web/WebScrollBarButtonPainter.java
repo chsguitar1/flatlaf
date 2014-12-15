@@ -17,7 +17,18 @@
 
 package org.ocsoft.flatlaf.managers.style.skin.web;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.geom.GeneralPath;
+
+import javax.swing.AbstractButton;
+import javax.swing.ButtonModel;
+import javax.swing.JScrollBar;
+import javax.swing.SwingConstants;
 import javax.swing.plaf.ButtonUI;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
@@ -27,9 +38,6 @@ import org.ocsoft.flatlaf.laf.scroll.ScrollBarButtonType;
 import org.ocsoft.flatlaf.laf.scroll.WebScrollBarStyle;
 import org.ocsoft.flatlaf.utils.graphics.ShapeCache;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
-
-import java.awt.*;
-import java.awt.geom.GeneralPath;
 
 /**
  * Base painter for JScrollBar arrow buttons.

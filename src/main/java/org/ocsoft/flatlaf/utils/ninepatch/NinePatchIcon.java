@@ -17,17 +17,24 @@
 
 package org.ocsoft.flatlaf.utils.ninepatch;
 
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.ImageUtils;
-
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Insets;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
+import org.ocsoft.flatlaf.utils.ImageUtils;
+
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 
 /**
  * This class allows you to create and use nine-patch icons within Swing

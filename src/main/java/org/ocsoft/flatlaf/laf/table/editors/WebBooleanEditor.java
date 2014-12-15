@@ -17,12 +17,13 @@
 
 package org.ocsoft.flatlaf.laf.table.editors;
 
-import javax.swing.*;
+import java.awt.Component;
+
+import javax.swing.JCheckBox;
+import javax.swing.JTable;
 
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBox;
 import org.ocsoft.flatlaf.utils.swing.WebDefaultCellEditor;
-
-import java.awt.*;
 
 /**
  * @author Mikle Garin

@@ -17,10 +17,10 @@
 
 package org.ocsoft.flatlaf.managers.settings;
 
+import java.io.Serializable;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-
-import java.io.Serializable;
 
 /**
  * This class contains information about single SettingsGroup read state.

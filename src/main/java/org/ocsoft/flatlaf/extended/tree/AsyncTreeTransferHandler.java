@@ -17,8 +17,9 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
-import javax.swing.*;
 import java.util.List;
+
+import javax.swing.SwingUtilities;
 
 /**
  * Custom TransferHandler for WebAsyncTree that provides a quick and convenient

@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.utils.filefilter;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
 
 /**
  * Custom file filter class.

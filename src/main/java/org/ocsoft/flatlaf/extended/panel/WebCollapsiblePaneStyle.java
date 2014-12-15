@@ -17,12 +17,13 @@
 
 package org.ocsoft.flatlaf.extended.panel;
 
-import javax.swing.*;
+import java.awt.Insets;
+
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.ImageUtils;
-
-import java.awt.*;
 
 /**
  * User: mgarin Date: 29.01.13 Time: 15:44

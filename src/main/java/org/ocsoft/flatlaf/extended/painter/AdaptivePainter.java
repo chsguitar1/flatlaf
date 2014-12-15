@@ -17,8 +17,12 @@
 
 package org.ocsoft.flatlaf.extended.painter;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
+
+import javax.swing.JComponent;
 
 /**
  * Special painter made to adapts any kind of painters to fit custom painters

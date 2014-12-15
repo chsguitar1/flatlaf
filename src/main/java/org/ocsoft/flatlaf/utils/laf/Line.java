@@ -17,10 +17,10 @@
 
 package org.ocsoft.flatlaf.utils.laf;
 
+import java.awt.Point;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-
-import java.awt.*;
 
 /**
  * This class represents a simple line data.

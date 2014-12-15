@@ -17,16 +17,29 @@
 
 package org.ocsoft.flatlaf.managers.settings;
 
-import javax.swing.*;
-import javax.swing.text.JTextComponent;
-
-import org.ocsoft.flatlaf.managers.settings.processors.*;
-import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
-
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Window;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.WeakHashMap;
+
+import javax.swing.AbstractButton;
+import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
+import javax.swing.JScrollBar;
+import javax.swing.JSlider;
+import javax.swing.JTabbedPane;
+import javax.swing.text.JTextComponent;
+
+import org.ocsoft.flatlaf.managers.settings.processors.AbstractButtonSettingsProcessor;
+import org.ocsoft.flatlaf.managers.settings.processors.JComboBoxSettingsProcessor;
+import org.ocsoft.flatlaf.managers.settings.processors.JPasswordFieldSettingsProcessor;
+import org.ocsoft.flatlaf.managers.settings.processors.JScrollBarSettingsProcessor;
+import org.ocsoft.flatlaf.managers.settings.processors.JSliderSettingsProcessor;
+import org.ocsoft.flatlaf.managers.settings.processors.JTabbedPaneSettingsProcessor;
+import org.ocsoft.flatlaf.managers.settings.processors.JTextComponentSettingsProcessor;
+import org.ocsoft.flatlaf.managers.settings.processors.WindowSettingsProcessor;
+import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 
 /**
  * This SettingsManager sub-manager registers and processes component settings

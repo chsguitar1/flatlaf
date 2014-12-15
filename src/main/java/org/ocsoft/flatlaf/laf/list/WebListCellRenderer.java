@@ -17,9 +17,12 @@
 
 package org.ocsoft.flatlaf.laf.list;
 
-import javax.swing.*;
+import java.awt.Component;
+
+import javax.swing.Icon;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
 import javax.swing.plaf.ListUI;
-import java.awt.*;
 
 /**
  * Custom default list cell renderer for WebLookAndFeel.

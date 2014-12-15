@@ -17,13 +17,13 @@
 
 package org.ocsoft.flatlaf.managers.settings.processors;
 
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JComboBox;
 
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Custom SettingsProcessor for JComboBox component.

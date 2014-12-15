@@ -17,12 +17,13 @@
 
 package org.ocsoft.flatlaf.laf.combobox;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Insets;
+
+import javax.swing.ImageIcon;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.ImageUtils;
-
-import java.awt.*;
 
 /**
  * WebComboBox style class.

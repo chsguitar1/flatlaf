@@ -17,9 +17,13 @@
 
 package org.ocsoft.flatlaf.extended.layout;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Insets;
 import java.util.ArrayList;
+
+import javax.swing.SwingConstants;
 
 /**
  * User: mgarin Date: 07.10.11 Time: 15:14

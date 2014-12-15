@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.tab;
 
-import javax.swing.*;
+import javax.swing.JComponent;
 
 /**
  * Custom interface used to create document tab title provider. It can be used

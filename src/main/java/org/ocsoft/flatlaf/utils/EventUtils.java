@@ -17,24 +17,45 @@
 
 package org.ocsoft.flatlaf.utils;
 
+import java.awt.Component;
+import java.awt.Window;
+import java.awt.event.ComponentEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 
-import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
-import org.ocsoft.flatlaf.extended.tab.*;
+import org.ocsoft.flatlaf.extended.tab.DocumentAdapter;
+import org.ocsoft.flatlaf.extended.tab.DocumentData;
+import org.ocsoft.flatlaf.extended.tab.DocumentDataCancellableRunnable;
+import org.ocsoft.flatlaf.extended.tab.DocumentDataRunnable;
+import org.ocsoft.flatlaf.extended.tab.PaneData;
+import org.ocsoft.flatlaf.extended.tab.WebDocumentPane;
 import org.ocsoft.flatlaf.extended.window.PopOverAdapter;
 import org.ocsoft.flatlaf.extended.window.PopOverEventRunnable;
 import org.ocsoft.flatlaf.extended.window.WebPopOver;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.utils.general.Pair;
-import org.ocsoft.flatlaf.utils.swing.*;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import org.ocsoft.flatlaf.utils.swing.ComponentEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.DocumentChangeListener;
+import org.ocsoft.flatlaf.utils.swing.DocumentEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.FocusEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.KeyEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.MouseButton;
+import org.ocsoft.flatlaf.utils.swing.MouseEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.WindowCloseAdapter;
+import org.ocsoft.flatlaf.utils.swing.WindowEventRunnable;
 
 /**
  * This class provides a set of utilities to work with various Swing events.

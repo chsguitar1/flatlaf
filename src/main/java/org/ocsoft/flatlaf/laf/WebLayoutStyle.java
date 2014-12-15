@@ -17,9 +17,14 @@
 
 package org.ocsoft.flatlaf.laf;
 
-import javax.swing.*;
+import java.awt.Container;
+
+import javax.swing.ButtonModel;
+import javax.swing.DefaultButtonModel;
+import javax.swing.JComponent;
+import javax.swing.JToggleButton;
+import javax.swing.SwingConstants;
 import javax.swing.plaf.UIResource;
-import java.awt.*;
 
 /**
  * Almost the same as the MetalLookAndFeel LayoutStyle class as it fits WebLaF

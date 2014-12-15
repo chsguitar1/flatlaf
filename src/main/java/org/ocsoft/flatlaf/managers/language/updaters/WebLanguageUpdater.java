@@ -17,12 +17,11 @@
 
 package org.ocsoft.flatlaf.managers.language.updaters;
 
-import java.awt.*;
+import java.awt.Component;
 import java.util.Map;
 import java.util.WeakHashMap;
 
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyInfo;
-import org.ocsoft.flatlaf.managers.language.updaters.DefaultLanguageUpdater;
 
 /**
  * This class prvides an additional set of methods to simplify language updaters

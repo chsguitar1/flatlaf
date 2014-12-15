@@ -17,15 +17,17 @@
 
 package org.ocsoft.flatlaf.managers.style.skin.ninepatch;
 
-import javax.swing.*;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
+
+import javax.swing.JLabel;
 
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.focus.FocusTracker;
 import org.ocsoft.flatlaf.managers.style.skin.web.WebLabelPainter;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
-
-import java.awt.*;
 
 /**
  * Base 9-patch painter for JLabel component.

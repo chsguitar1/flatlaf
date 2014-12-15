@@ -17,8 +17,9 @@
 
 package org.ocsoft.flatlaf.managers.hotkey;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
+
+import javax.swing.AbstractButton;
 
 /**
  * User: mgarin Date: 30.11.12 Time: 17:15

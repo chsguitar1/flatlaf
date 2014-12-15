@@ -17,15 +17,21 @@
 
 package org.ocsoft.flatlaf.extended.painter;
 
-import javax.swing.*;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.AbstractButton;
+import javax.swing.ButtonModel;
+import javax.swing.JComponent;
+import javax.swing.JToolBar;
 
 import org.ocsoft.flatlaf.laf.toolbar.WebToolBar;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
-
-import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * This painter class allows you to specify multiply 9-patch images for

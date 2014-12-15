@@ -17,12 +17,19 @@
 
 package org.ocsoft.flatlaf.utils.system;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.ImageUtils;
-
-import java.awt.*;
-import java.awt.datatransfer.*;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.Transparency;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -32,6 +39,10 @@ import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import javax.swing.ImageIcon;
+
+import org.ocsoft.flatlaf.utils.ImageUtils;
 
 /**
  * This class provides a set of utilities to retrieve various operating system

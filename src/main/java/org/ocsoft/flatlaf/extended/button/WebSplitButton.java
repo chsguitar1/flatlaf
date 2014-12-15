@@ -17,7 +17,17 @@
 
 package org.ocsoft.flatlaf.extended.button;
 
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.io.Serializable;
+
+import javax.swing.Action;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JPopupMenu;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.laf.button.WebButton;
@@ -26,9 +36,6 @@ import org.ocsoft.flatlaf.laf.menu.WebPopupMenuUI;
 import org.ocsoft.flatlaf.managers.style.SupportedComponent;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.event.*;
-import java.io.Serializable;
 
 /**
  * Custom button that displays an additional side (split side) that could call a

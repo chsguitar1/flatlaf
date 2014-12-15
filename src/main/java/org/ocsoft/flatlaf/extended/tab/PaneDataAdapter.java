@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.extended.tab;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Component;
 
 /**
  * DocumentDataListener extension for single PaneData.

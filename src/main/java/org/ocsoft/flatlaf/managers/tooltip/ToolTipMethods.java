@@ -17,12 +17,13 @@
 
 package org.ocsoft.flatlaf.managers.tooltip;
 
-import javax.swing.*;
+import java.util.List;
+
+import javax.swing.Icon;
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.utils.swing.SwingMethods;
-
-import java.util.List;
 
 /**
  * This interface provides a set of methods that should be added into components

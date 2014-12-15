@@ -17,6 +17,12 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.tree.TreeCellEditor;
 import javax.swing.tree.TreeModel;
@@ -30,12 +36,6 @@ import org.ocsoft.flatlaf.laf.tree.WebTreeCellEditor;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.general.Filter;
 import org.ocsoft.flatlaf.utils.swing.CellEditorAdapter;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
 
 /**
  * This class provides a custom tree with asynchronous childs loading. All you

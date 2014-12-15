@@ -17,12 +17,13 @@
 
 package org.ocsoft.flatlaf.utils.filefilter;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import javax.swing.ImageIcon;
 
 /**
  * This file filter groups specified file filters in a certain way defined by

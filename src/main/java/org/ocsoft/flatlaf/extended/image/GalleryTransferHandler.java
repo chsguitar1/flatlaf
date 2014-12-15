@@ -17,13 +17,13 @@
 
 package org.ocsoft.flatlaf.extended.image;
 
-import javax.swing.*;
+import java.io.File;
+import java.util.List;
+
+import javax.swing.ImageIcon;
 
 import org.ocsoft.flatlaf.extended.drag.FileDragAndDropHandler;
 import org.ocsoft.flatlaf.utils.ImageUtils;
-
-import java.io.File;
-import java.util.List;
 
 /**
  * @author Mikle Garin

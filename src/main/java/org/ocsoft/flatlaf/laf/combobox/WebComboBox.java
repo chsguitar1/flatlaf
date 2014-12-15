@@ -17,7 +17,20 @@
 
 package org.ocsoft.flatlaf.laf.combobox;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Shape;
+import java.awt.event.FocusAdapter;
+import java.awt.event.KeyAdapter;
+import java.awt.event.MouseAdapter;
+import java.util.List;
+import java.util.Vector;
+
+import javax.swing.ComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
@@ -29,19 +42,20 @@ import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
 import org.ocsoft.flatlaf.managers.tooltip.ToolTipMethods;
 import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.managers.tooltip.WebCustomTooltip;
-import org.ocsoft.flatlaf.utils.*;
+import org.ocsoft.flatlaf.utils.CompareUtils;
+import org.ocsoft.flatlaf.utils.EventUtils;
+import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.SizeUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
-import org.ocsoft.flatlaf.utils.swing.*;
+import org.ocsoft.flatlaf.utils.swing.EventMethods;
+import org.ocsoft.flatlaf.utils.swing.FocusEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.FontMethods;
+import org.ocsoft.flatlaf.utils.swing.KeyEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.MouseButton;
+import org.ocsoft.flatlaf.utils.swing.MouseEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.SizeMethods;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.KeyAdapter;
-import java.awt.event.MouseAdapter;
-import java.util.List;
-import java.util.Vector;
 
 /**
  * @author Mikle Garin

@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.extended.panel;
 
-import javax.swing.*;
+import java.awt.Component;
+
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.extended.layout.AlignLayout;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
-
-import java.awt.*;
 
 /**
  * Custom panel that aligns contained component.

@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.toolbar;
 
-import javax.swing.*;
+import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
 import org.ocsoft.flatlaf.laf.separator.WebSeparatorUI;

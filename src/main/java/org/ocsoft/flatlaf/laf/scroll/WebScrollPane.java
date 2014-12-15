@@ -17,7 +17,13 @@
 
 package org.ocsoft.flatlaf.laf.scroll;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Insets;
+import java.awt.Shape;
+
+import javax.swing.JScrollPane;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.language.LanguageContainerMethods;
@@ -28,8 +34,6 @@ import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.SizeMethods;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
 
 /**
  * User: mgarin Date: 29.04.11 Time: 15:37

@@ -17,16 +17,18 @@
 
 package org.ocsoft.flatlaf.extended.panel;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Insets;
+import java.awt.Rectangle;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.extended.layout.OverlayData;
 import org.ocsoft.flatlaf.extended.layout.OverlayLayout;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
-
-import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * User: mgarin Date: 05.06.12 Time: 19:53

@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.style.skin.web;
 
-import java.awt.*;
+import java.awt.Color;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 

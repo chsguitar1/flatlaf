@@ -41,16 +41,13 @@
 
 package org.ocsoft.flatlaf.extended.label;
 
-import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicLabelUI;
-import javax.swing.text.*;
-
-import org.ocsoft.flatlaf.laf.label.WebLabelStyle;
-import org.ocsoft.flatlaf.utils.LafUtils;
-import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.beans.PropertyChangeEvent;
@@ -58,6 +55,23 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.basic.BasicLabelUI;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.Element;
+import javax.swing.text.PlainDocument;
+import javax.swing.text.Segment;
+import javax.swing.text.Utilities;
+import javax.swing.text.View;
+
+import org.ocsoft.flatlaf.laf.label.WebLabelStyle;
+import org.ocsoft.flatlaf.utils.LafUtils;
+import org.ocsoft.flatlaf.utils.SwingUtils;
 
 /**
  * Label UI delegate that supports multiple lines and line wrapping. Hard line

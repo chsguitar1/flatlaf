@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.utils.laf;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Shape;
 
 /**
  * User: mgarin Date: 12/2/11 Time: 12:59 PM

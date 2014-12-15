@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.laf.list.editor;
 
-import javax.swing.*;
+import java.awt.Component;
+
+import javax.swing.JList;
 
 import org.ocsoft.flatlaf.laf.list.WebListStyle;
 import org.ocsoft.flatlaf.laf.text.WebTextField;
-
-import java.awt.*;
 
 /**
  * Default list cell editor that is based on various components.

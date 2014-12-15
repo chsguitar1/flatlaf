@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.label;
 
-import javax.swing.*;
+import javax.swing.JLabel;
 
 import org.ocsoft.flatlaf.extended.painter.AdaptivePainter;
 import org.ocsoft.flatlaf.extended.painter.Painter;

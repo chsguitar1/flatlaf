@@ -17,7 +17,17 @@
 
 package org.ocsoft.flatlaf.laf.filechooser;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.HeadlessException;
+import java.awt.Image;
+import java.awt.Window;
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
@@ -32,11 +42,6 @@ import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.Customizer;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * This JFileChooser extension class provides a direct access to

@@ -18,7 +18,13 @@
 package org.ocsoft.flatlaf.managers.proxy;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.Authenticator;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.ProxySelector;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 import java.util.Properties;
 

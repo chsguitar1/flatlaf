@@ -17,8 +17,9 @@
 
 package org.ocsoft.flatlaf.extended.list;
 
-import javax.swing.*;
 import java.io.File;
+
+import javax.swing.ImageIcon;
 
 /**
  * This class represents single file list element.

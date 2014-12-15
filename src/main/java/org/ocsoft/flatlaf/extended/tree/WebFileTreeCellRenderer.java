@@ -17,12 +17,13 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
-import javax.swing.*;
+import java.io.File;
+
+import javax.swing.ImageIcon;
+import javax.swing.JTree;
 
 import org.ocsoft.flatlaf.laf.tree.WebTreeElement;
 import org.ocsoft.flatlaf.utils.FileUtils;
-
-import java.io.File;
 
 /**
  * File tree cell renderer.

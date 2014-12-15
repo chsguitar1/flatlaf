@@ -17,7 +17,9 @@
 
 package org.ocsoft.flatlaf.laf.desktoppane;
 
-import javax.swing.*;
+import java.beans.PropertyVetoException;
+
+import javax.swing.JInternalFrame;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
@@ -25,8 +27,6 @@ import org.ocsoft.flatlaf.managers.language.LanguageMethods;
 import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.beans.PropertyVetoException;
 
 /**
  * User: mgarin Date: 24.08.11 Time: 18:11

@@ -17,9 +17,10 @@
 
 package org.ocsoft.flatlaf.managers.notification;
 
-import javax.swing.*;
 import java.util.EnumMap;
 import java.util.Map;
+
+import javax.swing.ImageIcon;
 
 /**
  * This enumeration represents available predefined notification icons.

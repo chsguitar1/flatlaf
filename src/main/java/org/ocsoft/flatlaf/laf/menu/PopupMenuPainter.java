@@ -17,12 +17,13 @@
 
 package org.ocsoft.flatlaf.laf.menu;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Point;
+
+import javax.swing.JPopupMenu;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.SpecificPainter;
-
-import java.awt.*;
 
 /**
  * Base interface for JPopupMenu component painters.

@@ -17,14 +17,22 @@
 
 package org.ocsoft.flatlaf.extended.label;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Insets;
+import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.StringTokenizer;
+
+import javax.swing.Icon;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.text.View;
 
 import org.ocsoft.flatlaf.utils.xml.ColorConverter;
-
-import java.awt.*;
-import java.util.*;
-import java.util.List;
 
 /**
  * This class provides a set of utilities for WebStyledLabel component.

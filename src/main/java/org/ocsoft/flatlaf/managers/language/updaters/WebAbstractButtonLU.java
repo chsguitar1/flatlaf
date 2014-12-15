@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.managers.language.updaters;
 
-import javax.swing.*;
+import javax.swing.AbstractButton;
+import javax.swing.KeyStroke;
 
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyInfo;

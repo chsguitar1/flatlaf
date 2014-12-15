@@ -17,13 +17,15 @@
 
 package org.ocsoft.flatlaf.laf.toolbar;
 
-import javax.swing.*;
+import java.awt.Container;
+import java.awt.Dimension;
+
+import javax.swing.JComponent;
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
 
 /**
  * Custom component to create spacings where layout can't do the stuff you need.

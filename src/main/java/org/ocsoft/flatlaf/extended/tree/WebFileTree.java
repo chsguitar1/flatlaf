@@ -17,6 +17,11 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
+import java.awt.Rectangle;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
@@ -25,11 +30,6 @@ import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.general.Filter;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This component is a file tree with asynchronous childs loading. It also

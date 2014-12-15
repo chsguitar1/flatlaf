@@ -17,14 +17,14 @@
 
 package org.ocsoft.flatlaf.managers.style.skin;
 
-import javax.swing.*;
+import java.util.List;
+
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.managers.style.SupportedComponent;
 import org.ocsoft.flatlaf.managers.style.data.ComponentStyle;
 import org.ocsoft.flatlaf.managers.style.data.SkinInfo;
 import org.ocsoft.flatlaf.utils.xml.XmlUtils;
-
-import java.util.List;
 
 /**
  * This theme is used by StyleManager for cases when theme settings are stored

@@ -17,14 +17,14 @@
 
 package org.ocsoft.flatlaf.managers.settings;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.ocsoft.flatlaf.utils.TextUtils;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 
 /**
  * Settings group data class.

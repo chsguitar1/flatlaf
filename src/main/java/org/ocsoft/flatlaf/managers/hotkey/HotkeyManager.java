@@ -17,7 +17,21 @@
 
 package org.ocsoft.flatlaf.managers.hotkey;
 
-import javax.swing.*;
+import java.awt.AWTEvent;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Toolkit;
+import java.awt.Window;
+import java.awt.event.AWTEventListener;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+
+import javax.swing.AbstractButton;
 
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
@@ -25,12 +39,6 @@ import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.xml.XmlUtils;
-
-import java.awt.*;
-import java.awt.event.AWTEventListener;
-import java.awt.event.KeyEvent;
-import java.util.*;
-import java.util.List;
 
 /**
  * This manager allows you to quickly register global hotkeys (like accelerators

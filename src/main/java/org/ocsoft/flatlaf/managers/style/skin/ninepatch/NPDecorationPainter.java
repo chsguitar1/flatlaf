@@ -17,7 +17,12 @@
 
 package org.ocsoft.flatlaf.managers.style.skin.ninepatch;
 
-import javax.swing.*;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
+
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.extended.painter.PartialDecoration;
@@ -25,8 +30,6 @@ import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.focus.FocusTracker;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
-
-import java.awt.*;
 
 /**
  * 9-patch partial decoration painter for any kind of components. This painter

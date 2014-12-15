@@ -17,12 +17,14 @@
 
 package org.ocsoft.flatlaf.laf.table.renderers;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Component;
+
+import javax.swing.JTable;
+import javax.swing.UIManager;
 import javax.swing.table.TableCellRenderer;
 
 import org.ocsoft.flatlaf.laf.label.WebLabel;
-
-import java.awt.*;
 
 /**
  * @author Mikle Garin

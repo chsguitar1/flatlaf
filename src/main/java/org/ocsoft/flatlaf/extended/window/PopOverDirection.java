@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.window;
 
-import javax.swing.*;
+import javax.swing.SwingConstants;
 
 /**
  * This enumeration represents possible WebPopOver dialog display ways relative

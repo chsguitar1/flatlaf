@@ -17,11 +17,16 @@
 
 package org.ocsoft.flatlaf.managers.language;
 
-import java.awt.*;
+import java.awt.ComponentOrientation;
 
-import org.ocsoft.flatlaf.managers.language.LanguageAdapter;
-import org.ocsoft.flatlaf.managers.language.LanguageManager;
-import org.ocsoft.flatlaf.managers.language.updaters.*;
+import org.ocsoft.flatlaf.managers.language.updaters.WebAbstractButtonLU;
+import org.ocsoft.flatlaf.managers.language.updaters.WebCollapsiblePaneLU;
+import org.ocsoft.flatlaf.managers.language.updaters.WebDialogLU;
+import org.ocsoft.flatlaf.managers.language.updaters.WebFileDropLU;
+import org.ocsoft.flatlaf.managers.language.updaters.WebFormattedTextFieldLU;
+import org.ocsoft.flatlaf.managers.language.updaters.WebFrameLU;
+import org.ocsoft.flatlaf.managers.language.updaters.WebPasswordFieldLU;
+import org.ocsoft.flatlaf.managers.language.updaters.WebTextFieldLU;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 
 /**

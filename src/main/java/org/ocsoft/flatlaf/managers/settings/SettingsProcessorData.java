@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.settings;
 
-import java.awt.*;
+import java.awt.Component;
 
 /**
  * Base data class for any SettingsProcessor.

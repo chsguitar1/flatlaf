@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.laf.viewport;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.JViewport;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicViewportUI;
 

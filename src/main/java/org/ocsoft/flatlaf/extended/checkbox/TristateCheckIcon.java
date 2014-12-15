@@ -17,14 +17,19 @@
 
 package org.ocsoft.flatlaf.extended.checkbox;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.RadialGradientPaint;
+import java.awt.Rectangle;
+import java.awt.geom.RoundRectangle2D;
+import java.lang.ref.WeakReference;
+
+import javax.swing.ImageIcon;
 
 import org.ocsoft.flatlaf.laf.checkbox.SimpleCheckIcon;
 import org.ocsoft.flatlaf.utils.GeometryUtils;
-
-import java.awt.*;
-import java.awt.geom.RoundRectangle2D;
-import java.lang.ref.WeakReference;
 
 /**
  * Check icon for tristate checkbox.

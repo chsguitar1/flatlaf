@@ -17,19 +17,19 @@
 
 package org.ocsoft.flatlaf.managers.style.data;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
-import javax.swing.*;
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.managers.style.SupportedComponent;
 import org.ocsoft.flatlaf.utils.TextUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 /**
  * Skin information class.

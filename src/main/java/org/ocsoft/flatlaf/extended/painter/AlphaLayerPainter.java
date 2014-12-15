@@ -17,11 +17,13 @@
 
 package org.ocsoft.flatlaf.extended.painter;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.utils.LafUtils;
-
-import java.awt.*;
 
 /**
  * Alpha layer painter. This painter fills component background with an

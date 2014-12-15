@@ -17,16 +17,25 @@
 
 package org.ocsoft.flatlaf.laf.tabbedpane;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
+import java.util.Map;
+
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.UIManager;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.text.View;
 
 import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
-import java.util.Map;
 
 /**
  * @author Mikle Garin

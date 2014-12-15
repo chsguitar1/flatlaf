@@ -17,13 +17,13 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
+import java.io.File;
+import java.util.List;
+
 import javax.swing.filechooser.FileSystemView;
 
 import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-
-import java.io.File;
-import java.util.List;
 
 /**
  * This enumeration represents possible file tree root types. Also this

@@ -17,11 +17,11 @@
 
 package org.ocsoft.flatlaf.laf.list;
 
-import javax.swing.*;
+import java.awt.Rectangle;
+
+import javax.swing.JList;
 
 import org.ocsoft.flatlaf.managers.tooltip.WebCustomTooltip;
-
-import java.awt.*;
 
 /**
  * Custom WebLaF tooltip provider for WebList component.

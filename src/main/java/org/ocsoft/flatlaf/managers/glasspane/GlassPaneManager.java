@@ -17,13 +17,13 @@
 
 package org.ocsoft.flatlaf.managers.glasspane;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
+import java.awt.Component;
 import java.util.Map;
 import java.util.WeakHashMap;
+
+import javax.swing.JRootPane;
+
+import org.ocsoft.flatlaf.utils.SwingUtils;
 
 /**
  * This manager provides an instance of WebGlassPane for specified JRootPane

@@ -17,14 +17,14 @@
 
 package org.ocsoft.flatlaf.managers.proxy;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-
 import java.io.Serializable;
 
 import org.ocsoft.flatlaf.utils.TextUtils;
 import org.ocsoft.flatlaf.utils.xml.PasswordConverter;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 
 /**
  * Proxy settings object.

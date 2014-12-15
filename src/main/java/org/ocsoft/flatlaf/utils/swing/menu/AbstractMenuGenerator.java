@@ -17,18 +17,24 @@
 
 package org.ocsoft.flatlaf.utils.swing.menu;
 
-import javax.swing.*;
+import java.awt.Image;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.net.URL;
 
-import org.ocsoft.flatlaf.laf.menu.*;
+import javax.swing.AbstractButton;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+
+import org.ocsoft.flatlaf.laf.menu.WebCheckBoxMenuItem;
+import org.ocsoft.flatlaf.laf.menu.WebMenu;
+import org.ocsoft.flatlaf.laf.menu.WebMenuItem;
+import org.ocsoft.flatlaf.laf.menu.WebPopupMenu;
+import org.ocsoft.flatlaf.laf.menu.WebRadioButtonMenuItem;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LM;
 import org.ocsoft.flatlaf.utils.swing.UnselectableButtonGroup;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.net.URL;
 
 /**
  * This is a base generator class for custom menu generators. Menu generators

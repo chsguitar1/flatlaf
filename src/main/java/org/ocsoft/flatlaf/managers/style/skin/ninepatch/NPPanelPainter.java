@@ -17,11 +17,12 @@
 
 package org.ocsoft.flatlaf.managers.style.skin.ninepatch;
 
-import javax.swing.*;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+
+import javax.swing.JPanel;
 
 import org.ocsoft.flatlaf.laf.panel.PanelPainter;
-
-import java.awt.*;
 
 /**
  * Base 9-patch painter for JPanel component.

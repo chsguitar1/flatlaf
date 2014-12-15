@@ -17,22 +17,32 @@
 
 package org.ocsoft.flatlaf.laf.table;
 
-import javax.swing.*;
+import java.util.Date;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JViewport;
+import javax.swing.LookAndFeel;
 import javax.swing.event.AncestorEvent;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicTableUI;
 
-import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.table.editors.WebBooleanEditor;
 import org.ocsoft.flatlaf.laf.table.editors.WebDateEditor;
 import org.ocsoft.flatlaf.laf.table.editors.WebGenericEditor;
 import org.ocsoft.flatlaf.laf.table.editors.WebNumberEditor;
-import org.ocsoft.flatlaf.laf.table.renderers.*;
+import org.ocsoft.flatlaf.laf.table.renderers.WebBooleanRenderer;
+import org.ocsoft.flatlaf.laf.table.renderers.WebDateRenderer;
+import org.ocsoft.flatlaf.laf.table.renderers.WebDoubleRenderer;
+import org.ocsoft.flatlaf.laf.table.renderers.WebIconRenderer;
+import org.ocsoft.flatlaf.laf.table.renderers.WebNumberRenderer;
+import org.ocsoft.flatlaf.laf.table.renderers.WebTableCellRenderer;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
-
-import java.util.Date;
 
 /**
  * Custom UI for JTable component.

@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.laf.table.editors;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.lang.reflect.Constructor;
+
+import javax.swing.JTable;
 
 import org.ocsoft.flatlaf.utils.swing.WebDefaultCellEditor;
-
-import java.awt.*;
-import java.lang.reflect.Constructor;
 
 /**
  * User: mgarin Date: 31.10.12 Time: 15:30

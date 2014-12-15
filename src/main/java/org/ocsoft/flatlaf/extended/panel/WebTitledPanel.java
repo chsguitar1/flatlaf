@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.extended.panel;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
 
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 

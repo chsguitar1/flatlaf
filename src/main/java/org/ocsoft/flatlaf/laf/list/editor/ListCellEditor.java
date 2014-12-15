@@ -17,8 +17,9 @@
 
 package org.ocsoft.flatlaf.laf.list.editor;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Component;
+
+import javax.swing.JList;
 
 /**
  * This interface provides base methods for list cell editor creation. Cell

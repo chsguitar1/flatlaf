@@ -17,11 +17,13 @@
 
 package org.ocsoft.flatlaf.extended.checkbox;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.AWTEvent;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.ItemEvent;
+
+import javax.swing.JToggleButton;
 
 /**
  * Custom button model for WebTristateCheckBox component.

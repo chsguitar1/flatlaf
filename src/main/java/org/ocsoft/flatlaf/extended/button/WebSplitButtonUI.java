@@ -17,13 +17,16 @@
 
 package org.ocsoft.flatlaf.extended.button;
 
-import javax.swing.*;
+import java.awt.Graphics;
+import java.awt.Insets;
+import java.awt.Rectangle;
+
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButtonUI;
-
-import java.awt.*;
 
 /**
  * Custom UI for WebSplitButton component. This UI is based on WebButtonUI and

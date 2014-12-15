@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.rootpane;
 
-import javax.swing.*;
+import javax.swing.JRootPane;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;

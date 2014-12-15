@@ -17,9 +17,6 @@
 
 package org.ocsoft.flatlaf.managers.language.data;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +24,9 @@ import java.util.List;
 import org.ocsoft.flatlaf.utils.CompareUtils;
 import org.ocsoft.flatlaf.utils.TextUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 
 /**
  * @author Mikle Garin

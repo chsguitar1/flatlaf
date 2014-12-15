@@ -17,13 +17,13 @@
 
 package org.ocsoft.flatlaf.extended.colorchooser;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-
-import java.awt.*;
+import java.awt.Color;
 import java.io.Serializable;
 
 import org.ocsoft.flatlaf.utils.SwingUtils;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 /**
  * Single color data for GradientData.

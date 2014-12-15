@@ -20,7 +20,6 @@ package org.ocsoft.flatlaf.utils.swing;
 import java.beans.PropertyChangeListener;
 
 import org.ocsoft.flatlaf.utils.general.Pair;
-import org.ocsoft.flatlaf.utils.swing.SwingMethods;
 
 /**
  * This interface provides a set of methods that should be added into text

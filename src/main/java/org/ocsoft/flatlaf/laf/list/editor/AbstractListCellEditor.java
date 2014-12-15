@@ -17,14 +17,27 @@
 
 package org.ocsoft.flatlaf.laf.list.editor;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.ListModel;
+import javax.swing.SwingUtilities;
 
 import org.ocsoft.flatlaf.laf.list.WebList;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.utils.CompareUtils;
-
-import java.awt.*;
-import java.awt.event.*;
 
 /**
  * An abstract list cell editor that provides basic method implementations for

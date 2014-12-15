@@ -17,14 +17,25 @@
 
 package org.ocsoft.flatlaf.laf;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.KeyEventPostProcessor;
+import java.awt.Window;
+import java.awt.event.KeyEvent;
+
+import javax.swing.AbstractButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JRootPane;
+import javax.swing.MenuElement;
+import javax.swing.MenuSelectionManager;
+import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.ComboPopup;
 
 import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
-import java.awt.event.KeyEvent;
 
 /**
  * Alt hotkey processor for application windows with menu.

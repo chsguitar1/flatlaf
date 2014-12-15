@@ -17,15 +17,15 @@
 
 package org.ocsoft.flatlaf.extended.painter;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.core.FlatLookAndFeel;
-import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
-import org.ocsoft.flatlaf.utils.LafUtils;
-
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import java.util.WeakHashMap;
+
+import javax.swing.JComponent;
+import javax.swing.LookAndFeel;
+
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
+import org.ocsoft.flatlaf.utils.LafUtils;
 
 /**
  * This special class provides basic methods to link painter with components.

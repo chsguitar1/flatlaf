@@ -17,7 +17,12 @@
 
 package org.ocsoft.flatlaf.managers.proxy;
 
-import javax.swing.*;
+import java.awt.event.KeyEvent;
+import java.net.Authenticator;
+import java.net.PasswordAuthentication;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import javax.swing.event.AncestorEvent;
 
 import org.ocsoft.flatlaf.extended.layout.TableLayout;
@@ -33,14 +38,8 @@ import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyRunnable;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
-import org.ocsoft.flatlaf.managers.proxy.ProxyManager;
-import org.ocsoft.flatlaf.managers.proxy.ProxySettings;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
-
-import java.awt.event.KeyEvent;
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
 
 /**
  * This custom proxy authenticator provides an authentication dialog with proxy

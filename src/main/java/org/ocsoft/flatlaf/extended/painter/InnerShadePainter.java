@@ -17,11 +17,13 @@
 
 package org.ocsoft.flatlaf.extended.painter;
 
-import javax.swing.*;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Rectangle;
+
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchUtils;
-
-import java.awt.*;
 
 /**
  * @author Mikle Garin

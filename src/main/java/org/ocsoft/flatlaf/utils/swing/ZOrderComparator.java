@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
 import java.io.Serializable;
 import java.util.Comparator;
 

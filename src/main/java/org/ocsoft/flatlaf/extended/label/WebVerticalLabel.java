@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.label;
 
-import javax.swing.*;
+import javax.swing.Icon;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.laf.label.WebLabel;

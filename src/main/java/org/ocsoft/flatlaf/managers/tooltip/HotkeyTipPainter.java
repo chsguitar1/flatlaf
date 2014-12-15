@@ -17,7 +17,9 @@
 
 package org.ocsoft.flatlaf.managers.tooltip;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;

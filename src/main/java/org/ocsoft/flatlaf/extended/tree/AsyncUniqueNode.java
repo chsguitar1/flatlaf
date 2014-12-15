@@ -17,11 +17,11 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
-import javax.swing.*;
+import java.io.Serializable;
+
+import javax.swing.ImageIcon;
 
 import org.ocsoft.flatlaf.laf.tree.UniqueNode;
-
-import java.io.Serializable;
 
 /**
  * Custom UniqueNode for WebAsyncTree. In addition to UniqueNode it contains a

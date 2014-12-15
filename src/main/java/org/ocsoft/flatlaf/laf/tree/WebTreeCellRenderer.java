@@ -17,7 +17,10 @@
 
 package org.ocsoft.flatlaf.laf.tree;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JTree;
+import javax.swing.UIManager;
 import javax.swing.plaf.TreeUI;
 import javax.swing.tree.TreeCellRenderer;
 

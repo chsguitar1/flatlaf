@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.focus;
 
-import java.awt.*;
+import java.awt.Component;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;

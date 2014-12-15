@@ -17,15 +17,6 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
-import javax.swing.*;
-import javax.swing.tree.TreePath;
-
-import org.ocsoft.flatlaf.laf.tree.TreeUtils;
-import org.ocsoft.flatlaf.laf.tree.UniqueNode;
-import org.ocsoft.flatlaf.laf.tree.WebTree;
-import org.ocsoft.flatlaf.laf.tree.WebTreeModel;
-import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -35,6 +26,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.swing.JComponent;
+import javax.swing.JTree;
+import javax.swing.TransferHandler;
+import javax.swing.tree.TreePath;
+
+import org.ocsoft.flatlaf.laf.tree.TreeUtils;
+import org.ocsoft.flatlaf.laf.tree.UniqueNode;
+import org.ocsoft.flatlaf.laf.tree.WebTree;
+import org.ocsoft.flatlaf.laf.tree.WebTreeModel;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * @author Mikle Garin

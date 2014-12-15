@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.laf.scroll;
 
-import javax.swing.*;
+import javax.swing.AbstractButton;
+import javax.swing.JScrollBar;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 

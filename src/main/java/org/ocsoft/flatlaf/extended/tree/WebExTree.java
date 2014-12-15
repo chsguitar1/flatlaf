@@ -17,6 +17,11 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
+import java.awt.Point;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
@@ -29,11 +34,6 @@ import org.ocsoft.flatlaf.laf.tree.WebTreeCellEditor;
 import org.ocsoft.flatlaf.laf.tree.WebTreeCellRenderer;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.general.Filter;
-
-import java.awt.*;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
 
 /**
  * WebTree extension that provides simple and convenient way to load tree data.

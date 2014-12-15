@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.managers.highlight;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Window;
 import java.util.ArrayList;
 import java.util.List;
 

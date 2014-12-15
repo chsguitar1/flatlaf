@@ -17,12 +17,13 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import javax.swing.*;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
+
+import javax.swing.UIDefaults;
 
 /**
  * SwingLazyValue is a copy of ProxyLazyValue that does not snapshot the

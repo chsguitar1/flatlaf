@@ -17,17 +17,17 @@
 
 package org.ocsoft.flatlaf.extended.filechooser;
 
-import javax.swing.table.AbstractTableModel;
-
-import org.ocsoft.flatlaf.managers.language.LanguageManager;
-import org.ocsoft.flatlaf.utils.FileUtils;
-import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+
+import javax.swing.table.AbstractTableModel;
+
+import org.ocsoft.flatlaf.managers.language.LanguageManager;
+import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 /**
  * Data model for WebFileTable.

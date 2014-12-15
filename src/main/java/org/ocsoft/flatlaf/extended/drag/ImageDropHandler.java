@@ -17,15 +17,16 @@
 
 package org.ocsoft.flatlaf.extended.drag;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.DragUtils;
-
-import java.awt.*;
+import java.awt.Image;
 import java.awt.datatransfer.Transferable;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.ImageIcon;
+import javax.swing.TransferHandler;
+
+import org.ocsoft.flatlaf.utils.DragUtils;
 
 /**
  * User: mgarin Date: 19.01.12 Time: 16:20

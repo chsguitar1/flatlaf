@@ -22,7 +22,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.MouseAdapter;
 
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
-import org.ocsoft.flatlaf.utils.swing.SwingMethods;
 
 /**
  * This interface provides a set of methods that should be added into components

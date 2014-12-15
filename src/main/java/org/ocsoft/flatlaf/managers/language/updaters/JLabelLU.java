@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.language.updaters;
 
-import javax.swing.*;
+import javax.swing.JLabel;
 
 import org.ocsoft.flatlaf.managers.language.data.Value;
 

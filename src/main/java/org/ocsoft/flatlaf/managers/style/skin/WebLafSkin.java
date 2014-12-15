@@ -17,7 +17,14 @@
 
 package org.ocsoft.flatlaf.managers.style.skin;
 
-import javax.swing.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
@@ -31,13 +38,6 @@ import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * This abstract class represents single WebLaF skin. Each skin combines a group

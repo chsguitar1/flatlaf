@@ -17,11 +17,17 @@
 
 package org.ocsoft.flatlaf.laf.menu;
 
-import javax.swing.*;
+import java.awt.Component;
+
+import javax.swing.Icon;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.KeyStroke;
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
 
 /**
  * This class provides a set of utilities for menu elements. This is a library

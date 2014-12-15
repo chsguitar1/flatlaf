@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.hotkey;
 
-import java.awt.*;
+import java.awt.Component;
 
 /**
  * User: mgarin Date: 09.10.12 Time: 13:22

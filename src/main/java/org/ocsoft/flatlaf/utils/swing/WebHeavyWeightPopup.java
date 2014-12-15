@@ -17,7 +17,22 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import javax.swing.*;
+import java.awt.AWTEvent;
+import java.awt.Component;
+import java.awt.LayoutManager;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.awt.Window;
+import java.awt.event.AWTEventListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JWindow;
+import javax.swing.Popup;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
@@ -28,15 +43,6 @@ import org.ocsoft.flatlaf.utils.ProprietaryUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.WindowUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-import org.ocsoft.flatlaf.utils.swing.WebTimer;
-
-import java.awt.*;
-import java.awt.event.AWTEventListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Custom extension that makes use of Swing heavy-weight popup. It also provides

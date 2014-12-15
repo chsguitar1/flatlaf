@@ -17,13 +17,15 @@
 
 package org.ocsoft.flatlaf.managers.style.skin.ninepatch;
 
-import javax.swing.*;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+
+import javax.swing.AbstractButton;
+import javax.swing.JScrollBar;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.laf.scroll.ScrollBarButtonPainter;
 import org.ocsoft.flatlaf.laf.scroll.ScrollBarButtonType;
-
-import java.awt.*;
 
 /**
  * Base 9-patch painter for JScrollBar arrow buttons.

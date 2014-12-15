@@ -17,11 +17,11 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
-import javax.swing.*;
+import java.util.List;
+
+import javax.swing.SwingUtilities;
 
 import org.ocsoft.flatlaf.laf.tree.UniqueNode;
-
-import java.util.List;
 
 /**
  * Custom TransferHandler for WebAsyncTree that provides a quick and convenient

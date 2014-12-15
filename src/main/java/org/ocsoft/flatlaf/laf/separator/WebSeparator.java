@@ -17,13 +17,14 @@
 
 package org.ocsoft.flatlaf.laf.separator;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Insets;
+
+import javax.swing.JSeparator;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
 
 /**
  * User: mgarin Date: 21.09.2010 Time: 15:37:04

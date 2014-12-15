@@ -17,16 +17,16 @@
 
 package org.ocsoft.flatlaf.managers.settings.processors;
 
-import javax.swing.*;
-import javax.swing.text.JTextComponent;
-
-import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
-import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+
+import javax.swing.JTextField;
+import javax.swing.text.JTextComponent;
+
+import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
+import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
 
 /**
  * Custom SettingsProcessor for JTextComponent component.

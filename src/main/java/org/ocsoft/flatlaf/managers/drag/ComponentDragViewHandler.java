@@ -17,15 +17,15 @@
 
 package org.ocsoft.flatlaf.managers.drag;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
+import java.awt.Point;
 import java.awt.dnd.DragSourceDragEvent;
 import java.awt.dnd.DragSourceDropEvent;
 import java.awt.image.BufferedImage;
 import java.lang.ref.WeakReference;
+
+import javax.swing.JComponent;
+
+import org.ocsoft.flatlaf.utils.SwingUtils;
 
 /**
  * @author Mikle Garin

@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.utils.filefilter;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.general.Filter;
-
 import java.io.File;
 import java.io.FileFilter;
+
+import javax.swing.ImageIcon;
+
+import org.ocsoft.flatlaf.utils.general.Filter;
 
 /**
  * Default file filter for WebLaF file chooser that provides additional filter

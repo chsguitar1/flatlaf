@@ -17,13 +17,16 @@
 
 package org.ocsoft.flatlaf.extended.window;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
+import java.awt.Component;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.SwingUtilities;
+
+import org.ocsoft.flatlaf.utils.SwingUtils;
 
 /**
  * This listener allows you to simplify window/component move action. Simply

@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.laf.tabbedpane;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Insets;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;

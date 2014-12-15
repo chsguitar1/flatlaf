@@ -17,13 +17,13 @@
 
 package org.ocsoft.flatlaf.laf.tree;
 
+import java.io.Serializable;
+
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 
 import org.ocsoft.flatlaf.utils.TextUtils;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
-
-import java.io.Serializable;
 
 /**
  * This class provides a custom node with a specific ID. This node is used in

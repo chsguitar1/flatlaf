@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.list;
 
-import java.awt.*;
+import java.awt.Color;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 

@@ -17,16 +17,17 @@
 
 package org.ocsoft.flatlaf.extended.list;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
 import javax.swing.plaf.ListUI;
 
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxStyle;
 import org.ocsoft.flatlaf.laf.list.WebListStyle;
 import org.ocsoft.flatlaf.laf.list.WebListUI;
-
-import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Custom default checkbox list cell renderer for WebLookAndFeel.

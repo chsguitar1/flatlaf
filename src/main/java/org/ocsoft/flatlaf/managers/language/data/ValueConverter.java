@@ -17,16 +17,16 @@
 
 package org.ocsoft.flatlaf.managers.language.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
+
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 /**
  * User: mgarin Date: 20.04.12 Time: 15:02

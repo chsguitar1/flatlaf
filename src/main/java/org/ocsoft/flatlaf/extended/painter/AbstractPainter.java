@@ -17,13 +17,16 @@
 
 package org.ocsoft.flatlaf.extended.painter;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JComponent;
+
+import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 
 /**
  * This abstract painter provides a few additional useful features atop of the

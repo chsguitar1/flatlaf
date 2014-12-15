@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.button;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
 
 import org.ocsoft.flatlaf.laf.menu.PopupMenuWay;
 

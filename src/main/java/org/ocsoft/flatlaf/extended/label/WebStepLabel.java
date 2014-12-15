@@ -17,7 +17,17 @@
 
 package org.ocsoft.flatlaf.extended.label;
 
-import javax.swing.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Shape;
+import java.awt.Stroke;
+import java.awt.geom.RoundRectangle2D;
+
+import javax.swing.Icon;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
@@ -25,9 +35,6 @@ import org.ocsoft.flatlaf.managers.language.LanguageMethods;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
-
-import java.awt.*;
-import java.awt.geom.RoundRectangle2D;
 
 /**
  * This class provides a quick access to step-styled label which can be used to

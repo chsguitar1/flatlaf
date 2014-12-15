@@ -17,7 +17,17 @@
 
 package org.ocsoft.flatlaf.managers.style.skin.web;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Composite;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.Stroke;
+import java.awt.geom.GeneralPath;
+
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.extended.painter.PartialDecoration;
@@ -32,9 +42,6 @@ import org.ocsoft.flatlaf.utils.laf.PainterShapeProvider;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchUtils;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
-
-import java.awt.*;
-import java.awt.geom.GeneralPath;
 
 /**
  * Web-style background painter for any component. Commonly used as a base class

@@ -17,7 +17,25 @@
 
 package org.ocsoft.flatlaf.managers.popup;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.swing.AbstractButton;
 import javax.swing.event.AncestorEvent;
 
 import org.ocsoft.flatlaf.extended.layout.TableLayout;
@@ -28,13 +46,6 @@ import org.ocsoft.flatlaf.managers.style.skin.web.WebPanelPainter;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * User: mgarin Date: 26.03.12 Time: 17:32

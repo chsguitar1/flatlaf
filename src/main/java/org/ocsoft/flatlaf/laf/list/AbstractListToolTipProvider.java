@@ -17,8 +17,9 @@
 
 package org.ocsoft.flatlaf.laf.list;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Rectangle;
+
+import javax.swing.JList;
 
 /**
  * Abstract WebLaF tooltip provider for WebList component.

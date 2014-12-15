@@ -17,8 +17,11 @@
 
 package org.ocsoft.flatlaf.extended.drag;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
+
+import javax.swing.JComponent;
+import javax.swing.TransferHandler;
 
 /**
  * User: mgarin Date: 02.05.12 Time: 16:50

@@ -17,7 +17,19 @@
 
 package org.ocsoft.flatlaf.laf.desktoppane;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.LayoutManager;
+
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 
 import org.ocsoft.flatlaf.extended.panel.BorderPanel;
@@ -26,8 +38,6 @@ import org.ocsoft.flatlaf.laf.WebFonts;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.utils.LafUtils;
-
-import java.awt.*;
 
 /**
  * User: mgarin Date: 24.08.11 Time: 20:30

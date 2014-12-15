@@ -17,13 +17,16 @@
 
 package org.ocsoft.flatlaf.laf.text;
 
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Insets;
+
 import javax.swing.plaf.TextUI;
 import javax.swing.text.JTextComponent;
 
 import org.ocsoft.flatlaf.extended.layout.AbstractLayoutManager;
 import org.ocsoft.flatlaf.utils.collection.ValuesTable;
-
-import java.awt.*;
 
 /**
  * User: mgarin Date: 14.12.12 Time: 16:56

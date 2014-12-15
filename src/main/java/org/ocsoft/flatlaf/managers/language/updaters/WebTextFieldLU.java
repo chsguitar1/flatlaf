@@ -19,7 +19,6 @@ package org.ocsoft.flatlaf.managers.language.updaters;
 
 import org.ocsoft.flatlaf.laf.text.WebTextField;
 import org.ocsoft.flatlaf.managers.language.data.Value;
-import org.ocsoft.flatlaf.managers.language.updaters.DefaultLanguageUpdater;
 
 /**
  * This class provides language default updates for WebTextField component.

@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.list;
 
-import java.awt.*;
+import java.awt.Rectangle;
 
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBox;
 

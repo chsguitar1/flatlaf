@@ -17,12 +17,13 @@
 
 package org.ocsoft.flatlaf.laf.menu;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Insets;
+
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-
-import java.awt.*;
 
 /**
  * WebMenu, WebMenuItem, WebCheckBoxMenuItem and WebRadioButtonMenuItem style

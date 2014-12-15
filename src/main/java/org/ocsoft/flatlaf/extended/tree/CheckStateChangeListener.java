@@ -17,8 +17,9 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
-import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.List;
+
+import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  * Special listener for WebCheckBoxTree check state changes.

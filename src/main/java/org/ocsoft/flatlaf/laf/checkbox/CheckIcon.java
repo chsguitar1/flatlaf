@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.laf.checkbox;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Graphics2D;
 
 import org.ocsoft.flatlaf.extended.checkbox.CheckState;
 

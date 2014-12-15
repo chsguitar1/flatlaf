@@ -17,13 +17,13 @@
 
 package org.ocsoft.flatlaf.managers.language;
 
-import javax.swing.*;
+import java.awt.Component;
+
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.managers.language.data.Tooltip;
 import org.ocsoft.flatlaf.managers.language.data.TooltipType;
 import org.ocsoft.flatlaf.managers.language.data.Value;
-
-import java.awt.*;
 
 /**
  * Swing tooltips language support.

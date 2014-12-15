@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.focus;
 
-import java.awt.*;
+import java.awt.Component;
 import java.util.EventListener;
 
 /**

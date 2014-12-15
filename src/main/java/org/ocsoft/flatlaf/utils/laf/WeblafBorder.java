@@ -17,8 +17,9 @@
 
 package org.ocsoft.flatlaf.utils.laf;
 
+import java.awt.Insets;
+
 import javax.swing.plaf.BorderUIResource;
-import java.awt.*;
 
 /**
  * Special border used by WebLaF to provide proper component content sides

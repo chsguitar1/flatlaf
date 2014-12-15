@@ -17,8 +17,12 @@
 
 package org.ocsoft.flatlaf.managers.style.skin.web;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.Rectangle;
+
+import javax.swing.Icon;
+import javax.swing.JLabel;
 
 /**
  * Web-style painter for WebVerticalLabel component. It is used as

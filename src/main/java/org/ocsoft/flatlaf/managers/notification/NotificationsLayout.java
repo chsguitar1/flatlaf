@@ -17,14 +17,17 @@
 
 package org.ocsoft.flatlaf.managers.notification;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.extended.layout.AbstractLayoutManager;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Custom layout for proper notifications placement on layered pane.

@@ -17,7 +17,14 @@
 
 package org.ocsoft.flatlaf.laf.toolbar;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Insets;
+import java.awt.Shape;
+import java.util.List;
+
+import javax.swing.JToolBar;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
@@ -32,9 +39,6 @@ import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.SizeMethods;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
-import java.util.List;
 
 /**
  * @author Mikle Garin

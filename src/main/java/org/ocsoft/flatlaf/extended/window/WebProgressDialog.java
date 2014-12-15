@@ -17,7 +17,12 @@
 
 package org.ocsoft.flatlaf.extended.window;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Window;
+
+import javax.swing.JDialog;
 
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
@@ -25,8 +30,6 @@ import org.ocsoft.flatlaf.laf.progressbar.WebProgressBar;
 import org.ocsoft.flatlaf.laf.rootpane.WebDialog;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
 
 /**
  * User: mgarin Date: 14.02.12 Time: 12:08

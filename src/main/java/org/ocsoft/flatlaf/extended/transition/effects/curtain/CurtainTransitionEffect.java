@@ -17,7 +17,10 @@
 
 package org.ocsoft.flatlaf.extended.transition.effects.curtain;
 
-import java.awt.*;
+import java.awt.Composite;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.geom.GeneralPath;
 import java.awt.image.BufferedImage;
 

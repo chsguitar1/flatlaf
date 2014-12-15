@@ -17,7 +17,9 @@
 
 package org.ocsoft.flatlaf.laf.panel;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Insets;
+import java.awt.Stroke;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 

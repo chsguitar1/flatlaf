@@ -17,11 +17,12 @@
 
 package org.ocsoft.flatlaf.extended.panel;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
-
-import java.awt.*;
 
 /**
  * User: mgarin Date: 24.02.12 Time: 16:18

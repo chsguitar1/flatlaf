@@ -17,17 +17,23 @@
 
 package org.ocsoft.flatlaf.extended.tab;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.laf.tabbedpane.WebTabbedPane;
-import org.ocsoft.flatlaf.utils.SwingUtils;
-import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.datatransfer.Transferable;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JComponent;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.TransferHandler;
+
+import org.ocsoft.flatlaf.laf.tabbedpane.WebTabbedPane;
+import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * Custom TransferHandler for DocumentData object. This TransferHandler is made

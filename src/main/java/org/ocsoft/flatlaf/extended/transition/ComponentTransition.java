@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.transition;
 
-import java.awt.*;
+import java.awt.Component;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.image.BufferedImage;

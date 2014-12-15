@@ -17,7 +17,19 @@
 
 package org.ocsoft.flatlaf.laf.table;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.util.EventObject;
+import java.util.Vector;
+
+import javax.swing.CellEditor;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JViewport;
+import javax.swing.ListSelectionModel;
+import javax.swing.UIManager;
 import javax.swing.plaf.UIResource;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumnModel;
@@ -29,10 +41,6 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.FontMethods;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.*;
-import java.util.EventObject;
-import java.util.Vector;
 
 /**
  * User: mgarin Date: 07.07.11 Time: 17:55

@@ -17,19 +17,22 @@
 
 package org.ocsoft.flatlaf.managers.notification;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.Insets;
+import java.awt.Window;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+
+import javax.swing.Icon;
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.managers.popup.PopupAdapter;
 import org.ocsoft.flatlaf.managers.popup.PopupLayer;
 import org.ocsoft.flatlaf.managers.popup.PopupManager;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
 
 /**
  * This manager allows you to display custom notification popups within the

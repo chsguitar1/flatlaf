@@ -33,7 +33,8 @@
 
 package org.ocsoft.flatlaf.utils.filters;
 
-import java.awt.*;
+import java.awt.AlphaComposite;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 public class RaysFilter extends MotionBlurOp {

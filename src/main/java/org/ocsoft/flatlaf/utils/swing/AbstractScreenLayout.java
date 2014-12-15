@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import java.awt.*;
+import java.awt.Window;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

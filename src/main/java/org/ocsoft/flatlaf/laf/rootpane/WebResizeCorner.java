@@ -17,12 +17,15 @@
 
 package org.ocsoft.flatlaf.laf.rootpane;
 
-import javax.swing.*;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Graphics;
+
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 
 import org.ocsoft.flatlaf.extended.window.WindowResizeAdapter;
 import org.ocsoft.flatlaf.utils.SwingUtils;
-
-import java.awt.*;
 
 /**
  * User: mgarin Date: 02.11.11 Time: 15:56

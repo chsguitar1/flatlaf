@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.utils.filters;
 
-import java.awt.*;
+import java.awt.Image;
 import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorConvertOp;

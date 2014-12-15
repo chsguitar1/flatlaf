@@ -17,9 +17,13 @@
 
 package org.ocsoft.flatlaf.managers.notification;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Insets;
+import java.awt.Rectangle;
 import java.util.List;
+
+import javax.swing.SwingConstants;
 
 /**
  * Special general utilities for notification layout classes.

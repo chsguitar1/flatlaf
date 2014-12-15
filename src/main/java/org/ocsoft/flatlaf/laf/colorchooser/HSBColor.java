@@ -17,10 +17,10 @@
 
 package org.ocsoft.flatlaf.laf.colorchooser;
 
+import java.awt.Color;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-
-import java.awt.*;
 
 /**
  * User: mgarin Date: 10.03.11 Time: 18:52

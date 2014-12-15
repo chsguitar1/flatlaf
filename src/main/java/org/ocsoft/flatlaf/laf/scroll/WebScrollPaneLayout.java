@@ -17,8 +17,11 @@
 
 package org.ocsoft.flatlaf.laf.scroll;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Container;
+import java.awt.Rectangle;
+
+import javax.swing.JComponent;
+import javax.swing.ScrollPaneLayout;
 
 /**
  * This is a ScrollPaneLayout extension that properly places scroll pane shade

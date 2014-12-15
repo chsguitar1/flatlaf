@@ -17,6 +17,12 @@
 
 package org.ocsoft.flatlaf.managers.settings;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
+import org.ocsoft.flatlaf.utils.xml.XMLChar;
+
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
@@ -24,12 +30,6 @@ import com.thoughtworks.xstream.converters.reflection.ReflectionProvider;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.mapper.Mapper;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-import org.ocsoft.flatlaf.utils.xml.XMLChar;
 
 /**
  * Custom XStream converter for SettingsManager groups.

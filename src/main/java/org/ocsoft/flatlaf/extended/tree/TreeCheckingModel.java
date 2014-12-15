@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.extended.tree;
 
+import java.util.Collection;
+import java.util.List;
+
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.ocsoft.flatlaf.extended.checkbox.CheckState;
-
-import java.util.Collection;
-import java.util.List;
 
 /**
  * Special checking model for WebCheckBoxTree.

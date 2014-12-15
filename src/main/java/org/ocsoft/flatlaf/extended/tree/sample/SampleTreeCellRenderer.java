@@ -17,7 +17,8 @@
 
 package org.ocsoft.flatlaf.extended.tree.sample;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JTree;
 
 import org.ocsoft.flatlaf.extended.tree.WebAsyncTreeCellRenderer;
 import org.ocsoft.flatlaf.laf.tree.WebTreeElement;

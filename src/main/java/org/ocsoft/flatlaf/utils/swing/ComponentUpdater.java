@@ -17,15 +17,14 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import javax.swing.*;
+import java.awt.Component;
+import java.awt.event.ActionListener;
+
+import javax.swing.JComponent;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.utils.swing.WebTimer;
-
-import java.awt.*;
-import java.awt.event.ActionListener;
 
 /**
  * This class allows you to install (and uninstall if needed) component updater

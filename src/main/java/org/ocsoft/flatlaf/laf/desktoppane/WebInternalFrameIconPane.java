@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.desktoppane;
 
-import javax.swing.*;
+import javax.swing.JInternalFrame;
 
 /**
  * User: mgarin Date: 22.09.11 Time: 14:44

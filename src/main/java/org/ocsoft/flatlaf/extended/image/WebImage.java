@@ -17,9 +17,29 @@
 
 package org.ocsoft.flatlaf.extended.image;
 
-import javax.swing.*;
+import java.awt.Composite;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Insets;
+import java.awt.TexturePaint;
+import java.awt.event.FocusAdapter;
+import java.awt.event.KeyAdapter;
+import java.awt.event.MouseAdapter;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.net.URL;
+import java.util.List;
 
-import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.SwingConstants;
+
 import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
@@ -30,18 +50,11 @@ import org.ocsoft.flatlaf.utils.EventUtils;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
-import org.ocsoft.flatlaf.utils.swing.*;
-
-import java.awt.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.KeyAdapter;
-import java.awt.event.MouseAdapter;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.net.URL;
-import java.util.List;
+import org.ocsoft.flatlaf.utils.swing.EventMethods;
+import org.ocsoft.flatlaf.utils.swing.FocusEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.KeyEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.MouseButton;
+import org.ocsoft.flatlaf.utils.swing.MouseEventRunnable;
 
 /**
  * This component allows you to display images in many different ways. This

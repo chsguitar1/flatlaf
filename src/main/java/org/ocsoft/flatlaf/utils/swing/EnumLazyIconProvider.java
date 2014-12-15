@@ -17,12 +17,12 @@
 
 package org.ocsoft.flatlaf.utils.swing;
 
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.swing.ImageIcon;
+
+import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
  * Special class for simple and lazy enum icons retrieval.

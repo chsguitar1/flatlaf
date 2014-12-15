@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.panel;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PartialDecoration;

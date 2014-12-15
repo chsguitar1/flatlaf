@@ -17,7 +17,14 @@
 
 package org.ocsoft.flatlaf.managers.settings.processors;
 
-import org.ocsoft.flatlaf.extended.tab.*;
+import org.ocsoft.flatlaf.extended.tab.DocumentData;
+import org.ocsoft.flatlaf.extended.tab.DocumentListener;
+import org.ocsoft.flatlaf.extended.tab.DocumentPaneListener;
+import org.ocsoft.flatlaf.extended.tab.DocumentPaneState;
+import org.ocsoft.flatlaf.extended.tab.PaneData;
+import org.ocsoft.flatlaf.extended.tab.SplitData;
+import org.ocsoft.flatlaf.extended.tab.StructureData;
+import org.ocsoft.flatlaf.extended.tab.WebDocumentPane;
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessor;
 import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
 

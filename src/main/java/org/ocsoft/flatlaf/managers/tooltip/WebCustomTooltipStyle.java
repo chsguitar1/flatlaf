@@ -17,13 +17,13 @@
 
 package org.ocsoft.flatlaf.managers.tooltip;
 
-import javax.swing.*;
+import java.awt.Color;
+
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.utils.laf.ShadeType;
-
-import java.awt.*;
 
 /**
  * WebCustomTooltip style class.

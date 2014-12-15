@@ -17,7 +17,14 @@
 
 package org.ocsoft.flatlaf.laf.text;
 
-import javax.swing.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.KeyAdapter;
+import java.awt.event.MouseAdapter;
+import java.beans.PropertyChangeListener;
+import java.io.IOException;
+import java.net.URL;
+
+import javax.swing.JEditorPane;
 
 import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
@@ -32,15 +39,16 @@ import org.ocsoft.flatlaf.utils.EventUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.general.Pair;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
-import org.ocsoft.flatlaf.utils.swing.*;
+import org.ocsoft.flatlaf.utils.swing.DocumentChangeListener;
+import org.ocsoft.flatlaf.utils.swing.DocumentEventMethods;
+import org.ocsoft.flatlaf.utils.swing.DocumentEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.EventMethods;
+import org.ocsoft.flatlaf.utils.swing.FocusEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.FontMethods;
+import org.ocsoft.flatlaf.utils.swing.KeyEventRunnable;
+import org.ocsoft.flatlaf.utils.swing.MouseButton;
+import org.ocsoft.flatlaf.utils.swing.MouseEventRunnable;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.event.FocusAdapter;
-import java.awt.event.KeyAdapter;
-import java.awt.event.MouseAdapter;
-import java.beans.PropertyChangeListener;
-import java.io.IOException;
-import java.net.URL;
 
 /**
  * @author Mikle Garin

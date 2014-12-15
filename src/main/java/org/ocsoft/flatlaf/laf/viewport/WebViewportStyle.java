@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.viewport;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * WebViewport style class.

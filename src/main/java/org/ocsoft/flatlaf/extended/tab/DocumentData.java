@@ -17,14 +17,15 @@
 
 package org.ocsoft.flatlaf.extended.tab;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.Icon;
 
 import org.ocsoft.flatlaf.managers.language.LM;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class represents basic data for single document opened in

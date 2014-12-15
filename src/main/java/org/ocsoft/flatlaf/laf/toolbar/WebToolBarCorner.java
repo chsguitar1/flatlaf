@@ -17,13 +17,17 @@
 
 package org.ocsoft.flatlaf.laf.toolbar;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.MultipleGradientPaint;
+import java.awt.RadialGradientPaint;
+import java.awt.Rectangle;
+
+import javax.swing.SwingConstants;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
-
-import java.awt.*;
 
 /**
  * This component serves as a visual connector between horizontal and vertical

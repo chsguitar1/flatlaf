@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.button;
 
-import javax.swing.*;
+import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
 /**
