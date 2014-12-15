@@ -30,98 +30,77 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class WebMenuBar extends JMenuBar implements ShapeProvider
-{
-    public WebMenuBar ()
-    {
-        super ();
+public class WebMenuBar extends JMenuBar implements ShapeProvider {
+    public WebMenuBar() {
+        super();
     }
-
-    public WebMenuBar ( final MenuBarStyle menuBarStyle )
-    {
-        super ();
-        setMenuBarStyle ( menuBarStyle );
+    
+    public WebMenuBar(final MenuBarStyle menuBarStyle) {
+        super();
+        setMenuBarStyle(menuBarStyle);
     }
-
-    public boolean isUndecorated ()
-    {
-        return getWebUI ().isUndecorated ();
+    
+    public boolean isUndecorated() {
+        return getWebUI().isUndecorated();
     }
-
-    public void setUndecorated ( final boolean undecorated )
-    {
-        getWebUI ().setUndecorated ( undecorated );
+    
+    public void setUndecorated(final boolean undecorated) {
+        getWebUI().setUndecorated(undecorated);
     }
-
-    public MenuBarStyle getMenuBarStyle ()
-    {
-        return getWebUI ().getMenuBarStyle ();
+    
+    public MenuBarStyle getMenuBarStyle() {
+        return getWebUI().getMenuBarStyle();
     }
-
-    public void setMenuBarStyle ( final MenuBarStyle menuBarStyle )
-    {
-        getWebUI ().setMenuBarStyle ( menuBarStyle );
+    
+    public void setMenuBarStyle(final MenuBarStyle menuBarStyle) {
+        getWebUI().setMenuBarStyle(menuBarStyle);
     }
-
-    public Color getBorderColor ()
-    {
-        return getWebUI ().getBorderColor ();
+    
+    public Color getBorderColor() {
+        return getWebUI().getBorderColor();
     }
-
-    public void setBorderColor ( final Color borderColor )
-    {
-        getWebUI ().setBorderColor ( borderColor );
+    
+    public void setBorderColor(final Color borderColor) {
+        getWebUI().setBorderColor(borderColor);
     }
-
-    public int getRound ()
-    {
-        return getWebUI ().getRound ();
+    
+    public int getRound() {
+        return getWebUI().getRound();
     }
-
-    public void setRound ( final int round )
-    {
-        getWebUI ().setRound ( round );
+    
+    public void setRound(final int round) {
+        getWebUI().setRound(round);
     }
-
-    public int getShadeWidth ()
-    {
-        return getWebUI ().getShadeWidth ();
+    
+    public int getShadeWidth() {
+        return getWebUI().getShadeWidth();
     }
-
-    public void setShadeWidth ( final int shadeWidth )
-    {
-        getWebUI ().setShadeWidth ( shadeWidth );
+    
+    public void setShadeWidth(final int shadeWidth) {
+        getWebUI().setShadeWidth(shadeWidth);
     }
-
+    
     @Override
-    public Shape provideShape ()
-    {
-        return getWebUI ().provideShape ();
+    public Shape provideShape() {
+        return getWebUI().provideShape();
     }
-
-    public WebMenuBarUI getWebUI ()
-    {
-        return ( WebMenuBarUI ) getUI ();
+    
+    public WebMenuBarUI getWebUI() {
+        return (WebMenuBarUI) getUI();
     }
-
+    
     @Override
-    public void updateUI ()
-    {
-        if ( getUI () == null || !( getUI () instanceof WebMenuBarUI ) )
-        {
-            try
-            {
-                setUI ( ( WebMenuBarUI ) ReflectUtils.createInstance ( FlatLafSettings.menuBarUI ) );
+    public void updateUI() {
+        if (getUI() == null || !(getUI() instanceof WebMenuBarUI)) {
+            try {
+                setUI((WebMenuBarUI) ReflectUtils
+                        .createInstance(FlatLafSettings.menuBarUI));
+            } catch (final Throwable e) {
+                FlatLafLogger.error(this, e);
+                setUI(new WebMenuBarUI());
             }
-            catch ( final Throwable e )
-            {
-                FlatLafLogger.error ( this, e );
-                setUI ( new WebMenuBarUI () );
-            }
-        }
-        else
-        {
-            setUI ( getUI () );
+        } else {
+            setUI(getUI());
         }
     }
 }

@@ -29,8 +29,7 @@ import java.util.WeakHashMap;
  * @author Mikle Garin
  */
 
-public class FormLayout extends AbstractLayoutManager
-{
+public class FormLayout extends AbstractLayoutManager {
     /**
      * Form elements constraint constants.
      */
@@ -39,95 +38,111 @@ public class FormLayout extends AbstractLayoutManager
     public static final String RIGHT = "right";
     public static final String FILL = "fill";
     public static final String LINE = "line";
-
+    
     /**
-     * Whether left side of the form should fill all the free space given by container or not.
+     * Whether left side of the form should fill all the free space given by
+     * container or not.
      */
     protected boolean fillLeftSide;
-
+    
     /**
-     * Whether right side of the form should fill all the free space given by container or not.
+     * Whether right side of the form should fill all the free space given by
+     * container or not.
      */
     protected boolean fillRightSide;
-
+    
     /**
-     * Whether component in each form row on the left side of the form should fill given height or not by default.
+     * Whether component in each form row on the left side of the form should
+     * fill given height or not by default.
      */
     protected boolean fillLeftSideHeight;
-
+    
     /**
-     * Whether component in each form row on the right side of the form should fill given height or not by default.
+     * Whether component in each form row on the right side of the form should
+     * fill given height or not by default.
      */
     protected boolean fillRightSideHeight;
-
+    
     /**
      * Default vertical alignment of components on the left side of the form.
-     * This is applied only if left side components do not fill the whole row height.
+     * This is applied only if left side components do not fill the whole row
+     * height.
      */
     protected int leftVerticalAlignment;
-
+    
     /**
      * Default vertical alignment of components on the right side of the form.
-     * This is applied only if right side components do not fill the whole row height.
+     * This is applied only if right side components do not fill the whole row
+     * height.
      */
     protected int rightVerticalAlignment;
-
+    
     /**
      * Horizontal gap between columns.
      */
     protected int horizontalGap;
-
+    
     /**
      * Vertical gap between rows.
      */
     protected int verticalGap;
-
+    
     /**
      * Added component constraints.
      */
-    protected Map<Component, String> layoutConstraints = new WeakHashMap<Component, String> ();
-
+    protected Map<Component, String> layoutConstraints = new WeakHashMap<Component, String>();
+    
     /**
      * Constructs new FormLayout with zero gaps and filled right side.
      */
-    public FormLayout ()
-    {
-        this ( false, true, 0, 0 );
+    public FormLayout() {
+        this(false, true, 0, 0);
     }
-
+    
     /**
-     * Constructs new FormLayout with zero gaps and specified left/right side fills.
+     * Constructs new FormLayout with zero gaps and specified left/right side
+     * fills.
      *
-     * @param fillLeftSide  whether left side of the form should fill all the free space given by container or not
-     * @param fillRightSide whether right side of the form should fill all the free space given by container or not
+     * @param fillLeftSide
+     *            whether left side of the form should fill all the free space
+     *            given by container or not
+     * @param fillRightSide
+     *            whether right side of the form should fill all the free space
+     *            given by container or not
      */
-    public FormLayout ( final boolean fillLeftSide, final boolean fillRightSide )
-    {
-        this ( fillLeftSide, fillRightSide, 0, 0 );
+    public FormLayout(final boolean fillLeftSide, final boolean fillRightSide) {
+        this(fillLeftSide, fillRightSide, 0, 0);
     }
-
+    
     /**
      * Constructs new FormLayout with specified gaps and filled right side.
      *
-     * @param horizontalGap horizontal gap between columns
-     * @param verticalGap   vertical gap between rows
+     * @param horizontalGap
+     *            horizontal gap between columns
+     * @param verticalGap
+     *            vertical gap between rows
      */
-    public FormLayout ( final int horizontalGap, final int verticalGap )
-    {
-        this ( false, true, horizontalGap, verticalGap );
+    public FormLayout(final int horizontalGap, final int verticalGap) {
+        this(false, true, horizontalGap, verticalGap);
     }
-
+    
     /**
      * Constructs new FormLayout with specified gaps and left/right side fills.
      *
-     * @param fillLeftSide  whether left side of the form should fill all the free space given by container or not
-     * @param fillRightSide whether right side of the form should fill all the free space given by container or not
-     * @param horizontalGap horizontal gap between columns
-     * @param verticalGap   vertical gap between rows
+     * @param fillLeftSide
+     *            whether left side of the form should fill all the free space
+     *            given by container or not
+     * @param fillRightSide
+     *            whether right side of the form should fill all the free space
+     *            given by container or not
+     * @param horizontalGap
+     *            horizontal gap between columns
+     * @param verticalGap
+     *            vertical gap between rows
      */
-    public FormLayout ( final boolean fillLeftSide, final boolean fillRightSide, final int horizontalGap, final int verticalGap )
-    {
-        super ();
+    public FormLayout(final boolean fillLeftSide, final boolean fillRightSide,
+            final int horizontalGap, final int verticalGap) {
+        super();
         this.fillLeftSide = fillLeftSide;
         this.fillRightSide = fillRightSide;
         this.horizontalGap = horizontalGap;
@@ -137,470 +152,442 @@ public class FormLayout extends AbstractLayoutManager
         this.leftVerticalAlignment = SwingConstants.CENTER;
         this.rightVerticalAlignment = SwingConstants.CENTER;
     }
-
+    
     /**
-     * Returns whether left side of the form should fill all the free space given by container or not.
+     * Returns whether left side of the form should fill all the free space
+     * given by container or not.
      *
-     * @return true if left side of the form should fill all the free space given by container, false otherwise
+     * @return true if left side of the form should fill all the free space
+     *         given by container, false otherwise
      */
-    public boolean isFillLeftSide ()
-    {
+    public boolean isFillLeftSide() {
         return fillLeftSide;
     }
-
+    
     /**
-     * Sets whether left side of the form should fill all the free space given by container or not.
+     * Sets whether left side of the form should fill all the free space given
+     * by container or not.
      *
-     * @param fillLeftSide whether left side of the form should fill all the free space given by container or not
+     * @param fillLeftSide
+     *            whether left side of the form should fill all the free space
+     *            given by container or not
      */
-    public void setFillLeftSide ( final boolean fillLeftSide )
-    {
+    public void setFillLeftSide(final boolean fillLeftSide) {
         this.fillLeftSide = fillLeftSide;
     }
-
+    
     /**
-     * Returns whether right side of the form should fill all the free space given by container or not.
+     * Returns whether right side of the form should fill all the free space
+     * given by container or not.
      *
-     * @return true if right side of the form should fill all the free space given by container, false otherwise
+     * @return true if right side of the form should fill all the free space
+     *         given by container, false otherwise
      */
-    public boolean isFillRightSide ()
-    {
+    public boolean isFillRightSide() {
         return fillRightSide;
     }
-
+    
     /**
-     * Sets whether right side of the form should fill all the free space given by container or not.
+     * Sets whether right side of the form should fill all the free space given
+     * by container or not.
      *
-     * @param fillRightSide whether right side of the form should fill all the free space given by container or not
+     * @param fillRightSide
+     *            whether right side of the form should fill all the free space
+     *            given by container or not
      */
-    public void setFillRightSide ( final boolean fillRightSide )
-    {
+    public void setFillRightSide(final boolean fillRightSide) {
         this.fillRightSide = fillRightSide;
     }
-
+    
     /**
-     * Returns whether component in each form row on the left side of the form should fill given height or not.
+     * Returns whether component in each form row on the left side of the form
+     * should fill given height or not.
      *
-     * @return true if component in each form row on the left side of the form should fill given height, false otherwise
+     * @return true if component in each form row on the left side of the form
+     *         should fill given height, false otherwise
      */
-    public boolean isFillLeftSideHeight ()
-    {
+    public boolean isFillLeftSideHeight() {
         return fillLeftSideHeight;
     }
-
+    
     /**
-     * Sets whether component in each form row on the left side of the form should fill given height or not.
+     * Sets whether component in each form row on the left side of the form
+     * should fill given height or not.
      *
-     * @param fillLeftSideHeight whether component in each form row on the left side of the form should fill given height or not
+     * @param fillLeftSideHeight
+     *            whether component in each form row on the left side of the
+     *            form should fill given height or not
      */
-    public void setFillLeftSideHeight ( final boolean fillLeftSideHeight )
-    {
+    public void setFillLeftSideHeight(final boolean fillLeftSideHeight) {
         this.fillLeftSideHeight = fillLeftSideHeight;
     }
-
+    
     /**
-     * Returns whether component in each form row on the right side of the form should fill given height or not.
+     * Returns whether component in each form row on the right side of the form
+     * should fill given height or not.
      *
-     * @return true if component in each form row on the right side of the form should fill given height, false otherwise
+     * @return true if component in each form row on the right side of the form
+     *         should fill given height, false otherwise
      */
-    public boolean isFillRightSideHeight ()
-    {
+    public boolean isFillRightSideHeight() {
         return fillRightSideHeight;
     }
-
+    
     /**
-     * Sets whether component in each form row on the right side of the form should fill given height or not.
+     * Sets whether component in each form row on the right side of the form
+     * should fill given height or not.
      *
-     * @param fillRightSideHeight whether component in each form row on the right side of the form should fill given height or not
+     * @param fillRightSideHeight
+     *            whether component in each form row on the right side of the
+     *            form should fill given height or not
      */
-    public void setFillRightSideHeight ( final boolean fillRightSideHeight )
-    {
+    public void setFillRightSideHeight(final boolean fillRightSideHeight) {
         this.fillRightSideHeight = fillRightSideHeight;
     }
-
+    
     /**
-     * Returns default vertical alignment of components on the left side of the form.
+     * Returns default vertical alignment of components on the left side of the
+     * form.
      *
-     * @return default vertical alignment of components on the left side of the form
+     * @return default vertical alignment of components on the left side of the
+     *         form
      */
-    public int getLeftVerticalAlignment ()
-    {
+    public int getLeftVerticalAlignment() {
         return leftVerticalAlignment;
     }
-
+    
     /**
-     * Sets default vertical alignment of components on the left side of the form.
+     * Sets default vertical alignment of components on the left side of the
+     * form.
      *
-     * @param leftVerticalAlignment default vertical alignment of components on the left side of the form
+     * @param leftVerticalAlignment
+     *            default vertical alignment of components on the left side of
+     *            the form
      */
-    public void setLeftVerticalAlignment ( final int leftVerticalAlignment )
-    {
+    public void setLeftVerticalAlignment(final int leftVerticalAlignment) {
         this.leftVerticalAlignment = leftVerticalAlignment;
     }
-
+    
     /**
-     * Returns default vertical alignment of components on the right side of the form.
+     * Returns default vertical alignment of components on the right side of the
+     * form.
      *
-     * @return default vertical alignment of components on the right side of the form
+     * @return default vertical alignment of components on the right side of the
+     *         form
      */
-    public int getRightVerticalAlignment ()
-    {
+    public int getRightVerticalAlignment() {
         return rightVerticalAlignment;
     }
-
+    
     /**
-     * Sets default vertical alignment of components on the right side of the form.
+     * Sets default vertical alignment of components on the right side of the
+     * form.
      *
-     * @param rightVerticalAlignment default vertical alignment of components on the right side of the form
+     * @param rightVerticalAlignment
+     *            default vertical alignment of components on the right side of
+     *            the form
      */
-    public void setRightVerticalAlignment ( final int rightVerticalAlignment )
-    {
+    public void setRightVerticalAlignment(final int rightVerticalAlignment) {
         this.rightVerticalAlignment = rightVerticalAlignment;
     }
-
+    
     /**
      * Returns horizontal gap between columns.
      *
      * @return horizontal gap between columns
      */
-    public int getHorizontalGap ()
-    {
+    public int getHorizontalGap() {
         return horizontalGap;
     }
-
+    
     /**
      * Sets horizontal gap between columns.
      *
-     * @param horizontalGap horizontal gap between columns
+     * @param horizontalGap
+     *            horizontal gap between columns
      */
-    public void setHorizontalGap ( final int horizontalGap )
-    {
+    public void setHorizontalGap(final int horizontalGap) {
         this.horizontalGap = horizontalGap;
     }
-
+    
     /**
      * Returns vertical gap between rows.
      *
      * @return vertical gap between rows
      */
-    public int getVerticalGap ()
-    {
+    public int getVerticalGap() {
         return verticalGap;
     }
-
+    
     /**
      * Sets vertical gap between rows.
      *
-     * @param verticalGap vertical gap between rows
+     * @param verticalGap
+     *            vertical gap between rows
      */
-    public void setVerticalGap ( final int verticalGap )
-    {
+    public void setVerticalGap(final int verticalGap) {
         this.verticalGap = verticalGap;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void addComponent ( final Component component, final Object constraints )
-    {
-        // Adding default constraints if needed (left side components aligned to right, right side components fill the space)
-        final Container parent = component.getParent ();
-        final int cc = parent.getComponentCount ();
+    public void addComponent(final Component component, final Object constraints) {
+        // Adding default constraints if needed (left side components aligned to
+        // right, right side components fill the space)
+        final Container parent = component.getParent();
+        final int cc = parent.getComponentCount();
         boolean wasFirstColumn = false;
-        for ( int j = 0; j < cc; j++ )
-        {
-            final Component c = parent.getComponent ( j );
-            final String lc = layoutConstraints.get ( c );
-            if ( lc != null )
-            {
-                wasFirstColumn = !wasFirstColumn && !lc.equals ( LINE );
+        for (int j = 0; j < cc; j++) {
+            final Component c = parent.getComponent(j);
+            final String lc = layoutConstraints.get(c);
+            if (lc != null) {
+                wasFirstColumn = !wasFirstColumn && !lc.equals(LINE);
             }
-            if ( c == component )
-            {
-                final String halign = constraints != null ? "" + constraints : wasFirstColumn ? FILL : RIGHT;
-                layoutConstraints.put ( component, halign );
+            if (c == component) {
+                final String halign = constraints != null ? "" + constraints
+                        : wasFirstColumn ? FILL : RIGHT;
+                layoutConstraints.put(component, halign);
                 break;
             }
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeComponent ( final Component component )
-    {
-        layoutConstraints.remove ( component );
+    public void removeComponent(final Component component) {
+        layoutConstraints.remove(component);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void layoutContainer ( final Container parent )
-    {
-        final int cc = parent.getComponentCount ();
-        if ( cc > 0 )
-        {
+    public void layoutContainer(final Container parent) {
+        final int cc = parent.getComponentCount();
+        if (cc > 0) {
             // Pre-calculating childs preferred sizes
-            final Map<Component, Dimension> cps = SwingUtils.getChildPreferredSizes ( parent );
-
+            final Map<Component, Dimension> cps = SwingUtils
+                    .getChildPreferredSizes(parent);
+            
             // Calculating preferred column widths
             int lpw = 0;
             int rpw = 0;
             boolean wasFirstColumn = false;
-            for ( int j = 0; j < cc; j++ )
-            {
-                final Component component = parent.getComponent ( j );
-                final Dimension ps = cps.get ( component );
-                if ( !wasFirstColumn )
-                {
-                    if ( layoutConstraints.get ( component ).equals ( LINE ) )
-                    {
+            for (int j = 0; j < cc; j++) {
+                final Component component = parent.getComponent(j);
+                final Dimension ps = cps.get(component);
+                if (!wasFirstColumn) {
+                    if (layoutConstraints.get(component).equals(LINE)) {
                         // Skipping to next line
                         wasFirstColumn = false;
-                    }
-                    else
-                    {
+                    } else {
                         // First column
-                        lpw = Math.max ( lpw, ps.width );
-
+                        lpw = Math.max(lpw, ps.width);
+                        
                         // Taking second column into account
                         wasFirstColumn = true;
                     }
-                }
-                else
-                {
+                } else {
                     // Second column
-                    rpw = Math.max ( lpw, ps.width );
-
+                    rpw = Math.max(lpw, ps.width);
+                    
                     // Going to next line
                     wasFirstColumn = false;
                 }
             }
-
+            
             // Post-calculating actual column widths
-            final Dimension parentSize = parent.getSize ();
-            final Insets i = parent.getInsets ();
-            if ( fillLeftSide && fillRightSide )
-            {
-                if ( cc > 1 )
-                {
-                    lpw = ( parentSize.width - i.left - i.right - horizontalGap ) / 2;
+            final Dimension parentSize = parent.getSize();
+            final Insets i = parent.getInsets();
+            if (fillLeftSide && fillRightSide) {
+                if (cc > 1) {
+                    lpw = (parentSize.width - i.left - i.right - horizontalGap) / 2;
                     rpw = lpw;
-                }
-                else
-                {
+                } else {
                     lpw = parentSize.width - i.left - i.right;
                 }
-            }
-            else if ( fillLeftSide )
-            {
-                if ( cc > 1 )
-                {
-                    lpw = parentSize.width - i.left - i.right - horizontalGap - rpw;
-                }
-                else
-                {
+            } else if (fillLeftSide) {
+                if (cc > 1) {
+                    lpw = parentSize.width - i.left - i.right - horizontalGap
+                            - rpw;
+                } else {
                     lpw = parentSize.width - i.left - i.right;
                 }
-            }
-            else
-            {
-                if ( cc > 1 )
-                {
-                    rpw = parentSize.width - i.left - i.right - horizontalGap - lpw;
+            } else {
+                if (cc > 1) {
+                    rpw = parentSize.width - i.left - i.right - horizontalGap
+                            - lpw;
                 }
             }
-
+            
             // Layouting components
             final int x1 = i.left;
             final int x2 = i.left + lpw + horizontalGap;
             final int w = parentSize.width - i.left - i.right;
             int y = i.top;
             wasFirstColumn = false;
-            for ( int j = 0; j < cc; j++ )
-            {
-                final Component component = parent.getComponent ( j );
-                final Dimension ps = cps.get ( component );
-                final String pos = layoutConstraints.get ( component );
-                if ( !wasFirstColumn )
-                {
-                    if ( pos.equals ( LINE ) )
-                    {
+            for (int j = 0; j < cc; j++) {
+                final Component component = parent.getComponent(j);
+                final Dimension ps = cps.get(component);
+                final String pos = layoutConstraints.get(component);
+                if (!wasFirstColumn) {
+                    if (pos.equals(LINE)) {
                         // Full line column
                         final int rh = ps.height;
-                        component.setBounds ( x1, y, w, rh );
-
+                        component.setBounds(x1, y, w, rh);
+                        
                         // Incrementing Y position
                         y += rh + verticalGap;
-
+                        
                         // Skipping to next line
                         wasFirstColumn = false;
-                    }
-                    else
-                    {
+                    } else {
                         // Row preferred height
-                        final int next = cc > j + 1 ? cps.get ( parent.getComponent ( j + 1 ) ).height : 0;
-                        final int rh = Math.max ( ps.height, next );
-
+                        final int next = cc > j + 1 ? cps.get(parent
+                                .getComponent(j + 1)).height : 0;
+                        final int rh = Math.max(ps.height, next);
+                        
                         // First column
-                        final int cy = fillLeftSideHeight ? y : getSideY ( true, y, rh, ps.height );
+                        final int cy = fillLeftSideHeight ? y : getSideY(true,
+                                y, rh, ps.height);
                         final int ch = fillLeftSideHeight ? rh : ps.height;
-                        final int aw = Math.min ( ps.width, lpw );
-                        if ( pos.equals ( LEFT ) )
-                        {
-                            component.setBounds ( x1, cy, aw, ch );
+                        final int aw = Math.min(ps.width, lpw);
+                        if (pos.equals(LEFT)) {
+                            component.setBounds(x1, cy, aw, ch);
+                        } else if (pos.equals(CENTER)) {
+                            component.setBounds(x1 + lpw / 2 - aw / 2, cy, aw,
+                                    ch);
+                        } else if (pos.equals(RIGHT)) {
+                            component.setBounds(x1 + lpw - aw, cy, aw, ch);
+                        } else if (pos.equals(FILL)) {
+                            component.setBounds(x1, cy, lpw, ch);
                         }
-                        else if ( pos.equals ( CENTER ) )
-                        {
-                            component.setBounds ( x1 + lpw / 2 - aw / 2, cy, aw, ch );
-                        }
-                        else if ( pos.equals ( RIGHT ) )
-                        {
-                            component.setBounds ( x1 + lpw - aw, cy, aw, ch );
-                        }
-                        else if ( pos.equals ( FILL ) )
-                        {
-                            component.setBounds ( x1, cy, lpw, ch );
-                        }
-
+                        
                         // Going for second column
                         wasFirstColumn = true;
                     }
-                }
-                else
-                {
+                } else {
                     // Row preferred height
-                    final int prev = cps.get ( parent.getComponent ( j - 1 ) ).height;
-                    final int rh = Math.max ( ps.height, prev );
-
+                    final int prev = cps.get(parent.getComponent(j - 1)).height;
+                    final int rh = Math.max(ps.height, prev);
+                    
                     // Second column
-                    final int cy = fillRightSideHeight ? y : getSideY ( false, y, rh, ps.height );
+                    final int cy = fillRightSideHeight ? y : getSideY(false, y,
+                            rh, ps.height);
                     final int ch = fillRightSideHeight ? rh : ps.height;
-                    final int aw = Math.min ( ps.width, rpw );
-                    if ( pos.equals ( LEFT ) )
-                    {
-                        component.setBounds ( x2, cy, aw, ch );
+                    final int aw = Math.min(ps.width, rpw);
+                    if (pos.equals(LEFT)) {
+                        component.setBounds(x2, cy, aw, ch);
+                    } else if (pos.equals(CENTER)) {
+                        component.setBounds(x2 + rpw / 2 - aw / 2, cy, aw, ch);
+                    } else if (pos.equals(RIGHT)) {
+                        component.setBounds(x2 + rpw - aw, cy, aw, ch);
+                    } else if (pos.equals(FILL)) {
+                        component.setBounds(x2, cy, rpw, ch);
                     }
-                    else if ( pos.equals ( CENTER ) )
-                    {
-                        component.setBounds ( x2 + rpw / 2 - aw / 2, cy, aw, ch );
-                    }
-                    else if ( pos.equals ( RIGHT ) )
-                    {
-                        component.setBounds ( x2 + rpw - aw, cy, aw, ch );
-                    }
-                    else if ( pos.equals ( FILL ) )
-                    {
-                        component.setBounds ( x2, cy, rpw, ch );
-                    }
-
+                    
                     // Incrementing Y position
                     y += rh + verticalGap;
-
+                    
                     // Going to next line
                     wasFirstColumn = false;
                 }
             }
         }
     }
-
+    
     /**
      * Returns component Y coordinate for the specified side and other settings.
      *
-     * @param leftSide        whether component is on the left side of the form or not
-     * @param rowY            row Y coordinate
-     * @param rowHeight       row height
-     * @param componentHeight component preferred height
+     * @param leftSide
+     *            whether component is on the left side of the form or not
+     * @param rowY
+     *            row Y coordinate
+     * @param rowHeight
+     *            row height
+     * @param componentHeight
+     *            component preferred height
      * @return component Y coordinate
      */
-    protected int getSideY ( final boolean leftSide, final int rowY, final int rowHeight, final int componentHeight )
-    {
-        if ( leftSide ? leftVerticalAlignment == SwingConstants.CENTER : rightVerticalAlignment == SwingConstants.CENTER )
-        {
+    protected int getSideY(final boolean leftSide, final int rowY,
+            final int rowHeight, final int componentHeight) {
+        if (leftSide ? leftVerticalAlignment == SwingConstants.CENTER
+                : rightVerticalAlignment == SwingConstants.CENTER) {
             return rowY + rowHeight / 2 - componentHeight / 2;
-        }
-        else if ( leftSide ? leftVerticalAlignment == SwingConstants.TOP : rightVerticalAlignment == SwingConstants.TOP )
-        {
+        } else if (leftSide ? leftVerticalAlignment == SwingConstants.TOP
+                : rightVerticalAlignment == SwingConstants.TOP) {
             return rowY;
-        }
-        else if ( leftSide ? leftVerticalAlignment == SwingConstants.BOTTOM : rightVerticalAlignment == SwingConstants.BOTTOM )
-        {
+        } else if (leftSide ? leftVerticalAlignment == SwingConstants.BOTTOM
+                : rightVerticalAlignment == SwingConstants.BOTTOM) {
             return rowY + rowHeight - componentHeight;
         }
         return rowY;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Dimension preferredLayoutSize ( final Container parent )
-    {
-        final int cc = parent.getComponentCount ();
-        final Insets i = parent.getInsets ();
-        if ( cc > 0 )
-        {
+    public Dimension preferredLayoutSize(final Container parent) {
+        final int cc = parent.getComponentCount();
+        final Insets i = parent.getInsets();
+        if (cc > 0) {
             // Pre-calculating childs preferred sizes
-            final Map<Component, Dimension> cps = SwingUtils.getChildPreferredSizes ( parent );
-
+            final Map<Component, Dimension> cps = SwingUtils
+                    .getChildPreferredSizes(parent);
+            
             int pw = 0;
             int lpw = 0;
             int rpw = 0;
             int ph = 0;
             boolean wasFirstColumn = false;
-            for ( int j = 0; j < cc; j++ )
-            {
-                final Component thisComponent = parent.getComponent ( j );
-                final Dimension ps = cps.get ( thisComponent );
-                if ( !wasFirstColumn )
-                {
-                    if ( layoutConstraints.get ( thisComponent ).equals ( LINE ) )
-                    {
+            for (int j = 0; j < cc; j++) {
+                final Component thisComponent = parent.getComponent(j);
+                final Dimension ps = cps.get(thisComponent);
+                if (!wasFirstColumn) {
+                    if (layoutConstraints.get(thisComponent).equals(LINE)) {
                         // Single column line
-                        pw = Math.max ( pw, ps.width );
-
+                        pw = Math.max(pw, ps.width);
+                        
                         // Row preferred height
                         ph += ps.height + verticalGap;
-
+                        
                         // Skipping to next row
                         wasFirstColumn = false;
-                    }
-                    else
-                    {
+                    } else {
                         // First column
-                        lpw = Math.max ( lpw, ps.width );
-
+                        lpw = Math.max(lpw, ps.width);
+                        
                         // Row preferred height
-                        final int next = cc > j + 1 ? cps.get ( parent.getComponent ( j + 1 ) ).height : 0;
-                        ph += Math.max ( ps.height, next ) + verticalGap;
-
+                        final int next = cc > j + 1 ? cps.get(parent
+                                .getComponent(j + 1)).height : 0;
+                        ph += Math.max(ps.height, next) + verticalGap;
+                        
                         // Remembering that this was first column
                         wasFirstColumn = true;
                     }
-                }
-                else
-                {
+                } else {
                     // Second column
-                    rpw = Math.max ( rpw, ps.width );
-
+                    rpw = Math.max(rpw, ps.width);
+                    
                     // Going to next row
                     wasFirstColumn = false;
                 }
             }
             ph -= verticalGap;
-            if ( fillLeftSide && fillRightSide )
-            {
-                lpw = Math.max ( lpw, rpw );
+            if (fillLeftSide && fillRightSide) {
+                lpw = Math.max(lpw, rpw);
                 rpw = lpw;
             }
-            return new Dimension ( i.left + Math.max ( lpw + horizontalGap + rpw, pw ) + i.right, i.top + ph + i.bottom );
-        }
-        else
-        {
-            return new Dimension ( i.left + i.right, i.top + i.bottom );
+            return new Dimension(i.left
+                    + Math.max(lpw + horizontalGap + rpw, pw) + i.right, i.top
+                    + ph + i.bottom);
+        } else {
+            return new Dimension(i.left + i.right, i.top + i.bottom);
         }
     }
 }

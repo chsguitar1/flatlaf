@@ -27,18 +27,16 @@ import org.ocsoft.flatlaf.managers.language.data.Value;
  * @author Mikle Garin
  */
 
-public class JTextComponentLU extends DefaultLanguageUpdater<JTextComponent>
-{
+public class JTextComponentLU extends DefaultLanguageUpdater<JTextComponent> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void update ( final JTextComponent c, final String key, final Value value, final Object... data )
-    {
-        final String text = getDefaultText ( value, data );
-        if ( text != null )
-        {
-            c.setText ( text );
+    public void update(final JTextComponent c, final String key,
+            final Value value, final Object... data) {
+        final String text = getDefaultText(value, data);
+        if (text != null) {
+            c.setText(text);
         }
     }
 }

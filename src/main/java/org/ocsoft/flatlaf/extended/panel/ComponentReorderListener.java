@@ -24,7 +24,7 @@ import java.util.EventListener;
  * User: mgarin Date: 30.05.12 Time: 19:40
  */
 
-public interface ComponentReorderListener extends EventListener
-{
-    public void componentOrderChanged ( Component component, int oldIndex, int newIndex );
+public interface ComponentReorderListener extends EventListener {
+    public void componentOrderChanged(Component component, int oldIndex,
+            int newIndex);
 }

@@ -27,13 +27,14 @@ import org.ocsoft.flatlaf.managers.language.data.Value;
  * @author Mikle Garin
  */
 
-public interface TooltipLanguageSupport
-{
+public interface TooltipLanguageSupport {
     /**
      * Called when component tooltip update is required.
      *
-     * @param component component to update tooltip for
-     * @param value     language value containing possible tooltip information
+     * @param component
+     *            component to update tooltip for
+     * @param value
+     *            language value containing possible tooltip information
      */
-    public void setupTooltip ( Component component, Value value );
+    public void setupTooltip(Component component, Value value);
 }

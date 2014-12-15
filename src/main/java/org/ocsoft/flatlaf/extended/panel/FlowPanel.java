@@ -25,28 +25,22 @@ import org.ocsoft.flatlaf.laf.panel.WebPanel;
  * User: mgarin Date: 28.11.12 Time: 19:57
  */
 
-public class FlowPanel extends WebPanel
-{
-
-    public FlowPanel ( Component... components )
-    {
-        this ( 0, components );
+public class FlowPanel extends WebPanel {
+    
+    public FlowPanel(Component... components) {
+        this(0, components);
     }
-
-    public FlowPanel ( int gap, Component... components )
-    {
-        this ( FlowLayout.LEADING, gap, components );
+    
+    public FlowPanel(int gap, Component... components) {
+        this(FlowLayout.LEADING, gap, components);
     }
-
-    public FlowPanel ( int alignment, int gap, Component... components )
-    {
-        super ( new FlowLayout ( alignment, gap, 0 ) );
-
-        if ( components != null )
-        {
-            for ( Component component : components )
-            {
-                add ( component );
+    
+    public FlowPanel(int alignment, int gap, Component... components) {
+        super(new FlowLayout(alignment, gap, 0));
+        
+        if (components != null) {
+            for (Component component : components) {
+                add(component);
             }
         }
     }

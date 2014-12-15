@@ -23,24 +23,24 @@ package org.ocsoft.flatlaf.laf.tree;
  * @author Mikle Garin
  */
 
-public enum TreeSelectionStyle
-{
+public enum TreeSelectionStyle {
     /**
-     * Single cell selection style.
-     * With this selection style tree will paint a separate selection under each selected cell.
+     * Single cell selection style. With this selection style tree will paint a
+     * separate selection under each selected cell.
      */
     single,
-
+    
     /**
-     * Group cell selection style.
-     * With this selection style tree will paint a single selection for each group of nodes that are located close to each other.
+     * Group cell selection style. With this selection style tree will paint a
+     * single selection for each group of nodes that are located close to each
+     * other.
      */
     group,
-
+    
     /**
-     * Line cell selection style.
-     * With this selection style tree will paint selection over the whole line in which node is placed.
-     * Selected lines located near each other will also be visually grouped.
+     * Line cell selection style. With this selection style tree will paint
+     * selection over the whole line in which node is placed. Selected lines
+     * located near each other will also be visually grouped.
      */
     line
 }

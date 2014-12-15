@@ -25,28 +25,27 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * User: mgarin Date: 31.01.12 Time: 16:39
  */
 
-public final class WebMenuBarStyle
-{
+public final class WebMenuBarStyle {
     /**
      * Decorate panel with Web-styled background or not
      */
     public static boolean undecorated = false;
-
+    
     /**
      * Decoration rounding
      */
     public static int round = FlatLafStyleConstants.bigRound;
-
+    
     /**
      * Decoration shade width
      */
     public static int shadeWidth = 0;
-
+    
     /**
      * Decoration shade width
      */
     public static MenuBarStyle menuBarStyle = MenuBarStyle.attached;
-
+    
     /**
      * Decoration shade width
      */

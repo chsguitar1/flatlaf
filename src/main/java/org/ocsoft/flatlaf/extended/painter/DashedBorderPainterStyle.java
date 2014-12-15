@@ -23,13 +23,12 @@ package org.ocsoft.flatlaf.extended.painter;
  * @author Mikle Garin
  */
 
-public final class DashedBorderPainterStyle
-{
+public final class DashedBorderPainterStyle {
     /**
      * Array representing the dashing pattern.
      */
-    public static float[] dash = new float[]{ 4f, 5f };
-
+    public static float[] dash = new float[] { 4f, 5f };
+    
     /**
      * Offset to start the dashing pattern.
      */

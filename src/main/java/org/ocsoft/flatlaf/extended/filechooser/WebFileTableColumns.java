@@ -21,18 +21,18 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * This interface contains a list of constants which represent all columns available in WebFileTable.
+ * This interface contains a list of constants which represent all columns
+ * available in WebFileTable.
  *
  * @author Mikle Garin
  */
 
-public interface WebFileTableColumns
-{
+public interface WebFileTableColumns {
     /**
      * File table column IDs prefix.
      */
     public static final String COLUMN_PREFIX = "weblaf.filechooser.table.column.";
-
+    
     /**
      * File table column IDs.
      */
@@ -40,12 +40,15 @@ public interface WebFileTableColumns
     public static final String NAME_COLUMN = COLUMN_PREFIX + "name";
     public static final String SIZE_COLUMN = COLUMN_PREFIX + "size";
     public static final String EXTENSION_COLUMN = COLUMN_PREFIX + "extension";
-    public static final String CREATION_DATE_COLUMN = COLUMN_PREFIX + "creation.date";
-    public static final String MODIFICATION_DATE_COLUMN = COLUMN_PREFIX + "modification.date";
-
+    public static final String CREATION_DATE_COLUMN = COLUMN_PREFIX
+            + "creation.date";
+    public static final String MODIFICATION_DATE_COLUMN = COLUMN_PREFIX
+            + "modification.date";
+    
     /**
      * Default file table columns.
      */
-    public static final List<String> DEFAULT_COLUMNS =
-            Arrays.asList ( NAME_COLUMN, EXTENSION_COLUMN, SIZE_COLUMN, MODIFICATION_DATE_COLUMN );
+    public static final List<String> DEFAULT_COLUMNS = Arrays.asList(
+            NAME_COLUMN, EXTENSION_COLUMN, SIZE_COLUMN,
+            MODIFICATION_DATE_COLUMN);
 }

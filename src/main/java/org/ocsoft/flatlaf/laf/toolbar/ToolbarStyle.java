@@ -21,8 +21,6 @@ package org.ocsoft.flatlaf.laf.toolbar;
  * User: mgarin Date: 14.10.11 Time: 15:33
  */
 
-public enum ToolbarStyle
-{
-    standalone,
-    attached
+public enum ToolbarStyle {
+    standalone, attached
 }

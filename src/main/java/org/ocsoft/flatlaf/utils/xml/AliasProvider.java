@@ -18,22 +18,23 @@
 package org.ocsoft.flatlaf.utils.xml;
 
 /**
- * This interface notifies that implementing class can provide its aliases through static method "provideAliases".
- * Every implementing class should have such static method added.
- * This interface might be used as on of the ways to provide aliases (like XStream annotations).
+ * This interface notifies that implementing class can provide its aliases
+ * through static method "provideAliases". Every implementing class should have
+ * such static method added. This interface might be used as on of the ways to
+ * provide aliases (like XStream annotations).
  *
  * @author Mikle Garin
  */
 
-public interface AliasProvider
-{
+public interface AliasProvider {
     // Method name for extenal usage
     public static final String methodName = "provideAliases";
-
+    
     /**
      * Initializes implementing class aliases
      *
-     * @param xStream XStream instance
+     * @param xStream
+     *            XStream instance
      */
     // public static void provideAliases ( XStream xStream );
 }

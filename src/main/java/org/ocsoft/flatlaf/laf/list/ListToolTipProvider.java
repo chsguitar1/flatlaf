@@ -29,36 +29,45 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public interface ListToolTipProvider
-{
+public interface ListToolTipProvider {
     /**
-     * Returns tooltip display delay.
-     * Any value below 1 will force tooltips to be displayed instantly.
+     * Returns tooltip display delay. Any value below 1 will force tooltips to
+     * be displayed instantly.
      *
      * @return tooltip display delay
      */
-    public long getDelay ();
-
+    public long getDelay();
+    
     /**
      * Return custom WebLaF tooltip for the specified list cell.
      *
-     * @param list       list to provide tooltip for
-     * @param value      cell value
-     * @param index      cell index
-     * @param isSelected whether the cell is selected or not
+     * @param list
+     *            list to provide tooltip for
+     * @param value
+     *            cell value
+     * @param index
+     *            cell index
+     * @param isSelected
+     *            whether the cell is selected or not
      * @return list cell tooltip
      */
-    public WebCustomTooltip getListCellToolTip ( JList list, Object value, int index, boolean isSelected );
-
+    public WebCustomTooltip getListCellToolTip(JList list, Object value,
+            int index, boolean isSelected);
+    
     /**
-     * Returns custom WebLaF tooltip source bounds.
-     * Tooltip will be displayed relative to these bounds using provided TooltipWay.
+     * Returns custom WebLaF tooltip source bounds. Tooltip will be displayed
+     * relative to these bounds using provided TooltipWay.
      *
-     * @param list       list to provide tooltip for
-     * @param value      cell value
-     * @param index      cell index
-     * @param isSelected whether the cell is selected or not
+     * @param list
+     *            list to provide tooltip for
+     * @param value
+     *            cell value
+     * @param index
+     *            cell index
+     * @param isSelected
+     *            whether the cell is selected or not
      * @return custom WebLaF tooltip source bounds
      */
-    public Rectangle getTooltipSourceBounds ( JList list, Object value, int index, boolean isSelected );
+    public Rectangle getTooltipSourceBounds(JList list, Object value,
+            int index, boolean isSelected);
 }

@@ -41,702 +41,635 @@ import java.awt.event.WindowAdapter;
 import java.util.List;
 
 /**
- * This JFrame extenstion class provides some additional methods and options to manipulate frame behavior.
+ * This JFrame extenstion class provides some additional methods and options to
+ * manipulate frame behavior.
  *
  * @author Mikle Garin
  */
 
-public class WebFrame extends JFrame
-        implements WindowEventMethods, LanguageMethods, LanguageContainerMethods, SettingsMethods, WindowMethods<WebFrame>
-{
+public class WebFrame extends JFrame implements WindowEventMethods,
+        LanguageMethods, LanguageContainerMethods, SettingsMethods,
+        WindowMethods<WebFrame> {
     /**
      * Whether should close frame on focus loss or not.
      */
     protected boolean closeOnFocusLoss = false;
-
+    
     /**
      * Window focus tracker.
      */
     protected DefaultFocusTracker focusTracker;
-
-    public WebFrame ()
-    {
-        super ();
-        initialize ();
+    
+    public WebFrame() {
+        super();
+        initialize();
     }
-
-    public WebFrame ( final GraphicsConfiguration gc )
-    {
-        super ( gc );
-        initialize ();
+    
+    public WebFrame(final GraphicsConfiguration gc) {
+        super(gc);
+        initialize();
     }
-
-    public WebFrame ( final String title )
-    {
-        super ( LanguageUtils.getInitialText ( title ) );
-        LanguageUtils.registerInitialLanguage ( this, title );
-        initialize ();
+    
+    public WebFrame(final String title) {
+        super(LanguageUtils.getInitialText(title));
+        LanguageUtils.registerInitialLanguage(this, title);
+        initialize();
     }
-
-    public WebFrame ( final String title, final GraphicsConfiguration gc )
-    {
-        super ( LanguageUtils.getInitialText ( title ), gc );
-        LanguageUtils.registerInitialLanguage ( this, title );
-        initialize ();
+    
+    public WebFrame(final String title, final GraphicsConfiguration gc) {
+        super(LanguageUtils.getInitialText(title), gc);
+        LanguageUtils.registerInitialLanguage(this, title);
+        initialize();
     }
-
+    
     /**
      * Additional initializtion of WebFrame settings.
      */
-    protected void initialize ()
-    {
-        SwingUtils.setOrientation ( this );
-
+    protected void initialize() {
+        SwingUtils.setOrientation(this);
+        
         // Adding focus tracker for this frame
         // It is stored into a separate field to avoid its disposal from memory
-        focusTracker = new DefaultFocusTracker ( true )
-        {
+        focusTracker = new DefaultFocusTracker(true) {
             @Override
-            public boolean isTrackingEnabled ()
-            {
+            public boolean isTrackingEnabled() {
                 return closeOnFocusLoss;
             }
-
+            
             @Override
-            public void focusChanged ( final boolean focused )
-            {
-                if ( closeOnFocusLoss && WebFrame.this.isShowing () && !focused )
-                {
-                    setVisible ( false );
+            public void focusChanged(final boolean focused) {
+                if (closeOnFocusLoss && WebFrame.this.isShowing() && !focused) {
+                    setVisible(false);
                 }
             }
         };
-        FocusManager.addFocusTracker ( this, focusTracker );
+        FocusManager.addFocusTracker(this, focusTracker);
     }
-
+    
     /**
      * Returns whether should close frame on focus loss or not.
      *
      * @return true if should close frame on focus loss, false otherwise
      */
-    public boolean isCloseOnFocusLoss ()
-    {
+    public boolean isCloseOnFocusLoss() {
         return closeOnFocusLoss;
     }
-
+    
     /**
      * Sets whether should close frame on focus loss or not.
      *
-     * @param closeOnFocusLoss whether should close frame on focus loss or not
+     * @param closeOnFocusLoss
+     *            whether should close frame on focus loss or not
      */
-    public void setCloseOnFocusLoss ( final boolean closeOnFocusLoss )
-    {
+    public void setCloseOnFocusLoss(final boolean closeOnFocusLoss) {
         this.closeOnFocusLoss = closeOnFocusLoss;
     }
-
+    
     /**
-     * Returns focusable childs that don't force frame to close even if it set to close on focus loss.
+     * Returns focusable childs that don't force frame to close even if it set
+     * to close on focus loss.
      *
-     * @return focusable childs that don't force frame to close even if it set to close on focus loss
+     * @return focusable childs that don't force frame to close even if it set
+     *         to close on focus loss
      */
-    public List<Component> getFocusableChilds ()
-    {
-        return focusTracker.getCustomChildren ();
+    public List<Component> getFocusableChilds() {
+        return focusTracker.getCustomChildren();
     }
-
+    
     /**
-     * Adds focusable child that won't force frame to close even if it set to close on focus loss.
+     * Adds focusable child that won't force frame to close even if it set to
+     * close on focus loss.
      *
-     * @param child focusable child that won't force frame to close even if it set to close on focus loss
+     * @param child
+     *            focusable child that won't force frame to close even if it set
+     *            to close on focus loss
      */
-    public void addFocusableChild ( final Component child )
-    {
-        focusTracker.addCustomChild ( child );
+    public void addFocusableChild(final Component child) {
+        focusTracker.addCustomChild(child);
     }
-
+    
     /**
-     * Removes focusable child that doesn't force frame to close even if it set to close on focus loss.
+     * Removes focusable child that doesn't force frame to close even if it set
+     * to close on focus loss.
      *
-     * @param child focusable child that doesn't force frame to close even if it set to close on focus loss
+     * @param child
+     *            focusable child that doesn't force frame to close even if it
+     *            set to close on focus loss
      */
-    public void removeFocusableChild ( final Component child )
-    {
-        focusTracker.removeCustomChild ( child );
+    public void removeFocusableChild(final Component child) {
+        focusTracker.removeCustomChild(child);
     }
-
-    public Color getTopBg ()
-    {
-        return getWebRootPaneUI ().getTopBg ();
+    
+    public Color getTopBg() {
+        return getWebRootPaneUI().getTopBg();
     }
-
-    public void setTopBg ( final Color topBg )
-    {
-        getWebRootPaneUI ().setTopBg ( topBg );
+    
+    public void setTopBg(final Color topBg) {
+        getWebRootPaneUI().setTopBg(topBg);
     }
-
-    public Color getMiddleBg ()
-    {
-        return getWebRootPaneUI ().getMiddleBg ();
+    
+    public Color getMiddleBg() {
+        return getWebRootPaneUI().getMiddleBg();
     }
-
-    public void setMiddleBg ( final Color middleBg )
-    {
-        getWebRootPaneUI ().setMiddleBg ( middleBg );
+    
+    public void setMiddleBg(final Color middleBg) {
+        getWebRootPaneUI().setMiddleBg(middleBg);
     }
-
-    public int getShadeWidth ()
-    {
-        return getWebRootPaneUI ().getShadeWidth ();
+    
+    public int getShadeWidth() {
+        return getWebRootPaneUI().getShadeWidth();
     }
-
-    public void setShadeWidth ( final int shadeWidth )
-    {
-        getWebRootPaneUI ().setShadeWidth ( shadeWidth );
+    
+    public void setShadeWidth(final int shadeWidth) {
+        getWebRootPaneUI().setShadeWidth(shadeWidth);
     }
-
-    public int getInactiveShadeWidth ()
-    {
-        return getWebRootPaneUI ().getInactiveShadeWidth ();
+    
+    public int getInactiveShadeWidth() {
+        return getWebRootPaneUI().getInactiveShadeWidth();
     }
-
-    public void setInactiveShadeWidth ( final int inactiveShadeWidth )
-    {
-        getWebRootPaneUI ().setInactiveShadeWidth ( inactiveShadeWidth );
+    
+    public void setInactiveShadeWidth(final int inactiveShadeWidth) {
+        getWebRootPaneUI().setInactiveShadeWidth(inactiveShadeWidth);
     }
-
-    public int getRound ()
-    {
-        return getWebRootPaneUI ().getRound ();
+    
+    public int getRound() {
+        return getWebRootPaneUI().getRound();
     }
-
-    public void setRound ( final int round )
-    {
-        getWebRootPaneUI ().setRound ( round );
+    
+    public void setRound(final int round) {
+        getWebRootPaneUI().setRound(round);
     }
-
-    public boolean isDrawWatermark ()
-    {
-        return getWebRootPaneUI ().isDrawWatermark ();
+    
+    public boolean isDrawWatermark() {
+        return getWebRootPaneUI().isDrawWatermark();
     }
-
-    public void setDrawWatermark ( final boolean drawWatermark )
-    {
-        getWebRootPaneUI ().setDrawWatermark ( drawWatermark );
+    
+    public void setDrawWatermark(final boolean drawWatermark) {
+        getWebRootPaneUI().setDrawWatermark(drawWatermark);
     }
-
-    public ImageIcon getWatermark ()
-    {
-        return getWebRootPaneUI ().getWatermark ();
+    
+    public ImageIcon getWatermark() {
+        return getWebRootPaneUI().getWatermark();
     }
-
-    public void setWatermark ( final ImageIcon watermark )
-    {
-        getWebRootPaneUI ().setWatermark ( watermark );
+    
+    public void setWatermark(final ImageIcon watermark) {
+        getWebRootPaneUI().setWatermark(watermark);
     }
-
-    public int getMaxTitleWidth ()
-    {
-        return getWebRootPaneUI ().getMaxTitleWidth ();
+    
+    public int getMaxTitleWidth() {
+        return getWebRootPaneUI().getMaxTitleWidth();
     }
-
-    public void setMaxTitleWidth ( final int width )
-    {
-        getWebRootPaneUI ().setMaxTitleWidth ( width );
+    
+    public void setMaxTitleWidth(final int width) {
+        getWebRootPaneUI().setMaxTitleWidth(width);
     }
-
-    public String getEmptyTitleText ()
-    {
-        return getWebRootPaneUI ().getEmptyTitleText ();
+    
+    public String getEmptyTitleText() {
+        return getWebRootPaneUI().getEmptyTitleText();
     }
-
-    public void setEmptyTitleText ( final String text )
-    {
-        getWebRootPaneUI ().setEmptyTitleText ( text );
+    
+    public void setEmptyTitleText(final String text) {
+        getWebRootPaneUI().setEmptyTitleText(text);
     }
-
-    public JComponent getTitleComponent ()
-    {
-        return getWebRootPaneUI ().getTitleComponent ();
+    
+    public JComponent getTitleComponent() {
+        return getWebRootPaneUI().getTitleComponent();
     }
-
-    public void setTitleComponent ( final JComponent titleComponent )
-    {
-        getWebRootPaneUI ().setTitleComponent ( titleComponent );
+    
+    public void setTitleComponent(final JComponent titleComponent) {
+        getWebRootPaneUI().setTitleComponent(titleComponent);
     }
-
-    public WebButtonGroup getWindowButtons ()
-    {
-        return getWebRootPaneUI ().getWindowButtons ();
+    
+    public WebButtonGroup getWindowButtons() {
+        return getWebRootPaneUI().getWindowButtons();
     }
-
-    public WebResizeCorner getResizeCorner ()
-    {
-        return getWebRootPaneUI ().getResizeCorner ();
+    
+    public WebResizeCorner getResizeCorner() {
+        return getWebRootPaneUI().getResizeCorner();
     }
-
-    public boolean isShowResizeCorner ()
-    {
-        return getWebRootPaneUI ().isShowResizeCorner ();
+    
+    public boolean isShowResizeCorner() {
+        return getWebRootPaneUI().isShowResizeCorner();
     }
-
-    public void setShowResizeCorner ( final boolean showResizeCorner )
-    {
-        getWebRootPaneUI ().setShowResizeCorner ( showResizeCorner );
+    
+    public void setShowResizeCorner(final boolean showResizeCorner) {
+        getWebRootPaneUI().setShowResizeCorner(showResizeCorner);
     }
-
-    public boolean isShowTitleComponent ()
-    {
-        return getWebRootPaneUI ().isShowTitleComponent ();
+    
+    public boolean isShowTitleComponent() {
+        return getWebRootPaneUI().isShowTitleComponent();
     }
-
-    public void setShowTitleComponent ( final boolean showTitleComponent )
-    {
-        getWebRootPaneUI ().setShowTitleComponent ( showTitleComponent );
+    
+    public void setShowTitleComponent(final boolean showTitleComponent) {
+        getWebRootPaneUI().setShowTitleComponent(showTitleComponent);
     }
-
-    public boolean isShowWindowButtons ()
-    {
-        return getWebRootPaneUI ().isShowWindowButtons ();
+    
+    public boolean isShowWindowButtons() {
+        return getWebRootPaneUI().isShowWindowButtons();
     }
-
-    public void setShowWindowButtons ( final boolean showWindowButtons )
-    {
-        getWebRootPaneUI ().setShowWindowButtons ( showWindowButtons );
+    
+    public void setShowWindowButtons(final boolean showWindowButtons) {
+        getWebRootPaneUI().setShowWindowButtons(showWindowButtons);
     }
-
-    public boolean isShowMinimizeButton ()
-    {
-        return getWebRootPaneUI ().isShowMinimizeButton ();
+    
+    public boolean isShowMinimizeButton() {
+        return getWebRootPaneUI().isShowMinimizeButton();
     }
-
-    public void setShowMinimizeButton ( final boolean showMinimizeButton )
-    {
-        getWebRootPaneUI ().setShowMinimizeButton ( showMinimizeButton );
+    
+    public void setShowMinimizeButton(final boolean showMinimizeButton) {
+        getWebRootPaneUI().setShowMinimizeButton(showMinimizeButton);
     }
-
-    public boolean isShowMaximizeButton ()
-    {
-        return getWebRootPaneUI ().isShowMaximizeButton ();
+    
+    public boolean isShowMaximizeButton() {
+        return getWebRootPaneUI().isShowMaximizeButton();
     }
-
-    public void setShowMaximizeButton ( final boolean showMaximizeButton )
-    {
-        getWebRootPaneUI ().setShowMaximizeButton ( showMaximizeButton );
+    
+    public void setShowMaximizeButton(final boolean showMaximizeButton) {
+        getWebRootPaneUI().setShowMaximizeButton(showMaximizeButton);
     }
-
-    public boolean isShowCloseButton ()
-    {
-        return getWebRootPaneUI ().isShowCloseButton ();
+    
+    public boolean isShowCloseButton() {
+        return getWebRootPaneUI().isShowCloseButton();
     }
-
-    public void setShowCloseButton ( final boolean showCloseButton )
-    {
-        getWebRootPaneUI ().setShowCloseButton ( showCloseButton );
+    
+    public void setShowCloseButton(final boolean showCloseButton) {
+        getWebRootPaneUI().setShowCloseButton(showCloseButton);
     }
-
-    public boolean isGroupButtons ()
-    {
-        return getWebRootPaneUI ().isGroupButtons ();
+    
+    public boolean isGroupButtons() {
+        return getWebRootPaneUI().isGroupButtons();
     }
-
-    public void setGroupButtons ( final boolean groupButtons )
-    {
-        getWebRootPaneUI ().setGroupButtons ( groupButtons );
+    
+    public void setGroupButtons(final boolean groupButtons) {
+        getWebRootPaneUI().setGroupButtons(groupButtons);
     }
-
-    public boolean isAttachButtons ()
-    {
-        return getWebRootPaneUI ().isAttachButtons ();
+    
+    public boolean isAttachButtons() {
+        return getWebRootPaneUI().isAttachButtons();
     }
-
-    public void setAttachButtons ( final boolean attachButtons )
-    {
-        getWebRootPaneUI ().setAttachButtons ( attachButtons );
+    
+    public void setAttachButtons(final boolean attachButtons) {
+        getWebRootPaneUI().setAttachButtons(attachButtons);
     }
-
-    public boolean isShowMenuBar ()
-    {
-        return getWebRootPaneUI ().isShowMenuBar ();
+    
+    public boolean isShowMenuBar() {
+        return getWebRootPaneUI().isShowMenuBar();
     }
-
-    public void setShowMenuBar ( final boolean showMenuBar )
-    {
-        getWebRootPaneUI ().setShowMenuBar ( showMenuBar );
+    
+    public void setShowMenuBar(final boolean showMenuBar) {
+        getWebRootPaneUI().setShowMenuBar(showMenuBar);
     }
-
-    public WebRootPaneUI getWebRootPaneUI ()
-    {
-        return ( WebRootPaneUI ) super.getRootPane ().getUI ();
+    
+    public WebRootPaneUI getWebRootPaneUI() {
+        return (WebRootPaneUI) super.getRootPane().getUI();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WindowAdapter onClosing ( final WindowEventRunnable runnable )
-    {
-        return EventUtils.onClosing ( this, runnable );
+    public WindowAdapter onClosing(final WindowEventRunnable runnable) {
+        return EventUtils.onClosing(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WindowCloseAdapter onClose ( final ComponentEventRunnable runnable )
-    {
-        return EventUtils.onClose ( this, runnable );
+    public WindowCloseAdapter onClose(final ComponentEventRunnable runnable) {
+        return EventUtils.onClose(this, runnable);
     }
-
+    
     /**
      * Language methods
      */
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setLanguage ( final String key, final Object... data )
-    {
-        LanguageManager.registerComponent ( this, key, data );
+    public void setLanguage(final String key, final Object... data) {
+        LanguageManager.registerComponent(this, key, data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void updateLanguage ( final Object... data )
-    {
-        LanguageManager.updateComponent ( this, data );
+    public void updateLanguage(final Object... data) {
+        LanguageManager.updateComponent(this, data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void updateLanguage ( final String key, final Object... data )
-    {
-        LanguageManager.updateComponent ( this, key, data );
+    public void updateLanguage(final String key, final Object... data) {
+        LanguageManager.updateComponent(this, key, data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeLanguage ()
-    {
-        LanguageManager.unregisterComponent ( this );
+    public void removeLanguage() {
+        LanguageManager.unregisterComponent(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isLanguageSet ()
-    {
-        return LanguageManager.isRegisteredComponent ( this );
+    public boolean isLanguageSet() {
+        return LanguageManager.isRegisteredComponent(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setLanguageUpdater ( final LanguageUpdater updater )
-    {
-        LanguageManager.registerLanguageUpdater ( this, updater );
+    public void setLanguageUpdater(final LanguageUpdater updater) {
+        LanguageManager.registerLanguageUpdater(this, updater);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeLanguageUpdater ()
-    {
-        LanguageManager.unregisterLanguageUpdater ( this );
+    public void removeLanguageUpdater() {
+        LanguageManager.unregisterLanguageUpdater(this);
     }
-
+    
     /**
      * Language container methods
      */
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setLanguageContainerKey ( final String key )
-    {
-        LanguageManager.registerLanguageContainer ( this, key );
+    public void setLanguageContainerKey(final String key) {
+        LanguageManager.registerLanguageContainer(this, key);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeLanguageContainerKey ()
-    {
-        LanguageManager.unregisterLanguageContainer ( this );
+    public void removeLanguageContainerKey() {
+        LanguageManager.unregisterLanguageContainer(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getLanguageContainerKey ()
-    {
-        return LanguageManager.getLanguageContainerKey ( this );
+    public String getLanguageContainerKey() {
+        return LanguageManager.getLanguageContainerKey(this);
     }
-
+    
     /**
      * Settings methods
      */
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String key )
-    {
-        SettingsManager.registerComponent ( this, key );
+    public void registerSettings(final String key) {
+        SettingsManager.registerComponent(this, key);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public <T extends DefaultValue> void registerSettings ( final String key, final Class<T> defaultValueClass )
-    {
-        SettingsManager.registerComponent ( this, key, defaultValueClass );
+    public <T extends DefaultValue> void registerSettings(final String key,
+            final Class<T> defaultValueClass) {
+        SettingsManager.registerComponent(this, key, defaultValueClass);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String key, final Object defaultValue )
-    {
-        SettingsManager.registerComponent ( this, key, defaultValue );
+    public void registerSettings(final String key, final Object defaultValue) {
+        SettingsManager.registerComponent(this, key, defaultValue);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String group, final String key )
-    {
-        SettingsManager.registerComponent ( this, group, key );
+    public void registerSettings(final String group, final String key) {
+        SettingsManager.registerComponent(this, group, key);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public <T extends DefaultValue> void registerSettings ( final String group, final String key, final Class<T> defaultValueClass )
-    {
-        SettingsManager.registerComponent ( this, group, key, defaultValueClass );
+    public <T extends DefaultValue> void registerSettings(final String group,
+            final String key, final Class<T> defaultValueClass) {
+        SettingsManager.registerComponent(this, group, key, defaultValueClass);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String group, final String key, final Object defaultValue )
-    {
-        SettingsManager.registerComponent ( this, group, key, defaultValue );
+    public void registerSettings(final String group, final String key,
+            final Object defaultValue) {
+        SettingsManager.registerComponent(this, group, key, defaultValue);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String key, final boolean loadInitialSettings, final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, key, loadInitialSettings, applySettingsChanges );
+    public void registerSettings(final String key,
+            final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, key, loadInitialSettings,
+                applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public <T extends DefaultValue> void registerSettings ( final String key, final Class<T> defaultValueClass,
-                                                            final boolean loadInitialSettings, final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, key, defaultValueClass, loadInitialSettings, applySettingsChanges );
+    public <T extends DefaultValue> void registerSettings(final String key,
+            final Class<T> defaultValueClass,
+            final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, key, defaultValueClass,
+                loadInitialSettings, applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String key, final Object defaultValue, final boolean loadInitialSettings,
-                                   final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, key, defaultValue, loadInitialSettings, applySettingsChanges );
+    public void registerSettings(final String key, final Object defaultValue,
+            final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, key, defaultValue,
+                loadInitialSettings, applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public <T extends DefaultValue> void registerSettings ( final String group, final String key, final Class<T> defaultValueClass,
-                                                            final boolean loadInitialSettings, final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, group, key, defaultValueClass, loadInitialSettings, applySettingsChanges );
+    public <T extends DefaultValue> void registerSettings(final String group,
+            final String key, final Class<T> defaultValueClass,
+            final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, group, key, defaultValueClass,
+                loadInitialSettings, applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String group, final String key, final Object defaultValue, final boolean loadInitialSettings,
-                                   final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, group, key, defaultValue, loadInitialSettings, applySettingsChanges );
+    public void registerSettings(final String group, final String key,
+            final Object defaultValue, final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, group, key, defaultValue,
+                loadInitialSettings, applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final SettingsProcessor settingsProcessor )
-    {
-        SettingsManager.registerComponent ( this, settingsProcessor );
+    public void registerSettings(final SettingsProcessor settingsProcessor) {
+        SettingsManager.registerComponent(this, settingsProcessor);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void unregisterSettings ()
-    {
-        SettingsManager.unregisterComponent ( this );
+    public void unregisterSettings() {
+        SettingsManager.unregisterComponent(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void loadSettings ()
-    {
-        SettingsManager.loadComponentSettings ( this );
+    public void loadSettings() {
+        SettingsManager.loadComponentSettings(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void saveSettings ()
-    {
-        SettingsManager.saveComponentSettings ( this );
+    public void saveSettings() {
+        SettingsManager.saveComponentSettings(this);
     }
-
+    
     /**
      * Window methods.
      */
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebFrame setWindowOpaque ( final boolean opaque )
-    {
-        return WindowUtils.setWindowOpaque ( this, opaque );
+    public WebFrame setWindowOpaque(final boolean opaque) {
+        return WindowUtils.setWindowOpaque(this, opaque);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isWindowOpaque ()
-    {
-        return WindowUtils.isWindowOpaque ( this );
+    public boolean isWindowOpaque() {
+        return WindowUtils.isWindowOpaque(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebFrame setWindowOpacity ( final float opacity )
-    {
-        return WindowUtils.setWindowOpacity ( this, opacity );
+    public WebFrame setWindowOpacity(final float opacity) {
+        return WindowUtils.setWindowOpacity(this, opacity);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public float getWindowOpacity ()
-    {
-        return WindowUtils.getWindowOpacity ( this );
+    public float getWindowOpacity() {
+        return WindowUtils.getWindowOpacity(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebFrame center ()
-    {
-        return WindowUtils.center ( this );
+    public WebFrame center() {
+        return WindowUtils.center(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebFrame center ( final Component relativeTo )
-    {
-        return WindowUtils.center ( this, relativeTo );
+    public WebFrame center(final Component relativeTo) {
+        return WindowUtils.center(this, relativeTo);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebFrame center ( final int width, final int height )
-    {
-        return WindowUtils.center ( this, width, height );
+    public WebFrame center(final int width, final int height) {
+        return WindowUtils.center(this, width, height);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebFrame center ( final Component relativeTo, final int width, final int height )
-    {
-        return WindowUtils.center ( this, relativeTo, width, height );
+    public WebFrame center(final Component relativeTo, final int width,
+            final int height) {
+        return WindowUtils.center(this, relativeTo, width, height);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebFrame packToWidth ( final int width )
-    {
-        return WindowUtils.packToWidth ( this, width );
+    public WebFrame packToWidth(final int width) {
+        return WindowUtils.packToWidth(this, width);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebFrame packToHeight ( final int height )
-    {
-        return WindowUtils.packToHeight ( this, height );
+    public WebFrame packToHeight(final int height) {
+        return WindowUtils.packToHeight(this, height);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebFrame packAndCenter ()
-    {
-        return WindowUtils.packAndCenter ( this );
+    public WebFrame packAndCenter() {
+        return WindowUtils.packAndCenter(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebFrame packAndCenter ( final boolean animate )
-    {
-        return WindowUtils.packAndCenter ( this, animate );
+    public WebFrame packAndCenter(final boolean animate) {
+        return WindowUtils.packAndCenter(this, animate);
     }
 }

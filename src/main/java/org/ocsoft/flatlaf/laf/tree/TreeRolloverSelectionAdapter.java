@@ -24,130 +24,125 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 /**
- * Custom mouse motion listener that provides select-on-rollover behavior for any JTree.
+ * Custom mouse motion listener that provides select-on-rollover behavior for
+ * any JTree.
  *
  * @author Mikle Garin
  */
 
-public class TreeRolloverSelectionAdapter implements MouseMotionListener
-{
+public class TreeRolloverSelectionAdapter implements MouseMotionListener {
     /**
      * Tree into which this adapter is installed.
      */
     private final JTree tree;
-
+    
     /**
      * Constructs rollover selection adapter for the specified tree.
      *
-     * @param tree tree into which this adapter is installed
+     * @param tree
+     *            tree into which this adapter is installed
      */
-    public TreeRolloverSelectionAdapter ( final JTree tree )
-    {
-        super ();
+    public TreeRolloverSelectionAdapter(final JTree tree) {
+        super();
         this.tree = tree;
     }
-
+    
     /**
      * Performs selection change on rollover.
      *
-     * @param e mouse event
+     * @param e
+     *            mouse event
      */
     @Override
-    public void mouseMoved ( final MouseEvent e )
-    {
+    public void mouseMoved(final MouseEvent e) {
         // Disabled trees aren't affected
-        if ( tree.isEnabled () )
-        {
-            final TreeUI treeUI = tree.getUI ();
-            if ( treeUI instanceof WebTreeUI )
-            {
-                // Compute cell under point through WebTreeUI methods (to make sure that row selection type was taken into account)
-                final int row = ( ( WebTreeUI ) treeUI ).getRowForPoint ( e.getPoint () );
-                if ( row != -1 )
-                {
+        if (tree.isEnabled()) {
+            final TreeUI treeUI = tree.getUI();
+            if (treeUI instanceof WebTreeUI) {
+                // Compute cell under point through WebTreeUI methods (to make
+                // sure that row selection type was taken into account)
+                final int row = ((WebTreeUI) treeUI).getRowForPoint(e
+                        .getPoint());
+                if (row != -1) {
                     // Change selection
-                    tree.setSelectionRow ( row );
-                }
-                else
-                {
+                    tree.setSelectionRow(row);
+                } else {
                     // Clear selection
-                    tree.clearSelection ();
+                    tree.clearSelection();
                 }
-            }
-            else
-            {
+            } else {
                 // Compute cell under point through default tree methods
-                final TreePath treePath = tree.getPathForLocation ( e.getX (), e.getY () );
-                if ( treePath != null )
-                {
+                final TreePath treePath = tree.getPathForLocation(e.getX(),
+                        e.getY());
+                if (treePath != null) {
                     // Change selection
-                    tree.setSelectionPath ( treePath );
-                }
-                else
-                {
+                    tree.setSelectionPath(treePath);
+                } else {
                     // Clear selection
-                    tree.clearSelection ();
+                    tree.clearSelection();
                 }
             }
         }
     }
-
+    
     /**
      * Ignored mouse event.
      *
-     * @param e mouse event
+     * @param e
+     *            mouse event
      */
     @Override
-    public void mouseDragged ( final MouseEvent e )
-    {
+    public void mouseDragged(final MouseEvent e) {
         //
     }
-
+    
     /**
-     * Installs rollover selection adapter into tree and ensures that it is the only one installed.
+     * Installs rollover selection adapter into tree and ensures that it is the
+     * only one installed.
      *
-     * @param tree tree to modify
+     * @param tree
+     *            tree to modify
      * @return installed rollover selection adapter
      */
-    public static TreeRolloverSelectionAdapter install ( final JTree tree )
-    {
+    public static TreeRolloverSelectionAdapter install(final JTree tree) {
         // Uninstall old adapters first
-        uninstall ( tree );
-
+        uninstall(tree);
+        
         // Add new adapter
-        final TreeRolloverSelectionAdapter adapter = new TreeRolloverSelectionAdapter ( tree );
-        tree.addMouseMotionListener ( adapter );
+        final TreeRolloverSelectionAdapter adapter = new TreeRolloverSelectionAdapter(
+                tree);
+        tree.addMouseMotionListener(adapter);
         return adapter;
     }
-
+    
     /**
      * Uninstalls all rollover selection adapters from the specified tree.
      *
-     * @param tree tree to modify
+     * @param tree
+     *            tree to modify
      */
-    public static void uninstall ( final JTree tree )
-    {
-        for ( final MouseMotionListener listener : tree.getMouseMotionListeners () )
-        {
-            if ( listener instanceof TreeRolloverSelectionAdapter )
-            {
-                tree.removeMouseMotionListener ( listener );
+    public static void uninstall(final JTree tree) {
+        for (final MouseMotionListener listener : tree
+                .getMouseMotionListeners()) {
+            if (listener instanceof TreeRolloverSelectionAdapter) {
+                tree.removeMouseMotionListener(listener);
             }
         }
     }
-
+    
     /**
-     * Returns whether the specified tree has any rollover selection adapters installed or not.
+     * Returns whether the specified tree has any rollover selection adapters
+     * installed or not.
      *
-     * @param tree tree to process
-     * @return true if the specified tree has any rollover selection adapters installed, false otherwise
+     * @param tree
+     *            tree to process
+     * @return true if the specified tree has any rollover selection adapters
+     *         installed, false otherwise
      */
-    public static boolean isInstalled ( final JTree tree )
-    {
-        for ( final MouseMotionListener listener : tree.getMouseMotionListeners () )
-        {
-            if ( listener instanceof TreeRolloverSelectionAdapter )
-            {
+    public static boolean isInstalled(final JTree tree) {
+        for (final MouseMotionListener listener : tree
+                .getMouseMotionListeners()) {
+            if (listener instanceof TreeRolloverSelectionAdapter) {
                 return true;
             }
         }

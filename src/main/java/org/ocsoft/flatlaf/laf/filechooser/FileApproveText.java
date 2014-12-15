@@ -18,35 +18,34 @@
 package org.ocsoft.flatlaf.laf.filechooser;
 
 /**
- * This enumeration represents default file chooser approve button types and provides language keys for them.
+ * This enumeration represents default file chooser approve button types and
+ * provides language keys for them.
  *
  * @author Mikle Garin
  */
 
-public enum FileApproveText
-{
+public enum FileApproveText {
     /**
      * Save text.
      */
     save,
-
+    
     /**
      * Open text.
      */
     open,
-
+    
     /**
      * Choose text.
      */
     choose;
-
+    
     /**
      * Returns approve text language key.
      *
      * @return approve text language key
      */
-    public String getLanguageKey ()
-    {
+    public String getLanguageKey() {
         return "weblaf.filechooser." + this;
     }
 }

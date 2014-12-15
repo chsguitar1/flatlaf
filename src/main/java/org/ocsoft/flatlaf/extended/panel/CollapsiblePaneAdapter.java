@@ -21,29 +21,24 @@ package org.ocsoft.flatlaf.extended.panel;
  * User: mgarin Date: 09.04.12 Time: 18:22
  */
 
-public abstract class CollapsiblePaneAdapter implements CollapsiblePaneListener
-{
+public abstract class CollapsiblePaneAdapter implements CollapsiblePaneListener {
     @Override
-    public void expanding ( WebCollapsiblePane pane )
-    {
+    public void expanding(WebCollapsiblePane pane) {
         //
     }
-
+    
     @Override
-    public void expanded ( WebCollapsiblePane pane )
-    {
+    public void expanded(WebCollapsiblePane pane) {
         //
     }
-
+    
     @Override
-    public void collapsing ( WebCollapsiblePane pane )
-    {
+    public void collapsing(WebCollapsiblePane pane) {
         //
     }
-
+    
     @Override
-    public void collapsed ( WebCollapsiblePane pane )
-    {
+    public void collapsed(WebCollapsiblePane pane) {
         //
     }
 }

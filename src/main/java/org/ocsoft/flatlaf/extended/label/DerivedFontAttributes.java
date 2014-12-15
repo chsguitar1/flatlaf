@@ -25,97 +25,93 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class DerivedFontAttributes
-{
+public class DerivedFontAttributes {
     /**
      * Original font.
      */
     private final Font font;
-
+    
     /**
      * New font style.
      */
     private final int style;
-
+    
     /**
      * New font size.
      */
     private final float size;
-
+    
     /**
      * Constructs new information about derived font.
      *
-     * @param font  original font
-     * @param style new font style
-     * @param size  new font size
+     * @param font
+     *            original font
+     * @param style
+     *            new font style
+     * @param size
+     *            new font size
      */
-    public DerivedFontAttributes ( final Font font, final int style, final float size )
-    {
+    public DerivedFontAttributes(final Font font, final int style,
+            final float size) {
         this.font = font;
         this.style = style;
         this.size = size;
     }
-
+    
     /**
      * Returns original font.
      *
      * @return original font
      */
-    public Font getFont ()
-    {
+    public Font getFont() {
         return font;
     }
-
+    
     /**
      * Returns new font style.
      *
      * @return new font style
      */
-    public int getStyle ()
-    {
+    public int getStyle() {
         return style;
     }
-
+    
     /**
      * Returns new font size.
      *
      * @return new font size
      */
-    public float getSize ()
-    {
+    public float getSize() {
         return size;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean equals ( final Object o )
-    {
-        if ( this == o )
-        {
+    public boolean equals(final Object o) {
+        if (this == o) {
             return true;
         }
-
-        if ( !( o instanceof DerivedFontAttributes ) )
-        {
+        
+        if (!(o instanceof DerivedFontAttributes)) {
             return false;
         }
-
-        final DerivedFontAttributes fa = ( DerivedFontAttributes ) o;
-        return Float.compare ( fa.size, size ) == 0 && style == fa.style && !( font == null || !font.equals ( fa.font ) );
+        
+        final DerivedFontAttributes fa = (DerivedFontAttributes) o;
+        return Float.compare(fa.size, size) == 0 && style == fa.style
+                && !(font == null || !font.equals(fa.font));
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public int hashCode ()
-    {
+    public int hashCode() {
         int result;
-        result = font.hashCode ();
+        result = font.hashCode();
         result = 31 * result + style;
-        result = 31 * result + ( size != 0.0f ? Float.floatToIntBits ( size ) : 0 );
+        result = 31 * result + (size != 0.0f ? Float.floatToIntBits(size) : 0);
         return result;
     }
 }

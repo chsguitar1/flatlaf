@@ -26,23 +26,22 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public abstract class AbstractListToolTipProvider implements ListToolTipProvider
-{
+public abstract class AbstractListToolTipProvider implements
+        ListToolTipProvider {
     /**
      * {@inheritDoc}
      */
     @Override
-    public long getDelay ()
-    {
+    public long getDelay() {
         return 400;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Rectangle getTooltipSourceBounds ( final JList list, final Object value, final int index, final boolean isSelected )
-    {
-        return list.getCellBounds ( index, index );
+    public Rectangle getTooltipSourceBounds(final JList list,
+            final Object value, final int index, final boolean isSelected) {
+        return list.getCellBounds(index, index);
     }
 }

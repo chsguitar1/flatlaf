@@ -25,116 +25,112 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * This file filter groups specified file filters in a certain way defined by filter group type.
+ * This file filter groups specified file filters in a certain way defined by
+ * filter group type.
  *
  * @author Mikle Garin
  */
 
-public class GroupedFileFilter extends AbstractFileFilter
-{
+public class GroupedFileFilter extends AbstractFileFilter {
     /**
      * The way file filters will be grouped.
      */
     protected FilterGroupType filterGroupType;
-
+    
     /**
      * Default file filter used to display icon and description.
      */
     protected AbstractFileFilter defaultFilter;
-
+    
     /**
      * List of grouped file filters.
      */
     protected List<FileFilter> filters;
-
+    
     /**
      * Constructs grouped file filter with the specified parameters.
      *
-     * @param filters list of file filters to be grouped
+     * @param filters
+     *            list of file filters to be grouped
      */
-    public GroupedFileFilter ( final FileFilter... filters )
-    {
-        this ( FilterGroupType.AND, filters );
+    public GroupedFileFilter(final FileFilter... filters) {
+        this(FilterGroupType.AND, filters);
     }
-
+    
     /**
      * Constructs grouped file filter with the specified parameters.
      *
-     * @param filterGroupType the way file filters will be grouped
-     * @param filters         list of file filters to be grouped
+     * @param filterGroupType
+     *            the way file filters will be grouped
+     * @param filters
+     *            list of file filters to be grouped
      */
-    public GroupedFileFilter ( final FilterGroupType filterGroupType, final FileFilter... filters )
-    {
-        this ( filters != null && filters.length > 0 && filters[ 0 ] instanceof AbstractFileFilter ? ( AbstractFileFilter ) filters[ 0 ] :
-                null, filterGroupType, filters );
+    public GroupedFileFilter(final FilterGroupType filterGroupType,
+            final FileFilter... filters) {
+        this(
+                filters != null && filters.length > 0
+                        && filters[0] instanceof AbstractFileFilter ? (AbstractFileFilter) filters[0]
+                        : null, filterGroupType, filters);
     }
-
+    
     /**
      * Constructs grouped file filter with the specified parameters.
      *
-     * @param defaultFilter   default file filter used to display icon and description
-     * @param filterGroupType the way file filters will be grouped
-     * @param filters         list of file filters to be grouped
+     * @param defaultFilter
+     *            default file filter used to display icon and description
+     * @param filterGroupType
+     *            the way file filters will be grouped
+     * @param filters
+     *            list of file filters to be grouped
      */
-    public GroupedFileFilter ( final AbstractFileFilter defaultFilter, final FilterGroupType filterGroupType, final FileFilter... filters )
-    {
-        super ();
-
+    public GroupedFileFilter(final AbstractFileFilter defaultFilter,
+            final FilterGroupType filterGroupType, final FileFilter... filters) {
+        super();
+        
         // Filters grouping type
         this.filterGroupType = filterGroupType;
-
+        
         // Default filter
         this.defaultFilter = defaultFilter;
-
+        
         // Filters to group
-        this.filters = new ArrayList<FileFilter> ();
-        if ( filters != null )
-        {
-            Collections.addAll ( this.filters, filters );
+        this.filters = new ArrayList<FileFilter>();
+        if (filters != null) {
+            Collections.addAll(this.filters, filters);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public ImageIcon getIcon ()
-    {
-        return defaultFilter != null ? defaultFilter.getIcon () : null;
+    public ImageIcon getIcon() {
+        return defaultFilter != null ? defaultFilter.getIcon() : null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getDescription ()
-    {
-        return defaultFilter != null ? defaultFilter.getDescription () : null;
+    public String getDescription() {
+        return defaultFilter != null ? defaultFilter.getDescription() : null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean accept ( final File file )
-    {
-        if ( filterGroupType.equals ( FilterGroupType.AND ) )
-        {
-            for ( final FileFilter filter : filters )
-            {
-                if ( filter != null && !filter.accept ( file ) )
-                {
+    public boolean accept(final File file) {
+        if (filterGroupType.equals(FilterGroupType.AND)) {
+            for (final FileFilter filter : filters) {
+                if (filter != null && !filter.accept(file)) {
                     return false;
                 }
             }
             return true;
-        }
-        else
-        {
-            for ( final FileFilter filter : filters )
-            {
-                if ( filter == null || filter.accept ( file ) )
-                {
+        } else {
+            for (final FileFilter filter : filters) {
+                if (filter == null || filter.accept(file)) {
                     return true;
                 }
             }

@@ -26,12 +26,12 @@ import java.util.List;
  * @author Mikle Garin
  */
 
-public interface CheckStateChangeListener<E extends DefaultMutableTreeNode>
-{
+public interface CheckStateChangeListener<E extends DefaultMutableTreeNode> {
     /**
      * Informs about single or multiply check state changes.
      *
-     * @param stateChanges check state changes list
+     * @param stateChanges
+     *            check state changes list
      */
-    public void checkStateChanged ( List<CheckStateChange<E>> stateChanges );
+    public void checkStateChanged(List<CheckStateChange<E>> stateChanges);
 }

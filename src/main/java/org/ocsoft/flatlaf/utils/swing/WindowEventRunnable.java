@@ -25,12 +25,12 @@ import java.awt.event.WindowEvent;
  * @author Mikle Garin
  */
 
-public interface WindowEventRunnable
-{
+public interface WindowEventRunnable {
     /**
      * Performs action according to window event.
      *
-     * @param e occured window event
+     * @param e
+     *            occured window event
      */
-    public void run ( WindowEvent e );
+    public void run(WindowEvent e);
 }

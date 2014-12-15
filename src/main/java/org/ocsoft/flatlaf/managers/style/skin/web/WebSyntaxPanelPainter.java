@@ -32,81 +32,81 @@ import java.awt.*;
  * @see org.ocsoft.flatlaf.extended.painter.Painter
  */
 
-public class WebSyntaxPanelPainter<E extends JPanel> extends WebPanelPainter<E>
-{
+public class WebSyntaxPanelPainter<E extends JPanel> extends WebPanelPainter<E> {
     /**
      * Used colors.
      */
-    public static Color boldBorder = new Color ( 204, 204, 204 );
-    public static Color boldBackground = new Color ( 247, 247, 247 );
-    public static Color thickBorder = new Color ( 221, 221, 221 );
-    public static Color thickBackground = new Color ( 248, 248, 248 );
-
+    public static Color boldBorder = new Color(204, 204, 204);
+    public static Color boldBackground = new Color(247, 247, 247);
+    public static Color thickBorder = new Color(221, 221, 221);
+    public static Color thickBackground = new Color(248, 248, 248);
+    
     /**
      * Syntax panel style.
      */
     protected SyntaxPanelStyle style = SyntaxPanelStyle.thick;
-
+    
     /**
      * Returns syntax panel style.
      *
      * @return syntax panel style
      */
-    public SyntaxPanelStyle getStyle ()
-    {
+    public SyntaxPanelStyle getStyle() {
         return style;
     }
-
+    
     /**
      * Sets syntax panel style.
      *
-     * @param style new syntax panel style
+     * @param style
+     *            new syntax panel style
      */
-    public void setStyle ( final SyntaxPanelStyle style )
-    {
+    public void setStyle(final SyntaxPanelStyle style) {
         this.style = style;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void paint ( final Graphics2D g2d, final Rectangle bounds, final E panel )
-    {
+    public void paint(final Graphics2D g2d, final Rectangle bounds,
+            final E panel) {
         // Paint simple background if undecorated & opaque
-        if ( panel.isOpaque () )
-        {
-            g2d.setPaint ( panel.getBackground () );
-            g2d.fillRect ( bounds.x, bounds.y, bounds.width, bounds.height );
+        if (panel.isOpaque()) {
+            g2d.setPaint(panel.getBackground());
+            g2d.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
         }
-
+        
         // Paint syntax panel styling
-        final Object aa = GraphicsUtils.setupAntialias ( g2d );
-        if ( style == SyntaxPanelStyle.bold )
-        {
+        final Object aa = GraphicsUtils.setupAntialias(g2d);
+        if (style == SyntaxPanelStyle.bold) {
             // White spacer
-            g2d.setPaint ( Color.WHITE );
-            g2d.fillRoundRect ( bounds.x, bounds.y, bounds.width, bounds.height - 1, 6, 6 );
-
+            g2d.setPaint(Color.WHITE);
+            g2d.fillRoundRect(bounds.x, bounds.y, bounds.width,
+                    bounds.height - 1, 6, 6);
+            
             // Background
-            g2d.setPaint ( boldBackground );
-            g2d.fillRoundRect ( bounds.x + 3, bounds.y + 3, bounds.width - 6, bounds.height - 7, 3, 3 );
-
+            g2d.setPaint(boldBackground);
+            g2d.fillRoundRect(bounds.x + 3, bounds.y + 3, bounds.width - 6,
+                    bounds.height - 7, 3, 3);
+            
             // Border
-            g2d.setPaint ( boldBorder );
-            g2d.drawRoundRect ( bounds.x, bounds.y, bounds.width - 1, bounds.height - 2, 6, 6 );
-            g2d.drawRoundRect ( bounds.x, bounds.y, bounds.width - 1, bounds.height - 1, 6, 6 );
-        }
-        else if ( style == SyntaxPanelStyle.thick )
-        {
+            g2d.setPaint(boldBorder);
+            g2d.drawRoundRect(bounds.x, bounds.y, bounds.width - 1,
+                    bounds.height - 2, 6, 6);
+            g2d.drawRoundRect(bounds.x, bounds.y, bounds.width - 1,
+                    bounds.height - 1, 6, 6);
+        } else if (style == SyntaxPanelStyle.thick) {
             // Background
-            g2d.setPaint ( thickBackground );
-            g2d.fillRoundRect ( bounds.x, bounds.y, bounds.width, bounds.height, 6, 6 );
-
+            g2d.setPaint(thickBackground);
+            g2d.fillRoundRect(bounds.x, bounds.y, bounds.width, bounds.height,
+                    6, 6);
+            
             // Border
-            g2d.setPaint ( thickBorder );
-            g2d.drawRoundRect ( bounds.x, bounds.y, bounds.width - 1, bounds.height - 2, 6, 6 );
+            g2d.setPaint(thickBorder);
+            g2d.drawRoundRect(bounds.x, bounds.y, bounds.width - 1,
+                    bounds.height - 2, 6, 6);
         }
-        GraphicsUtils.restoreAntialias ( g2d, aa );
+        GraphicsUtils.restoreAntialias(g2d, aa);
     }
 }

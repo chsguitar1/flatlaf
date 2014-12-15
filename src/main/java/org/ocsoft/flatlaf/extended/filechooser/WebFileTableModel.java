@@ -35,223 +35,220 @@ import java.util.List;
  * @author Mikle Garin
  */
 
-public class WebFileTableModel extends AbstractTableModel implements WebFileTableColumns
-{
+public class WebFileTableModel extends AbstractTableModel implements
+        WebFileTableColumns {
     /**
      * List of displayed column ids.
      */
     private List<String> columns;
-
+    
     /**
      * List of displayed files.
      */
     private List<File> files;
-
+    
     /**
      * Constructs empty model with default displayed columns.
      */
-    public WebFileTableModel ()
-    {
-        this ( new ArrayList<File> (), CollectionUtils.copy ( DEFAULT_COLUMNS ) );
+    public WebFileTableModel() {
+        this(new ArrayList<File>(), CollectionUtils.copy(DEFAULT_COLUMNS));
     }
-
+    
     /**
      * Constructs empty model with specified displayed columns.
      *
-     * @param columns columns to display
+     * @param columns
+     *            columns to display
      */
-    public WebFileTableModel ( final String... columns )
-    {
-        this ( new ArrayList<File> (), Arrays.asList ( columns ) );
+    public WebFileTableModel(final String... columns) {
+        this(new ArrayList<File>(), Arrays.asList(columns));
     }
-
+    
     /**
      * Constructs empty model with specified displayed columns.
      *
-     * @param columns columns to display
+     * @param columns
+     *            columns to display
      */
-    public WebFileTableModel ( final List<String> columns )
-    {
-        this ( new ArrayList<File> (), columns );
+    public WebFileTableModel(final List<String> columns) {
+        this(new ArrayList<File>(), columns);
     }
-
+    
     /**
      * Constructs model with specified displayed columns and files.
      *
-     * @param files   files to display
-     * @param columns columns to display
+     * @param files
+     *            files to display
+     * @param columns
+     *            columns to display
      */
-    public WebFileTableModel ( final Collection<File> files, final String... columns )
-    {
-        this ( files, Arrays.asList ( columns ) );
+    public WebFileTableModel(final Collection<File> files,
+            final String... columns) {
+        this(files, Arrays.asList(columns));
     }
-
+    
     /**
      * Constructs model with specified displayed columns and files.
      *
-     * @param files   files to display
-     * @param columns columns to display
+     * @param files
+     *            files to display
+     * @param columns
+     *            columns to display
      */
-    public WebFileTableModel ( final Collection<File> files, final List<String> columns )
-    {
-        super ();
+    public WebFileTableModel(final Collection<File> files,
+            final List<String> columns) {
+        super();
         this.columns = columns;
-        this.files = new ArrayList<File> ( files );
+        this.files = new ArrayList<File>(files);
     }
-
+    
     /**
      * Sets displayed files.
      *
-     * @param files files to display
+     * @param files
+     *            files to display
      */
-    public void setFiles ( final Collection<File> files )
-    {
-        this.files.clear ();
-        this.files.addAll ( files );
-        fireTableDataChanged ();
+    public void setFiles(final Collection<File> files) {
+        this.files.clear();
+        this.files.addAll(files);
+        fireTableDataChanged();
     }
-
+    
     /**
      * Adds displayed files.
      *
-     * @param files files to display
+     * @param files
+     *            files to display
      */
-    public void addFiles ( final Collection<File> files )
-    {
-        if ( files.size () > 0 )
-        {
-            final int lastIndex = this.files.size ();
-            this.files.addAll ( files );
-            fireTableRowsInserted ( lastIndex, lastIndex + files.size () - 1 );
+    public void addFiles(final Collection<File> files) {
+        if (files.size() > 0) {
+            final int lastIndex = this.files.size();
+            this.files.addAll(files);
+            fireTableRowsInserted(lastIndex, lastIndex + files.size() - 1);
         }
     }
-
+    
     /**
      * Returns index of row with the specified file.
      *
-     * @param file file to find
+     * @param file
+     *            file to find
      * @return index of row with the specified file
      */
-    public int getFileRow ( final File file )
-    {
-        return files.indexOf ( file );
+    public int getFileRow(final File file) {
+        return files.indexOf(file);
     }
-
+    
     /**
      * Returns file for the specified row.
      *
-     * @param row row to process
+     * @param row
+     *            row to process
      * @return file for the specified row
      */
-    public File getFileAtRow ( final int row )
-    {
-        return files.get ( row );
+    public File getFileAtRow(final int row) {
+        return files.get(row);
     }
-
+    
     /**
      * Sets displayed column ids list.
      *
-     * @param columns displayed column ids list
+     * @param columns
+     *            displayed column ids list
      */
-    public void setColumns ( final List<String> columns )
-    {
+    public void setColumns(final List<String> columns) {
         this.columns = columns;
-        fireTableStructureChanged ();
+        fireTableStructureChanged();
     }
-
+    
     /**
      * Returns column id at the specified index.
      *
-     * @param column column index
+     * @param column
+     *            column index
      * @return column id at the specified index
      */
-    public String getColumnId ( final int column )
-    {
-        return columns.get ( column );
+    public String getColumnId(final int column) {
+        return columns.get(column);
     }
-
+    
     /**
      * Returns whether the specified column is displayed or not.
      *
-     * @param column column to process
+     * @param column
+     *            column to process
      * @return true if the specified column is displayed, false otherwise
      */
-    public boolean isColumnDisplayed ( final String column )
-    {
-        return columns.contains ( column );
+    public boolean isColumnDisplayed(final String column) {
+        return columns.contains(column);
     }
-
+    
     /**
      * Returns index of the specified column.
      *
-     * @param column column to process
+     * @param column
+     *            column to process
      * @return index of the specified column
      */
-    public int getColumnIndex ( final String column )
-    {
-        return columns.indexOf ( column );
+    public int getColumnIndex(final String column) {
+        return columns.indexOf(column);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getColumnName ( final int column )
-    {
-        return LanguageManager.get ( columns.get ( column ) );
+    public String getColumnName(final int column) {
+        return LanguageManager.get(columns.get(column));
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public int getRowCount ()
-    {
-        return files.size ();
+    public int getRowCount() {
+        return files.size();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public int getColumnCount ()
-    {
-        return columns.size ();
+    public int getColumnCount() {
+        return columns.size();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Object getValueAt ( final int rowIndex, final int columnIndex )
-    {
-        return files.get ( rowIndex );
+    public Object getValueAt(final int rowIndex, final int columnIndex) {
+        return files.get(rowIndex);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setValueAt ( final Object aValue, final int rowIndex, final int columnIndex )
-    {
-        files.set ( rowIndex, ( File ) aValue );
+    public void setValueAt(final Object aValue, final int rowIndex,
+            final int columnIndex) {
+        files.set(rowIndex, (File) aValue);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Class<?> getColumnClass ( final int columnIndex )
-    {
+    public Class<?> getColumnClass(final int columnIndex) {
         return File.class;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isCellEditable ( final int rowIndex, final int columnIndex )
-    {
-        return getColumnId ( columnIndex ).equals ( NAME_COLUMN ) && FileUtils.isNameEditable ( getFileAtRow ( rowIndex ) );
+    public boolean isCellEditable(final int rowIndex, final int columnIndex) {
+        return getColumnId(columnIndex).equals(NAME_COLUMN)
+                && FileUtils.isNameEditable(getFileAtRow(rowIndex));
     }
 }

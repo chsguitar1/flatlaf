@@ -20,19 +20,18 @@ package org.ocsoft.flatlaf.managers.style.skin.ninepatch;
 import org.ocsoft.flatlaf.managers.style.skin.CustomSkin;
 
 /**
- * Custom WebLaF skin which uses 9-patch images to decorate components.
- * There is a default styling provided but you can override it with your own settings and 9-patch resources.
+ * Custom WebLaF skin which uses 9-patch images to decorate components. There is
+ * a default styling provided but you can override it with your own settings and
+ * 9-patch resources.
  *
  * @author Mikle Garin
  */
 
-public class NinePatchSkin extends CustomSkin
-{
+public class NinePatchSkin extends CustomSkin {
     /**
      * Constructs NinePatch skin.
      */
-    public NinePatchSkin ()
-    {
-        super ( "resources/NinePatchSkin.xml" );
+    public NinePatchSkin() {
+        super("resources/NinePatchSkin.xml");
     }
 }

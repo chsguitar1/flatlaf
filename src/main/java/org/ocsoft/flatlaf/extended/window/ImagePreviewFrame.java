@@ -33,68 +33,57 @@ import java.net.URL;
  * @author Mikle Garin
  */
 
-public class ImagePreviewFrame extends WebFrame
-{
-    public ImagePreviewFrame ( final String src )
-    {
-        super ();
-        initializeUI ( new WebImage ( src ) );
+public class ImagePreviewFrame extends WebFrame {
+    public ImagePreviewFrame(final String src) {
+        super();
+        initializeUI(new WebImage(src));
     }
-
-    public ImagePreviewFrame ( final Class nearClass, final String src )
-    {
-        super ();
-        initializeUI ( new WebImage ( nearClass, src ) );
+    
+    public ImagePreviewFrame(final Class nearClass, final String src) {
+        super();
+        initializeUI(new WebImage(nearClass, src));
     }
-
-    public ImagePreviewFrame ( final URL url )
-    {
-        super ();
-        initializeUI ( new WebImage ( url ) );
+    
+    public ImagePreviewFrame(final URL url) {
+        super();
+        initializeUI(new WebImage(url));
     }
-
-    public ImagePreviewFrame ( final Icon image )
-    {
-        super ();
-        initializeUI ( new WebImage ( image ) );
+    
+    public ImagePreviewFrame(final Icon image) {
+        super();
+        initializeUI(new WebImage(image));
     }
-
-    public ImagePreviewFrame ( final ImageIcon image )
-    {
-        super ();
-        initializeUI ( new WebImage ( image ) );
+    
+    public ImagePreviewFrame(final ImageIcon image) {
+        super();
+        initializeUI(new WebImage(image));
     }
-
-    public ImagePreviewFrame ( final Image image )
-    {
-        super ();
-        initializeUI ( new WebImage ( image ) );
+    
+    public ImagePreviewFrame(final Image image) {
+        super();
+        initializeUI(new WebImage(image));
     }
-
-    public ImagePreviewFrame ( final BufferedImage image )
-    {
-        super ();
-        initializeUI ( new WebImage ( image ) );
+    
+    public ImagePreviewFrame(final BufferedImage image) {
+        super();
+        initializeUI(new WebImage(image));
     }
-
-    private void initializeUI ( final WebImage image )
-    {
-        setIconImages ( FlatLookAndFeel.getImages () );
-
-
-        setLayout ( new BorderLayout () );
-
-        final WebPanel area = new WebPanel ( new AlphaLayerPainter () );
-        area.setMargin ( Math.max ( 5, 80 - image.getWidth () ) );
-        add ( area );
-
-        area.add ( image );
-
-
-        setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
-        setResizable ( true );
-        pack ();
-        center ();
-        setVisible ( true );
+    
+    private void initializeUI(final WebImage image) {
+        setIconImages(FlatLookAndFeel.getImages());
+        
+        setLayout(new BorderLayout());
+        
+        final WebPanel area = new WebPanel(new AlphaLayerPainter());
+        area.setMargin(Math.max(5, 80 - image.getWidth()));
+        add(area);
+        
+        area.add(image);
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(true);
+        pack();
+        center();
+        setVisible(true);
     }
 }

@@ -25,28 +25,27 @@ import org.ocsoft.flatlaf.laf.label.WebLabelStyle;
  * @author Mikle Garin
  */
 
-public final class WebStyledLabelStyle
-{
+public final class WebStyledLabelStyle {
     /**
      * Label margin.
      */
     public static Insets margin = WebLabelStyle.margin;
-
+    
     /**
      * Preferred row count.
      */
     public static int preferredRowCount = 1;
-
+    
     /**
      * Whether should ignore StyleRange color settings or not.
      */
     public static boolean ignoreColorSettings = false;
-
+    
     /**
      * Subscript and superscript font size ratio.
      */
     public static float scriptFontRatio = 1.5f;
-
+    
     /**
      * Truncated text suffix.
      */

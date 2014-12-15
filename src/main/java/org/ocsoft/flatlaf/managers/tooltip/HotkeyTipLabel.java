@@ -26,21 +26,19 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
  * @author Mikle Garin
  */
 
-public class HotkeyTipLabel extends WebLabel
-{
+public class HotkeyTipLabel extends WebLabel {
     /**
      * Constructs new hotkey tip label.
      */
-    public HotkeyTipLabel ()
-    {
-        super ();
-        setStyleId ( "hotkey-tip-label" );
-
-        setForeground ( WebCustomTooltipStyle.hotkeyColor );
-        SwingUtils.setBoldFont ( this );
-        SwingUtils.changeFontSize ( this, -1 );
-
-        setHorizontalAlignment ( WebLabel.CENTER );
-        setVerticalAlignment ( WebLabel.CENTER );
+    public HotkeyTipLabel() {
+        super();
+        setStyleId("hotkey-tip-label");
+        
+        setForeground(WebCustomTooltipStyle.hotkeyColor);
+        SwingUtils.setBoldFont(this);
+        SwingUtils.changeFontSize(this, -1);
+        
+        setHorizontalAlignment(WebLabel.CENTER);
+        setVerticalAlignment(WebLabel.CENTER);
     }
 }

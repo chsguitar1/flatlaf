@@ -23,13 +23,12 @@ package org.ocsoft.flatlaf.utils.laf;
  * @author Mikle Garin
  */
 
-public enum FocusType
-{
+public enum FocusType {
     /**
      * Component-like focus.
      */
     componentFocus,
-
+    
     /**
      * Field-like focus.
      */

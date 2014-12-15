@@ -22,31 +22,30 @@ import java.awt.event.KeyEvent;
 import org.ocsoft.flatlaf.utils.swing.KeyEventRunnable;
 
 /**
- * This interface allows you to create action for hotkey events which can be used together with HotkeyManager methods.
- * Unlike Runnable this interface provides KeyEvent as action source.
+ * This interface allows you to create action for hotkey events which can be
+ * used together with HotkeyManager methods. Unlike Runnable this interface
+ * provides KeyEvent as action source.
  *
  * @author Mikle Garin
  */
 
-public interface HotkeyRunnable extends KeyEventRunnable
-{
+public interface HotkeyRunnable extends KeyEventRunnable {
     /**
      * Simple runnable that doesn't perform any actions.
      */
-    public static final HotkeyRunnable NONE = new HotkeyRunnable ()
-    {
+    public static final HotkeyRunnable NONE = new HotkeyRunnable() {
         @Override
-        public void run ( final KeyEvent e )
-        {
+        public void run(final KeyEvent e) {
             // Do nothing
         }
     };
-
+    
     /**
      * Performs hotkey action.
      *
-     * @param e occured key event
+     * @param e
+     *            occured key event
      */
     @Override
-    public void run ( KeyEvent e );
+    public void run(KeyEvent e);
 }

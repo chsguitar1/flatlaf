@@ -23,12 +23,10 @@ import javax.swing.*;
  * User: mgarin Date: 31.10.12 Time: 15:34
  */
 
-public class WebNumberEditor extends WebGenericEditor
-{
-    public WebNumberEditor ()
-    {
-        super ();
-        final JTextField editor = ( JTextField ) getComponent ();
-        editor.setHorizontalAlignment ( JTextField.RIGHT );
+public class WebNumberEditor extends WebGenericEditor {
+    public WebNumberEditor() {
+        super();
+        final JTextField editor = (JTextField) getComponent();
+        editor.setHorizontalAlignment(JTextField.RIGHT);
     }
 }

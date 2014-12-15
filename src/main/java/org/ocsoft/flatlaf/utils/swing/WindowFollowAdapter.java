@@ -22,80 +22,75 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 /**
- * This listener allows you to quickly attach one window to another window. This means that this window will always follow the other one
- * when it moves on the screen. Though the other window in this link will not follow this window as it moves.
+ * This listener allows you to quickly attach one window to another window. This
+ * means that this window will always follow the other one when it moves on the
+ * screen. Though the other window in this link will not follow this window as
+ * it moves.
  *
  * @author Mikle Garin
  */
 
-public class WindowFollowAdapter extends ComponentAdapter
-{
+public class WindowFollowAdapter extends ComponentAdapter {
     protected final Window followingWindow;
     protected final Window parentWindow;
-
+    
     protected boolean enabled = true;
     protected Point lastLocation;
-
-    public WindowFollowAdapter ( final Window followingWindow, final Window parentWindow )
-    {
-        super ();
+    
+    public WindowFollowAdapter(final Window followingWindow,
+            final Window parentWindow) {
+        super();
         this.followingWindow = followingWindow;
         this.parentWindow = parentWindow;
-        this.lastLocation = parentWindow.getLocation ();
+        this.lastLocation = parentWindow.getLocation();
     }
-
-    public boolean isEnabled ()
-    {
+    
+    public boolean isEnabled() {
         return enabled;
     }
-
-    public void setEnabled ( final boolean enabled )
-    {
+    
+    public void setEnabled(final boolean enabled) {
         this.enabled = enabled;
     }
-
-    public void updateLastLocation ()
-    {
-        this.lastLocation = parentWindow.getLocation ();
+    
+    public void updateLastLocation() {
+        this.lastLocation = parentWindow.getLocation();
     }
-
-    public Window getFollowingWindow ()
-    {
+    
+    public Window getFollowingWindow() {
         return followingWindow;
     }
-
-    public Window getParentWindow ()
-    {
+    
+    public Window getParentWindow() {
         return parentWindow;
     }
-
+    
     @Override
-    public void componentResized ( final ComponentEvent e )
-    {
-        updateLastLocation ();
+    public void componentResized(final ComponentEvent e) {
+        updateLastLocation();
     }
-
+    
     @Override
-    public void componentMoved ( final ComponentEvent e )
-    {
-        if ( isEnabled () && followingWindow != null && parentWindow != null )
-        {
-            final Point nl = parentWindow.getLocation ();
-            final Point fwl = followingWindow.getLocation ();
-            followingWindow.setLocation ( fwl.x + nl.x - lastLocation.x, fwl.y + nl.y - lastLocation.y );
+    public void componentMoved(final ComponentEvent e) {
+        if (isEnabled() && followingWindow != null && parentWindow != null) {
+            final Point nl = parentWindow.getLocation();
+            final Point fwl = followingWindow.getLocation();
+            followingWindow.setLocation(fwl.x + nl.x - lastLocation.x, fwl.y
+                    + nl.y - lastLocation.y);
             this.lastLocation = nl;
         }
     }
-
-    public static WindowFollowAdapter install ( final Window followingWindow, final Window parentWindow )
-    {
-        final WindowFollowAdapter windowFollowAdapter = new WindowFollowAdapter ( followingWindow, parentWindow );
-        parentWindow.addComponentListener ( windowFollowAdapter );
+    
+    public static WindowFollowAdapter install(final Window followingWindow,
+            final Window parentWindow) {
+        final WindowFollowAdapter windowFollowAdapter = new WindowFollowAdapter(
+                followingWindow, parentWindow);
+        parentWindow.addComponentListener(windowFollowAdapter);
         return windowFollowAdapter;
     }
-
-    public static void uninstall ( final Window parentWindow, final WindowFollowAdapter windowFollowAdapter )
-    {
-        parentWindow.removeComponentListener ( windowFollowAdapter );
+    
+    public static void uninstall(final Window parentWindow,
+            final WindowFollowAdapter windowFollowAdapter) {
+        parentWindow.removeComponentListener(windowFollowAdapter);
     }
 }

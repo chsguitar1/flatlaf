@@ -32,226 +32,249 @@ import org.ocsoft.flatlaf.utils.swing.WebTimer;
  * @author Mikle Garin
  */
 
-public final class WindowUtils
-{
+public final class WindowUtils {
     /**
      * Window pack timers map.
      */
-    private static final Map<Window, WebTimer> windowPackTimers = new HashMap<Window, WebTimer> ();
-
+    private static final Map<Window, WebTimer> windowPackTimers = new HashMap<Window, WebTimer>();
+    
     /**
      * Sets window opaque if that option is supported by the underlying system.
      *
-     * @param window window to modify
-     * @param opaque whether should make window opaque or not
-     * @param <W>    window type
+     * @param window
+     *            window to modify
+     * @param opaque
+     *            whether should make window opaque or not
+     * @param <W>
+     *            window type
      * @return processed window
      */
-    public static <W extends Window> W setWindowOpaque ( final W window, final boolean opaque )
-    {
-        ProprietaryUtils.setWindowOpaque ( window, opaque );
+    public static <W extends Window> W setWindowOpaque(final W window,
+            final boolean opaque) {
+        ProprietaryUtils.setWindowOpaque(window, opaque);
         return window;
     }
-
+    
     /**
      * Returns whether window is opaque or not.
      *
-     * @param window window to process
-     * @param <W>    window type
+     * @param window
+     *            window to process
+     * @param <W>
+     *            window type
      * @return whether window background is opaque or not
      */
-    public static <W extends Window> boolean isWindowOpaque ( final W window )
-    {
-        return ProprietaryUtils.isWindowOpaque ( window );
+    public static <W extends Window> boolean isWindowOpaque(final W window) {
+        return ProprietaryUtils.isWindowOpaque(window);
     }
-
+    
     /**
      * Sets window opacity if that option is supported by the underlying system.
      *
-     * @param window  window to modify
-     * @param opacity new window opacity
-     * @param <W>     window type
+     * @param window
+     *            window to modify
+     * @param opacity
+     *            new window opacity
+     * @param <W>
+     *            window type
      * @return processed window
      */
-    public static <W extends Window> W setWindowOpacity ( final W window, final float opacity )
-    {
-        ProprietaryUtils.setWindowOpacity ( window, opacity );
+    public static <W extends Window> W setWindowOpacity(final W window,
+            final float opacity) {
+        ProprietaryUtils.setWindowOpacity(window, opacity);
         return window;
     }
-
+    
     /**
      * Returns window opacity.
      *
-     * @param window window to process
-     * @param <W>    window type
+     * @param window
+     *            window to process
+     * @param <W>
+     *            window type
      * @return window opacity
      */
-    public static <W extends Window> float getWindowOpacity ( final W window )
-    {
-        return ProprietaryUtils.getWindowOpacity ( window );
+    public static <W extends Window> float getWindowOpacity(final W window) {
+        return ProprietaryUtils.getWindowOpacity(window);
     }
-
+    
     /**
      * Centers window relative to screen center.
      *
-     * @param window window to process
-     * @param <W>    window type
+     * @param window
+     *            window to process
+     * @param <W>
+     *            window type
      * @return processed window
      */
-    public static <W extends Window> W center ( final W window )
-    {
-        window.setLocationRelativeTo ( null );
+    public static <W extends Window> W center(final W window) {
+        window.setLocationRelativeTo(null);
         return window;
     }
-
+    
     /**
      * Centers window relative to the specified component center.
      *
-     * @param window     window to process
-     * @param relativeTo component used to center window
-     * @param <W>        window type
+     * @param window
+     *            window to process
+     * @param relativeTo
+     *            component used to center window
+     * @param <W>
+     *            window type
      * @return processed window
      */
-    public static <W extends Window> W center ( final W window, final Component relativeTo )
-    {
-        window.setLocationRelativeTo ( relativeTo );
+    public static <W extends Window> W center(final W window,
+            final Component relativeTo) {
+        window.setLocationRelativeTo(relativeTo);
         return window;
     }
-
+    
     /**
      * Changes window size and centers it relative to screen center.
      *
-     * @param window window to process
-     * @param width  new window width
-     * @param height new window height
-     * @param <W>    window type
+     * @param window
+     *            window to process
+     * @param width
+     *            new window width
+     * @param height
+     *            new window height
+     * @param <W>
+     *            window type
      * @return processed window
      */
-    public static <W extends Window> W center ( final W window, final int width, final int height )
-    {
-        window.setSize ( width, height );
-        return center ( window );
+    public static <W extends Window> W center(final W window, final int width,
+            final int height) {
+        window.setSize(width, height);
+        return center(window);
     }
-
+    
     /**
      * Changes window size and centers it relative to screen center.
      *
-     * @param window     window to process
-     * @param relativeTo component used to center window
-     * @param width      new window width
-     * @param height     new window height
-     * @param <W>        window type
+     * @param window
+     *            window to process
+     * @param relativeTo
+     *            component used to center window
+     * @param width
+     *            new window width
+     * @param height
+     *            new window height
+     * @param <W>
+     *            window type
      * @return processed window
      */
-    public static <W extends Window> W center ( final W window, final Component relativeTo, final int width, final int height )
-    {
-        window.setSize ( width, height );
-        return center ( window, relativeTo );
+    public static <W extends Window> W center(final W window,
+            final Component relativeTo, final int width, final int height) {
+        window.setSize(width, height);
+        return center(window, relativeTo);
     }
-
+    
     /**
      * Packs window to its preffered height and specified width.
      *
-     * @param window window to process
-     * @param width  new window width
-     * @param <W>    window type
+     * @param window
+     *            window to process
+     * @param width
+     *            new window width
+     * @param <W>
+     *            window type
      * @return processed window
      */
-    public static <W extends Window> W packToWidth ( final W window, final int width )
-    {
-        window.setSize ( width, window.getPreferredSize ().height );
+    public static <W extends Window> W packToWidth(final W window,
+            final int width) {
+        window.setSize(width, window.getPreferredSize().height);
         return window;
     }
-
+    
     /**
      * Packs window to its preffered width and specified height.
      *
-     * @param window window to process
-     * @param height new window height
-     * @param <W>    window type
+     * @param window
+     *            window to process
+     * @param height
+     *            new window height
+     * @param <W>
+     *            window type
      * @return processed window
      */
-    public static <W extends Window> W packToHeight ( final W window, final int height )
-    {
-        window.setSize ( window.getPreferredSize ().width, height );
+    public static <W extends Window> W packToHeight(final W window,
+            final int height) {
+        window.setSize(window.getPreferredSize().width, height);
         return window;
     }
-
+    
     /**
-     * Packs and centers specified window relative to old position.
-     * Bounds transition might also be animated, depending on StyleConstants.animate variable.
+     * Packs and centers specified window relative to old position. Bounds
+     * transition might also be animated, depending on StyleConstants.animate
+     * variable.
      *
-     * @param window window to process
-     * @param <W>    window type
+     * @param window
+     *            window to process
+     * @param <W>
+     *            window type
      * @return processed window
      * @see FlatLafStyleConstants#animate
      */
-    public static <W extends Window> W packAndCenter ( final W window )
-    {
-        return packAndCenter ( window, FlatLafStyleConstants.animate );
+    public static <W extends Window> W packAndCenter(final W window) {
+        return packAndCenter(window, FlatLafStyleConstants.animate);
     }
-
+    
     /**
-     * Packs and centers specified window relative to old position.
-     * Bounds transition will be animated if requested.
+     * Packs and centers specified window relative to old position. Bounds
+     * transition will be animated if requested.
      *
-     * @param window  window to process
-     * @param animate whether should animate window size changes or not
-     * @param <W>     window type
+     * @param window
+     *            window to process
+     * @param animate
+     *            whether should animate window size changes or not
+     * @param <W>
+     *            window type
      * @return processed window
      */
-    public static <W extends Window> W packAndCenter ( final W window, final boolean animate )
-    {
-        if ( window == null )
-        {
+    public static <W extends Window> W packAndCenter(final W window,
+            final boolean animate) {
+        if (window == null) {
             return window;
         }
-
-        final Rectangle b = window.getBounds ();
-        final Dimension s = window.getPreferredSize ();
-        final Rectangle newBounds = new Rectangle ( b.x + b.width / 2 - s.width / 2, b.y + b.height / 2 - s.height / 2, s.width, s.height );
-
-        if ( windowPackTimers.containsKey ( window ) )
-        {
-            if ( windowPackTimers.get ( window ) != null && windowPackTimers.get ( window ).isRunning () )
-            {
-                windowPackTimers.get ( window ).stop ();
+        
+        final Rectangle b = window.getBounds();
+        final Dimension s = window.getPreferredSize();
+        final Rectangle newBounds = new Rectangle(b.x + b.width / 2 - s.width
+                / 2, b.y + b.height / 2 - s.height / 2, s.width, s.height);
+        
+        if (windowPackTimers.containsKey(window)) {
+            if (windowPackTimers.get(window) != null
+                    && windowPackTimers.get(window).isRunning()) {
+                windowPackTimers.get(window).stop();
             }
         }
-
-        if ( window.isShowing () && animate )
-        {
+        
+        if (window.isShowing() && animate) {
             final int time = 100;
             final int steps = 10;
             final int xDiff = newBounds.width - b.width;
             final int yDiff = newBounds.height - b.height;
-            final WebTimer t = new WebTimer ( time / steps, new ActionListener ()
-            {
+            final WebTimer t = new WebTimer(time / steps, new ActionListener() {
                 private int step = 1;
-
+                
                 @Override
-                public void actionPerformed ( final ActionEvent e )
-                {
-                    if ( step <= steps )
-                    {
+                public void actionPerformed(final ActionEvent e) {
+                    if (step <= steps) {
                         final int w = b.width + xDiff * step / steps;
                         final int h = b.height + yDiff * step / steps;
-                        final Rectangle changed = new Rectangle ( b.x + b.width / 2 - w / 2, b.y + b.height / 2 - h / 2, w, h );
-                        window.setBounds ( changed );
-                    }
-                    else
-                    {
-                        windowPackTimers.get ( window ).stop ();
+                        final Rectangle changed = new Rectangle(b.x + b.width
+                                / 2 - w / 2, b.y + b.height / 2 - h / 2, w, h);
+                        window.setBounds(changed);
+                    } else {
+                        windowPackTimers.get(window).stop();
                     }
                     step++;
                 }
-            } );
-            windowPackTimers.put ( window, t );
-            t.start ();
-        }
-        else
-        {
-            window.setBounds ( newBounds );
+            });
+            windowPackTimers.put(window, t);
+            t.start();
+        } else {
+            window.setBounds(newBounds);
         }
         return window;
     }

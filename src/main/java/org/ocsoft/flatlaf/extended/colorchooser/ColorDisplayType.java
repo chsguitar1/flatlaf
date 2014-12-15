@@ -23,13 +23,12 @@ package org.ocsoft.flatlaf.extended.colorchooser;
  * @author Mikle Garin
  */
 
-public enum ColorDisplayType
-{
+public enum ColorDisplayType {
     /**
      * Display color RGB values.
      */
     rgb,
-
+    
     /**
      * Display HEX color value.
      */

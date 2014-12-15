@@ -20,31 +20,33 @@ package org.ocsoft.flatlaf.utils.swing;
 import java.awt.*;
 
 /**
- * Special layout manager which handles window positions and sizes.
- * It is similar to Swing layout managers but it handles windows only.
+ * Special layout manager which handles window positions and sizes. It is
+ * similar to Swing layout managers but it handles windows only.
  *
  * @author Mikle Garin
  */
 
-public interface ScreenLayout<W extends Window, C>
-{
+public interface ScreenLayout<W extends Window, C> {
     /**
      * Called when window added into this layout.
      *
-     * @param window      added window
-     * @param constraints component constraints
+     * @param window
+     *            added window
+     * @param constraints
+     *            component constraints
      */
-    public void addWindow ( final W window, final C constraints );
-
+    public void addWindow(final W window, final C constraints);
+    
     /**
      * Called when window removed from this layout.
      *
-     * @param window removed window
+     * @param window
+     *            removed window
      */
-    public void removeWindow ( final W window );
-
+    public void removeWindow(final W window);
+    
     /**
      * Performs positioning and sizing of windows added into this ScreenLayout.
      */
-    public abstract void layoutScreen ();
+    public abstract void layoutScreen();
 }

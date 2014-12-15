@@ -28,58 +28,54 @@ import org.ocsoft.flatlaf.utils.general.Filter;
  * @author Mikle Garin
  */
 
-public class FileTreeNodeFilter implements Filter<FileTreeNode>
-{
+public class FileTreeNodeFilter implements Filter<FileTreeNode> {
     /**
      * Used file filter.
      */
     protected Filter<File> filter;
-
+    
     /**
      * Constructs new FileTreeNodeFilter with default file filter.
      */
-    public FileTreeNodeFilter ()
-    {
-        this ( FlatLafFileFilters.NON_HIDDEN_ONLY_FILTER );
+    public FileTreeNodeFilter() {
+        this(FlatLafFileFilters.NON_HIDDEN_ONLY_FILTER);
     }
-
+    
     /**
      * Constructs new FileTreeNodeFilter using the specified file filter.
      *
-     * @param filter file filter
+     * @param filter
+     *            file filter
      */
-    public FileTreeNodeFilter ( final Filter<File> filter )
-    {
-        super ();
+    public FileTreeNodeFilter(final Filter<File> filter) {
+        super();
         this.filter = filter;
     }
-
+    
     /**
      * Returns used file filter.
      *
      * @return used file filter
      */
-    public Filter<File> getFilter ()
-    {
+    public Filter<File> getFilter() {
         return filter;
     }
-
+    
     /**
      * Sets used file filter.
      *
-     * @param filter used file filter
+     * @param filter
+     *            used file filter
      */
-    public void setFilter ( final Filter<File> filter )
-    {
+    public void setFilter(final Filter<File> filter) {
         this.filter = filter;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean accept ( final FileTreeNode object )
-    {
-        return filter.accept ( object.getFile () );
+    public boolean accept(final FileTreeNode object) {
+        return filter.accept(object.getFile());
     }
 }

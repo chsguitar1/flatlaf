@@ -25,33 +25,32 @@ package org.ocsoft.flatlaf.extended.label;
  * @see org.ocsoft.flatlaf.extended.label.StyleRange
  */
 
-public enum CustomStyle
-{
+public enum CustomStyle {
     /**
      * Underlined text.
      */
     underlined,
-
+    
     /**
      * Underlined with wave text.
      */
     waved,
-
+    
     /**
      * Single strike-through text.
      */
     strikeThrough,
-
+    
     /**
      * Double strike-through text.
      */
     doubleStrikeThrough,
-
+    
     /**
      * Superscript text.
      */
     superscript,
-
+    
     /**
      * Subscript text.
      */

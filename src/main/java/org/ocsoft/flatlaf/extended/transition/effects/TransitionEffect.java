@@ -22,42 +22,46 @@ import java.awt.*;
 import org.ocsoft.flatlaf.extended.transition.ImageTransition;
 
 /**
- * This interface provides basic methods for transition effect creation. TransitionEffect can be used to perform transitions between images
- * and components using ImageTransiton, ComponentTransition and MultiComponentTransition components.
+ * This interface provides basic methods for transition effect creation.
+ * TransitionEffect can be used to perform transitions between images and
+ * components using ImageTransiton, ComponentTransition and
+ * MultiComponentTransition components.
  *
  * @author Mikle Garin
  */
 
-public interface TransitionEffect
-{
+public interface TransitionEffect {
     /**
      * Animation timer delay.
      *
      * @return animation timer delay
      */
-    public long getAnimationDelay ();
-
+    public long getAnimationDelay();
+    
     /**
      * Returns whether transition is performed or not.
      *
      * @return true if transition is performed, false otherwise
      */
-    public boolean isAnimating ();
-
+    public boolean isAnimating();
+    
     /**
-     * Called for each animation tick performed.
-     * Returns whether this was the last transition tick or not.
+     * Called for each animation tick performed. Returns whether this was the
+     * last transition tick or not.
      *
-     * @param transition image transition component
+     * @param transition
+     *            image transition component
      * @return true if this was the last transition tick, false otherwise
      */
-    public boolean performAnimationTick ( ImageTransition transition );
-
+    public boolean performAnimationTick(ImageTransition transition);
+    
     /**
      * Paints current transition state.
      *
-     * @param g2d        graphics context
-     * @param transition image transition component
+     * @param g2d
+     *            graphics context
+     * @param transition
+     *            image transition component
      */
-    public void paint ( Graphics2D g2d, ImageTransition transition );
+    public void paint(Graphics2D g2d, ImageTransition transition);
 }

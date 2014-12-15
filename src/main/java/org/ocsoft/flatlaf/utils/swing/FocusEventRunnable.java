@@ -25,12 +25,12 @@ import java.awt.event.FocusEvent;
  * @author Mikle Garin
  */
 
-public interface FocusEventRunnable
-{
+public interface FocusEventRunnable {
     /**
      * Performs action according to focus event.
      *
-     * @param e occured focus event
+     * @param e
+     *            occured focus event
      */
-    public void run ( FocusEvent e );
+    public void run(FocusEvent e);
 }

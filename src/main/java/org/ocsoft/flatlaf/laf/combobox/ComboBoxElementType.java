@@ -23,13 +23,12 @@ package org.ocsoft.flatlaf.laf.combobox;
  * @author Mikle Garin
  */
 
-public enum ComboBoxElementType
-{
+public enum ComboBoxElementType {
     /**
      * Selected combobox element renderer type.
      */
     box,
-
+    
     /**
      * Combobox list element renderer type.
      */

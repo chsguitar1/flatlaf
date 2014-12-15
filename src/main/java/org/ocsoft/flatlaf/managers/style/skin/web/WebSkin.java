@@ -25,13 +25,11 @@ import org.ocsoft.flatlaf.managers.style.skin.CustomSkin;
  * @author Mikle Garin
  */
 
-public class WebSkin extends CustomSkin
-{
+public class WebSkin extends CustomSkin {
     /**
      * Constructs default WebLaF skin.
      */
-    public WebSkin ()
-    {
-        super ( "resources/WebSkin.xml" );
+    public WebSkin() {
+        super("resources/WebSkin.xml");
     }
 }

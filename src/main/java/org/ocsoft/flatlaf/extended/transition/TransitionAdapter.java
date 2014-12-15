@@ -21,23 +21,20 @@ package org.ocsoft.flatlaf.extended.transition;
  * @author Mikle Garin
  */
 
-public abstract class TransitionAdapter implements TransitionListener
-{
+public abstract class TransitionAdapter implements TransitionListener {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void transitionStarted ()
-    {
+    public void transitionStarted() {
         // Do nothing by default
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void transitionFinished ()
-    {
+    public void transitionFinished() {
         // Do nothing by default
     }
 }

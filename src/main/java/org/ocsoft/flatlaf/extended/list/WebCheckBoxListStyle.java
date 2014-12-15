@@ -23,10 +23,10 @@ package org.ocsoft.flatlaf.extended.list;
  * @author Mikle Garin
  */
 
-public final class WebCheckBoxListStyle
-{
+public final class WebCheckBoxListStyle {
     /**
-     * Whether checkbox selection should be performed only when user clicks exactly on the check icon or not.
+     * Whether checkbox selection should be performed only when user clicks
+     * exactly on the check icon or not.
      */
     public static boolean checkOnIconOnly = true;
 }

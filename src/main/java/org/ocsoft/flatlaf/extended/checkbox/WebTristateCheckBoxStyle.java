@@ -23,10 +23,10 @@ package org.ocsoft.flatlaf.extended.checkbox;
  * @author Mikle Garin
  */
 
-public final class WebTristateCheckBoxStyle
-{
+public final class WebTristateCheckBoxStyle {
     /**
-     * Whether partially checked tristate checkbox should be checked or unchecked on toggle.
+     * Whether partially checked tristate checkbox should be checked or
+     * unchecked on toggle.
      */
     public static boolean checkMixedOnToggle = false;
 }

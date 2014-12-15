@@ -20,43 +20,51 @@ package org.ocsoft.flatlaf.extended.tab;
 import org.ocsoft.flatlaf.utils.swing.SwingMethods;
 
 /**
- * This interface provides a set of methods that should be added into WebDocumentPane that supports custom WebLaF events.
- * Basically all these methods are already implemented in EventUtils but it is much easier to call them directly from WebDocumentPane.
+ * This interface provides a set of methods that should be added into
+ * WebDocumentPane that supports custom WebLaF events. Basically all these
+ * methods are already implemented in EventUtils but it is much easier to call
+ * them directly from WebDocumentPane.
  *
  * @author Mikle Garin
  */
 
-public interface DocumentPaneEventMethods<T extends DocumentData> extends SwingMethods
-{
+public interface DocumentPaneEventMethods<T extends DocumentData> extends
+        SwingMethods {
     /**
      * Shortcut method for document open event.
      *
-     * @param runnable document data runnable
+     * @param runnable
+     *            document data runnable
      * @return used document adapter
      */
-    public DocumentAdapter<T> onDocumentOpen ( DocumentDataRunnable<T> runnable );
-
+    public DocumentAdapter<T> onDocumentOpen(DocumentDataRunnable<T> runnable);
+    
     /**
      * Shortcut method for document selection event.
      *
-     * @param runnable document data runnable
+     * @param runnable
+     *            document data runnable
      * @return used document adapter
      */
-    public DocumentAdapter<T> onDocumentSelection ( DocumentDataRunnable<T> runnable );
-
+    public DocumentAdapter<T> onDocumentSelection(
+            DocumentDataRunnable<T> runnable);
+    
     /**
      * Shortcut method for document closing event.
      *
-     * @param runnable document data cancellable runnable
+     * @param runnable
+     *            document data cancellable runnable
      * @return used document adapter
      */
-    public DocumentAdapter<T> onDocumentClosing ( DocumentDataCancellableRunnable<T> runnable );
-
+    public DocumentAdapter<T> onDocumentClosing(
+            DocumentDataCancellableRunnable<T> runnable);
+    
     /**
      * Shortcut method for document close event.
      *
-     * @param runnable document data runnable
+     * @param runnable
+     *            document data runnable
      * @return used document adapter
      */
-    public DocumentAdapter<T> onDocumentClose ( DocumentDataRunnable<T> runnable );
+    public DocumentAdapter<T> onDocumentClose(DocumentDataRunnable<T> runnable);
 }

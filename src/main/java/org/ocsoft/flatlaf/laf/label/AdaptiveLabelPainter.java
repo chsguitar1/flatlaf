@@ -23,30 +23,29 @@ import org.ocsoft.flatlaf.extended.painter.AdaptivePainter;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 
 /**
- * Simple LabelPainter adapter class.
- * It is used to install simple non-specific painters into WebLabelUI.
+ * Simple LabelPainter adapter class. It is used to install simple non-specific
+ * painters into WebLabelUI.
  *
  * @author Mikle Garin
  */
 
-public class AdaptiveLabelPainter<E extends JLabel> extends AdaptivePainter<E> implements LabelPainter<E>
-{
+public class AdaptiveLabelPainter<E extends JLabel> extends AdaptivePainter<E>
+        implements LabelPainter<E> {
     /**
      * Constructs new AdaptiveLabelPainter for the specified painter.
      *
-     * @param painter painter to adapt
+     * @param painter
+     *            painter to adapt
      */
-    public AdaptiveLabelPainter ( final Painter painter )
-    {
-        super ( painter );
+    public AdaptiveLabelPainter(final Painter painter) {
+        super(painter);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setDrawShade ( final boolean drawShade )
-    {
+    public void setDrawShade(final boolean drawShade) {
         // Ignore this method in adaptive class
     }
 }

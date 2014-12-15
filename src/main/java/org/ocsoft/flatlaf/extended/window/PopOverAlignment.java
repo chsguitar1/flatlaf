@@ -21,23 +21,25 @@ package org.ocsoft.flatlaf.extended.window;
  * @author Mikle Garin
  */
 
-public enum PopOverAlignment
-{
+public enum PopOverAlignment {
     /**
-     * Determines that WebPopOver should be displayed more to the leading side relative to invoker when possible.
-     * This means that dropdown style corner will usually placed closer to right/bottom side of the WebPopOver.
+     * Determines that WebPopOver should be displayed more to the leading side
+     * relative to invoker when possible. This means that dropdown style corner
+     * will usually placed closer to right/bottom side of the WebPopOver.
      */
     leading,
-
+    
     /**
-     * Determines that WebPopOver should be centered relative to WebPopOver display source point.
-     * This means that dropdown style corner will usually placed in the middle of the WebPopOver.
+     * Determines that WebPopOver should be centered relative to WebPopOver
+     * display source point. This means that dropdown style corner will usually
+     * placed in the middle of the WebPopOver.
      */
     centered,
-
+    
     /**
-     * Determines that WebPopOver should be displayed more to the trailing side relative to invoker when possible.
-     * This means that dropdown style corner will usually placed closer to left/top side of the WebPopOver.
+     * Determines that WebPopOver should be displayed more to the trailing side
+     * relative to invoker when possible. This means that dropdown style corner
+     * will usually placed closer to left/top side of the WebPopOver.
      */
     trailing
 }

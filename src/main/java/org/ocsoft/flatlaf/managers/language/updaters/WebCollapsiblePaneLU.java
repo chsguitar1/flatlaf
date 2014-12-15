@@ -22,21 +22,22 @@ import org.ocsoft.flatlaf.managers.language.data.Value;
 import org.ocsoft.flatlaf.managers.language.updaters.DefaultLanguageUpdater;
 
 /**
- * This class provides language default updates for WebCollapsiblePane component.
+ * This class provides language default updates for WebCollapsiblePane
+ * component.
  *
  * @author Mikle Garin
  */
 
-public class WebCollapsiblePaneLU extends DefaultLanguageUpdater<WebCollapsiblePane>
-{
+public class WebCollapsiblePaneLU extends
+        DefaultLanguageUpdater<WebCollapsiblePane> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void update ( final WebCollapsiblePane c, final String key, final Value value, final Object... data )
-    {
+    public void update(final WebCollapsiblePane c, final String key,
+            final Value value, final Object... data) {
         // Updating text and mnemonic
-        final String text = getDefaultText ( value, data );
-        c.setTitle ( text != null ? text : null );
+        final String text = getDefaultText(value, data);
+        c.setTitle(text != null ? text : null);
     }
 }

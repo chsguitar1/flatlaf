@@ -30,34 +30,34 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
  * @author Mikle Garin
  */
 
-public class WebViewportUI extends BasicViewportUI
-{
+public class WebViewportUI extends BasicViewportUI {
     /**
      * Returns an instance of the WebViewportUI for the specified component.
-     * This tricky method is used by UIManager to create component UIs when needed.
+     * This tricky method is used by UIManager to create component UIs when
+     * needed.
      *
-     * @param c component that will use UI instance
+     * @param c
+     *            component that will use UI instance
      * @return instance of the WebViewportUI
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebViewportUI ();
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebViewportUI();
     }
-
+    
     /**
      * Installs UI in the specified component.
      *
-     * @param c component for this UI
+     * @param c
+     *            component for this UI
      */
     @Override
-    public void installUI ( final JComponent c )
-    {
-        super.installUI ( c );
-
+    public void installUI(final JComponent c) {
+        super.installUI(c);
+        
         // Default settings
-        final JViewport viewport = ( JViewport ) c;
-        viewport.setScrollMode ( FlatLookAndFeel.getScrollMode () );
-        SwingUtils.setOrientation ( c );
+        final JViewport viewport = (JViewport) c;
+        viewport.setScrollMode(FlatLookAndFeel.getScrollMode());
+        SwingUtils.setOrientation(c);
     }
 }

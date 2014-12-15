@@ -28,53 +28,45 @@ import java.util.StringTokenizer;
  * @author Mikle Garin
  */
 
-public class InsetsConverter extends AbstractSingleValueConverter
-{
+public class InsetsConverter extends AbstractSingleValueConverter {
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean canConvert ( final Class type )
-    {
-        return type.equals ( Insets.class );
+    public boolean canConvert(final Class type) {
+        return type.equals(Insets.class);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Object fromString ( final String insets )
-    {
-        try
-        {
-            final StringTokenizer tokenizer = new StringTokenizer ( insets, ",", false );
-            final int top = Integer.parseInt ( tokenizer.nextToken ().trim () );
-            final int left = Integer.parseInt ( tokenizer.nextToken ().trim () );
-            final int bottom = Integer.parseInt ( tokenizer.nextToken ().trim () );
-            final int right = Integer.parseInt ( tokenizer.nextToken ().trim () );
-            return new Insets ( top, left, bottom, right );
-        }
-        catch ( final Throwable e )
-        {
-            try
-            {
-                final int spacing = Integer.parseInt ( insets );
-                return new Insets ( spacing, spacing, spacing, spacing );
-            }
-            catch ( final Throwable ex )
-            {
-                return new Insets ( 0, 0, 0, 0 );
+    public Object fromString(final String insets) {
+        try {
+            final StringTokenizer tokenizer = new StringTokenizer(insets, ",",
+                    false);
+            final int top = Integer.parseInt(tokenizer.nextToken().trim());
+            final int left = Integer.parseInt(tokenizer.nextToken().trim());
+            final int bottom = Integer.parseInt(tokenizer.nextToken().trim());
+            final int right = Integer.parseInt(tokenizer.nextToken().trim());
+            return new Insets(top, left, bottom, right);
+        } catch (final Throwable e) {
+            try {
+                final int spacing = Integer.parseInt(insets);
+                return new Insets(spacing, spacing, spacing, spacing);
+            } catch (final Throwable ex) {
+                return new Insets(0, 0, 0, 0);
             }
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String toString ( final Object object )
-    {
-        final Insets insets = ( Insets ) object;
-        return insets.top + "," + insets.left + "," + insets.bottom + "," + insets.right;
+    public String toString(final Object object) {
+        final Insets insets = (Insets) object;
+        return insets.top + "," + insets.left + "," + insets.bottom + ","
+                + insets.right;
     }
 }

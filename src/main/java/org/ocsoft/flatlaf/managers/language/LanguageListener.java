@@ -22,37 +22,41 @@ import java.util.EventListener;
 import org.ocsoft.flatlaf.managers.language.data.Dictionary;
 
 /**
- * This listener is used to determine language and dictionary changes in LanguageManager.
+ * This listener is used to determine language and dictionary changes in
+ * LanguageManager.
  *
  * @author Mikle Garin
  */
 
-public interface LanguageListener extends EventListener
-{
+public interface LanguageListener extends EventListener {
     /**
      * Notifies when language changed.
      *
-     * @param oldLang old language
-     * @param newLang new language
+     * @param oldLang
+     *            old language
+     * @param newLang
+     *            new language
      */
-    public void languageChanged ( String oldLang, String newLang );
-
+    public void languageChanged(String oldLang, String newLang);
+    
     /**
      * Notifies when new dictionary added.
      *
-     * @param dictionary added dictionary
+     * @param dictionary
+     *            added dictionary
      */
-    public void dictionaryAdded ( Dictionary dictionary );
-
+    public void dictionaryAdded(Dictionary dictionary);
+    
     /**
      * Notifies when new dictionary removed.
      *
-     * @param dictionary removed dictionary
+     * @param dictionary
+     *            removed dictionary
      */
-    public void dictionaryRemoved ( Dictionary dictionary );
-
+    public void dictionaryRemoved(Dictionary dictionary);
+    
     /**
      * Notifies when dictionaries cleared.
      */
-    public void dictionariesCleared ();
+    public void dictionariesCleared();
 }

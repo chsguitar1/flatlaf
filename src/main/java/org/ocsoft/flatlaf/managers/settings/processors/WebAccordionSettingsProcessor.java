@@ -33,70 +33,68 @@ import org.ocsoft.flatlaf.utils.TextUtils;
 
 // todo Change save scheme from indices to IDs
 // todo Add IDs into accordion panes
-public class WebAccordionSettingsProcessor extends SettingsProcessor<WebAccordion, String>
-{
+public class WebAccordionSettingsProcessor extends
+        SettingsProcessor<WebAccordion, String> {
     /**
      * Accordion selection listener.
      */
     private AccordionListener accordionListener;
-
+    
     /**
      * Constructs SettingsProcessor using the specified SettingsProcessorData.
      *
-     * @param data SettingsProcessorData
+     * @param data
+     *            SettingsProcessorData
      */
-    public WebAccordionSettingsProcessor ( final SettingsProcessorData data )
-    {
-        super ( data );
+    public WebAccordionSettingsProcessor(final SettingsProcessorData data) {
+        super(data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doInit ( final WebAccordion accordion )
-    {
-        accordionListener = new AccordionListener ()
-        {
+    protected void doInit(final WebAccordion accordion) {
+        accordionListener = new AccordionListener() {
             @Override
-            public void selectionChanged ()
-            {
-                save ();
+            public void selectionChanged() {
+                save();
             }
         };
-        accordion.addAccordionListener ( accordionListener );
+        accordion.addAccordionListener(accordionListener);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doDestroy ( final WebAccordion accordion )
-    {
-        accordion.removeAccordionListener ( accordionListener );
+    protected void doDestroy(final WebAccordion accordion) {
+        accordion.removeAccordionListener(accordionListener);
         accordionListener = null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doLoad ( final WebAccordion accordion )
-    {
+    protected void doLoad(final WebAccordion accordion) {
         // Empty string identifies empty selection
-        final String string = loadValue ();
-        final List<Integer> indices = string == null || string.trim ().equals ( "" ) ? null : TextUtils.stringToIntList ( string, "," );
-        accordion.setSelectedIndices ( indices );
+        final String string = loadValue();
+        final List<Integer> indices = string == null
+                || string.trim().equals("") ? null : TextUtils.stringToIntList(
+                string, ",");
+        accordion.setSelectedIndices(indices);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doSave ( final WebAccordion accordion )
-    {
-        // For empty selection empty string is used to avoid having null as value as this will call for default value on load
-        final String value = TextUtils.listToString ( accordion.getSelectedIndices (), "," );
-        saveValue ( value != null ? value : "" );
+    protected void doSave(final WebAccordion accordion) {
+        // For empty selection empty string is used to avoid having null as
+        // value as this will call for default value on load
+        final String value = TextUtils.listToString(
+                accordion.getSelectedIndices(), ",");
+        saveValue(value != null ? value : "");
     }
 }

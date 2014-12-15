@@ -23,38 +23,37 @@ package org.ocsoft.flatlaf.extended.tree;
  * @author Mikle Garin
  */
 
-public enum LoaderIconType
-{
+public enum LoaderIconType {
     /**
      * Circle loader
      */
     circe,
-
+    
     /**
      * Facebook loader
      */
     facebook,
-
+    
     /**
      * Roller loader
      */
     roller,
-
+    
     /**
      * Arrows loader
      */
     arrows,
-
+    
     /**
      * Indicator loader
      */
     indicator,
-
+    
     /**
      * Snake loader
      */
     snake,
-
+    
     /**
      * Empty loader
      */

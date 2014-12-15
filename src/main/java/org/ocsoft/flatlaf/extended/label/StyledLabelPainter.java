@@ -26,38 +26,43 @@ import org.ocsoft.flatlaf.extended.painter.SpecificPainter;
  * @author Mikle Garin
  */
 
-public interface StyledLabelPainter<E extends WebStyledLabel> extends Painter<E>, SpecificPainter
-{
+public interface StyledLabelPainter<E extends WebStyledLabel> extends
+        Painter<E>, SpecificPainter {
     /**
      * Sets preferred row count.
      *
-     * @param rows new preferred row count
+     * @param rows
+     *            new preferred row count
      */
-    public void setPreferredRowCount ( final int rows );
-
+    public void setPreferredRowCount(final int rows);
+    
     /**
      * Sets whether color settings should be ignored or not.
      *
-     * @param ignore whether color settings should be ignored or not
+     * @param ignore
+     *            whether color settings should be ignored or not
      */
-    public void setIgnoreColorSettings ( final boolean ignore );
-
+    public void setIgnoreColorSettings(final boolean ignore);
+    
     /**
      * Sets subscript and superscript font ratio.
      *
-     * @param ratio new subscript and superscript font ratio
+     * @param ratio
+     *            new subscript and superscript font ratio
      */
-    public void setScriptFontRatio ( final float ratio );
-
+    public void setScriptFontRatio(final float ratio);
+    
     /**
      * Sets truncated text suffix.
      *
-     * @param suffix new truncated text suffix
+     * @param suffix
+     *            new truncated text suffix
      */
-    public void setTruncatedTextSuffix ( final String suffix );
-
+    public void setTruncatedTextSuffix(final String suffix);
+    
     /**
-     * Forces text ranges to be updated according to current style ranges and text.
+     * Forces text ranges to be updated according to current style ranges and
+     * text.
      */
-    public void updateTextRanges ();
+    public void updateTextRanges();
 }

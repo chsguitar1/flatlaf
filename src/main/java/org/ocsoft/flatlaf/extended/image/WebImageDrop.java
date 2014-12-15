@@ -30,266 +30,265 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 
 /**
- * This is a custom image drop component.
- * It serves as a drop area for images and will display dropped image preview.
- * You can always retrieve actual and thumbnail images from this components if there are any.
+ * This is a custom image drop component. It serves as a drop area for images
+ * and will display dropped image preview. You can always retrieve actual and
+ * thumbnail images from this components if there are any.
  *
  * @author Mikle Garin
  */
 
-public class WebImageDrop extends JComponent
-{
+public class WebImageDrop extends JComponent {
     /**
      * Preview image corners rounding.
      */
     protected int round;
-
+    
     /**
      * Preview image area width.
      */
     protected int width;
-
+    
     /**
      * Preview image area height.
      */
     protected int height;
-
+    
     /**
      * Actual image placed into WebImageDrop component.
      */
     protected BufferedImage actualImage;
-
+    
     /**
      * Preview image.
      */
     protected BufferedImage image;
-
+    
     /**
      * Constructs new WebImageDrop component with 64x64 preview image area size.
      */
-    public WebImageDrop ()
-    {
-        this ( 64, 64 );
+    public WebImageDrop() {
+        this(64, 64);
     }
-
+    
     /**
-     * Constructs new WebImageDrop component with the specified preview image area size.
+     * Constructs new WebImageDrop component with the specified preview image
+     * area size.
      *
-     * @param width  preview image area width
-     * @param height preview image area height
+     * @param width
+     *            preview image area width
+     * @param height
+     *            preview image area height
      */
-    public WebImageDrop ( final int width, final int height )
-    {
-        this ( width, height, null );
+    public WebImageDrop(final int width, final int height) {
+        this(width, height, null);
     }
-
+    
     /**
-     * Constructs new WebImageDrop component with the specified preview image area size and actual image.
+     * Constructs new WebImageDrop component with the specified preview image
+     * area size and actual image.
      *
-     * @param width  preview image area width
-     * @param height preview image area height
-     * @param image  actual image
+     * @param width
+     *            preview image area width
+     * @param height
+     *            preview image area height
+     * @param image
+     *            actual image
      */
-    public WebImageDrop ( final int width, final int height, final BufferedImage image )
-    {
-        super ();
-
+    public WebImageDrop(final int width, final int height,
+            final BufferedImage image) {
+        super();
+        
         this.width = width;
         this.height = height;
-
-        this.round = Math.max ( Math.max ( width, height ) / 10, 3 );
-
+        
+        this.round = Math.max(Math.max(width, height) / 10, 3);
+        
         this.actualImage = image;
-
+        
         this.image = image;
-        updatePreview ();
-
-        SwingUtils.setOrientation ( this );
-
+        updatePreview();
+        
+        SwingUtils.setOrientation(this);
+        
         // Image drop handler
-        setTransferHandler ( new ImageDropHandler ()
-        {
+        setTransferHandler(new ImageDropHandler() {
             @Override
-            protected boolean imagesImported ( final List<ImageIcon> images )
-            {
-                for ( final ImageIcon image : images )
-                {
-                    try
-                    {
-                        setImage ( ImageUtils.getBufferedImage ( image ) );
+            protected boolean imagesImported(final List<ImageIcon> images) {
+                for (final ImageIcon image : images) {
+                    try {
+                        setImage(ImageUtils.getBufferedImage(image));
                         return true;
-                    }
-                    catch ( final Throwable e )
-                    {
+                    } catch (final Throwable e) {
                         //
                     }
                 }
                 return false;
             }
-        } );
+        });
     }
-
+    
     /**
      * Returns actual image.
      *
      * @return actual image
      */
-    public BufferedImage getImage ()
-    {
+    public BufferedImage getImage() {
         return actualImage;
     }
-
+    
     /**
      * Returns preview image.
      *
      * @return preview image
      */
-    public BufferedImage getThumbnail ()
-    {
+    public BufferedImage getThumbnail() {
         return image;
     }
-
+    
     /**
      * Returns preview image corners rounding.
      *
      * @return preview image corners rounding
      */
-    public int getRound ()
-    {
+    public int getRound() {
         return round;
     }
-
+    
     /**
      * Sets preview image corners rounding.
      *
-     * @param round new preview image corners rounding
+     * @param round
+     *            new preview image corners rounding
      */
-    public void setRound ( final int round )
-    {
+    public void setRound(final int round) {
         this.round = round;
-        updatePreview ();
+        updatePreview();
     }
-
+    
     /**
      * Returns preview image area width.
      *
      * @return preview image area width
      */
-    public int getImageWidth ()
-    {
+    public int getImageWidth() {
         return width;
     }
-
+    
     /**
      * Sets preview image area width.
      *
-     * @param width preview image area width
+     * @param width
+     *            preview image area width
      */
-    public void setImageWidth ( final int width )
-    {
+    public void setImageWidth(final int width) {
         this.width = width;
-        updatePreview ();
+        updatePreview();
     }
-
+    
     /**
      * Returns preview image area height.
      *
      * @return preview image area height
      */
-    public int getImageHeight ()
-    {
+    public int getImageHeight() {
         return height;
     }
-
+    
     /**
      * Sets preview image area height.
      *
-     * @param height new preview image area height
+     * @param height
+     *            new preview image area height
      */
-    public void setImageHeight ( final int height )
-    {
+    public void setImageHeight(final int height) {
         this.height = height;
-        updatePreview ();
+        updatePreview();
     }
-
+    
     /**
-     * Sets new displayed image.
-     * This forces a new preview image to be generated so be aware that this call does some heavy work.
+     * Sets new displayed image. This forces a new preview image to be generated
+     * so be aware that this call does some heavy work.
      *
-     * @param image new displayed image
+     * @param image
+     *            new displayed image
      */
-    public void setImage ( final BufferedImage image )
-    {
+    public void setImage(final BufferedImage image) {
         this.actualImage = image;
         this.image = image;
-        updatePreview ();
-        repaint ();
+        updatePreview();
+        repaint();
     }
-
+    
     /**
      * Updates image preview.
      */
-    protected void updatePreview ()
-    {
-        if ( image != null )
-        {
+    protected void updatePreview() {
+        if (image != null) {
             // Creating image preview
-            image = ImageUtils.createPreviewImage ( actualImage, width, height );
-
+            image = ImageUtils.createPreviewImage(actualImage, width, height);
+            
             // Restore decoration
-            final BufferedImage f = ImageUtils.createCompatibleImage ( image, Transparency.TRANSLUCENT );
-            final Graphics2D g2d = f.createGraphics ();
-            GraphicsUtils.setupAntialias ( g2d );
-            g2d.setPaint ( Color.WHITE );
-            g2d.fillRoundRect ( 0, 0, image.getWidth (), image.getHeight (), round * 2, round * 2 );
-            g2d.setComposite ( AlphaComposite.getInstance ( AlphaComposite.SRC_IN ) );
-            g2d.drawImage ( image, 0, 0, null );
-            g2d.dispose ();
-
-            image.flush ();
+            final BufferedImage f = ImageUtils.createCompatibleImage(image,
+                    Transparency.TRANSLUCENT);
+            final Graphics2D g2d = f.createGraphics();
+            GraphicsUtils.setupAntialias(g2d);
+            g2d.setPaint(Color.WHITE);
+            g2d.fillRoundRect(0, 0, image.getWidth(), image.getHeight(),
+                    round * 2, round * 2);
+            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN));
+            g2d.drawImage(image, 0, 0, null);
+            g2d.dispose();
+            
+            image.flush();
             image = f;
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void paintComponent ( final Graphics g )
-    {
-        super.paintComponent ( g );
-
-        final Graphics2D g2d = ( Graphics2D ) g;
-        final Object aa = GraphicsUtils.setupAntialias ( g2d );
-
-        if ( image != null )
-        {
-            g2d.drawImage ( image, getWidth () / 2 - image.getWidth () / 2 + 1, getHeight () / 2 - image.getHeight () / 2 + 1, null );
+    protected void paintComponent(final Graphics g) {
+        super.paintComponent(g);
+        
+        final Graphics2D g2d = (Graphics2D) g;
+        final Object aa = GraphicsUtils.setupAntialias(g2d);
+        
+        if (image != null) {
+            g2d.drawImage(image, getWidth() / 2 - image.getWidth() / 2 + 1,
+                    getHeight() / 2 - image.getHeight() / 2 + 1, null);
         }
-
-        final Shape border = new RoundRectangle2D.Double ( getWidth () / 2 - width / 2 + 1, getHeight () / 2 - height / 2 + 1,
-                width - ( image == null ? 3 : 1 ), height - ( image == null ? 3 : 1 ), round * 2, round * 2 );
-
-        if ( image == null )
-        {
-            g2d.setPaint ( new Color ( 242, 242, 242 ) );
-            g2d.fill ( border );
-
-            g2d.setStroke ( new BasicStroke ( 2, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1f,
-                    new float[]{ Math.max ( 5f, Math.min ( Math.max ( width, height ) / 6, 10f ) ), 8f }, 4f ) );
-            g2d.setPaint ( Color.LIGHT_GRAY );
-            g2d.draw ( border );
+        
+        final Shape border = new RoundRectangle2D.Double(getWidth() / 2 - width
+                / 2 + 1, getHeight() / 2 - height / 2 + 1, width
+                - (image == null ? 3 : 1), height - (image == null ? 3 : 1),
+                round * 2, round * 2);
+        
+        if (image == null) {
+            g2d.setPaint(new Color(242, 242, 242));
+            g2d.fill(border);
+            
+            g2d.setStroke(new BasicStroke(
+                    2,
+                    BasicStroke.CAP_ROUND,
+                    BasicStroke.JOIN_ROUND,
+                    1f,
+                    new float[] {
+                            Math.max(5f,
+                                    Math.min(Math.max(width, height) / 6, 10f)),
+                            8f }, 4f));
+            g2d.setPaint(Color.LIGHT_GRAY);
+            g2d.draw(border);
         }
-
-        GraphicsUtils.restoreAntialias ( g2d, aa );
+        
+        GraphicsUtils.restoreAntialias(g2d, aa);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Dimension getPreferredSize ()
-    {
-        return new Dimension ( width + 2, height + 2 );
+    public Dimension getPreferredSize() {
+        return new Dimension(width + 2, height + 2);
     }
 }

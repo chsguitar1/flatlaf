@@ -23,28 +23,27 @@ package org.ocsoft.flatlaf.utils.swing;
  * @author Mikle Garin
  */
 
-public interface DialogOptions
-{
+public interface DialogOptions {
     /**
      * Return value if cancel is chosen.
      */
     public static final int CANCEL_OPTION = 1;
-
+    
     /**
      * Return value if approve (yes, ok) is chosen.
      */
     public static final int OK_OPTION = 0;
-
+    
     /**
      * Return value if dialog was closed.
      */
     public static final int CLOSE_OPTION = -1;
-
+    
     /**
      * Return value if no actions were taken.
      */
     public static final int NONE_OPTION = -2;
-
+    
     /**
      * Return value if an error occured.
      */

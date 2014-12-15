@@ -28,48 +28,51 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
  * Default WebLaF system proxy detection confirm dialog support.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-ProxyManager">How to use ProxyManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-ProxyManager">How
+ *      to use ProxyManager</a>
  * @see org.ocsoft.flatlaf.managers.proxy.ProxyManager
  * @see org.ocsoft.flatlaf.managers.proxy.SystemProxyConfirmationSupport
  */
 
-public class WebSystemProxyConfirmationSupport implements SystemProxyConfirmationSupport
-{
+public class WebSystemProxyConfirmationSupport implements
+        SystemProxyConfirmationSupport {
     /**
      * UI elements.
      */
     private WebCheckBox alwaysDoTheSame;
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean shouldUseSystemProxy ()
-    {
+    public boolean shouldUseSystemProxy() {
         // Whether should save the choice or not
-        alwaysDoTheSame = new WebCheckBox ();
-        alwaysDoTheSame.setLanguage ( "weblaf.proxy.use.system.save" );
-        alwaysDoTheSame.setSelected ( false );
-        alwaysDoTheSame.setFocusable ( false );
-
+        alwaysDoTheSame = new WebCheckBox();
+        alwaysDoTheSame.setLanguage("weblaf.proxy.use.system.save");
+        alwaysDoTheSame.setSelected(false);
+        alwaysDoTheSame.setFocusable(false);
+        
         // Ask for settings replacement with system ones
-        final String message = LanguageManager.get ( "weblaf.proxy.use.system.text" );
-        final String title = LanguageManager.get ( "weblaf.proxy.use.system.title" );
+        final String message = LanguageManager
+                .get("weblaf.proxy.use.system.text");
+        final String title = LanguageManager
+                .get("weblaf.proxy.use.system.title");
         final int options = WebExtendedOptionPane.YES_NO_OPTION;
         final int type = WebExtendedOptionPane.QUESTION_MESSAGE;
-        final WebExtendedOptionPane dialog =
-                WebExtendedOptionPane.showConfirmDialog ( SwingUtils.getActiveWindow (), message, alwaysDoTheSame, title, options, type );
-
-        return dialog.getResult () == WebOptionPane.YES_OPTION;
+        final WebExtendedOptionPane dialog = WebExtendedOptionPane
+                .showConfirmDialog(SwingUtils.getActiveWindow(), message,
+                        alwaysDoTheSame, title, options, type);
+        
+        return dialog.getResult() == WebOptionPane.YES_OPTION;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean alwaysDoTheSame ()
-    {
-        final boolean selected = alwaysDoTheSame.isSelected ();
+    public boolean alwaysDoTheSame() {
+        final boolean selected = alwaysDoTheSame.isSelected();
         alwaysDoTheSame = null;
         return selected;
     }

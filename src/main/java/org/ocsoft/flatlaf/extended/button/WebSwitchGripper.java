@@ -23,12 +23,10 @@ import org.ocsoft.flatlaf.laf.panel.WebPanel;
  * User: mgarin Date: 02.11.12 Time: 14:37
  */
 
-public class WebSwitchGripper extends WebPanel
-{
-    public WebSwitchGripper ()
-    {
-        super ( true );
-        setOpaque ( false );
-        setRound ( WebSwitchStyle.gripperRound );
+public class WebSwitchGripper extends WebPanel {
+    public WebSwitchGripper() {
+        super(true);
+        setOpaque(false);
+        setRound(WebSwitchStyle.gripperRound);
     }
 }

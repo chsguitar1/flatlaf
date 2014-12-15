@@ -26,11 +26,9 @@ import org.ocsoft.flatlaf.laf.separator.WebSeparatorUI;
  * User: mgarin Date: 17.08.11 Time: 22:58
  */
 
-public class WebToolBarSeparatorUI extends WebSeparatorUI
-{
-    @SuppressWarnings ( "UnusedParameters" )
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebToolBarSeparatorUI ();
+public class WebToolBarSeparatorUI extends WebSeparatorUI {
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebToolBarSeparatorUI();
     }
 }

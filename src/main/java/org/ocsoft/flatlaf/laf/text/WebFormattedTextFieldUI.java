@@ -26,27 +26,26 @@ import javax.swing.plaf.ComponentUI;
  * @author Mikle Garin
  */
 
-public class WebFormattedTextFieldUI extends WebTextFieldUI
-{
+public class WebFormattedTextFieldUI extends WebTextFieldUI {
     /**
-     * Returns an instance of the WebFormattedTextFieldUI for the specified component.
-     * This tricky method is used by UIManager to create component UIs when needed.
+     * Returns an instance of the WebFormattedTextFieldUI for the specified
+     * component. This tricky method is used by UIManager to create component
+     * UIs when needed.
      *
-     * @param c component that will use UI instance
+     * @param c
+     *            component that will use UI instance
      * @return instance of the WebFormattedTextFieldUI
      */
-    @SuppressWarnings ("UnusedParameters")
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebFormattedTextFieldUI ();
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebFormattedTextFieldUI();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected String getPropertyPrefix ()
-    {
+    protected String getPropertyPrefix() {
         return "FormattedTextField";
     }
 }

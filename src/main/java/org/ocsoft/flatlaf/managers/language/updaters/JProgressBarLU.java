@@ -27,14 +27,13 @@ import org.ocsoft.flatlaf.managers.language.data.Value;
  * @author Mikle Garin
  */
 
-public class JProgressBarLU extends DefaultLanguageUpdater<JProgressBar>
-{
+public class JProgressBarLU extends DefaultLanguageUpdater<JProgressBar> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void update ( final JProgressBar c, final String key, final Value value, final Object... data )
-    {
-        c.setString ( getDefaultText ( value, data ) );
+    public void update(final JProgressBar c, final String key,
+            final Value value, final Object... data) {
+        c.setString(getDefaultText(value, data));
     }
 }

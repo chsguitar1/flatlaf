@@ -29,103 +29,93 @@ import org.ocsoft.flatlaf.utils.CompareUtils;
  * Custom SettingsProcessor for Window component.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How to use SettingsManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How
+ *      to use SettingsManager</a>
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  * @see org.ocsoft.flatlaf.managers.settings.SettingsProcessor
  */
 
-public class WindowSettingsProcessor extends SettingsProcessor<Window, Rectangle>
-{
+public class WindowSettingsProcessor extends
+        SettingsProcessor<Window, Rectangle> {
     /**
-     * todo 1. Save window normal/maximized window states, iconified should be converted into normal
-     * todo 2. Save screen where window was located? Probably saved by coordinates but might be wrong if screen settings changed
+     * todo 1. Save window normal/maximized window states, iconified should be
+     * converted into normal todo 2. Save screen where window was located?
+     * Probably saved by coordinates but might be wrong if screen settings
+     * changed
      */
-
+    
     /**
      * Window move and resize listener.
      */
     private ComponentAdapter componentAdapter;
-
+    
     /**
      * Constructs SettingsProcessor using the specified SettingsProcessorData.
      *
-     * @param data SettingsProcessorData
+     * @param data
+     *            SettingsProcessorData
      */
-    public WindowSettingsProcessor ( final SettingsProcessorData data )
-    {
-        super ( data );
+    public WindowSettingsProcessor(final SettingsProcessorData data) {
+        super(data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doInit ( final Window window )
-    {
-        componentAdapter = new ComponentAdapter ()
-        {
+    protected void doInit(final Window window) {
+        componentAdapter = new ComponentAdapter() {
             @Override
-            public void componentResized ( final ComponentEvent e )
-            {
-                save ();
+            public void componentResized(final ComponentEvent e) {
+                save();
             }
-
+            
             @Override
-            public void componentMoved ( final ComponentEvent e )
-            {
-                save ();
+            public void componentMoved(final ComponentEvent e) {
+                save();
             }
         };
-        window.addComponentListener ( componentAdapter );
+        window.addComponentListener(componentAdapter);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doDestroy ( final Window window )
-    {
-        window.removeComponentListener ( componentAdapter );
+    protected void doDestroy(final Window window) {
+        window.removeComponentListener(componentAdapter);
         componentAdapter = null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doLoad ( final Window window )
-    {
-        final Rectangle bounds = loadValue ();
-        if ( bounds != null && !CompareUtils.equals ( bounds, window.getBounds () ) )
-        {
-            final Dimension size = bounds.getSize ();
-            if ( size.width > 0 && size.height > 0 )
-            {
-                window.setSize ( size );
+    protected void doLoad(final Window window) {
+        final Rectangle bounds = loadValue();
+        if (bounds != null && !CompareUtils.equals(bounds, window.getBounds())) {
+            final Dimension size = bounds.getSize();
+            if (size.width > 0 && size.height > 0) {
+                window.setSize(size);
+            } else {
+                window.pack();
             }
-            else
-            {
-                window.pack ();
-            }
-
-            final Point location = bounds.getLocation ();
-            if ( location.x > 0 && location.y > 0 )
-            {
-                window.setLocation ( location );
-            }
-            else
-            {
-                window.setLocationRelativeTo ( null );
+            
+            final Point location = bounds.getLocation();
+            if (location.x > 0 && location.y > 0) {
+                window.setLocation(location);
+            } else {
+                window.setLocationRelativeTo(null);
             }
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doSave ( final Window window )
-    {
-        saveValue ( window.getBounds () );
+    protected void doSave(final Window window) {
+        saveValue(window.getBounds());
     }
 }

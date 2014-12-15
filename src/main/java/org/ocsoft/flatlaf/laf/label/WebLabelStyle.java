@@ -28,39 +28,37 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class WebLabelStyle
-{
+public final class WebLabelStyle {
     /**
      * Label margin.
      */
     public static Insets margin = FlatLafStyleConstants.emptyMargin;
-
+    
     /**
-     * Label background painter.
-     * If set it will override WebLaF styling.
+     * Label background painter. If set it will override WebLaF styling.
      */
     public static Painter painter = null;
-
+    
     /**
      * Label background color.
      */
     public static Color backgroundColor = FlatLafStyleConstants.backgroundColor;
-
+    
     /**
      * Draw shade behind the text.
      */
     public static boolean drawShade = false;
-
+    
     /**
      * Default label shade color.
      */
-    public static Color shadeColor = new Color ( 230, 230, 230 );
-
+    public static Color shadeColor = new Color(230, 230, 230);
+    
     /**
      * Default label transparency.
      */
     public static Float transparency = null;
-
+    
     /**
      * Default label background painter.
      */

@@ -25,10 +25,10 @@ import java.util.ArrayList;
  * User: mgarin Date: 07.10.11 Time: 15:14
  */
 
-public class WrapFlowLayout extends AbstractLayoutManager implements SwingConstants
-{
+public class WrapFlowLayout extends AbstractLayoutManager implements
+        SwingConstants {
     // todo support RTL + LEADING/TRAILING support
-
+    
     protected boolean fitWidth = true;
     protected boolean fillWidth = true;
     protected int hgap = 0;
@@ -36,267 +36,231 @@ public class WrapFlowLayout extends AbstractLayoutManager implements SwingConsta
     protected int halign = LEFT;
     protected int valign = TOP;
     protected boolean wrapEachComponent = false;
-
+    
     protected int maxWidth = 0;
     protected int maxHeight = 0;
     protected ArrayList<RowData> rowsData;
-
-    public WrapFlowLayout ()
-    {
-        this ( false );
+    
+    public WrapFlowLayout() {
+        this(false);
     }
-
-    public WrapFlowLayout ( final boolean fillWidth )
-    {
-        this ( fillWidth, 0, 0 );
+    
+    public WrapFlowLayout(final boolean fillWidth) {
+        this(fillWidth, 0, 0);
     }
-
-    public WrapFlowLayout ( final int hgap, final int vgap )
-    {
-        this ( false, hgap, vgap );
+    
+    public WrapFlowLayout(final int hgap, final int vgap) {
+        this(false, hgap, vgap);
     }
-
-    public WrapFlowLayout ( final boolean fillWidth, final int hgap, final int vgap )
-    {
-        super ();
+    
+    public WrapFlowLayout(final boolean fillWidth, final int hgap,
+            final int vgap) {
+        super();
         this.fillWidth = fillWidth;
         this.hgap = hgap;
         this.vgap = vgap;
     }
-
-    public boolean isFitWidth ()
-    {
+    
+    public boolean isFitWidth() {
         return fitWidth;
     }
-
-    public void setFitWidth ( final boolean fitWidth )
-    {
+    
+    public void setFitWidth(final boolean fitWidth) {
         this.fitWidth = fitWidth;
     }
-
-    public boolean isFillWidth ()
-    {
+    
+    public boolean isFillWidth() {
         return fillWidth;
     }
-
-    public void setFillWidth ( final boolean fillWidth )
-    {
+    
+    public void setFillWidth(final boolean fillWidth) {
         this.fillWidth = fillWidth;
     }
-
-    public int getHgap ()
-    {
+    
+    public int getHgap() {
         return hgap;
     }
-
-    public void setHgap ( final int hgap )
-    {
+    
+    public void setHgap(final int hgap) {
         this.hgap = hgap;
     }
-
-    public int getVgap ()
-    {
+    
+    public int getVgap() {
         return vgap;
     }
-
-    public void setVgap ( final int vgap )
-    {
+    
+    public void setVgap(final int vgap) {
         this.vgap = vgap;
     }
-
-    public int getHalign ()
-    {
+    
+    public int getHalign() {
         return halign;
     }
-
-    public void setHalign ( final int halign )
-    {
+    
+    public void setHalign(final int halign) {
         this.halign = halign;
     }
-
-    public int getValign ()
-    {
+    
+    public int getValign() {
         return valign;
     }
-
-    public void setValign ( final int valign )
-    {
+    
+    public void setValign(final int valign) {
         this.valign = valign;
     }
-
-    public boolean isWrapEachComponent ()
-    {
+    
+    public boolean isWrapEachComponent() {
         return wrapEachComponent;
     }
-
-    public void setWrapEachComponent ( final boolean wrapEachComponent )
-    {
+    
+    public void setWrapEachComponent(final boolean wrapEachComponent) {
         this.wrapEachComponent = wrapEachComponent;
     }
-
-    public int getMaxWidth ()
-    {
+    
+    public int getMaxWidth() {
         return maxWidth;
     }
-
-    public int getMaxHeight ()
-    {
+    
+    public int getMaxHeight() {
         return maxHeight;
     }
-
-    public ArrayList<RowData> getRowsData ()
-    {
+    
+    public ArrayList<RowData> getRowsData() {
         return rowsData;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Dimension preferredLayoutSize ( final Container parent )
-    {
-        layoutContainer ( parent );
-        return new Dimension ( maxWidth, maxHeight );
+    public Dimension preferredLayoutSize(final Container parent) {
+        layoutContainer(parent);
+        return new Dimension(maxWidth, maxHeight);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Dimension minimumLayoutSize ( final Container parent )
-    {
-        layoutContainer ( parent );
-        return new Dimension ( 0, maxHeight );
+    public Dimension minimumLayoutSize(final Container parent) {
+        layoutContainer(parent);
+        return new Dimension(0, maxHeight);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void layoutContainer ( final Container parent )
-    {
+    public void layoutContainer(final Container parent) {
         // Ignore if no childs
-        if ( parent.getComponentCount () == 0 )
-        {
+        if (parent.getComponentCount() == 0) {
             maxWidth = 0;
             maxHeight = 0;
-            rowsData = new ArrayList<RowData> ( 0 );
+            rowsData = new ArrayList<RowData>(0);
             return;
         }
-
+        
         // Parent properties
-        final Insets insets = parent.getInsets ();
-        final int parentWidth = parent.getWidth () - insets.left - insets.right;
-
+        final Insets insets = parent.getInsets();
+        final int parentWidth = parent.getWidth() - insets.left - insets.right;
+        
         // Current row
         int currentRow = 0;
-
+        
         // Current processed row component number
         int componentInRow = 0;
-
+        
         // Total width & height
         maxWidth = 0;
         maxHeight = 0;
-
+        
         // Current processed row width & height
         int currentRowWidth = 0;
         int currentRowMaxHeight = 0;
-
+        
         // Computing rows and components
-        rowsData = new ArrayList<RowData> ();
-        for ( int i = 0; i < parent.getComponentCount (); i++ )
-        {
-            final Component component = parent.getComponent ( i );
-            final Dimension ps = component.getPreferredSize ();
-            if ( componentInRow > 0 && ( isWrapEachComponent () || currentRowWidth + hgap + ps.width > parentWidth ) )
-            {
+        rowsData = new ArrayList<RowData>();
+        for (int i = 0; i < parent.getComponentCount(); i++) {
+            final Component component = parent.getComponent(i);
+            final Dimension ps = component.getPreferredSize();
+            if (componentInRow > 0
+                    && (isWrapEachComponent() || currentRowWidth + hgap
+                            + ps.width > parentWidth)) {
                 // Saving row settings
-                rowsData.get ( currentRow ).setWidth ( currentRowWidth );
-                rowsData.get ( currentRow ).setHeight ( currentRowMaxHeight );
-
+                rowsData.get(currentRow).setWidth(currentRowWidth);
+                rowsData.get(currentRow).setHeight(currentRowMaxHeight);
+                
                 // Saving max sizes
-                maxWidth = Math.max ( maxWidth, currentRowWidth );
-                maxHeight += ( currentRow > 0 ? vgap : 0 ) + currentRowMaxHeight;
-
+                maxWidth = Math.max(maxWidth, currentRowWidth);
+                maxHeight += (currentRow > 0 ? vgap : 0) + currentRowMaxHeight;
+                
                 componentInRow = 0;
                 currentRowWidth = 0;
                 currentRowMaxHeight = 0;
                 currentRow++;
             }
-
-            final int componentWidth = fitWidth ? Math.min ( ps.width, parentWidth ) : ps.width;
-            currentRowWidth += ( componentInRow > 0 ? hgap : 0 ) + componentWidth;
-            currentRowMaxHeight = Math.max ( currentRowMaxHeight, ps.height );
+            
+            final int componentWidth = fitWidth ? Math.min(ps.width,
+                    parentWidth) : ps.width;
+            currentRowWidth += (componentInRow > 0 ? hgap : 0) + componentWidth;
+            currentRowMaxHeight = Math.max(currentRowMaxHeight, ps.height);
             componentInRow++;
-
-            if ( currentRow >= rowsData.size () )
-            {
-                rowsData.add ( new RowData () );
+            
+            if (currentRow >= rowsData.size()) {
+                rowsData.add(new RowData());
             }
-            rowsData.get ( currentRow ).addComponent ( component );
+            rowsData.get(currentRow).addComponent(component);
         }
-        rowsData.get ( currentRow ).setWidth ( currentRowWidth );
-        rowsData.get ( currentRow ).setHeight ( currentRowMaxHeight );
-        maxHeight += ( currentRow > 0 ? vgap : 0 ) + currentRowMaxHeight;
+        rowsData.get(currentRow).setWidth(currentRowWidth);
+        rowsData.get(currentRow).setHeight(currentRowMaxHeight);
+        maxHeight += (currentRow > 0 ? vgap : 0) + currentRowMaxHeight;
         maxHeight += insets.top + insets.bottom;
-
+        
         // Layouting components
         int x;
-        int y = getStartY ( parent, insets );
-        for ( final RowData row : rowsData )
-        {
-            x = getStartX ( parent, insets, row );
+        int y = getStartY(parent, insets);
+        for (final RowData row : rowsData) {
+            x = getStartX(parent, insets, row);
             int i = 0;
-            for ( final Component component : row.getComponents () )
-            {
-                final Dimension ps = component.getPreferredSize ();
-
-                int componentWidth = fitWidth ? Math.min ( ps.width, parentWidth ) : ps.width;
-                if ( fillWidth && i + 1 == row.getComponents ().size () && halign == LEFT )
-                {
+            for (final Component component : row.getComponents()) {
+                final Dimension ps = component.getPreferredSize();
+                
+                int componentWidth = fitWidth ? Math.min(ps.width, parentWidth)
+                        : ps.width;
+                if (fillWidth && i + 1 == row.getComponents().size()
+                        && halign == LEFT) {
                     componentWidth = insets.left + parentWidth - x;
                 }
-                component.setBounds ( x, y, componentWidth, row.getHeight () );
-
+                component.setBounds(x, y, componentWidth, row.getHeight());
+                
                 x += componentWidth + hgap;
                 i++;
             }
-            y += row.getHeight () + vgap;
+            y += row.getHeight() + vgap;
         }
     }
-
-    protected int getStartX ( final Container parent, final Insets insets, final RowData row )
-    {
+    
+    protected int getStartX(final Container parent, final Insets insets,
+            final RowData row) {
         final int x;
-        if ( fillWidth || halign == LEFT )
-        {
+        if (fillWidth || halign == LEFT) {
             x = insets.left;
-        }
-        else if ( halign == RIGHT )
-        {
-            x = parent.getWidth () - insets.right - row.getWidth ();
-        }
-        else
-        {
-            x = parent.getWidth () / 2 - row.getWidth () / 2;
+        } else if (halign == RIGHT) {
+            x = parent.getWidth() - insets.right - row.getWidth();
+        } else {
+            x = parent.getWidth() / 2 - row.getWidth() / 2;
         }
         return x;
     }
-
-    protected int getStartY ( final Container parent, final Insets insets )
-    {
+    
+    protected int getStartY(final Container parent, final Insets insets) {
         final int y;
-        if ( valign == TOP )
-        {
+        if (valign == TOP) {
             y = insets.top;
-        }
-        else if ( valign == BOTTOM )
-        {
-            y = parent.getHeight () - insets.bottom - maxHeight;
-        }
-        else
-        {
-            y = insets.top + parent.getHeight () / 2 - maxHeight / 2;
+        } else if (valign == BOTTOM) {
+            y = parent.getHeight() - insets.bottom - maxHeight;
+        } else {
+            y = insets.top + parent.getHeight() / 2 - maxHeight / 2;
         }
         return y;
     }

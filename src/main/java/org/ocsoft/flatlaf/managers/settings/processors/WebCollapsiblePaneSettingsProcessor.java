@@ -28,85 +28,76 @@ import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
  * @author Mikle Garin
  */
 
-public class WebCollapsiblePaneSettingsProcessor extends SettingsProcessor<WebCollapsiblePane, Boolean>
-{
+public class WebCollapsiblePaneSettingsProcessor extends
+        SettingsProcessor<WebCollapsiblePane, Boolean> {
     /**
      * Expand and collapse events listener.
      */
     private CollapsiblePaneAdapter collapsiblePaneAdapter;
-
+    
     /**
      * Constructs SettingsProcessor using the specified SettingsProcessorData.
      *
-     * @param data SettingsProcessorData
+     * @param data
+     *            SettingsProcessorData
      */
-    public WebCollapsiblePaneSettingsProcessor ( final SettingsProcessorData data )
-    {
-        super ( data );
+    public WebCollapsiblePaneSettingsProcessor(final SettingsProcessorData data) {
+        super(data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Boolean getDefaultValue ()
-    {
-        Boolean defaultValue = super.getDefaultValue ();
-        if ( defaultValue == null )
-        {
+    public Boolean getDefaultValue() {
+        Boolean defaultValue = super.getDefaultValue();
+        if (defaultValue == null) {
             defaultValue = true;
         }
         return defaultValue;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doInit ( final WebCollapsiblePane collapsiblePane )
-    {
-        collapsiblePaneAdapter = new CollapsiblePaneAdapter ()
-        {
+    protected void doInit(final WebCollapsiblePane collapsiblePane) {
+        collapsiblePaneAdapter = new CollapsiblePaneAdapter() {
             @Override
-            public void expanding ( final WebCollapsiblePane pane )
-            {
-                save ();
+            public void expanding(final WebCollapsiblePane pane) {
+                save();
             }
-
+            
             @Override
-            public void collapsing ( final WebCollapsiblePane pane )
-            {
-                save ();
+            public void collapsing(final WebCollapsiblePane pane) {
+                save();
             }
         };
-        collapsiblePane.addCollapsiblePaneListener ( collapsiblePaneAdapter );
+        collapsiblePane.addCollapsiblePaneListener(collapsiblePaneAdapter);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doDestroy ( final WebCollapsiblePane collapsiblePane )
-    {
-        collapsiblePane.removeCollapsiblePaneListener ( collapsiblePaneAdapter );
+    protected void doDestroy(final WebCollapsiblePane collapsiblePane) {
+        collapsiblePane.removeCollapsiblePaneListener(collapsiblePaneAdapter);
         collapsiblePaneAdapter = null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doLoad ( final WebCollapsiblePane collapsiblePane )
-    {
-        collapsiblePane.setExpanded ( loadValue () );
+    protected void doLoad(final WebCollapsiblePane collapsiblePane) {
+        collapsiblePane.setExpanded(loadValue());
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doSave ( final WebCollapsiblePane collapsiblePane )
-    {
-        saveValue ( collapsiblePane.isExpanded () );
+    protected void doSave(final WebCollapsiblePane collapsiblePane) {
+        saveValue(collapsiblePane.isExpanded());
     }
 }

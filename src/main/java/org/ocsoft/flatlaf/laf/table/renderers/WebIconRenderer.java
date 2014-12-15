@@ -23,17 +23,14 @@ import javax.swing.*;
  * User: mgarin Date: 31.10.12 Time: 16:17
  */
 
-public class WebIconRenderer extends WebTableCellRenderer.UIResource
-{
-    public WebIconRenderer ()
-    {
-        super ();
-        setHorizontalAlignment ( JLabel.CENTER );
+public class WebIconRenderer extends WebTableCellRenderer.UIResource {
+    public WebIconRenderer() {
+        super();
+        setHorizontalAlignment(JLabel.CENTER);
     }
-
+    
     @Override
-    public void setValue ( Object value )
-    {
-        setIcon ( ( value instanceof Icon ) ? ( Icon ) value : null );
+    public void setValue(Object value) {
+        setIcon((value instanceof Icon) ? (Icon) value : null);
     }
 }

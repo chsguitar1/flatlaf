@@ -32,102 +32,95 @@ import java.awt.event.FocusEvent;
  * Custom SettingsProcessor for JPasswordField component.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How to use SettingsManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How
+ *      to use SettingsManager</a>
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  * @see org.ocsoft.flatlaf.managers.settings.SettingsProcessor
  */
 
-public class JPasswordFieldSettingsProcessor extends SettingsProcessor<JPasswordField, String>
-{
+public class JPasswordFieldSettingsProcessor extends
+        SettingsProcessor<JPasswordField, String> {
     /**
      * Field action listener.
      */
     private ActionListener actionListener;
-
+    
     /**
      * Field focus loss listener.
      */
     private FocusAdapter focusAdapter;
-
+    
     /**
      * Constructs SettingsProcessor using the specified SettingsProcessorData.
      *
-     * @param data SettingsProcessorData
+     * @param data
+     *            SettingsProcessorData
      */
-    public JPasswordFieldSettingsProcessor ( final SettingsProcessorData data )
-    {
-        super ( data );
+    public JPasswordFieldSettingsProcessor(final SettingsProcessorData data) {
+        super(data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getDefaultValue ()
-    {
-        String defaultValue = super.getDefaultValue ();
-        if ( defaultValue == null )
-        {
+    public String getDefaultValue() {
+        String defaultValue = super.getDefaultValue();
+        if (defaultValue == null) {
             defaultValue = "";
         }
         return defaultValue;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doInit ( final JPasswordField passwordField )
-    {
-        actionListener = new ActionListener ()
-        {
+    protected void doInit(final JPasswordField passwordField) {
+        actionListener = new ActionListener() {
             @Override
-            public void actionPerformed ( final ActionEvent e )
-            {
-                save ();
+            public void actionPerformed(final ActionEvent e) {
+                save();
             }
         };
-        passwordField.addActionListener ( actionListener );
-
-        focusAdapter = new FocusAdapter ()
-        {
+        passwordField.addActionListener(actionListener);
+        
+        focusAdapter = new FocusAdapter() {
             @Override
-            public void focusLost ( final FocusEvent e )
-            {
-                save ();
+            public void focusLost(final FocusEvent e) {
+                save();
             }
         };
-        passwordField.addFocusListener ( focusAdapter );
+        passwordField.addFocusListener(focusAdapter);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doDestroy ( final JPasswordField passwordField )
-    {
-        passwordField.removeActionListener ( actionListener );
+    protected void doDestroy(final JPasswordField passwordField) {
+        passwordField.removeActionListener(actionListener);
         actionListener = null;
-
-        passwordField.removeFocusListener ( focusAdapter );
+        
+        passwordField.removeFocusListener(focusAdapter);
         focusAdapter = null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doLoad ( final JPasswordField passwordField )
-    {
-        passwordField.setText ( EncryptionUtils.decrypt ( loadValue () ) );
+    protected void doLoad(final JPasswordField passwordField) {
+        passwordField.setText(EncryptionUtils.decrypt(loadValue()));
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doSave ( final JPasswordField passwordField )
-    {
-        saveValue ( EncryptionUtils.encrypt ( new String ( passwordField.getPassword () ) ) );
+    protected void doSave(final JPasswordField passwordField) {
+        saveValue(EncryptionUtils.encrypt(new String(passwordField
+                .getPassword())));
     }
 }

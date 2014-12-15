@@ -27,142 +27,135 @@ import org.ocsoft.flatlaf.laf.label.WebLabel;
  * @author Mikle Garin
  */
 
-public class WebTreeElement extends WebLabel
-{
+public class WebTreeElement extends WebLabel {
     /**
      * Constructs default tree cell renderer element.
      */
-    public WebTreeElement ()
-    {
-        super ();
-        setOpaque ( false );
+    public WebTreeElement() {
+        super();
+        setOpaque(false);
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void validate ()
-    {
+    public void validate() {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void invalidate ()
-    {
+    public void invalidate() {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void revalidate ()
-    {
+    public void revalidate() {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void repaint ( final long tm, final int x, final int y, final int width, final int height )
-    {
+    public void repaint(final long tm, final int x, final int y,
+            final int width, final int height) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void repaint ( final Rectangle r )
-    {
+    public void repaint(final Rectangle r) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void repaint ()
-    {
+    public void repaint() {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    protected void firePropertyChange ( final String propertyName, final Object oldValue, final Object newValue )
-    {
+    protected void firePropertyChange(final String propertyName,
+            final Object oldValue, final Object newValue) {
         // Strings get interned
         // noinspection StringEquality
-        if ( propertyName == "text" || ( ( propertyName == "font" || propertyName == "foreground" ) && oldValue != newValue &&
-                getClientProperty ( javax.swing.plaf.basic.BasicHTML.propertyKey ) != null ) )
-        {
-
-            super.firePropertyChange ( propertyName, oldValue, newValue );
+        if (propertyName == "text"
+                || ((propertyName == "font" || propertyName == "foreground")
+                        && oldValue != newValue && getClientProperty(javax.swing.plaf.basic.BasicHTML.propertyKey) != null)) {
+            
+            super.firePropertyChange(propertyName, oldValue, newValue);
         }
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( final String propertyName, final byte oldValue, final byte newValue )
-    {
+    public void firePropertyChange(final String propertyName,
+            final byte oldValue, final byte newValue) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( final String propertyName, final char oldValue, final char newValue )
-    {
+    public void firePropertyChange(final String propertyName,
+            final char oldValue, final char newValue) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( final String propertyName, final short oldValue, final short newValue )
-    {
+    public void firePropertyChange(final String propertyName,
+            final short oldValue, final short newValue) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( final String propertyName, final int oldValue, final int newValue )
-    {
+    public void firePropertyChange(final String propertyName,
+            final int oldValue, final int newValue) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( final String propertyName, final long oldValue, final long newValue )
-    {
+    public void firePropertyChange(final String propertyName,
+            final long oldValue, final long newValue) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( final String propertyName, final float oldValue, final float newValue )
-    {
+    public void firePropertyChange(final String propertyName,
+            final float oldValue, final float newValue) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( final String propertyName, final double oldValue, final double newValue )
-    {
+    public void firePropertyChange(final String propertyName,
+            final double oldValue, final double newValue) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( final String propertyName, final boolean oldValue, final boolean newValue )
-    {
+    public void firePropertyChange(final String propertyName,
+            final boolean oldValue, final boolean newValue) {
     }
 }

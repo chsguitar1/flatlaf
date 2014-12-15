@@ -25,24 +25,22 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public final class WebPopupMenuSeparatorStyle
-{
+public final class WebPopupMenuSeparatorStyle {
     /**
      * Separator color.
      */
-    public static Color color = new Color ( 220, 220, 220 );
-
+    public static Color color = new Color(220, 220, 220);
+    
     /**
-     * Separator stroke.
-     * Set to null to use default stroke.
+     * Separator stroke. Set to null to use default stroke.
      */
     public static Stroke stroke = null;
-
+    
     /**
      * Spacing between separator and menu items.
      */
     public static int spacing = 5;
-
+    
     /**
      * Spacing between separator and popup menu border.
      */

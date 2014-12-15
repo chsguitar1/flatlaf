@@ -33,8 +33,8 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class NPScrollBarPainter<E extends JScrollBar> extends WebScrollBarPainter<E>
-{
+public class NPScrollBarPainter<E extends JScrollBar> extends
+        WebScrollBarPainter<E> {
     /**
      * Used 9-patch icons.
      */
@@ -52,473 +52,448 @@ public class NPScrollBarPainter<E extends JScrollBar> extends WebScrollBarPainte
     protected NinePatchIcon vThumbIcon = null;
     protected NinePatchIcon vFocusedThumbIcon = null;
     protected NinePatchIcon vPressedThumbIcon = null;
-
+    
     /**
      * Runtime variables.
      */
     protected FocusTracker focusTracker;
     protected boolean focused = false;
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void install ( final E c )
-    {
-        super.install ( c );
-
+    public void install(final E c) {
+        super.install(c);
+        
         // Disable animation for this painter
         animated = false;
-
+        
         // Installing FocusTracker to keep an eye on focused state
-        focusTracker = new DefaultFocusTracker ()
-        {
+        focusTracker = new DefaultFocusTracker() {
             @Override
-            public void focusChanged ( final boolean focused )
-            {
+            public void focusChanged(final boolean focused) {
                 NPScrollBarPainter.this.focused = focused;
-                repaint ();
+                repaint();
             }
         };
-        FocusManager.addFocusTracker ( c, focusTracker );
+        FocusManager.addFocusTracker(c, focusTracker);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void uninstall ( final E c )
-    {
+    public void uninstall(final E c) {
         // Removing FocusTracker
-        FocusManager.removeFocusTracker ( focusTracker );
+        FocusManager.removeFocusTracker(focusTracker);
         focusTracker = null;
-
-        super.uninstall ( c );
+        
+        super.uninstall(c);
     }
-
+    
     /**
-     * Returns horizontal scroll bar background icon.
-     * It is painted within scroll bar bounds.
+     * Returns horizontal scroll bar background icon. It is painted within
+     * scroll bar bounds.
      *
      * @return horizontal scroll bar background icon
      */
-    public NinePatchIcon getHBackgroundIcon ()
-    {
+    public NinePatchIcon getHBackgroundIcon() {
         return hBackgroundIcon;
     }
-
+    
     /**
-     * Sets horizontal scroll bar background icon.
-     * It is painted within scroll bar bounds.
+     * Sets horizontal scroll bar background icon. It is painted within scroll
+     * bar bounds.
      *
-     * @param icon horizontal scroll bar background icon
+     * @param icon
+     *            horizontal scroll bar background icon
      */
-    public void setHBackgroundIcon ( final NinePatchIcon icon )
-    {
+    public void setHBackgroundIcon(final NinePatchIcon icon) {
         this.hBackgroundIcon = icon;
     }
-
+    
     /**
-     * Returns horizontal scroll bar focused background icon.
-     * It is painted within scroll bar bounds when it is focused.
-     * If set to {@code null} hBackgroundIcon is painted instead.
+     * Returns horizontal scroll bar focused background icon. It is painted
+     * within scroll bar bounds when it is focused. If set to {@code null}
+     * hBackgroundIcon is painted instead.
      *
      * @return horizontal scroll bar focused background icon
      */
-    public NinePatchIcon getHFocusedBackgroundIcon ()
-    {
+    public NinePatchIcon getHFocusedBackgroundIcon() {
         return hFocusedBackgroundIcon;
     }
-
+    
     /**
-     * Sets horizontal scroll bar focused background icon.
-     * It is painted within scroll bar bounds when it is focused.
-     * If set to {@code null} hBackgroundIcon is painted instead.
+     * Sets horizontal scroll bar focused background icon. It is painted within
+     * scroll bar bounds when it is focused. If set to {@code null}
+     * hBackgroundIcon is painted instead.
      *
-     * @param icon horizontal scroll bar focused background icon
+     * @param icon
+     *            horizontal scroll bar focused background icon
      */
-    public void setHFocusedBackgroundIcon ( final NinePatchIcon icon )
-    {
+    public void setHFocusedBackgroundIcon(final NinePatchIcon icon) {
         this.hFocusedBackgroundIcon = icon;
     }
-
+    
     /**
-     * Returns horizontal scroll bar track background icon.
-     * It is painted within scroll bar track bounds provided by the UI.
+     * Returns horizontal scroll bar track background icon. It is painted within
+     * scroll bar track bounds provided by the UI.
      *
      * @return horizontal scroll bar track background icon
      */
-    public NinePatchIcon getHTrackIcon ()
-    {
+    public NinePatchIcon getHTrackIcon() {
         return hTrackIcon;
     }
-
+    
     /**
-     * Sets horizontal scroll bar track background icon.
-     * It is painted within scroll bar track bounds provided by the UI.
+     * Sets horizontal scroll bar track background icon. It is painted within
+     * scroll bar track bounds provided by the UI.
      *
-     * @param icon horizontal scroll bar track background icon
+     * @param icon
+     *            horizontal scroll bar track background icon
      */
-    public void setHTrackIcon ( final NinePatchIcon icon )
-    {
+    public void setHTrackIcon(final NinePatchIcon icon) {
         this.hTrackIcon = icon;
     }
-
+    
     /**
-     * Returns horizontal scroll bar focused track background icon.
-     * It is painted within scroll bar track bounds provided by the UI.
-     * If set to {@code null} hTrackIcon is painted instead.
+     * Returns horizontal scroll bar focused track background icon. It is
+     * painted within scroll bar track bounds provided by the UI. If set to
+     * {@code null} hTrackIcon is painted instead.
      *
      * @return horizontal scroll bar focused track background icon
      */
-    public NinePatchIcon getHFocusedTrackIcon ()
-    {
+    public NinePatchIcon getHFocusedTrackIcon() {
         return hFocusedTrackIcon;
     }
-
+    
     /**
-     * Sets horizontal scroll bar focused track background icon.
-     * It is painted within scroll bar track bounds provided by the UI.
-     * If set to {@code null} hTrackIcon is painted instead.
+     * Sets horizontal scroll bar focused track background icon. It is painted
+     * within scroll bar track bounds provided by the UI. If set to {@code null}
+     * hTrackIcon is painted instead.
      *
-     * @param icon horizontal scroll bar focused track background icon
+     * @param icon
+     *            horizontal scroll bar focused track background icon
      */
-    public void setHFocusedTrackIcon ( final NinePatchIcon icon )
-    {
+    public void setHFocusedTrackIcon(final NinePatchIcon icon) {
         this.hFocusedTrackIcon = icon;
     }
-
+    
     /**
-     * Returns horizontal scroll bar thumb icon.
-     * It is painted within scroll bar thumb bounds provided by the UI.
+     * Returns horizontal scroll bar thumb icon. It is painted within scroll bar
+     * thumb bounds provided by the UI.
      *
      * @return horizontal scroll bar thumb icon
      */
-    public NinePatchIcon getHThumbIcon ()
-    {
+    public NinePatchIcon getHThumbIcon() {
         return hThumbIcon;
     }
-
+    
     /**
-     * Sets horizontal scroll bar thumb icon.
-     * It is painted within scroll bar thumb bounds provided by the UI.
+     * Sets horizontal scroll bar thumb icon. It is painted within scroll bar
+     * thumb bounds provided by the UI.
      *
-     * @param icon horizontal scroll bar thumb icon
+     * @param icon
+     *            horizontal scroll bar thumb icon
      */
-    public void setHThumbIcon ( final NinePatchIcon icon )
-    {
+    public void setHThumbIcon(final NinePatchIcon icon) {
         this.hThumbIcon = icon;
     }
-
+    
     /**
-     * Returns horizontal scroll bar focused thumb icon.
-     * It is painted within scroll bar thumb bounds provided by the UI.
-     * If set to {@code null} hThumbIcon is painted instead.
+     * Returns horizontal scroll bar focused thumb icon. It is painted within
+     * scroll bar thumb bounds provided by the UI. If set to {@code null}
+     * hThumbIcon is painted instead.
      *
      * @return horizontal scroll bar focused thumb icon
      */
-    public NinePatchIcon getHFocusedThumbIcon ()
-    {
+    public NinePatchIcon getHFocusedThumbIcon() {
         return hFocusedThumbIcon;
     }
-
+    
     /**
-     * Sets horizontal scroll bar focused thumb icon.
-     * It is painted within scroll bar thumb bounds provided by the UI.
-     * If set to {@code null} hThumbIcon is painted instead.
+     * Sets horizontal scroll bar focused thumb icon. It is painted within
+     * scroll bar thumb bounds provided by the UI. If set to {@code null}
+     * hThumbIcon is painted instead.
      *
-     * @param icon horizontal scroll bar focused thumb icon
+     * @param icon
+     *            horizontal scroll bar focused thumb icon
      */
-    public void setHFocusedThumbIcon ( final NinePatchIcon icon )
-    {
+    public void setHFocusedThumbIcon(final NinePatchIcon icon) {
         this.hFocusedThumbIcon = icon;
     }
-
+    
     /**
-     * Returns horizontal scroll bar pressed thumb icon.
-     * It is painted within scroll bar thumb bounds provided by the UI.
-     * If set to {@code null} hFocusedThumbIcon or hThumbIcon are painted instead.
+     * Returns horizontal scroll bar pressed thumb icon. It is painted within
+     * scroll bar thumb bounds provided by the UI. If set to {@code null}
+     * hFocusedThumbIcon or hThumbIcon are painted instead.
      *
      * @return horizontal scroll bar pressed thumb icon
      */
-    public NinePatchIcon getHPressedThumbIcon ()
-    {
+    public NinePatchIcon getHPressedThumbIcon() {
         return hPressedThumbIcon;
     }
-
+    
     /**
-     * Sets horizontal scroll bar pressed thumb icon.
-     * It is painted within scroll bar thumb bounds provided by the UI.
-     * If set to {@code null} hFocusedThumbIcon or hThumbIcon are painted instead.
+     * Sets horizontal scroll bar pressed thumb icon. It is painted within
+     * scroll bar thumb bounds provided by the UI. If set to {@code null}
+     * hFocusedThumbIcon or hThumbIcon are painted instead.
      *
-     * @param icon horizontal scroll bar pressed thumb icon
+     * @param icon
+     *            horizontal scroll bar pressed thumb icon
      */
-    public void setHPressedThumbIcon ( final NinePatchIcon icon )
-    {
+    public void setHPressedThumbIcon(final NinePatchIcon icon) {
         this.hPressedThumbIcon = icon;
     }
-
+    
     /**
-     * Returns vertical scroll bar background icon.
-     * It is painted within scroll bar bounds.
+     * Returns vertical scroll bar background icon. It is painted within scroll
+     * bar bounds.
      *
      * @return vertical scroll bar background icon
      */
-    public NinePatchIcon getVBackgroundIcon ()
-    {
+    public NinePatchIcon getVBackgroundIcon() {
         return vBackgroundIcon;
     }
-
+    
     /**
-     * Sets vertical scroll bar background icon.
-     * It is painted within scroll bar bounds.
+     * Sets vertical scroll bar background icon. It is painted within scroll bar
+     * bounds.
      *
-     * @param icon vertical scroll bar background icon
+     * @param icon
+     *            vertical scroll bar background icon
      */
-    public void setVBackgroundIcon ( final NinePatchIcon icon )
-    {
+    public void setVBackgroundIcon(final NinePatchIcon icon) {
         this.vBackgroundIcon = icon;
     }
-
+    
     /**
-     * Returns vertical scroll bar focused background icon.
-     * It is painted within scroll bar bounds when it is focused.
-     * If set to {@code null} vBackgroundIcon is painted instead.
+     * Returns vertical scroll bar focused background icon. It is painted within
+     * scroll bar bounds when it is focused. If set to {@code null}
+     * vBackgroundIcon is painted instead.
      *
      * @return vertical scroll bar focused background icon
      */
-    public NinePatchIcon getVFocusedBackgroundIcon ()
-    {
+    public NinePatchIcon getVFocusedBackgroundIcon() {
         return vFocusedBackgroundIcon;
     }
-
+    
     /**
-     * Sets vertical scroll bar focused background icon.
-     * It is painted within scroll bar bounds when it is focused.
-     * If set to {@code null} vBackgroundIcon is painted instead.
+     * Sets vertical scroll bar focused background icon. It is painted within
+     * scroll bar bounds when it is focused. If set to {@code null}
+     * vBackgroundIcon is painted instead.
      *
-     * @param icon vertical scroll bar focused background icon
+     * @param icon
+     *            vertical scroll bar focused background icon
      */
-    public void setVFocusedBackgroundIcon ( final NinePatchIcon icon )
-    {
+    public void setVFocusedBackgroundIcon(final NinePatchIcon icon) {
         this.vFocusedBackgroundIcon = icon;
     }
-
+    
     /**
-     * Returns vertical scroll bar track background icon.
-     * It is painted within scroll bar track bounds provided by the UI.
+     * Returns vertical scroll bar track background icon. It is painted within
+     * scroll bar track bounds provided by the UI.
      *
      * @return vertical scroll bar track background icon
      */
-    public NinePatchIcon getVTrackIcon ()
-    {
+    public NinePatchIcon getVTrackIcon() {
         return vTrackIcon;
     }
-
+    
     /**
-     * Sets vertical scroll bar track background icon.
-     * It is painted within scroll bar track bounds provided by the UI.
+     * Sets vertical scroll bar track background icon. It is painted within
+     * scroll bar track bounds provided by the UI.
      *
-     * @param icon vertical scroll bar track background icon
+     * @param icon
+     *            vertical scroll bar track background icon
      */
-    public void setVTrackIcon ( final NinePatchIcon icon )
-    {
+    public void setVTrackIcon(final NinePatchIcon icon) {
         this.vTrackIcon = icon;
     }
-
+    
     /**
-     * Returns vertical scroll bar focused track background icon.
-     * It is painted within scroll bar track bounds provided by the UI.
-     * If set to {@code null} vTrackIcon is painted instead.
+     * Returns vertical scroll bar focused track background icon. It is painted
+     * within scroll bar track bounds provided by the UI. If set to {@code null}
+     * vTrackIcon is painted instead.
      *
      * @return vertical scroll bar focused track background icon
      */
-    public NinePatchIcon getVFocusedTrackIcon ()
-    {
+    public NinePatchIcon getVFocusedTrackIcon() {
         return vFocusedTrackIcon;
     }
-
+    
     /**
-     * Sets vertical scroll bar focused track background icon.
-     * It is painted within scroll bar track bounds provided by the UI.
-     * If set to {@code null} vTrackIcon is painted instead.
+     * Sets vertical scroll bar focused track background icon. It is painted
+     * within scroll bar track bounds provided by the UI. If set to {@code null}
+     * vTrackIcon is painted instead.
      *
-     * @param icon vertical scroll bar focused track background icon
+     * @param icon
+     *            vertical scroll bar focused track background icon
      */
-    public void setVFocusedTrackIcon ( final NinePatchIcon icon )
-    {
+    public void setVFocusedTrackIcon(final NinePatchIcon icon) {
         this.vFocusedTrackIcon = icon;
     }
-
+    
     /**
-     * Returns vertical scroll bar thumb icon.
-     * It is painted within scroll bar thumb bounds provided by the UI.
+     * Returns vertical scroll bar thumb icon. It is painted within scroll bar
+     * thumb bounds provided by the UI.
      *
      * @return vertical scroll bar thumb icon
      */
-    public NinePatchIcon getVThumbIcon ()
-    {
+    public NinePatchIcon getVThumbIcon() {
         return vThumbIcon;
     }
-
+    
     /**
-     * Sets vertical scroll bar thumb icon.
-     * It is painted within scroll bar thumb bounds provided by the UI.
+     * Sets vertical scroll bar thumb icon. It is painted within scroll bar
+     * thumb bounds provided by the UI.
      *
-     * @param icon vertical scroll bar thumb icon
+     * @param icon
+     *            vertical scroll bar thumb icon
      */
-    public void setVThumbIcon ( final NinePatchIcon icon )
-    {
+    public void setVThumbIcon(final NinePatchIcon icon) {
         this.vThumbIcon = icon;
     }
-
+    
     /**
-     * Returns vertical scroll bar focused thumb icon.
-     * It is painted within scroll bar thumb bounds provided by the UI.
-     * If set to {@code null} vThumbIcon is painted instead.
+     * Returns vertical scroll bar focused thumb icon. It is painted within
+     * scroll bar thumb bounds provided by the UI. If set to {@code null}
+     * vThumbIcon is painted instead.
      *
      * @return vertical scroll bar focused thumb icon
      */
-    public NinePatchIcon getVFocusedThumbIcon ()
-    {
+    public NinePatchIcon getVFocusedThumbIcon() {
         return vFocusedThumbIcon;
     }
-
+    
     /**
-     * Sets vertical scroll bar focused thumb icon.
-     * It is painted within scroll bar thumb bounds provided by the UI.
-     * If set to {@code null} vThumbIcon is painted instead.
+     * Sets vertical scroll bar focused thumb icon. It is painted within scroll
+     * bar thumb bounds provided by the UI. If set to {@code null} vThumbIcon is
+     * painted instead.
      *
-     * @param icon vertical scroll bar focused thumb icon
+     * @param icon
+     *            vertical scroll bar focused thumb icon
      */
-    public void setVFocusedThumbIcon ( final NinePatchIcon icon )
-    {
+    public void setVFocusedThumbIcon(final NinePatchIcon icon) {
         this.vFocusedThumbIcon = icon;
     }
-
+    
     /**
-     * Returns vertical scroll bar pressed thumb icon.
-     * It is painted within scroll bar thumb bounds provided by the UI.
-     * If set to {@code null} vFocusedThumbIcon or vThumbIcon are painted instead.
+     * Returns vertical scroll bar pressed thumb icon. It is painted within
+     * scroll bar thumb bounds provided by the UI. If set to {@code null}
+     * vFocusedThumbIcon or vThumbIcon are painted instead.
      *
      * @return vertical scroll bar pressed thumb icon
      */
-    public NinePatchIcon getVPressedThumbIcon ()
-    {
+    public NinePatchIcon getVPressedThumbIcon() {
         return vPressedThumbIcon;
     }
-
+    
     /**
-     * Sets vertical scroll bar pressed thumb icon.
-     * It is painted within scroll bar thumb bounds provided by the UI.
-     * If set to {@code null} vFocusedThumbIcon or vThumbIcon are painted instead.
+     * Sets vertical scroll bar pressed thumb icon. It is painted within scroll
+     * bar thumb bounds provided by the UI. If set to {@code null}
+     * vFocusedThumbIcon or vThumbIcon are painted instead.
      *
-     * @param icon vertical scroll bar pressed thumb icon
+     * @param icon
+     *            vertical scroll bar pressed thumb icon
      */
-    public void setVPressedThumbIcon ( final NinePatchIcon icon )
-    {
+    public void setVPressedThumbIcon(final NinePatchIcon icon) {
         this.vPressedThumbIcon = icon;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void paintBackground ( final Graphics2D g2d, final E scrollbar, final Rectangle b )
-    {
-        if ( paintTrack )
-        {
-            final NinePatchIcon backgroundIcon = getCurrentBackgroundIcon ( scrollbar );
-            if ( backgroundIcon != null )
-            {
-                backgroundIcon.paintIcon ( g2d, b );
+    protected void paintBackground(final Graphics2D g2d, final E scrollbar,
+            final Rectangle b) {
+        if (paintTrack) {
+            final NinePatchIcon backgroundIcon = getCurrentBackgroundIcon(scrollbar);
+            if (backgroundIcon != null) {
+                backgroundIcon.paintIcon(g2d, b);
             }
         }
     }
-
+    
     /**
      * Returns background 9-patch icon that should be painted right now.
      *
-     * @param scrollbar painted scrollbar
+     * @param scrollbar
+     *            painted scrollbar
      * @return background 9-patch icon that should be painted right now
      */
-    protected NinePatchIcon getCurrentBackgroundIcon ( final E scrollbar )
-    {
-        if ( scrollbar.getOrientation () == JScrollBar.HORIZONTAL )
-        {
-            return focused && hFocusedBackgroundIcon != null ? hFocusedBackgroundIcon : hBackgroundIcon;
-        }
-        else
-        {
-            return focused && vFocusedBackgroundIcon != null ? vFocusedBackgroundIcon : vBackgroundIcon;
+    protected NinePatchIcon getCurrentBackgroundIcon(final E scrollbar) {
+        if (scrollbar.getOrientation() == JScrollBar.HORIZONTAL) {
+            return focused && hFocusedBackgroundIcon != null ? hFocusedBackgroundIcon
+                    : hBackgroundIcon;
+        } else {
+            return focused && vFocusedBackgroundIcon != null ? vFocusedBackgroundIcon
+                    : vBackgroundIcon;
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void paintTrack ( final Graphics2D g2d, final E scrollbar, final Rectangle b )
-    {
-        if ( paintTrack )
-        {
-            final NinePatchIcon backgroundIcon = getCurrentTrackIcon ( scrollbar );
-            if ( backgroundIcon != null )
-            {
-                backgroundIcon.paintIcon ( g2d, b );
+    protected void paintTrack(final Graphics2D g2d, final E scrollbar,
+            final Rectangle b) {
+        if (paintTrack) {
+            final NinePatchIcon backgroundIcon = getCurrentTrackIcon(scrollbar);
+            if (backgroundIcon != null) {
+                backgroundIcon.paintIcon(g2d, b);
             }
         }
     }
-
+    
     /**
      * Returns track 9-patch icon that should be painted right now.
      *
-     * @param scrollbar painted scrollbar
+     * @param scrollbar
+     *            painted scrollbar
      * @return track 9-patch icon that should be painted right now
      */
-    protected NinePatchIcon getCurrentTrackIcon ( final E scrollbar )
-    {
-        if ( scrollbar.getOrientation () == JScrollBar.HORIZONTAL )
-        {
-            return focused && hFocusedTrackIcon != null ? hFocusedTrackIcon : hTrackIcon;
-        }
-        else
-        {
-            return focused && vFocusedTrackIcon != null ? vFocusedTrackIcon : vTrackIcon;
+    protected NinePatchIcon getCurrentTrackIcon(final E scrollbar) {
+        if (scrollbar.getOrientation() == JScrollBar.HORIZONTAL) {
+            return focused && hFocusedTrackIcon != null ? hFocusedTrackIcon
+                    : hTrackIcon;
+        } else {
+            return focused && vFocusedTrackIcon != null ? vFocusedTrackIcon
+                    : vTrackIcon;
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void paintThumb ( final Graphics2D g2d, final E scrollbar, final Rectangle b )
-    {
-        final NinePatchIcon thumbIcon = getCurrentThumbIcon ( scrollbar );
-        if ( thumbIcon != null )
-        {
-            final Insets m = getCurrentThumbMargin ( scrollbar );
-            thumbIcon.paintIcon ( g2d, b.x + m.left, b.y + m.top, b.width - m.left - m.right, b.height - m.top - m.bottom );
+    protected void paintThumb(final Graphics2D g2d, final E scrollbar,
+            final Rectangle b) {
+        final NinePatchIcon thumbIcon = getCurrentThumbIcon(scrollbar);
+        if (thumbIcon != null) {
+            final Insets m = getCurrentThumbMargin(scrollbar);
+            thumbIcon.paintIcon(g2d, b.x + m.left, b.y + m.top, b.width
+                    - m.left - m.right, b.height - m.top - m.bottom);
         }
     }
-
+    
     /**
      * Returns thumb 9-patch icon that should be painted right now.
      *
-     * @param scrollbar painted scrollbar
+     * @param scrollbar
+     *            painted scrollbar
      * @return thumb 9-patch icon that should be painted right now
      */
-    protected NinePatchIcon getCurrentThumbIcon ( final E scrollbar )
-    {
-        if ( scrollbar.getOrientation () == JScrollBar.HORIZONTAL )
-        {
-            return ( pressed || dragged ) && hPressedThumbIcon != null ? hPressedThumbIcon :
-                    ( focused && hFocusedBackgroundIcon != null ? hFocusedThumbIcon : hThumbIcon );
-        }
-        else
-        {
-            return ( pressed || dragged ) && vPressedThumbIcon != null ? vPressedThumbIcon :
-                    ( focused && vFocusedBackgroundIcon != null ? vFocusedThumbIcon : vThumbIcon );
+    protected NinePatchIcon getCurrentThumbIcon(final E scrollbar) {
+        if (scrollbar.getOrientation() == JScrollBar.HORIZONTAL) {
+            return (pressed || dragged) && hPressedThumbIcon != null ? hPressedThumbIcon
+                    : (focused && hFocusedBackgroundIcon != null ? hFocusedThumbIcon
+                            : hThumbIcon);
+        } else {
+            return (pressed || dragged) && vPressedThumbIcon != null ? vPressedThumbIcon
+                    : (focused && vFocusedBackgroundIcon != null ? vFocusedThumbIcon
+                            : vThumbIcon);
         }
     }
 }

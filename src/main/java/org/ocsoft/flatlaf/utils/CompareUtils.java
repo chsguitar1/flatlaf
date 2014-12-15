@@ -25,35 +25,39 @@ import java.util.List;
  * @author Mikle Garin
  */
 
-public final class CompareUtils
-{
+public final class CompareUtils {
     /**
-     * Returns whether the first Object equals to the second Object or not.
-     * This method will compare two objects even if they are null without throwing any exceptions.
-     * This method should not be called from any method that overrides object default "equals" method.
+     * Returns whether the first Object equals to the second Object or not. This
+     * method will compare two objects even if they are null without throwing
+     * any exceptions. This method should not be called from any method that
+     * overrides object default "equals" method.
      *
-     * @param o1 first Object
-     * @param o2 second Object
-     * @return true if the first Object equals to the second Object, false otherwise
+     * @param o1
+     *            first Object
+     * @param o2
+     *            second Object
+     * @return true if the first Object equals to the second Object, false
+     *         otherwise
      */
-    public static boolean equals ( final Object o1, final Object o2 )
-    {
-        return o1 == null && o2 == null || o1 != null && o2 != null && o1.equals ( o2 );
+    public static boolean equals(final Object o1, final Object o2) {
+        return o1 == null && o2 == null || o1 != null && o2 != null
+                && o1.equals(o2);
     }
-
+    
     /**
-     * Returns whether text contains any of the tokens from the specified list or not.
+     * Returns whether text contains any of the tokens from the specified list
+     * or not.
      *
-     * @param text   text to look for tokens
-     * @param tokens tokens list
-     * @return true if text contains any of the tokens from the specified list, false otherwise
+     * @param text
+     *            text to look for tokens
+     * @param tokens
+     *            tokens list
+     * @return true if text contains any of the tokens from the specified list,
+     *         false otherwise
      */
-    public static boolean contains ( final String text, final List<String> tokens )
-    {
-        for ( final String token : tokens )
-        {
-            if ( text.contains ( token ) )
-            {
+    public static boolean contains(final String text, final List<String> tokens) {
+        for (final String token : tokens) {
+            if (text.contains(token)) {
                 return true;
             }
         }

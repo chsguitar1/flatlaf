@@ -30,66 +30,67 @@ import java.util.Map;
 /**
  * Titled border painter.
  *
- * @param <E> component type
+ * @param <E>
+ *            component type
  * @author Mikle Garin
  * @see BorderPainter
  * @see AbstractPainter
  * @see Painter
  */
 
-public class TitledBorderPainter<E extends JComponent> extends BorderPainter<E> implements SwingConstants
-{
+public class TitledBorderPainter<E extends JComponent> extends BorderPainter<E>
+        implements SwingConstants {
     /**
-     * todo 1. Left/Right title position
-     * todo 2. Icon for title text
-     * todo 3. Take title position into account when calculating preferred size &amp; border
+     * todo 1. Left/Right title position todo 2. Icon for title text todo 3.
+     * Take title position into account when calculating preferred size &amp;
+     * border
      */
-
+    
     /**
      * Title side offset.
      */
     protected int titleOffset = 4;
-
+    
     /**
      * Gap between title and border line.
      */
     protected int titleBorderGap = 3;
-
+    
     /**
      * Title position relative to border.
      */
     protected TitlePosition titlePosition = TitlePosition.onLine;
-
+    
     /**
      * Title foreground.
      */
     protected Color foreground = null;
-
+    
     /**
      * Painter background.
      */
     protected Color background = null;
-
+    
     /**
      * Whether to clip background under the title or not.
      */
     protected boolean clipTitleBackground = true;
-
+    
     /**
      * Title text alignment.
      */
     protected int titleAlignment;
-
+    
     /**
      * Title text display side.
      */
     protected int titleSide;
-
+    
     /**
      * Title text.
      */
     protected String titleText;
-
+    
     /**
      * Runtime variables.
      */
@@ -105,416 +106,347 @@ public class TitledBorderPainter<E extends JComponent> extends BorderPainter<E> 
     protected double borderPosition;
     protected Shape borderShape;
     protected boolean doClip;
-
-    public TitledBorderPainter ()
-    {
-        this ( null );
+    
+    public TitledBorderPainter() {
+        this(null);
     }
-
-    public TitledBorderPainter ( final String titleText )
-    {
-        this ( titleText, LEADING );
+    
+    public TitledBorderPainter(final String titleText) {
+        this(titleText, LEADING);
     }
-
-    public TitledBorderPainter ( final String titleText, final int titleAlignment )
-    {
-        this ( titleText, titleAlignment, TOP );
+    
+    public TitledBorderPainter(final String titleText, final int titleAlignment) {
+        this(titleText, titleAlignment, TOP);
     }
-
-    public TitledBorderPainter ( final String titleText, final int titleAlignment, final int titleSide )
-    {
-        super ();
+    
+    public TitledBorderPainter(final String titleText,
+            final int titleAlignment, final int titleSide) {
+        super();
         this.titleText = titleText;
         this.titleAlignment = titleAlignment;
         this.titleSide = titleSide;
     }
-
-    public int getTitleOffset ()
-    {
+    
+    public int getTitleOffset() {
         return titleOffset;
     }
-
-    public void setTitleOffset ( final int titleOffset )
-    {
+    
+    public void setTitleOffset(final int titleOffset) {
         this.titleOffset = titleOffset;
-        updateAll ();
+        updateAll();
     }
-
-    public int getTitleBorderGap ()
-    {
+    
+    public int getTitleBorderGap() {
         return titleBorderGap;
     }
-
-    public void setTitleBorderGap ( final int titleBorderGap )
-    {
+    
+    public void setTitleBorderGap(final int titleBorderGap) {
         this.titleBorderGap = titleBorderGap;
-        updateAll ();
+        updateAll();
     }
-
-    public int getTitleSide ()
-    {
+    
+    public int getTitleSide() {
         return titleSide;
     }
-
-    public void setTitleSide ( final int titleSide )
-    {
+    
+    public void setTitleSide(final int titleSide) {
         this.titleSide = titleSide;
-        updateAll ();
+        updateAll();
     }
-
-    public int getTitleAlignment ()
-    {
+    
+    public int getTitleAlignment() {
         return titleAlignment;
     }
-
-    public void setTitleAlignment ( final int titleAlignment )
-    {
+    
+    public void setTitleAlignment(final int titleAlignment) {
         this.titleAlignment = titleAlignment;
-        repaint ();
+        repaint();
     }
-
-    public TitlePosition getTitlePosition ()
-    {
+    
+    public TitlePosition getTitlePosition() {
         return titlePosition;
     }
-
-    public void setTitlePosition ( final TitlePosition titlePosition )
-    {
+    
+    public void setTitlePosition(final TitlePosition titlePosition) {
         this.titlePosition = titlePosition;
-        repaint ();
+        repaint();
     }
-
-    public Color getForeground ()
-    {
+    
+    public Color getForeground() {
         return foreground;
     }
-
-    public void setForeground ( final Color foreground )
-    {
+    
+    public void setForeground(final Color foreground) {
         this.foreground = foreground;
-        repaint ();
+        repaint();
     }
-
-    public Color getBackground ()
-    {
+    
+    public Color getBackground() {
         return background;
     }
-
-    public void setBackground ( final Color background )
-    {
+    
+    public void setBackground(final Color background) {
         this.background = background;
-        repaint ();
+        repaint();
     }
-
-    public boolean isClipTitleBackground ()
-    {
+    
+    public boolean isClipTitleBackground() {
         return clipTitleBackground;
     }
-
-    public void setClipTitleBackground ( final boolean clipTitleBackground )
-    {
+    
+    public void setClipTitleBackground(final boolean clipTitleBackground) {
         this.clipTitleBackground = clipTitleBackground;
-        repaint ();
+        repaint();
     }
-
-    public String getTitleText ()
-    {
+    
+    public String getTitleText() {
         return titleText;
     }
-
-    public void setTitleText ( final String titleText )
-    {
+    
+    public void setTitleText(final String titleText) {
         this.titleText = titleText;
-        updateAll ();
+        updateAll();
     }
-
+    
     @Override
-    public Insets getMargin ( final E c )
-    {
-        final Insets m = super.getMargin ( c );
-        if ( !isEmptyTitle () )
-        {
-            switch ( titleSide )
-            {
-                case TOP:
-                {
-                    m.top += getTitleAreaHeight ( c );
-                    break;
-                }
-                case LEFT:
-                {
-                    m.left += getTitleAreaHeight ( c );
-                    break;
-                }
-                case BOTTOM:
-                {
-                    m.bottom += getTitleAreaHeight ( c );
-                    break;
-                }
-                case RIGHT:
-                {
-                    m.right += getTitleAreaHeight ( c );
-                    break;
-                }
+    public Insets getMargin(final E c) {
+        final Insets m = super.getMargin(c);
+        if (!isEmptyTitle()) {
+            switch (titleSide) {
+            case TOP: {
+                m.top += getTitleAreaHeight(c);
+                break;
+            }
+            case LEFT: {
+                m.left += getTitleAreaHeight(c);
+                break;
+            }
+            case BOTTOM: {
+                m.bottom += getTitleAreaHeight(c);
+                break;
+            }
+            case RIGHT: {
+                m.right += getTitleAreaHeight(c);
+                break;
+            }
             }
         }
         return m;
     }
-
+    
     @Override
-    public Dimension getPreferredSize ( final E c )
-    {
-        if ( isEmptyTitle () )
-        {
-            return super.getPreferredSize ( c );
-        }
-        else
-        {
-            final int titleAreaHeight = getTitleAreaHeight ( c );
-            final int titleWidth = c.getFontMetrics ( c.getFont () ).stringWidth ( titleText );
-            final int border = Math.max ( width, round );
-            final int title = Math.max ( titleAreaHeight, border );
-            switch ( titleSide )
-            {
-                case TOP:
-                case BOTTOM:
-                {
-                    return new Dimension ( border * 2 + titleWidth + titleOffset * 2 +
-                            titleBorderGap * 2, title + border );
-                }
-                case LEFT:
-                case RIGHT:
-                {
-                    return new Dimension ( title + border, border * 2 + titleWidth + titleOffset * 2 +
-                            titleBorderGap * 2 );
-                }
+    public Dimension getPreferredSize(final E c) {
+        if (isEmptyTitle()) {
+            return super.getPreferredSize(c);
+        } else {
+            final int titleAreaHeight = getTitleAreaHeight(c);
+            final int titleWidth = c.getFontMetrics(c.getFont()).stringWidth(
+                    titleText);
+            final int border = Math.max(width, round);
+            final int title = Math.max(titleAreaHeight, border);
+            switch (titleSide) {
+            case TOP:
+            case BOTTOM: {
+                return new Dimension(border * 2 + titleWidth + titleOffset * 2
+                        + titleBorderGap * 2, title + border);
+            }
+            case LEFT:
+            case RIGHT: {
+                return new Dimension(title + border, border * 2 + titleWidth
+                        + titleOffset * 2 + titleBorderGap * 2);
+            }
             }
             return null;
         }
     }
-
+    
     @Override
-    public void paint ( final Graphics2D g2d, final Rectangle bounds, final E c )
-    {
+    public void paint(final Graphics2D g2d, final Rectangle bounds, final E c) {
         // Initializing values
-        w = c.getWidth ();
-        h = c.getHeight ();
-        emptyTitle = isEmptyTitle ();
-        fontMetrics = emptyTitle ? null : c.getFontMetrics ( c.getFont () );
-        titleWidth = emptyTitle ? 0 : fontMetrics.stringWidth ( titleText );
-        titleAreaHeight = getTitleAreaHeight ( c );
-        titleX = getTitleX ( c );
-        titleY = getTitleY ();
-        borderCenter = ( double ) width / 2;
-        borderPosition = getBorderPosition ();
-        borderShape = getBorderShape ();
-        doClip = clipTitleBackground && !emptyTitle && titlePosition.equals ( TitlePosition.onLine );
-
+        w = c.getWidth();
+        h = c.getHeight();
+        emptyTitle = isEmptyTitle();
+        fontMetrics = emptyTitle ? null : c.getFontMetrics(c.getFont());
+        titleWidth = emptyTitle ? 0 : fontMetrics.stringWidth(titleText);
+        titleAreaHeight = getTitleAreaHeight(c);
+        titleX = getTitleX(c);
+        titleY = getTitleY();
+        borderCenter = (double) width / 2;
+        borderPosition = getBorderPosition();
+        borderShape = getBorderShape();
+        doClip = clipTitleBackground && !emptyTitle
+                && titlePosition.equals(TitlePosition.onLine);
+        
         // Drawing border and background
-
-        final Object aa = GraphicsUtils.setupAntialias ( g2d );
-        final Stroke os = GraphicsUtils.setupStroke ( g2d, stroke, stroke != null );
-
+        
+        final Object aa = GraphicsUtils.setupAntialias(g2d);
+        final Stroke os = GraphicsUtils
+                .setupStroke(g2d, stroke, stroke != null);
+        
         // Drawing background when title is not on the border line
-        if ( background != null && !doClip )
-        {
-            g2d.setPaint ( background );
-            g2d.fill ( borderShape );
+        if (background != null && !doClip) {
+            g2d.setPaint(background);
+            g2d.fill(borderShape);
         }
-
+        
         // Properly clipping border line for text space
-        final Shape clipShape = doClip ? getBorderClipShape () : null;
-        final Shape oldClip = GraphicsUtils.subtractClip ( g2d, clipShape, doClip );
-
+        final Shape clipShape = doClip ? getBorderClipShape() : null;
+        final Shape oldClip = GraphicsUtils
+                .subtractClip(g2d, clipShape, doClip);
+        
         // Drawing clipped by text background
-        if ( background != null && doClip )
-        {
-            g2d.setPaint ( background );
-            g2d.fill ( borderShape );
+        if (background != null && doClip) {
+            g2d.setPaint(background);
+            g2d.fill(borderShape);
         }
-
+        
         // Drawing clipped border
-        g2d.setPaint ( color );
-        g2d.draw ( borderShape );
-
-        GraphicsUtils.restoreClip ( g2d, oldClip, doClip );
-        GraphicsUtils.restoreStroke ( g2d, os, stroke != null );
-        GraphicsUtils.restoreAntialias ( g2d, aa );
-
+        g2d.setPaint(color);
+        g2d.draw(borderShape);
+        
+        GraphicsUtils.restoreClip(g2d, oldClip, doClip);
+        GraphicsUtils.restoreStroke(g2d, os, stroke != null);
+        GraphicsUtils.restoreAntialias(g2d, aa);
+        
         // Drawing text
-        if ( !emptyTitle )
-        {
-            g2d.setPaint ( foreground != null ? foreground : c.getForeground () );
-            switch ( titleSide )
-            {
-                case TOP:
-                case BOTTOM:
-                {
-                    final Map hints = SwingUtils.setupTextAntialias ( g2d );
-                    g2d.drawString ( titleText, titleX, titleY );
-                    SwingUtils.restoreTextAntialias ( g2d, hints );
-                    break;
-                }
-                case LEFT:
-                case RIGHT:
-                {
-                    // todo
-                    break;
-                }
+        if (!emptyTitle) {
+            g2d.setPaint(foreground != null ? foreground : c.getForeground());
+            switch (titleSide) {
+            case TOP:
+            case BOTTOM: {
+                final Map hints = SwingUtils.setupTextAntialias(g2d);
+                g2d.drawString(titleText, titleX, titleY);
+                SwingUtils.restoreTextAntialias(g2d, hints);
+                break;
+            }
+            case LEFT:
+            case RIGHT: {
+                // todo
+                break;
+            }
             }
         }
     }
-
-    protected int getTitleX ( final E c )
-    {
-        final boolean ltr = c.getComponentOrientation ().isLeftToRight ();
-        if ( titleAlignment == LEFT || titleAlignment == LEADING && ltr ||
-                titleAlignment == TRAILING && !ltr )
-        {
-            return Math.max ( width, round ) + titleOffset + titleBorderGap;
-        }
-        else if ( titleAlignment == RIGHT || titleAlignment == TRAILING && ltr ||
-                titleAlignment == LEADING && !ltr )
-        {
-            return w - Math.max ( width, round ) - titleOffset - titleBorderGap -
-                    titleWidth;
-        }
-        else
-        {
+    
+    protected int getTitleX(final E c) {
+        final boolean ltr = c.getComponentOrientation().isLeftToRight();
+        if (titleAlignment == LEFT || titleAlignment == LEADING && ltr
+                || titleAlignment == TRAILING && !ltr) {
+            return Math.max(width, round) + titleOffset + titleBorderGap;
+        } else if (titleAlignment == RIGHT || titleAlignment == TRAILING && ltr
+                || titleAlignment == LEADING && !ltr) {
+            return w - Math.max(width, round) - titleOffset - titleBorderGap
+                    - titleWidth;
+        } else {
             return w / 2 - titleWidth / 2;
         }
     }
-
-    protected int getTitleY ()
-    {
-        final int fontDescent = fontMetrics != null ? fontMetrics.getDescent () : 0;
-        switch ( titleSide )
-        {
-            case TOP:
-            {
-                return titlePosition.equals ( TitlePosition.aboveLive ) ? titleAreaHeight - width - fontDescent :
-                        titleAreaHeight - fontDescent;
-            }
-            case BOTTOM:
-            {
-                return titlePosition.equals ( TitlePosition.belowLine ) ? h - width - fontDescent : h - fontDescent;
-            }
-            case LEFT:
-            {
-                // todo
-                break;
-            }
-            case RIGHT:
-            {
-                // todo
-                break;
-            }
+    
+    protected int getTitleY() {
+        final int fontDescent = fontMetrics != null ? fontMetrics.getDescent()
+                : 0;
+        switch (titleSide) {
+        case TOP: {
+            return titlePosition.equals(TitlePosition.aboveLive) ? titleAreaHeight
+                    - width - fontDescent
+                    : titleAreaHeight - fontDescent;
+        }
+        case BOTTOM: {
+            return titlePosition.equals(TitlePosition.belowLine) ? h - width
+                    - fontDescent : h - fontDescent;
+        }
+        case LEFT: {
+            // todo
+            break;
+        }
+        case RIGHT: {
+            // todo
+            break;
+        }
         }
         return 0;
     }
-
-    protected double getBorderPosition ()
-    {
-        if ( emptyTitle )
-        {
+    
+    protected double getBorderPosition() {
+        if (emptyTitle) {
             return borderCenter;
-        }
-        else
-        {
-            if ( titlePosition.equals ( TitlePosition.onLine ) )
-            {
-                return ( double ) titleAreaHeight / 2;
-            }
-            else if ( titlePosition.equals ( TitlePosition.aboveLive ) )
-            {
+        } else {
+            if (titlePosition.equals(TitlePosition.onLine)) {
+                return (double) titleAreaHeight / 2;
+            } else if (titlePosition.equals(TitlePosition.aboveLive)) {
                 return titleAreaHeight - borderCenter;
-            }
-            else
-            {
+            } else {
                 return borderCenter;
             }
         }
     }
-
-    protected int getTitleAreaHeight ( final E c )
-    {
-        if ( isEmptyTitle () )
-        {
+    
+    protected int getTitleAreaHeight(final E c) {
+        if (isEmptyTitle()) {
             return width;
-        }
-        else
-        {
-            final int height = c.getFontMetrics ( c.getFont () ).getHeight ();
-            return titlePosition.equals ( TitlePosition.onLine ) ? height : height + width;
+        } else {
+            final int height = c.getFontMetrics(c.getFont()).getHeight();
+            return titlePosition.equals(TitlePosition.onLine) ? height : height
+                    + width;
         }
     }
-
-    protected boolean isEmptyTitle ()
-    {
+    
+    protected boolean isEmptyTitle() {
         return titleText == null;
     }
-
-    protected Shape getBorderShape ()
-    {
+    
+    protected Shape getBorderShape() {
         Rectangle2D rect = null;
-        switch ( titleSide )
-        {
-            case TOP:
-            {
-                rect = new Rectangle2D.Double ( borderCenter, borderPosition, w - borderCenter * 2, h - borderPosition - borderCenter );
-                break;
-            }
-            case LEFT:
-            {
-                rect = new Rectangle2D.Double ( borderPosition, borderCenter, w - borderPosition - borderCenter, h - borderCenter * 2 );
-                break;
-            }
-            case BOTTOM:
-            {
-                rect = new Rectangle2D.Double ( borderCenter, borderCenter, w - borderCenter * 2, h - borderPosition - borderCenter );
-                break;
-            }
-            case RIGHT:
-            {
-                rect = new Rectangle2D.Double ( borderCenter, borderCenter, w - borderPosition - borderCenter, h - borderCenter * 2 );
-                break;
-            }
+        switch (titleSide) {
+        case TOP: {
+            rect = new Rectangle2D.Double(borderCenter, borderPosition, w
+                    - borderCenter * 2, h - borderPosition - borderCenter);
+            break;
         }
-        return round > 0 ?
-                new RoundRectangle2D.Double ( rect.getX (), rect.getY (), rect.getWidth (), rect.getHeight (), round * 2, round * 2 ) :
-                rect;
+        case LEFT: {
+            rect = new Rectangle2D.Double(borderPosition, borderCenter, w
+                    - borderPosition - borderCenter, h - borderCenter * 2);
+            break;
+        }
+        case BOTTOM: {
+            rect = new Rectangle2D.Double(borderCenter, borderCenter, w
+                    - borderCenter * 2, h - borderPosition - borderCenter);
+            break;
+        }
+        case RIGHT: {
+            rect = new Rectangle2D.Double(borderCenter, borderCenter, w
+                    - borderPosition - borderCenter, h - borderCenter * 2);
+            break;
+        }
+        }
+        return round > 0 ? new RoundRectangle2D.Double(rect.getX(),
+                rect.getY(), rect.getWidth(), rect.getHeight(), round * 2,
+                round * 2) : rect;
     }
-
-    protected Shape getBorderClipShape ()
-    {
-        if ( emptyTitle )
-        {
+    
+    protected Shape getBorderClipShape() {
+        if (emptyTitle) {
             return null;
-        }
-        else
-        {
-            switch ( titleSide )
-            {
-                case TOP:
-                {
-                    return new RoundRectangle2D.Double ( titleX - titleBorderGap, borderPosition - titleAreaHeight / 2,
-                            titleWidth + titleBorderGap * 2, titleAreaHeight, 3, 3 );
-                }
-                case BOTTOM:
-                {
-                    return new RoundRectangle2D.Double ( titleX - titleBorderGap, h - borderPosition - titleAreaHeight / 2,
-                            titleWidth + titleBorderGap * 2, titleAreaHeight, 3, 3 );
-                }
-                case LEFT:
-                {
-                    // todo
-                    return null;
-                }
-                case RIGHT:
-                {
-                    // todo
-                    return null;
-                }
+        } else {
+            switch (titleSide) {
+            case TOP: {
+                return new RoundRectangle2D.Double(titleX - titleBorderGap,
+                        borderPosition - titleAreaHeight / 2, titleWidth
+                                + titleBorderGap * 2, titleAreaHeight, 3, 3);
+            }
+            case BOTTOM: {
+                return new RoundRectangle2D.Double(titleX - titleBorderGap, h
+                        - borderPosition - titleAreaHeight / 2, titleWidth
+                        + titleBorderGap * 2, titleAreaHeight, 3, 3);
+            }
+            case LEFT: {
+                // todo
+                return null;
+            }
+            case RIGHT: {
+                // todo
+                return null;
+            }
             }
         }
         return null;

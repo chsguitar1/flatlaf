@@ -21,47 +21,52 @@ import java.io.File;
 import java.util.EventListener;
 
 /**
- * This listener interface provides all required methods to observe and manipulate the download process.
- * Check out downloadFile methods from FileUtils to see how this listener can be used.
+ * This listener interface provides all required methods to observe and
+ * manipulate the download process. Check out downloadFile methods from
+ * FileUtils to see how this listener can be used.
  *
  * @author Mikle Garin
  */
 
-public interface FileDownloadListener extends EventListener
-{
+public interface FileDownloadListener extends EventListener {
     /**
      * Called when remote file size retrieved.
      *
-     * @param totalSize file size
+     * @param totalSize
+     *            file size
      */
-    public void sizeDetermined ( int totalSize );
-
+    public void sizeDetermined(int totalSize);
+    
     /**
      * Called when another file part have been downloaded.
      *
-     * @param totalBytesDownloaded total bytes downloaded so far
+     * @param totalBytesDownloaded
+     *            total bytes downloaded so far
      */
-    public void partDownloaded ( int totalBytesDownloaded );
-
+    public void partDownloaded(int totalBytesDownloaded);
+    
     /**
      * Called when file download completed.
      *
-     * @param file downloaded local file
+     * @param file
+     *            downloaded local file
      */
-    public void fileDownloaded ( File file );
-
+    public void fileDownloaded(File file);
+    
     /**
      * Called when file download failed.
      *
-     * @param e exception that caused download to fail
+     * @param e
+     *            exception that caused download to fail
      */
-    public void fileDownloadFailed ( Throwable e );
-
+    public void fileDownloadFailed(Throwable e);
+    
     /**
-     * Returns whether download operation should stop or not.
-     * This method is getting called before and after each time-consuming opearation (for example file part download).
+     * Returns whether download operation should stop or not. This method is
+     * getting called before and after each time-consuming opearation (for
+     * example file part download).
      *
      * @return true if you want to stop download, false otherwise
      */
-    public boolean shouldStopDownload ();
+    public boolean shouldStopDownload();
 }

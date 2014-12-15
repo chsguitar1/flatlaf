@@ -28,44 +28,44 @@ import java.lang.reflect.Proxy;
  * @author Mikle Garin
  */
 
-public class EventPump implements InvocationHandler
-{
+public class EventPump implements InvocationHandler {
     /**
      * Modal frame.
      */
     private Frame frame;
-
+    
     /**
      * Constructs an event pump for modal frame.
      *
-     * @param frame modal frame
+     * @param frame
+     *            modal frame
      */
-    public EventPump ( Frame frame )
-    {
+    public EventPump(Frame frame) {
         this.frame = frame;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Object invoke ( Object proxy, Method method, Object[] args ) throws Throwable
-    {
-        return frame.isShowing () ? Boolean.TRUE : Boolean.FALSE;
+    public Object invoke(Object proxy, Method method, Object[] args)
+            throws Throwable {
+        return frame.isShowing() ? Boolean.TRUE : Boolean.FALSE;
     }
-
+    
     /**
-     * A small hack to pump an event.
-     * Reflection calls in this method has to be replaced once Sun provides a public API to pump events.
+     * A small hack to pump an event. Reflection calls in this method has to be
+     * replaced once Sun provides a public API to pump events.
      *
      * @throws Exception
      */
-    public void start () throws Exception
-    {
-        Class clazz = Class.forName ( "java.awt.Conditional" );
-        Object conditional = Proxy.newProxyInstance ( clazz.getClassLoader (), new Class[]{ clazz }, this );
-        Method pumpMethod = Class.forName ( "java.awt.EventDispatchThread" ).getDeclaredMethod ( "pumpEvents", new Class[]{ clazz } );
-        pumpMethod.setAccessible ( true );
-        pumpMethod.invoke ( Thread.currentThread (), conditional );
+    public void start() throws Exception {
+        Class clazz = Class.forName("java.awt.Conditional");
+        Object conditional = Proxy.newProxyInstance(clazz.getClassLoader(),
+                new Class[] { clazz }, this);
+        Method pumpMethod = Class.forName("java.awt.EventDispatchThread")
+                .getDeclaredMethod("pumpEvents", new Class[] { clazz });
+        pumpMethod.setAccessible(true);
+        pumpMethod.invoke(Thread.currentThread(), conditional);
     }
 }

@@ -20,36 +20,44 @@ package org.ocsoft.flatlaf.extended.tab;
 import java.awt.*;
 
 /**
- * Special listener that tracks DocumentData changes.
- * Its general purpose is to keep WebDocumentPane updated with DocumentData changes.
+ * Special listener that tracks DocumentData changes. Its general purpose is to
+ * keep WebDocumentPane updated with DocumentData changes.
  *
  * @author Mikle Garin
  */
 
-public interface DocumentDataListener<T extends DocumentData>
-{
+public interface DocumentDataListener<T extends DocumentData> {
     /**
      * Informs about data changes which affects document tab view.
      *
-     * @param document modified document
+     * @param document
+     *            modified document
      */
-    public void titleChanged ( final T document );
-
+    public void titleChanged(final T document);
+    
     /**
      * Inform about tab background changes.
      *
-     * @param document      modified document
-     * @param oldBackground previous background color
-     * @param newBackground new background color
+     * @param document
+     *            modified document
+     * @param oldBackground
+     *            previous background color
+     * @param newBackground
+     *            new background color
      */
-    public void backgroundChanged ( final T document, final Color oldBackground, final Color newBackground );
-
+    public void backgroundChanged(final T document, final Color oldBackground,
+            final Color newBackground);
+    
     /**
      * Informs about tab component changes.
      *
-     * @param document     modified document
-     * @param oldComponent previous tab content
-     * @param newComponent new tab content
+     * @param document
+     *            modified document
+     * @param oldComponent
+     *            previous tab content
+     * @param newComponent
+     *            new tab content
      */
-    public void contentChanged ( final T document, final Component oldComponent, final Component newComponent );
+    public void contentChanged(final T document, final Component oldComponent,
+            final Component newComponent);
 }

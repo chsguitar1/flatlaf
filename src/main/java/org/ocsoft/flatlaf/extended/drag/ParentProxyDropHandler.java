@@ -24,49 +24,38 @@ import java.awt.*;
  * User: mgarin Date: 02.05.12 Time: 16:50
  */
 
-public class ParentProxyDropHandler extends TransferHandler
-{
+public class ParentProxyDropHandler extends TransferHandler {
     // Component onto which parent drop should be proxified
     private Component component;
-
-    public ParentProxyDropHandler ( Component component )
-    {
-        super ();
+    
+    public ParentProxyDropHandler(Component component) {
+        super();
         this.component = component;
     }
-
+    
     @Override
-    public boolean canImport ( TransferHandler.TransferSupport info )
-    {
-        TransferHandler th = getParentTransferHandler ();
-        return th != null && th.canImport ( info );
+    public boolean canImport(TransferHandler.TransferSupport info) {
+        TransferHandler th = getParentTransferHandler();
+        return th != null && th.canImport(info);
     }
-
+    
     @Override
-    public boolean importData ( TransferHandler.TransferSupport info )
-    {
-        TransferHandler th = getParentTransferHandler ();
-        return th != null && th.importData ( info );
+    public boolean importData(TransferHandler.TransferSupport info) {
+        TransferHandler th = getParentTransferHandler();
+        return th != null && th.importData(info);
     }
-
-    private TransferHandler getParentTransferHandler ()
-    {
-        return getParentTransferHandler ( component.getParent () );
+    
+    private TransferHandler getParentTransferHandler() {
+        return getParentTransferHandler(component.getParent());
     }
-
-    private TransferHandler getParentTransferHandler ( Container parent )
-    {
-        if ( parent != null && parent instanceof JComponent &&
-                ( ( JComponent ) parent ).getTransferHandler () != null )
-        {
-            return ( ( JComponent ) parent ).getTransferHandler ();
-        }
-        else if ( parent != null && parent.getParent () != null )
-        {
-            return getParentTransferHandler ( parent.getParent () );
-        }
-        else
-        {
+    
+    private TransferHandler getParentTransferHandler(Container parent) {
+        if (parent != null && parent instanceof JComponent
+                && ((JComponent) parent).getTransferHandler() != null) {
+            return ((JComponent) parent).getTransferHandler();
+        } else if (parent != null && parent.getParent() != null) {
+            return getParentTransferHandler(parent.getParent());
+        } else {
             return null;
         }
     }

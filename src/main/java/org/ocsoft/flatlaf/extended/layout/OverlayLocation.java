@@ -21,9 +21,6 @@ package org.ocsoft.flatlaf.extended.layout;
  * User: mgarin Date: 05.06.12 Time: 20:06
  */
 
-public enum OverlayLocation
-{
-    fill,
-    align,
-    custom
+public enum OverlayLocation {
+    fill, align, custom
 }

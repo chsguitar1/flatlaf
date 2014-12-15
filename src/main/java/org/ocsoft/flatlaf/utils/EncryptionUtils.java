@@ -28,97 +28,88 @@ import org.ocsoft.flatlaf.utils.encryption.Base64;
  * @author Mikle Garin
  */
 
-public final class EncryptionUtils
-{
+public final class EncryptionUtils {
     /**
      * Default text encoding.
      */
     private static final String DEFAULT_ENCODING = "UTF-8";
-
+    
     /**
      * Encode and decode key.
      */
     private static String key = "aZCVKk3mospdfm12pk4fcFD43d435ccCDgHKPQMQ23x7zkq03";
-
+    
     /**
      * Returns text enrypted through xor and encoded using base64.
      *
-     * @param text text to encrypt
+     * @param text
+     *            text to encrypt
      * @return encrypted text
      */
-    public static String encrypt ( String text )
-    {
-        return base64encode ( xorText ( text ) );
+    public static String encrypt(String text) {
+        return base64encode(xorText(text));
     }
-
+    
     /**
      * Returns text decoded using base64 and decrypted through xor.
      *
-     * @param text text to decrypt
+     * @param text
+     *            text to decrypt
      * @return decrypted text
      */
-    public static String decrypt ( String text )
-    {
-        return xorText ( base64decode ( text ) );
+    public static String decrypt(String text) {
+        return xorText(base64decode(text));
     }
-
+    
     /**
      * Returns text encrypted using xor.
      *
-     * @param text to encrypt
+     * @param text
+     *            to encrypt
      * @return encrypted text
      */
-    public static String xorText ( String text )
-    {
-        if ( text == null )
-        {
+    public static String xorText(String text) {
+        if (text == null) {
             return null;
         }
-
-        char[] keys = key.toCharArray ();
-        char[] mesg = text.toCharArray ();
+        
+        char[] keys = key.toCharArray();
+        char[] mesg = text.toCharArray();
         int ml = mesg.length;
         int kl = keys.length;
-        char[] newmsg = new char[ ml ];
-        for ( int i = 0; i < ml; i++ )
-        {
-            newmsg[ i ] = ( char ) ( mesg[ i ] ^ keys[ i % kl ] );
+        char[] newmsg = new char[ml];
+        for (int i = 0; i < ml; i++) {
+            newmsg[i] = (char) (mesg[i] ^ keys[i % kl]);
         }
-        return new String ( newmsg );
+        return new String(newmsg);
     }
-
+    
     /**
      * Returns text encoded with base64.
      *
-     * @param text text to encode
+     * @param text
+     *            text to encode
      * @return text encoded with base64
      */
-    public static String base64encode ( String text )
-    {
-        try
-        {
-            return Base64.encode ( text.getBytes ( DEFAULT_ENCODING ) );
-        }
-        catch ( UnsupportedEncodingException e )
-        {
+    public static String base64encode(String text) {
+        try {
+            return Base64.encode(text.getBytes(DEFAULT_ENCODING));
+        } catch (UnsupportedEncodingException e) {
             return null;
         }
     }
-
+    
     /**
      * Returns text decoded with base64.
      *
-     * @param text text to decoded
+     * @param text
+     *            text to decoded
      * @return text decoded with base64
      */
-    public static String base64decode ( String text )
-    {
-        try
-        {
-            return new String ( Base64.decode ( text ), DEFAULT_ENCODING );
-        }
-        catch ( IOException e )
-        {
+    public static String base64decode(String text) {
+        try {
+            return new String(Base64.decode(text), DEFAULT_ENCODING);
+        } catch (IOException e) {
             return null;
         }
     }

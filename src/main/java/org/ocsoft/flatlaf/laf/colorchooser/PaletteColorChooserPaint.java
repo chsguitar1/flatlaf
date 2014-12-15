@@ -32,161 +32,134 @@ import org.ocsoft.flatlaf.utils.ColorUtils;
  * User: mgarin Date: 07.07.2010 Time: 17:30:58
  */
 
-public class PaletteColorChooserPaint implements Paint
-{
+public class PaletteColorChooserPaint implements Paint {
     private Color cornerColor = Color.RED;
     private boolean webSafe = false;
-
-    private ColorModel model = ColorModel.getRGBdefault ();
-
+    
+    private ColorModel model = ColorModel.getRGBdefault();
+    
     private int x;
     private int y;
     private int width;
     private int height;
-
-    public PaletteColorChooserPaint ( int x, int y, int width, int height, Color cornerColor )
-    {
-        super ();
+    
+    public PaletteColorChooserPaint(int x, int y, int width, int height,
+            Color cornerColor) {
+        super();
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.cornerColor = cornerColor;
     }
-
+    
     @Override
-    public PaintContext createContext ( ColorModel cm, Rectangle deviceBounds, Rectangle2D userBounds, final AffineTransform xform,
-                                        RenderingHints hints )
-    {
-        return new PaintContext ()
-        {
-            private Map<Rectangle, WritableRaster> rastersCache = new HashMap<Rectangle, WritableRaster> ();
-
+    public PaintContext createContext(ColorModel cm, Rectangle deviceBounds,
+            Rectangle2D userBounds, final AffineTransform xform,
+            RenderingHints hints) {
+        return new PaintContext() {
+            private Map<Rectangle, WritableRaster> rastersCache = new HashMap<Rectangle, WritableRaster>();
+            
             @Override
-            public void dispose ()
-            {
-                rastersCache.clear ();
+            public void dispose() {
+                rastersCache.clear();
             }
-
+            
             @Override
-            public ColorModel getColorModel ()
-            {
+            public ColorModel getColorModel() {
                 return model;
             }
-
+            
             @Override
-            public Raster getRaster ( int x, int y, int w, int h )
-            {
-                Rectangle r = new Rectangle ( x, y, w, h );
-                if ( rastersCache.containsKey ( r ) )
-                {
-                    return rastersCache.get ( r );
-                }
-                else
-                {
-                    WritableRaster raster = model.createCompatibleWritableRaster ( w, h );
-
-                    x -= Math.round ( xform.getTranslateX () );
-                    y -= Math.round ( xform.getTranslateY () );
-
-                    int[] data = new int[ w * h * 4 ];
-                    for ( int j = 0; j < h; j++ )
-                    {
-                        for ( int i = 0; i < w; i++ )
-                        {
-                            int base = ( j * w + i ) * 4;
-                            data[ base ] = getRed ( x + i, y + j );
-                            data[ base + 1 ] = getGreen ( x + i, y + j );
-                            data[ base + 2 ] = getBlue ( x + i, y + j );
-                            data[ base + 3 ] = 255;
+            public Raster getRaster(int x, int y, int w, int h) {
+                Rectangle r = new Rectangle(x, y, w, h);
+                if (rastersCache.containsKey(r)) {
+                    return rastersCache.get(r);
+                } else {
+                    WritableRaster raster = model
+                            .createCompatibleWritableRaster(w, h);
+                    
+                    x -= Math.round(xform.getTranslateX());
+                    y -= Math.round(xform.getTranslateY());
+                    
+                    int[] data = new int[w * h * 4];
+                    for (int j = 0; j < h; j++) {
+                        for (int i = 0; i < w; i++) {
+                            int base = (j * w + i) * 4;
+                            data[base] = getRed(x + i, y + j);
+                            data[base + 1] = getGreen(x + i, y + j);
+                            data[base + 2] = getBlue(x + i, y + j);
+                            data[base + 3] = 255;
                         }
                     }
-                    raster.setPixels ( 0, 0, w, h, data );
-
-                    rastersCache.put ( r, raster );
+                    raster.setPixels(0, 0, w, h, data);
+                    
+                    rastersCache.put(r, raster);
                     return raster;
                 }
             }
         };
     }
-
-    public Color getColor ( int xCoord, int yCoord )
-    {
-        if ( xCoord < x )
-        {
+    
+    public Color getColor(int xCoord, int yCoord) {
+        if (xCoord < x) {
             xCoord = x;
-        }
-        else if ( xCoord > x + 256 )
-        {
+        } else if (xCoord > x + 256) {
             xCoord = x + 256;
         }
-        if ( yCoord < y )
-        {
+        if (yCoord < y) {
             yCoord = y;
-        }
-        else if ( yCoord > y + 256 )
-        {
+        } else if (yCoord > y + 256) {
             yCoord = y + 256;
         }
-        return new Color ( getRed ( xCoord, yCoord ), getGreen ( xCoord, yCoord ), getBlue ( xCoord, yCoord ) );
+        return new Color(getRed(xCoord, yCoord), getGreen(xCoord, yCoord),
+                getBlue(xCoord, yCoord));
     }
-
-    private int getRed ( int xCoord, int yCoord )
-    {
-        int red = 255 - ( 255 - cornerColor.getRed () ) * ( xCoord - x ) / width;
-        red = red - ( red ) * ( yCoord - y ) / height;
-        return getWebSafe ( red );
+    
+    private int getRed(int xCoord, int yCoord) {
+        int red = 255 - (255 - cornerColor.getRed()) * (xCoord - x) / width;
+        red = red - (red) * (yCoord - y) / height;
+        return getWebSafe(red);
     }
-
-    private int getGreen ( int xCoord, int yCoord )
-    {
-        int green = 255 - ( 255 - cornerColor.getGreen () ) * ( xCoord - x ) / width;
-        green = green - ( green ) * ( yCoord - y ) / height;
-        return getWebSafe ( green );
+    
+    private int getGreen(int xCoord, int yCoord) {
+        int green = 255 - (255 - cornerColor.getGreen()) * (xCoord - x) / width;
+        green = green - (green) * (yCoord - y) / height;
+        return getWebSafe(green);
     }
-
-    private int getBlue ( int xCoord, int yCoord )
-    {
-        int blue = 255 - ( 255 - cornerColor.getBlue () ) * ( xCoord - x ) / width;
-        blue = blue - ( blue ) * ( yCoord - y ) / height;
-        return getWebSafe ( blue );
+    
+    private int getBlue(int xCoord, int yCoord) {
+        int blue = 255 - (255 - cornerColor.getBlue()) * (xCoord - x) / width;
+        blue = blue - (blue) * (yCoord - y) / height;
+        return getWebSafe(blue);
     }
-
-    private int getWebSafe ( int color )
-    {
-        if ( webSafe )
-        {
-            color = ColorUtils.getWebSafeValue ( color );
+    
+    private int getWebSafe(int color) {
+        if (webSafe) {
+            color = ColorUtils.getWebSafeValue(color);
         }
-        if ( color < 0 )
-        {
+        if (color < 0) {
             color = 0;
-        }
-        else if ( color > 255 )
-        {
+        } else if (color > 255) {
             color = 255;
         }
         return color;
     }
-
+    
     @Override
-    public int getTransparency ()
-    {
+    public int getTransparency() {
         return OPAQUE;
     }
-
-    public Color getCornerColor ()
-    {
+    
+    public Color getCornerColor() {
         return cornerColor;
     }
-
-    public boolean isWebSafe ()
-    {
+    
+    public boolean isWebSafe() {
         return webSafe;
     }
-
-    public void setWebSafe ( boolean webSafe )
-    {
+    
+    public void setWebSafe(boolean webSafe) {
         this.webSafe = webSafe;
     }
 }

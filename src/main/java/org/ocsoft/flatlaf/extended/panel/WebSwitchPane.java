@@ -23,14 +23,12 @@ import org.ocsoft.flatlaf.laf.panel.WebPanel;
  * @author Mikle Garin
  */
 
-public class WebSwitchPane extends WebPanel
-{
+public class WebSwitchPane extends WebPanel {
     /**
      * todo 1. Replace this placeholder class with implementation
      */
-
-    public WebSwitchPane ()
-    {
-        super ();
+    
+    public WebSwitchPane() {
+        super();
     }
 }

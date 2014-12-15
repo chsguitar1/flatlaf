@@ -23,13 +23,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  * User: mgarin Date: 24.12.10 Time: 15:39
  */
 
-@XStreamAlias ("TooltipWay")
-public enum TooltipWay
-{
-    up,
-    left,
-    leading,
-    down,
-    right,
-    trailing
+@XStreamAlias("TooltipWay")
+public enum TooltipWay {
+    up, left, leading, down, right, trailing
 }

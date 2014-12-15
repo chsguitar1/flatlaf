@@ -27,67 +27,66 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class WebPanelStyle
-{
+public final class WebPanelStyle {
     /**
      * Whether should decorate panel or not.
      */
     public static boolean undecorated = true;
-
+    
     /**
-     * Whether should draw panel focus or not.
-     * This variable doesn't affect anything if panel is undecorated.
+     * Whether should draw panel focus or not. This variable doesn't affect
+     * anything if panel is undecorated.
      */
     public static boolean drawFocus = false;
-
+    
     /**
-     * Panel corners rounding.
-     * This variable doesn't affect anything if panel is undecorated.
+     * Panel corners rounding. This variable doesn't affect anything if panel is
+     * undecorated.
      */
     public static int round = FlatLafStyleConstants.smallRound;
-
+    
     /**
-     * Panel shade width.
-     * This variable doesn't affect anything if panel is undecorated.
+     * Panel shade width. This variable doesn't affect anything if panel is
+     * undecorated.
      */
     public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Panel shade transparency.
      */
     public static float shadeTransparency = 0.75f;
-
+    
     /**
      * Panel margin.
      */
     public static Insets margin = FlatLafStyleConstants.emptyMargin;
-
+    
     /**
-     * Panel border stroke.
-     * This variable doesn't affect anything if panel is undecorated.
+     * Panel border stroke. This variable doesn't affect anything if panel is
+     * undecorated.
      */
     public static Stroke borderStroke = null;
-
+    
     /**
      * Decoration border color.
      */
     public static Color borderColor = FlatLafStyleConstants.darkBorderColor;
-
+    
     /**
      * Disabled decoration border color.
      */
     public static Color disabledBorderColor = FlatLafStyleConstants.disabledBorderColor;
-
+    
     /**
      * Whether should paint background or not.
      */
     public static boolean paintBackground = true;
-
+    
     /**
      * Whether should paint web-styled background or not.
      */
     public static boolean webColoredBackground = true;
-
+    
     /**
      * Panel background color.
      */

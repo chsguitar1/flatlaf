@@ -24,138 +24,118 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * This listener allows a quick creation of component visibility change action on any focus changes. You can also invert the way visibility
- * changes on focus change.
+ * This listener allows a quick creation of component visibility change action
+ * on any focus changes. You can also invert the way visibility changes on focus
+ * change.
  */
-public class ConditionalVisibilityListener implements FocusListener, MouseListener
-{
+public class ConditionalVisibilityListener implements FocusListener,
+        MouseListener {
     private Boolean focusedVisible;
     private Boolean mouseoverVisible;
     private Component component;
     private boolean focused = false;
     private boolean mouseover = false;
-
-    public static void install ( Component tracked, Component component, Boolean focusedVisible, Boolean mouseoverVisible )
-    {
-        ConditionalVisibilityListener cvl = new ConditionalVisibilityListener ( component, focusedVisible, mouseoverVisible );
-        if ( focusedVisible != null )
-        {
-            tracked.addFocusListener ( cvl );
+    
+    public static void install(Component tracked, Component component,
+            Boolean focusedVisible, Boolean mouseoverVisible) {
+        ConditionalVisibilityListener cvl = new ConditionalVisibilityListener(
+                component, focusedVisible, mouseoverVisible);
+        if (focusedVisible != null) {
+            tracked.addFocusListener(cvl);
         }
-        if ( mouseoverVisible != null )
-        {
-            tracked.addMouseListener ( cvl );
+        if (mouseoverVisible != null) {
+            tracked.addMouseListener(cvl);
         }
     }
-
-    public ConditionalVisibilityListener ( Component component )
-    {
-        this ( component, null, null );
+    
+    public ConditionalVisibilityListener(Component component) {
+        this(component, null, null);
     }
-
-    public ConditionalVisibilityListener ( Component component, Boolean focusedVisible, Boolean mouseoverVisible )
-    {
-        super ();
-        setComponent ( component );
-        setFocusedVisible ( focusedVisible );
-        setMouseoverVisible ( mouseoverVisible );
+    
+    public ConditionalVisibilityListener(Component component,
+            Boolean focusedVisible, Boolean mouseoverVisible) {
+        super();
+        setComponent(component);
+        setFocusedVisible(focusedVisible);
+        setMouseoverVisible(mouseoverVisible);
     }
-
-    public Boolean getFocusedVisible ()
-    {
+    
+    public Boolean getFocusedVisible() {
         return focusedVisible;
     }
-
-    public void setFocusedVisible ( Boolean focusedVisible )
-    {
+    
+    public void setFocusedVisible(Boolean focusedVisible) {
         this.focusedVisible = focusedVisible;
     }
-
-    public Boolean getMouseoverVisible ()
-    {
+    
+    public Boolean getMouseoverVisible() {
         return mouseoverVisible;
     }
-
-    public void setMouseoverVisible ( Boolean mouseoverVisible )
-    {
+    
+    public void setMouseoverVisible(Boolean mouseoverVisible) {
         this.mouseoverVisible = mouseoverVisible;
     }
-
-    public Component getComponent ()
-    {
+    
+    public Component getComponent() {
         return component;
     }
-
-    public void setComponent ( Component component )
-    {
+    
+    public void setComponent(Component component) {
         this.component = component;
     }
-
+    
     @Override
-    public void focusGained ( FocusEvent e )
-    {
-        if ( focusedVisible != null )
-        {
+    public void focusGained(FocusEvent e) {
+        if (focusedVisible != null) {
             focused = true;
-            updateVisibility ();
+            updateVisibility();
         }
     }
-
+    
     @Override
-    public void focusLost ( FocusEvent e )
-    {
-        if ( focusedVisible != null )
-        {
+    public void focusLost(FocusEvent e) {
+        if (focusedVisible != null) {
             focused = false;
-            updateVisibility ();
+            updateVisibility();
         }
     }
-
+    
     @Override
-    public void mouseClicked ( MouseEvent e )
-    {
+    public void mouseClicked(MouseEvent e) {
         //
     }
-
+    
     @Override
-    public void mousePressed ( MouseEvent e )
-    {
+    public void mousePressed(MouseEvent e) {
         //
     }
-
+    
     @Override
-    public void mouseReleased ( MouseEvent e )
-    {
+    public void mouseReleased(MouseEvent e) {
         //
     }
-
+    
     @Override
-    public void mouseEntered ( MouseEvent e )
-    {
-        if ( mouseoverVisible != null )
-        {
+    public void mouseEntered(MouseEvent e) {
+        if (mouseoverVisible != null) {
             mouseover = true;
-            updateVisibility ();
+            updateVisibility();
         }
     }
-
+    
     @Override
-    public void mouseExited ( MouseEvent e )
-    {
-        if ( mouseoverVisible != null )
-        {
+    public void mouseExited(MouseEvent e) {
+        if (mouseoverVisible != null) {
             mouseover = false;
-            updateVisibility ();
+            updateVisibility();
         }
     }
-
-    public void updateVisibility ()
-    {
-        component.setVisible ( isVisible () );
+    
+    public void updateVisibility() {
+        component.setVisible(isVisible());
     }
-
-    public boolean isVisible ()
-    {
+    
+    public boolean isVisible() {
         boolean f = focusedVisible == null || focusedVisible == focused;
         boolean m = mouseoverVisible == null || mouseoverVisible == mouseover;
         return f && m;

@@ -32,125 +32,123 @@ import java.util.WeakHashMap;
  * @author Mikle Garin
  */
 
-public final class PainterSupport
-{
+public final class PainterSupport {
     /**
      * Installed painters map.
      */
-    private static final Map<JComponent, Map<Painter, PainterListener>> installedPainters =
-            new WeakHashMap<JComponent, Map<Painter, PainterListener>> ();
-
+    private static final Map<JComponent, Map<Painter, PainterListener>> installedPainters = new WeakHashMap<JComponent, Map<Painter, PainterListener>>();
+    
     /**
-     * Installs painter into the specified component.
-     * It is highly recommended to call this method only from EDT.
+     * Installs painter into the specified component. It is highly recommended
+     * to call this method only from EDT.
      *
-     * @param component component painter is applied to
-     * @param painter   painter to install
+     * @param component
+     *            component painter is applied to
+     * @param painter
+     *            painter to install
      */
-    public static void installPainter ( final JComponent component, final Painter painter )
-    {
-        // Simply ignore this call if empty painter is set or component doesn't exist
-        if ( component == null || painter == null )
-        {
+    public static void installPainter(final JComponent component,
+            final Painter painter) {
+        // Simply ignore this call if empty painter is set or component doesn't
+        // exist
+        if (component == null || painter == null) {
             return;
         }
-
+        
         // Installing painter
-        Map<Painter, PainterListener> listeners = installedPainters.get ( component );
-        if ( listeners == null )
-        {
-            listeners = new WeakHashMap<Painter, PainterListener> ( 1 );
-            installedPainters.put ( component, listeners );
+        Map<Painter, PainterListener> listeners = installedPainters
+                .get(component);
+        if (listeners == null) {
+            listeners = new WeakHashMap<Painter, PainterListener>(1);
+            installedPainters.put(component, listeners);
         }
-        if ( !installedPainters.containsKey ( painter ) )
-        {
+        if (!installedPainters.containsKey(painter)) {
             // Installing painter
-            painter.install ( component );
-
+            painter.install(component);
+            
             // Applying initial component settings
-            final Boolean opaque = painter.isOpaque ( component );
-            if ( opaque != null )
-            {
-                LookAndFeel.installProperty ( component, FlatLookAndFeel.OPAQUE_PROPERTY, opaque ? Boolean.TRUE : Boolean.FALSE );
+            final Boolean opaque = painter.isOpaque(component);
+            if (opaque != null) {
+                LookAndFeel.installProperty(component,
+                        FlatLookAndFeel.OPAQUE_PROPERTY, opaque ? Boolean.TRUE
+                                : Boolean.FALSE);
             }
-
+            
             // Updating border
-            LafUtils.updateBorder ( component );
-
+            LafUtils.updateBorder(component);
+            
             // Creating weak references to use them inside the listener
-            // Otherwise we will force it to keep strong reference to component and painter if we use them directly
-            final WeakReference<JComponent> c = new WeakReference<JComponent> ( component );
-            final WeakReference<Painter> p = new WeakReference<Painter> ( painter );
-
+            // Otherwise we will force it to keep strong reference to component
+            // and painter if we use them directly
+            final WeakReference<JComponent> c = new WeakReference<JComponent>(
+                    component);
+            final WeakReference<Painter> p = new WeakReference<Painter>(painter);
+            
             // Adding painter listener
-            final PainterListener listener = new PainterListener ()
-            {
+            final PainterListener listener = new PainterListener() {
                 @Override
-                public void repaint ()
-                {
+                public void repaint() {
                     // Forcing component to be repainted
-                    c.get ().repaint ();
+                    c.get().repaint();
                 }
-
+                
                 @Override
-                public void repaint ( final int x, final int y, final int width, final int height )
-                {
+                public void repaint(final int x, final int y, final int width,
+                        final int height) {
                     // Forcing component to be repainted
-                    c.get ().repaint ( x, y, width, height );
+                    c.get().repaint(x, y, width, height);
                 }
-
+                
                 @Override
-                public void revalidate ()
-                {
-                    // todo Move to separate "updateBorder" method in PainterListener?
+                public void revalidate() {
+                    // todo Move to separate "updateBorder" method in
+                    // PainterListener?
                     // Forcing border updates
-                    LafUtils.updateBorder ( c.get () );
-
+                    LafUtils.updateBorder(c.get());
+                    
                     // Forcing layout updates
-                    c.get ().revalidate ();
+                    c.get().revalidate();
                 }
-
+                
                 @Override
-                public void updateOpacity ()
-                {
+                public void updateOpacity() {
                     // Updating component opacity according to painter
-                    final Painter painter = p.get ();
-                    if ( painter != null )
-                    {
-                        final Boolean opaque = painter.isOpaque ( c.get () );
-                        if ( opaque != null )
-                        {
-                            c.get ().setOpaque ( opaque );
+                    final Painter painter = p.get();
+                    if (painter != null) {
+                        final Boolean opaque = painter.isOpaque(c.get());
+                        if (opaque != null) {
+                            c.get().setOpaque(opaque);
                         }
                     }
                 }
             };
-            painter.addPainterListener ( listener );
-            listeners.put ( painter, listener );
+            painter.addPainterListener(listener);
+            listeners.put(painter, listener);
         }
     }
-
+    
     /**
-     * Uninstalls painter from the specified component.
-     * It is highly recommended to call this method only from EDT.
+     * Uninstalls painter from the specified component. It is highly recommended
+     * to call this method only from EDT.
      *
-     * @param component component painter is uninstalled from
-     * @param painter   painter to uninstall
+     * @param component
+     *            component painter is uninstalled from
+     * @param painter
+     *            painter to uninstall
      */
-    public static void uninstallPainter ( final JComponent component, final Painter painter )
-    {
-        if ( component == null || painter == null )
-        {
+    public static void uninstallPainter(final JComponent component,
+            final Painter painter) {
+        if (component == null || painter == null) {
             return;
         }
-        final Map<Painter, PainterListener> listeners = installedPainters.get ( component );
-        if ( listeners != null )
-        {
+        final Map<Painter, PainterListener> listeners = installedPainters
+                .get(component);
+        if (listeners != null) {
             // Uninstalling painter
-            painter.uninstall ( component );
-
+            painter.uninstall(component);
+            
             // Removing painter listener
-            listeners.remove ( painter );
+            listeners.remove(painter);
         }
     }
 }

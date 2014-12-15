@@ -20,103 +20,97 @@ package org.ocsoft.flatlaf.extended.layout;
 import java.awt.*;
 
 /**
- * This an abstract layout manager that hides some less frequently used layout methods.
+ * This an abstract layout manager that hides some less frequently used layout
+ * methods.
  *
  * @author Mikle Garin
  */
 
-public abstract class AbstractLayoutManager implements LayoutManager2
-{
+public abstract class AbstractLayoutManager implements LayoutManager2 {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void addLayoutComponent ( final Component comp, final Object constraints )
-    {
-        addComponent ( comp, constraints );
+    public void addLayoutComponent(final Component comp,
+            final Object constraints) {
+        addComponent(comp, constraints);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void addLayoutComponent ( final String name, final Component comp )
-    {
-        addComponent ( comp, name );
+    public void addLayoutComponent(final String name, final Component comp) {
+        addComponent(comp, name);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeLayoutComponent ( final Component comp )
-    {
-        removeComponent ( comp );
+    public void removeLayoutComponent(final Component comp) {
+        removeComponent(comp);
     }
-
+    
     /**
      * Called when component added into container with this layout.
      *
-     * @param component   added component
-     * @param constraints component constraints
+     * @param component
+     *            added component
+     * @param constraints
+     *            component constraints
      */
-    public void addComponent ( final Component component, final Object constraints )
-    {
+    public void addComponent(final Component component, final Object constraints) {
         // Do nothing
     }
-
+    
     /**
      * Called when component removed from container with this layout.
      *
-     * @param component removed component
+     * @param component
+     *            removed component
      */
-    public void removeComponent ( final Component component )
-    {
+    public void removeComponent(final Component component) {
         // Do nothing
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Dimension minimumLayoutSize ( final Container parent )
-    {
-        return preferredLayoutSize ( parent );
+    public Dimension minimumLayoutSize(final Container parent) {
+        return preferredLayoutSize(parent);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Dimension maximumLayoutSize ( final Container target )
-    {
-        return new Dimension ( Integer.MAX_VALUE, Integer.MAX_VALUE );
+    public Dimension maximumLayoutSize(final Container target) {
+        return new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public float getLayoutAlignmentX ( final Container target )
-    {
+    public float getLayoutAlignmentX(final Container target) {
         return 0.5f;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public float getLayoutAlignmentY ( final Container target )
-    {
+    public float getLayoutAlignmentY(final Container target) {
         return 0.5f;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void invalidateLayout ( final Container target )
-    {
+    public void invalidateLayout(final Container target) {
         //
     }
 }

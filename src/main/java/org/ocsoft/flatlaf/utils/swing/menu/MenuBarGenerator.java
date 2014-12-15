@@ -32,66 +32,67 @@ import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
  * @see org.ocsoft.flatlaf.utils.swing.menu.AbstractMenuGenerator
  */
 
-public class MenuBarGenerator extends AbstractMenuGenerator<WebMenuBar>
-{
+public class MenuBarGenerator extends AbstractMenuGenerator<WebMenuBar> {
     /**
      * Constructs new menu bar generator using default menu bar.
      */
-    public MenuBarGenerator ()
-    {
-        super ( new WebMenuBar () );
+    public MenuBarGenerator() {
+        super(new WebMenuBar());
     }
-
+    
     /**
      * Constructs new menu bar generator using specified menu bar.
      *
-     * @param menu menu bar
+     * @param menu
+     *            menu bar
      */
-    public MenuBarGenerator ( final WebMenuBar menu )
-    {
-        super ( menu );
+    public MenuBarGenerator(final WebMenuBar menu) {
+        super(menu);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void addSeparator ()
-    {
+    public void addSeparator() {
         // todo Probably add some custom WebLaF separator later instead of error
-        throw new RuntimeException ( "Menu bar is not supposed to have any separators in it" );
+        throw new RuntimeException(
+                "Menu bar is not supposed to have any separators in it");
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebMenuItem addItem ( final Object icon, final String text, final HotkeyData hotkey, final boolean enabled,
-                                 final ActionListener actionListener )
-    {
+    public WebMenuItem addItem(final Object icon, final String text,
+            final HotkeyData hotkey, final boolean enabled,
+            final ActionListener actionListener) {
         // Throw an exception here since this is not an intended Swing behavior
-        throw new RuntimeException ( "Menu bar is not supposed to have any menu items in it" );
+        throw new RuntimeException(
+                "Menu bar is not supposed to have any menu items in it");
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCheckBoxMenuItem addCheckItem ( final Object icon, final String text, final HotkeyData hotkey, final boolean enabled,
-                                              final boolean selected, final ActionListener actionListener )
-    {
+    public WebCheckBoxMenuItem addCheckItem(final Object icon,
+            final String text, final HotkeyData hotkey, final boolean enabled,
+            final boolean selected, final ActionListener actionListener) {
         // Throw an exception here since this is not an intended Swing behavior
-        throw new RuntimeException ( "Menu bar is not supposed to have any checkbox menu items in it" );
+        throw new RuntimeException(
+                "Menu bar is not supposed to have any checkbox menu items in it");
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebRadioButtonMenuItem addRadioItem ( final Object icon, final String text, final HotkeyData hotkey, final boolean enabled,
-                                                 final boolean selected, final ActionListener actionListener )
-    {
+    public WebRadioButtonMenuItem addRadioItem(final Object icon,
+            final String text, final HotkeyData hotkey, final boolean enabled,
+            final boolean selected, final ActionListener actionListener) {
         // Throw an exception here since this is not an intended Swing behavior
-        throw new RuntimeException ( "Menu bar is not supposed to have any radio button menu items in it" );
+        throw new RuntimeException(
+                "Menu bar is not supposed to have any radio button menu items in it");
     }
 }

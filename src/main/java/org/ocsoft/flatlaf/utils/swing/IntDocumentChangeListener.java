@@ -25,29 +25,27 @@ import javax.swing.event.DocumentEvent;
  * @author Mikle Garin
  */
 
-public abstract class IntDocumentChangeListener extends DocumentChangeListener
-{
+public abstract class IntDocumentChangeListener extends DocumentChangeListener {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void documentChanged ( final DocumentEvent e )
-    {
-        try
-        {
-            documentChanged ( Integer.parseInt ( getText ( e ) ), e );
-        }
-        catch ( final Throwable ex )
-        {
-            documentChanged ( null, e );
+    public void documentChanged(final DocumentEvent e) {
+        try {
+            documentChanged(Integer.parseInt(getText(e)), e);
+        } catch (final Throwable ex) {
+            documentChanged(null, e);
         }
     }
-
+    
     /**
-     * Informs that integer value contained in the document has changed in some way.
+     * Informs that integer value contained in the document has changed in some
+     * way.
      *
-     * @param newValue new integer value or null if value cannot be parsed
-     * @param e        document event
+     * @param newValue
+     *            new integer value or null if value cannot be parsed
+     * @param e
+     *            document event
      */
-    public abstract void documentChanged ( Integer newValue, DocumentEvent e );
+    public abstract void documentChanged(Integer newValue, DocumentEvent e);
 }

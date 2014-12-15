@@ -21,48 +21,62 @@ package org.ocsoft.flatlaf.extended.tab;
  * Documents state listener for WebDocumentPane component.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-WebDocumentPane">How to use WebDocumentPane</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-WebDocumentPane">How
+ *      to use WebDocumentPane</a>
  * @see org.ocsoft.flatlaf.extended.tab.WebDocumentPane
  */
 
-public interface DocumentListener<T extends DocumentData>
-{
+public interface DocumentListener<T extends DocumentData> {
     /**
      * Informs that provided document was opened inside document pane.
      *
-     * @param document document data
-     * @param pane     specific document pane
-     * @param index    document tab index
+     * @param document
+     *            document data
+     * @param pane
+     *            specific document pane
+     * @param index
+     *            document tab index
      */
-    public void opened ( T document, PaneData<T> pane, int index );
-
+    public void opened(T document, PaneData<T> pane, int index);
+    
     /**
-     * Informs that provided document was selected inside document pane.
-     * This will also occur when changing focus between panes in split mode as there is only one selected document at a time.
+     * Informs that provided document was selected inside document pane. This
+     * will also occur when changing focus between panes in split mode as there
+     * is only one selected document at a time.
      *
-     * @param document document data
-     * @param pane     specific document pane
-     * @param index    document tab index
+     * @param document
+     *            document data
+     * @param pane
+     *            specific document pane
+     * @param index
+     *            document tab index
      */
-    public void selected ( T document, PaneData<T> pane, int index );
-
+    public void selected(T document, PaneData<T> pane, int index);
+    
     /**
-     * Informs that provided document is being closed.
-     * Returns whether document is allowed to close or not.
+     * Informs that provided document is being closed. Returns whether document
+     * is allowed to close or not.
      *
-     * @param document document data
-     * @param pane     specific document pane
-     * @param index    document tab index
+     * @param document
+     *            document data
+     * @param pane
+     *            specific document pane
+     * @param index
+     *            document tab index
      * @return true if document is allowed to close, false otherwise
      */
-    public boolean closing ( T document, PaneData<T> pane, int index );
-
+    public boolean closing(T document, PaneData<T> pane, int index);
+    
     /**
      * Informs that provided document is closed.
      *
-     * @param document document data
-     * @param pane     specific document pane
-     * @param index    document tab index
+     * @param document
+     *            document data
+     * @param pane
+     *            specific document pane
+     * @param index
+     *            document tab index
      */
-    public void closed ( T document, PaneData<T> pane, int index );
+    public void closed(T document, PaneData<T> pane, int index);
 }

@@ -26,25 +26,22 @@ import javax.swing.plaf.BorderUIResource;
  * @author Mikle Garin
  */
 
-public class WebBorders
-{
+public class WebBorders {
     /**
      * Returns border instance for a JButton.
      *
      * @return border instance for a JButton
      */
-    public static Border getButtonBorder ()
-    {
-        return new BorderUIResource.EmptyBorderUIResource ( 0, 0, 0, 0 );
+    public static Border getButtonBorder() {
+        return new BorderUIResource.EmptyBorderUIResource(0, 0, 0, 0);
     }
-
+    
     /**
      * Returns border instance for a JProgressBar.
      *
      * @return border instance for a JProgressBar
      */
-    public static Border getProgressBarBorder ()
-    {
-        return new BorderUIResource.EmptyBorderUIResource ( 0, 0, 0, 0 );
+    public static Border getProgressBarBorder() {
+        return new BorderUIResource.EmptyBorderUIResource(0, 0, 0, 0);
     }
 }

@@ -28,74 +28,72 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class WebTabbedPaneStyle
-{
+public final class WebTabbedPaneStyle {
     /**
      * Tab content margin.
      */
     public static TabbedPaneStyle tabbedPaneStyle = TabbedPaneStyle.standalone;
-
+    
     /**
      * Top tab color.
      */
-    public static Color topBg = new Color ( 227, 227, 227 );
-
+    public static Color topBg = new Color(227, 227, 227);
+    
     /**
      * Bottom tab color.
      */
-    public static Color bottomBg = new Color ( 208, 208, 208 );
-
+    public static Color bottomBg = new Color(208, 208, 208);
+    
     /**
      * Top selected tab color.
      */
     public static Color selectedTopBg = Color.WHITE;
-
+    
     /**
      * Bottom selected tab color.
      */
     public static Color selectedBottomBg = FlatLafStyleConstants.backgroundColor;
-
+    
     /**
      * Decoration rounding.
      */
     public static int round = FlatLafStyleConstants.smallRound;
-
+    
     /**
      * Decoration shade width.
      */
     public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Whether to rotate tab insets for different tab positions or not.
      */
     public static boolean rotateTabInsets = false;
-
+    
     /**
      * Tab content margin.
      */
-    public static Insets contentInsets = new Insets ( 0, 0, 0, 0 );
-
+    public static Insets contentInsets = new Insets(0, 0, 0, 0);
+    
     /**
      * Tab title margin.
      */
-    public static Insets tabInsets = new Insets ( 3, 4, 3, 4 );
-
+    public static Insets tabInsets = new Insets(3, 4, 3, 4);
+    
     /**
-     * Empty pane Painter.
-     * Used when there are no available tabs.
+     * Empty pane Painter. Used when there are no available tabs.
      */
     public static Painter painter = null;
-
+    
     /**
      * Left tab area spacing.
      */
     public static int tabRunIndent = 0;
-
+    
     /**
      * Tab runs overlay in pixels.
      */
     public static int tabOverlay = 1;
-
+    
     /**
      * Tabs stretch type.
      */

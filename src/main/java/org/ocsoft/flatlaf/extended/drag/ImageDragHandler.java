@@ -34,94 +34,75 @@ import java.io.IOException;
  * User: mgarin Date: 19.01.12 Time: 15:34
  */
 
-public class ImageDragHandler extends TransferHandler
-{
-    private static final DataFlavor[] imageFlavor = new DataFlavor[]{ DataFlavor.imageFlavor };
-
+public class ImageDragHandler extends TransferHandler {
+    private static final DataFlavor[] imageFlavor = new DataFlavor[] { DataFlavor.imageFlavor };
+    
     private BufferedImage image;
     private boolean defaultBehavior = true;
-
-    public ImageDragHandler ( JComponent component, ImageIcon icon )
-    {
-        this ( component, ImageUtils.getBufferedImage ( icon ) );
+    
+    public ImageDragHandler(JComponent component, ImageIcon icon) {
+        this(component, ImageUtils.getBufferedImage(icon));
     }
-
-    public ImageDragHandler ( JComponent component, Image image )
-    {
-        this ( component, ImageUtils.getBufferedImage ( image ) );
+    
+    public ImageDragHandler(JComponent component, Image image) {
+        this(component, ImageUtils.getBufferedImage(image));
     }
-
-    public ImageDragHandler ( final JComponent component, BufferedImage image )
-    {
-        super ();
-        setImage ( image );
-
-        component.addMouseListener ( new MouseAdapter ()
-        {
+    
+    public ImageDragHandler(final JComponent component, BufferedImage image) {
+        super();
+        setImage(image);
+        
+        component.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed ( MouseEvent e )
-            {
-                if ( isDefaultBehavior () && SwingUtilities.isLeftMouseButton ( e ) &&
-                        component.isEnabled () )
-                {
-                    exportAsDrag ( component, e, getSourceActions ( component ) );
+            public void mousePressed(MouseEvent e) {
+                if (isDefaultBehavior() && SwingUtilities.isLeftMouseButton(e)
+                        && component.isEnabled()) {
+                    exportAsDrag(component, e, getSourceActions(component));
                 }
             }
-        } );
+        });
     }
-
-    public BufferedImage getImage ()
-    {
+    
+    public BufferedImage getImage() {
         return image;
     }
-
-    public void setImage ( BufferedImage image )
-    {
+    
+    public void setImage(BufferedImage image) {
         this.image = image;
     }
-
-    public boolean isDefaultBehavior ()
-    {
+    
+    public boolean isDefaultBehavior() {
         return defaultBehavior;
     }
-
-    public void setDefaultBehavior ( boolean defaultBehavior )
-    {
+    
+    public void setDefaultBehavior(boolean defaultBehavior) {
         this.defaultBehavior = defaultBehavior;
     }
-
+    
     @Override
-    public int getSourceActions ( JComponent c )
-    {
+    public int getSourceActions(JComponent c) {
         return COPY;
     }
-
+    
     @Override
-    protected Transferable createTransferable ( JComponent c )
-    {
-        return new Transferable ()
-        {
+    protected Transferable createTransferable(JComponent c) {
+        return new Transferable() {
             @Override
-            public DataFlavor[] getTransferDataFlavors ()
-            {
+            public DataFlavor[] getTransferDataFlavors() {
                 return imageFlavor;
             }
-
+            
             @Override
-            public boolean isDataFlavorSupported ( DataFlavor flavor )
-            {
-                return flavor.equals ( DataFlavor.imageFlavor );
+            public boolean isDataFlavorSupported(DataFlavor flavor) {
+                return flavor.equals(DataFlavor.imageFlavor);
             }
-
+            
             @Override
-            public Object getTransferData ( DataFlavor flavor ) throws UnsupportedFlavorException, IOException
-            {
-                if ( isDataFlavorSupported ( flavor ) )
-                {
+            public Object getTransferData(DataFlavor flavor)
+                    throws UnsupportedFlavorException, IOException {
+                if (isDataFlavorSupported(flavor)) {
                     return image;
-                }
-                else
-                {
+                } else {
                     return null;
                 }
             }

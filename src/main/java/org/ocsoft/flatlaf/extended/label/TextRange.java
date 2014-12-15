@@ -19,63 +19,62 @@ package org.ocsoft.flatlaf.extended.label;
 
 /**
  * This class represents part of the multi-styled text with its own style.
- * Created for internal usage within WebStyledLabelUI to split the styled text into separate renderable pieces.
+ * Created for internal usage within WebStyledLabelUI to split the styled text
+ * into separate renderable pieces.
  *
  * @author Mikle Garin
  */
 
-public class TextRange
-{
+public class TextRange {
     /**
      * Text part.
      */
     public String text;
-
+    
     /**
      * Text part style.
      */
     public StyleRange styleRange;
-
+    
     /**
      * Constructs new TextRange with empty style.
      *
-     * @param text text part
+     * @param text
+     *            text part
      */
-    public TextRange ( final String text )
-    {
-        this ( text, null );
+    public TextRange(final String text) {
+        this(text, null);
     }
-
+    
     /**
      * Constructs new TextRange with the specified style.
      *
-     * @param text       text part
-     * @param styleRange text part style
+     * @param text
+     *            text part
+     * @param styleRange
+     *            text part style
      */
-    public TextRange ( final String text, final StyleRange styleRange )
-    {
-        super ();
+    public TextRange(final String text, final StyleRange styleRange) {
+        super();
         this.text = text;
         this.styleRange = styleRange;
     }
-
+    
     /**
      * Returns text part.
      *
      * @return text part
      */
-    public String getText ()
-    {
+    public String getText() {
         return text;
     }
-
+    
     /**
      * Returns text part style.
      *
      * @return text part style
      */
-    public StyleRange getStyleRange ()
-    {
+    public StyleRange getStyleRange() {
         return styleRange;
     }
 }

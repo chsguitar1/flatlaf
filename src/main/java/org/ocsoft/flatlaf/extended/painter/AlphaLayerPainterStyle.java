@@ -27,18 +27,17 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class AlphaLayerPainterStyle
-{
+public final class AlphaLayerPainterStyle {
     /**
      * Square size.
      */
     public static int squareSize = FlatLafStyleConstants.ALPHA_RECT_SIZE;
-
+    
     /**
      * Light square color.
      */
     public static Color lightSquareColor = FlatLafStyleConstants.LIGHT_ALPHA;
-
+    
     /**
      * Dark square color.
      */

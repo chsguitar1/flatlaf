@@ -44,536 +44,494 @@ import java.util.Map;
  * User: mgarin Date: 29.02.12 Time: 16:53
  */
 
-public class WebComponentPanel extends WebPanel
-{
+public class WebComponentPanel extends WebPanel {
     public static final int GRIPPER_SIZE = 7;
     public static final int SINGLE_GRIPPER_STEP = 4;
-
-    private final List<ComponentReorderListener> listeners = new ArrayList<ComponentReorderListener> ( 1 );
-
+    
+    private final List<ComponentReorderListener> listeners = new ArrayList<ComponentReorderListener>(
+            1);
+    
     private WebPanel container;
-    private final Map<Component, WebSelectablePanel> components = new LinkedHashMap<Component, WebSelectablePanel> ();
-
-    private Insets elementMargin = new Insets ( 2, 2, 2, 2 );
+    private final Map<Component, WebSelectablePanel> components = new LinkedHashMap<Component, WebSelectablePanel>();
+    
+    private Insets elementMargin = new Insets(2, 2, 2, 2);
     private boolean reorderingAllowed = false;
     private boolean showReorderGrippers = true;
     private boolean upDownHotkeysAllowed = true;
     private boolean leftRightHotkeysAllowed = false;
-
-    public WebComponentPanel ()
-    {
-        super ();
-        initialize ();
+    
+    public WebComponentPanel() {
+        super();
+        initialize();
     }
-
-    public WebComponentPanel ( final boolean decorated )
-    {
-        super ( decorated );
-        initialize ();
+    
+    public WebComponentPanel(final boolean decorated) {
+        super(decorated);
+        initialize();
     }
-
-    private void initialize ()
-    {
+    
+    private void initialize() {
         // Default styling
-        setWebColoredBackground ( false );
-
+        setWebColoredBackground(false);
+        
         // Elements layout
-        container = new WebPanel ();
-        container.setLayout ( new ComponentPanelLayout () );
-        add ( container, BorderLayout.CENTER );
-
+        container = new WebPanel();
+        container.setLayout(new ComponentPanelLayout());
+        add(container, BorderLayout.CENTER);
+        
         // Previous action hotkeys
-        final HotkeyRunnable prevAction = new HotkeyRunnable ()
-        {
+        final HotkeyRunnable prevAction = new HotkeyRunnable() {
             @Override
-            public void run ( final KeyEvent e )
-            {
-                if ( upDownHotkeysAllowed && Hotkey.UP.isTriggered ( e ) || leftRightHotkeysAllowed && Hotkey.LEFT.isTriggered ( e ) )
-                {
-                    final int index = getFocusedElementIndex ();
-                    if ( index == -1 )
-                    {
-                        focusElement ( getElementCount () - 1 );
-                    }
-                    else
-                    {
-                        focusElement ( index > 0 ? index - 1 : getElementCount () - 1 );
+            public void run(final KeyEvent e) {
+                if (upDownHotkeysAllowed && Hotkey.UP.isTriggered(e)
+                        || leftRightHotkeysAllowed
+                        && Hotkey.LEFT.isTriggered(e)) {
+                    final int index = getFocusedElementIndex();
+                    if (index == -1) {
+                        focusElement(getElementCount() - 1);
+                    } else {
+                        focusElement(index > 0 ? index - 1
+                                : getElementCount() - 1);
                     }
                 }
             }
         };
-        HotkeyManager.registerHotkey ( this, this, Hotkey.UP, prevAction );
-        HotkeyManager.registerHotkey ( this, this, Hotkey.LEFT, prevAction );
-
+        HotkeyManager.registerHotkey(this, this, Hotkey.UP, prevAction);
+        HotkeyManager.registerHotkey(this, this, Hotkey.LEFT, prevAction);
+        
         // Next action hotkeys
-        final HotkeyRunnable nextAction = new HotkeyRunnable ()
-        {
+        final HotkeyRunnable nextAction = new HotkeyRunnable() {
             @Override
-            public void run ( final KeyEvent e )
-            {
-                if ( upDownHotkeysAllowed && Hotkey.DOWN.isTriggered ( e ) || leftRightHotkeysAllowed && Hotkey.RIGHT.isTriggered ( e ) )
-                {
-                    final int index = getFocusedElementIndex ();
-                    if ( index == -1 )
-                    {
-                        focusElement ( 0 );
-                    }
-                    else
-                    {
-                        focusElement ( index < getElementCount () - 1 ? index + 1 : 0 );
+            public void run(final KeyEvent e) {
+                if (upDownHotkeysAllowed && Hotkey.DOWN.isTriggered(e)
+                        || leftRightHotkeysAllowed
+                        && Hotkey.RIGHT.isTriggered(e)) {
+                    final int index = getFocusedElementIndex();
+                    if (index == -1) {
+                        focusElement(0);
+                    } else {
+                        focusElement(index < getElementCount() - 1 ? index + 1
+                                : 0);
                     }
                 }
             }
         };
-        HotkeyManager.registerHotkey ( this, this, Hotkey.DOWN, nextAction );
-        HotkeyManager.registerHotkey ( this, this, Hotkey.RIGHT, nextAction );
+        HotkeyManager.registerHotkey(this, this, Hotkey.DOWN, nextAction);
+        HotkeyManager.registerHotkey(this, this, Hotkey.RIGHT, nextAction);
     }
-
+    
     @Override
-    public void applyComponentOrientation ( final ComponentOrientation o )
-    {
-        super.applyComponentOrientation ( o );
-        updateAllBorders ();
+    public void applyComponentOrientation(final ComponentOrientation o) {
+        super.applyComponentOrientation(o);
+        updateAllBorders();
     }
-
-    public ComponentPanelLayout getContainerLayout ()
-    {
-        return ( ComponentPanelLayout ) container.getLayout ();
+    
+    public ComponentPanelLayout getContainerLayout() {
+        return (ComponentPanelLayout) container.getLayout();
     }
-
-    public boolean isUpDownHotkeysAllowed ()
-    {
+    
+    public boolean isUpDownHotkeysAllowed() {
         return upDownHotkeysAllowed;
     }
-
-    public void setUpDownHotkeysAllowed ( final boolean upDownHotkeysAllowed )
-    {
+    
+    public void setUpDownHotkeysAllowed(final boolean upDownHotkeysAllowed) {
         this.upDownHotkeysAllowed = upDownHotkeysAllowed;
     }
-
-    public boolean isLeftRightHotkeysAllowed ()
-    {
+    
+    public boolean isLeftRightHotkeysAllowed() {
         return leftRightHotkeysAllowed;
     }
-
-    public void setLeftRightHotkeysAllowed ( final boolean leftRightHotkeysAllowed )
-    {
+    
+    public void setLeftRightHotkeysAllowed(final boolean leftRightHotkeysAllowed) {
         this.leftRightHotkeysAllowed = leftRightHotkeysAllowed;
     }
-
-    public WebSelectablePanel addElement ( final Component component )
-    {
+    
+    public WebSelectablePanel addElement(final Component component) {
         // Ignore existing component insert
-        if ( components.containsKey ( component ) )
-        {
-            return components.get ( component );
+        if (components.containsKey(component)) {
+            return components.get(component);
         }
-
+        
         // Creating view for component
-        final WebSelectablePanel element = new WebSelectablePanel ();
-        element.add ( component, BorderLayout.CENTER );
-
+        final WebSelectablePanel element = new WebSelectablePanel();
+        element.add(component, BorderLayout.CENTER);
+        
         // todo Fix this workaround and check other layouts for that problem
         // String is needed to invoke proper layout method
-        container.add ( element, "" );
-
+        container.add(element, "");
+        
         // Saving view for component
-        components.put ( component, element );
-
+        components.put(component, element);
+        
         // Updating existing panels
-        updateAllBorders ();
-
+        updateAllBorders();
+        
         return element;
     }
-
-    public void removeElement ( final int index )
-    {
-        removeElement ( getElement ( index ) );
+    
+    public void removeElement(final int index) {
+        removeElement(getElement(index));
     }
-
-    public void removeElement ( final WebSelectablePanel element )
-    {
-        for ( final Component component : components.keySet () )
-        {
-            if ( components.get ( component ) == element )
-            {
-                removeElement ( component );
+    
+    public void removeElement(final WebSelectablePanel element) {
+        for (final Component component : components.keySet()) {
+            if (components.get(component) == element) {
+                removeElement(component);
                 break;
             }
         }
     }
-
-    public void removeElement ( final Component component )
-    {
+    
+    public void removeElement(final Component component) {
         // Removing actual element
-        final WebSelectablePanel element = components.get ( component );
-        container.remove ( element );
-
+        final WebSelectablePanel element = components.get(component);
+        container.remove(element);
+        
         // Removing data
-        components.remove ( component );
-
+        components.remove(component);
+        
         // Updating existing panels
-        updateAllBorders ();
+        updateAllBorders();
     }
-
-    public int getElementCount ()
-    {
-        return components.size ();
+    
+    public int getElementCount() {
+        return components.size();
     }
-
-    public WebSelectablePanel getElement ( final int index )
-    {
-        return ( WebSelectablePanel ) getContainerLayout ().getComponent ( index );
+    
+    public WebSelectablePanel getElement(final int index) {
+        return (WebSelectablePanel) getContainerLayout().getComponent(index);
     }
-
-    public WebSelectablePanel getFocusedElement ()
-    {
-        for ( final Component component : getContainerLayout ().getComponents () )
-        {
-            final WebSelectablePanel selectablePanel = ( WebSelectablePanel ) component;
-            if ( selectablePanel.isFocused () )
-            {
+    
+    public WebSelectablePanel getFocusedElement() {
+        for (final Component component : getContainerLayout().getComponents()) {
+            final WebSelectablePanel selectablePanel = (WebSelectablePanel) component;
+            if (selectablePanel.isFocused()) {
                 return selectablePanel;
             }
         }
         return null;
     }
-
-    public int getFocusedElementIndex ()
-    {
-        return getContainerLayout ().indexOf ( getFocusedElement () );
+    
+    public int getFocusedElementIndex() {
+        return getContainerLayout().indexOf(getFocusedElement());
     }
-
-    public void focusElement ( final int index )
-    {
-        getElement ( index ).transferFocus ();
+    
+    public void focusElement(final int index) {
+        getElement(index).transferFocus();
     }
-
-    public Insets getElementMargin ()
-    {
+    
+    public Insets getElementMargin() {
         return elementMargin;
     }
-
-    public void setElementMargin ( final int margin )
-    {
-        setElementMargin ( margin, margin, margin, margin );
+    
+    public void setElementMargin(final int margin) {
+        setElementMargin(margin, margin, margin, margin);
     }
-
-    public void setElementMargin ( final int top, final int left, final int bottom, final int right )
-    {
-        setElementMargin ( new Insets ( top, left, bottom, right ) );
+    
+    public void setElementMargin(final int top, final int left,
+            final int bottom, final int right) {
+        setElementMargin(new Insets(top, left, bottom, right));
     }
-
-    public void setElementMargin ( final Insets margin )
-    {
+    
+    public void setElementMargin(final Insets margin) {
         this.elementMargin = margin;
-
+        
         // Updating existing panels
-        updateAllBorders ();
+        updateAllBorders();
     }
-
-    public boolean isReorderingAllowed ()
-    {
+    
+    public boolean isReorderingAllowed() {
         return reorderingAllowed;
     }
-
-    public void setReorderingAllowed ( final boolean reorderingAllowed )
-    {
+    
+    public void setReorderingAllowed(final boolean reorderingAllowed) {
         this.reorderingAllowed = reorderingAllowed;
-
+        
         // Updating existing panels
-        updateAllBorders ();
+        updateAllBorders();
     }
-
-    public boolean isShowReorderGrippers ()
-    {
+    
+    public boolean isShowReorderGrippers() {
         return showReorderGrippers;
     }
-
-    public void setShowReorderGrippers ( final boolean showReorderGrippers )
-    {
+    
+    public void setShowReorderGrippers(final boolean showReorderGrippers) {
         this.showReorderGrippers = showReorderGrippers;
-
+        
         // Updating existing panels
-        updateAllBorders ();
+        updateAllBorders();
     }
-
-    private void updateAllBorders ()
-    {
-        for ( final WebSelectablePanel panel : components.values () )
-        {
-            panel.updateBorder ();
+    
+    private void updateAllBorders() {
+        for (final WebSelectablePanel panel : components.values()) {
+            panel.updateBorder();
         }
     }
-
-    public class WebSelectablePanel extends WebPanel
-    {
+    
+    public class WebSelectablePanel extends WebPanel {
         private final DefaultFocusTracker focusTracker;
-
+        
         private boolean dragged = false;
         private boolean focused = false;
-
-        public WebSelectablePanel ()
-        {
-            super ();
-            updateBorder ();
-
-            // Selection painter         
-            setPainter ( new WebSelectablePanelPainter () );
-
+        
+        public WebSelectablePanel() {
+            super();
+            updateBorder();
+            
+            // Selection painter
+            setPainter(new WebSelectablePanelPainter());
+            
             // On-press focus transfer & reorder
-            final MouseAdapter mouseAdapter = new MouseAdapter ()
-            {
+            final MouseAdapter mouseAdapter = new MouseAdapter() {
                 private int startY;
-
+                
                 @Override
-                public void mousePressed ( final MouseEvent e )
-                {
-                    if ( !SwingUtils.hasFocusOwner ( WebSelectablePanel.this ) )
-                    {
-                        WebSelectablePanel.this.transferFocus ();
+                public void mousePressed(final MouseEvent e) {
+                    if (!SwingUtils.hasFocusOwner(WebSelectablePanel.this)) {
+                        WebSelectablePanel.this.transferFocus();
                     }
-                    if ( WebComponentPanel.this.isEnabled () && SwingUtilities.isLeftMouseButton ( e ) )
-                    {
+                    if (WebComponentPanel.this.isEnabled()
+                            && SwingUtilities.isLeftMouseButton(e)) {
                         dragged = true;
-                        startY = getY ();
-                        container.setComponentZOrder ( WebSelectablePanel.this, 0 );
+                        startY = getY();
+                        container
+                                .setComponentZOrder(WebSelectablePanel.this, 0);
                     }
                 }
-
+                
                 @Override
-                public void mouseDragged ( final MouseEvent e )
-                {
-                    if ( dragged )
-                    {
-                        getContainerLayout ().setComponentShift ( WebSelectablePanel.this, getY () - startY );
-                        WebSelectablePanel.this.revalidate ();
+                public void mouseDragged(final MouseEvent e) {
+                    if (dragged) {
+                        getContainerLayout().setComponentShift(
+                                WebSelectablePanel.this, getY() - startY);
+                        WebSelectablePanel.this.revalidate();
                     }
                 }
-
+                
                 @Override
-                public void mouseReleased ( final MouseEvent e )
-                {
+                public void mouseReleased(final MouseEvent e) {
                     final WebSelectablePanel wsp = WebSelectablePanel.this;
-                    final ComponentPanelLayout cpl = getContainerLayout ();
-                    if ( SwingUtilities.isLeftMouseButton ( e ) && dragged )
-                    {
+                    final ComponentPanelLayout cpl = getContainerLayout();
+                    if (SwingUtilities.isLeftMouseButton(e) && dragged) {
                         // Stop drag
                         dragged = false;
-
+                        
                         // Update if needed
-                        if ( getY () - startY == 0 || cpl.getComponents ().size () <= 1 )
-                        {
-                            // Ignore drag if there is only 1 component or change is zero  
-                            cpl.setComponentShift ( wsp, null );
-                        }
-                        else
-                        {
+                        if (getY() - startY == 0
+                                || cpl.getComponents().size() <= 1) {
+                            // Ignore drag if there is only 1 component or
+                            // change is zero
+                            cpl.setComponentShift(wsp, null);
+                        } else {
                             // Dragged panel index and middle
-                            final int oldIndex = cpl.indexOf ( wsp );
-                            final int middle = getMiddleY ( wsp );
-
+                            final int oldIndex = cpl.indexOf(wsp);
+                            final int middle = getMiddleY(wsp);
+                            
                             // Searching for insert index
                             int insertIndex = 0;
-                            for ( final Component component : cpl.getComponents () )
-                            {
-                                if ( component != wsp && middle > getMiddleY ( component ) )
-                                {
-                                    insertIndex = cpl.indexOf ( component ) + 1;
+                            for (final Component component : cpl
+                                    .getComponents()) {
+                                if (component != wsp
+                                        && middle > getMiddleY(component)) {
+                                    insertIndex = cpl.indexOf(component) + 1;
                                 }
                             }
-
+                            
                             // Fix index
-                            if ( insertIndex > oldIndex )
-                            {
+                            if (insertIndex > oldIndex) {
                                 insertIndex--;
                             }
-
+                            
                             // Resetting shift
-                            cpl.setComponentShift ( wsp, null );
-
-                            // Changing panel location if it has actually changed
-                            if ( oldIndex != insertIndex )
-                            {
+                            cpl.setComponentShift(wsp, null);
+                            
+                            // Changing panel location if it has actually
+                            // changed
+                            if (oldIndex != insertIndex) {
                                 // Updating panel indices
-                                cpl.removeLayoutComponent ( wsp );
-                                cpl.insertLayoutComponent ( insertIndex, wsp );
-                                updateAllBorders ();
-
+                                cpl.removeLayoutComponent(wsp);
+                                cpl.insertLayoutComponent(insertIndex, wsp);
+                                updateAllBorders();
+                                
                                 // Informing all listeners
-                                fireComponentOrderChanged ( wsp.getComponent (), oldIndex, insertIndex );
+                                fireComponentOrderChanged(wsp.getComponent(),
+                                        oldIndex, insertIndex);
                             }
                         }
-
+                        
                         // Update panel positions
-                        wsp.revalidate ();
+                        wsp.revalidate();
                     }
                 }
-
-                private int getMiddleY ( final Component component )
-                {
-                    final Rectangle rectangle = component.getBounds ();
+                
+                private int getMiddleY(final Component component) {
+                    final Rectangle rectangle = component.getBounds();
                     return rectangle.y + rectangle.height / 2;
                 }
-
-                private int getY ()
-                {
-                    return MouseInfo.getPointerInfo ().getLocation ().y;
+                
+                private int getY() {
+                    return MouseInfo.getPointerInfo().getLocation().y;
                 }
             };
-            addMouseListener ( mouseAdapter );
-            addMouseMotionListener ( mouseAdapter );
-
+            addMouseListener(mouseAdapter);
+            addMouseMotionListener(mouseAdapter);
+            
             // Panel focus tracking
-            focusTracker = new DefaultFocusTracker ( true )
-            {
+            focusTracker = new DefaultFocusTracker(true) {
                 @Override
-                public void focusChanged ( final boolean focused )
-                {
+                public void focusChanged(final boolean focused) {
                     final WebSelectablePanel wsp = WebSelectablePanel.this;
                     wsp.focused = focused;
-
+                    
                     // Cancel panel drag on focus loss
-                    if ( !focused && dragged )
-                    {
+                    if (!focused && dragged) {
                         dragged = false;
-                        getContainerLayout ().setComponentShift ( wsp, null );
-                        wsp.revalidate ();
+                        getContainerLayout().setComponentShift(wsp, null);
+                        wsp.revalidate();
                     }
-
-                    repaint ();
+                    
+                    repaint();
                 }
             };
-            FocusManager.addFocusTracker ( WebSelectablePanel.this, focusTracker );
+            FocusManager.addFocusTracker(WebSelectablePanel.this, focusTracker);
         }
-
-        public void updateBorder ()
-        {
-            final int index = getIndex ();
-            final boolean ltr = getComponentOrientation ().isLeftToRight ();
-
-            final int top = index == 0 ? elementMargin.top : elementMargin.top + 1;
-            final int left = elementMargin.left + ( reorderingAllowed && showReorderGrippers && ltr ? GRIPPER_SIZE : 0 );
-            final int bottom = index == components.size () - 1 ? elementMargin.bottom : elementMargin.bottom + 1;
-            final int right = elementMargin.right + ( reorderingAllowed && showReorderGrippers && !ltr ? GRIPPER_SIZE : 0 );
-
-            setMargin ( top, left, bottom, right );
+        
+        public void updateBorder() {
+            final int index = getIndex();
+            final boolean ltr = getComponentOrientation().isLeftToRight();
+            
+            final int top = index == 0 ? elementMargin.top
+                    : elementMargin.top + 1;
+            final int left = elementMargin.left
+                    + (reorderingAllowed && showReorderGrippers && ltr ? GRIPPER_SIZE
+                            : 0);
+            final int bottom = index == components.size() - 1 ? elementMargin.bottom
+                    : elementMargin.bottom + 1;
+            final int right = elementMargin.right
+                    + (reorderingAllowed && showReorderGrippers && !ltr ? GRIPPER_SIZE
+                            : 0);
+            
+            setMargin(top, left, bottom, right);
         }
-
-        public boolean isFocused ()
-        {
+        
+        public boolean isFocused() {
             return focused;
         }
-
-        public boolean isDragged ()
-        {
+        
+        public boolean isDragged() {
             return dragged;
         }
-
-        public Component getComponent ()
-        {
-            return getComponent ( 0 );
+        
+        public Component getComponent() {
+            return getComponent(0);
         }
-
-        public int getIndex ()
-        {
-            return getContainerLayout ().indexOf ( WebSelectablePanel.this );
+        
+        public int getIndex() {
+            return getContainerLayout().indexOf(WebSelectablePanel.this);
         }
     }
-
+    
     /**
      * Custom painter for selectable panels.
      */
-    public class WebSelectablePanelPainter extends AbstractPainter<WebSelectablePanel>
-    {
+    public class WebSelectablePanelPainter extends
+            AbstractPainter<WebSelectablePanel> {
         /**
          * Style settings.
          */
         protected float[] fractions = { 0f, 0.25f, 0.75f, 1f };
-        protected Color[] lightColors = { FlatLafStyleConstants.transparent, Color.WHITE, Color.WHITE, FlatLafStyleConstants.transparent };
-        protected Color[] darkColors = { FlatLafStyleConstants.transparent, Color.GRAY, Color.GRAY, FlatLafStyleConstants.transparent };
-
+        protected Color[] lightColors = { FlatLafStyleConstants.transparent,
+                Color.WHITE, Color.WHITE, FlatLafStyleConstants.transparent };
+        protected Color[] darkColors = { FlatLafStyleConstants.transparent,
+                Color.GRAY, Color.GRAY, FlatLafStyleConstants.transparent };
+        
         /**
          * {@inheritDoc}
          */
         @Override
-        public Boolean isOpaque ( final WebSelectablePanel c )
-        {
+        public Boolean isOpaque(final WebSelectablePanel c) {
             return true;
         }
-
+        
         /**
          * {@inheritDoc}
          */
         @Override
-        public void paint ( final Graphics2D g2d, final Rectangle bounds, final WebSelectablePanel panel )
-        {
-            final boolean notFirst = panel.getIndex () > 0;
-            final boolean notLast = panel.getIndex () < components.size () - 1;
-
-            if ( panel.isFocused () )
-            {
+        public void paint(final Graphics2D g2d, final Rectangle bounds,
+                final WebSelectablePanel panel) {
+            final boolean notFirst = panel.getIndex() > 0;
+            final boolean notLast = panel.getIndex() < components.size() - 1;
+            
+            if (panel.isFocused()) {
                 // Background
-                g2d.setPaint ( new GradientPaint ( bounds.x, bounds.y, FlatLafStyleConstants.topBgColor, bounds.x, bounds.y + bounds.height,
-                        FlatLafStyleConstants.bottomBgColor ) );
-                g2d.fill ( bounds );
-
+                g2d.setPaint(new GradientPaint(bounds.x, bounds.y,
+                        FlatLafStyleConstants.topBgColor, bounds.x, bounds.y
+                                + bounds.height,
+                        FlatLafStyleConstants.bottomBgColor));
+                g2d.fill(bounds);
+                
                 // Borders
-                final Integer shift = getContainerLayout ().getComponentShift ( panel );
-                final boolean moved = panel.isDragged () && shift != null && shift != 0;
-                g2d.setPaint ( FlatLafStyleConstants.darkBorderColor );
-                if ( notFirst || moved )
-                {
-                    g2d.drawLine ( bounds.x, bounds.y, bounds.x + bounds.width - 1, bounds.y );
+                final Integer shift = getContainerLayout().getComponentShift(
+                        panel);
+                final boolean moved = panel.isDragged() && shift != null
+                        && shift != 0;
+                g2d.setPaint(FlatLafStyleConstants.darkBorderColor);
+                if (notFirst || moved) {
+                    g2d.drawLine(bounds.x, bounds.y, bounds.x + bounds.width
+                            - 1, bounds.y);
                 }
-                if ( notLast || moved )
-                {
-                    g2d.drawLine ( bounds.x, bounds.y + bounds.height - 1, bounds.x + bounds.width - 1, bounds.y + bounds.height - 1 );
+                if (notLast || moved) {
+                    g2d.drawLine(bounds.x, bounds.y + bounds.height - 1,
+                            bounds.x + bounds.width - 1, bounds.y
+                                    + bounds.height - 1);
                 }
             }
-
+            
             // Gripper
-            if ( reorderingAllowed && showReorderGrippers )
-            {
+            if (reorderingAllowed && showReorderGrippers) {
                 // Determining coordinates
-                final boolean ltr = panel.getComponentOrientation ().isLeftToRight ();
-                final int minY = bounds.y + 2 + ( notFirst ? 1 : 0 );
-                final int maxY = bounds.x + bounds.height - 2 - ( notLast ? 1 : 0 );
-                final int x = ltr ? bounds.x + 3 : bounds.x + bounds.width - GRIPPER_SIZE + 2;
-                int y = minY + ( ( maxY - minY ) % SINGLE_GRIPPER_STEP ) / 2;
-
+                final boolean ltr = panel.getComponentOrientation()
+                        .isLeftToRight();
+                final int minY = bounds.y + 2 + (notFirst ? 1 : 0);
+                final int maxY = bounds.x + bounds.height - 2
+                        - (notLast ? 1 : 0);
+                final int x = ltr ? bounds.x + 3 : bounds.x + bounds.width
+                        - GRIPPER_SIZE + 2;
+                int y = minY + ((maxY - minY) % SINGLE_GRIPPER_STEP) / 2;
+                
                 // Painters
-                final Paint light = new LinearGradientPaint ( x, minY, x, maxY, fractions, lightColors );
-                final Paint dark = new LinearGradientPaint ( x, minY, x, maxY, fractions, darkColors );
-
+                final Paint light = new LinearGradientPaint(x, minY, x, maxY,
+                        fractions, lightColors);
+                final Paint dark = new LinearGradientPaint(x, minY, x, maxY,
+                        fractions, darkColors);
+                
                 // Paint cycle
-                while ( y + 3 < maxY )
-                {
-                    g2d.setPaint ( light );
-                    g2d.fillRect ( x + 1, y + 1, 2, 2 );
-                    g2d.setPaint ( dark );
-                    g2d.fillRect ( x, y, 2, 2 );
+                while (y + 3 < maxY) {
+                    g2d.setPaint(light);
+                    g2d.fillRect(x + 1, y + 1, 2, 2);
+                    g2d.setPaint(dark);
+                    g2d.fillRect(x, y, 2, 2);
                     y += SINGLE_GRIPPER_STEP;
                 }
             }
         }
     }
-
-    public void addComponentReorderListener ( final ComponentReorderListener listener )
-    {
-        listeners.add ( listener );
+    
+    public void addComponentReorderListener(
+            final ComponentReorderListener listener) {
+        listeners.add(listener);
     }
-
-    public void removeComponentReorderListener ( final ComponentReorderListener listener )
-    {
-        listeners.remove ( listener );
+    
+    public void removeComponentReorderListener(
+            final ComponentReorderListener listener) {
+        listeners.remove(listener);
     }
-
-    private void fireComponentOrderChanged ( final Component component, final int oldIndex, final int newIndex )
-    {
-        for ( final ComponentReorderListener listener : CollectionUtils.copy ( listeners ) )
-        {
-            listener.componentOrderChanged ( component, oldIndex, newIndex );
+    
+    private void fireComponentOrderChanged(final Component component,
+            final int oldIndex, final int newIndex) {
+        for (final ComponentReorderListener listener : CollectionUtils
+                .copy(listeners)) {
+            listener.componentOrderChanged(component, oldIndex, newIndex);
         }
     }
 }

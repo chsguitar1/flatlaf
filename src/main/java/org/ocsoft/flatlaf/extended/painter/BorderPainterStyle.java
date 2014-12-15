@@ -27,23 +27,22 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class BorderPainterStyle
-{
+public final class BorderPainterStyle {
     /**
      * Border width.
      */
     public static int width = FlatLafStyleConstants.borderWidth;
-
+    
     /**
      * Border round.
      */
     public static int round = FlatLafStyleConstants.bigRound;
-
+    
     /**
      * Border color.
      */
     public static Color color = FlatLafStyleConstants.borderColor;
-
+    
     /**
      * Border stroke.
      */

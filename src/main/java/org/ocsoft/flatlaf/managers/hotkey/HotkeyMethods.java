@@ -20,15 +20,16 @@ package org.ocsoft.flatlaf.managers.hotkey;
 import org.ocsoft.flatlaf.utils.swing.SwingMethods;
 
 /**
- * This interface provides a set of methods that should be added into components that might have some kind of hotkeys.
- * Basically all these methods are already implemented in HotkeyManager but it is much easier to call them directly from component.
+ * This interface provides a set of methods that should be added into components
+ * that might have some kind of hotkeys. Basically all these methods are already
+ * implemented in HotkeyManager but it is much easier to call them directly from
+ * component.
  *
  * @author Mikle Garin
  * @see org.ocsoft.flatlaf.utils.swing.SwingMethods
  * @see org.ocsoft.flatlaf.managers.hotkey.HotkeyManager
  */
 
-public interface HotkeyMethods extends SwingMethods
-{
+public interface HotkeyMethods extends SwingMethods {
     // todo
 }

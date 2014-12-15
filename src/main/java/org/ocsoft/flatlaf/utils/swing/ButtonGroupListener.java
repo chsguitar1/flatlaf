@@ -23,7 +23,6 @@ import java.util.EventListener;
  * User: mgarin Date: 23.04.12 Time: 13:50
  */
 
-public interface ButtonGroupListener extends EventListener
-{
-    public void selectionChanged ();
+public interface ButtonGroupListener extends EventListener {
+    public void selectionChanged();
 }

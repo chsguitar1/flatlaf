@@ -18,8 +18,9 @@
 package org.ocsoft.flatlaf.utils.swing;
 
 /**
- * This interface is extended by all interfaces that provide custom methods for multiply Web-components.
- * All those methods are mostly bridges between Web-components and various managers and utility classes.
+ * This interface is extended by all interfaces that provide custom methods for
+ * multiply Web-components. All those methods are mostly bridges between
+ * Web-components and various managers and utility classes.
  *
  * @author Mikle Garin
  * @see org.ocsoft.flatlaf.managers.settings.SettingsMethods
@@ -39,17 +40,14 @@ package org.ocsoft.flatlaf.utils.swing;
  * @see org.ocsoft.flatlaf.extended.tab.DocumentPaneEventMethods
  */
 
-@SuppressWarnings ("JavadocReference")
-public interface SwingMethods
-{
+@SuppressWarnings("JavadocReference")
+public interface SwingMethods {
     /**
-     * todo To add:
-     * todo HotkeyMethods, ButtonHotkeyMethods - add and replace all workarounds
-     * todo OrientationMethods - add
+     * todo To add: todo HotkeyMethods, ButtonHotkeyMethods - add and replace
+     * all workarounds todo OrientationMethods - add
      *
-     * todo To modify:
-     * todo SizeMethods - add into all available components
-     * todo Move font methods from SwingUtils to FontUtils
-     * todo TooltipMethods, EventMethods - add more methods and inject them into various components
+     * todo To modify: todo SizeMethods - add into all available components todo
+     * Move font methods from SwingUtils to FontUtils todo TooltipMethods,
+     * EventMethods - add more methods and inject them into various components
      */
 }

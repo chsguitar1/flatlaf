@@ -21,29 +21,24 @@ package org.ocsoft.flatlaf.managers.tooltip;
  * User: mgarin Date: 07.01.11 Time: 2:35
  */
 
-public abstract class TooltipAdapter implements TooltipListener
-{
+public abstract class TooltipAdapter implements TooltipListener {
     @Override
-    public void tooltipShowing ()
-    {
+    public void tooltipShowing() {
         //
     }
-
+    
     @Override
-    public void tooltipShown ()
-    {
+    public void tooltipShown() {
         //
     }
-
+    
     @Override
-    public void tooltipHidden ()
-    {
+    public void tooltipHidden() {
         //
     }
-
+    
     @Override
-    public void tooltipDestroyed ()
-    {
+    public void tooltipDestroyed() {
         //
     }
 }

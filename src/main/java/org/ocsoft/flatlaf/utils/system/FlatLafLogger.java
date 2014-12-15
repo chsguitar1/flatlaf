@@ -30,376 +30,374 @@ import java.util.WeakHashMap;
  * @author Mikle Garin
  */
 
-public class FlatLafLogger
-{
+public class FlatLafLogger {
     /**
-     * todo 1. Add option to log within a separate thread to improve overall performance
+     * todo 1. Add option to log within a separate thread to improve overall
+     * performance
      */
-
+    
     /**
      * Loggers cache.
      */
-    protected static final Map<Class, Logger> loggers = new WeakHashMap<Class, Logger> ();
-
+    protected static final Map<Class, Logger> loggers = new WeakHashMap<Class, Logger>();
+    
     /**
      * Logging enabled/disabled conditions.
      */
-    protected static final Map<Class, Boolean> loggingEnabled = new WeakHashMap<Class, Boolean> ();
-
+    protected static final Map<Class, Boolean> loggingEnabled = new WeakHashMap<Class, Boolean>();
+    
     /**
      * Logger synchronization lock object.
      */
-    protected static final Object logLock = new Object ();
-
+    protected static final Object logLock = new Object();
+    
     /**
      * Whether debug messages are enabled or not.
      */
     protected static boolean debugEnabled = false;
-
+    
     /**
      * Whether Log is initialized or not.
      */
     protected static boolean initialized = false;
-
+    
     /**
      * Initializes SettingsManager.
      */
-    public static synchronized void initialize ()
-    {
-        if ( !initialized )
-        {
+    public static synchronized void initialize() {
+        if (!initialized) {
             initialized = true;
-
+            
             // Settings for SLF4J simple logger
-            System.setProperty ( "org.slf4j.simpleLogger.logFile", "System.out" );
-            System.setProperty ( "org.slf4j.simpleLogger.levelInBrackets", "true" );
+            System.setProperty("org.slf4j.simpleLogger.logFile", "System.out");
+            System.setProperty("org.slf4j.simpleLogger.levelInBrackets", "true");
         }
     }
-
+    
     /**
      * Returns whether debug messages are enabled or not.
      *
      * @return true if debug messages are enabled, false otherwise
      */
-    public static boolean isDebugEnabled ()
-    {
+    public static boolean isDebugEnabled() {
         return debugEnabled;
     }
-
+    
     /**
      * Sets whether debug messages are enabled or not.
      *
-     * @param debugEnabled whether debug messages are enabled or not
+     * @param debugEnabled
+     *            whether debug messages are enabled or not
      */
-    public static void setDebugEnabled ( final boolean debugEnabled )
-    {
-        synchronized ( logLock )
-        {
+    public static void setDebugEnabled(final boolean debugEnabled) {
+        synchronized (logLock) {
             FlatLafLogger.debugEnabled = debugEnabled;
         }
     }
-
+    
     /**
      * Writes specified information message into log.
      *
-     * @param message information message
-     * @param data    formatting data
+     * @param message
+     *            information message
+     * @param data
+     *            formatting data
      */
-    public static void info ( final String message, final Object... data )
-    {
-        info ( ReflectUtils.getCallerClass (), message, data );
+    public static void info(final String message, final Object... data) {
+        info(ReflectUtils.getCallerClass(), message, data);
     }
-
+    
     /**
      * Writes specified information message into log.
      *
-     * @param logFor  where to log message is attached
-     * @param message information message
-     * @param data    formatting data
+     * @param logFor
+     *            where to log message is attached
+     * @param message
+     *            information message
+     * @param data
+     *            formatting data
      */
-    public static void info ( final Object logFor, final String message, final Object... data )
-    {
-        synchronized ( logLock )
-        {
-            if ( isLoggingEnabled ( logFor ) )
-            {
-                final String msg = data == null || data.length == 0 ? message : String.format ( message, data );
-                getLogger ( logFor ).info ( msg );
+    public static void info(final Object logFor, final String message,
+            final Object... data) {
+        synchronized (logLock) {
+            if (isLoggingEnabled(logFor)) {
+                final String msg = data == null || data.length == 0 ? message
+                        : String.format(message, data);
+                getLogger(logFor).info(msg);
             }
         }
     }
-
+    
     /**
      * Writes specified information message into log.
      *
-     * @param message debugEnabled message
-     * @param data    formatting data
+     * @param message
+     *            debugEnabled message
+     * @param data
+     *            formatting data
      */
-    public static void debug ( final String message, final Object... data )
-    {
-        debug ( ReflectUtils.getCallerClass (), message, data );
+    public static void debug(final String message, final Object... data) {
+        debug(ReflectUtils.getCallerClass(), message, data);
     }
-
+    
     /**
      * Writes specified information message into log.
      *
-     * @param logFor  where to log message is attached
-     * @param message debugEnabled message
-     * @param data    formatting data
+     * @param logFor
+     *            where to log message is attached
+     * @param message
+     *            debugEnabled message
+     * @param data
+     *            formatting data
      */
-    public static void debug ( final Object logFor, final String message, final Object... data )
-    {
-        synchronized ( logLock )
-        {
-            if ( debugEnabled )
-            {
-                if ( isLoggingEnabled ( logFor ) )
-                {
-                    final String msg = data == null || data.length == 0 ? message : String.format ( message, data );
-                    getLogger ( logFor ).debug ( msg );
+    public static void debug(final Object logFor, final String message,
+            final Object... data) {
+        synchronized (logLock) {
+            if (debugEnabled) {
+                if (isLoggingEnabled(logFor)) {
+                    final String msg = data == null || data.length == 0 ? message
+                            : String.format(message, data);
+                    getLogger(logFor).debug(msg);
                 }
             }
         }
     }
-
+    
     /**
      * Writes specified warning message into log.
      *
-     * @param message warning message
+     * @param message
+     *            warning message
      */
-    public static void warn ( final String message )
-    {
-        warn ( ReflectUtils.getCallerClass (), message );
+    public static void warn(final String message) {
+        warn(ReflectUtils.getCallerClass(), message);
     }
-
+    
     /**
      * Writes specified warning message into log.
      *
-     * @param logFor  where to log message is attached
-     * @param message warning message
+     * @param logFor
+     *            where to log message is attached
+     * @param message
+     *            warning message
      */
-    public static void warn ( final Object logFor, final String message )
-    {
-        synchronized ( logLock )
-        {
-            if ( isLoggingEnabled ( logFor ) )
-            {
-                getLogger ( logFor ).warn ( message );
+    public static void warn(final Object logFor, final String message) {
+        synchronized (logLock) {
+            if (isLoggingEnabled(logFor)) {
+                getLogger(logFor).warn(message);
             }
         }
     }
-
+    
     /**
      * Writes specified warning message into log.
      *
-     * @param message   warning message
-     * @param throwable exception
+     * @param message
+     *            warning message
+     * @param throwable
+     *            exception
      */
-    public static void warn ( final String message, final Throwable throwable )
-    {
-        warn ( ReflectUtils.getCallerClass (), message, throwable );
+    public static void warn(final String message, final Throwable throwable) {
+        warn(ReflectUtils.getCallerClass(), message, throwable);
     }
-
+    
     /**
      * Writes specified warning message into log.
      *
-     * @param logFor    where to log message is attached
-     * @param message   warning message
-     * @param throwable exception
+     * @param logFor
+     *            where to log message is attached
+     * @param message
+     *            warning message
+     * @param throwable
+     *            exception
      */
-    public static void warn ( final Object logFor, final String message, final Throwable throwable )
-    {
-        synchronized ( logLock )
-        {
-            if ( isLoggingEnabled ( logFor ) )
-            {
-                getLogger ( logFor ).warn ( message, throwable );
+    public static void warn(final Object logFor, final String message,
+            final Throwable throwable) {
+        synchronized (logLock) {
+            if (isLoggingEnabled(logFor)) {
+                getLogger(logFor).warn(message, throwable);
             }
         }
     }
-
+    
     /**
      * Writes specified exception into log.
      *
-     * @param throwable exception
+     * @param throwable
+     *            exception
      */
-    public static void error ( final Throwable throwable )
-    {
-        error ( ReflectUtils.getCallerClass (), throwable );
+    public static void error(final Throwable throwable) {
+        error(ReflectUtils.getCallerClass(), throwable);
     }
-
+    
     /**
      * Writes specified exception into log.
      *
-     * @param logFor    where to log message is attached
-     * @param throwable exception
+     * @param logFor
+     *            where to log message is attached
+     * @param throwable
+     *            exception
      */
-    public static void error ( final Object logFor, final Throwable throwable )
-    {
-        synchronized ( logLock )
-        {
-            if ( isLoggingEnabled ( logFor ) )
-            {
-                getLogger ( logFor ).error ( throwable.toString (), throwable );
+    public static void error(final Object logFor, final Throwable throwable) {
+        synchronized (logLock) {
+            if (isLoggingEnabled(logFor)) {
+                getLogger(logFor).error(throwable.toString(), throwable);
             }
         }
     }
-
+    
     /**
      * Writes specified exception message into log.
      *
-     * @param message   exception message
-     * @param throwable exception
+     * @param message
+     *            exception message
+     * @param throwable
+     *            exception
      */
-    public static void error ( final String message, final Throwable throwable )
-    {
-        error ( ReflectUtils.getCallerClass (), message, throwable );
+    public static void error(final String message, final Throwable throwable) {
+        error(ReflectUtils.getCallerClass(), message, throwable);
     }
-
+    
     /**
      * Writes specified exception message into log.
      *
-     * @param logFor    where to log message is attached
-     * @param message   exception message
-     * @param throwable exception
+     * @param logFor
+     *            where to log message is attached
+     * @param message
+     *            exception message
+     * @param throwable
+     *            exception
      */
-    public static void error ( final Object logFor, final String message, final Throwable throwable )
-    {
-        synchronized ( logLock )
-        {
-            if ( isLoggingEnabled ( logFor ) )
-            {
-                getLogger ( logFor ).error ( message, throwable );
+    public static void error(final Object logFor, final String message,
+            final Throwable throwable) {
+        synchronized (logLock) {
+            if (isLoggingEnabled(logFor)) {
+                getLogger(logFor).error(message, throwable);
             }
         }
     }
-
+    
     /**
      * Writes specified exception message into log.
      *
-     * @param message exception message
+     * @param message
+     *            exception message
      */
-    public static void error ( final String message )
-    {
-        error ( ReflectUtils.getCallerClass (), message );
+    public static void error(final String message) {
+        error(ReflectUtils.getCallerClass(), message);
     }
-
+    
     /**
      * Writes specified exception message into log.
      *
-     * @param logFor  where to log message is attached
-     * @param message exception message
+     * @param logFor
+     *            where to log message is attached
+     * @param message
+     *            exception message
      */
-    public static void error ( final Object logFor, final String message )
-    {
-        synchronized ( logLock )
-        {
-            if ( isLoggingEnabled ( logFor ) )
-            {
-                getLogger ( logFor ).error ( message );
+    public static void error(final Object logFor, final String message) {
+        synchronized (logLock) {
+            if (isLoggingEnabled(logFor)) {
+                getLogger(logFor).error(message);
             }
         }
     }
-
+    
     /**
      * Returns logger for the requesting class.
      *
      * @return logger for the requesting class
      */
-    public static Logger get ()
-    {
-        return getLogger ( ReflectUtils.getCallerClass () );
+    public static Logger get() {
+        return getLogger(ReflectUtils.getCallerClass());
     }
-
+    
     /**
      * Returns logger for the requesting class.
      *
      * @return logger for the requesting class
      */
-    public static Logger getLogger ()
-    {
-        return getLogger ( ReflectUtils.getCallerClass () );
+    public static Logger getLogger() {
+        return getLogger(ReflectUtils.getCallerClass());
     }
-
+    
     /**
      * Returns logger for the specified class type.
      *
-     * @param object class type or object type
+     * @param object
+     *            class type or object type
      * @return logger for the specified class type
      */
-    public static Logger getLogger ( final Object object )
-    {
-        synchronized ( logLock )
-        {
-            final Class type = object instanceof Class ? ( Class ) object : object.getClass ();
-            Logger logger = loggers.get ( type );
-            if ( logger == null )
-            {
-                logger = LoggerFactory.getLogger ( type );
-                loggers.put ( type, logger );
+    public static Logger getLogger(final Object object) {
+        synchronized (logLock) {
+            final Class type = object instanceof Class ? (Class) object
+                    : object.getClass();
+            Logger logger = loggers.get(type);
+            if (logger == null) {
+                logger = LoggerFactory.getLogger(type);
+                loggers.put(type, logger);
             }
             return logger;
         }
     }
-
+    
     /**
      * Disables logging for the specified class type.
      *
-     * @param object class type or object type
+     * @param object
+     *            class type or object type
      */
-    public static void disableLogging ( final Object object )
-    {
-        setLoggingEnabled ( object, false );
+    public static void disableLogging(final Object object) {
+        setLoggingEnabled(object, false);
     }
-
+    
     /**
      * Enables logging for the specified class type.
      *
-     * @param object class type or object type
+     * @param object
+     *            class type or object type
      */
-    public static void enableLogging ( final Object object )
-    {
-        setLoggingEnabled ( object, true );
+    public static void enableLogging(final Object object) {
+        setLoggingEnabled(object, true);
     }
-
+    
     /**
      * Sets whether logging for the specified class type is enabled or not.
      *
-     * @param object  class type or object type
-     * @param enabled whether logging is enabled or not
+     * @param object
+     *            class type or object type
+     * @param enabled
+     *            whether logging is enabled or not
      */
-    public static void setLoggingEnabled ( final Object object, final boolean enabled )
-    {
-        synchronized ( logLock )
-        {
-            final Class type = object instanceof Class ? ( Class ) object : object.getClass ();
-            if ( !enabled )
-            {
-                loggingEnabled.put ( type, enabled );
-            }
-            else
-            {
-                loggingEnabled.remove ( type );
+    public static void setLoggingEnabled(final Object object,
+            final boolean enabled) {
+        synchronized (logLock) {
+            final Class type = object instanceof Class ? (Class) object
+                    : object.getClass();
+            if (!enabled) {
+                loggingEnabled.put(type, enabled);
+            } else {
+                loggingEnabled.remove(type);
             }
         }
     }
-
+    
     /**
      * Returns whether logging for the specified class type is enabled or not.
      *
-     * @param object class type or object type
-     * @return true if logging for the specified class type is enabled, false otherwise
+     * @param object
+     *            class type or object type
+     * @return true if logging for the specified class type is enabled, false
+     *         otherwise
      */
-    public static boolean isLoggingEnabled ( final Object object )
-    {
-        synchronized ( logLock )
-        {
-            if ( loggingEnabled.size () == 0 )
-            {
+    public static boolean isLoggingEnabled(final Object object) {
+        synchronized (logLock) {
+            if (loggingEnabled.size() == 0) {
                 return true;
             }
-            final Class type = object instanceof Class ? ( Class ) object : object.getClass ();
-            final Boolean enabled = loggingEnabled.get ( type );
+            final Class type = object instanceof Class ? (Class) object
+                    : object.getClass();
+            final Boolean enabled = loggingEnabled.get(type);
             return enabled == null || enabled;
         }
     }

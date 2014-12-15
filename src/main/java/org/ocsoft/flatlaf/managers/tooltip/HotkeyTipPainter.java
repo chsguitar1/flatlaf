@@ -32,33 +32,32 @@ import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
  * @see org.ocsoft.flatlaf.extended.painter.Painter
  */
 
-public class HotkeyTipPainter<T extends HotkeyTipLabel> extends WebLabelPainter<T>
-{
+public class HotkeyTipPainter<T extends HotkeyTipLabel> extends
+        WebLabelPainter<T> {
     /**
      * Style constants.
      */
-    public static Color bg = new Color ( 255, 255, 255, 178 );
+    public static Color bg = new Color(255, 255, 255, 178);
     public static int round = FlatLafStyleConstants.smallRound;
-
+    
     /**
      * Constructs new hotkey tip painter.
      */
-    public HotkeyTipPainter ()
-    {
-        super ();
+    public HotkeyTipPainter() {
+        super();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void paint ( final Graphics2D g2d, final Rectangle bounds, final T c )
-    {
-        final Object aa = GraphicsUtils.setupAntialias ( g2d );
-        g2d.setColor ( bg );
-        g2d.fillRoundRect ( bounds.x, bounds.y, bounds.width, bounds.height, round * 2, round * 2 );
-        GraphicsUtils.restoreAntialias ( g2d, aa );
-
-        super.paint ( g2d, bounds, c );
+    public void paint(final Graphics2D g2d, final Rectangle bounds, final T c) {
+        final Object aa = GraphicsUtils.setupAntialias(g2d);
+        g2d.setColor(bg);
+        g2d.fillRoundRect(bounds.x, bounds.y, bounds.width, bounds.height,
+                round * 2, round * 2);
+        GraphicsUtils.restoreAntialias(g2d, aa);
+        
+        super.paint(g2d, bounds, c);
     }
 }

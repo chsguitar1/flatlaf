@@ -18,23 +18,23 @@
 package org.ocsoft.flatlaf.extended.painter;
 
 /**
- * This enumeration represents the list of possible title positions for TitledBorderPainter.
+ * This enumeration represents the list of possible title positions for
+ * TitledBorderPainter.
  *
  * @author Mikle Garin
  */
 
-public enum TitlePosition
-{
+public enum TitlePosition {
     /**
      * Title placed above border line.
      */
     aboveLive,
-
+    
     /**
      * Title placed on the border line.
      */
     onLine,
-
+    
     /**
      * Title placed below border line.
      */

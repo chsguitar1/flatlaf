@@ -27,13 +27,14 @@ import org.ocsoft.flatlaf.managers.language.data.Value;
  * @author Mikle Garin
  */
 
-public interface LanguageKeyListener extends EventListener
-{
+public interface LanguageKeyListener extends EventListener {
     /**
      * Notifies that the specified language key value has changed.
      *
-     * @param key   language key
-     * @param value updated language value
+     * @param key
+     *            language key
+     * @param value
+     *            updated language value
      */
-    public void languageKeyUpdated ( String key, Value value );
+    public void languageKeyUpdated(String key, Value value);
 }

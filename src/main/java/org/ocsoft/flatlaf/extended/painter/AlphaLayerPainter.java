@@ -24,159 +24,161 @@ import org.ocsoft.flatlaf.utils.LafUtils;
 import java.awt.*;
 
 /**
- * Alpha layer painter.
- * This painter fills component background with an alpha-like texture.
+ * Alpha layer painter. This painter fills component background with an
+ * alpha-like texture.
  *
- * @param <E> component type
+ * @param <E>
+ *            component type
  * @author Mikle Garin
  * @see AbstractPainter
  * @see Painter
  */
 
-public class AlphaLayerPainter<E extends JComponent> extends AbstractPainter<E>
-{
+public class AlphaLayerPainter<E extends JComponent> extends AbstractPainter<E> {
     /**
      * Square size.
      */
     protected int squareSize = AlphaLayerPainterStyle.squareSize;
-
+    
     /**
      * Light square color.
      */
     protected Color lightSquareColor = AlphaLayerPainterStyle.lightSquareColor;
-
+    
     /**
      * Dark square color.
      */
     protected Color darkSquareColor = AlphaLayerPainterStyle.darkSquareColor;
-
+    
     /**
      * Constructs default alpha layer painter.
      */
-    public AlphaLayerPainter ()
-    {
-        super ();
+    public AlphaLayerPainter() {
+        super();
     }
-
+    
     /**
      * Constructs alpha layer painter with a specified square size.
      */
-    public AlphaLayerPainter ( final int squareSize )
-    {
-        super ();
+    public AlphaLayerPainter(final int squareSize) {
+        super();
         this.squareSize = squareSize;
     }
-
+    
     /**
      * Constructs alpha layer painter with a specified square colors.
      */
-    public AlphaLayerPainter ( final Color lightSquareColor, final Color darkSquareColor )
-    {
-        super ();
+    public AlphaLayerPainter(final Color lightSquareColor,
+            final Color darkSquareColor) {
+        super();
         this.lightSquareColor = lightSquareColor;
         this.darkSquareColor = darkSquareColor;
     }
-
+    
     /**
      * Constructs alpha layer painter with a specified square size and colors.
      */
-    public AlphaLayerPainter ( final int squareSize, final Color lightSquareColor, final Color darkSquareColor )
-    {
-        super ();
+    public AlphaLayerPainter(final int squareSize,
+            final Color lightSquareColor, final Color darkSquareColor) {
+        super();
         this.squareSize = squareSize;
         this.lightSquareColor = lightSquareColor;
         this.darkSquareColor = darkSquareColor;
     }
-
+    
     /**
      * Returns square size.
      *
      * @return square size
      */
-    public int getSquareSize ()
-    {
+    public int getSquareSize() {
         return squareSize;
     }
-
+    
     /**
      * Sets square size.
      *
-     * @param squareSize new square size
+     * @param squareSize
+     *            new square size
      */
-    public void setSquareSize ( final int squareSize )
-    {
+    public void setSquareSize(final int squareSize) {
         this.squareSize = squareSize;
-        repaint ();
+        repaint();
     }
-
+    
     /**
      * Returns light square color.
      *
      * @return light square color
      */
-    public Color getLightSquareColor ()
-    {
+    public Color getLightSquareColor() {
         return lightSquareColor;
     }
-
+    
     /**
      * Sets light square color.
      *
-     * @param lightSquareColor new light square color
+     * @param lightSquareColor
+     *            new light square color
      */
-    public void setLightSquareColor ( final Color lightSquareColor )
-    {
+    public void setLightSquareColor(final Color lightSquareColor) {
         this.lightSquareColor = lightSquareColor;
-        repaint ();
+        repaint();
     }
-
+    
     /**
      * Returns dark square color.
      *
      * @return dark square color
      */
-    public Color getDarkSquareColor ()
-    {
+    public Color getDarkSquareColor() {
         return darkSquareColor;
     }
-
+    
     /**
      * Sets dark square color.
      *
-     * @param darkSquareColor new dark square color
+     * @param darkSquareColor
+     *            new dark square color
      */
-    public void setDarkSquareColor ( final Color darkSquareColor )
-    {
+    public void setDarkSquareColor(final Color darkSquareColor) {
         this.darkSquareColor = darkSquareColor;
-        repaint ();
+        repaint();
     }
-
+    
     /**
      * Returns whether visual data provided by this painter is opaque or not.
-     * Returned value might affect component opacity depending on painter support inside that component UI.
+     * Returned value might affect component opacity depending on painter
+     * support inside that component UI.
      *
-     * @param c component to process
-     * @return true if visual data provided by this painter is opaque, false otherwise
+     * @param c
+     *            component to process
+     * @return true if visual data provided by this painter is opaque, false
+     *         otherwise
      */
     @Override
-    public Boolean isOpaque ( final E c )
-    {
-        return lightSquareColor.getAlpha () == 255 && darkSquareColor.getAlpha () == 255;
+    public Boolean isOpaque(final E c) {
+        return lightSquareColor.getAlpha() == 255
+                && darkSquareColor.getAlpha() == 255;
     }
-
+    
     /**
-     * Paints visual data onto the component graphics.
-     * Provided graphics and component are taken directly from component UI paint method.
-     * Provided bounds are usually fake (zero location, component size) but in some cases it might be specified by componentUI.
+     * Paints visual data onto the component graphics. Provided graphics and
+     * component are taken directly from component UI paint method. Provided
+     * bounds are usually fake (zero location, component size) but in some cases
+     * it might be specified by componentUI.
      *
-     * @param g2d    component graphics
-     * @param bounds bounds for painter visual data
-     * @param c      component to process
+     * @param g2d
+     *            component graphics
+     * @param bounds
+     *            bounds for painter visual data
+     * @param c
+     *            component to process
      */
     @Override
-    public void paint ( final Graphics2D g2d, final Rectangle bounds, final E c )
-    {
+    public void paint(final Graphics2D g2d, final Rectangle bounds, final E c) {
         // todo Optimize paint by using generated texture image
-        LafUtils.drawAlphaLayer ( g2d, bounds.x, bounds.y, bounds.width, bounds.height, squareSize, lightSquareColor, darkSquareColor );
+        LafUtils.drawAlphaLayer(g2d, bounds.x, bounds.y, bounds.width,
+                bounds.height, squareSize, lightSquareColor, darkSquareColor);
     }
 }

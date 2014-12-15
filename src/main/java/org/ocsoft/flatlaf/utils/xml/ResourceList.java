@@ -28,39 +28,32 @@ import java.util.List;
  * User: mgarin Date: 17.02.12 Time: 12:30
  */
 
-@XStreamAlias ("ResourceList")
-public class ResourceList implements Serializable
-{
+@XStreamAlias("ResourceList")
+public class ResourceList implements Serializable {
     @XStreamImplicit
-    private List<ResourceFile> resources = new ArrayList<ResourceFile> ();
-
-    public ResourceList ()
-    {
-        super ();
+    private List<ResourceFile> resources = new ArrayList<ResourceFile>();
+    
+    public ResourceList() {
+        super();
     }
-
-    public void addResource ( final ResourceFile resource )
-    {
-        resources.add ( resource );
+    
+    public void addResource(final ResourceFile resource) {
+        resources.add(resource);
     }
-
-    public void removeResource ( final ResourceFile resource )
-    {
-        resources.remove ( resource );
+    
+    public void removeResource(final ResourceFile resource) {
+        resources.remove(resource);
     }
-
-    public ResourceFile getResource ( final int index )
-    {
-        return resources.get ( index );
+    
+    public ResourceFile getResource(final int index) {
+        return resources.get(index);
     }
-
-    public List<ResourceFile> getResources ()
-    {
+    
+    public List<ResourceFile> getResources() {
         return resources;
     }
-
-    public void setResources ( final List<ResourceFile> resources )
-    {
+    
+    public void setResources(final List<ResourceFile> resources) {
         this.resources = resources;
     }
 }

@@ -26,77 +26,71 @@ import java.io.File;
  * @author Mikle Garin
  */
 
-public class FileElement
-{
+public class FileElement {
     /**
      * Element operations lock.
      */
-    private final Object lock = new Object ();
-
+    private final Object lock = new Object();
+    
     /**
      * Element file.
      */
     private File file;
-
+    
     /**
      * Whether thumbnail load is queued for this element or not.
      */
     private boolean thumbnailQueued = false;
-
+    
     /**
      * Whether disabled thumbnail load is queued for this element or not.
      */
     private boolean disabledThumbnailQueued = false;
-
+    
     /**
      * Cached element thumbnail icon for enabled state.
      */
     private ImageIcon enabledThumbnail = null;
-
+    
     /**
      * Cached element thumbnail icon for disabled state.
      */
     private ImageIcon disabledThumbnail = null;
-
+    
     /**
      * Constructs element without file.
      */
-    public FileElement ()
-    {
-        super ();
+    public FileElement() {
+        super();
     }
-
+    
     /**
      * Constructs element with specified file.
      */
-    public FileElement ( File file )
-    {
-        super ();
+    public FileElement(File file) {
+        super();
         this.file = file;
     }
-
+    
     /**
      * Returns element file.
      *
      * @return element file
      */
-    public File getFile ()
-    {
+    public File getFile() {
         return file;
     }
-
+    
     /**
      * Sets element file.
      *
-     * @param file new element file
+     * @param file
+     *            new element file
      */
-    public void setFile ( File file )
-    {
-        synchronized ( lock )
-        {
+    public void setFile(File file) {
+        synchronized (lock) {
             this.file = file;
-            if ( file == null )
-            {
+            if (file == null) {
                 thumbnailQueued = false;
                 disabledThumbnailQueued = false;
                 enabledThumbnail = null;
@@ -104,113 +98,99 @@ public class FileElement
             }
         }
     }
-
+    
     /**
      * Returns whether thumbnail load is queued or not.
      *
      * @return true if thumbnail load is queued, false otherwise
      */
-    public boolean isThumbnailQueued ()
-    {
-        synchronized ( lock )
-        {
+    public boolean isThumbnailQueued() {
+        synchronized (lock) {
             return thumbnailQueued;
         }
     }
-
+    
     /**
      * Sets whether thumbnail load is queued or not.
      *
-     * @param thumbnailQueued whether thumbnail load is queued or not
+     * @param thumbnailQueued
+     *            whether thumbnail load is queued or not
      */
-    public void setThumbnailQueued ( boolean thumbnailQueued )
-    {
-        synchronized ( lock )
-        {
-            if ( file != null )
-            {
+    public void setThumbnailQueued(boolean thumbnailQueued) {
+        synchronized (lock) {
+            if (file != null) {
                 this.thumbnailQueued = thumbnailQueued;
             }
         }
     }
-
+    
     /**
      * Returns whether disabled thumbnail load is queued or not.
      *
      * @return true if disabled thumbnail load is queued, false otherwise
      */
-    public boolean isDisabledThumbnailQueued ()
-    {
-        synchronized ( lock )
-        {
+    public boolean isDisabledThumbnailQueued() {
+        synchronized (lock) {
             return disabledThumbnailQueued;
         }
     }
-
+    
     /**
      * Sets whether disabled thumbnail load is queued or not.
      *
-     * @param disabledThumbnailQueued whether disabled thumbnail load is queued or not
+     * @param disabledThumbnailQueued
+     *            whether disabled thumbnail load is queued or not
      */
-    public void setDisabledThumbnailQueued ( boolean disabledThumbnailQueued )
-    {
-        synchronized ( lock )
-        {
-            if ( file != null )
-            {
+    public void setDisabledThumbnailQueued(boolean disabledThumbnailQueued) {
+        synchronized (lock) {
+            if (file != null) {
                 this.disabledThumbnailQueued = disabledThumbnailQueued;
             }
         }
     }
-
+    
     /**
      * Returns cached element thumbnail icon for enabled state.
      *
      * @return cached element thumbnail icon for enabled state
      */
-    public ImageIcon getEnabledThumbnail ()
-    {
-        synchronized ( lock )
-        {
+    public ImageIcon getEnabledThumbnail() {
+        synchronized (lock) {
             return enabledThumbnail;
         }
     }
-
+    
     /**
      * Sets cached element thumbnail icon for enabled state.
      *
-     * @param enabledThumbnail new cached element thumbnail icon for enabled state
+     * @param enabledThumbnail
+     *            new cached element thumbnail icon for enabled state
      */
-    public void setEnabledThumbnail ( ImageIcon enabledThumbnail )
-    {
-        synchronized ( lock )
-        {
+    public void setEnabledThumbnail(ImageIcon enabledThumbnail) {
+        synchronized (lock) {
             this.enabledThumbnail = enabledThumbnail;
         }
     }
-
+    
     /**
      * Returns cached element thumbnail icon for disabled state.
      *
      * @return cached element thumbnail icon for disabled state
      */
-    public ImageIcon getDisabledThumbnail ()
-    {
-        synchronized ( lock )
-        {
+    public ImageIcon getDisabledThumbnail() {
+        synchronized (lock) {
             return disabledThumbnail;
         }
     }
-
+    
     /**
      * Sets cached element thumbnail icon for disabled state.
      *
-     * @param disabledThumbnail new cached element thumbnail icon for disabled state
+     * @param disabledThumbnail
+     *            new cached element thumbnail icon for disabled state
      */
-    public void setDisabledThumbnail ( ImageIcon disabledThumbnail )
-    {
-        synchronized ( lock )
-        {
+    public void setDisabledThumbnail(ImageIcon disabledThumbnail) {
+        synchronized (lock) {
             this.disabledThumbnail = disabledThumbnail;
         }
     }

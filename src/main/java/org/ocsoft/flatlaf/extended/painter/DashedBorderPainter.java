@@ -23,110 +23,109 @@ import java.awt.*;
 /**
  * Dashed border painter.
  *
- * @param <E> component type
+ * @param <E>
+ *            component type
  * @author Mikle Garin
  * @see BorderPainter
  * @see AbstractPainter
  * @see Painter
  */
 
-public class DashedBorderPainter<E extends JComponent> extends BorderPainter<E>
-{
+public class DashedBorderPainter<E extends JComponent> extends BorderPainter<E> {
     /**
      * Array representing dashing pattern.
      */
     private float[] dash = DashedBorderPainterStyle.dash;
-
+    
     /**
      * Offset to start dashing pattern.
      */
     private float dashPhase = DashedBorderPainterStyle.dashPhase;
-
+    
     /**
      * Constructs default dashed border painter.
      */
-    public DashedBorderPainter ()
-    {
-        super ();
-        updateStroke ();
+    public DashedBorderPainter() {
+        super();
+        updateStroke();
     }
-
+    
     /**
      * Constructs dashed border painter with specified dashing pattern.
      *
-     * @param dash dashing pattern
+     * @param dash
+     *            dashing pattern
      */
-    public DashedBorderPainter ( final float[] dash )
-    {
-        super ();
-        setDash ( dash );
+    public DashedBorderPainter(final float[] dash) {
+        super();
+        setDash(dash);
     }
-
+    
     /**
-     * Constructs dashed border painter with specified dashing pattern and offset.
+     * Constructs dashed border painter with specified dashing pattern and
+     * offset.
      *
-     * @param dash      dashing pattern
-     * @param dashPhase dashing pattern offset
+     * @param dash
+     *            dashing pattern
+     * @param dashPhase
+     *            dashing pattern offset
      */
-    public DashedBorderPainter ( final float[] dash, final float dashPhase )
-    {
-        super ();
-        setDash ( dash );
-        setDashPhase ( dashPhase );
+    public DashedBorderPainter(final float[] dash, final float dashPhase) {
+        super();
+        setDash(dash);
+        setDashPhase(dashPhase);
     }
-
+    
     /**
      * Returns dashing pattern.
      *
      * @return dashing pattern
      */
-    public float[] getDash ()
-    {
+    public float[] getDash() {
         return dash;
     }
-
+    
     /**
-     * Sets dashing pattern.
-     * This will also force stroke to update and overwrite old stroke value.
+     * Sets dashing pattern. This will also force stroke to update and overwrite
+     * old stroke value.
      *
-     * @param dash new dashing pattern
+     * @param dash
+     *            new dashing pattern
      */
-    public void setDash ( final float[] dash )
-    {
+    public void setDash(final float[] dash) {
         this.dash = dash;
-        updateStroke ();
-        repaint ();
+        updateStroke();
+        repaint();
     }
-
+    
     /**
      * Returns dashing pattern offset.
      *
      * @return dashing pattern offset
      */
-    public float getDashPhase ()
-    {
+    public float getDashPhase() {
         return dashPhase;
     }
-
+    
     /**
-     * Sets dashing pattern offset.
-     * This will also force stroke to update and overwrite old stroke value.
+     * Sets dashing pattern offset. This will also force stroke to update and
+     * overwrite old stroke value.
      *
-     * @param dashPhase new dashing pattern offset
+     * @param dashPhase
+     *            new dashing pattern offset
      */
-    public void setDashPhase ( final float dashPhase )
-    {
+    public void setDashPhase(final float dashPhase) {
         this.dashPhase = dashPhase;
-        updateStroke ();
-        repaint ();
+        updateStroke();
+        repaint();
     }
-
+    
     /**
      * Updates border stroke depending on painter settings.
      */
     @Override
-    protected void updateStroke ()
-    {
-        stroke = new BasicStroke ( getWidth (), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0f, getDash (), getDashPhase () );
+    protected void updateStroke() {
+        stroke = new BasicStroke(getWidth(), BasicStroke.CAP_ROUND,
+                BasicStroke.JOIN_ROUND, 0f, getDash(), getDashPhase());
     }
 }

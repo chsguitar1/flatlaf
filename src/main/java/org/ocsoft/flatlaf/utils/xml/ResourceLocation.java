@@ -25,10 +25,7 @@ import java.io.Serializable;
  * User: mgarin Date: 17.02.12 Time: 11:56
  */
 
-@XStreamAlias ("ResourceLocation")
-public enum ResourceLocation implements Serializable
-{
-    url,
-    filePath,
-    nearClass
+@XStreamAlias("ResourceLocation")
+public enum ResourceLocation implements Serializable {
+    url, filePath, nearClass
 }

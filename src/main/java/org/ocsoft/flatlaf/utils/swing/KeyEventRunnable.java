@@ -25,12 +25,12 @@ import java.awt.event.KeyEvent;
  * @author Mikle Garin
  */
 
-public interface KeyEventRunnable
-{
+public interface KeyEventRunnable {
     /**
      * Performs action according to key event.
      *
-     * @param e occured key event
+     * @param e
+     *            occured key event
      */
-    public void run ( KeyEvent e );
+    public void run(KeyEvent e);
 }

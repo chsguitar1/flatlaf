@@ -23,40 +23,41 @@ package org.ocsoft.flatlaf.laf.list.editor;
  * @author Mikle Garin
  */
 
-public abstract class ListEditAdapter implements ListEditListener
-{
+public abstract class ListEditAdapter implements ListEditListener {
     /**
      * Informs that editing was started.
      *
-     * @param index edited cell index
+     * @param index
+     *            edited cell index
      */
     @Override
-    public void editStarted ( int index )
-    {
+    public void editStarted(int index) {
         //
     }
-
+    
     /**
      * Informs that editing was finished.
      *
-     * @param index    edited cell index
-     * @param oldValue old cell value
-     * @param newValue new cell value
+     * @param index
+     *            edited cell index
+     * @param oldValue
+     *            old cell value
+     * @param newValue
+     *            new cell value
      */
     @Override
-    public void editFinished ( int index, Object oldValue, Object newValue )
-    {
+    public void editFinished(int index, Object oldValue, Object newValue) {
         //
     }
-
+    
     /**
      * Informs that editing was cancelled.
      *
-     * @param index edited cell index
+     * @param index
+     *            edited cell index
      */
     @Override
-    public void editCancelled ( int index )
-    {
+    public void editCancelled(int index) {
         //
     }
 }

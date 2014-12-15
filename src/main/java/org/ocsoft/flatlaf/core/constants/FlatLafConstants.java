@@ -37,28 +37,27 @@ public final class FlatLafConstants {
     /**
      * Viewable image formats.
      */
-    public static final List<String> IMAGE_FORMATS = Arrays.asList (
-            "png", "apng", "gif", "agif", "jpg", "jpeg", "jpeg2000", "bmp");
-
+    public static final List<String> IMAGE_FORMATS = Arrays.asList("png",
+            "apng", "gif", "agif", "jpg", "jpeg", "jpeg2000", "bmp");
+    
     /**
      * Comparators.
      */
-    public static final FileComparator FILE_COMPARATOR = new FileComparator ();
-
+    public static final FileComparator FILE_COMPARATOR = new FileComparator();
+    
     /**
      * Drawing constants.
      */
-    public static final AffineTransform moveX = new AffineTransform ();
-    public static final AffineTransform moveY = new AffineTransform ();
-    public static final AffineTransform moveXY = new AffineTransform ();
-
-    static
-    {
-        moveX.translate ( 1, 0 );
-        moveY.translate ( 0, 1 );
-        moveXY.translate ( 1, 1 );
+    public static final AffineTransform moveX = new AffineTransform();
+    public static final AffineTransform moveY = new AffineTransform();
+    public static final AffineTransform moveXY = new AffineTransform();
+    
+    static {
+        moveX.translate(1, 0);
+        moveY.translate(0, 1);
+        moveXY.translate(1, 1);
     }
-
+    
     /**
      * Debugging mode mark.
      */

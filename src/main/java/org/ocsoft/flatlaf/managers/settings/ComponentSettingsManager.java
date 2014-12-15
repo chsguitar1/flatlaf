@@ -29,291 +29,300 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 /**
- * This SettingsManager sub-manager registers and processes component settings auto-save/restore them on any changes within or outside of
- * that component.
+ * This SettingsManager sub-manager registers and processes component settings
+ * auto-save/restore them on any changes within or outside of that component.
  * <p/>
- * This manager should never be called directly (except the case when you register new SettingsProcessor or if you know what you are doing)
- * to avoid any unexpected component behavior.
+ * This manager should never be called directly (except the case when you
+ * register new SettingsProcessor or if you know what you are doing) to avoid
+ * any unexpected component behavior.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How to use SettingsManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How
+ *      to use SettingsManager</a>
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  */
 
-public class ComponentSettingsManager
-{
+public class ComponentSettingsManager {
     /**
-     * todo 1. JListSettingsProcessor
-     * todo 2. JTableSettingsProcessor
-     * todo 3. JScrollPaneSettingsProcessor
+     * todo 1. JListSettingsProcessor todo 2. JTableSettingsProcessor todo 3.
+     * JScrollPaneSettingsProcessor
      */
-
+    
     /**
      * Registered settings processor classes.
      */
-    protected static final Map<Class, Class> settingsProcessorClasses = new LinkedHashMap<Class, Class> ();
-
+    protected static final Map<Class, Class> settingsProcessorClasses = new LinkedHashMap<Class, Class>();
+    
     /**
      * Registered component settings processors.
      */
-    protected static final Map<Component, SettingsProcessor> settingsProcessors = new WeakHashMap<Component, SettingsProcessor> ();
-
+    protected static final Map<Component, SettingsProcessor> settingsProcessors = new WeakHashMap<Component, SettingsProcessor>();
+    
     /**
      * Whether throw exceptions on inappropriate actions or not.
      */
     protected static boolean throwExceptions = true;
-
+    
     /**
      * Whether ComponentSettingsManager is initialized or not.
      */
     protected static boolean initialized = false;
-
+    
     /**
      * Initializes ComponentSettingsManager.
      */
-    public static void initializeManager ()
-    {
-        if ( !initialized )
-        {
+    public static void initializeManager() {
+        if (!initialized) {
             initialized = true;
-
+            
             // Initializing base settings processors
-            registerSettingsProcessor ( AbstractButton.class, AbstractButtonSettingsProcessor.class );
-            registerSettingsProcessor ( JComboBox.class, JComboBoxSettingsProcessor.class );
-            registerSettingsProcessor ( JSlider.class, JSliderSettingsProcessor.class );
-            registerSettingsProcessor ( JPasswordField.class, JPasswordFieldSettingsProcessor.class );
-            registerSettingsProcessor ( JTextComponent.class, JTextComponentSettingsProcessor.class );
-            registerSettingsProcessor ( JScrollBar.class, JScrollBarSettingsProcessor.class );
-            registerSettingsProcessor ( JTabbedPane.class, JTabbedPaneSettingsProcessor.class );
-            registerSettingsProcessor ( Window.class, WindowSettingsProcessor.class );
+            registerSettingsProcessor(AbstractButton.class,
+                    AbstractButtonSettingsProcessor.class);
+            registerSettingsProcessor(JComboBox.class,
+                    JComboBoxSettingsProcessor.class);
+            registerSettingsProcessor(JSlider.class,
+                    JSliderSettingsProcessor.class);
+            registerSettingsProcessor(JPasswordField.class,
+                    JPasswordFieldSettingsProcessor.class);
+            registerSettingsProcessor(JTextComponent.class,
+                    JTextComponentSettingsProcessor.class);
+            registerSettingsProcessor(JScrollBar.class,
+                    JScrollBarSettingsProcessor.class);
+            registerSettingsProcessor(JTabbedPane.class,
+                    JTabbedPaneSettingsProcessor.class);
+            registerSettingsProcessor(Window.class,
+                    WindowSettingsProcessor.class);
         }
     }
-
+    
     /**
      * Returns whether exceptions are thrown on inappropriate actions or not.
      *
-     * @return true if exceptions are thrown on inappropriate actions, false otherwise
+     * @return true if exceptions are thrown on inappropriate actions, false
+     *         otherwise
      */
-    public static boolean isThrowExceptions ()
-    {
+    public static boolean isThrowExceptions() {
         return throwExceptions;
     }
-
+    
     /**
      * Sets whether throw exceptions on inappropriate actions or not.
      *
-     * @param throwExceptions whether throw exceptions on inappropriate actions or not
+     * @param throwExceptions
+     *            whether throw exceptions on inappropriate actions or not
      */
-    public static void setThrowExceptions ( final boolean throwExceptions )
-    {
+    public static void setThrowExceptions(final boolean throwExceptions) {
         ComponentSettingsManager.throwExceptions = throwExceptions;
     }
-
+    
     /**
      * Returns whether the specified component is supported or not.
      *
-     * @param component component
+     * @param component
+     *            component
      * @return true if the specified component is supported, false otherwise
      */
-    public static boolean isComponentSupported ( final Component component )
-    {
-        return isComponentSupported ( component.getClass () );
+    public static boolean isComponentSupported(final Component component) {
+        return isComponentSupported(component.getClass());
     }
-
+    
     /**
      * Returns whether the specified component is supported or not.
      *
-     * @param componentType component type
+     * @param componentType
+     *            component type
      * @return true if the specified component is supported, false otherwise
      */
-    public static boolean isComponentSupported ( final Class componentType )
-    {
+    public static boolean isComponentSupported(final Class componentType) {
         // Checking if a suitable component processor exists
-        return findSuitableSettingsProcessor ( componentType ) != null;
+        return findSuitableSettingsProcessor(componentType) != null;
     }
-
+    
     /**
-     * Registers specified settings processor class for the specified component type.
+     * Registers specified settings processor class for the specified component
+     * type.
      *
-     * @param componentType     component type
-     * @param settingsProcessor settings processor class
-     * @param <T>               settings processor type
+     * @param componentType
+     *            component type
+     * @param settingsProcessor
+     *            settings processor class
+     * @param <T>
+     *            settings processor type
      */
-    public static <T extends SettingsProcessor> void registerSettingsProcessor ( final Class componentType,
-                                                                                 final Class<T> settingsProcessor )
-    {
+    public static <T extends SettingsProcessor> void registerSettingsProcessor(
+            final Class componentType, final Class<T> settingsProcessor) {
         // Saving settings processor under component type
-        settingsProcessorClasses.put ( componentType, settingsProcessor );
+        settingsProcessorClasses.put(componentType, settingsProcessor);
     }
-
+    
     /**
      * Returns settings processor class for the specified component type.
      *
-     * @param componentType component type
+     * @param componentType
+     *            component type
      * @return settings processor class for the specified component type
      */
-    protected static Class findSuitableSettingsProcessor ( final Class componentType )
-    {
-        // Looking through map with strict elements order for proper settings processor
-        for ( final Class type : settingsProcessorClasses.keySet () )
-        {
-            if ( ReflectUtils.isAssignable ( type, componentType ) )
-            {
-                return settingsProcessorClasses.get ( type );
+    protected static Class findSuitableSettingsProcessor(
+            final Class componentType) {
+        // Looking through map with strict elements order for proper settings
+        // processor
+        for (final Class type : settingsProcessorClasses.keySet()) {
+            if (ReflectUtils.isAssignable(type, componentType)) {
+                return settingsProcessorClasses.get(type);
             }
         }
         return null;
     }
-
+    
     /**
-     * Returns new SettingsProcessor instance for the specified SettingsProcessorData.
+     * Returns new SettingsProcessor instance for the specified
+     * SettingsProcessorData.
      *
-     * @param data SettingsProcessorData
-     * @return new SettingsProcessor instance for the specified SettingsProcessorData
+     * @param data
+     *            SettingsProcessorData
+     * @return new SettingsProcessor instance for the specified
+     *         SettingsProcessorData
      */
-    protected static SettingsProcessor createSettingsProcessor ( final SettingsProcessorData data )
-    {
+    protected static SettingsProcessor createSettingsProcessor(
+            final SettingsProcessorData data) {
         // Creating new settings processor from registered class
-        final Class settingsProcessorClass = findSuitableSettingsProcessor ( data.getComponent ().getClass () );
-        if ( settingsProcessorClass != null )
-        {
-            try
-            {
-                return ReflectUtils.createInstance ( settingsProcessorClass, data );
-            }
-            catch ( final Throwable e )
-            {
-                if ( throwExceptions )
-                {
+        final Class settingsProcessorClass = findSuitableSettingsProcessor(data
+                .getComponent().getClass());
+        if (settingsProcessorClass != null) {
+            try {
+                return ReflectUtils
+                        .createInstance(settingsProcessorClass, data);
+            } catch (final Throwable e) {
+                if (throwExceptions) {
                     // Throw cannot instantiate SettingsProcessor exception
-                    throw new RuntimeException (
-                            "Cannot instantiate SettingsProcessor class: " + settingsProcessorClass.getCanonicalName () + ".", e );
-                }
-                else
-                {
+                    throw new RuntimeException(
+                            "Cannot instantiate SettingsProcessor class: "
+                                    + settingsProcessorClass.getCanonicalName()
+                                    + ".", e);
+                } else {
                     return null;
                 }
             }
-        }
-        else
-        {
+        } else {
             return null;
         }
     }
-
+    
     /**
-     * Registers component using the specified SettingsProcessorData.
-     * Any old SettingsProcessor for that component will be unregistered if operation is successful.
+     * Registers component using the specified SettingsProcessorData. Any old
+     * SettingsProcessor for that component will be unregistered if operation is
+     * successful.
      *
-     * @param data SettingsProcessorData
+     * @param data
+     *            SettingsProcessorData
      */
-    public static void registerComponent ( final SettingsProcessorData data )
-    {
+    public static void registerComponent(final SettingsProcessorData data) {
         // Creating new component settings processor if needed
-        final SettingsProcessor settingsProcessor = createSettingsProcessor ( data );
-        if ( settingsProcessor != null )
-        {
+        final SettingsProcessor settingsProcessor = createSettingsProcessor(data);
+        if (settingsProcessor != null) {
             // Saving current component settings processor
-            registerComponent ( data.getComponent (), settingsProcessor );
-        }
-        else if ( throwExceptions )
-        {
+            registerComponent(data.getComponent(), settingsProcessor);
+        } else if (throwExceptions) {
             // Throw unsupported component exception
-            throw new RuntimeException ( "Component type " + data.getComponent ().getClass ().getCanonicalName () + " is not supported." );
+            throw new RuntimeException("Component type "
+                    + data.getComponent().getClass().getCanonicalName()
+                    + " is not supported.");
         }
     }
-
+    
     /**
-     * Registers component using the specified SettingsProcessor.
-     * Any old SettingsProcessor for that component will be unregistered if operation is successful.
+     * Registers component using the specified SettingsProcessor. Any old
+     * SettingsProcessor for that component will be unregistered if operation is
+     * successful.
      *
-     * @param component         component to register
-     * @param settingsProcessor component settings processor
+     * @param component
+     *            component to register
+     * @param settingsProcessor
+     *            component settings processor
      */
-    public static void registerComponent ( final Component component, final SettingsProcessor settingsProcessor )
-    {
+    public static void registerComponent(final Component component,
+            final SettingsProcessor settingsProcessor) {
         // Ensure that there is not registered processor for this component
-        unregisterComponent ( component );
-
+        unregisterComponent(component);
+        
         // Saving new settings processor for the specified component
-        settingsProcessors.put ( component, settingsProcessor );
+        settingsProcessors.put(component, settingsProcessor);
     }
-
+    
     /**
      * Loads saved settings into the component if it is registered.
      *
-     * @param component component registered for settings auto-save
+     * @param component
+     *            component registered for settings auto-save
      */
-    public static void loadSettings ( final Component component )
-    {
+    public static void loadSettings(final Component component) {
         // Retrieving component settings processor
-        final SettingsProcessor settingsProcessor = settingsProcessors.get ( component );
-        if ( settingsProcessor != null )
-        {
+        final SettingsProcessor settingsProcessor = settingsProcessors
+                .get(component);
+        if (settingsProcessor != null) {
             // Reloading saved settings into component
-            settingsProcessor.load ();
-        }
-        else if ( throwExceptions )
-        {
+            settingsProcessor.load();
+        } else if (throwExceptions) {
             // Throw unsupported component exception
-            throw new RuntimeException ( "Component " + component + " was not registered." );
+            throw new RuntimeException("Component " + component
+                    + " was not registered.");
         }
     }
-
+    
     /**
      * Saves all registered components settings.
      */
-    public static void saveSettings ()
-    {
-        for ( final Map.Entry<Component, SettingsProcessor> entry : settingsProcessors.entrySet () )
-        {
-            saveSettings ( entry.getKey () );
+    public static void saveSettings() {
+        for (final Map.Entry<Component, SettingsProcessor> entry : settingsProcessors
+                .entrySet()) {
+            saveSettings(entry.getKey());
         }
     }
-
+    
     /**
      * Saves component settings.
      *
-     * @param component component registered for settings auto-save
+     * @param component
+     *            component registered for settings auto-save
      */
-    public static void saveSettings ( final Component component )
-    {
+    public static void saveSettings(final Component component) {
         // Retrieving component settings processor
-        final SettingsProcessor settingsProcessor = settingsProcessors.get ( component );
-        if ( settingsProcessor != null )
-        {
+        final SettingsProcessor settingsProcessor = settingsProcessors
+                .get(component);
+        if (settingsProcessor != null) {
             // Saving component settings
-            settingsProcessor.save ( false );
-        }
-        else if ( throwExceptions )
-        {
+            settingsProcessor.save(false);
+        } else if (throwExceptions) {
             // Throw unsupported component exception
-            throw new RuntimeException ( "Component " + component + " was not registered." );
+            throw new RuntimeException("Component " + component
+                    + " was not registered.");
         }
     }
-
+    
     /**
      * Unregisters component from settings auto-save.
      *
-     * @param component component to unregister
+     * @param component
+     *            component to unregister
      */
-    public static void unregisterComponent ( final Component component )
-    {
+    public static void unregisterComponent(final Component component) {
         // Checking if component processor exists
-        final SettingsProcessor settingsProcessor = settingsProcessors.get ( component );
-        if ( settingsProcessor != null )
-        {
+        final SettingsProcessor settingsProcessor = settingsProcessors
+                .get(component);
+        if (settingsProcessor != null) {
             // Unregistering component listeners and actions
-            settingsProcessor.destroy ();
-
+            settingsProcessor.destroy();
+            
             // Removing current component settings processor
-            settingsProcessors.remove ( component );
+            settingsProcessors.remove(component);
         }
-        //        else if ( throwExceptions )
-        //        {
-        //            // Throw unsupported component exception
-        //            throw new RuntimeException ( "Component " + component + " was not registered." );
-        //        }
+        // else if ( throwExceptions )
+        // {
+        // // Throw unsupported component exception
+        // throw new RuntimeException ( "Component " + component +
+        // " was not registered." );
+        // }
     }
 }

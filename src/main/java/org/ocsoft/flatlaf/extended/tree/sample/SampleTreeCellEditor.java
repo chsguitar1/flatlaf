@@ -30,52 +30,57 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class SampleTreeCellEditor extends WebTreeCellEditor
-{
+public class SampleTreeCellEditor extends WebTreeCellEditor {
     /**
      * Last edited node.
      */
     protected SampleNode sampleNode;
-
+    
     /**
      * Constructs sample tree cell editor.
      */
-    public SampleTreeCellEditor ()
-    {
-        super ();
+    public SampleTreeCellEditor() {
+        super();
     }
-
+    
     /**
      * Returns custom tree cell editor component.
      *
-     * @param tree       tree
-     * @param value      cell value
-     * @param isSelected whether cell is selected or not
-     * @param expanded   whether cell is expanded or not
-     * @param leaf       whether cell is leaf or not
-     * @param row        cell row index
+     * @param tree
+     *            tree
+     * @param value
+     *            cell value
+     * @param isSelected
+     *            whether cell is selected or not
+     * @param expanded
+     *            whether cell is expanded or not
+     * @param leaf
+     *            whether cell is leaf or not
+     * @param row
+     *            cell row index
      * @return cell editor component
      */
     @Override
-    public Component getTreeCellEditorComponent ( final JTree tree, final Object value, final boolean isSelected, final boolean expanded,
-                                                  final boolean leaf, final int row )
-    {
+    public Component getTreeCellEditorComponent(final JTree tree,
+            final Object value, final boolean isSelected,
+            final boolean expanded, final boolean leaf, final int row) {
         // todo Use delegate instead of direct access!
-        this.sampleNode = ( SampleNode ) value;
-        final WebTextField editor = ( WebTextField ) super.getTreeCellEditorComponent ( tree, value, isSelected, expanded, leaf, row );
-        editor.setText ( sampleNode.getName () );
+        this.sampleNode = (SampleNode) value;
+        final WebTextField editor = (WebTextField) super
+                .getTreeCellEditorComponent(tree, value, isSelected, expanded,
+                        leaf, row);
+        editor.setText(sampleNode.getName());
         return editor;
     }
-
+    
     /**
      * Returns current editor's value.
      *
      * @return current editor's value
      */
     @Override
-    public Object getCellEditorValue ()
-    {
-        sampleNode.setName ( delegate.getCellEditorValue ().toString () );
+    public Object getCellEditorValue() {
+        sampleNode.setName(delegate.getCellEditorValue().toString());
         return sampleNode;
     }
 }

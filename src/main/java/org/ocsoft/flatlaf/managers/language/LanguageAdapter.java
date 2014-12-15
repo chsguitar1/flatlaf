@@ -25,49 +25,43 @@ import org.ocsoft.flatlaf.managers.language.data.Dictionary;
  * @author Mikle Garin
  */
 
-public abstract class LanguageAdapter implements LanguageListener
-{
+public abstract class LanguageAdapter implements LanguageListener {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void languageChanged ( final String oldLang, final String newLang )
-    {
-        languageUpdated ();
+    public void languageChanged(final String oldLang, final String newLang) {
+        languageUpdated();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void dictionaryAdded ( final Dictionary dictionary )
-    {
-        languageUpdated ();
+    public void dictionaryAdded(final Dictionary dictionary) {
+        languageUpdated();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void dictionaryRemoved ( final Dictionary dictionary )
-    {
-        languageUpdated ();
+    public void dictionaryRemoved(final Dictionary dictionary) {
+        languageUpdated();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void dictionariesCleared ()
-    {
-        languageUpdated ();
+    public void dictionariesCleared() {
+        languageUpdated();
     }
-
+    
     /**
      * Informs that language was updated in some way.
      */
-    public void languageUpdated ()
-    {
+    public void languageUpdated() {
         //
     }
 }

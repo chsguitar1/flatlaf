@@ -29,83 +29,77 @@ import org.ocsoft.flatlaf.utils.DragUtils;
 
 /**
  * Custom transferable that represents File flavors in a few different ways.
- * This is made to support files drop into system file managers like Windows Explorer, Mac OS X Finder and others.
+ * This is made to support files drop into system file managers like Windows
+ * Explorer, Mac OS X Finder and others.
  *
  * @author Mikle Garin
  */
 
-public class FileTransferable implements Transferable
-{
+public class FileTransferable implements Transferable {
     /**
-     * FileTransferable data flavors.
-     * These are constant and will always be provided.
+     * FileTransferable data flavors. These are constant and will always be
+     * provided.
      */
-    public static final DataFlavor[] flavors = new DataFlavor[]{ DataFlavor.javaFileListFlavor, DragUtils.getUriListDataFlavor () };
-
+    public static final DataFlavor[] flavors = new DataFlavor[] {
+            DataFlavor.javaFileListFlavor, DragUtils.getUriListDataFlavor() };
+    
     /**
      * Transfered files.
      */
     protected final List<File> files;
-
+    
     /**
      * Constructs new FileTransferable for a single file.
      *
-     * @param file transferred file
+     * @param file
+     *            transferred file
      */
-    public FileTransferable ( final File file )
-    {
-        this ( Arrays.asList ( file ) );
+    public FileTransferable(final File file) {
+        this(Arrays.asList(file));
     }
-
+    
     /**
      * Constructs new FileTransferable for a list of files.
      *
-     * @param files transferred files list
+     * @param files
+     *            transferred files list
      */
-    public FileTransferable ( final List<File> files )
-    {
-        super ();
+    public FileTransferable(final List<File> files) {
+        super();
         this.files = files;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public DataFlavor[] getTransferDataFlavors ()
-    {
+    public DataFlavor[] getTransferDataFlavors() {
         return flavors;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isDataFlavorSupported ( final DataFlavor flavor )
-    {
-        for ( final DataFlavor dataFlavor : flavors )
-        {
-            if ( dataFlavor.equals ( flavor ) )
-            {
+    public boolean isDataFlavorSupported(final DataFlavor flavor) {
+        for (final DataFlavor dataFlavor : flavors) {
+            if (dataFlavor.equals(flavor)) {
                 return true;
             }
         }
         return false;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Object getTransferData ( final DataFlavor flavor ) throws UnsupportedFlavorException, IOException
-    {
-        if ( DataFlavor.javaFileListFlavor.equals ( flavor ) )
-        {
+    public Object getTransferData(final DataFlavor flavor)
+            throws UnsupportedFlavorException, IOException {
+        if (DataFlavor.javaFileListFlavor.equals(flavor)) {
             return files;
-        }
-        else if ( DragUtils.getUriListDataFlavor ().equals ( flavor ) )
-        {
-            return DragUtils.fileListToTextURIList ( files );
+        } else if (DragUtils.getUriListDataFlavor().equals(flavor)) {
+            return DragUtils.fileListToTextURIList(files);
         }
         return null;
     }

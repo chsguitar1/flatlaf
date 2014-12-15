@@ -25,28 +25,32 @@ import java.util.EventListener;
  * @author Mikle Garin
  */
 
-public interface ListEditListener extends EventListener
-{
+public interface ListEditListener extends EventListener {
     /**
      * Notifies when editing starts.
      *
-     * @param index edited cell index
+     * @param index
+     *            edited cell index
      */
-    public void editStarted ( int index );
-
+    public void editStarted(int index);
+    
     /**
      * Notifies when editing finishes.
      *
-     * @param index    edited cell index
-     * @param oldValue old cell value
-     * @param newValue new cell value
+     * @param index
+     *            edited cell index
+     * @param oldValue
+     *            old cell value
+     * @param newValue
+     *            new cell value
      */
-    public void editFinished ( int index, Object oldValue, Object newValue );
-
+    public void editFinished(int index, Object oldValue, Object newValue);
+    
     /**
      * Notifies when editing is cancelled.
      *
-     * @param index edited cell index
+     * @param index
+     *            edited cell index
      */
-    public void editCancelled ( int index );
+    public void editCancelled(int index);
 }

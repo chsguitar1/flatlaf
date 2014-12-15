@@ -28,447 +28,445 @@ import org.ocsoft.flatlaf.utils.EncryptionUtils;
 import org.ocsoft.flatlaf.utils.xml.XmlUtils;
 
 /**
- * This manager allows you to quickly manage application's global proxy settings.
- * When activated this manager might cause a proxy chooser or an authentification popup to pop.
- * That will happen in case it will detect that your proxy settings does not match system proxy settings.
+ * This manager allows you to quickly manage application's global proxy
+ * settings. When activated this manager might cause a proxy chooser or an
+ * authentification popup to pop. That will happen in case it will detect that
+ * your proxy settings does not match system proxy settings.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-ProxyManager">How to use ProxyManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-ProxyManager">How
+ *      to use ProxyManager</a>
  * @see org.ocsoft.flatlaf.managers.proxy.ProxySettings
  * @see org.ocsoft.flatlaf.managers.proxy.SystemProxyConfirmationSupport
  */
 
-public class ProxyManager
-{
+public class ProxyManager {
     /**
      * Settings group key for proxy settings.
      */
     public static String SETTINGS_GROUP = "ProxyManager";
-
+    
     /**
      * Settings key for proxy settings.
      */
     public static String PROXY_SETTINGS = "ProxySettings";
-
+    
     /**
      * Settings key for automated proxy settings option.
      */
     public static String AUTO_SETTINGS_ON = "AutoSettingsOn";
-
+    
     /**
      * Settings key for system proxy settings usage option.
      */
     public static String ALWAYS_USE_SYSTEM_SETTINGS = "AlwaysUseSystemSettings";
-
+    
     /**
      * Settings key for proxy settings save option.
      */
     public static String SAVE_SETTINGS = "SaveSettings";
-
+    
     /**
      * Whether automatic proxy detection is enabled or not.
      */
     protected static boolean autoDetectionEnabled = false;
-
+    
     /**
      * Custom proxy authenticator.
      */
     protected static Authenticator authenticator;
-
+    
     /**
      * Proxy settings install flag.
      */
     protected static boolean proxySet = false;
-
+    
     /**
      * System proxy settings confirmation dialog support.
      */
     protected static SystemProxyConfirmationSupport systemProxyConfirmationSupport = null;
-
+    
     /**
      * Whether manager is initialized or not.
      */
     protected static boolean initialized = false;
-
+    
     /**
      * Initializes manager if it wasn't already initialized.
      */
-    public static synchronized void initialize ()
-    {
-        if ( !initialized )
-        {
+    public static synchronized void initialize() {
+        if (!initialized) {
             initialized = true;
-
+            
             // ProxySettings class alias
-            XmlUtils.processAnnotations ( ProxySettings.class );
-
+            XmlUtils.processAnnotations(ProxySettings.class);
+            
             // Proxy auto-detection
-            if ( autoDetectionEnabled )
-            {
+            if (autoDetectionEnabled) {
                 // Loading last saved or system proxy settings
-                ProxySettings proxySettings = getProxySettings ();
-
+                ProxySettings proxySettings = getProxySettings();
+                
                 // Checking if system proxy settings are not the same
-                final ProxySettings systemProxySettings = getSystemProxySettings ();
-                if ( proxySettings.isUseProxy () != systemProxySettings.isUseProxy () ||
-                        !CompareUtils.equals ( proxySettings.getProxyHost (), systemProxySettings.getProxyHost () ) ||
-                        !CompareUtils.equals ( proxySettings.getProxyPort (), systemProxySettings.getProxyPort () ) )
-                {
-                    // Checking whether we have proxy confirmation support or auto settings are enabled
-                    if ( systemProxyConfirmationSupport == null || isAutoSettingsInitialization () )
-                    {
-                        // Checking whether we are allowed to use system settings
-                        if ( isAlwaysUseSystemSettings () )
-                        {
+                final ProxySettings systemProxySettings = getSystemProxySettings();
+                if (proxySettings.isUseProxy() != systemProxySettings
+                        .isUseProxy()
+                        || !CompareUtils.equals(proxySettings.getProxyHost(),
+                                systemProxySettings.getProxyHost())
+                        || !CompareUtils.equals(proxySettings.getProxyPort(),
+                                systemProxySettings.getProxyPort())) {
+                    // Checking whether we have proxy confirmation support or
+                    // auto settings are enabled
+                    if (systemProxyConfirmationSupport == null
+                            || isAutoSettingsInitialization()) {
+                        // Checking whether we are allowed to use system
+                        // settings
+                        if (isAlwaysUseSystemSettings()) {
                             // Applying system settings automatically
                             proxySettings = systemProxySettings;
                         }
-                    }
-                    else
-                    {
-                        // Asking proxy confirmation support whether we should use system proxy or leave current settings intact
-                        final boolean useSystemProxy = systemProxyConfirmationSupport.shouldUseSystemProxy ();
-                        if ( useSystemProxy )
-                        {
+                    } else {
+                        // Asking proxy confirmation support whether we should
+                        // use system proxy or leave current settings intact
+                        final boolean useSystemProxy = systemProxyConfirmationSupport
+                                .shouldUseSystemProxy();
+                        if (useSystemProxy) {
                             proxySettings = systemProxySettings;
                         }
-                        // Saving the choice if confirmation shouldn't be pronpted anymore
-                        if ( systemProxyConfirmationSupport.alwaysDoTheSame () )
-                        {
-                            setAutoSettingsInitialization ( true );
-                            setAlwaysUseSystemSettings ( useSystemProxy );
+                        // Saving the choice if confirmation shouldn't be
+                        // pronpted anymore
+                        if (systemProxyConfirmationSupport.alwaysDoTheSame()) {
+                            setAutoSettingsInitialization(true);
+                            setAlwaysUseSystemSettings(useSystemProxy);
                         }
                     }
                 }
-
+                
                 // Default proxy settings
-                setProxySettings ( proxySettings );
+                setProxySettings(proxySettings);
             }
         }
     }
-
+    
     /**
      * Returns whether automatic proxy detection is enabled or not.
      *
      * @return true if automatic proxy detection is enabled, false otherwise
      */
-    public static boolean isAutoDetectionEnabled ()
-    {
+    public static boolean isAutoDetectionEnabled() {
         return autoDetectionEnabled;
     }
-
+    
     /**
      * Sets whether automatic proxy detection is enabled or not.
      *
-     * @param enabled whether automatic proxy detection is enabled or not
+     * @param enabled
+     *            whether automatic proxy detection is enabled or not
      */
-    public static void setAutoDetectionEnabled ( final boolean enabled )
-    {
+    public static void setAutoDetectionEnabled(final boolean enabled) {
         ProxyManager.autoDetectionEnabled = enabled;
     }
-
+    
     /**
      * Returns current proxy authenticator.
      *
      * @return current proxy authenticator
      */
-    public static Authenticator getAuthenticator ()
-    {
+    public static Authenticator getAuthenticator() {
         return authenticator;
     }
-
+    
     /**
      * Changes current proxy authenticator to the specified one.
      *
-     * @param authenticator new proxy authenticator
+     * @param authenticator
+     *            new proxy authenticator
      */
-    public static void setAuthenticator ( final Authenticator authenticator )
-    {
+    public static void setAuthenticator(final Authenticator authenticator) {
         ProxyManager.authenticator = authenticator;
-        if ( initialized && getProxySettings ().isUseProxy () )
-        {
-            Authenticator.setDefault ( authenticator );
+        if (initialized && getProxySettings().isUseProxy()) {
+            Authenticator.setDefault(authenticator);
         }
     }
-
+    
     /**
      * Sets whether enable auto initialization of proxy settings or not.
      *
-     * @param enabled whether enable auto initialization of proxy settings or not
+     * @param enabled
+     *            whether enable auto initialization of proxy settings or not
      */
-    public static void setAutoSettingsInitialization ( final boolean enabled )
-    {
-        SettingsManager.set ( SETTINGS_GROUP, AUTO_SETTINGS_ON, enabled );
+    public static void setAutoSettingsInitialization(final boolean enabled) {
+        SettingsManager.set(SETTINGS_GROUP, AUTO_SETTINGS_ON, enabled);
     }
-
+    
     /**
      * Returns whether auto initialization of proxy settings is enabled or not.
      *
-     * @return true if auto initialization of proxy settings is enabled, false otherwise
+     * @return true if auto initialization of proxy settings is enabled, false
+     *         otherwise
      */
-    public static boolean isAutoSettingsInitialization ()
-    {
-        return SettingsManager.get ( SETTINGS_GROUP, AUTO_SETTINGS_ON, false );
+    public static boolean isAutoSettingsInitialization() {
+        return SettingsManager.get(SETTINGS_GROUP, AUTO_SETTINGS_ON, false);
     }
-
+    
     /**
      * Sets whether enable system proxy settings usage or not.
      *
-     * @param useSystem whether enable system proxy settings usage or not
+     * @param useSystem
+     *            whether enable system proxy settings usage or not
      */
-    public static void setAlwaysUseSystemSettings ( final boolean useSystem )
-    {
-        SettingsManager.set ( SETTINGS_GROUP, ALWAYS_USE_SYSTEM_SETTINGS, useSystem );
+    public static void setAlwaysUseSystemSettings(final boolean useSystem) {
+        SettingsManager.set(SETTINGS_GROUP, ALWAYS_USE_SYSTEM_SETTINGS,
+                useSystem);
     }
-
+    
     /**
      * Returns whether system proxy settings usage is enabled or not.
      *
      * @return true if system proxy settings usage is enabled, false otherwise
      */
-    public static boolean isAlwaysUseSystemSettings ()
-    {
-        return SettingsManager.get ( SETTINGS_GROUP, ALWAYS_USE_SYSTEM_SETTINGS, false );
+    public static boolean isAlwaysUseSystemSettings() {
+        return SettingsManager.get(SETTINGS_GROUP, ALWAYS_USE_SYSTEM_SETTINGS,
+                false);
     }
-
+    
     /**
-     * Returns current proxy settings or default proxy settings if none installed.
+     * Returns current proxy settings or default proxy settings if none
+     * installed.
      *
-     * @return current proxy settings or default proxy settings if none installed
+     * @return current proxy settings or default proxy settings if none
+     *         installed
      */
-    public static ProxySettings getProxySettings ()
-    {
-        return SettingsManager.get ( SETTINGS_GROUP, PROXY_SETTINGS, getSystemProxySettings () );
+    public static ProxySettings getProxySettings() {
+        return SettingsManager.get(SETTINGS_GROUP, PROXY_SETTINGS,
+                getSystemProxySettings());
     }
-
+    
     /**
-     * Installs saved or system proxy settings.
-     * This method will install existing proxy settings that were saved before.
-     * If old proxy settings could not be found then system proxy settigns will be retrieved and installed.
+     * Installs saved or system proxy settings. This method will install
+     * existing proxy settings that were saved before. If old proxy settings
+     * could not be found then system proxy settigns will be retrieved and
+     * installed.
      */
-    public static void setProxySettings ()
-    {
-        if ( !proxySet )
-        {
-            setProxySettings ( getProxySettings () );
+    public static void setProxySettings() {
+        if (!proxySet) {
+            setProxySettings(getProxySettings());
         }
     }
-
+    
     /**
-     * Installs empty proxy settings.
-     * This method simply disables proxy.
+     * Installs empty proxy settings. This method simply disables proxy.
      */
-    public static void setEmptyProxySettings ()
-    {
-        setProxySettings ( new ProxySettings () );
+    public static void setEmptyProxySettings() {
+        setProxySettings(new ProxySettings());
     }
-
+    
     /**
      * Installs system proxy settings.
      *
      * @return single system proxy settings object
      */
-    public static ProxySettings setSystemProxySettings ()
-    {
-        final ProxySettings proxySettings = getSystemProxySettings ();
-        setProxySettings ( proxySettings );
+    public static ProxySettings setSystemProxySettings() {
+        final ProxySettings proxySettings = getSystemProxySettings();
+        setProxySettings(proxySettings);
         return proxySettings;
     }
-
+    
     /**
-     * Installs proxy settings with specified host and port.
-     * If the specified proxy requires authentification user will get prompted.
+     * Installs proxy settings with specified host and port. If the specified
+     * proxy requires authentification user will get prompted.
      *
-     * @param host proxy host
-     * @param port proxy port
+     * @param host
+     *            proxy host
+     * @param port
+     *            proxy port
      */
-    public static void setProxySettings ( final String host, final String port )
-    {
-        setProxySettings ( new ProxySettings ( host, port ) );
+    public static void setProxySettings(final String host, final String port) {
+        setProxySettings(new ProxySettings(host, port));
     }
-
+    
     /**
-     * Installs proxy settings with specified host, port and proxy login and password.
+     * Installs proxy settings with specified host, port and proxy login and
+     * password.
      *
-     * @param host     proxy host
-     * @param port     proxy port
-     * @param login    proxy login
-     * @param password proxy password
+     * @param host
+     *            proxy host
+     * @param port
+     *            proxy port
+     * @param login
+     *            proxy login
+     * @param password
+     *            proxy password
      */
-    public static void setProxySettings ( final String host, final String port, final String login, final String password )
-    {
-        setProxySettings ( new ProxySettings ( host, port, login, password ) );
+    public static void setProxySettings(final String host, final String port,
+            final String login, final String password) {
+        setProxySettings(new ProxySettings(host, port, login, password));
     }
-
+    
     /**
-     * Installs proxy settings with specified host, port and proxy login and password.
+     * Installs proxy settings with specified host, port and proxy login and
+     * password.
      *
-     * @param setttings single proxy settings object
+     * @param setttings
+     *            single proxy settings object
      */
-    public static void setProxySettings ( final ProxySettings setttings )
-    {
-        setProxySettings ( setttings, true );
+    public static void setProxySettings(final ProxySettings setttings) {
+        setProxySettings(setttings, true);
     }
-
+    
     /**
-     * Installs proxy settings with specified host, port and proxy login and password.
+     * Installs proxy settings with specified host, port and proxy login and
+     * password.
      *
-     * @param setttings single proxy settings object
-     * @param save      whether save these settings or not
+     * @param setttings
+     *            single proxy settings object
+     * @param save
+     *            whether save these settings or not
      */
-    public static void setProxySettings ( final ProxySettings setttings, final boolean save )
-    {
+    public static void setProxySettings(final ProxySettings setttings,
+            final boolean save) {
         proxySet = true;
-
+        
         // Saving new ProxySettings
-        if ( save )
-        {
-            SettingsManager.set ( SETTINGS_GROUP, PROXY_SETTINGS, setttings );
+        if (save) {
+            SettingsManager.set(SETTINGS_GROUP, PROXY_SETTINGS, setttings);
         }
-
+        
         // System properties
-        final Properties systemSettings = System.getProperties ();
-
+        final Properties systemSettings = System.getProperties();
+        
         // Use proxy or not
-        systemSettings.setProperty ( "proxySet", "" + setttings.isUseProxy () );
-
+        systemSettings.setProperty("proxySet", "" + setttings.isUseProxy());
+        
         // Either use proxy or not
-        if ( setttings.isUseProxy () )
-        {
+        if (setttings.isUseProxy()) {
             // Proxy settings
-            systemSettings.setProperty ( "proxyHost", "" + setttings.getProxyHost () );
-            systemSettings.setProperty ( "proxyPort", "" + setttings.getProxyPort () );
-            systemSettings.setProperty ( "nonProxyHosts", "" + setttings.getNonProxyHosts () );
-
+            systemSettings.setProperty("proxyHost",
+                    "" + setttings.getProxyHost());
+            systemSettings.setProperty("proxyPort",
+                    "" + setttings.getProxyPort());
+            systemSettings.setProperty("nonProxyHosts",
+                    "" + setttings.getNonProxyHosts());
+            
             // Proxy authentification
-            Authenticator.setDefault ( authenticator );
-        }
-        else
-        {
+            Authenticator.setDefault(authenticator);
+        } else {
             // Proxy settings
-            systemSettings.setProperty ( "proxyHost", "" );
-            systemSettings.setProperty ( "proxyPort", "" );
-            systemSettings.setProperty ( "nonProxyHosts", "" );
-
+            systemSettings.setProperty("proxyHost", "");
+            systemSettings.setProperty("proxyPort", "");
+            systemSettings.setProperty("nonProxyHosts", "");
+            
             // Proxy authentification
-            Authenticator.setDefault ( null );
+            Authenticator.setDefault(null);
         }
     }
-
+    
     /**
      * Opens URL connection with current proxy settings.
      *
-     * @param url url to process
+     * @param url
+     *            url to process
      * @return opened URL connection
      * @throws IOException
      */
-    public static URLConnection getURLConnection ( final URL url ) throws IOException
-    {
+    public static URLConnection getURLConnection(final URL url)
+            throws IOException {
         // Recheck that proxy is set
-        setProxySettings ();
-
+        setProxySettings();
+        
         // Open connection properly
-        final ProxySettings proxySettings = getProxySettings ();
-        if ( proxySettings.isUseProxy () )
-        {
-            final URLConnection connection = url.openConnection ( new Proxy ( Proxy.Type.HTTP,
-                    new InetSocketAddress ( proxySettings.getProxyHost (), proxySettings.getProxyPortInt () ) ) );
-            setupProxy ( connection );
+        final ProxySettings proxySettings = getProxySettings();
+        if (proxySettings.isUseProxy()) {
+            final URLConnection connection = url.openConnection(new Proxy(
+                    Proxy.Type.HTTP, new InetSocketAddress(proxySettings
+                            .getProxyHost(), proxySettings.getProxyPortInt())));
+            setupProxy(connection);
             return connection;
-        }
-        else
-        {
+        } else {
             // Simple connection without proxy
-            return url.openConnection ();
+            return url.openConnection();
         }
     }
-
+    
     /**
      * Installs current proxy settings to URL connection.
      *
-     * @param urlConnection URL connection to modify
+     * @param urlConnection
+     *            URL connection to modify
      */
-    public static void setupProxy ( final URLConnection urlConnection )
-    {
+    public static void setupProxy(final URLConnection urlConnection) {
         // Recheck that proxy is set
-        setProxySettings ();
-
+        setProxySettings();
+        
         // Proxy settings
-        final ProxySettings proxySettings = getProxySettings ();
-        if ( proxySettings.isUseProxy () && proxySettings.isUseProxyAuthentification () )
-        {
-            final String toEncode = proxySettings.getProxyLogin () + ":" + proxySettings.getProxyPassword ();
-            urlConnection.setRequestProperty ( "Proxy-Authorization", "Basic " + EncryptionUtils.base64encode ( toEncode ) );
+        final ProxySettings proxySettings = getProxySettings();
+        if (proxySettings.isUseProxy()
+                && proxySettings.isUseProxyAuthentification()) {
+            final String toEncode = proxySettings.getProxyLogin() + ":"
+                    + proxySettings.getProxyPassword();
+            urlConnection.setRequestProperty("Proxy-Authorization", "Basic "
+                    + EncryptionUtils.base64encode(toEncode));
         }
     }
-
+    
     /**
      * Returns single system proxy settings object.
      *
      * @return single system proxy settings object
      */
-    public static ProxySettings getSystemProxySettings ()
-    {
-        final ProxySettings proxySettings = new ProxySettings ();
-        System.setProperty ( "java.net.useSystemProxies", "true" );
-        final Proxy proxy = getSystemHttpProxy ();
-        if ( proxy != null )
-        {
-            final InetSocketAddress addr = ( InetSocketAddress ) proxy.address ();
-            if ( addr != null && addr.getHostName () != null )
-            {
-                proxySettings.setUseProxy ( true );
-                proxySettings.setProxyHost ( addr.getHostName () );
-                proxySettings.setProxyPort ( "" + addr.getPort () );
+    public static ProxySettings getSystemProxySettings() {
+        final ProxySettings proxySettings = new ProxySettings();
+        System.setProperty("java.net.useSystemProxies", "true");
+        final Proxy proxy = getSystemHttpProxy();
+        if (proxy != null) {
+            final InetSocketAddress addr = (InetSocketAddress) proxy.address();
+            if (addr != null && addr.getHostName() != null) {
+                proxySettings.setUseProxy(true);
+                proxySettings.setProxyHost(addr.getHostName());
+                proxySettings.setProxyPort("" + addr.getPort());
             }
         }
-        System.setProperty ( "java.net.useSystemProxies", "false" );
+        System.setProperty("java.net.useSystemProxies", "false");
         return proxySettings;
     }
-
+    
     /**
      * Returns system http proxy.
      *
      * @return system http proxy
      */
-    protected static Proxy getSystemHttpProxy ()
-    {
-        try
-        {
-            final ProxySelector def = ProxySelector.getDefault ();
-            final List<Proxy> l = def.select ( new URI ( "http://www.google.com" ) );
-            for ( final Proxy proxy : l )
-            {
-                if ( proxy != null && proxy.type ().equals ( Proxy.Type.HTTP ) )
-                {
+    protected static Proxy getSystemHttpProxy() {
+        try {
+            final ProxySelector def = ProxySelector.getDefault();
+            final List<Proxy> l = def.select(new URI("http://www.google.com"));
+            for (final Proxy proxy : l) {
+                if (proxy != null && proxy.type().equals(Proxy.Type.HTTP)) {
                     return proxy;
                 }
             }
-        }
-        catch ( final Exception e )
-        {
+        } catch (final Exception e) {
             //
         }
         return null;
     }
-
+    
     /**
      * Returns system proxy settings confirmation dialog support.
      *
      * @return system proxy settings confirmation dialog support
      */
-    public static SystemProxyConfirmationSupport getSystemProxyConfirmationSupport ()
-    {
+    public static SystemProxyConfirmationSupport getSystemProxyConfirmationSupport() {
         return systemProxyConfirmationSupport;
     }
-
+    
     /**
      * Sets system proxy settings confirmation dialog support.
      *
-     * @param support system proxy settings confirmation dialog support
+     * @param support
+     *            system proxy settings confirmation dialog support
      */
-    public static void setSystemProxyConfirmationSupport ( final SystemProxyConfirmationSupport support )
-    {
+    public static void setSystemProxyConfirmationSupport(
+            final SystemProxyConfirmationSupport support) {
         ProxyManager.systemProxyConfirmationSupport = support;
     }
 }

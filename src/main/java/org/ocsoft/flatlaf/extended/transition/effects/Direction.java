@@ -21,28 +21,23 @@ package org.ocsoft.flatlaf.extended.transition.effects;
  * User: mgarin Date: 28.10.11 Time: 13:23
  */
 
-public enum Direction
-{
+public enum Direction {
     // Any random direction each time (always first in enum)
     random,
-
+    
     // Any random horizontal or vertical direction
-    horizontal,
-    vertical,
-
+    horizontal, vertical,
+    
     // Specific directions
-    up,
-    down,
-    left,
-    right;
-
-    public boolean isHorizontal ()
-    {
-        return Direction.this.equals ( horizontal ) || Direction.this.equals ( left ) || Direction.this.equals ( right );
+    up, down, left, right;
+    
+    public boolean isHorizontal() {
+        return Direction.this.equals(horizontal) || Direction.this.equals(left)
+                || Direction.this.equals(right);
     }
-
-    public boolean isVertical ()
-    {
-        return Direction.this.equals ( vertical ) || Direction.this.equals ( up ) || Direction.this.equals ( down );
+    
+    public boolean isVertical() {
+        return Direction.this.equals(vertical) || Direction.this.equals(up)
+                || Direction.this.equals(down);
     }
 }

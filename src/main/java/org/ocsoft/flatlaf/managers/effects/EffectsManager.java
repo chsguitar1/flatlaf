@@ -32,53 +32,49 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
 
 /**
- * This manager provides easy-to-use effects (like "fade in" and "fade out"), applyable to any Swing component without additional efforts.
- * Some of methods relies on other WebLaF managers and requires that they are properly initialized (through installing WebLaF or manually
- * initializing them, one by one).
+ * This manager provides easy-to-use effects (like "fade in" and "fade out"),
+ * applyable to any Swing component without additional efforts. Some of methods
+ * relies on other WebLaF managers and requires that they are properly
+ * initialized (through installing WebLaF or manually initializing them, one by
+ * one).
  *
  * @author Mikle Garin
  */
 
-public class EffectsManager
-{
+public class EffectsManager {
     /**
      * Makes any Swing component fade out using glass pane trick
      */
-
-    public static void fadeOut ( final JComponent component )
-    {
-        final BufferedImage bi = SwingUtils.createComponentSnapshot ( component );
-        final Rectangle b = SwingUtils.getBoundsInWindow ( component );
-        final WebGlassPane wgp = GlassPaneManager.getGlassPane ( component );
-
+    
+    public static void fadeOut(final JComponent component) {
+        final BufferedImage bi = SwingUtils.createComponentSnapshot(component);
+        final Rectangle b = SwingUtils.getBoundsInWindow(component);
+        final WebGlassPane wgp = GlassPaneManager.getGlassPane(component);
+        
         // Initial image palcement
-        wgp.setPaintedImage ( bi, b.getLocation (), 100 );
-
+        wgp.setPaintedImage(bi, b.getLocation(), 100);
+        
         // Hiding component
-        component.setVisible ( false );
-
-        // Animating fade 
-        WebTimer.repeat ( "EffectsManager.fadeOut", FlatLafStyleConstants.avgAnimationDelay, new ActionListener ()
-        {
-            private int opacity = 100;
-
-            @Override
-            public void actionPerformed ( final ActionEvent e )
-            {
-                if ( opacity > 0 )
-                {
-                    opacity -= 5;
-                    final Point l = b.getLocation ();
-                    l.y += ( 100 - opacity ) / 2;
-                    wgp.setPaintedImage ( bi, l, opacity );
-                }
-                else
-                {
-                    wgp.clearPaintedImage ();
-                    ( ( WebTimer ) e.getSource () ).stop ();
-                }
-            }
-        } );
+        component.setVisible(false);
+        
+        // Animating fade
+        WebTimer.repeat("EffectsManager.fadeOut",
+                FlatLafStyleConstants.avgAnimationDelay, new ActionListener() {
+                    private int opacity = 100;
+                    
+                    @Override
+                    public void actionPerformed(final ActionEvent e) {
+                        if (opacity > 0) {
+                            opacity -= 5;
+                            final Point l = b.getLocation();
+                            l.y += (100 - opacity) / 2;
+                            wgp.setPaintedImage(bi, l, opacity);
+                        } else {
+                            wgp.clearPaintedImage();
+                            ((WebTimer) e.getSource()).stop();
+                        }
+                    }
+                });
     }
-
+    
 }

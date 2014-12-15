@@ -27,58 +27,54 @@ import java.util.WeakHashMap;
  * @author Mikle Garin
  */
 
-public abstract class AbstractScreenLayout<W extends Window, C> implements ScreenLayout<W, C>
-{
+public abstract class AbstractScreenLayout<W extends Window, C> implements
+        ScreenLayout<W, C> {
     /**
      * Windows added into this screen layout.
      */
-    protected final List<W> windows = new ArrayList<W> ();
-
+    protected final List<W> windows = new ArrayList<W>();
+    
     /**
      * Windows constraints.
      */
-    protected final Map<W, C> constraints = new WeakHashMap<W, C> ();
-
+    protected final Map<W, C> constraints = new WeakHashMap<W, C>();
+    
     /**
      * Constraints lock.
      */
-    protected final Object lock = new Object ();
-
+    protected final Object lock = new Object();
+    
     /**
      * Called when window added into this layout.
      *
-     * @param window added window
+     * @param window
+     *            added window
      */
-    public void addWindow ( final W window )
-    {
-        addWindow ( window, null );
+    public void addWindow(final W window) {
+        addWindow(window, null);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void addWindow ( final W window, final C constraints )
-    {
-        synchronized ( lock )
-        {
-            this.windows.add ( window );
-            this.constraints.put ( window, constraints );
-            layoutScreen ();
+    public void addWindow(final W window, final C constraints) {
+        synchronized (lock) {
+            this.windows.add(window);
+            this.constraints.put(window, constraints);
+            layoutScreen();
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeWindow ( final W window )
-    {
-        synchronized ( lock )
-        {
-            this.windows.remove ( window );
-            this.constraints.remove ( window );
-            layoutScreen ();
+    public void removeWindow(final W window) {
+        synchronized (lock) {
+            this.windows.remove(window);
+            this.constraints.remove(window);
+            layoutScreen();
         }
     }
 }

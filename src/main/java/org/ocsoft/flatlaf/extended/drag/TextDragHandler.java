@@ -27,70 +27,58 @@ import java.awt.event.MouseEvent;
  * User: mgarin Date: 12.04.12 Time: 18:36
  */
 
-public class TextDragHandler extends TransferHandler
-{
+public class TextDragHandler extends TransferHandler {
     private String text;
     private boolean defaultBehavior = true;
-
-    public TextDragHandler ( final JComponent component )
-    {
-        this ( component, null );
+    
+    public TextDragHandler(final JComponent component) {
+        this(component, null);
     }
-
-    public TextDragHandler ( final JComponent component, final String text )
-    {
-        this ( component, text, true );
+    
+    public TextDragHandler(final JComponent component, final String text) {
+        this(component, text, true);
     }
-
-    public TextDragHandler ( final JComponent component, final String text, final boolean defaultBehavior )
-    {
-        super ();
-        setText ( text );
-        setDefaultBehavior ( defaultBehavior );
-
-        component.addMouseMotionListener ( new MouseAdapter ()
-        {
+    
+    public TextDragHandler(final JComponent component, final String text,
+            final boolean defaultBehavior) {
+        super();
+        setText(text);
+        setDefaultBehavior(defaultBehavior);
+        
+        component.addMouseMotionListener(new MouseAdapter() {
             @Override
-            public void mouseDragged ( final MouseEvent e )
-            {
-                if ( isDefaultBehavior () && SwingUtilities.isLeftMouseButton ( e ) &&
-                        component.isEnabled () )
-                {
-                    exportAsDrag ( component, e, getSourceActions ( component ) );
+            public void mouseDragged(final MouseEvent e) {
+                if (isDefaultBehavior() && SwingUtilities.isLeftMouseButton(e)
+                        && component.isEnabled()) {
+                    exportAsDrag(component, e, getSourceActions(component));
                 }
             }
-        } );
+        });
     }
-
-    public String getText ()
-    {
+    
+    public String getText() {
         return text;
     }
-
-    public void setText ( final String text )
-    {
+    
+    public void setText(final String text) {
         this.text = text;
     }
-
-    public boolean isDefaultBehavior ()
-    {
+    
+    public boolean isDefaultBehavior() {
         return defaultBehavior;
     }
-
-    public void setDefaultBehavior ( final boolean defaultBehavior )
-    {
+    
+    public void setDefaultBehavior(final boolean defaultBehavior) {
         this.defaultBehavior = defaultBehavior;
     }
-
+    
     @Override
-    public int getSourceActions ( final JComponent c )
-    {
+    public int getSourceActions(final JComponent c) {
         return COPY;
     }
-
+    
     @Override
-    protected Transferable createTransferable ( final JComponent c )
-    {
-        return new StringSelection ( getText () );
+    protected Transferable createTransferable(final JComponent c) {
+        return new StringSelection(getText());
     }
 }

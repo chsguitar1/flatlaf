@@ -26,33 +26,32 @@ import org.ocsoft.flatlaf.laf.menu.WebPopupMenu;
  * @see org.ocsoft.flatlaf.utils.swing.menu.AbstractMenuGenerator
  */
 
-public class PopupMenuGenerator extends AbstractMenuGenerator<WebPopupMenu>
-{
+public class PopupMenuGenerator extends AbstractMenuGenerator<WebPopupMenu> {
     /**
      * Constructs new popup menu generator using default popup menu.
      */
-    public PopupMenuGenerator ()
-    {
-        super ( new WebPopupMenu () );
+    public PopupMenuGenerator() {
+        super(new WebPopupMenu());
     }
-
+    
     /**
-     * Constructs new popup menu generator using default popup menu using the specified style ID.
+     * Constructs new popup menu generator using default popup menu using the
+     * specified style ID.
      *
-     * @param styleId popup menu style ID
+     * @param styleId
+     *            popup menu style ID
      */
-    public PopupMenuGenerator ( final String styleId )
-    {
-        super ( new WebPopupMenu ( styleId ) );
+    public PopupMenuGenerator(final String styleId) {
+        super(new WebPopupMenu(styleId));
     }
-
+    
     /**
      * Constructs new popup menu generator using the specified popup menu.
      *
-     * @param menu popup menu
+     * @param menu
+     *            popup menu
      */
-    public PopupMenuGenerator ( final WebPopupMenu menu )
-    {
-        super ( menu );
+    public PopupMenuGenerator(final WebPopupMenu menu) {
+        super(menu);
     }
 }

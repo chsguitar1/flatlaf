@@ -24,26 +24,27 @@ package org.ocsoft.flatlaf.managers.notification;
  * @see WebInnerNotification
  */
 
-public interface NotificationListener
-{
+public interface NotificationListener {
     /**
-     * Notifies that user has selected the specified option.
-     * This a separate from accepted/closed method that will be called only if some options list was set into notification popup.
-     * Popup may still be closed without selecting any options if its settings allows that.
+     * Notifies that user has selected the specified option. This a separate
+     * from accepted/closed method that will be called only if some options list
+     * was set into notification popup. Popup may still be closed without
+     * selecting any options if its settings allows that.
      *
-     * @param option selected option
+     * @param option
+     *            selected option
      */
-    public void optionSelected ( NotificationOption option );
-
+    public void optionSelected(NotificationOption option);
+    
     /**
-     * Notifies that user accepted notification.
-     * Any action that waited for this may now be performed.
+     * Notifies that user accepted notification. Any action that waited for this
+     * may now be performed.
      */
-    public void accepted ();
-
+    public void accepted();
+    
     /**
      * Notifies that popup was simply closed by user or delayed close action.
      * That means that any action that aways user's decision should be delayed.
      */
-    public void closed ();
+    public void closed();
 }

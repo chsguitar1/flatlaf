@@ -29,60 +29,56 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class SingleAlignPanel extends WebPanel implements SwingConstants
-{
+public class SingleAlignPanel extends WebPanel implements SwingConstants {
     /**
      * Constructs new single align panel.
      *
-     * @param component component to align
-     * @param side      side to which component should be aligned
+     * @param component
+     *            component to align
+     * @param side
+     *            side to which component should be aligned
      */
-    public SingleAlignPanel ( final Component component, final int side )
-    {
-        this ( component, translateSide ( side ) );
+    public SingleAlignPanel(final Component component, final int side) {
+        this(component, translateSide(side));
     }
-
+    
     /**
      * Constructs new single align panel.
      *
-     * @param component component to align
-     * @param side      side to which component should be aligned
+     * @param component
+     *            component to align
+     * @param side
+     *            side to which component should be aligned
      */
-    public SingleAlignPanel ( final Component component, final String side )
-    {
-        super ( new BorderLayout ( 0, 0 ) );
-        setOpaque ( false );
-        add ( component, side );
+    public SingleAlignPanel(final Component component, final String side) {
+        super(new BorderLayout(0, 0));
+        setOpaque(false);
+        add(component, side);
     }
-
+    
     /**
      * Returns side translated into BorderLayout constraint.
      *
-     * @param side side constraint to translate
+     * @param side
+     *            side constraint to translate
      * @return side translated into BorderLayout constraint
      */
-    private static String translateSide ( final int side )
-    {
-        switch ( side )
-        {
-            case TOP:
-            {
-                return BorderLayout.NORTH;
-            }
-            case LEFT:
-            case LEADING:
-            {
-                return BorderLayout.WEST;
-            }
-            case BOTTOM:
-            {
-                return BorderLayout.SOUTH;
-            }
-            case RIGHT:
-            case TRAILING:
-            {
-                return BorderLayout.EAST;
-            }
+    private static String translateSide(final int side) {
+        switch (side) {
+        case TOP: {
+            return BorderLayout.NORTH;
+        }
+        case LEFT:
+        case LEADING: {
+            return BorderLayout.WEST;
+        }
+        case BOTTOM: {
+            return BorderLayout.SOUTH;
+        }
+        case RIGHT:
+        case TRAILING: {
+            return BorderLayout.EAST;
+        }
         }
         return BorderLayout.CENTER;
     }

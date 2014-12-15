@@ -20,68 +20,60 @@ package org.ocsoft.flatlaf.laf.combobox;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 
 /**
- * Default combobox elements renderer.
- * It uses custom painter to display selected background for list-type elements.
+ * Default combobox elements renderer. It uses custom painter to display
+ * selected background for list-type elements.
  *
  * @author Mikle Garin
  * @see org.ocsoft.flatlaf.laf.combobox.WebComboBoxCellRenderer
  * @see org.ocsoft.flatlaf.managers.style.skin.web.WebComboBoxElementPainter
  */
 
-public class WebComboBoxElement extends WebLabel
-{
+public class WebComboBoxElement extends WebLabel {
     /**
      * Element type.
      */
     private final ComboBoxElementType type;
-
+    
     /**
      * Runtime variables.
      */
     protected int totalElements;
     protected int index;
     protected boolean selected;
-
-    public WebComboBoxElement ( final ComboBoxElementType type )
-    {
-        super ();
+    
+    public WebComboBoxElement(final ComboBoxElementType type) {
+        super();
         this.type = type;
-        setName ( "List.cellRenderer" );
-        setStyleId ( type == ComboBoxElementType.box ? "combo-box-box" : "combo-box-list" );
+        setName("List.cellRenderer");
+        setStyleId(type == ComboBoxElementType.box ? "combo-box-box"
+                : "combo-box-list");
     }
-
-    public ComboBoxElementType getType ()
-    {
+    
+    public ComboBoxElementType getType() {
         return type;
     }
-
-    public int getTotalElements ()
-    {
+    
+    public int getTotalElements() {
         return totalElements;
     }
-
-    public void setTotalElements ( final int totalElements )
-    {
+    
+    public void setTotalElements(final int totalElements) {
         this.totalElements = totalElements;
     }
-
-    public int getIndex ()
-    {
+    
+    public int getIndex() {
         return index;
     }
-
-    public void setIndex ( final int index )
-    {
+    
+    public void setIndex(final int index) {
         this.index = index;
     }
-
-    public boolean isSelected ()
-    {
+    
+    public boolean isSelected() {
         return selected;
     }
-
-    public void setSelected ( final boolean selected )
-    {
+    
+    public void setSelected(final boolean selected) {
         this.selected = selected;
     }
 }

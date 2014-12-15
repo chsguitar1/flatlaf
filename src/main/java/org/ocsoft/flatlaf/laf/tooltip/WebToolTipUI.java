@@ -38,110 +38,113 @@ import java.util.Map;
  * @author Mikle Garin
  */
 
-public class WebToolTipUI extends BasicToolTipUI implements ShapeProvider, BorderMethods
-{
+public class WebToolTipUI extends BasicToolTipUI implements ShapeProvider,
+        BorderMethods {
     /**
      * Tooltip instance.
      */
     private JComponent tooltip = null;
-
+    
     /**
-     * Returns an instance of the WebToolTipUI for the specified component.
-     * This tricky method is used by UIManager to create component UIs when needed.
+     * Returns an instance of the WebToolTipUI for the specified component. This
+     * tricky method is used by UIManager to create component UIs when needed.
      *
-     * @param c component that will use UI instance
+     * @param c
+     *            component that will use UI instance
      * @return instance of the WebToolTipUI
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebToolTipUI ();
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebToolTipUI();
     }
-
+    
     /**
      * Installs UI in the specified component.
      *
-     * @param c component for this UI
+     * @param c
+     *            component for this UI
      */
     @Override
-    public void installUI ( final JComponent c )
-    {
-        super.installUI ( c );
-
+    public void installUI(final JComponent c) {
+        super.installUI(c);
+        
         this.tooltip = c;
-
+        
         // Default settings
-        SwingUtils.setOrientation ( tooltip );
-        LookAndFeel.installProperty ( tooltip, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
-        tooltip.setBackground ( WebTooltipStyle.backgroundColor );
-        tooltip.setForeground ( WebTooltipStyle.textColor );
-
+        SwingUtils.setOrientation(tooltip);
+        LookAndFeel.installProperty(tooltip, FlatLookAndFeel.OPAQUE_PROPERTY,
+                Boolean.FALSE);
+        tooltip.setBackground(WebTooltipStyle.backgroundColor);
+        tooltip.setForeground(WebTooltipStyle.textColor);
+        
         // Updating border
-        updateBorder ();
+        updateBorder();
     }
-
+    
     /**
      * Uninstalls UI from the specified component.
      *
-     * @param c component with this UI
+     * @param c
+     *            component with this UI
      */
     @Override
-    public void uninstallUI ( final JComponent c )
-    {
+    public void uninstallUI(final JComponent c) {
         this.tooltip = null;
-
-        super.uninstallUI ( c );
+        
+        super.uninstallUI(c);
     }
-
+    
     /**
      * Returns component shape.
      *
      * @return component shape
      */
     @Override
-    public Shape provideShape ()
-    {
-        return new RoundRectangle2D.Double ( 0, 0, tooltip.getWidth (), tooltip.getHeight (), WebTooltipStyle.round * 2,
-                WebTooltipStyle.round * 2 );
+    public Shape provideShape() {
+        return new RoundRectangle2D.Double(0, 0, tooltip.getWidth(),
+                tooltip.getHeight(), WebTooltipStyle.round * 2,
+                WebTooltipStyle.round * 2);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void updateBorder ()
-    {
+    public void updateBorder() {
         // Preserve old borders
-        if ( SwingUtils.isPreserveBorders ( tooltip ) )
-        {
+        if (SwingUtils.isPreserveBorders(tooltip)) {
             return;
         }
-
-        tooltip.setBorder ( LafUtils.createWebBorder ( WebTooltipStyle.contentMargin ) );
+        
+        tooltip.setBorder(LafUtils
+                .createWebBorder(WebTooltipStyle.contentMargin));
     }
-
+    
     /**
      * Paints tooltip.
      *
-     * @param g graphics
-     * @param c component
+     * @param g
+     *            graphics
+     * @param c
+     *            component
      */
     @Override
-    public void paint ( final Graphics g, final JComponent c )
-    {
-        final Graphics2D g2d = ( Graphics2D ) g;
-
-        final Object aa = GraphicsUtils.setupAntialias ( g2d );
-        final Composite oc = GraphicsUtils.setupAlphaComposite ( g2d, WebTooltipStyle.trasparency );
-
-        g2d.setPaint ( c.getBackground () );
-        g2d.fillRoundRect ( 0, 0, c.getWidth (), c.getHeight (), WebTooltipStyle.round * 2, WebTooltipStyle.round * 2 );
-
-        GraphicsUtils.restoreComposite ( g2d, oc );
-        GraphicsUtils.restoreAntialias ( g2d, aa );
-
-        final Map taa = SwingUtils.setupTextAntialias ( g2d );
-        super.paint ( g, c );
-        SwingUtils.restoreTextAntialias ( g2d, taa );
+    public void paint(final Graphics g, final JComponent c) {
+        final Graphics2D g2d = (Graphics2D) g;
+        
+        final Object aa = GraphicsUtils.setupAntialias(g2d);
+        final Composite oc = GraphicsUtils.setupAlphaComposite(g2d,
+                WebTooltipStyle.trasparency);
+        
+        g2d.setPaint(c.getBackground());
+        g2d.fillRoundRect(0, 0, c.getWidth(), c.getHeight(),
+                WebTooltipStyle.round * 2, WebTooltipStyle.round * 2);
+        
+        GraphicsUtils.restoreComposite(g2d, oc);
+        GraphicsUtils.restoreAntialias(g2d, aa);
+        
+        final Map taa = SwingUtils.setupTextAntialias(g2d);
+        super.paint(g, c);
+        SwingUtils.restoreTextAntialias(g2d, taa);
     }
 }

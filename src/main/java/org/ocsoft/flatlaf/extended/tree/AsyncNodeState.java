@@ -20,32 +20,29 @@ package org.ocsoft.flatlaf.extended.tree;
 /**
  * This enumeration represents possible async tree node states.
  * <p/>
- * Usually node might change in one of these directions:
- * 1. waiting -> (2)
- * 2. loading -> (3) or (4)
- * 3. loaded -> when reload called (2)
- * 4. failed -> when reload called (2)
+ * Usually node might change in one of these directions: 1. waiting -> (2) 2.
+ * loading -> (3) or (4) 3. loaded -> when reload called (2) 4. failed -> when
+ * reload called (2)
  *
  * @author Mikle Garin
  */
 
-public enum AsyncNodeState
-{
+public enum AsyncNodeState {
     /**
      * Waiting for node expansion to load childs.
      */
     waiting,
-
+    
     /**
      * Loading childs.
      */
     loading,
-
+    
     /**
      * Childs loaded.
      */
     loaded,
-
+    
     /**
      * Childs load failed.
      */

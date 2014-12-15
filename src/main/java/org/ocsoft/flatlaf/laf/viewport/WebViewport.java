@@ -24,52 +24,44 @@ import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
- * This JViewport extension class provides a direct access to WebViewportUI methods.
+ * This JViewport extension class provides a direct access to WebViewportUI
+ * methods.
  *
  * @author Mikle Garin
  */
 
-public class WebViewport extends JViewport
-{
+public class WebViewport extends JViewport {
     /**
      * Constructs new viewport component.
      */
-    public WebViewport ()
-    {
-        super ();
+    public WebViewport() {
+        super();
     }
-
+    
     /**
      * Returns Web-UI applied to this class.
      *
      * @return Web-UI applied to this class
      */
-    public WebViewportUI getWebUI ()
-    {
-        return ( WebViewportUI ) getUI ();
+    public WebViewportUI getWebUI() {
+        return (WebViewportUI) getUI();
     }
-
+    
     /**
      * Installs a Web-UI into this component.
      */
     @Override
-    public void updateUI ()
-    {
-        if ( getUI () == null || !( getUI () instanceof WebViewportUI ) )
-        {
-            try
-            {
-                setUI ( ( WebViewportUI ) ReflectUtils.createInstance ( FlatLafSettings.viewportUI ) );
+    public void updateUI() {
+        if (getUI() == null || !(getUI() instanceof WebViewportUI)) {
+            try {
+                setUI((WebViewportUI) ReflectUtils
+                        .createInstance(FlatLafSettings.viewportUI));
+            } catch (final Throwable e) {
+                FlatLafLogger.error(this, e);
+                setUI(new WebViewportUI());
             }
-            catch ( final Throwable e )
-            {
-                FlatLafLogger.error ( this, e );
-                setUI ( new WebViewportUI () );
-            }
-        }
-        else
-        {
-            setUI ( getUI () );
+        } else {
+            setUI(getUI());
         }
     }
 }

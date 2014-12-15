@@ -23,39 +23,37 @@ import org.ocsoft.flatlaf.extended.painter.AdaptivePainter;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 
 /**
- * Simple ScrollBarButtonPainter adapter class.
- * It is used to install simple non-specific button painters into WebScrollBarUI.
+ * Simple ScrollBarButtonPainter adapter class. It is used to install simple
+ * non-specific button painters into WebScrollBarUI.
  *
  * @author Mikle Garin
  */
 
-public class AdaptiveScrollBarButtonPainter<E extends AbstractButton> extends AdaptivePainter<E> implements ScrollBarButtonPainter<E>
-{
+public class AdaptiveScrollBarButtonPainter<E extends AbstractButton> extends
+        AdaptivePainter<E> implements ScrollBarButtonPainter<E> {
     /**
      * Constructs new AdaptiveScrollBarButtonPainter for the specified painter.
      *
-     * @param painter painter to adapt
+     * @param painter
+     *            painter to adapt
      */
-    public AdaptiveScrollBarButtonPainter ( final Painter painter )
-    {
-        super ( painter );
+    public AdaptiveScrollBarButtonPainter(final Painter painter) {
+        super(painter);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setButtonType ( final ScrollBarButtonType type )
-    {
+    public void setButtonType(final ScrollBarButtonType type) {
         // Ignore this method in adaptive class
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setScrollbar ( final JScrollBar scrollbar )
-    {
+    public void setScrollbar(final JScrollBar scrollbar) {
         // Ignore this method in adaptive class
     }
 }

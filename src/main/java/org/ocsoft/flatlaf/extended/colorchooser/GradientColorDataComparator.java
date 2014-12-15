@@ -25,18 +25,20 @@ import java.util.Comparator;
  * @author Mikle Garin
  */
 
-public class GradientColorDataComparator implements Comparator<GradientColorData>
-{
+public class GradientColorDataComparator implements
+        Comparator<GradientColorData> {
     /**
      * Compares two GradientColorData by their locations.
      *
-     * @param o1 first GradientColorData to be compared
-     * @param o2 second GradientColorData to be compared
-     * @return a negative integer, zero, or a positive integer as the first argument is less than, equal to, or greater than the second
+     * @param o1
+     *            first GradientColorData to be compared
+     * @param o2
+     *            second GradientColorData to be compared
+     * @return a negative integer, zero, or a positive integer as the first
+     *         argument is less than, equal to, or greater than the second
      */
     @Override
-    public int compare ( GradientColorData o1, GradientColorData o2 )
-    {
-        return Float.compare ( o1.getLocation (), o2.getLocation () );
+    public int compare(GradientColorData o1, GradientColorData o2) {
+        return Float.compare(o1.getLocation(), o2.getLocation());
     }
 }

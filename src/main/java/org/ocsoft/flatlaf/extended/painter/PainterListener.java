@@ -23,32 +23,35 @@ package org.ocsoft.flatlaf.extended.painter;
  * @author Mikle Garin
  */
 
-public interface PainterListener
-{
+public interface PainterListener {
     /**
      * Called when painter visual representation changes.
      */
-    public void repaint ();
-
+    public void repaint();
+    
     /**
      * Called when part of painter visual representation changes.
      *
-     * @param x      part bounds X coordinate
-     * @param y      part bounds Y coordinate
-     * @param width  part bounds width
-     * @param height part bounds height
+     * @param x
+     *            part bounds X coordinate
+     * @param y
+     *            part bounds Y coordinate
+     * @param width
+     *            part bounds width
+     * @param height
+     *            part bounds height
      */
-    public void repaint ( int x, int y, int width, int height );
-
+    public void repaint(int x, int y, int width, int height);
+    
     /**
-     * Called when painter preferred size or margin changes.
-     * This call will usually cause component border update.
+     * Called when painter preferred size or margin changes. This call will
+     * usually cause component border update.
      */
-    public void revalidate ();
-
+    public void revalidate();
+    
     /**
-     * Called when painter requires component opacity to be updated.
-     * Make sure you know what you are doing in case you are modifying opacity in runtime.
+     * Called when painter requires component opacity to be updated. Make sure
+     * you know what you are doing in case you are modifying opacity in runtime.
      */
-    public void updateOpacity ();
+    public void updateOpacity();
 }

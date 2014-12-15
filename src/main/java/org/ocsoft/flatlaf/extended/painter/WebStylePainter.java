@@ -27,115 +27,104 @@ import java.awt.*;
 /**
  * Custom web-style painter for basic elements like panels, buttons e.t.c.
  *
- * @param <E> component type
+ * @param <E>
+ *            component type
  * @author Mikle Garin
  * @see AbstractPainter
  * @see Painter
  */
 
-public class WebStylePainter<E extends JComponent> extends AbstractPainter<E>
-{
+public class WebStylePainter<E extends JComponent> extends AbstractPainter<E> {
     /**
      * todo 1. Implement all required methods (for e.g. - side hiding)
      */
-
+    
     protected boolean drawBackground = true;
     protected int round = FlatLafStyleConstants.smallRound;
     protected boolean drawFocus = false;
     protected int shadeWidth = FlatLafStyleConstants.shadeWidth;
     protected boolean fillBackground = true;
     protected boolean webColored = true;
-
-    public WebStylePainter ()
-    {
-        super ();
+    
+    public WebStylePainter() {
+        super();
     }
-
-    public boolean isDrawBackground ()
-    {
+    
+    public boolean isDrawBackground() {
         return drawBackground;
     }
-
-    public void setDrawBackground ( final boolean drawBackground )
-    {
+    
+    public void setDrawBackground(final boolean drawBackground) {
         this.drawBackground = drawBackground;
-        repaint ();
+        repaint();
     }
-
-    public int getRound ()
-    {
+    
+    public int getRound() {
         return round;
     }
-
-    public void setRound ( final int round )
-    {
+    
+    public void setRound(final int round) {
         this.round = round;
-        repaint ();
+        repaint();
     }
-
-    public boolean isDrawFocus ()
-    {
+    
+    public boolean isDrawFocus() {
         return drawFocus;
     }
-
-    public void setDrawFocus ( final boolean drawFocus )
-    {
+    
+    public void setDrawFocus(final boolean drawFocus) {
         this.drawFocus = drawFocus;
-        repaint ();
+        repaint();
     }
-
-    public int getShadeWidth ()
-    {
+    
+    public int getShadeWidth() {
         return shadeWidth;
     }
-
-    public void setShadeWidth ( final int shadeWidth )
-    {
+    
+    public void setShadeWidth(final int shadeWidth) {
         this.shadeWidth = shadeWidth;
-        updateAll ();
+        updateAll();
     }
-
-    public boolean isFillBackground ()
-    {
+    
+    public boolean isFillBackground() {
         return fillBackground;
     }
-
-    public void setFillBackground ( final boolean fillBackground )
-    {
+    
+    public void setFillBackground(final boolean fillBackground) {
         this.fillBackground = fillBackground;
-        repaint ();
+        repaint();
     }
-
-    public boolean isWebColored ()
-    {
+    
+    public boolean isWebColored() {
         return webColored;
     }
-
-    public void setWebColored ( final boolean webColored )
-    {
+    
+    public void setWebColored(final boolean webColored) {
         this.webColored = webColored;
-        repaint ();
+        repaint();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Insets getMargin ( final E c )
-    {
-        return new Insets ( shadeWidth + 1, shadeWidth + 1, shadeWidth + 1, shadeWidth + 1 );
+    public Insets getMargin(final E c) {
+        return new Insets(shadeWidth + 1, shadeWidth + 1, shadeWidth + 1,
+                shadeWidth + 1);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void paint ( final Graphics2D g2d, final Rectangle bounds, final E c )
-    {
-        if ( drawBackground )
-        {
-            LafUtils.drawWebStyle ( g2d, c, drawFocus && c.isFocusOwner () ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor,
-                    shadeWidth, round, fillBackground, webColored );
+    public void paint(final Graphics2D g2d, final Rectangle bounds, final E c) {
+        if (drawBackground) {
+            LafUtils.drawWebStyle(
+                    g2d,
+                    c,
+                    drawFocus && c.isFocusOwner() ? FlatLafStyleConstants.fieldFocusColor
+                            : FlatLafStyleConstants.shadeColor, shadeWidth,
+                    round, fillBackground, webColored);
         }
     }
 }

@@ -29,37 +29,34 @@ import java.io.File;
  * @author Mikle Garin
  */
 
-public class NonHiddenFilter extends AbstractFileFilter
-{
+public class NonHiddenFilter extends AbstractFileFilter {
     /**
      * Filter icon.
      */
-    public static final ImageIcon ICON = new ImageIcon ( DirectoriesFilter.class.getResource ( "icons/nonhidden.png" ) );
-
+    public static final ImageIcon ICON = new ImageIcon(
+            DirectoriesFilter.class.getResource("icons/nonhidden.png"));
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public ImageIcon getIcon ()
-    {
+    public ImageIcon getIcon() {
         return ICON;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getDescription ()
-    {
-        return LanguageManager.get ( "weblaf.file.filter.nonhidden" );
+    public String getDescription() {
+        return LanguageManager.get("weblaf.file.filter.nonhidden");
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean accept ( final File file )
-    {
-        return !file.isHidden ();
+    public boolean accept(final File file) {
+        return !file.isHidden();
     }
 }

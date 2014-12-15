@@ -24,43 +24,35 @@ import java.util.Comparator;
 import org.ocsoft.flatlaf.utils.FileUtils;
 
 /**
- * File name and type comparator.
- * This comparator is used by some file components by default.
+ * File name and type comparator. This comparator is used by some file
+ * components by default.
  *
  * @author Mikle Garin
  */
 
-public class FileComparator implements Comparator<File>, Serializable
-{
+public class FileComparator implements Comparator<File>, Serializable {
     /**
      * Compares two files by their names and type.
      *
-     * @param f1 first file to be compared
-     * @param f2 second file to be compared
-     * @return a negative integer, zero, or a positive integer as the first argument is less than, equal to, or greater than the second
+     * @param f1
+     *            first file to be compared
+     * @param f2
+     *            second file to be compared
+     * @return a negative integer, zero, or a positive integer as the first
+     *         argument is less than, equal to, or greater than the second
      */
     @Override
-    public int compare ( final File f1, final File f2 )
-    {
-        if ( FileUtils.isDirectory ( f1 ) && !FileUtils.isDirectory ( f2 ) )
-        {
+    public int compare(final File f1, final File f2) {
+        if (FileUtils.isDirectory(f1) && !FileUtils.isDirectory(f2)) {
             return -1;
-        }
-        else if ( !FileUtils.isDirectory ( f1 ) && FileUtils.isDirectory ( f2 ) )
-        {
+        } else if (!FileUtils.isDirectory(f1) && FileUtils.isDirectory(f2)) {
             return 1;
-        }
-        else if ( FileUtils.isHidden ( f1 ) && !FileUtils.isHidden ( f2 ) )
-        {
+        } else if (FileUtils.isHidden(f1) && !FileUtils.isHidden(f2)) {
             return -1;
-        }
-        else if ( !FileUtils.isHidden ( f1 ) && FileUtils.isHidden ( f2 ) )
-        {
+        } else if (!FileUtils.isHidden(f1) && FileUtils.isHidden(f2)) {
             return 1;
-        }
-        else
-        {
-            return f1.getName ().compareToIgnoreCase ( f2.getName () );
+        } else {
+            return f1.getName().compareToIgnoreCase(f2.getName());
         }
     }
 }

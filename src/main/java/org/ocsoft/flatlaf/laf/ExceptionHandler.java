@@ -25,16 +25,14 @@ import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
  * @author Mikle Garin
  */
 
-public class ExceptionHandler implements Thread.UncaughtExceptionHandler
-{
+public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
     @Override
-    public void uncaughtException ( final Thread thread, final Throwable thrown )
-    {
-        handleException ( thread.getName (), thrown );
+    public void uncaughtException(final Thread thread, final Throwable thrown) {
+        handleException(thread.getName(), thrown);
     }
-
-    protected void handleException ( final String tname, final Throwable thrown )
-    {
-        FlatLafLogger.error ( ExceptionHandler.class, "Exception in thread " + tname + ": ", thrown );
+    
+    protected void handleException(final String tname, final Throwable thrown) {
+        FlatLafLogger.error(ExceptionHandler.class, "Exception in thread "
+                + tname + ": ", thrown);
     }
 }

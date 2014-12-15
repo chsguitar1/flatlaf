@@ -21,7 +21,6 @@ package org.ocsoft.flatlaf.managers.help;
  * @author Mikle Garin
  */
 
-public class HelpManager
-{
+public class HelpManager {
     // todo
 }

@@ -25,22 +25,24 @@ import javax.swing.event.DocumentEvent;
  * @author Mikle Garin
  */
 
-public abstract class StringDocumentChangeListener extends DocumentChangeListener
-{
+public abstract class StringDocumentChangeListener extends
+        DocumentChangeListener {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void documentChanged ( final DocumentEvent e )
-    {
-        documentChanged ( getText ( e ), e );
+    public void documentChanged(final DocumentEvent e) {
+        documentChanged(getText(e), e);
     }
-
+    
     /**
-     * Informs that string value contained in the document has changed in some way.
+     * Informs that string value contained in the document has changed in some
+     * way.
      *
-     * @param newValue new string value
-     * @param e        document event
+     * @param newValue
+     *            new string value
+     * @param e
+     *            document event
      */
-    public abstract void documentChanged ( String newValue, DocumentEvent e );
+    public abstract void documentChanged(String newValue, DocumentEvent e);
 }

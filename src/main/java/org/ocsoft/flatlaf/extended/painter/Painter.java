@@ -21,87 +21,108 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * This interface provides basic methods for component view painting.
- * Using painters you can quickly and easily change Swing and WebLaF components view.
+ * This interface provides basic methods for component view painting. Using
+ * painters you can quickly and easily change Swing and WebLaF components view.
  * <p/>
- * You might want to use single painter for multiply components, but be aware that whether or not single painter can work with multiply
- * components at once depends only on its own way of implementation. In most cases painters which does some animation won't work well with
- * multiply components unless noted otherwise.
+ * You might want to use single painter for multiply components, but be aware
+ * that whether or not single painter can work with multiply components at once
+ * depends only on its own way of implementation. In most cases painters which
+ * does some animation won't work well with multiply components unless noted
+ * otherwise.
  *
- * @param <E> component type
+ * @param <E>
+ *            component type
  * @author Mikle Garin
  * @see AbstractPainter
  */
 
-public interface Painter<E extends JComponent>
-{
+public interface Painter<E extends JComponent> {
     /**
-     * Called when painter is intalled into some component.
-     * You might want to use this method to add custom component listeners or modify component settings.
+     * Called when painter is intalled into some component. You might want to
+     * use this method to add custom component listeners or modify component
+     * settings.
      *
-     * @param c component to process
+     * @param c
+     *            component to process
      */
-    public void install ( E c );
-
+    public void install(E c);
+    
     /**
-     * Called when painter is intalled into some component.
-     * You might want to use this method to add custom component listeners or modify component settings.
+     * Called when painter is intalled into some component. You might want to
+     * use this method to add custom component listeners or modify component
+     * settings.
      *
-     * @param c component to process
+     * @param c
+     *            component to process
      */
-    public void uninstall ( E c );
-
+    public void uninstall(E c);
+    
     /**
      * Returns whether visual data provided by this painter is opaque or not.
-     * Returned value might affect component opacity depending on painter support inside that component UI.
-     * Simply return null if you don't want to change default component opacity.
+     * Returned value might affect component opacity depending on painter
+     * support inside that component UI. Simply return null if you don't want to
+     * change default component opacity.
      *
-     * @param c component to process
-     * @return true if visual data provided by this painter is opaque, false otherwise
+     * @param c
+     *            component to process
+     * @return true if visual data provided by this painter is opaque, false
+     *         otherwise
      */
-    public Boolean isOpaque ( E c );
-
+    public Boolean isOpaque(E c);
+    
     /**
-     * Returns preferred size required for proper painting of visual data provided by this painter.
-     * This should not take into account any sizes not related to this painter settings (for example text size on button).
+     * Returns preferred size required for proper painting of visual data
+     * provided by this painter. This should not take into account any sizes not
+     * related to this painter settings (for example text size on button).
      *
-     * @param c component to process
-     * @return preferred size required for proper painting of visual data provided by this painter
+     * @param c
+     *            component to process
+     * @return preferred size required for proper painting of visual data
+     *         provided by this painter
      */
-    public Dimension getPreferredSize ( E c );
-
+    public Dimension getPreferredSize(E c);
+    
     /**
-     * Returns margin required for visual data provided by this painter.
-     * This margin is usually added to component's margin when the final component border is calculated.
-     * You may pass null instead of zero margin - it will simply be ignored in that case.
+     * Returns margin required for visual data provided by this painter. This
+     * margin is usually added to component's margin when the final component
+     * border is calculated. You may pass null instead of zero margin - it will
+     * simply be ignored in that case.
      *
-     * @param c component to process
-     * @return margin required for visual data provided by this painter or null for zero margin
+     * @param c
+     *            component to process
+     * @return margin required for visual data provided by this painter or null
+     *         for zero margin
      */
-    public Insets getMargin ( E c );
-
+    public Insets getMargin(E c);
+    
     /**
-     * Paints visual data onto the component graphics.
-     * Provided graphics and component are taken directly from component UI paint method.
-     * Provided bounds are usually fake (zero location, component size) but in some cases it might be specified by componentUI.
+     * Paints visual data onto the component graphics. Provided graphics and
+     * component are taken directly from component UI paint method. Provided
+     * bounds are usually fake (zero location, component size) but in some cases
+     * it might be specified by componentUI.
      *
-     * @param g2d    component graphics
-     * @param bounds bounds for painter visual data
-     * @param c      component to process
+     * @param g2d
+     *            component graphics
+     * @param bounds
+     *            bounds for painter visual data
+     * @param c
+     *            component to process
      */
-    public void paint ( Graphics2D g2d, Rectangle bounds, E c );
-
+    public void paint(Graphics2D g2d, Rectangle bounds, E c);
+    
     /**
      * Adds new painter listener.
      *
-     * @param listener painter listener to add
+     * @param listener
+     *            painter listener to add
      */
-    public void addPainterListener ( PainterListener listener );
-
+    public void addPainterListener(PainterListener listener);
+    
     /**
      * Removes painter listener.
      *
-     * @param listener painter listener to remove
+     * @param listener
+     *            painter listener to remove
      */
-    public void removePainterListener ( PainterListener listener );
+    public void removePainterListener(PainterListener listener);
 }

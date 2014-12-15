@@ -29,49 +29,45 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public final class WebTextAreaStyle
-{
+public final class WebTextAreaStyle {
     /**
      * Text area margin.
      */
-    public static Insets margin = new Insets ( 2, 2, 2, 2 );
-
+    public static Insets margin = new Insets(2, 2, 2, 2);
+    
     /**
-     * Input prompt text.
-     * Set to null to disable input prompt.
+     * Input prompt text. Set to null to disable input prompt.
      */
     public static String inputPrompt = null;
-
+    
     /**
-     * Input prompt text font.
-     * Set to null to use the same font area uses.
+     * Input prompt text font. Set to null to use the same font area uses.
      */
     public static Font inputPromptFont = null;
-
+    
     /**
-     * Input prompt text foreground.
-     * Set to null to use the same foreground area uses.
+     * Input prompt text foreground. Set to null to use the same foreground area
+     * uses.
      */
-    public static Color inputPromptForeground = new Color ( 160, 160, 160 );
-
+    public static Color inputPromptForeground = new Color(160, 160, 160);
+    
     /**
      * Input prompt text position.
      */
     public static int inputPromptHorizontalPosition = SwingConstants.CENTER;
-
+    
     /**
      * Input prompt text position.
      */
     public static int inputPromptVerticalPosition = SwingConstants.CENTER;
-
+    
     /**
      * Whether should hide input prompt when field is focused or not.
      */
     public static boolean hideInputPromptOnFocus = true;
-
+    
     /**
-     * Text area painter.
-     * If set it will override WebLaF styling.
+     * Text area painter. If set it will override WebLaF styling.
      */
     public static Painter painter = null;
 }

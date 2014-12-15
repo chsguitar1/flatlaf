@@ -25,38 +25,32 @@ import org.ocsoft.flatlaf.laf.panel.WebPanel;
  * User: mgarin Date: 30.05.12 Time: 15:23
  */
 
-public class GridPanel extends WebPanel
-{
-    public GridPanel ( Component... components )
-    {
-        this ( 1, 0, components );
+public class GridPanel extends WebPanel {
+    public GridPanel(Component... components) {
+        this(1, 0, components);
     }
-
-    public GridPanel ( int rows, int cols, Component... components )
-    {
-        this ( rows, cols, 0, components );
+    
+    public GridPanel(int rows, int cols, Component... components) {
+        this(rows, cols, 0, components);
     }
-
-    public GridPanel ( int gap, Component... components )
-    {
-        this ( 1, 0, gap, components );
+    
+    public GridPanel(int gap, Component... components) {
+        this(1, 0, gap, components);
     }
-
-    public GridPanel ( int rows, int cols, int gap, Component... components )
-    {
-        this ( rows, cols, gap, gap, components );
+    
+    public GridPanel(int rows, int cols, int gap, Component... components) {
+        this(rows, cols, gap, gap, components);
     }
-
-    public GridPanel ( int rows, int cols, int hgap, int vgap, Component... components )
-    {
-        super ();
-
-        setOpaque ( false );
-        setLayout ( new GridLayout ( rows, cols, hgap, vgap ) );
-
-        for ( Component component : components )
-        {
-            add ( component );
+    
+    public GridPanel(int rows, int cols, int hgap, int vgap,
+            Component... components) {
+        super();
+        
+        setOpaque(false);
+        setLayout(new GridLayout(rows, cols, hgap, vgap));
+        
+        for (Component component : components) {
+            add(component);
         }
     }
 }

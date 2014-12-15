@@ -25,100 +25,99 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public final class WebScrollBarStyle
-{
+public final class WebScrollBarStyle {
     /**
      * Whether scroll bar arrow buttons should be displayed or not.
      */
     public static boolean paintButtons = true;
-
+    
     /**
      * Whether scroll bar track should be displayed or not.
      */
     public static boolean paintTrack = false;
-
+    
     /**
      * Scroll bar track border color.
      */
-    public static Color trackBorderColor = new Color ( 230, 230, 230 );
-
+    public static Color trackBorderColor = new Color(230, 230, 230);
+    
     /**
      * Scroll bar track background color.
      */
-    public static Color trackBackgroundColor = new Color ( 245, 245, 245 );
-
+    public static Color trackBackgroundColor = new Color(245, 245, 245);
+    
     /**
      * Scroll bar thumb border color.
      */
-    public static Color thumbBorderColor = new Color ( 189, 189, 189 );
-
+    public static Color thumbBorderColor = new Color(189, 189, 189);
+    
     /**
      * Scroll bar thumb background color.
      */
-    public static Color thumbBackgroundColor = new Color ( 217, 217, 217 );
-
+    public static Color thumbBackgroundColor = new Color(217, 217, 217);
+    
     /**
      * Scroll bar thumb disabled border color.
      */
-    public static Color thumbDisabledBorderColor = new Color ( 210, 210, 210 );
-
+    public static Color thumbDisabledBorderColor = new Color(210, 210, 210);
+    
     /**
      * Scroll bar thumb disabled background color.
      */
-    public static Color thumbDisabledBackgroundColor = new Color ( 230, 230, 230 );
-
+    public static Color thumbDisabledBackgroundColor = new Color(230, 230, 230);
+    
     /**
      * Scroll bar thumb rollover border color.
      */
-    public static Color thumbRolloverBorderColor = new Color ( 166, 166, 166 );
-
+    public static Color thumbRolloverBorderColor = new Color(166, 166, 166);
+    
     /**
      * Scroll bar thumb rollover background color.
      */
-    public static Color thumbRolloverBackgroundColor = new Color ( 194, 194, 194 );
-
+    public static Color thumbRolloverBackgroundColor = new Color(194, 194, 194);
+    
     /**
      * Scroll bar thumb pressed/dragged border color.
      */
-    public static Color thumbPressedBorderColor = new Color ( 126, 126, 126 );
-
+    public static Color thumbPressedBorderColor = new Color(126, 126, 126);
+    
     /**
      * Scroll bar thumb pressed/dragged background color.
      */
-    public static Color thumbPressedBackgroundColor = new Color ( 145, 145, 145 );
-
+    public static Color thumbPressedBackgroundColor = new Color(145, 145, 145);
+    
     /**
      * Scroll bar thumb corners rounding.
      */
     public static int thumbRound = 8;
-
+    
     /**
      * Scroll bar margin.
      */
-    public static Insets margin = new Insets ( 0, 0, 0, 0 );
-
+    public static Insets margin = new Insets(0, 0, 0, 0);
+    
     /**
      * Default width of scroll bar.
      */
     public static int scrollBarWidth = 10;
-
+    
     /**
      * Scroll bar thumb margin.
      */
-    public static Insets thumbMargin = new Insets ( 0, 2, 0, 2 );
-
+    public static Insets thumbMargin = new Insets(0, 2, 0, 2);
+    
     /**
-     * Scroll bar arrow buttons preferred size.
-     * Only odd values are recommended for default button representation.
-     * For custom implementations you may specify anything you like.
+     * Scroll bar arrow buttons preferred size. Only odd values are recommended
+     * for default button representation. For custom implementations you may
+     * specify anything you like.
      */
-    public static Dimension buttonsSize = new Dimension ( 13, 13 );
-
+    public static Dimension buttonsSize = new Dimension(13, 13);
+    
     /**
      * Minimum horizontal scroll bar thumb width.
      */
     public static int minThumbWidth = 25;
-
+    
     /**
      * Minimum vertical scroll bar thumb height.
      */

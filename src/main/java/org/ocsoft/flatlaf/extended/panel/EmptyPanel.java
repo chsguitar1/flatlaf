@@ -25,17 +25,14 @@ import org.ocsoft.flatlaf.laf.panel.WebPanel;
  * User: mgarin Date: 14.10.11 Time: 19:46
  */
 
-public class EmptyPanel extends WebPanel
-{
-    public EmptyPanel ( int width, int height )
-    {
-        this ( new Dimension ( width, height ) );
+public class EmptyPanel extends WebPanel {
+    public EmptyPanel(int width, int height) {
+        this(new Dimension(width, height));
     }
-
-    public EmptyPanel ( Dimension size )
-    {
-        super ();
-        setOpaque ( false );
-        setPreferredSize ( size );
+    
+    public EmptyPanel(Dimension size) {
+        super();
+        setOpaque(false);
+        setPreferredSize(size);
     }
 }

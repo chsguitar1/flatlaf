@@ -26,40 +26,41 @@ import org.ocsoft.flatlaf.laf.panel.WebPanel;
  * User: mgarin Date: 01.07.11 Time: 13:24
  */
 
-public class CenterPanel extends WebPanel
-{
-    public CenterPanel ( final Component component )
-    {
-        this ( component, true, true );
+public class CenterPanel extends WebPanel {
+    public CenterPanel(final Component component) {
+        this(component, true, true);
     }
-
-    public CenterPanel ( final Component component, final boolean centerHor, final boolean centerVer )
-    {
-        super ();
-        setOpaque ( false );
-
-        if ( centerHor && centerVer )
-        {
-            setLayout ( new TableLayout ( new double[][]{ { TableLayout.FILL, TableLayout.PREFERRED, TableLayout.FILL },
-                    { TableLayout.FILL, TableLayout.PREFERRED, TableLayout.FILL } } ) );
-            add ( component, "1,1" );
-        }
-        else if ( centerHor )
-        {
-            setLayout ( new TableLayout (
-                    new double[][]{ { TableLayout.FILL, TableLayout.PREFERRED, TableLayout.FILL }, { TableLayout.PREFERRED } } ) );
-            add ( component, "1,0" );
-        }
-        else if ( centerVer )
-        {
-            setLayout ( new TableLayout (
-                    new double[][]{ { TableLayout.PREFERRED }, { TableLayout.FILL, TableLayout.PREFERRED, TableLayout.FILL } } ) );
-            add ( component, "0,1" );
-        }
-        else
-        {
-            setLayout ( new BorderLayout ( 0, 0 ) );
-            add ( component, BorderLayout.CENTER );
+    
+    public CenterPanel(final Component component, final boolean centerHor,
+            final boolean centerVer) {
+        super();
+        setOpaque(false);
+        
+        if (centerHor && centerVer) {
+            setLayout(new TableLayout(
+                    new double[][] {
+                            { TableLayout.FILL, TableLayout.PREFERRED,
+                                    TableLayout.FILL },
+                            { TableLayout.FILL, TableLayout.PREFERRED,
+                                    TableLayout.FILL } }));
+            add(component, "1,1");
+        } else if (centerHor) {
+            setLayout(new TableLayout(
+                    new double[][] {
+                            { TableLayout.FILL, TableLayout.PREFERRED,
+                                    TableLayout.FILL },
+                            { TableLayout.PREFERRED } }));
+            add(component, "1,0");
+        } else if (centerVer) {
+            setLayout(new TableLayout(
+                    new double[][] {
+                            { TableLayout.PREFERRED },
+                            { TableLayout.FILL, TableLayout.PREFERRED,
+                                    TableLayout.FILL } }));
+            add(component, "0,1");
+        } else {
+            setLayout(new BorderLayout(0, 0));
+            add(component, BorderLayout.CENTER);
         }
     }
 }

@@ -23,14 +23,16 @@ package org.ocsoft.flatlaf.extended.tab;
  * @author Mikle Garin
  */
 
-public interface DocumentDataRunnable<T extends DocumentData>
-{
+public interface DocumentDataRunnable<T extends DocumentData> {
     /**
      * Performs action according to provided event data.
      *
-     * @param document document
-     * @param pane     pane data
-     * @param index    document index within pane
+     * @param document
+     *            document
+     * @param pane
+     *            pane data
+     * @param index
+     *            document index within pane
      */
-    public void run ( T document, PaneData<T> pane, int index );
+    public void run(T document, PaneData<T> pane, int index);
 }

@@ -47,703 +47,643 @@ import java.beans.PropertyChangeListener;
  * @author Mikle Garin
  */
 
-public class WebTextArea extends JTextArea
-        implements DocumentEventMethods, EventMethods, LanguageMethods, SettingsMethods, FontMethods<WebTextArea>
-{
-    public WebTextArea ()
-    {
-        super ();
+public class WebTextArea extends JTextArea implements DocumentEventMethods,
+        EventMethods, LanguageMethods, SettingsMethods,
+        FontMethods<WebTextArea> {
+    public WebTextArea() {
+        super();
     }
-
-    public WebTextArea ( final String text )
-    {
-        super ( text );
+    
+    public WebTextArea(final String text) {
+        super(text);
     }
-
-    public WebTextArea ( final int rows, final int columns )
-    {
-        super ( rows, columns );
+    
+    public WebTextArea(final int rows, final int columns) {
+        super(rows, columns);
     }
-
-    public WebTextArea ( final String text, final int rows, final int columns )
-    {
-        super ( text, rows, columns );
+    
+    public WebTextArea(final String text, final int rows, final int columns) {
+        super(text, rows, columns);
     }
-
-    public WebTextArea ( final Document doc )
-    {
-        super ( doc );
+    
+    public WebTextArea(final Document doc) {
+        super(doc);
     }
-
-    public WebTextArea ( final Document doc, final String text, final int rows, final int columns )
-    {
-        super ( doc, text, rows, columns );
+    
+    public WebTextArea(final Document doc, final String text, final int rows,
+            final int columns) {
+        super(doc, text, rows, columns);
     }
-
+    
     /**
      * Additional component methods
      */
-
-    public void clear ()
-    {
-        setText ( "" );
+    
+    public void clear() {
+        setText("");
     }
-
+    
     /**
      * UI methods
      */
-
-    public void setMargin ( final int top, final int left, final int bottom, final int right )
-    {
-        setMargin ( new Insets ( top, left, bottom, right ) );
+    
+    public void setMargin(final int top, final int left, final int bottom,
+            final int right) {
+        setMargin(new Insets(top, left, bottom, right));
     }
-
-    public void setMargin ( final int spacing )
-    {
-        setMargin ( spacing, spacing, spacing, spacing );
+    
+    public void setMargin(final int spacing) {
+        setMargin(spacing, spacing, spacing, spacing);
     }
-
-    public String getInputPrompt ()
-    {
-        return getWebUI ().getInputPrompt ();
+    
+    public String getInputPrompt() {
+        return getWebUI().getInputPrompt();
     }
-
-    public void setInputPrompt ( final String inputPrompt )
-    {
-        getWebUI ().setInputPrompt ( inputPrompt );
+    
+    public void setInputPrompt(final String inputPrompt) {
+        getWebUI().setInputPrompt(inputPrompt);
     }
-
-    public Font getInputPromptFont ()
-    {
-        return getWebUI ().getInputPromptFont ();
+    
+    public Font getInputPromptFont() {
+        return getWebUI().getInputPromptFont();
     }
-
-    public void setInputPromptFont ( final Font inputPromptFont )
-    {
-        getWebUI ().setInputPromptFont ( inputPromptFont );
+    
+    public void setInputPromptFont(final Font inputPromptFont) {
+        getWebUI().setInputPromptFont(inputPromptFont);
     }
-
-    public Color getInputPromptForeground ()
-    {
-        return getWebUI ().getInputPromptForeground ();
+    
+    public Color getInputPromptForeground() {
+        return getWebUI().getInputPromptForeground();
     }
-
-    public void setInputPromptForeground ( final Color inputPromptForeground )
-    {
-        getWebUI ().setInputPromptForeground ( inputPromptForeground );
+    
+    public void setInputPromptForeground(final Color inputPromptForeground) {
+        getWebUI().setInputPromptForeground(inputPromptForeground);
     }
-
-    public int getInputPromptHorizontalPosition ()
-    {
-        return getWebUI ().getInputPromptHorizontalPosition ();
+    
+    public int getInputPromptHorizontalPosition() {
+        return getWebUI().getInputPromptHorizontalPosition();
     }
-
-    public void setInputPromptHorizontalPosition ( final int inputPromptHorizontalPosition )
-    {
-        getWebUI ().setInputPromptHorizontalPosition ( inputPromptHorizontalPosition );
+    
+    public void setInputPromptHorizontalPosition(
+            final int inputPromptHorizontalPosition) {
+        getWebUI().setInputPromptHorizontalPosition(
+                inputPromptHorizontalPosition);
     }
-
-    public int getInputPromptVerticalPosition ()
-    {
-        return getWebUI ().getInputPromptVerticalPosition ();
+    
+    public int getInputPromptVerticalPosition() {
+        return getWebUI().getInputPromptVerticalPosition();
     }
-
-    public void setInputPromptVerticalPosition ( final int inputPromptVerticalPosition )
-    {
-        getWebUI ().setInputPromptVerticalPosition ( inputPromptVerticalPosition );
+    
+    public void setInputPromptVerticalPosition(
+            final int inputPromptVerticalPosition) {
+        getWebUI().setInputPromptVerticalPosition(inputPromptVerticalPosition);
     }
-
-    public boolean isHideInputPromptOnFocus ()
-    {
-        return getWebUI ().isHideInputPromptOnFocus ();
+    
+    public boolean isHideInputPromptOnFocus() {
+        return getWebUI().isHideInputPromptOnFocus();
     }
-
-    public void setHideInputPromptOnFocus ( final boolean hideInputPromptOnFocus )
-    {
-        getWebUI ().setHideInputPromptOnFocus ( hideInputPromptOnFocus );
+    
+    public void setHideInputPromptOnFocus(final boolean hideInputPromptOnFocus) {
+        getWebUI().setHideInputPromptOnFocus(hideInputPromptOnFocus);
     }
-
-    public Painter getPainter ()
-    {
-        return getWebUI ().getPainter ();
+    
+    public Painter getPainter() {
+        return getWebUI().getPainter();
     }
-
-    public void setPainter ( final Painter painter )
-    {
-        getWebUI ().setPainter ( painter );
+    
+    public void setPainter(final Painter painter) {
+        getWebUI().setPainter(painter);
     }
-
-    public WebTextAreaUI getWebUI ()
-    {
-        return ( WebTextAreaUI ) getUI ();
+    
+    public WebTextAreaUI getWebUI() {
+        return (WebTextAreaUI) getUI();
     }
-
+    
     @Override
-    public void updateUI ()
-    {
-        if ( getUI () == null || !( getUI () instanceof WebTextAreaUI ) )
-        {
-            try
-            {
-                setUI ( ( WebTextAreaUI ) ReflectUtils.createInstance ( FlatLafSettings.textAreaUI ) );
+    public void updateUI() {
+        if (getUI() == null || !(getUI() instanceof WebTextAreaUI)) {
+            try {
+                setUI((WebTextAreaUI) ReflectUtils
+                        .createInstance(FlatLafSettings.textAreaUI));
+            } catch (final Throwable e) {
+                FlatLafLogger.error(this, e);
+                setUI(new WebTextAreaUI());
             }
-            catch ( final Throwable e )
-            {
-                FlatLafLogger.error ( this, e );
-                setUI ( new WebTextAreaUI () );
-            }
+        } else {
+            setUI(getUI());
         }
-        else
-        {
-            setUI ( getUI () );
-        }
-        invalidate ();
+        invalidate();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Pair<DocumentChangeListener, PropertyChangeListener> onChange ( final DocumentEventRunnable runnable )
-    {
-        return EventUtils.onChange ( this, runnable );
+    public Pair<DocumentChangeListener, PropertyChangeListener> onChange(
+            final DocumentEventRunnable runnable) {
+        return EventUtils.onChange(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMousePress ( final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMousePress ( this, runnable );
+    public MouseAdapter onMousePress(final MouseEventRunnable runnable) {
+        return EventUtils.onMousePress(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMousePress ( final MouseButton mouseButton, final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMousePress ( this, mouseButton, runnable );
+    public MouseAdapter onMousePress(final MouseButton mouseButton,
+            final MouseEventRunnable runnable) {
+        return EventUtils.onMousePress(this, mouseButton, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMouseEnter ( final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMouseEnter ( this, runnable );
+    public MouseAdapter onMouseEnter(final MouseEventRunnable runnable) {
+        return EventUtils.onMouseEnter(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMouseExit ( final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMouseExit ( this, runnable );
+    public MouseAdapter onMouseExit(final MouseEventRunnable runnable) {
+        return EventUtils.onMouseExit(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMouseDrag ( final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMouseDrag ( this, runnable );
+    public MouseAdapter onMouseDrag(final MouseEventRunnable runnable) {
+        return EventUtils.onMouseDrag(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMouseDrag ( final MouseButton mouseButton, final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMouseDrag ( this, mouseButton, runnable );
+    public MouseAdapter onMouseDrag(final MouseButton mouseButton,
+            final MouseEventRunnable runnable) {
+        return EventUtils.onMouseDrag(this, mouseButton, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMouseClick ( final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMouseClick ( this, runnable );
+    public MouseAdapter onMouseClick(final MouseEventRunnable runnable) {
+        return EventUtils.onMouseClick(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMouseClick ( final MouseButton mouseButton, final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMouseClick ( this, mouseButton, runnable );
+    public MouseAdapter onMouseClick(final MouseButton mouseButton,
+            final MouseEventRunnable runnable) {
+        return EventUtils.onMouseClick(this, mouseButton, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onDoubleClick ( final MouseEventRunnable runnable )
-    {
-        return EventUtils.onDoubleClick ( this, runnable );
+    public MouseAdapter onDoubleClick(final MouseEventRunnable runnable) {
+        return EventUtils.onDoubleClick(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMenuTrigger ( final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMenuTrigger ( this, runnable );
+    public MouseAdapter onMenuTrigger(final MouseEventRunnable runnable) {
+        return EventUtils.onMenuTrigger(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public KeyAdapter onKeyType ( final KeyEventRunnable runnable )
-    {
-        return EventUtils.onKeyType ( this, runnable );
+    public KeyAdapter onKeyType(final KeyEventRunnable runnable) {
+        return EventUtils.onKeyType(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public KeyAdapter onKeyType ( final HotkeyData hotkey, final KeyEventRunnable runnable )
-    {
-        return EventUtils.onKeyType ( this, hotkey, runnable );
+    public KeyAdapter onKeyType(final HotkeyData hotkey,
+            final KeyEventRunnable runnable) {
+        return EventUtils.onKeyType(this, hotkey, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public KeyAdapter onKeyPress ( final KeyEventRunnable runnable )
-    {
-        return EventUtils.onKeyPress ( this, runnable );
+    public KeyAdapter onKeyPress(final KeyEventRunnable runnable) {
+        return EventUtils.onKeyPress(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public KeyAdapter onKeyPress ( final HotkeyData hotkey, final KeyEventRunnable runnable )
-    {
-        return EventUtils.onKeyPress ( this, hotkey, runnable );
+    public KeyAdapter onKeyPress(final HotkeyData hotkey,
+            final KeyEventRunnable runnable) {
+        return EventUtils.onKeyPress(this, hotkey, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public KeyAdapter onKeyRelease ( final KeyEventRunnable runnable )
-    {
-        return EventUtils.onKeyRelease ( this, runnable );
+    public KeyAdapter onKeyRelease(final KeyEventRunnable runnable) {
+        return EventUtils.onKeyRelease(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public KeyAdapter onKeyRelease ( final HotkeyData hotkey, final KeyEventRunnable runnable )
-    {
-        return EventUtils.onKeyRelease ( this, hotkey, runnable );
+    public KeyAdapter onKeyRelease(final HotkeyData hotkey,
+            final KeyEventRunnable runnable) {
+        return EventUtils.onKeyRelease(this, hotkey, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public FocusAdapter onFocusGain ( final FocusEventRunnable runnable )
-    {
-        return EventUtils.onFocusGain ( this, runnable );
+    public FocusAdapter onFocusGain(final FocusEventRunnable runnable) {
+        return EventUtils.onFocusGain(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public FocusAdapter onFocusLoss ( final FocusEventRunnable runnable )
-    {
-        return EventUtils.onFocusLoss ( this, runnable );
+    public FocusAdapter onFocusLoss(final FocusEventRunnable runnable) {
+        return EventUtils.onFocusLoss(this, runnable);
     }
-
+    
     /**
      * Language methods
      */
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setLanguage ( final String key, final Object... data )
-    {
-        LanguageManager.registerComponent ( this, key, data );
+    public void setLanguage(final String key, final Object... data) {
+        LanguageManager.registerComponent(this, key, data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void updateLanguage ( final Object... data )
-    {
-        LanguageManager.updateComponent ( this, data );
+    public void updateLanguage(final Object... data) {
+        LanguageManager.updateComponent(this, data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void updateLanguage ( final String key, final Object... data )
-    {
-        LanguageManager.updateComponent ( this, key, data );
+    public void updateLanguage(final String key, final Object... data) {
+        LanguageManager.updateComponent(this, key, data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeLanguage ()
-    {
-        LanguageManager.unregisterComponent ( this );
+    public void removeLanguage() {
+        LanguageManager.unregisterComponent(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isLanguageSet ()
-    {
-        return LanguageManager.isRegisteredComponent ( this );
+    public boolean isLanguageSet() {
+        return LanguageManager.isRegisteredComponent(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setLanguageUpdater ( final LanguageUpdater updater )
-    {
-        LanguageManager.registerLanguageUpdater ( this, updater );
+    public void setLanguageUpdater(final LanguageUpdater updater) {
+        LanguageManager.registerLanguageUpdater(this, updater);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeLanguageUpdater ()
-    {
-        LanguageManager.unregisterLanguageUpdater ( this );
+    public void removeLanguageUpdater() {
+        LanguageManager.unregisterLanguageUpdater(this);
     }
-
+    
     /**
      * Settings methods
      */
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String key )
-    {
-        SettingsManager.registerComponent ( this, key );
+    public void registerSettings(final String key) {
+        SettingsManager.registerComponent(this, key);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public <T extends DefaultValue> void registerSettings ( final String key, final Class<T> defaultValueClass )
-    {
-        SettingsManager.registerComponent ( this, key, defaultValueClass );
+    public <T extends DefaultValue> void registerSettings(final String key,
+            final Class<T> defaultValueClass) {
+        SettingsManager.registerComponent(this, key, defaultValueClass);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String key, final Object defaultValue )
-    {
-        SettingsManager.registerComponent ( this, key, defaultValue );
+    public void registerSettings(final String key, final Object defaultValue) {
+        SettingsManager.registerComponent(this, key, defaultValue);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String group, final String key )
-    {
-        SettingsManager.registerComponent ( this, group, key );
+    public void registerSettings(final String group, final String key) {
+        SettingsManager.registerComponent(this, group, key);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public <T extends DefaultValue> void registerSettings ( final String group, final String key, final Class<T> defaultValueClass )
-    {
-        SettingsManager.registerComponent ( this, group, key, defaultValueClass );
+    public <T extends DefaultValue> void registerSettings(final String group,
+            final String key, final Class<T> defaultValueClass) {
+        SettingsManager.registerComponent(this, group, key, defaultValueClass);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String group, final String key, final Object defaultValue )
-    {
-        SettingsManager.registerComponent ( this, group, key, defaultValue );
+    public void registerSettings(final String group, final String key,
+            final Object defaultValue) {
+        SettingsManager.registerComponent(this, group, key, defaultValue);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String key, final boolean loadInitialSettings, final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, key, loadInitialSettings, applySettingsChanges );
+    public void registerSettings(final String key,
+            final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, key, loadInitialSettings,
+                applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public <T extends DefaultValue> void registerSettings ( final String key, final Class<T> defaultValueClass,
-                                                            final boolean loadInitialSettings, final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, key, defaultValueClass, loadInitialSettings, applySettingsChanges );
+    public <T extends DefaultValue> void registerSettings(final String key,
+            final Class<T> defaultValueClass,
+            final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, key, defaultValueClass,
+                loadInitialSettings, applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String key, final Object defaultValue, final boolean loadInitialSettings,
-                                   final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, key, defaultValue, loadInitialSettings, applySettingsChanges );
+    public void registerSettings(final String key, final Object defaultValue,
+            final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, key, defaultValue,
+                loadInitialSettings, applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public <T extends DefaultValue> void registerSettings ( final String group, final String key, final Class<T> defaultValueClass,
-                                                            final boolean loadInitialSettings, final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, group, key, defaultValueClass, loadInitialSettings, applySettingsChanges );
+    public <T extends DefaultValue> void registerSettings(final String group,
+            final String key, final Class<T> defaultValueClass,
+            final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, group, key, defaultValueClass,
+                loadInitialSettings, applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String group, final String key, final Object defaultValue, final boolean loadInitialSettings,
-                                   final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, group, key, defaultValue, loadInitialSettings, applySettingsChanges );
+    public void registerSettings(final String group, final String key,
+            final Object defaultValue, final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, group, key, defaultValue,
+                loadInitialSettings, applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final SettingsProcessor settingsProcessor )
-    {
-        SettingsManager.registerComponent ( this, settingsProcessor );
+    public void registerSettings(final SettingsProcessor settingsProcessor) {
+        SettingsManager.registerComponent(this, settingsProcessor);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void unregisterSettings ()
-    {
-        SettingsManager.unregisterComponent ( this );
+    public void unregisterSettings() {
+        SettingsManager.unregisterComponent(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void loadSettings ()
-    {
-        SettingsManager.loadComponentSettings ( this );
+    public void loadSettings() {
+        SettingsManager.loadComponentSettings(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void saveSettings ()
-    {
-        SettingsManager.saveComponentSettings ( this );
+    public void saveSettings() {
+        SettingsManager.saveComponentSettings(this);
     }
-
+    
     /**
      * Font methods
      */
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebTextArea setPlainFont ()
-    {
-        return SwingUtils.setPlainFont ( this );
+    public WebTextArea setPlainFont() {
+        return SwingUtils.setPlainFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebTextArea setPlainFont ( final boolean apply )
-    {
-        return SwingUtils.setPlainFont ( this, apply );
+    public WebTextArea setPlainFont(final boolean apply) {
+        return SwingUtils.setPlainFont(this, apply);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isPlainFont ()
-    {
-        return SwingUtils.isPlainFont ( this );
+    public boolean isPlainFont() {
+        return SwingUtils.isPlainFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebTextArea setBoldFont ()
-    {
-        return SwingUtils.setBoldFont ( this );
+    public WebTextArea setBoldFont() {
+        return SwingUtils.setBoldFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebTextArea setBoldFont ( final boolean apply )
-    {
-        return SwingUtils.setBoldFont ( this, apply );
+    public WebTextArea setBoldFont(final boolean apply) {
+        return SwingUtils.setBoldFont(this, apply);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isBoldFont ()
-    {
-        return SwingUtils.isBoldFont ( this );
+    public boolean isBoldFont() {
+        return SwingUtils.isBoldFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebTextArea setItalicFont ()
-    {
-        return SwingUtils.setItalicFont ( this );
+    public WebTextArea setItalicFont() {
+        return SwingUtils.setItalicFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebTextArea setItalicFont ( final boolean apply )
-    {
-        return SwingUtils.setItalicFont ( this, apply );
+    public WebTextArea setItalicFont(final boolean apply) {
+        return SwingUtils.setItalicFont(this, apply);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isItalicFont ()
-    {
-        return SwingUtils.isItalicFont ( this );
+    public boolean isItalicFont() {
+        return SwingUtils.isItalicFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebTextArea setFontStyle ( final boolean bold, final boolean italic )
-    {
-        return SwingUtils.setFontStyle ( this, bold, italic );
+    public WebTextArea setFontStyle(final boolean bold, final boolean italic) {
+        return SwingUtils.setFontStyle(this, bold, italic);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebTextArea setFontStyle ( final int style )
-    {
-        return SwingUtils.setFontStyle ( this, style );
+    public WebTextArea setFontStyle(final int style) {
+        return SwingUtils.setFontStyle(this, style);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebTextArea setFontSize ( final int fontSize )
-    {
-        return SwingUtils.setFontSize ( this, fontSize );
+    public WebTextArea setFontSize(final int fontSize) {
+        return SwingUtils.setFontSize(this, fontSize);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebTextArea changeFontSize ( final int change )
-    {
-        return SwingUtils.changeFontSize ( this, change );
+    public WebTextArea changeFontSize(final int change) {
+        return SwingUtils.changeFontSize(this, change);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public int getFontSize ()
-    {
-        return SwingUtils.getFontSize ( this );
+    public int getFontSize() {
+        return SwingUtils.getFontSize(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebTextArea setFontSizeAndStyle ( final int fontSize, final boolean bold, final boolean italic )
-    {
-        return SwingUtils.setFontSizeAndStyle ( this, fontSize, bold, italic );
+    public WebTextArea setFontSizeAndStyle(final int fontSize,
+            final boolean bold, final boolean italic) {
+        return SwingUtils.setFontSizeAndStyle(this, fontSize, bold, italic);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebTextArea setFontSizeAndStyle ( final int fontSize, final int style )
-    {
-        return SwingUtils.setFontSizeAndStyle ( this, fontSize, style );
+    public WebTextArea setFontSizeAndStyle(final int fontSize, final int style) {
+        return SwingUtils.setFontSizeAndStyle(this, fontSize, style);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebTextArea setFontName ( final String fontName )
-    {
-        return SwingUtils.setFontName ( this, fontName );
+    public WebTextArea setFontName(final String fontName) {
+        return SwingUtils.setFontName(this, fontName);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getFontName ()
-    {
-        return SwingUtils.getFontName ( this );
+    public String getFontName() {
+        return SwingUtils.getFontName(this);
     }
 }

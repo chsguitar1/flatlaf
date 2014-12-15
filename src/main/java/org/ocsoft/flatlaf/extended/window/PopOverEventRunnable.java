@@ -23,12 +23,12 @@ package org.ocsoft.flatlaf.extended.window;
  * @author Mikle Garin
  */
 
-public interface PopOverEventRunnable
-{
+public interface PopOverEventRunnable {
     /**
      * Performs action according to component event.
      *
-     * @param popOver event source
+     * @param popOver
+     *            event source
      */
-    public void run ( WebPopOver popOver );
+    public void run(WebPopOver popOver);
 }

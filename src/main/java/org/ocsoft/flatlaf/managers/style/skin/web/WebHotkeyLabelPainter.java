@@ -29,33 +29,36 @@ import java.awt.*;
  * @see org.ocsoft.flatlaf.extended.painter.Painter
  */
 
-public class WebHotkeyLabelPainter<E extends JLabel> extends WebLabelPainter<E>
-{
+public class WebHotkeyLabelPainter<E extends JLabel> extends WebLabelPainter<E> {
     /**
      * Used colors.
      */
-    public static Color border = new Color ( 204, 204, 204 );
-    public static Color background = new Color ( 247, 247, 247 );
-
+    public static Color border = new Color(204, 204, 204);
+    public static Color background = new Color(247, 247, 247);
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void paint ( final Graphics2D g2d, final Rectangle bounds, final E label )
-    {
+    public void paint(final Graphics2D g2d, final Rectangle bounds,
+            final E label) {
         // White spacer
-        g2d.setPaint ( Color.WHITE );
-        g2d.fillRoundRect ( bounds.x, bounds.y, bounds.width, bounds.height - 1, 6, 6 );
-
+        g2d.setPaint(Color.WHITE);
+        g2d.fillRoundRect(bounds.x, bounds.y, bounds.width, bounds.height - 1,
+                6, 6);
+        
         // Background
-        g2d.setPaint ( background );
-        g2d.fillRect ( bounds.x + 3, bounds.y + 3, bounds.width - 6, bounds.height - 7 );
-
+        g2d.setPaint(background);
+        g2d.fillRect(bounds.x + 3, bounds.y + 3, bounds.width - 6,
+                bounds.height - 7);
+        
         // Border
-        g2d.setPaint ( border );
-        g2d.drawRoundRect ( bounds.x, bounds.y, bounds.width - 1, bounds.height - 2, 6, 6 );
-        g2d.drawRoundRect ( bounds.x, bounds.y, bounds.width - 1, bounds.height - 1, 6, 6 );
-
-        super.paint ( g2d, bounds, label );
+        g2d.setPaint(border);
+        g2d.drawRoundRect(bounds.x, bounds.y, bounds.width - 1,
+                bounds.height - 2, 6, 6);
+        g2d.drawRoundRect(bounds.x, bounds.y, bounds.width - 1,
+                bounds.height - 1, 6, 6);
+        
+        super.paint(g2d, bounds, label);
     }
 }

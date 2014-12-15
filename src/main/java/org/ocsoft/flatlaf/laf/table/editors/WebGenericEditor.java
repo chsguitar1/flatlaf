@@ -28,70 +28,60 @@ import java.lang.reflect.Constructor;
  * User: mgarin Date: 31.10.12 Time: 15:30
  */
 
-public class WebGenericEditor extends WebDefaultCellEditor
-{
-    private final Class[] argTypes = new Class[]{ String.class };
+public class WebGenericEditor extends WebDefaultCellEditor {
+    private final Class[] argTypes = new Class[] { String.class };
     private Constructor constructor;
     private Object value;
-
-    public WebGenericEditor ()
-    {
-        super ( new GenericCellEditor () );
-        getComponent ().setName ( "Table.editor" );
+    
+    public WebGenericEditor() {
+        super(new GenericCellEditor());
+        getComponent().setName("Table.editor");
     }
-
+    
     @Override
-    public boolean stopCellEditing ()
-    {
-        final Component component = getComponent ();
-        try
-        {
-            value = constructor.newInstance ( super.getCellEditorValue () );
-            updateValidationState ( component, true );
-            return super.stopCellEditing ();
-        }
-        catch ( final Exception e )
-        {
-            updateValidationState ( component, false );
+    public boolean stopCellEditing() {
+        final Component component = getComponent();
+        try {
+            value = constructor.newInstance(super.getCellEditorValue());
+            updateValidationState(component, true);
+            return super.stopCellEditing();
+        } catch (final Exception e) {
+            updateValidationState(component, false);
             return false;
         }
     }
-
+    
     @Override
-    public Component getTableCellEditorComponent ( final JTable table, final Object value, final boolean isSelected, final int row,
-                                                   final int column )
-    {
+    public Component getTableCellEditorComponent(final JTable table,
+            final Object value, final boolean isSelected, final int row,
+            final int column) {
         this.value = null;
-        try
-        {
-            Class type = table.getColumnClass ( column );
-            if ( type == Object.class )
-            {
+        try {
+            Class type = table.getColumnClass(column);
+            if (type == Object.class) {
                 type = String.class;
             }
-            constructor = type.getConstructor ( argTypes );
-        }
-        catch ( final Exception e )
-        {
+            constructor = type.getConstructor(argTypes);
+        } catch (final Exception e) {
             return null;
         }
-
-        final Component cellEditorComponent = super.getTableCellEditorComponent ( table, value, isSelected, row, column );
-        updateValidationState ( cellEditorComponent, true );
+        
+        final Component cellEditorComponent = super
+                .getTableCellEditorComponent(table, value, isSelected, row,
+                        column);
+        updateValidationState(cellEditorComponent, true);
         return cellEditorComponent;
     }
-
-    private void updateValidationState ( final Component component, final boolean valid )
-    {
-        if ( component instanceof GenericCellEditor )
-        {
-            ( ( GenericCellEditor ) component ).setInvalidValue ( !valid );
+    
+    private void updateValidationState(final Component component,
+            final boolean valid) {
+        if (component instanceof GenericCellEditor) {
+            ((GenericCellEditor) component).setInvalidValue(!valid);
         }
     }
-
+    
     @Override
-    public Object getCellEditorValue ()
-    {
+    public Object getCellEditorValue() {
         return value;
     }
 }

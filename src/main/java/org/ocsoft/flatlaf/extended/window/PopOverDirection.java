@@ -20,76 +20,73 @@ package org.ocsoft.flatlaf.extended.window;
 import javax.swing.*;
 
 /**
- * This enumeration represents possible WebPopOver dialog display ways relative to invoker component.
- * Be aware that left/right direction is affected by WebPopOver component orientation.
+ * This enumeration represents possible WebPopOver dialog display ways relative
+ * to invoker component. Be aware that left/right direction is affected by
+ * WebPopOver component orientation.
  *
  * @author Mikle Garin
  * @see WebPopOver
  */
 
-public enum PopOverDirection
-{
+public enum PopOverDirection {
     /**
      * Display pop-over above invoker component.
      */
     up,
-
+    
     /**
      * Display pop-over below invoker component.
      */
     down,
-
+    
     /**
-     * Display pop-over leading to the invoker component.
-     * This will also take pop-over component orientation into account.
+     * Display pop-over leading to the invoker component. This will also take
+     * pop-over component orientation into account.
      */
     left,
-
+    
     /**
-     * Display pop-over trailing to the invoker component.
-     * This will also take pop-over component orientation into account.
+     * Display pop-over trailing to the invoker component. This will also take
+     * pop-over component orientation into account.
      */
     right;
-
+    
     /**
      * Returns directions check priority according to preferred direction.
      *
      * @return directions check priority
      */
-    public PopOverDirection[] getPriority ()
-    {
-        switch ( this )
-        {
-            case up:
-                return new PopOverDirection[]{ up, down, right, left };
-            case down:
-                return new PopOverDirection[]{ down, up, right, left };
-            case left:
-                return new PopOverDirection[]{ left, right, down, up };
-            case right:
-                return new PopOverDirection[]{ right, left, down, up };
+    public PopOverDirection[] getPriority() {
+        switch (this) {
+        case up:
+            return new PopOverDirection[] { up, down, right, left };
+        case down:
+            return new PopOverDirection[] { down, up, right, left };
+        case left:
+            return new PopOverDirection[] { left, right, down, up };
+        case right:
+            return new PopOverDirection[] { right, left, down, up };
         }
         return null;
     }
-
+    
     /**
      * Returns WebPopOver corner side.
      *
-     * @param ltr whether pop-over has LTR orientation or not
+     * @param ltr
+     *            whether pop-over has LTR orientation or not
      * @return WebPopOver corner side
      */
-    public int getCornerSide ( final boolean ltr )
-    {
-        switch ( this )
-        {
-            case up:
-                return SwingConstants.BOTTOM;
-            case down:
-                return SwingConstants.TOP;
-            case left:
-                return ltr ? SwingConstants.RIGHT : SwingConstants.LEFT;
-            case right:
-                return ltr ? SwingConstants.LEFT : SwingConstants.RIGHT;
+    public int getCornerSide(final boolean ltr) {
+        switch (this) {
+        case up:
+            return SwingConstants.BOTTOM;
+        case down:
+            return SwingConstants.TOP;
+        case left:
+            return ltr ? SwingConstants.RIGHT : SwingConstants.LEFT;
+        case right:
+            return ltr ? SwingConstants.LEFT : SwingConstants.RIGHT;
         }
         return -1;
     }

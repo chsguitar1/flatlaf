@@ -31,134 +31,121 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class WebPopupMenuSeparator extends JSeparator
-{
+public class WebPopupMenuSeparator extends JSeparator {
     /**
      * Constructs new menu separator.
      */
-    public WebPopupMenuSeparator ()
-    {
-        super ( JSeparator.HORIZONTAL );
+    public WebPopupMenuSeparator() {
+        super(JSeparator.HORIZONTAL);
     }
-
+    
     /**
      * Returns separator color.
      *
      * @return separator color
      */
-    public Color getColor ()
-    {
-        return getWebUI ().getColor ();
+    public Color getColor() {
+        return getWebUI().getColor();
     }
-
+    
     /**
      * Sets separator color.
      *
-     * @param color new separator color
+     * @param color
+     *            new separator color
      */
-    public WebPopupMenuSeparator setColor ( final Color color )
-    {
-        getWebUI ().setColor ( color );
+    public WebPopupMenuSeparator setColor(final Color color) {
+        getWebUI().setColor(color);
         return this;
     }
-
+    
     /**
      * Returns separator stroke.
      *
      * @return separator stroke
      */
-    public Stroke getStroke ()
-    {
-        return getWebUI ().getStroke ();
+    public Stroke getStroke() {
+        return getWebUI().getStroke();
     }
-
+    
     /**
      * Sets separator stroke.
      *
-     * @param stroke new separator stroke
+     * @param stroke
+     *            new separator stroke
      */
-    public WebPopupMenuSeparator setStroke ( final Stroke stroke )
-    {
-        getWebUI ().setStroke ( stroke );
+    public WebPopupMenuSeparator setStroke(final Stroke stroke) {
+        getWebUI().setStroke(stroke);
         return this;
     }
-
+    
     /**
      * Returns separator upper and lower spacing.
      *
      * @return separator upper and lower spacing
      */
-    public int getSpacing ()
-    {
-        return getWebUI ().getSpacing ();
+    public int getSpacing() {
+        return getWebUI().getSpacing();
     }
-
+    
     /**
      * Sets separator upper and lower spacing.
      *
-     * @param spacing new separator upper and lower spacing
+     * @param spacing
+     *            new separator upper and lower spacing
      */
-    public WebPopupMenuSeparator setSpacing ( final int spacing )
-    {
-        getWebUI ().setSpacing ( spacing );
+    public WebPopupMenuSeparator setSpacing(final int spacing) {
+        getWebUI().setSpacing(spacing);
         return this;
     }
-
+    
     /**
      * Returns separator side spacing.
      *
      * @return separator side spacing
      */
-    public int getSideSpacing ()
-    {
-        return getWebUI ().getSideSpacing ();
+    public int getSideSpacing() {
+        return getWebUI().getSideSpacing();
     }
-
+    
     /**
      * Sets separator side spacing.
      *
-     * @param sideSpacing new separator side spacing
+     * @param sideSpacing
+     *            new separator side spacing
      */
-    public WebPopupMenuSeparator setSideSpacing ( final int sideSpacing )
-    {
-        getWebUI ().setSideSpacing ( sideSpacing );
+    public WebPopupMenuSeparator setSideSpacing(final int sideSpacing) {
+        getWebUI().setSideSpacing(sideSpacing);
         return this;
     }
-
+    
     /**
      * Returns Web-UI applied to this class.
      *
      * @return Web-UI applied to this class
      */
-    public WebPopupMenuSeparatorUI getWebUI ()
-    {
-        return ( WebPopupMenuSeparatorUI ) getUI ();
+    public WebPopupMenuSeparatorUI getWebUI() {
+        return (WebPopupMenuSeparatorUI) getUI();
     }
-
+    
     /**
      * Installs a Web-UI into this component.
      */
     @Override
-    public void updateUI ()
-    {
-        if ( getUI () == null || !( getUI () instanceof WebPopupMenuSeparatorUI ) )
-        {
-            try
-            {
-                setUI ( ( WebPopupMenuSeparatorUI ) ReflectUtils.createInstance ( FlatLafSettings.popupMenuSeparatorUI ) );
+    public void updateUI() {
+        if (getUI() == null || !(getUI() instanceof WebPopupMenuSeparatorUI)) {
+            try {
+                setUI((WebPopupMenuSeparatorUI) ReflectUtils
+                        .createInstance(FlatLafSettings.popupMenuSeparatorUI));
+            } catch (final Throwable e) {
+                FlatLafLogger.error(this, e);
+                setUI(new WebPopupMenuSeparatorUI());
             }
-            catch ( final Throwable e )
-            {
-                FlatLafLogger.error ( this, e );
-                setUI ( new WebPopupMenuSeparatorUI () );
-            }
-        }
-        else
-        {
-            setUI ( getUI () );
+        } else {
+            setUI(getUI());
         }
     }
-
+    
     /**
      * Returns the name of the L&F class that renders this component.
      *
@@ -167,8 +154,7 @@ public class WebPopupMenuSeparator extends JSeparator
      * @see UIDefaults#getUI
      */
     @Override
-    public String getUIClassID ()
-    {
+    public String getUIClassID() {
         return "PopupMenuSeparatorUI";
     }
 }

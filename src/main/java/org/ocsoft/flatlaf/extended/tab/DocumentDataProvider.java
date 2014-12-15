@@ -23,13 +23,13 @@ package org.ocsoft.flatlaf.extended.tab;
  * @author Mikle Garin
  */
 
-public interface DocumentDataProvider<T extends DocumentData>
-{
+public interface DocumentDataProvider<T extends DocumentData> {
     /**
      * Provides document data for the specified document ID.
      *
-     * @param documentId document ID to provide document data for
+     * @param documentId
+     *            document ID to provide document data for
      * @return document data for the specified document ID
      */
-    public T provide ( final String documentId );
+    public T provide(final String documentId);
 }

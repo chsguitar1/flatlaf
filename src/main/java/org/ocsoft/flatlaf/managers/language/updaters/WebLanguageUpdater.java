@@ -25,49 +25,51 @@ import org.ocsoft.flatlaf.managers.hotkey.HotkeyInfo;
 import org.ocsoft.flatlaf.managers.language.updaters.DefaultLanguageUpdater;
 
 /**
- * This class prvides an additional set of methods to simplify language updaters usage.
- * Most of default predefined WebLaF language updaters extend this class.
+ * This class prvides an additional set of methods to simplify language updaters
+ * usage. Most of default predefined WebLaF language updaters extend this class.
  *
  * @author Mikle Garin
  */
 
-public abstract class WebLanguageUpdater<E extends Component> extends DefaultLanguageUpdater<E>
-{
+public abstract class WebLanguageUpdater<E extends Component> extends
+        DefaultLanguageUpdater<E> {
     /**
      * Hotkeys cache map.
      */
-    private static final Map<Component, HotkeyInfo> hotkeysCache = new WeakHashMap<Component, HotkeyInfo> ();
-
+    private static final Map<Component, HotkeyInfo> hotkeysCache = new WeakHashMap<Component, HotkeyInfo>();
+    
     /**
      * Caches component's hotkey
      *
-     * @param component  component
-     * @param hotkeyInfo hotkey data
+     * @param component
+     *            component
+     * @param hotkeyInfo
+     *            hotkey data
      */
-    protected static void cacheHotkey ( final Component component, final HotkeyInfo hotkeyInfo )
-    {
-        hotkeysCache.put ( component, hotkeyInfo );
+    protected static void cacheHotkey(final Component component,
+            final HotkeyInfo hotkeyInfo) {
+        hotkeysCache.put(component, hotkeyInfo);
     }
-
+    
     /**
      * Returns wether hotkey is cached or not.
      *
-     * @param component hotkey's component
+     * @param component
+     *            hotkey's component
      * @return true if hotkey is cached, false otherwise
      */
-    protected static boolean isHotkeyCached ( final Component component )
-    {
-        return hotkeysCache.containsKey ( component );
+    protected static boolean isHotkeyCached(final Component component) {
+        return hotkeysCache.containsKey(component);
     }
-
+    
     /**
      * Returns cached hotkey data.
      *
-     * @param component hotkey's component
+     * @param component
+     *            hotkey's component
      * @return cached hotkey data
      */
-    protected static HotkeyInfo getCachedHotkey ( final Component component )
-    {
-        return hotkeysCache.get ( component );
+    protected static HotkeyInfo getCachedHotkey(final Component component) {
+        return hotkeysCache.get(component);
     }
 }

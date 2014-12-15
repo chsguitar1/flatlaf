@@ -21,46 +21,51 @@ import javax.swing.plaf.BorderUIResource;
 import java.awt.*;
 
 /**
- * Special border used by WebLaF to provide proper component content sides spacing.
- * It usually replaces default/user component border but you can provide a special client property that will disable that behavior.
+ * Special border used by WebLaF to provide proper component content sides
+ * spacing. It usually replaces default/user component border but you can
+ * provide a special client property that will disable that behavior.
  *
  * @author Mikle Garin
  * @see org.ocsoft.flatlaf.core.FlatLookAndFeel#PROPERTY_HONOR_USER_BORDER
  * @see org.ocsoft.flatlaf.core.FlatLookAndFeel#PROPERTY_HONOR_USER_BORDERS
  */
 
-public final class WeblafBorder extends BorderUIResource.EmptyBorderUIResource
-{
+public final class WeblafBorder extends BorderUIResource.EmptyBorderUIResource {
     /**
      * Constructs new empty border with the specified border width at each side.
      *
-     * @param border border width
+     * @param border
+     *            border width
      */
-    public WeblafBorder ( final int border )
-    {
-        super ( border, border, border, border );
+    public WeblafBorder(final int border) {
+        super(border, border, border, border);
     }
-
+    
     /**
-     * Constructs new empty border with the specified border widths at each side.
+     * Constructs new empty border with the specified border widths at each
+     * side.
      *
-     * @param top    top border width
-     * @param left   left border width
-     * @param bottom bottom border width
-     * @param right  right border width
+     * @param top
+     *            top border width
+     * @param left
+     *            left border width
+     * @param bottom
+     *            bottom border width
+     * @param right
+     *            right border width
      */
-    public WeblafBorder ( final int top, final int left, final int bottom, final int right )
-    {
-        super ( top, left, bottom, right );
+    public WeblafBorder(final int top, final int left, final int bottom,
+            final int right) {
+        super(top, left, bottom, right);
     }
-
+    
     /**
      * Constructs new empty border with the specified insets.
      *
-     * @param borderInsets border insets
+     * @param borderInsets
+     *            border insets
      */
-    public WeblafBorder ( final Insets borderInsets )
-    {
-        super ( borderInsets );
+    public WeblafBorder(final Insets borderInsets) {
+        super(borderInsets);
     }
 }

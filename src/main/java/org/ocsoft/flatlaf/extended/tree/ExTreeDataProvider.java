@@ -26,54 +26,59 @@ import org.ocsoft.flatlaf.utils.general.Filter;
 /**
  * This interface provides methods for ex tree data retrieval.
  *
- * @param <E> custom node type
+ * @param <E>
+ *            custom node type
  * @author Mikle Garin
  * @see org.ocsoft.flatlaf.extended.tree.WebExTree
  * @see org.ocsoft.flatlaf.extended.tree.ExTreeModel
  */
 
-public interface ExTreeDataProvider<E extends UniqueNode>
-{
+public interface ExTreeDataProvider<E extends UniqueNode> {
     /**
-     * Returns asynchronous tree root node.
-     * This request uses the EDT and should be processed quickly.
+     * Returns asynchronous tree root node. This request uses the EDT and should
+     * be processed quickly.
      *
      * @return root node
      */
-    public E getRoot ();
-
+    public E getRoot();
+    
     /**
      * Returns child nodes for the specified asynchronous tree node.
      *
-     * @param node parent node
+     * @param node
+     *            parent node
      * @return child nodes list
      */
-    public List<E> getChilds ( E node );
-
+    public List<E> getChilds(E node);
+    
     /**
      * Returns child nodes comparator for the specified asynchronous tree node.
      * No sorting applied to childs in case null is returned.
      *
-     * @param node parent node
+     * @param node
+     *            parent node
      * @return child nodes comparator
      */
-    public Comparator<E> getChildsComparator ( E node );
-
+    public Comparator<E> getChildsComparator(E node);
+    
     /**
-     * Returns child nodes filter for the specified asynchronous tree node.
-     * No filtering applied to childs in case null is returned.
+     * Returns child nodes filter for the specified asynchronous tree node. No
+     * filtering applied to childs in case null is returned.
      *
-     * @param node parent node
+     * @param node
+     *            parent node
      * @return child nodes filter
      */
-    public Filter<E> getChildsFilter ( E node );
-
+    public Filter<E> getChildsFilter(E node);
+    
     /**
-     * Returns whether the specified node is leaf (doesn't have any childs) or not.
-     * If you are not sure if the node is leaf or not - simply return false, that will allow the tree to expand this node on request.
+     * Returns whether the specified node is leaf (doesn't have any childs) or
+     * not. If you are not sure if the node is leaf or not - simply return
+     * false, that will allow the tree to expand this node on request.
      *
-     * @param node node
+     * @param node
+     *            node
      * @return true if the specified node is leaf, false otherwise
      */
-    public boolean isLeaf ( E node );
+    public boolean isLeaf(E node);
 }

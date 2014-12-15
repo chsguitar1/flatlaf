@@ -23,28 +23,28 @@ package org.ocsoft.flatlaf.extended.tree;
  * @author Mikle Garin
  */
 
-public final class WebCheckBoxTreeStyle
-{
+public final class WebCheckBoxTreeStyle {
     /**
      * Retu
      */
     public static boolean recursiveChecking = true;
-
+    
     /**
      * Gap between checkbox and actual tree renderer.
      */
     public static int checkBoxRendererGap = 0;
-
+    
     /**
      * Whether checkboxes are visible in the tree or not.
      */
     public static boolean checkBoxVisible = true;
-
+    
     /**
-     * Whether user can interact with checkboxes to change their check state or not.
+     * Whether user can interact with checkboxes to change their check state or
+     * not.
      */
     public static boolean checkingEnabled = true;
-
+    
     /**
      * Whether partially checked node should be checked or unchecked on toggle.
      */

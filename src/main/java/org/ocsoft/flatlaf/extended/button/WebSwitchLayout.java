@@ -27,96 +27,87 @@ import org.ocsoft.flatlaf.extended.layout.AbstractLayoutManager;
  * User: mgarin Date: 02.11.12 Time: 14:18
  */
 
-public class WebSwitchLayout extends AbstractLayoutManager
-{
+public class WebSwitchLayout extends AbstractLayoutManager {
     public static final String LEFT = "LEFT";
     public static final String RIGHT = "RIGHT";
     public static final String GRIPPER = "GRIPPER";
-
-    private Map<Component, String> constraints = new WeakHashMap<Component, String> ();
-
+    
+    private Map<Component, String> constraints = new WeakHashMap<Component, String>();
+    
     private float gripperLocation = 0;
-
-    public float getGripperLocation ()
-    {
+    
+    public float getGripperLocation() {
         return gripperLocation;
     }
-
-    public void setGripperLocation ( float gripperLocation )
-    {
+    
+    public void setGripperLocation(float gripperLocation) {
         this.gripperLocation = gripperLocation;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void addComponent ( Component component, Object constraints )
-    {
-        String value = ( String ) constraints;
-        if ( value == null || !value.equals ( LEFT ) && !value.equals ( RIGHT ) && !value.equals ( GRIPPER ) )
-        {
-            throw new IllegalArgumentException ( "Cannot add to layout: constraint must be 'LEFT'/'RIGHT'/'GRIPPER' string" );
+    public void addComponent(Component component, Object constraints) {
+        String value = (String) constraints;
+        if (value == null || !value.equals(LEFT) && !value.equals(RIGHT)
+                && !value.equals(GRIPPER)) {
+            throw new IllegalArgumentException(
+                    "Cannot add to layout: constraint must be 'LEFT'/'RIGHT'/'GRIPPER' string");
         }
-        this.constraints.put ( component, value );
+        this.constraints.put(component, value);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeComponent ( Component component )
-    {
-        this.constraints.remove ( component );
+    public void removeComponent(Component component) {
+        this.constraints.remove(component);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Dimension preferredLayoutSize ( Container parent )
-    {
+    public Dimension preferredLayoutSize(Container parent) {
         int maxWidth = 0;
         int maxHeight = 0;
-        for ( Map.Entry<Component, String> constraint : constraints.entrySet () )
-        {
-            Dimension ps = constraint.getKey ().getPreferredSize ();
-            maxWidth = Math.max ( ps.width, maxWidth );
-            maxHeight = Math.max ( ps.height, maxHeight );
+        for (Map.Entry<Component, String> constraint : constraints.entrySet()) {
+            Dimension ps = constraint.getKey().getPreferredSize();
+            maxWidth = Math.max(ps.width, maxWidth);
+            maxHeight = Math.max(ps.height, maxHeight);
         }
-        Insets insets = parent.getInsets ();
-        return new Dimension ( insets.left + maxWidth * 2 + insets.right, insets.top + maxHeight + insets.bottom );
+        Insets insets = parent.getInsets();
+        return new Dimension(insets.left + maxWidth * 2 + insets.right,
+                insets.top + maxHeight + insets.bottom);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void layoutContainer ( Container parent )
-    {
-        boolean ltr = parent.getComponentOrientation ().isLeftToRight ();
-        Insets insets = parent.getInsets ();
-        int width = parent.getWidth () - insets.left - insets.right;
+    public void layoutContainer(Container parent) {
+        boolean ltr = parent.getComponentOrientation().isLeftToRight();
+        Insets insets = parent.getInsets();
+        int width = parent.getWidth() - insets.left - insets.right;
         int partWidth = width / 2;
-        int height = parent.getHeight () - insets.top - insets.bottom;
+        int height = parent.getHeight() - insets.top - insets.bottom;
         int leftX = insets.left;
         int rightX = leftX + width / 2;
         int y = insets.top;
-        for ( Map.Entry<Component, String> entry : constraints.entrySet () )
-        {
-            String constraint = entry.getValue ();
-            if ( constraint.equals ( GRIPPER ) )
-            {
-                int x = ltr ? leftX + Math.round ( gripperLocation * partWidth ) : rightX - Math.round ( gripperLocation * partWidth );
-                entry.getKey ().setBounds ( x, y, partWidth, height );
-            }
-            else if ( ltr && constraint.equals ( LEFT ) || !ltr && constraint.equals ( RIGHT ) )
-            {
-                entry.getKey ().setBounds ( leftX, y, partWidth, height );
-            }
-            else if ( ltr && constraint.equals ( RIGHT ) || !ltr && constraint.equals ( LEFT ) )
-            {
-                entry.getKey ().setBounds ( rightX, y, partWidth, height );
+        for (Map.Entry<Component, String> entry : constraints.entrySet()) {
+            String constraint = entry.getValue();
+            if (constraint.equals(GRIPPER)) {
+                int x = ltr ? leftX + Math.round(gripperLocation * partWidth)
+                        : rightX - Math.round(gripperLocation * partWidth);
+                entry.getKey().setBounds(x, y, partWidth, height);
+            } else if (ltr && constraint.equals(LEFT) || !ltr
+                    && constraint.equals(RIGHT)) {
+                entry.getKey().setBounds(leftX, y, partWidth, height);
+            } else if (ltr && constraint.equals(RIGHT) || !ltr
+                    && constraint.equals(LEFT)) {
+                entry.getKey().setBounds(rightX, y, partWidth, height);
             }
         }
     }

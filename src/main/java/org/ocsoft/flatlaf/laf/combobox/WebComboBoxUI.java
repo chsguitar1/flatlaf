@@ -57,13 +57,13 @@ import java.beans.PropertyChangeListener;
  * @author Mikle Garin
  */
 
-public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider, BorderMethods
-{
+public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider,
+        BorderMethods {
     /**
      * Default combobox renderer.
      */
     protected static ListCellRenderer DEFAULT_RENDERER;
-
+    
     private ImageIcon expandIcon = WebComboBoxStyle.expandIcon;
     private ImageIcon collapseIcon = WebComboBoxStyle.collapseIcon;
     private int iconSpacing = WebComboBoxStyle.iconSpacing;
@@ -75,863 +75,785 @@ public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider, Bor
     private boolean drawFocus = WebComboBoxStyle.drawFocus;
     private boolean mouseWheelScrollingEnabled = WebComboBoxStyle.mouseWheelScrollingEnabled;
     private boolean useFirstValueAsPrototype = false;
-
+    
     private WebButton arrow = null;
     private MouseWheelListener mouseWheelListener = null;
     private RendererListener rendererListener = null;
     private PropertyChangeListener rendererChangeListener = null;
     private PropertyChangeListener enabledStateListener = null;
-
-    @SuppressWarnings ("UnusedParameters")
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebComboBoxUI ();
+    
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebComboBoxUI();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void installUI ( final JComponent c )
-    {
-        super.installUI ( c );
-
+    public void installUI(final JComponent c) {
+        super.installUI(c);
+        
         // Default settings
-        SwingUtils.setOrientation ( comboBox );
-        comboBox.setFocusable ( true );
-        LookAndFeel.installProperty ( comboBox, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
-
+        SwingUtils.setOrientation(comboBox);
+        comboBox.setFocusable(true);
+        LookAndFeel.installProperty(comboBox, FlatLookAndFeel.OPAQUE_PROPERTY,
+                Boolean.FALSE);
+        
         // Updating border
-        updateBorder ();
-
+        updateBorder();
+        
         // Drfault renderer
-        if ( !( comboBox.getRenderer () instanceof WebComboBoxCellRenderer ) )
-        {
-            comboBox.setRenderer ( new WebComboBoxCellRenderer () );
+        if (!(comboBox.getRenderer() instanceof WebComboBoxCellRenderer)) {
+            comboBox.setRenderer(new WebComboBoxCellRenderer());
         }
-
+        
         // Rollover scrolling listener
-        mouseWheelListener = new MouseWheelListener ()
-        {
+        mouseWheelListener = new MouseWheelListener() {
             @Override
-            public void mouseWheelMoved ( final MouseWheelEvent e )
-            {
-                if ( mouseWheelScrollingEnabled && comboBox.isEnabled () && isFocused () )
-                {
+            public void mouseWheelMoved(final MouseWheelEvent e) {
+                if (mouseWheelScrollingEnabled && comboBox.isEnabled()
+                        && isFocused()) {
                     // Changing selection in case index actually changed
-                    final int index = comboBox.getSelectedIndex ();
-                    final int newIndex = Math.min ( Math.max ( 0, index + e.getWheelRotation () ), comboBox.getModel ().getSize () - 1 );
-                    if ( newIndex != index )
-                    {
-                        comboBox.setSelectedIndex ( newIndex );
+                    final int index = comboBox.getSelectedIndex();
+                    final int newIndex = Math.min(Math.max(0,
+                            index + e.getWheelRotation()), comboBox.getModel()
+                            .getSize() - 1);
+                    if (newIndex != index) {
+                        comboBox.setSelectedIndex(newIndex);
                     }
                 }
             }
         };
-        comboBox.addMouseWheelListener ( mouseWheelListener );
-
+        comboBox.addMouseWheelListener(mouseWheelListener);
+        
         // Renderer change listener
         // Used to provide feedback from the renderer
-        rendererListener = new RendererListener ()
-        {
+        rendererListener = new RendererListener() {
             @Override
-            public void repaint ()
-            {
-                comboBox.repaint ();
-                listBox.repaint ();
+            public void repaint() {
+                comboBox.repaint();
+                listBox.repaint();
             }
-
+            
             @Override
-            public void revalidate ()
-            {
+            public void revalidate() {
                 isMinimumSizeDirty = true;
-                comboBox.revalidate ();
-                listBox.revalidate ();
+                comboBox.revalidate();
+                listBox.revalidate();
             }
         };
-        installRendererListener ( comboBox.getRenderer () );
-        rendererChangeListener = new PropertyChangeListener ()
-        {
+        installRendererListener(comboBox.getRenderer());
+        rendererChangeListener = new PropertyChangeListener() {
             @Override
-            public void propertyChange ( final PropertyChangeEvent e )
-            {
-                uninstallRendererListener ( e.getOldValue () );
-                installRendererListener ( e.getNewValue () );
+            public void propertyChange(final PropertyChangeEvent e) {
+                uninstallRendererListener(e.getOldValue());
+                installRendererListener(e.getNewValue());
             }
         };
-        comboBox.addPropertyChangeListener ( FlatLookAndFeel.RENDERER_PROPERTY, rendererChangeListener );
-
+        comboBox.addPropertyChangeListener(FlatLookAndFeel.RENDERER_PROPERTY,
+                rendererChangeListener);
+        
         // Enabled property change listener
-        // This is a workaround to allow box renderer properly inherit enabled state
-        enabledStateListener = new PropertyChangeListener ()
-        {
+        // This is a workaround to allow box renderer properly inherit enabled
+        // state
+        enabledStateListener = new PropertyChangeListener() {
             @Override
-            public void propertyChange ( final PropertyChangeEvent evt )
-            {
-                listBox.setEnabled ( comboBox.isEnabled () );
+            public void propertyChange(final PropertyChangeEvent evt) {
+                listBox.setEnabled(comboBox.isEnabled());
             }
         };
-        comboBox.addPropertyChangeListener ( FlatLookAndFeel.ENABLED_PROPERTY, enabledStateListener );
+        comboBox.addPropertyChangeListener(FlatLookAndFeel.ENABLED_PROPERTY,
+                enabledStateListener);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void uninstallUI ( final JComponent c )
-    {
-        comboBox.removePropertyChangeListener ( FlatLookAndFeel.ENABLED_PROPERTY, enabledStateListener );
-
-        comboBox.removePropertyChangeListener ( FlatLookAndFeel.RENDERER_PROPERTY, rendererChangeListener );
-        uninstallRendererListener ( comboBox.getRenderer () );
+    public void uninstallUI(final JComponent c) {
+        comboBox.removePropertyChangeListener(FlatLookAndFeel.ENABLED_PROPERTY,
+                enabledStateListener);
+        
+        comboBox.removePropertyChangeListener(
+                FlatLookAndFeel.RENDERER_PROPERTY, rendererChangeListener);
+        uninstallRendererListener(comboBox.getRenderer());
         rendererListener = null;
-
-        c.removeMouseWheelListener ( mouseWheelListener );
+        
+        c.removeMouseWheelListener(mouseWheelListener);
         mouseWheelListener = null;
-
+        
         arrow = null;
-
-        super.uninstallUI ( c );
+        
+        super.uninstallUI(c);
     }
-
+    
     @Override
-    public void updateBorder ()
-    {
+    public void updateBorder() {
         // Preserve old borders
-        if ( SwingUtils.isPreserveBorders ( comboBox ) )
-        {
+        if (SwingUtils.isPreserveBorders(comboBox)) {
             return;
         }
-
-        final Insets m = new Insets ( 0, 0, 0, 0 );
-        if ( drawBorder )
-        {
+        
+        final Insets m = new Insets(0, 0, 0, 0);
+        if (drawBorder) {
             m.top += shadeWidth + 1;
             m.left += shadeWidth + 1;
             m.bottom += shadeWidth + 1;
             m.right += shadeWidth + 1;
         }
-        comboBox.setBorder ( LafUtils.createWebBorder ( m ) );
+        comboBox.setBorder(LafUtils.createWebBorder(m));
     }
-
+    
     /**
      * Installs RendererListener into specified renderer if possible.
      *
-     * @param renderer RendererListener to install
+     * @param renderer
+     *            RendererListener to install
      */
-    protected void installRendererListener ( final Object renderer )
-    {
-        if ( renderer != null && renderer instanceof WebComboBoxCellRenderer )
-        {
-            ( ( WebComboBoxCellRenderer ) renderer ).addRendererListener ( rendererListener );
+    protected void installRendererListener(final Object renderer) {
+        if (renderer != null && renderer instanceof WebComboBoxCellRenderer) {
+            ((WebComboBoxCellRenderer) renderer)
+                    .addRendererListener(rendererListener);
         }
     }
-
+    
     /**
      * Uninstalls RendererListener from specified renderer if possible.
      *
-     * @param renderer RendererListener to uninstall
+     * @param renderer
+     *            RendererListener to uninstall
      */
-    protected void uninstallRendererListener ( final Object renderer )
-    {
-        if ( renderer != null && renderer instanceof WebComboBoxCellRenderer )
-        {
-            ( ( WebComboBoxCellRenderer ) renderer ).removeRendererListener ( rendererListener );
+    protected void uninstallRendererListener(final Object renderer) {
+        if (renderer != null && renderer instanceof WebComboBoxCellRenderer) {
+            ((WebComboBoxCellRenderer) renderer)
+                    .removeRendererListener(rendererListener);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void installComponents ()
-    {
-        comboBox.setLayout ( createLayoutManager () );
-
-        arrowButton = createArrowButton ();
-        comboBox.add ( arrowButton, "1,0" );
-        if ( arrowButton != null )
-        {
-            configureArrowButton ();
+    protected void installComponents() {
+        comboBox.setLayout(createLayoutManager());
+        
+        arrowButton = createArrowButton();
+        comboBox.add(arrowButton, "1,0");
+        if (arrowButton != null) {
+            configureArrowButton();
         }
-
-        if ( comboBox.isEditable () )
-        {
-            addEditor ();
+        
+        if (comboBox.isEditable()) {
+            addEditor();
         }
-
-        comboBox.add ( currentValuePane, "0,0" );
+        
+        comboBox.add(currentValuePane, "0,0");
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected ComboBoxEditor createEditor ()
-    {
-        final ComboBoxEditor editor = super.createEditor ();
-        final Component e = editor.getEditorComponent ();
-        e.addFocusListener ( new FocusAdapter ()
-        {
+    protected ComboBoxEditor createEditor() {
+        final ComboBoxEditor editor = super.createEditor();
+        final Component e = editor.getEditorComponent();
+        e.addFocusListener(new FocusAdapter() {
             @Override
-            public void focusGained ( final FocusEvent e )
-            {
-                comboBox.repaint ();
+            public void focusGained(final FocusEvent e) {
+                comboBox.repaint();
             }
-
+            
             @Override
-            public void focusLost ( final FocusEvent e )
-            {
-                comboBox.repaint ();
+            public void focusLost(final FocusEvent e) {
+                comboBox.repaint();
             }
-        } );
-        if ( e instanceof JComponent )
-        {
-            ( ( JComponent ) e ).setOpaque ( false );
+        });
+        if (e instanceof JComponent) {
+            ((JComponent) e).setOpaque(false);
         }
-        if ( e instanceof JTextField )
-        {
-            final JTextField textField = ( JTextField ) e;
-            final WebTextFieldUI textFieldUI = new WebTextFieldUI ();
-            textFieldUI.setDrawBorder ( false );
-            textField.setUI ( textFieldUI );
-            textField.setMargin ( new Insets ( 0, 1, 0, 1 ) );
+        if (e instanceof JTextField) {
+            final JTextField textField = (JTextField) e;
+            final WebTextFieldUI textFieldUI = new WebTextFieldUI();
+            textFieldUI.setDrawBorder(false);
+            textField.setUI(textFieldUI);
+            textField.setMargin(new Insets(0, 1, 0, 1));
         }
         return editor;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected JButton createArrowButton ()
-    {
-        arrow = new WebButton ();
-        arrow.setUndecorated ( true );
-        arrow.setDrawFocus ( false );
-        arrow.setMoveIconOnPress ( false );
-        arrow.setName ( "ComboBox.arrowButton" );
-        arrow.setIcon ( expandIcon );
-        arrow.setLeftRightSpacing ( iconSpacing );
+    protected JButton createArrowButton() {
+        arrow = new WebButton();
+        arrow.setUndecorated(true);
+        arrow.setDrawFocus(false);
+        arrow.setMoveIconOnPress(false);
+        arrow.setName("ComboBox.arrowButton");
+        arrow.setIcon(expandIcon);
+        arrow.setLeftRightSpacing(iconSpacing);
         return arrow;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void configureArrowButton ()
-    {
-        super.configureArrowButton ();
-        if ( arrowButton != null )
-        {
-            arrowButton.setFocusable ( false );
+    public void configureArrowButton() {
+        super.configureArrowButton();
+        if (arrowButton != null) {
+            arrowButton.setFocusable(false);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected ComboPopup createPopup ()
-    {
-        return new BasicComboPopup ( comboBox )
-        {
+    protected ComboPopup createPopup() {
+        return new BasicComboPopup(comboBox) {
             @Override
-            protected JScrollPane createScroller ()
-            {
-                final JScrollPane scroll = super.createScroller ();
-                if ( FlatLookAndFeel.isInstalled () )
-                {
-                    scroll.setOpaque ( false );
-                    scroll.getViewport ().setOpaque ( false );
+            protected JScrollPane createScroller() {
+                final JScrollPane scroll = super.createScroller();
+                if (FlatLookAndFeel.isInstalled()) {
+                    scroll.setOpaque(false);
+                    scroll.getViewport().setOpaque(false);
                 }
-
-                final ScrollPaneUI scrollPaneUI = scroll.getUI ();
-                if ( scrollPaneUI instanceof WebScrollPaneUI )
-                {
-                    final WebScrollPaneUI webScrollPaneUI = ( WebScrollPaneUI ) scrollPaneUI;
-                    webScrollPaneUI.setDrawBorder ( false );
-
-                    final ScrollBarUI scrollBarUI = scroll.getVerticalScrollBar ().getUI ();
-                    if ( scrollBarUI instanceof WebScrollBarUI )
-                    {
-                        final WebScrollBarUI webScrollBarUI = ( WebScrollBarUI ) scrollBarUI;
-                        webScrollBarUI.setMargin ( WebComboBoxStyle.scrollBarMargin );
-                        webScrollBarUI.setPaintButtons ( WebComboBoxStyle.scrollBarButtonsVisible );
-                        webScrollBarUI.setPaintTrack ( WebComboBoxStyle.scrollBarTrackVisible );
+                
+                final ScrollPaneUI scrollPaneUI = scroll.getUI();
+                if (scrollPaneUI instanceof WebScrollPaneUI) {
+                    final WebScrollPaneUI webScrollPaneUI = (WebScrollPaneUI) scrollPaneUI;
+                    webScrollPaneUI.setDrawBorder(false);
+                    
+                    final ScrollBarUI scrollBarUI = scroll
+                            .getVerticalScrollBar().getUI();
+                    if (scrollBarUI instanceof WebScrollBarUI) {
+                        final WebScrollBarUI webScrollBarUI = (WebScrollBarUI) scrollBarUI;
+                        webScrollBarUI
+                                .setMargin(WebComboBoxStyle.scrollBarMargin);
+                        webScrollBarUI
+                                .setPaintButtons(WebComboBoxStyle.scrollBarButtonsVisible);
+                        webScrollBarUI
+                                .setPaintTrack(WebComboBoxStyle.scrollBarTrackVisible);
                     }
                 }
-
-                LafUtils.setScrollBarStyleId ( scroll, "combo-box" );
-
+                
+                LafUtils.setScrollBarStyleId(scroll, "combo-box");
+                
                 return scroll;
             }
-
+            
             @Override
-            protected JList createList ()
-            {
-                final JList list = super.createList ();
-                //  list.setOpaque ( false );
-
-                final ListUI listUI = list.getUI ();
-                if ( listUI instanceof WebListUI )
-                {
-                    final WebListUI webListUI = ( WebListUI ) listUI;
-                    webListUI.setHighlightRolloverCell ( false );
-                    webListUI.setDecorateSelection ( false );
+            protected JList createList() {
+                final JList list = super.createList();
+                // list.setOpaque ( false );
+                
+                final ListUI listUI = list.getUI();
+                if (listUI instanceof WebListUI) {
+                    final WebListUI webListUI = (WebListUI) listUI;
+                    webListUI.setHighlightRolloverCell(false);
+                    webListUI.setDecorateSelection(false);
                 }
-
+                
                 return list;
             }
-
+            
             @Override
-            protected void configurePopup ()
-            {
-                super.configurePopup ();
-
+            protected void configurePopup() {
+                super.configurePopup();
+                
                 // Button updater
-                addPopupMenuListener ( new PopupMenuListener ()
-                {
+                addPopupMenuListener(new PopupMenuListener() {
                     @Override
-                    public void popupMenuWillBecomeVisible ( final PopupMenuEvent e )
-                    {
-                        arrow.setIcon ( collapseIcon );
-
+                    public void popupMenuWillBecomeVisible(
+                            final PopupMenuEvent e) {
+                        arrow.setIcon(collapseIcon);
+                        
                         // Fix for combobox repaint on popup opening
-                        comboBox.repaint ();
+                        comboBox.repaint();
                     }
-
+                    
                     @Override
-                    public void popupMenuWillBecomeInvisible ( final PopupMenuEvent e )
-                    {
-                        arrow.setIcon ( expandIcon );
+                    public void popupMenuWillBecomeInvisible(
+                            final PopupMenuEvent e) {
+                        arrow.setIcon(expandIcon);
                     }
-
+                    
                     @Override
-                    public void popupMenuCanceled ( final PopupMenuEvent e )
-                    {
-                        arrow.setIcon ( expandIcon );
+                    public void popupMenuCanceled(final PopupMenuEvent e) {
+                        arrow.setIcon(expandIcon);
                     }
-                } );
+                });
             }
-
+            
             @Override
-            public void show ()
-            {
-                comboBox.firePopupMenuWillBecomeVisible ();
-
-                setListSelection ( comboBox.getSelectedIndex () );
-
-                final Point location = getPopupLocation ();
-                show ( comboBox, location.x, location.y );
+            public void show() {
+                comboBox.firePopupMenuWillBecomeVisible();
+                
+                setListSelection(comboBox.getSelectedIndex());
+                
+                final Point location = getPopupLocation();
+                show(comboBox, location.x, location.y);
             }
-
-            private void setListSelection ( final int selectedIndex )
-            {
-                if ( selectedIndex == -1 )
-                {
-                    list.clearSelection ();
-                }
-                else
-                {
-                    list.setSelectedIndex ( selectedIndex );
-                    list.ensureIndexIsVisible ( selectedIndex );
+            
+            private void setListSelection(final int selectedIndex) {
+                if (selectedIndex == -1) {
+                    list.clearSelection();
+                } else {
+                    list.setSelectedIndex(selectedIndex);
+                    list.ensureIndexIsVisible(selectedIndex);
                 }
             }
-
-            private Point getPopupLocation ()
-            {
-                final Dimension comboSize = comboBox.getSize ();
-                comboSize.setSize ( comboSize.width - 2, getPopupHeightForRowCount ( comboBox.getMaximumRowCount () ) );
-                final Rectangle popupBounds = computePopupBounds ( 0, comboBox.getBounds ().height, comboSize.width, comboSize.height );
-
-                final Dimension scrollSize = popupBounds.getSize ();
-                scroller.setMaximumSize ( scrollSize );
-                scroller.setPreferredSize ( scrollSize );
-                scroller.setMinimumSize ( scrollSize );
-                list.revalidate ();
-
-                return popupBounds.getLocation ();
+            
+            private Point getPopupLocation() {
+                final Dimension comboSize = comboBox.getSize();
+                comboSize
+                        .setSize(comboSize.width - 2,
+                                getPopupHeightForRowCount(comboBox
+                                        .getMaximumRowCount()));
+                final Rectangle popupBounds = computePopupBounds(0,
+                        comboBox.getBounds().height, comboSize.width,
+                        comboSize.height);
+                
+                final Dimension scrollSize = popupBounds.getSize();
+                scroller.setMaximumSize(scrollSize);
+                scroller.setPreferredSize(scrollSize);
+                scroller.setMinimumSize(scrollSize);
+                list.revalidate();
+                
+                return popupBounds.getLocation();
             }
         };
     }
-
-    public boolean isComboboxCellEditor ()
-    {
-        if ( comboBox != null )
-        {
-            final Object cellEditor = comboBox.getClientProperty ( WebDefaultCellEditor.COMBOBOX_CELL_EDITOR );
-            return cellEditor != null && ( Boolean ) cellEditor;
-        }
-        else
-        {
+    
+    public boolean isComboboxCellEditor() {
+        if (comboBox != null) {
+            final Object cellEditor = comboBox
+                    .getClientProperty(WebDefaultCellEditor.COMBOBOX_CELL_EDITOR);
+            return cellEditor != null && (Boolean) cellEditor;
+        } else {
             return false;
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Shape provideShape ()
-    {
-        if ( drawBorder )
-        {
-            return LafUtils.getWebBorderShape ( comboBox, shadeWidth, round );
-        }
-        else
-        {
-            return SwingUtils.size ( comboBox );
+    public Shape provideShape() {
+        if (drawBorder) {
+            return LafUtils.getWebBorderShape(comboBox, shadeWidth, round);
+        } else {
+            return SwingUtils.size(comboBox);
         }
     }
-
-    public void setEditorColumns ( final int columns )
-    {
-        if ( editor instanceof JTextField )
-        {
-            ( ( JTextField ) editor ).setColumns ( columns );
+    
+    public void setEditorColumns(final int columns) {
+        if (editor instanceof JTextField) {
+            ((JTextField) editor).setColumns(columns);
         }
     }
-
-    public boolean isUseFirstValueAsPrototype ()
-    {
+    
+    public boolean isUseFirstValueAsPrototype() {
         return useFirstValueAsPrototype;
     }
-
-    public void setUseFirstValueAsPrototype ( final boolean use )
-    {
+    
+    public void setUseFirstValueAsPrototype(final boolean use) {
         this.useFirstValueAsPrototype = use;
         this.isMinimumSizeDirty = true;
-        comboBox.revalidate ();
+        comboBox.revalidate();
     }
-
-    public ImageIcon getExpandIcon ()
-    {
+    
+    public ImageIcon getExpandIcon() {
         return expandIcon;
     }
-
-    public void setExpandIcon ( final ImageIcon expandIcon )
-    {
+    
+    public void setExpandIcon(final ImageIcon expandIcon) {
         this.expandIcon = expandIcon;
-        if ( arrow != null && !isPopupVisible ( comboBox ) )
-        {
-            arrow.setIcon ( expandIcon );
+        if (arrow != null && !isPopupVisible(comboBox)) {
+            arrow.setIcon(expandIcon);
         }
     }
-
-    public ImageIcon getCollapseIcon ()
-    {
+    
+    public ImageIcon getCollapseIcon() {
         return collapseIcon;
     }
-
-    public void setCollapseIcon ( final ImageIcon collapseIcon )
-    {
+    
+    public void setCollapseIcon(final ImageIcon collapseIcon) {
         this.collapseIcon = collapseIcon;
-        if ( arrow != null && isPopupVisible ( comboBox ) )
-        {
-            arrow.setIcon ( collapseIcon );
+        if (arrow != null && isPopupVisible(comboBox)) {
+            arrow.setIcon(collapseIcon);
         }
     }
-
-    public int getIconSpacing ()
-    {
+    
+    public int getIconSpacing() {
         return iconSpacing;
     }
-
-    public void setIconSpacing ( final int iconSpacing )
-    {
+    
+    public void setIconSpacing(final int iconSpacing) {
         this.iconSpacing = iconSpacing;
-        if ( arrow != null )
-        {
-            arrow.setLeftRightSpacing ( iconSpacing );
+        if (arrow != null) {
+            arrow.setLeftRightSpacing(iconSpacing);
         }
     }
-
-    public boolean isDrawBorder ()
-    {
+    
+    public boolean isDrawBorder() {
         return drawBorder;
     }
-
-    public void setDrawBorder ( final boolean drawBorder )
-    {
+    
+    public void setDrawBorder(final boolean drawBorder) {
         this.drawBorder = drawBorder;
-        updateBorder ();
+        updateBorder();
     }
-
-    public boolean isWebColoredBackground ()
-    {
+    
+    public boolean isWebColoredBackground() {
         return webColoredBackground;
     }
-
-    public void setWebColoredBackground ( final boolean webColored )
-    {
+    
+    public void setWebColoredBackground(final boolean webColored) {
         this.webColoredBackground = webColored;
     }
-
-    public Color getExpandedBgColor ()
-    {
+    
+    public Color getExpandedBgColor() {
         return expandedBgColor;
     }
-
-    public void setExpandedBgColor ( final Color color )
-    {
+    
+    public void setExpandedBgColor(final Color color) {
         this.expandedBgColor = color;
     }
-
-    public boolean isDrawFocus ()
-    {
+    
+    public boolean isDrawFocus() {
         return drawFocus;
     }
-
-    public void setDrawFocus ( final boolean drawFocus )
-    {
+    
+    public void setDrawFocus(final boolean drawFocus) {
         this.drawFocus = drawFocus;
     }
-
-    public int getRound ()
-    {
+    
+    public int getRound() {
         return round;
     }
-
-    public void setRound ( final int round )
-    {
+    
+    public void setRound(final int round) {
         this.round = round;
     }
-
-    public int getShadeWidth ()
-    {
+    
+    public int getShadeWidth() {
         return shadeWidth;
     }
-
-    public void setShadeWidth ( final int shadeWidth )
-    {
+    
+    public void setShadeWidth(final int shadeWidth) {
         this.shadeWidth = shadeWidth;
-        updateBorder ();
+        updateBorder();
     }
-
-    public boolean isMouseWheelScrollingEnabled ()
-    {
+    
+    public boolean isMouseWheelScrollingEnabled() {
         return mouseWheelScrollingEnabled;
     }
-
-    public void setMouseWheelScrollingEnabled ( final boolean enabled )
-    {
+    
+    public void setMouseWheelScrollingEnabled(final boolean enabled) {
         this.mouseWheelScrollingEnabled = enabled;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void paint ( final Graphics g, final JComponent c )
-    {
-        hasFocus = comboBox.hasFocus ();
-        final Rectangle r = rectangleForCurrentValue ();
-
+    public void paint(final Graphics g, final JComponent c) {
+        hasFocus = comboBox.hasFocus();
+        final Rectangle r = rectangleForCurrentValue();
+        
         // Background
-        paintCurrentValueBackground ( g, r, hasFocus );
-
+        paintCurrentValueBackground(g, r, hasFocus);
+        
         // Selected uneditable value
-        if ( !comboBox.isEditable () )
-        {
-            paintCurrentValue ( g, r, hasFocus );
+        if (!comboBox.isEditable()) {
+            paintCurrentValue(g, r, hasFocus);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void paintCurrentValueBackground ( final Graphics g, final Rectangle bounds, final boolean hasFocus )
-    {
-        final Graphics2D g2d = ( Graphics2D ) g;
-
-        if ( drawBorder )
-        {
+    public void paintCurrentValueBackground(final Graphics g,
+            final Rectangle bounds, final boolean hasFocus) {
+        final Graphics2D g2d = (Graphics2D) g;
+        
+        if (drawBorder) {
             // Border and background
-            final Color shadeColor = drawFocus && isFocused () ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor;
-            final boolean popupVisible = isPopupVisible ( comboBox );
-            final Color backgroundColor = !popupVisible ? comboBox.getBackground () : expandedBgColor;
-            LafUtils.drawWebStyle ( g2d, comboBox, shadeColor, shadeWidth, round, true, webColoredBackground && !popupVisible,
-                    FlatLafStyleConstants.darkBorderColor, FlatLafStyleConstants.disabledBorderColor, backgroundColor, 1f );
-        }
-        else
-        {
+            final Color shadeColor = drawFocus && isFocused() ? FlatLafStyleConstants.fieldFocusColor
+                    : FlatLafStyleConstants.shadeColor;
+            final boolean popupVisible = isPopupVisible(comboBox);
+            final Color backgroundColor = !popupVisible ? comboBox
+                    .getBackground() : expandedBgColor;
+            LafUtils.drawWebStyle(g2d, comboBox, shadeColor, shadeWidth, round,
+                    true, webColoredBackground && !popupVisible,
+                    FlatLafStyleConstants.darkBorderColor,
+                    FlatLafStyleConstants.disabledBorderColor, backgroundColor,
+                    1f);
+        } else {
             // Simple background
-            final boolean pressed = isPopupVisible ( comboBox );
-            final Rectangle cb = SwingUtils.size ( comboBox );
-            g2d.setPaint ( new GradientPaint ( 0, shadeWidth, pressed ? FlatLafStyleConstants.topSelectedBgColor : FlatLafStyleConstants.topBgColor, 0,
-                    comboBox.getHeight () - shadeWidth, pressed ? FlatLafStyleConstants.bottomSelectedBgColor : FlatLafStyleConstants.bottomBgColor ) );
-            g2d.fillRect ( cb.x, cb.y, cb.width, cb.height );
+            final boolean pressed = isPopupVisible(comboBox);
+            final Rectangle cb = SwingUtils.size(comboBox);
+            g2d.setPaint(new GradientPaint(0, shadeWidth,
+                    pressed ? FlatLafStyleConstants.topSelectedBgColor
+                            : FlatLafStyleConstants.topBgColor, 0, comboBox
+                            .getHeight() - shadeWidth,
+                    pressed ? FlatLafStyleConstants.bottomSelectedBgColor
+                            : FlatLafStyleConstants.bottomBgColor));
+            g2d.fillRect(cb.x, cb.y, cb.width, cb.height);
         }
-
+        
         // Separator line
-        if ( comboBox.isEditable () )
-        {
-            final boolean ltr = comboBox.getComponentOrientation ().isLeftToRight ();
-            final Insets insets = comboBox.getInsets ();
-            final int lx = ltr ? comboBox.getWidth () - insets.right - arrow.getWidth () - 1 : insets.left + arrow.getWidth ();
-
-            g2d.setPaint ( comboBox.isEnabled () ? FlatLafStyleConstants.borderColor : FlatLafStyleConstants.disabledBorderColor );
-            g2d.drawLine ( lx, insets.top + 1, lx, comboBox.getHeight () - insets.bottom - 2 );
+        if (comboBox.isEditable()) {
+            final boolean ltr = comboBox.getComponentOrientation()
+                    .isLeftToRight();
+            final Insets insets = comboBox.getInsets();
+            final int lx = ltr ? comboBox.getWidth() - insets.right
+                    - arrow.getWidth() - 1 : insets.left + arrow.getWidth();
+            
+            g2d.setPaint(comboBox.isEnabled() ? FlatLafStyleConstants.borderColor
+                    : FlatLafStyleConstants.disabledBorderColor);
+            g2d.drawLine(lx, insets.top + 1, lx, comboBox.getHeight()
+                    - insets.bottom - 2);
         }
     }
-
+    
     /**
      * Returns whether combobox or one of its children is focused or not.
      *
-     * @return true if combobox or one of its children is focused, false otherwise
+     * @return true if combobox or one of its children is focused, false
+     *         otherwise
      */
-    protected boolean isFocused ()
-    {
-        return SwingUtils.hasFocusOwner ( comboBox );
+    protected boolean isFocused() {
+        return SwingUtils.hasFocusOwner(comboBox);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void paintCurrentValue ( final Graphics g, final Rectangle bounds, final boolean hasFocus )
-    {
-        final ListCellRenderer renderer = comboBox.getRenderer ();
+    public void paintCurrentValue(final Graphics g, final Rectangle bounds,
+            final boolean hasFocus) {
+        final ListCellRenderer renderer = comboBox.getRenderer();
         final Component c;
-
-        if ( hasFocus && !isPopupVisible ( comboBox ) )
-        {
-            c = renderer.getListCellRendererComponent ( listBox, comboBox.getSelectedItem (), -1, true, false );
+        
+        if (hasFocus && !isPopupVisible(comboBox)) {
+            c = renderer.getListCellRendererComponent(listBox,
+                    comboBox.getSelectedItem(), -1, true, false);
+        } else {
+            c = renderer.getListCellRendererComponent(listBox,
+                    comboBox.getSelectedItem(), -1, false, false);
+            c.setBackground(UIManager.getColor("ComboBox.background"));
         }
-        else
-        {
-            c = renderer.getListCellRendererComponent ( listBox, comboBox.getSelectedItem (), -1, false, false );
-            c.setBackground ( UIManager.getColor ( "ComboBox.background" ) );
+        c.setFont(comboBox.getFont());
+        
+        if (comboBox.isEnabled()) {
+            c.setForeground(comboBox.getForeground());
+            c.setBackground(comboBox.getBackground());
+        } else {
+            c.setForeground(UIManager.getColor("ComboBox.disabledForeground"));
+            c.setBackground(UIManager.getColor("ComboBox.disabledBackground"));
         }
-        c.setFont ( comboBox.getFont () );
-
-        if ( comboBox.isEnabled () )
-        {
-            c.setForeground ( comboBox.getForeground () );
-            c.setBackground ( comboBox.getBackground () );
-        }
-        else
-        {
-            c.setForeground ( UIManager.getColor ( "ComboBox.disabledForeground" ) );
-            c.setBackground ( UIManager.getColor ( "ComboBox.disabledBackground" ) );
-        }
-
+        
         boolean shouldValidate = false;
-        if ( c instanceof JPanel )
-        {
+        if (c instanceof JPanel) {
             shouldValidate = true;
         }
-
+        
         final int x = bounds.x;
         final int y = bounds.y;
         final int w = bounds.width;
         final int h = bounds.height;
-
-        currentValuePane.paintComponent ( g, c, comboBox, x, y, w, h, shouldValidate );
+        
+        currentValuePane.paintComponent(g, c, comboBox, x, y, w, h,
+                shouldValidate);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected LayoutManager createLayoutManager ()
-    {
-        return new WebComboBoxLayout ();
+    protected LayoutManager createLayoutManager() {
+        return new WebComboBoxLayout();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Dimension getMinimumSize ( final JComponent c )
-    {
-        if ( !isMinimumSizeDirty )
-        {
-            return new Dimension ( cachedMinimumSize );
+    public Dimension getMinimumSize(final JComponent c) {
+        if (!isMinimumSizeDirty) {
+            return new Dimension(cachedMinimumSize);
         }
-
-        final Dimension size = getDisplaySize ();
-        final Insets insets = getInsets ();
-
+        
+        final Dimension size = getDisplaySize();
+        final Insets insets = getInsets();
+        
         // Calculate the width the button
-        final int buttonWidth = arrowButton.getPreferredSize ().width;
-
+        final int buttonWidth = arrowButton.getPreferredSize().width;
+        
         // Adjust the size based on the button width
         size.height += insets.top + insets.bottom;
         size.width += insets.left + insets.right + buttonWidth;
-
-        cachedMinimumSize.setSize ( size.width, size.height );
+        
+        cachedMinimumSize.setSize(size.width, size.height);
         isMinimumSizeDirty = false;
-
-        return new Dimension ( size );
+        
+        return new Dimension(size);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected Dimension getDisplaySize ()
-    {
-        Dimension result = new Dimension ();
-
+    protected Dimension getDisplaySize() {
+        Dimension result = new Dimension();
+        
         // Use default renderer
-        ListCellRenderer renderer = comboBox.getRenderer ();
-        if ( renderer == null )
-        {
-            renderer = new DefaultListCellRenderer ();
+        ListCellRenderer renderer = comboBox.getRenderer();
+        if (renderer == null) {
+            renderer = new DefaultListCellRenderer();
         }
-
-        final Object prototypeValue = comboBox.getPrototypeDisplayValue ();
-        if ( prototypeValue != null )
-        {
+        
+        final Object prototypeValue = comboBox.getPrototypeDisplayValue();
+        if (prototypeValue != null) {
             // Calculates the dimension based on the prototype value
-            result = getSizeForComponent ( renderer.getListCellRendererComponent ( listBox, prototypeValue, -1, false, false ) );
-        }
-        else
-        {
-            final ComboBoxModel model = comboBox.getModel ();
-            final int modelSize = model.getSize ();
+            result = getSizeForComponent(renderer.getListCellRendererComponent(
+                    listBox, prototypeValue, -1, false, false));
+        } else {
+            final ComboBoxModel model = comboBox.getModel();
+            final int modelSize = model.getSize();
             Dimension d;
-
-            if ( modelSize > 0 )
-            {
-                if ( useFirstValueAsPrototype )
-                {
-                    // Calculates the maximum height and width based on first element
-                    final Object value = model.getElementAt ( 0 );
-                    final Component c = renderer.getListCellRendererComponent ( listBox, value, -1, false, false );
-                    d = getSizeForComponent ( c );
-                    result.width = Math.max ( result.width, d.width );
-                    result.height = Math.max ( result.height, d.height );
-                }
-                else
-                {
-                    // Calculate the dimension by iterating over all the elements in the combo box list
-                    for ( int i = 0; i < modelSize; i++ )
-                    {
-                        // Calculates the maximum height and width based on the largest element
-                        final Object value = model.getElementAt ( i );
-                        final Component c = renderer.getListCellRendererComponent ( listBox, value, -1, false, false );
-                        d = getSizeForComponent ( c );
-                        result.width = Math.max ( result.width, d.width );
-                        result.height = Math.max ( result.height, d.height );
+            
+            if (modelSize > 0) {
+                if (useFirstValueAsPrototype) {
+                    // Calculates the maximum height and width based on first
+                    // element
+                    final Object value = model.getElementAt(0);
+                    final Component c = renderer.getListCellRendererComponent(
+                            listBox, value, -1, false, false);
+                    d = getSizeForComponent(c);
+                    result.width = Math.max(result.width, d.width);
+                    result.height = Math.max(result.height, d.height);
+                } else {
+                    // Calculate the dimension by iterating over all the
+                    // elements in the combo box list
+                    for (int i = 0; i < modelSize; i++) {
+                        // Calculates the maximum height and width based on the
+                        // largest element
+                        final Object value = model.getElementAt(i);
+                        final Component c = renderer
+                                .getListCellRendererComponent(listBox, value,
+                                        -1, false, false);
+                        d = getSizeForComponent(c);
+                        result.width = Math.max(result.width, d.width);
+                        result.height = Math.max(result.height, d.height);
                     }
                 }
-            }
-            else
-            {
-                // Calculates the maximum height and width based on default renderer
-                result = getDefaultSize ();
-                if ( comboBox.isEditable () )
-                {
+            } else {
+                // Calculates the maximum height and width based on default
+                // renderer
+                result = getDefaultSize();
+                if (comboBox.isEditable()) {
                     result.width = 100;
                 }
             }
         }
-
-        if ( comboBox.isEditable () )
-        {
-            final Dimension d = editor.getPreferredSize ();
-            result.width = Math.max ( result.width, d.width );
-            result.height = Math.max ( result.height, d.height );
+        
+        if (comboBox.isEditable()) {
+            final Dimension d = editor.getPreferredSize();
+            result.width = Math.max(result.width, d.width);
+            result.height = Math.max(result.height, d.height);
         }
-
+        
         return result;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected Dimension getDefaultSize ()
-    {
+    protected Dimension getDefaultSize() {
         // Calculates the height and width using the default text renderer
-        return getSizeForComponent ( getDefaultListCellRenderer ().getListCellRendererComponent ( listBox, " ", -1, false, false ) );
+        return getSizeForComponent(getDefaultListCellRenderer()
+                .getListCellRendererComponent(listBox, " ", -1, false, false));
     }
-
+    
     /**
      * Returns default list cell renderer instance.
      *
      * @return default list cell renderer instance
      */
-    protected static ListCellRenderer getDefaultListCellRenderer ()
-    {
-        if ( DEFAULT_RENDERER == null )
-        {
-            DEFAULT_RENDERER = new WebComboBoxCellRenderer ();
+    protected static ListCellRenderer getDefaultListCellRenderer() {
+        if (DEFAULT_RENDERER == null) {
+            DEFAULT_RENDERER = new WebComboBoxCellRenderer();
         }
         return DEFAULT_RENDERER;
     }
-
+    
     /**
      * Returns renderer component preferred size.
      *
-     * @param c renderer component
+     * @param c
+     *            renderer component
      * @return renderer component preferred size
      */
-    protected Dimension getSizeForComponent ( final Component c )
-    {
-        currentValuePane.add ( c );
-        c.setFont ( comboBox.getFont () );
-        final Dimension d = c.getPreferredSize ();
-        currentValuePane.remove ( c );
+    protected Dimension getSizeForComponent(final Component c) {
+        currentValuePane.add(c);
+        c.setFont(comboBox.getFont());
+        final Dimension d = c.getPreferredSize();
+        currentValuePane.remove(c);
         return d;
     }
-
+    
     /**
      * Custom layout manager for WebComboBoxUI.
      */
-    protected class WebComboBoxLayout extends AbstractLayoutManager
-    {
+    protected class WebComboBoxLayout extends AbstractLayoutManager {
         /**
          * {@inheritDoc}
          */
         @Override
-        public Dimension preferredLayoutSize ( final Container parent )
-        {
-            return parent.getPreferredSize ();
+        public Dimension preferredLayoutSize(final Container parent) {
+            return parent.getPreferredSize();
         }
-
+        
         /**
          * {@inheritDoc}
          */
         @Override
-        public Dimension minimumLayoutSize ( final Container parent )
-        {
-            return parent.getMinimumSize ();
+        public Dimension minimumLayoutSize(final Container parent) {
+            return parent.getMinimumSize();
         }
-
+        
         /**
          * {@inheritDoc}
          */
         @Override
-        public void layoutContainer ( final Container parent )
-        {
-            final JComboBox cb = ( JComboBox ) parent;
-            final int width = cb.getWidth ();
-            final int height = cb.getHeight ();
-
-            if ( arrowButton != null )
-            {
-                final Insets insets = getInsets ();
-                final int buttonHeight = height - ( insets.top + insets.bottom );
-                final int buttonWidth = arrowButton.getPreferredSize ().width;
-                if ( cb.getComponentOrientation ().isLeftToRight () )
-                {
-                    arrowButton.setBounds ( width - ( insets.right + buttonWidth ), insets.top, buttonWidth, buttonHeight );
-                }
-                else
-                {
-                    arrowButton.setBounds ( insets.left, insets.top, buttonWidth, buttonHeight );
+        public void layoutContainer(final Container parent) {
+            final JComboBox cb = (JComboBox) parent;
+            final int width = cb.getWidth();
+            final int height = cb.getHeight();
+            
+            if (arrowButton != null) {
+                final Insets insets = getInsets();
+                final int buttonHeight = height - (insets.top + insets.bottom);
+                final int buttonWidth = arrowButton.getPreferredSize().width;
+                if (cb.getComponentOrientation().isLeftToRight()) {
+                    arrowButton.setBounds(width - (insets.right + buttonWidth),
+                            insets.top, buttonWidth, buttonHeight);
+                } else {
+                    arrowButton.setBounds(insets.left, insets.top, buttonWidth,
+                            buttonHeight);
                 }
             }
-
-            if ( editor != null )
-            {
-                editor.setBounds ( rectangleForCurrentValue () );
+            
+            if (editor != null) {
+                editor.setBounds(rectangleForCurrentValue());
             }
         }
     }

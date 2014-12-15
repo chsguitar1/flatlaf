@@ -25,12 +25,12 @@ import java.awt.event.ComponentEvent;
  * @author Mikle Garin
  */
 
-public interface ComponentEventRunnable
-{
+public interface ComponentEventRunnable {
     /**
      * Performs action according to component event.
      *
-     * @param e occured component event
+     * @param e
+     *            occured component event
      */
-    public void run ( ComponentEvent e );
+    public void run(ComponentEvent e);
 }

@@ -25,160 +25,157 @@ import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 
 /**
  * This special container is used to place various custom WebLaF popups on it.
- * These lightweight popups are visible only within the window's root pane bounds.
+ * These lightweight popups are visible only within the window's root pane
+ * bounds.
  *
  * @author Mikle Garin
  * @see PopupManager
  * @see WebPopup
  */
 
-public class PopupLayer extends WebPanel
-{
+public class PopupLayer extends WebPanel {
     /**
      * Constructs new popup layer.
      */
-    public PopupLayer ()
-    {
-        this ( new MultiLayout () );
+    public PopupLayer() {
+        this(new MultiLayout());
     }
-
+    
     /**
      * Constructs new popup layer with the specified layout
      */
-    public PopupLayer ( final LayoutManager layoutManager )
-    {
-        super ( layoutManager );
-        setOpaque ( false );
+    public PopupLayer(final LayoutManager layoutManager) {
+        super(layoutManager);
+        setOpaque(false);
     }
-
+    
     /**
      * Returns popup layer actual layout.
      *
      * @return popup layer actual layout
      */
-    public MultiLayout getMultiLayout ()
-    {
-        return ( MultiLayout ) getLayout ();
+    public MultiLayout getMultiLayout() {
+        return (MultiLayout) getLayout();
     }
-
+    
     /**
      * Adds layout manager to this popup layer.
      *
-     * @param layoutManager layout manager to add
+     * @param layoutManager
+     *            layout manager to add
      */
-    public void addLayoutManager ( final LayoutManager layoutManager )
-    {
-        getMultiLayout ().addLayoutManager ( layoutManager );
+    public void addLayoutManager(final LayoutManager layoutManager) {
+        getMultiLayout().addLayoutManager(layoutManager);
     }
-
+    
     /**
      * Removes layout manager from this glass pane.
      *
-     * @param layoutManager layout manager to remove
+     * @param layoutManager
+     *            layout manager to remove
      */
-    public void removeLayoutManager ( final LayoutManager layoutManager )
-    {
-        getMultiLayout ().removeLayoutManager ( layoutManager );
+    public void removeLayoutManager(final LayoutManager layoutManager) {
+        getMultiLayout().removeLayoutManager(layoutManager);
     }
-
+    
     /**
      * Hides all popups visible on this popup layer.
      */
-    public void hideAllPopups ()
-    {
+    public void hideAllPopups() {
         // todo Call hidePopup on popup instead
-        removeAll ();
-        setVisible ( false );
+        removeAll();
+        setVisible(false);
     }
-
+    
     /**
      * Displays the specified popup on this popup layer.
      *
-     * @param popup popup to display
+     * @param popup
+     *            popup to display
      */
-    public void showPopup ( final WebPopup popup )
-    {
+    public void showPopup(final WebPopup popup) {
         // Informing that popup will now become visible
-        popup.firePopupWillBeOpened ();
-
+        popup.firePopupWillBeOpened();
+        
         // Updating popup layer
-        setBounds ( new Rectangle ( 0, 0, getParent ().getWidth (), getParent ().getHeight () ) );
-
+        setBounds(new Rectangle(0, 0, getParent().getWidth(), getParent()
+                .getHeight()));
+        
         // Adding popup
-        add ( popup, 0 );
-
+        add(popup, 0);
+        
         // Updating popup position and content
-        setVisible ( true );
-        popup.revalidate ();
-        popup.repaint ();
+        setVisible(true);
+        popup.revalidate();
+        popup.repaint();
     }
-
+    
     /**
      * Hides specified popup displayed on this popup layer.
      *
-     * @param popup popup to hide
+     * @param popup
+     *            popup to hide
      */
-    public void hidePopup ( final WebPopup popup )
-    {
+    public void hidePopup(final WebPopup popup) {
         // Ignore hide
-        if ( !popup.isShowing () || popup.getParent () != PopupLayer.this )
-        {
+        if (!popup.isShowing() || popup.getParent() != PopupLayer.this) {
             return;
         }
-
+        
         // Informing that popup will now become invisible
-        popup.firePopupWillBeClosed ();
-
+        popup.firePopupWillBeClosed();
+        
         // Removing popup
-        final Rectangle bounds = popup.getBounds ();
-        remove ( popup );
-        revalidate ();
-        repaint ( bounds );
+        final Rectangle bounds = popup.getBounds();
+        remove(popup);
+        revalidate();
+        repaint(bounds);
     }
-
+    
     /**
-     * Unlike default "contains" method this one returns true only if some of popups displayed on this layer contains the specified point.
-     * Popup layer itself is not taken into account and doesn't absorb any mouse events because of that.
+     * Unlike default "contains" method this one returns true only if some of
+     * popups displayed on this layer contains the specified point. Popup layer
+     * itself is not taken into account and doesn't absorb any mouse events
+     * because of that.
      *
-     * @param x X coordinate
-     * @param y Y coordinate
-     * @return true if some of popups displayed on this popup later contains the specified point, false otherwise
+     * @param x
+     *            X coordinate
+     * @param y
+     *            Y coordinate
+     * @return true if some of popups displayed on this popup later contains the
+     *         specified point, false otherwise
      */
     @Override
-    public boolean contains ( final int x, final int y )
-    {
-        for ( final Component child : getComponents () )
-        {
-            final Point l = child.getLocation ();
-            if ( child instanceof ShapeProvider )
-            {
-                final Shape shape = ( ( ShapeProvider ) child ).provideShape ();
-                if ( shape != null && shape.contains ( x - l.x, y - l.y ) )
-                {
+    public boolean contains(final int x, final int y) {
+        for (final Component child : getComponents()) {
+            final Point l = child.getLocation();
+            if (child instanceof ShapeProvider) {
+                final Shape shape = ((ShapeProvider) child).provideShape();
+                if (shape != null && shape.contains(x - l.x, y - l.y)) {
                     return true;
                 }
-            }
-            else
-            {
-                if ( child.getBounds ().contains ( x, y ) )
-                {
+            } else {
+                if (child.getBounds().contains(x, y)) {
                     return true;
                 }
             }
         }
         return false;
     }
-
+    
     /**
-     * Returns whether the specified point is within bounds of this popup layer or not.
-     * This method returns default "contains" method result and might be used by some classes that would like to change layer's behavior.
+     * Returns whether the specified point is within bounds of this popup layer
+     * or not. This method returns default "contains" method result and might be
+     * used by some classes that would like to change layer's behavior.
      *
-     * @param x X coordinate
-     * @param y Y coordinate
-     * @return true if the specified point is within bounds of this popup layer, false otherwise
+     * @param x
+     *            X coordinate
+     * @param y
+     *            Y coordinate
+     * @return true if the specified point is within bounds of this popup layer,
+     *         false otherwise
      */
-    public boolean normalContains ( final int x, final int y )
-    {
-        return super.contains ( x, y );
+    public boolean normalContains(final int x, final int y) {
+        return super.contains(x, y);
     }
 }

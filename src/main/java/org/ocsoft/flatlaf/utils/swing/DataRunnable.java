@@ -20,15 +20,16 @@ package org.ocsoft.flatlaf.utils.swing;
 /**
  * Custom runnable that recieves data of custom type into run method.
  *
- * @param <T> data type
+ * @param <T>
+ *            data type
  * @author Mikle Garin
  */
-public interface DataRunnable<T>
-{
+public interface DataRunnable<T> {
     /**
      * Performs runnable action.
      *
-     * @param data passed data
+     * @param data
+     *            passed data
      */
-    public void run ( T data );
+    public void run(T data);
 }

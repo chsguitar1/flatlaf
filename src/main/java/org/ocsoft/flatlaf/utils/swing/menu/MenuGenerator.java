@@ -26,23 +26,21 @@ import org.ocsoft.flatlaf.laf.menu.WebMenu;
  * @see org.ocsoft.flatlaf.utils.swing.menu.AbstractMenuGenerator
  */
 
-public class MenuGenerator extends AbstractMenuGenerator<WebMenu>
-{
+public class MenuGenerator extends AbstractMenuGenerator<WebMenu> {
     /**
      * Constructs new menu generator using default menu.
      */
-    public MenuGenerator ()
-    {
-        super ( new WebMenu () );
+    public MenuGenerator() {
+        super(new WebMenu());
     }
-
+    
     /**
      * Constructs new menu generator using the specified menu.
      *
-     * @param menu menu
+     * @param menu
+     *            menu
      */
-    public MenuGenerator ( final WebMenu menu )
-    {
-        super ( menu );
+    public MenuGenerator(final WebMenu menu) {
+        super(menu);
     }
 }

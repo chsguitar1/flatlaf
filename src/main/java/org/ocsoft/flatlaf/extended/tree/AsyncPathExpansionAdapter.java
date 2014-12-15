@@ -20,45 +20,42 @@ package org.ocsoft.flatlaf.extended.tree;
 /**
  * This custom adapter is used to track async tree path expansion action.
  *
- * @param <E> node type
+ * @param <E>
+ *            node type
  * @author Mikle Garin
  */
 
-public abstract class AsyncPathExpansionAdapter<E extends AsyncUniqueNode> implements AsyncPathExpansionListener<E>
-{
+public abstract class AsyncPathExpansionAdapter<E extends AsyncUniqueNode>
+        implements AsyncPathExpansionListener<E> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void pathFailedToExpand ()
-    {
+    public void pathFailedToExpand() {
         // Do nothing by default
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void pathNodeExpanded ( final E expandedNode )
-    {
+    public void pathNodeExpanded(final E expandedNode) {
         // Do nothing by default
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void pathPartiallyExpanded ( final E lastFoundNode )
-    {
+    public void pathPartiallyExpanded(final E lastFoundNode) {
         // Do nothing by default
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void pathExpanded ( final E lastNode )
-    {
+    public void pathExpanded(final E lastNode) {
         // Do nothing by default
     }
 }

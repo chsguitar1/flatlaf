@@ -21,60 +21,70 @@ import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
 import org.ocsoft.flatlaf.utils.swing.SwingMethods;
 
 /**
- * This interface provides a set of methods that should be added into components that has translateable text and support translation.
- * Basically all these methods are already implemented in LanguageManager but it is much easier to call them directly from component.
+ * This interface provides a set of methods that should be added into components
+ * that has translateable text and support translation. Basically all these
+ * methods are already implemented in LanguageManager but it is much easier to
+ * call them directly from component.
  *
  * @author Mikle Garin
  * @see SwingMethods
  * @see LanguageManager
  */
 
-public interface LanguageMethods extends SwingMethods
-{
+public interface LanguageMethods extends SwingMethods {
     /**
-     * Registers component in LanguageManager under specified key and with specified formatting data.
+     * Registers component in LanguageManager under specified key and with
+     * specified formatting data.
      *
-     * @param key  language record key
-     * @param data formatting data
+     * @param key
+     *            language record key
+     * @param data
+     *            formatting data
      */
-    public void setLanguage ( String key, Object... data );
-
+    public void setLanguage(String key, Object... data);
+    
     /**
      * Updates component language and formatting data.
      *
-     * @param data new formatting data
+     * @param data
+     *            new formatting data
      */
-    public void updateLanguage ( Object... data );
-
+    public void updateLanguage(Object... data);
+    
     /**
-     * Changes component language key and updates its language and formatting data.
+     * Changes component language key and updates its language and formatting
+     * data.
      *
-     * @param key  new language key
-     * @param data new formatting data
+     * @param key
+     *            new language key
+     * @param data
+     *            new formatting data
      */
-    public void updateLanguage ( String key, Object... data );
-
+    public void updateLanguage(String key, Object... data);
+    
     /**
      * Unregisters component from LanguageManager.
      */
-    public void removeLanguage ();
-
+    public void removeLanguage();
+    
     /**
      * Returns whether this component registered in LanguageManager or not.
      *
-     * @return true if component is registered in LanguageManager, false otherwise
+     * @return true if component is registered in LanguageManager, false
+     *         otherwise
      */
-    public boolean isLanguageSet ();
-
+    public boolean isLanguageSet();
+    
     /**
      * Registers custom language updater for this component.
      *
-     * @param updater component language updater
+     * @param updater
+     *            component language updater
      */
-    public void setLanguageUpdater ( LanguageUpdater updater );
-
+    public void setLanguageUpdater(LanguageUpdater updater);
+    
     /**
      * Unregisters any custom language updater set for this component.
      */
-    public void removeLanguageUpdater ();
+    public void removeLanguageUpdater();
 }

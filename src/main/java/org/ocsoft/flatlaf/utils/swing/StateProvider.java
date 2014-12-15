@@ -18,19 +18,21 @@
 package org.ocsoft.flatlaf.utils.swing;
 
 /**
- * This interface provides a single method for boolean state request for data of any type.
+ * This interface provides a single method for boolean state request for data of
+ * any type.
  *
- * @param <T> type of value used to provide state
+ * @param <T>
+ *            type of value used to provide state
  * @author Mikle Garin
  */
 
-public interface StateProvider<T>
-{
+public interface StateProvider<T> {
     /**
      * Returns state for the specified value.
      *
-     * @param value value to process
+     * @param value
+     *            value to process
      * @return state for the specified value
      */
-    public boolean provide ( T value );
+    public boolean provide(T value);
 }

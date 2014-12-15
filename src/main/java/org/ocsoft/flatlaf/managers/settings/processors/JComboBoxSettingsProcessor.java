@@ -29,88 +29,83 @@ import java.awt.event.ActionListener;
  * Custom SettingsProcessor for JComboBox component.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How to use SettingsManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How
+ *      to use SettingsManager</a>
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  * @see org.ocsoft.flatlaf.managers.settings.SettingsProcessor
  */
 
-public class JComboBoxSettingsProcessor extends SettingsProcessor<JComboBox, Integer>
-{
+public class JComboBoxSettingsProcessor extends
+        SettingsProcessor<JComboBox, Integer> {
     /**
      * Combobox value change listener.
      */
     private ActionListener actionListener;
-
+    
     /**
      * Constructs SettingsProcessor using the specified SettingsProcessorData.
      *
-     * @param data SettingsProcessorData
+     * @param data
+     *            SettingsProcessorData
      */
-    public JComboBoxSettingsProcessor ( final SettingsProcessorData data )
-    {
-        super ( data );
+    public JComboBoxSettingsProcessor(final SettingsProcessorData data) {
+        super(data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Integer getDefaultValue ()
-    {
-        Integer defaultValue = super.getDefaultValue ();
-        if ( defaultValue == null )
-        {
+    public Integer getDefaultValue() {
+        Integer defaultValue = super.getDefaultValue();
+        if (defaultValue == null) {
             defaultValue = -1;
         }
         return defaultValue;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doInit ( final JComboBox comboBox )
-    {
-        actionListener = new ActionListener ()
-        {
+    protected void doInit(final JComboBox comboBox) {
+        actionListener = new ActionListener() {
             @Override
-            public void actionPerformed ( final ActionEvent e )
-            {
-                save ();
+            public void actionPerformed(final ActionEvent e) {
+                save();
             }
         };
-        comboBox.addActionListener ( actionListener );
+        comboBox.addActionListener(actionListener);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doDestroy ( final JComboBox comboBox )
-    {
-        comboBox.removeActionListener ( actionListener );
+    protected void doDestroy(final JComboBox comboBox) {
+        comboBox.removeActionListener(actionListener);
         actionListener = null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doLoad ( final JComboBox comboBox )
-    {
-        final Integer index = loadValue ();
-        if ( index != null && index >= 0 && comboBox.getModel ().getSize () > index && comboBox.getSelectedIndex () != index )
-        {
-            comboBox.setSelectedIndex ( index );
+    protected void doLoad(final JComboBox comboBox) {
+        final Integer index = loadValue();
+        if (index != null && index >= 0
+                && comboBox.getModel().getSize() > index
+                && comboBox.getSelectedIndex() != index) {
+            comboBox.setSelectedIndex(index);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doSave ( final JComboBox comboBox )
-    {
-        saveValue ( comboBox.getSelectedIndex () );
+    protected void doSave(final JComboBox comboBox) {
+        saveValue(comboBox.getSelectedIndex());
     }
 }

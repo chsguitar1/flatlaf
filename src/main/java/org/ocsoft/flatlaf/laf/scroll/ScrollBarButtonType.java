@@ -23,13 +23,12 @@ package org.ocsoft.flatlaf.laf.scroll;
  * @author Mikle Garin
  */
 
-public enum ScrollBarButtonType
-{
+public enum ScrollBarButtonType {
     /**
      * Decrease button type.
      */
     decrease,
-
+    
     /**
      * Increase button type.
      */

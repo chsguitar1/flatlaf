@@ -29,84 +29,78 @@ import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
  * Custom SettingsProcessor for JSlider component.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How to use SettingsManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How
+ *      to use SettingsManager</a>
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  * @see org.ocsoft.flatlaf.managers.settings.SettingsProcessor
  */
 
-public class JSliderSettingsProcessor extends SettingsProcessor<JSlider, Integer>
-{
+public class JSliderSettingsProcessor extends
+        SettingsProcessor<JSlider, Integer> {
     /**
      * Slider value change listener.
      */
     private ChangeListener changeListener;
-
+    
     /**
      * Constructs SettingsProcessor using the specified SettingsProcessorData.
      *
-     * @param data SettingsProcessorData
+     * @param data
+     *            SettingsProcessorData
      */
-    public JSliderSettingsProcessor ( final SettingsProcessorData data )
-    {
-        super ( data );
+    public JSliderSettingsProcessor(final SettingsProcessorData data) {
+        super(data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Integer getDefaultValue ()
-    {
-        Integer defaultValue = super.getDefaultValue ();
-        if ( defaultValue == null )
-        {
-            defaultValue = getComponent ().getMinimum ();
+    public Integer getDefaultValue() {
+        Integer defaultValue = super.getDefaultValue();
+        if (defaultValue == null) {
+            defaultValue = getComponent().getMinimum();
         }
         return defaultValue;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doInit ( final JSlider slider )
-    {
-        changeListener = new ChangeListener ()
-        {
+    protected void doInit(final JSlider slider) {
+        changeListener = new ChangeListener() {
             @Override
-            public void stateChanged ( final ChangeEvent e )
-            {
-                save ();
+            public void stateChanged(final ChangeEvent e) {
+                save();
             }
         };
-        slider.addChangeListener ( changeListener );
+        slider.addChangeListener(changeListener);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doDestroy ( final JSlider slider )
-    {
-        slider.removeChangeListener ( changeListener );
+    protected void doDestroy(final JSlider slider) {
+        slider.removeChangeListener(changeListener);
         changeListener = null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doLoad ( final JSlider slider )
-    {
-        slider.setValue ( loadValue () );
+    protected void doLoad(final JSlider slider) {
+        slider.setValue(loadValue());
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doSave ( final JSlider slider )
-    {
-        SettingsManager.set ( getGroup (), getKey (), slider.getValue () );
+    protected void doSave(final JSlider slider) {
+        SettingsManager.set(getGroup(), getKey(), slider.getValue());
     }
 }

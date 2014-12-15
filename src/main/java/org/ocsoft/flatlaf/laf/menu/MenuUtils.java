@@ -24,62 +24,57 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
 import java.awt.*;
 
 /**
- * This class provides a set of utilities for menu elements.
- * This is a library utility class and its not intended for use outside of the menu elements.
+ * This class provides a set of utilities for menu elements. This is a library
+ * utility class and its not intended for use outside of the menu elements.
  *
  * @author Mikle Garin
  */
 
-public final class MenuUtils implements SwingConstants
-{
+public final class MenuUtils implements SwingConstants {
     /**
-     * Returns maximum icon width for this menu item.
-     * It might take into account other menu items within popup menu.
+     * Returns maximum icon width for this menu item. It might take into account
+     * other menu items within popup menu.
      *
-     * @param menuItem             menu item to process
-     * @param alignTextToMenuIcons whether menu item text should be aligned to icons or not
+     * @param menuItem
+     *            menu item to process
+     * @param alignTextToMenuIcons
+     *            whether menu item text should be aligned to icons or not
      * @return maximum icon width for this menu item
      */
-    public static int getIconPlaceholderWidth ( final JMenuItem menuItem, final boolean alignTextToMenuIcons )
-    {
-        if ( alignTextToMenuIcons && menuItem.getParent () instanceof JPopupMenu )
-        {
+    public static int getIconPlaceholderWidth(final JMenuItem menuItem,
+            final boolean alignTextToMenuIcons) {
+        if (alignTextToMenuIcons && menuItem.getParent() instanceof JPopupMenu) {
             int max = 0;
-            final JPopupMenu popupMenu = ( JPopupMenu ) menuItem.getParent ();
-            for ( int i = 0; i < popupMenu.getComponentCount (); i++ )
-            {
-                final Component component = popupMenu.getComponent ( i );
-                if ( component instanceof JMenuItem )
-                {
-                    final JMenuItem otherItem = ( JMenuItem ) component;
-                    if ( otherItem.getIcon () != null )
-                    {
-                        max = Math.max ( max, otherItem.getIcon ().getIconWidth () );
-                    }
-                    else if ( component instanceof JCheckBoxMenuItem || component instanceof JRadioButtonMenuItem )
-                    {
-                        max = Math.max ( max, 16 );
+            final JPopupMenu popupMenu = (JPopupMenu) menuItem.getParent();
+            for (int i = 0; i < popupMenu.getComponentCount(); i++) {
+                final Component component = popupMenu.getComponent(i);
+                if (component instanceof JMenuItem) {
+                    final JMenuItem otherItem = (JMenuItem) component;
+                    if (otherItem.getIcon() != null) {
+                        max = Math.max(max, otherItem.getIcon().getIconWidth());
+                    } else if (component instanceof JCheckBoxMenuItem
+                            || component instanceof JRadioButtonMenuItem) {
+                        max = Math.max(max, 16);
                     }
                 }
             }
             return max;
-        }
-        else
-        {
-            final Icon icon = menuItem.getIcon ();
-            return icon != null ? icon.getIconWidth () : 0;
+        } else {
+            final Icon icon = menuItem.getIcon();
+            return icon != null ? icon.getIconWidth() : 0;
         }
     }
-
+    
     /**
      * Returns menu item accelerator text.
      *
-     * @param menuItem menu item to process
+     * @param menuItem
+     *            menu item to process
      * @return menu item accelerator text
      */
-    public static String getAcceleratorText ( final JMenuItem menuItem )
-    {
-        final KeyStroke accelerator = menuItem.getAccelerator ();
-        return accelerator != null ? SwingUtils.hotkeyToString ( accelerator ) : null;
+    public static String getAcceleratorText(final JMenuItem menuItem) {
+        final KeyStroke accelerator = menuItem.getAccelerator();
+        return accelerator != null ? SwingUtils.hotkeyToString(accelerator)
+                : null;
     }
 }

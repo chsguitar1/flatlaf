@@ -22,158 +22,145 @@ import javax.swing.*;
 import org.ocsoft.flatlaf.laf.panel.PanelPainter;
 
 /**
- * Web-style painter for WebPopOver component.
- * It is used as default WebPopOver painter.
+ * Web-style painter for WebPopOver component. It is used as default WebPopOver
+ * painter.
  *
  * @author Mikle Garin
  */
 
-public class WebPopOverPainter<E extends JPanel> extends WebPopupPainter<E> implements PanelPainter<E>
-{
+public class WebPopOverPainter<E extends JPanel> extends WebPopupPainter<E>
+        implements PanelPainter<E> {
     /**
      * Runtime variables.
      */
     protected boolean popOverFocused = false;
-
+    
     /**
      * Returns whether this WebPopOver is focus owner or not.
      *
      * @return true if this WebPopOver is focus owner, false otherwise
      */
-    public boolean isPopOverFocused ()
-    {
+    public boolean isPopOverFocused() {
         return popOverFocused;
     }
-
+    
     /**
      * Sets whether this WebPopOver is focus owner or not.
      *
-     * @param focused whether this WebPopOver is focus owner or not
+     * @param focused
+     *            whether this WebPopOver is focus owner or not
      */
-    public void setPopOverFocused ( final boolean focused )
-    {
-        if ( this.popOverFocused != focused )
-        {
+    public void setPopOverFocused(final boolean focused) {
+        if (this.popOverFocused != focused) {
             this.popOverFocused = focused;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected float getCurrentShadeTransparency ()
-    {
+    protected float getCurrentShadeTransparency() {
         // Reducing the shade when WebPopOver is not focused
         return popOverFocused ? shadeTransparency : shadeTransparency * 0.7f;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setUndecorated ( final boolean undecorated )
-    {
+    public void setUndecorated(final boolean undecorated) {
         // Ignored setting
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintFocus ( final boolean paint )
-    {
+    public void setPaintFocus(final boolean paint) {
         // Ignored setting
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintTop ( final boolean top )
-    {
+    public void setPaintTop(final boolean top) {
         // Ignored setting
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintLeft ( final boolean left )
-    {
+    public void setPaintLeft(final boolean left) {
         // Ignored setting
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintBottom ( final boolean bottom )
-    {
+    public void setPaintBottom(final boolean bottom) {
         // Ignored setting
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintRight ( final boolean right )
-    {
+    public void setPaintRight(final boolean right) {
         // Ignored setting
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintSides ( final boolean top, final boolean left, final boolean bottom, final boolean right )
-    {
+    public void setPaintSides(final boolean top, final boolean left,
+            final boolean bottom, final boolean right) {
         // Ignored setting
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintTopLine ( final boolean top )
-    {
+    public void setPaintTopLine(final boolean top) {
         // Ignored setting
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintLeftLine ( final boolean left )
-    {
+    public void setPaintLeftLine(final boolean left) {
         // Ignored setting
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintBottomLine ( final boolean bottom )
-    {
+    public void setPaintBottomLine(final boolean bottom) {
         // Ignored setting
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintRightLine ( final boolean right )
-    {
+    public void setPaintRightLine(final boolean right) {
         // Ignored setting
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintSideLines ( final boolean top, final boolean left, final boolean bottom, final boolean right )
-    {
+    public void setPaintSideLines(final boolean top, final boolean left,
+            final boolean bottom, final boolean right) {
         // Ignored setting
     }
 }

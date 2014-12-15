@@ -25,7 +25,6 @@ import java.util.List;
  * User: mgarin Date: 07.10.11 Time: 18:17
  */
 
-public interface FilesSelectionListener extends EventListener
-{
-    public void selectionChanged ( List<File> files );
+public interface FilesSelectionListener extends EventListener {
+    public void selectionChanged(List<File> files);
 }

@@ -20,21 +20,19 @@ package org.ocsoft.flatlaf.extended.label;
 import java.util.Comparator;
 
 /**
- * Custom StyleRange comparator.
- * Compares style ranges by their positions.
+ * Custom StyleRange comparator. Compares style ranges by their positions.
  *
  * @author Mikle Garin
  * @see org.ocsoft.flatlaf.extended.label.StyleRange
  */
 
-public class StyleRangeComparator implements Comparator<StyleRange>
-{
+public class StyleRangeComparator implements Comparator<StyleRange> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public int compare ( final StyleRange r1, final StyleRange r2 )
-    {
-        return r1.getStartIndex () < r2.getStartIndex () ? -1 : r1.getStartIndex () > r2.getStartIndex () ? 1 : 0;
+    public int compare(final StyleRange r1, final StyleRange r2) {
+        return r1.getStartIndex() < r2.getStartIndex() ? -1 : r1
+                .getStartIndex() > r2.getStartIndex() ? 1 : 0;
     }
 }

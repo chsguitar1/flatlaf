@@ -24,19 +24,16 @@ import javax.swing.plaf.ComponentUI;
  * User: mgarin Date: 06.07.11 Time: 11:33
  */
 
-public class WebToggleButtonUI extends WebButtonUI
-{
+public class WebToggleButtonUI extends WebButtonUI {
     private final static String propertyPrefix = "ToggleButton" + ".";
-
-    @SuppressWarnings ("UnusedParameters")
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebToggleButtonUI ();
+    
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebToggleButtonUI();
     }
-
+    
     @Override
-    protected String getPropertyPrefix ()
-    {
+    protected String getPropertyPrefix() {
         return propertyPrefix;
     }
 }

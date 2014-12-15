@@ -23,16 +23,14 @@ package org.ocsoft.flatlaf.managers.style.skin.web;
  * @author Mikle Garin
  */
 
-public enum PopupStyle
-{
+public enum PopupStyle {
     /**
      * Simple popup style.
      */
     simple,
-
+    
     /**
-     * Dropdown popup style.
-     * Painter will paint an additional styled corner.
+     * Dropdown popup style. Painter will paint an additional styled corner.
      */
     dropdown
 }

@@ -23,11 +23,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  * User: mgarin Date: 13.12.11 Time: 15:20
  */
 
-@XStreamAlias ("NinePatchIntervalType")
-public enum NinePatchIntervalType
-{
-    horizontalStretch,
-    verticalStretch,
-    horizontalContent,
-    verticalContent
+@XStreamAlias("NinePatchIntervalType")
+public enum NinePatchIntervalType {
+    horizontalStretch, verticalStretch, horizontalContent, verticalContent
 }

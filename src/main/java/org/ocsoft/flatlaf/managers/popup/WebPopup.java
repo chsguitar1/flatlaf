@@ -37,623 +37,545 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This is base popup class which offers basic popups functionality and contains all features needed to create great-looking popups within
- * the window root pane bounds.
+ * This is base popup class which offers basic popups functionality and contains
+ * all features needed to create great-looking popups within the window root
+ * pane bounds.
  *
  * @author Mikle Garin
  * @see PopupManager
  * @see PopupLayer
  */
 
-public class WebPopup extends WebPanel
-{
-    protected List<PopupListener> popupListeners = new ArrayList<PopupListener> ( 2 );
-
+public class WebPopup extends WebPanel {
+    protected List<PopupListener> popupListeners = new ArrayList<PopupListener>(
+            2);
+    
     // Popup constants
     protected static final int fadeFps = 24;
     protected static final long fadeTime = 400;
-
+    
     protected boolean animated = false;
     protected boolean closeOnFocusLoss = false;
     protected boolean requestFocusOnShow = true;
     protected Component defaultFocusComponent = null;
-    protected List<WeakReference<Component>> focusableChilds = new ArrayList<WeakReference<Component>> ();
-
+    protected List<WeakReference<Component>> focusableChilds = new ArrayList<WeakReference<Component>>();
+    
     protected Component lastComponent = null;
     protected ComponentListener lastComponentListener = null;
     protected AncestorListener lastAncestorListener = null;
-
+    
     protected boolean focused = false;
-
+    
     // Animation variables
     protected FadeStateType fadeStateType;
     protected float fade = 0;
     protected WebTimer fadeTimer;
-
+    
     // Focus tracker strong reference
     protected DefaultFocusTracker focusTracker;
-
-    public WebPopup ()
-    {
-        this ( PopupManager.getDefaultPopupPainter () );
+    
+    public WebPopup() {
+        this(PopupManager.getDefaultPopupPainter());
     }
-
-    public WebPopup ( final PopupStyle popupStyle )
-    {
-        this ( popupStyle.getPainter () );
+    
+    public WebPopup(final PopupStyle popupStyle) {
+        this(popupStyle.getPainter());
     }
-
-    public WebPopup ( final Painter stylePainter )
-    {
-        super ( stylePainter );
-        initializePopup ();
+    
+    public WebPopup(final Painter stylePainter) {
+        super(stylePainter);
+        initializePopup();
     }
-
-    public WebPopup ( final String styleId )
-    {
-        super ( styleId );
-        initializePopup ();
+    
+    public WebPopup(final String styleId) {
+        super(styleId);
+        initializePopup();
     }
-
+    
     /**
      * Initializes various popup settings.
      */
-    protected void initializePopup ()
-    {
-        setOpaque ( false );
-
+    protected void initializePopup() {
+        setOpaque(false);
+        
         // Popup doesn't allow focus to move outside of it
-        setFocusCycleRoot ( true );
-
+        setFocusCycleRoot(true);
+        
         // Listeners to block events passing to underlying components
-        EmptyMouseAdapter.install ( this );
-
+        EmptyMouseAdapter.install(this);
+        
         // Fade in-out timer
-        fadeTimer = new WebTimer ( "WebPopup.fade", 1000 / fadeFps );
-        fadeTimer.addActionListener ( new ActionListener ()
-        {
+        fadeTimer = new WebTimer("WebPopup.fade", 1000 / fadeFps);
+        fadeTimer.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed ( final ActionEvent e )
-            {
-                final float roundsCount = fadeTime / ( 1000f / fadeFps );
+            public void actionPerformed(final ActionEvent e) {
+                final float roundsCount = fadeTime / (1000f / fadeFps);
                 final float fadeSpeed = 1f / roundsCount;
-                if ( fadeStateType.equals ( FadeStateType.fadeIn ) )
-                {
-                    if ( fade < 1f )
-                    {
-                        fade = Math.min ( fade + fadeSpeed, 1f );
-                        WebPopup.this.repaint ();
+                if (fadeStateType.equals(FadeStateType.fadeIn)) {
+                    if (fade < 1f) {
+                        fade = Math.min(fade + fadeSpeed, 1f);
+                        WebPopup.this.repaint();
+                    } else {
+                        fadeTimer.stop();
                     }
-                    else
-                    {
-                        fadeTimer.stop ();
-                    }
-                }
-                else if ( fadeStateType.equals ( FadeStateType.fadeOut ) )
-                {
-                    if ( fade > 0 )
-                    {
-                        fade = Math.max ( fade - fadeSpeed, 0f );
-                        WebPopup.this.repaint ();
-                    }
-                    else
-                    {
-                        hidePopupImpl ();
-                        fadeTimer.stop ();
+                } else if (fadeStateType.equals(FadeStateType.fadeOut)) {
+                    if (fade > 0) {
+                        fade = Math.max(fade - fadeSpeed, 0f);
+                        WebPopup.this.repaint();
+                    } else {
+                        hidePopupImpl();
+                        fadeTimer.stop();
                     }
                 }
             }
-        } );
-
+        });
+        
         // Listener to determine popup appearance and disappearance
-        addAncestorListener ( new AncestorAdapter ()
-        {
+        addAncestorListener(new AncestorAdapter() {
             @Override
-            public void ancestorAdded ( final AncestorEvent event )
-            {
-                if ( requestFocusOnShow )
-                {
-                    if ( defaultFocusComponent != null )
-                    {
-                        defaultFocusComponent.requestFocusInWindow ();
-                    }
-                    else
-                    {
-                        WebPopup.this.transferFocus ();
+            public void ancestorAdded(final AncestorEvent event) {
+                if (requestFocusOnShow) {
+                    if (defaultFocusComponent != null) {
+                        defaultFocusComponent.requestFocusInWindow();
+                    } else {
+                        WebPopup.this.transferFocus();
                     }
                 }
-
+                
                 // Starting fade-in animation
-                if ( animated )
-                {
+                if (animated) {
                     fade = 0;
                     fadeStateType = FadeStateType.fadeIn;
-                    fadeTimer.start ();
-                }
-                else
-                {
+                    fadeTimer.start();
+                } else {
                     fade = 1;
                 }
-
+                
                 // Informing about popup state change
-                firePopupOpened ();
+                firePopupOpened();
             }
-
+            
             @Override
-            public void ancestorRemoved ( final AncestorEvent event )
-            {
+            public void ancestorRemoved(final AncestorEvent event) {
                 // Informing about popup state change
-                firePopupClosed ();
+                firePopupClosed();
             }
-        } );
-
+        });
+        
         // Focus tracking
-        focusTracker = new DefaultFocusTracker ( true )
-        {
+        focusTracker = new DefaultFocusTracker(true) {
             @Override
-            public boolean isTrackingEnabled ()
-            {
-                return WebPopup.this.isShowing ();
+            public boolean isTrackingEnabled() {
+                return WebPopup.this.isShowing();
             }
-
+            
             @Override
-            public void focusChanged ( final boolean focused )
-            {
-                WebPopup.this.focusChanged ( focused );
+            public void focusChanged(final boolean focused) {
+                WebPopup.this.focusChanged(focused);
             }
         };
-        FocusManager.addFocusTracker ( this, focusTracker );
+        FocusManager.addFocusTracker(this, focusTracker);
     }
-
+    
     /**
-     * Called when this popup recieve or lose focus.
-     * You can your own behavior for focus change by overriding this method.
+     * Called when this popup recieve or lose focus. You can your own behavior
+     * for focus change by overriding this method.
      *
-     * @param focused whether popup has focus or not
+     * @param focused
+     *            whether popup has focus or not
      */
-    protected void focusChanged ( final boolean focused )
-    {
+    protected void focusChanged(final boolean focused) {
         // todo Replace with MultiFocusTracker (for multiply components)
-        if ( WebPopup.this.isShowing () && !focused && !isChildFocused () && closeOnFocusLoss )
-        {
-            hidePopup ();
+        if (WebPopup.this.isShowing() && !focused && !isChildFocused()
+                && closeOnFocusLoss) {
+            hidePopup();
         }
     }
-
+    
     /**
      * Returns popup layer this WebPopup is added into.
      *
      * @return popup layer this WebPopup is added into
      */
-    public PopupLayer getPopupLayer ()
-    {
-        return ( PopupLayer ) getParent ();
+    public PopupLayer getPopupLayer() {
+        return (PopupLayer) getParent();
     }
-
+    
     /**
      * Popup styling
      */
-
-    public void setPopupStyle ( final PopupStyle popupStyle )
-    {
-        setPainter ( popupStyle.getPainter () );
+    
+    public void setPopupStyle(final PopupStyle popupStyle) {
+        setPainter(popupStyle.getPainter());
     }
-
+    
     /**
      * Popup settings
      */
-
-    public boolean isAnimated ()
-    {
+    
+    public boolean isAnimated() {
         return animated;
     }
-
-    public void setAnimated ( final boolean animated )
-    {
+    
+    public void setAnimated(final boolean animated) {
         this.animated = animated;
     }
-
-    public boolean isCloseOnFocusLoss ()
-    {
+    
+    public boolean isCloseOnFocusLoss() {
         return closeOnFocusLoss;
     }
-
-    public void setCloseOnFocusLoss ( final boolean closeOnFocusLoss )
-    {
+    
+    public void setCloseOnFocusLoss(final boolean closeOnFocusLoss) {
         this.closeOnFocusLoss = closeOnFocusLoss;
     }
-
-    public boolean isRequestFocusOnShow ()
-    {
+    
+    public boolean isRequestFocusOnShow() {
         return requestFocusOnShow;
     }
-
-    public void setRequestFocusOnShow ( final boolean requestFocusOnShow )
-    {
+    
+    public void setRequestFocusOnShow(final boolean requestFocusOnShow) {
         this.requestFocusOnShow = requestFocusOnShow;
     }
-
-    public Component getDefaultFocusComponent ()
-    {
+    
+    public Component getDefaultFocusComponent() {
         return defaultFocusComponent;
     }
-
-    public void setDefaultFocusComponent ( final Component defaultFocusComponent )
-    {
+    
+    public void setDefaultFocusComponent(final Component defaultFocusComponent) {
         this.defaultFocusComponent = defaultFocusComponent;
     }
-
+    
     /**
-     * Returns focusable childs that don't force dialog to close even if it set to close on focus loss.
+     * Returns focusable childs that don't force dialog to close even if it set
+     * to close on focus loss.
      *
-     * @return focusable childs that don't force dialog to close even if it set to close on focus loss
+     * @return focusable childs that don't force dialog to close even if it set
+     *         to close on focus loss
      */
-    public List<Component> getFocusableChilds ()
-    {
-        final List<Component> actualFocusableChilds = new ArrayList<Component> ( focusableChilds.size () );
-        for ( final WeakReference<Component> focusableChild : focusableChilds )
-        {
-            final Component component = focusableChild.get ();
-            if ( component != null )
-            {
-                actualFocusableChilds.add ( component );
+    public List<Component> getFocusableChilds() {
+        final List<Component> actualFocusableChilds = new ArrayList<Component>(
+                focusableChilds.size());
+        for (final WeakReference<Component> focusableChild : focusableChilds) {
+            final Component component = focusableChild.get();
+            if (component != null) {
+                actualFocusableChilds.add(component);
             }
         }
         return actualFocusableChilds;
     }
-
+    
     /**
-     * Adds focusable child that won't force dialog to close even if it set to close on focus loss.
+     * Adds focusable child that won't force dialog to close even if it set to
+     * close on focus loss.
      *
-     * @param child focusable child that won't force dialog to close even if it set to close on focus loss
+     * @param child
+     *            focusable child that won't force dialog to close even if it
+     *            set to close on focus loss
      */
-    public void addFocusableChild ( final Component child )
-    {
-        focusableChilds.add ( new WeakReference<Component> ( child ) );
+    public void addFocusableChild(final Component child) {
+        focusableChilds.add(new WeakReference<Component>(child));
     }
-
+    
     /**
-     * Removes focusable child that doesn't force dialog to close even if it set to close on focus loss.
+     * Removes focusable child that doesn't force dialog to close even if it set
+     * to close on focus loss.
      *
-     * @param child focusable child that doesn't force dialog to close even if it set to close on focus loss
+     * @param child
+     *            focusable child that doesn't force dialog to close even if it
+     *            set to close on focus loss
      */
-    public void removeFocusableChild ( final Component child )
-    {
-        focusableChilds.remove ( child );
+    public void removeFocusableChild(final Component child) {
+        focusableChilds.remove(child);
     }
-
+    
     /**
      * Returns whether one of focusable childs is focused or not.
      *
      * @return true if one of focusable childs is focused, false otherwise
      */
-    public boolean isChildFocused ()
-    {
-        for ( final WeakReference<Component> focusableChild : focusableChilds )
-        {
-            final Component component = focusableChild.get ();
-            if ( component != null )
-            {
-                if ( SwingUtils.hasFocusOwner ( component ) )
-                {
+    public boolean isChildFocused() {
+        for (final WeakReference<Component> focusableChild : focusableChilds) {
+            final Component component = focusableChild.get();
+            if (component != null) {
+                if (SwingUtils.hasFocusOwner(component)) {
                     return true;
                 }
             }
         }
         return false;
     }
-
+    
     /**
      * Popup display methods
      */
-
-    public void showAsPopupMenu ( final Component component )
-    {
-        showPopup ( component, new DataProvider<Rectangle> ()
-        {
+    
+    public void showAsPopupMenu(final Component component) {
+        showPopup(component, new DataProvider<Rectangle>() {
             @Override
-            public Rectangle provide ()
-            {
+            public Rectangle provide() {
                 // Detrmining component position inside window
-                final Rectangle cb = SwingUtils.getBoundsInWindow ( component );
-                final Dimension rps = SwingUtils.getRootPane ( component ).getSize ();
-                final Dimension ps = WebPopup.this.getPreferredSize ();
-                //        Painter bp = getPainter ();
-                //        Insets bm = bp != null ? bp.getMargin ( this ) : new Insets ( 0, 0, 0, 0 );
-
+                final Rectangle cb = SwingUtils.getBoundsInWindow(component);
+                final Dimension rps = SwingUtils.getRootPane(component)
+                        .getSize();
+                final Dimension ps = WebPopup.this.getPreferredSize();
+                // Painter bp = getPainter ();
+                // Insets bm = bp != null ? bp.getMargin ( this ) : new Insets (
+                // 0, 0, 0, 0 );
+                
                 // Choosing display way
-                final Point p = new Point ();
-                if ( cb.x + ps.width < rps.width || rps.width - cb.x - ps.width > cb.x )
-                {
+                final Point p = new Point();
+                if (cb.x + ps.width < rps.width
+                        || rps.width - cb.x - ps.width > cb.x) {
                     // Expanding popup to the right side
                     p.x = 0;
-                }
-                else
-                {
+                } else {
                     // Expanding popup to the left side
                     p.x = cb.width - ps.width;
                 }
-                if ( cb.y + cb.height + ps.height < rps.height || rps.height - cb.y - cb.height - ps.height > cb.y )
-                {
+                if (cb.y + cb.height + ps.height < rps.height
+                        || rps.height - cb.y - cb.height - ps.height > cb.y) {
                     // Displaying popup below the component
                     p.y = cb.height;
-                }
-                else
-                {
+                } else {
                     // Displaying popup above the component
                     p.y = -ps.height;
                 }
-
+                
                 // Returning proper location
-                return new Rectangle ( p, WebPopup.this.getPreferredSize () );
+                return new Rectangle(p, WebPopup.this.getPreferredSize());
             }
-        } );
+        });
     }
-
-    public void showPopup ( final Component component )
-    {
-        PopupManager.showPopup ( component, this, requestFocusOnShow );
-        clearLocationListeners ();
+    
+    public void showPopup(final Component component) {
+        PopupManager.showPopup(component, this, requestFocusOnShow);
+        clearLocationListeners();
     }
-
-    public void showPopup ( final Component component, final Rectangle bounds )
-    {
-        showPopup ( component, bounds.x, bounds.y, bounds.width, bounds.height );
+    
+    public void showPopup(final Component component, final Rectangle bounds) {
+        showPopup(component, bounds.x, bounds.y, bounds.width, bounds.height);
     }
-
-    public void showPopup ( final Component component, final int x, final int y, final int width, final int height )
-    {
-        updatePopupBounds ( component, x, y, width, height );
-        PopupManager.showPopup ( component, this, requestFocusOnShow );
-        updateComponentAncestorListener ( component, x, y, width, height );
+    
+    public void showPopup(final Component component, final int x, final int y,
+            final int width, final int height) {
+        updatePopupBounds(component, x, y, width, height);
+        PopupManager.showPopup(component, this, requestFocusOnShow);
+        updateComponentAncestorListener(component, x, y, width, height);
     }
-
-    public void showPopup ( final Component component, final Point location )
-    {
-        showPopup ( component, location.x, location.y );
+    
+    public void showPopup(final Component component, final Point location) {
+        showPopup(component, location.x, location.y);
     }
-
-    public void showPopup ( final Component component, final int x, final int y )
-    {
-        showPopup ( component, new DataProvider<Rectangle> ()
-        {
+    
+    public void showPopup(final Component component, final int x, final int y) {
+        showPopup(component, new DataProvider<Rectangle>() {
             @Override
-            public Rectangle provide ()
-            {
-                final Dimension ps = WebPopup.this.getPreferredSize ();
-                return new Rectangle ( x, y, ps.width, ps.height );
+            public Rectangle provide() {
+                final Dimension ps = WebPopup.this.getPreferredSize();
+                return new Rectangle(x, y, ps.width, ps.height);
             }
-        } );
+        });
     }
-
-    public void showPopup ( final Component component, final DataProvider<Rectangle> boundsProvider )
-    {
-        updatePopupBounds ( component, boundsProvider.provide () );
-        PopupManager.showPopup ( component, this, requestFocusOnShow );
-        updateLocationListeners ( component, boundsProvider );
+    
+    public void showPopup(final Component component,
+            final DataProvider<Rectangle> boundsProvider) {
+        updatePopupBounds(component, boundsProvider.provide());
+        PopupManager.showPopup(component, this, requestFocusOnShow);
+        updateLocationListeners(component, boundsProvider);
     }
-
-    protected void updatePopupBounds ( final Component component, final Rectangle bounds )
-    {
-        updatePopupBounds ( component, bounds.x, bounds.y, bounds.width, bounds.height );
+    
+    protected void updatePopupBounds(final Component component,
+            final Rectangle bounds) {
+        updatePopupBounds(component, bounds.x, bounds.y, bounds.width,
+                bounds.height);
     }
-
-    protected void updatePopupBounds ( final Component component, final int x, final int y, final int width, final int height )
-    {
+    
+    protected void updatePopupBounds(final Component component, final int x,
+            final int y, final int width, final int height) {
         // Updating popup bounds with component-relative values
-        if ( component.isShowing () )
-        {
-            final Rectangle cb = SwingUtils.getBoundsInWindow ( component );
-            setBounds ( cb.x + x, cb.y + y, width, height );
-            revalidate ();
-            repaint ();
+        if (component.isShowing()) {
+            final Rectangle cb = SwingUtils.getBoundsInWindow(component);
+            setBounds(cb.x + x, cb.y + y, width, height);
+            revalidate();
+            repaint();
         }
     }
-
-    protected void updateComponentAncestorListener ( final Component component, final int x, final int y, final int width,
-                                                     final int height )
-    {
-        clearLocationListeners ();
-
+    
+    protected void updateComponentAncestorListener(final Component component,
+            final int x, final int y, final int width, final int height) {
+        clearLocationListeners();
+        
         lastComponent = component;
-        if ( component instanceof JComponent )
-        {
-            lastAncestorListener = new AncestorAdapter ()
-            {
+        if (component instanceof JComponent) {
+            lastAncestorListener = new AncestorAdapter() {
                 @Override
-                public void ancestorMoved ( final AncestorEvent event )
-                {
-                    updatePopupBounds ( component, x, y, width, height );
+                public void ancestorMoved(final AncestorEvent event) {
+                    updatePopupBounds(component, x, y, width, height);
                 }
             };
-            ( ( JComponent ) lastComponent ).addAncestorListener ( lastAncestorListener );
+            ((JComponent) lastComponent)
+                    .addAncestorListener(lastAncestorListener);
         }
     }
-
-    protected void updateLocationListeners ( final Component component, final DataProvider<Rectangle> boundsProvider )
-    {
-        clearLocationListeners ();
-
+    
+    protected void updateLocationListeners(final Component component,
+            final DataProvider<Rectangle> boundsProvider) {
+        clearLocationListeners();
+        
         lastComponent = component;
-
-        lastComponentListener = new ComponentAdapter ()
-        {
+        
+        lastComponentListener = new ComponentAdapter() {
             @Override
-            public void componentResized ( final ComponentEvent e )
-            {
-                updatePopupBounds ( component, boundsProvider.provide () );
+            public void componentResized(final ComponentEvent e) {
+                updatePopupBounds(component, boundsProvider.provide());
             }
-
+            
             @Override
-            public void componentMoved ( final ComponentEvent e )
-            {
-                updatePopupBounds ( component, boundsProvider.provide () );
+            public void componentMoved(final ComponentEvent e) {
+                updatePopupBounds(component, boundsProvider.provide());
             }
         };
-        lastComponent.addComponentListener ( lastComponentListener );
-
-        if ( component instanceof JComponent )
-        {
-            lastAncestorListener = new AncestorAdapter ()
-            {
+        lastComponent.addComponentListener(lastComponentListener);
+        
+        if (component instanceof JComponent) {
+            lastAncestorListener = new AncestorAdapter() {
                 @Override
-                public void ancestorMoved ( final AncestorEvent event )
-                {
-                    updatePopupBounds ( component, boundsProvider.provide () );
+                public void ancestorMoved(final AncestorEvent event) {
+                    updatePopupBounds(component, boundsProvider.provide());
                 }
             };
-            ( ( JComponent ) lastComponent ).addAncestorListener ( lastAncestorListener );
+            ((JComponent) lastComponent)
+                    .addAncestorListener(lastAncestorListener);
         }
     }
-
-    protected void clearLocationListeners ()
-    {
-        if ( lastComponent != null )
-        {
-            if ( lastComponentListener != null )
-            {
-                lastComponent.removeComponentListener ( lastComponentListener );
+    
+    protected void clearLocationListeners() {
+        if (lastComponent != null) {
+            if (lastComponentListener != null) {
+                lastComponent.removeComponentListener(lastComponentListener);
             }
-            if ( lastAncestorListener != null && lastComponent instanceof JComponent )
-            {
-                ( ( JComponent ) lastComponent ).removeAncestorListener ( lastAncestorListener );
+            if (lastAncestorListener != null
+                    && lastComponent instanceof JComponent) {
+                ((JComponent) lastComponent)
+                        .removeAncestorListener(lastAncestorListener);
             }
         }
     }
-
+    
     /**
      * Modal popup display methods
      */
-
-    public void showPopupAsModal ( final Component component )
-    {
-        showPopupAsModal ( component, false, false );
+    
+    public void showPopupAsModal(final Component component) {
+        showPopupAsModal(component, false, false);
     }
-
-    public void showPopupAsModal ( final Component component, final boolean hfill, final boolean vfill )
-    {
-        PopupManager.showModalPopup ( component, this, hfill, vfill );
+    
+    public void showPopupAsModal(final Component component,
+            final boolean hfill, final boolean vfill) {
+        PopupManager.showModalPopup(component, this, hfill, vfill);
     }
-
+    
     /**
      * Popup hide methods
      */
-
-    public void hidePopup ()
-    {
-        if ( animated )
-        {
+    
+    public void hidePopup() {
+        if (animated) {
             fadeStateType = FadeStateType.fadeOut;
-            if ( !fadeTimer.isRunning () )
-            {
-                fadeTimer.start ();
+            if (!fadeTimer.isRunning()) {
+                fadeTimer.start();
             }
-        }
-        else
-        {
-            hidePopupImpl ();
+        } else {
+            hidePopupImpl();
         }
     }
-
-    protected void hidePopupImpl ()
-    {
-        clearLocationListeners ();
-
-        final PopupLayer layer = ( PopupLayer ) this.getParent ();
-        if ( layer != null )
-        {
-            layer.hidePopup ( this );
+    
+    protected void hidePopupImpl() {
+        clearLocationListeners();
+        
+        final PopupLayer layer = (PopupLayer) this.getParent();
+        if (layer != null) {
+            layer.hidePopup(this);
         }
     }
-
+    
     /**
      * Popup pack method
      */
-
-    public void packPopup ()
-    {
-        setSize ( getPreferredSize () );
+    
+    public void packPopup() {
+        setSize(getPreferredSize());
     }
-
-    public void updateBounds ()
-    {
-        if ( lastAncestorListener != null )
-        {
+    
+    public void updateBounds() {
+        if (lastAncestorListener != null) {
             // todo Replace with a better solution
-            lastAncestorListener.ancestorMoved ( null );
+            lastAncestorListener.ancestorMoved(null);
         }
     }
-
+    
     /**
      * Shape-based point check
      */
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean contains ( final int x, final int y )
-    {
-        return fadeStateType != FadeStateType.fadeOut && provideShape ().contains ( x, y );
+    public boolean contains(final int x, final int y) {
+        return fadeStateType != FadeStateType.fadeOut
+                && provideShape().contains(x, y);
     }
-
+    
     /**
      * Popup listeners
      */
-
-    public void addPopupListener ( final PopupListener listener )
-    {
-        popupListeners.add ( listener );
+    
+    public void addPopupListener(final PopupListener listener) {
+        popupListeners.add(listener);
     }
-
-    public void removePopupListener ( final PopupListener listener )
-    {
-        popupListeners.remove ( listener );
+    
+    public void removePopupListener(final PopupListener listener) {
+        popupListeners.remove(listener);
     }
-
-    public void firePopupWillBeOpened ()
-    {
-        for ( final PopupListener listener : CollectionUtils.copy ( popupListeners ) )
-        {
-            listener.popupWillBeOpened ();
+    
+    public void firePopupWillBeOpened() {
+        for (final PopupListener listener : CollectionUtils
+                .copy(popupListeners)) {
+            listener.popupWillBeOpened();
         }
     }
-
-    public void firePopupOpened ()
-    {
-        for ( final PopupListener listener : CollectionUtils.copy ( popupListeners ) )
-        {
-            listener.popupOpened ();
+    
+    public void firePopupOpened() {
+        for (final PopupListener listener : CollectionUtils
+                .copy(popupListeners)) {
+            listener.popupOpened();
         }
     }
-
-    public void firePopupWillBeClosed ()
-    {
-        for ( final PopupListener listener : CollectionUtils.copy ( popupListeners ) )
-        {
-            listener.popupWillBeClosed ();
+    
+    public void firePopupWillBeClosed() {
+        for (final PopupListener listener : CollectionUtils
+                .copy(popupListeners)) {
+            listener.popupWillBeClosed();
         }
     }
-
-    public void firePopupClosed ()
-    {
-        for ( final PopupListener listener : CollectionUtils.copy ( popupListeners ) )
-        {
-            listener.popupClosed ();
+    
+    public void firePopupClosed() {
+        for (final PopupListener listener : CollectionUtils
+                .copy(popupListeners)) {
+            listener.popupClosed();
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void paintComponent ( final Graphics g )
-    {
+    protected void paintComponent(final Graphics g) {
         // Fade animation and transparency
-        if ( fade < 1f )
-        {
-            GraphicsUtils.setupAlphaComposite ( ( Graphics2D ) g, fade );
+        if (fade < 1f) {
+            GraphicsUtils.setupAlphaComposite((Graphics2D) g, fade);
         }
-        super.paintComponent ( g );
+        super.paintComponent(g);
     }
 }

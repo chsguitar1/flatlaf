@@ -23,20 +23,19 @@ package org.ocsoft.flatlaf.utils.laf;
  * @author Mikle Garin
  */
 
-public enum ShadeType
-{
+public enum ShadeType {
     /**
      * Stroke-based shade.
      */
     simple,
-
+    
     /**
      * Gradient-based shade.
      */
     gradient,
-
+    
     /**
      * todo Filter-based shade.
      */
-    //filter
+    // filter
 }

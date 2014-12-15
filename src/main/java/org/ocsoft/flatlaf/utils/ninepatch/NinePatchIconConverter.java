@@ -33,69 +33,64 @@ import com.thoughtworks.xstream.mapper.Mapper;
  * @author Mikle Garin
  */
 
-public class NinePatchIconConverter extends ReflectionConverter
-{
+public class NinePatchIconConverter extends ReflectionConverter {
     /**
      * todo 1. Create proper object->xml marshalling strategy (or not?)
      */
-
+    
     /**
      * Converter constants.
      */
     public static final String NEAR_CLASS_ATTRIBUTE = "nearClass";
-
+    
     /**
-     * Constructs NinePatchIconConverter with the specified mapper and reflection provider.
+     * Constructs NinePatchIconConverter with the specified mapper and
+     * reflection provider.
      *
-     * @param mapper             mapper
-     * @param reflectionProvider reflection provider
+     * @param mapper
+     *            mapper
+     * @param reflectionProvider
+     *            reflection provider
      */
-    public NinePatchIconConverter ( final Mapper mapper, final ReflectionProvider reflectionProvider )
-    {
-        super ( mapper, reflectionProvider );
+    public NinePatchIconConverter(final Mapper mapper,
+            final ReflectionProvider reflectionProvider) {
+        super(mapper, reflectionProvider);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean canConvert ( final Class type )
-    {
-        return type.equals ( NinePatchIcon.class );
+    public boolean canConvert(final Class type) {
+        return type.equals(NinePatchIcon.class);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Object unmarshal ( final HierarchicalStreamReader reader, final UnmarshallingContext context )
-    {
-        String nearClass = reader.getAttribute ( NEAR_CLASS_ATTRIBUTE );
-        if ( nearClass == null )
-        {
-            nearClass = ( String ) context.get ( ComponentStyleConverter.PAINTER_CLASS_ATTRIBUTE );
+    public Object unmarshal(final HierarchicalStreamReader reader,
+            final UnmarshallingContext context) {
+        String nearClass = reader.getAttribute(NEAR_CLASS_ATTRIBUTE);
+        if (nearClass == null) {
+            nearClass = (String) context
+                    .get(ComponentStyleConverter.PAINTER_CLASS_ATTRIBUTE);
         }
-        if ( nearClass == null )
-        {
+        if (nearClass == null) {
             return null;
-        }
-        else
-        {
-            final Class nearRealClass = ReflectUtils.getClassSafely ( nearClass );
-            if ( nearRealClass == null )
-            {
+        } else {
+            final Class nearRealClass = ReflectUtils.getClassSafely(nearClass);
+            if (nearRealClass == null) {
                 return null;
-            }
-            else
-            {
-                final String iconPath = reader.getValue ();
-                try
-                {
-                    return new NinePatchIcon ( nearRealClass.getResource ( iconPath ) );
-                }
-                catch ( final Throwable e )
-                {
-                    FlatLafLogger.error ( this, "Unable to read 9-patch icon near class \"" + nearClass + "\": " + iconPath, e );
+            } else {
+                final String iconPath = reader.getValue();
+                try {
+                    return new NinePatchIcon(
+                            nearRealClass.getResource(iconPath));
+                } catch (final Throwable e) {
+                    FlatLafLogger.error(this,
+                            "Unable to read 9-patch icon near class \""
+                                    + nearClass + "\": " + iconPath, e);
                     return null;
                 }
             }

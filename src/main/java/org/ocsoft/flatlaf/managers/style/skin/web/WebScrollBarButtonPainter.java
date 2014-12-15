@@ -37,17 +37,18 @@ import java.awt.geom.GeneralPath;
  * @author Mikle Garin
  */
 
-public class WebScrollBarButtonPainter<E extends AbstractButton> extends AbstractPainter<E> implements ScrollBarButtonPainter<E>
-{
+public class WebScrollBarButtonPainter<E extends AbstractButton> extends
+        AbstractPainter<E> implements ScrollBarButtonPainter<E> {
     /**
-     * todo 1. On rollover=false make the same animation scroll bar thumb has -> requires WebButtonUI full painter support
+     * todo 1. On rollover=false make the same animation scroll bar thumb has ->
+     * requires WebButtonUI full painter support
      */
-
+    
     /**
      * Shape cache key.
      */
     protected static final String ARROW_BUTTON_SHAPE = "arrow-button";
-
+    
     /**
      * Style settings.
      */
@@ -59,364 +60,342 @@ public class WebScrollBarButtonPainter<E extends AbstractButton> extends Abstrac
     protected Color rolloverBackgroundColor = WebScrollBarStyle.thumbRolloverBackgroundColor;
     protected Color pressedBorderColor = WebScrollBarStyle.thumbPressedBorderColor;
     protected Color pressedBackgroundColor = WebScrollBarStyle.thumbPressedBackgroundColor;
-
+    
     /**
      * Runtime variables.
      */
     protected ScrollBarButtonType buttonType;
     protected JScrollBar scrollbar;
-
+    
     /**
      * Constructs new scroll bar button painter.
      */
-    public WebScrollBarButtonPainter ()
-    {
-        super ();
-        setPreferredSize ( new Dimension ( WebScrollBarStyle.buttonsSize ) );
+    public WebScrollBarButtonPainter() {
+        super();
+        setPreferredSize(new Dimension(WebScrollBarStyle.buttonsSize));
     }
-
+    
     /**
      * Returns button border color.
      *
      * @return button border color
      */
-    public Color getBorderColor ()
-    {
+    public Color getBorderColor() {
         return borderColor;
     }
-
+    
     /**
      * Sets button border color.
      *
-     * @param color new button border color
+     * @param color
+     *            new button border color
      */
-    public void setBorderColor ( final Color color )
-    {
-        if ( this.borderColor != color )
-        {
+    public void setBorderColor(final Color color) {
+        if (this.borderColor != color) {
             this.borderColor = color;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns button background color.
      *
      * @return button background color
      */
-    public Color getBackgroundColor ()
-    {
+    public Color getBackgroundColor() {
         return backgroundColor;
     }
-
+    
     /**
      * Sets button background color.
      *
-     * @param color new button background color
+     * @param color
+     *            new button background color
      */
-    public void setBackgroundColor ( final Color color )
-    {
-        if ( this.backgroundColor != color )
-        {
+    public void setBackgroundColor(final Color color) {
+        if (this.backgroundColor != color) {
             this.backgroundColor = color;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns disabled button border color.
      *
      * @return disabled button border color
      */
-    public Color getDisabledBorderColor ()
-    {
+    public Color getDisabledBorderColor() {
         return disabledBorderColor;
     }
-
+    
     /**
      * Sets disabled button border color.
      *
-     * @param color new disabled button border color
+     * @param color
+     *            new disabled button border color
      */
-    public void setDisabledBorderColor ( final Color color )
-    {
-        if ( this.disabledBorderColor != color )
-        {
+    public void setDisabledBorderColor(final Color color) {
+        if (this.disabledBorderColor != color) {
             this.disabledBorderColor = color;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns disabled button background color.
      *
      * @return disabled button background color
      */
-    public Color getDisabledBackgroundColor ()
-    {
+    public Color getDisabledBackgroundColor() {
         return disabledBackgroundColor;
     }
-
+    
     /**
      * Sets disabled button background color.
      *
-     * @param color new disabled button background color
+     * @param color
+     *            new disabled button background color
      */
-    public void setDisabledBackgroundColor ( final Color color )
-    {
-        if ( this.disabledBackgroundColor != color )
-        {
+    public void setDisabledBackgroundColor(final Color color) {
+        if (this.disabledBackgroundColor != color) {
             this.disabledBackgroundColor = color;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns rollover button border color.
      *
      * @return rollover button border color
      */
-    public Color getRolloverBorderColor ()
-    {
+    public Color getRolloverBorderColor() {
         return rolloverBorderColor;
     }
-
+    
     /**
      * Sets rollover button border color.
      *
-     * @param color new rollover button border color
+     * @param color
+     *            new rollover button border color
      */
-    public void setRolloverBorderColor ( final Color color )
-    {
-        if ( this.rolloverBorderColor != color )
-        {
+    public void setRolloverBorderColor(final Color color) {
+        if (this.rolloverBorderColor != color) {
             this.rolloverBorderColor = color;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns rollover button background color.
      *
      * @return rollover button background color
      */
-    public Color getRolloverBackgroundColor ()
-    {
+    public Color getRolloverBackgroundColor() {
         return rolloverBackgroundColor;
     }
-
+    
     /**
      * Sets rollover button background color.
      *
-     * @param color new rollover button background color
+     * @param color
+     *            new rollover button background color
      */
-    public void setRolloverBackgroundColor ( final Color color )
-    {
-        if ( this.rolloverBackgroundColor != color )
-        {
+    public void setRolloverBackgroundColor(final Color color) {
+        if (this.rolloverBackgroundColor != color) {
             this.rolloverBackgroundColor = color;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns pressed button border color.
      *
      * @return pressed button border color
      */
-    public Color getPressedBorderColor ()
-    {
+    public Color getPressedBorderColor() {
         return pressedBorderColor;
     }
-
+    
     /**
      * Sets pressed button border color.
      *
-     * @param color new pressed button border color
+     * @param color
+     *            new pressed button border color
      */
-    public void setPressedBorderColor ( final Color color )
-    {
-        if ( this.pressedBorderColor != color )
-        {
+    public void setPressedBorderColor(final Color color) {
+        if (this.pressedBorderColor != color) {
             this.pressedBorderColor = color;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns pressed button background color.
      *
      * @return pressed button background color
      */
-    public Color getPressedBackgroundColor ()
-    {
+    public Color getPressedBackgroundColor() {
         return pressedBackgroundColor;
     }
-
+    
     /**
      * Sets pressed button background color.
      *
-     * @param color new pressed button background color
+     * @param color
+     *            new pressed button background color
      */
-    public void setPressedBackgroundColor ( final Color color )
-    {
-        if ( this.pressedBackgroundColor != color )
-        {
+    public void setPressedBackgroundColor(final Color color) {
+        if (this.pressedBackgroundColor != color) {
             this.pressedBackgroundColor = color;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Sets scroll bar button type.
      *
-     * @param type scroll bar button type
+     * @param type
+     *            scroll bar button type
      */
     @Override
-    public void setButtonType ( final ScrollBarButtonType type )
-    {
+    public void setButtonType(final ScrollBarButtonType type) {
         this.buttonType = type;
     }
-
+    
     /**
      * Sets scroll bar which uses this button.
      *
-     * @param scrollbar scroll bar which uses this button
+     * @param scrollbar
+     *            scroll bar which uses this button
      */
     @Override
-    public void setScrollbar ( final JScrollBar scrollbar )
-    {
+    public void setScrollbar(final JScrollBar scrollbar) {
         this.scrollbar = scrollbar;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Insets getMargin ( final E button )
-    {
-        final boolean ver = scrollbar.getOrientation () == SwingConstants.VERTICAL;
+    public Insets getMargin(final E button) {
+        final boolean ver = scrollbar.getOrientation() == SwingConstants.VERTICAL;
         final boolean decr = buttonType == ScrollBarButtonType.decrease;
-        if ( ver )
-        {
-            return new Insets ( decr ? 1 : 0, 1, decr ? 0 : 1, 1 );
-        }
-        else
-        {
-            return new Insets ( 1, decr ? 1 : 0, 1, decr ? 0 : 1 );
+        if (ver) {
+            return new Insets(decr ? 1 : 0, 1, decr ? 0 : 1, 1);
+        } else {
+            return new Insets(1, decr ? 1 : 0, 1, decr ? 0 : 1);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void paint ( final Graphics2D g2d, final Rectangle bounds, final E button )
-    {
+    public void paint(final Graphics2D g2d, final Rectangle bounds,
+            final E button) {
         // Button model state
-        final ButtonModel model = button.getModel ();
-        final ButtonUI ui = button.getUI ();
-        final boolean enabled = button.isEnabled ();
-        final boolean pressed = model.isPressed () || model.isSelected ();
-        final boolean rollover = ui instanceof WebButtonUI ? ( ( WebButtonUI ) ui ).isRollover () : model.isRollover ();
-
+        final ButtonModel model = button.getModel();
+        final ButtonUI ui = button.getUI();
+        final boolean enabled = button.isEnabled();
+        final boolean pressed = model.isPressed() || model.isSelected();
+        final boolean rollover = ui instanceof WebButtonUI ? ((WebButtonUI) ui)
+                .isRollover() : model.isRollover();
+        
         // Retrieving button shape
-        final Shape shape = getArrowButtonShape ( bounds, button );
-
+        final Shape shape = getArrowButtonShape(bounds, button);
+        
         // Painting button
-        g2d.setPaint ( enabled ? ( pressed ? pressedBackgroundColor : ( rollover ? rolloverBackgroundColor : backgroundColor ) ) :
-                disabledBackgroundColor );
-        g2d.fill ( shape );
-        g2d.setPaint (
-                enabled ? ( pressed ? pressedBorderColor : ( rollover ? rolloverBorderColor : borderColor ) ) : disabledBorderColor );
-        g2d.draw ( shape );
+        g2d.setPaint(enabled ? (pressed ? pressedBackgroundColor
+                : (rollover ? rolloverBackgroundColor : backgroundColor))
+                : disabledBackgroundColor);
+        g2d.fill(shape);
+        g2d.setPaint(enabled ? (pressed ? pressedBorderColor
+                : (rollover ? rolloverBorderColor : borderColor))
+                : disabledBorderColor);
+        g2d.draw(shape);
     }
-
+    
     /**
      * Returns popup border shape.
      *
-     * @param bounds button bounds
-     * @param button button component
+     * @param bounds
+     *            button bounds
+     * @param button
+     *            button component
      * @return popup border shape
      */
-    protected Shape getArrowButtonShape ( final Rectangle bounds, final E button )
-    {
-        return ShapeCache.getShape ( button, ARROW_BUTTON_SHAPE, new DataProvider<Shape> ()
-        {
-            @Override
-            public Shape provide ()
-            {
-                return createArrowButtonShape ( bounds, button );
-            }
-        }, getCachedShapeSettings ( button ) );
+    protected Shape getArrowButtonShape(final Rectangle bounds, final E button) {
+        return ShapeCache.getShape(button, ARROW_BUTTON_SHAPE,
+                new DataProvider<Shape>() {
+                    @Override
+                    public Shape provide() {
+                        return createArrowButtonShape(bounds, button);
+                    }
+                }, getCachedShapeSettings(button));
     }
-
+    
     /**
      * Returns an array of shape settings cached along with the shape.
      *
-     * @param button button component
+     * @param button
+     *            button component
      * @return an array of shape settings cached along with the shape
      */
-    protected Object[] getCachedShapeSettings ( final E button )
-    {
-        return new Object[]{ button.getSize (), button.getInsets (), buttonType, button.getComponentOrientation ().isLeftToRight (),
-                scrollbar.getOrientation () };
+    protected Object[] getCachedShapeSettings(final E button) {
+        return new Object[] { button.getSize(), button.getInsets(), buttonType,
+                button.getComponentOrientation().isLeftToRight(),
+                scrollbar.getOrientation() };
     }
-
+    
     /**
      * Returns arrow button shape.
      *
-     * @param bounds button bounds
-     * @param button button component
+     * @param bounds
+     *            button bounds
+     * @param button
+     *            button component
      * @return arrow button shape
      */
-    protected Shape createArrowButtonShape ( final Rectangle bounds, final E button )
-    {
-        final int orientation = scrollbar.getOrientation ();
-        final Insets i = button.getInsets ();
+    protected Shape createArrowButtonShape(final Rectangle bounds,
+            final E button) {
+        final int orientation = scrollbar.getOrientation();
+        final Insets i = button.getInsets();
         final int x = bounds.x + i.left;
         final int y = bounds.y + i.top;
         final int w = bounds.width - i.left - i.right - 1;
         final int h = bounds.height - i.top - i.bottom - 1;
-
+        
         final GeneralPath shape;
-        if ( orientation == SwingConstants.VERTICAL )
-        {
-            if ( buttonType == ScrollBarButtonType.decrease )
-            {
-                shape = new GeneralPath ( GeneralPath.WIND_EVEN_ODD );
-                shape.moveTo ( x, y + h );
-                shape.quadTo ( x + w / 2f, y + h * 2 / 3f, x + w, y + h );
-                shape.lineTo ( x + w / 2f, y );
-                shape.closePath ();
+        if (orientation == SwingConstants.VERTICAL) {
+            if (buttonType == ScrollBarButtonType.decrease) {
+                shape = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
+                shape.moveTo(x, y + h);
+                shape.quadTo(x + w / 2f, y + h * 2 / 3f, x + w, y + h);
+                shape.lineTo(x + w / 2f, y);
+                shape.closePath();
+            } else {
+                shape = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
+                shape.moveTo(x, y);
+                shape.quadTo(x + w / 2f, y + h / 3f, x + w, y);
+                shape.lineTo(x + w / 2f, y + h);
+                shape.closePath();
             }
-            else
-            {
-                shape = new GeneralPath ( GeneralPath.WIND_EVEN_ODD );
-                shape.moveTo ( x, y );
-                shape.quadTo ( x + w / 2f, y + h / 3f, x + w, y );
-                shape.lineTo ( x + w / 2f, y + h );
-                shape.closePath ();
-            }
-        }
-        else
-        {
-            final boolean ltr = scrollbar.getComponentOrientation ().isLeftToRight ();
-            if ( ltr ? buttonType == ScrollBarButtonType.decrease : buttonType == ScrollBarButtonType.increase )
-            {
-                shape = new GeneralPath ( GeneralPath.WIND_EVEN_ODD );
-                shape.moveTo ( x + w, y );
-                shape.quadTo ( x + w * 2 / 3f, y + h / 2f, x + w, y + h );
-                shape.lineTo ( x, y + h / 2f );
-                shape.closePath ();
-            }
-            else
-            {
-                shape = new GeneralPath ( GeneralPath.WIND_EVEN_ODD );
-                shape.moveTo ( x, y );
-                shape.quadTo ( x + w / 3f, y + h / 2f, x, y + h );
-                shape.lineTo ( x + w, y + h / 2f );
-                shape.closePath ();
+        } else {
+            final boolean ltr = scrollbar.getComponentOrientation()
+                    .isLeftToRight();
+            if (ltr ? buttonType == ScrollBarButtonType.decrease
+                    : buttonType == ScrollBarButtonType.increase) {
+                shape = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
+                shape.moveTo(x + w, y);
+                shape.quadTo(x + w * 2 / 3f, y + h / 2f, x + w, y + h);
+                shape.lineTo(x, y + h / 2f);
+                shape.closePath();
+            } else {
+                shape = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
+                shape.moveTo(x, y);
+                shape.quadTo(x + w / 3f, y + h / 2f, x, y + h);
+                shape.lineTo(x + w, y + h / 2f);
+                shape.closePath();
             }
         }
         return shape;

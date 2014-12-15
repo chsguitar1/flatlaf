@@ -21,10 +21,8 @@ package org.ocsoft.flatlaf.utils.swing;
  * @author Mikle Garin
  */
 
-public class DelayFormatException extends IllegalArgumentException
-{
-    public DelayFormatException ( Throwable cause )
-    {
-        super ( cause );
+public class DelayFormatException extends IllegalArgumentException {
+    public DelayFormatException(Throwable cause) {
+        super(cause);
     }
 }

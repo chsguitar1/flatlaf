@@ -27,142 +27,134 @@ import org.ocsoft.flatlaf.laf.checkbox.WebCheckBox;
  * @author Mikle Garin
  */
 
-public class WebCheckBoxListElement extends WebCheckBox
-{
+public class WebCheckBoxListElement extends WebCheckBox {
     /**
      * Constructs default checkbox list cell renderer element.
      */
-    public WebCheckBoxListElement ()
-    {
-        super ();
-        setOpaque ( false );
+    public WebCheckBoxListElement() {
+        super();
+        setOpaque(false);
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void validate ()
-    {
+    public void validate() {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void invalidate ()
-    {
+    public void invalidate() {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void repaint ()
-    {
+    public void repaint() {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void revalidate ()
-    {
+    public void revalidate() {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void repaint ( long tm, int x, int y, int width, int height )
-    {
+    public void repaint(long tm, int x, int y, int width, int height) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void repaint ( Rectangle r )
-    {
+    public void repaint(Rectangle r) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    protected void firePropertyChange ( String propertyName, Object oldValue, Object newValue )
-    {
+    protected void firePropertyChange(String propertyName, Object oldValue,
+            Object newValue) {
         // Strings get interned
         // noinspection StringEquality
-        if ( propertyName == "text" || ( ( propertyName == "font" || propertyName == "foreground" ) && oldValue != newValue &&
-                getClientProperty ( javax.swing.plaf.basic.BasicHTML.propertyKey ) != null ) )
-        {
-
-            super.firePropertyChange ( propertyName, oldValue, newValue );
+        if (propertyName == "text"
+                || ((propertyName == "font" || propertyName == "foreground")
+                        && oldValue != newValue && getClientProperty(javax.swing.plaf.basic.BasicHTML.propertyKey) != null)) {
+            
+            super.firePropertyChange(propertyName, oldValue, newValue);
         }
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( String propertyName, byte oldValue, byte newValue )
-    {
+    public void firePropertyChange(String propertyName, byte oldValue,
+            byte newValue) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( String propertyName, char oldValue, char newValue )
-    {
+    public void firePropertyChange(String propertyName, char oldValue,
+            char newValue) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( String propertyName, short oldValue, short newValue )
-    {
+    public void firePropertyChange(String propertyName, short oldValue,
+            short newValue) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( String propertyName, int oldValue, int newValue )
-    {
+    public void firePropertyChange(String propertyName, int oldValue,
+            int newValue) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( String propertyName, long oldValue, long newValue )
-    {
+    public void firePropertyChange(String propertyName, long oldValue,
+            long newValue) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( String propertyName, float oldValue, float newValue )
-    {
+    public void firePropertyChange(String propertyName, float oldValue,
+            float newValue) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( String propertyName, double oldValue, double newValue )
-    {
+    public void firePropertyChange(String propertyName, double oldValue,
+            double newValue) {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
     @Override
-    public void firePropertyChange ( String propertyName, boolean oldValue, boolean newValue )
-    {
+    public void firePropertyChange(String propertyName, boolean oldValue,
+            boolean newValue) {
     }
 }

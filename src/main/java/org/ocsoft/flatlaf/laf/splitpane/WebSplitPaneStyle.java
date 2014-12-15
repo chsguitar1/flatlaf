@@ -27,23 +27,22 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class WebSplitPaneStyle
-{
+public final class WebSplitPaneStyle {
     /**
      * Default split pane margin.
      */
     public static Insets margin = FlatLafStyleConstants.emptyMargin;
-
+    
     /**
      * Split pane divider color when dragged.
      */
     public static Color dragDividerColor = Color.LIGHT_GRAY;
-
+    
     /**
      * Whether should draw divider border or not.
      */
     public static boolean drawDividerBorder = false;
-
+    
     /**
      * Border color.
      */

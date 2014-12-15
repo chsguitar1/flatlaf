@@ -30,52 +30,51 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
  * @author Mikle Garin
  */
 
-public class WebLanguageManager
-{
+public class WebLanguageManager {
     /**
      * Manager initialization mark.
      */
     protected static boolean initialized = false;
-
+    
     /**
      * Initializes LanguageManager settings.
      */
-    public static synchronized void initialize ()
-    {
-        if ( !initialized )
-        {
+    public static synchronized void initialize() {
+        if (!initialized) {
             initialized = true;
-
+            
             // Initializing LanguageManager if it is not yet initialized
-            LanguageManager.initialize ();
-
+            LanguageManager.initialize();
+            
             // WebLaF language updaters
-            LanguageManager.registerLanguageUpdater ( new WebAbstractButtonLU () );
-            LanguageManager.registerLanguageUpdater ( new WebTextFieldLU () );
-            LanguageManager.registerLanguageUpdater ( new WebFormattedTextFieldLU () );
-            LanguageManager.registerLanguageUpdater ( new WebPasswordFieldLU () );
-            LanguageManager.registerLanguageUpdater ( new WebFileDropLU () );
-            LanguageManager.registerLanguageUpdater ( new WebCollapsiblePaneLU () );
-            LanguageManager.registerLanguageUpdater ( new WebFrameLU () );
-            LanguageManager.registerLanguageUpdater ( new WebDialogLU () );
-
+            LanguageManager.registerLanguageUpdater(new WebAbstractButtonLU());
+            LanguageManager.registerLanguageUpdater(new WebTextFieldLU());
+            LanguageManager
+                    .registerLanguageUpdater(new WebFormattedTextFieldLU());
+            LanguageManager.registerLanguageUpdater(new WebPasswordFieldLU());
+            LanguageManager.registerLanguageUpdater(new WebFileDropLU());
+            LanguageManager.registerLanguageUpdater(new WebCollapsiblePaneLU());
+            LanguageManager.registerLanguageUpdater(new WebFrameLU());
+            LanguageManager.registerLanguageUpdater(new WebDialogLU());
+            
             // Tooltip support
-            LanguageManager.setTooltipLanguageSupport ( new WeblafTooltipLanguageSupport () );
-
+            LanguageManager
+                    .setTooltipLanguageSupport(new WeblafTooltipLanguageSupport());
+            
             // Orientation update on language change if needed
-            LanguageManager.addLanguageListener ( new LanguageAdapter ()
-            {
+            LanguageManager.addLanguageListener(new LanguageAdapter() {
                 @Override
-                public void languageChanged ( final String oldLang, final String newLang )
-                {
-                    final ComponentOrientation oo = ComponentOrientation.getOrientation ( LanguageManager.getLocale ( oldLang ) );
-                    final ComponentOrientation no = ComponentOrientation.getOrientation ( LanguageManager.getLocale ( newLang ) );
-                    if ( oo.isLeftToRight () != no.isLeftToRight () )
-                    {
-                        SwingUtils.updateGlobalOrientations ();
+                public void languageChanged(final String oldLang,
+                        final String newLang) {
+                    final ComponentOrientation oo = ComponentOrientation
+                            .getOrientation(LanguageManager.getLocale(oldLang));
+                    final ComponentOrientation no = ComponentOrientation
+                            .getOrientation(LanguageManager.getLocale(newLang));
+                    if (oo.isLeftToRight() != no.isLeftToRight()) {
+                        SwingUtils.updateGlobalOrientations();
                     }
                 }
-            } );
+            });
         }
     }
 }

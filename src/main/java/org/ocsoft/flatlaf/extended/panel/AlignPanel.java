@@ -30,19 +30,21 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class AlignPanel extends WebPanel implements SwingConstants
-{
+public class AlignPanel extends WebPanel implements SwingConstants {
     /**
      * Constructs new align panel.
      *
-     * @param component component to align
-     * @param halign    horizontal alignment
-     * @param valign    vertical alignment
+     * @param component
+     *            component to align
+     * @param halign
+     *            horizontal alignment
+     * @param valign
+     *            vertical alignment
      */
-    public AlignPanel ( final Component component, final int halign, final int valign )
-    {
-        super ( new AlignLayout () );
-        setOpaque ( false );
-        add ( component, halign + AlignLayout.SEPARATOR + valign );
+    public AlignPanel(final Component component, final int halign,
+            final int valign) {
+        super(new AlignLayout());
+        setOpaque(false);
+        add(component, halign + AlignLayout.SEPARATOR + valign);
     }
 }

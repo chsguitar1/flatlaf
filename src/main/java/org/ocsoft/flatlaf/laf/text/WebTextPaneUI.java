@@ -24,17 +24,14 @@ import javax.swing.plaf.ComponentUI;
  * User: mgarin Date: 17.08.11 Time: 23:02
  */
 
-public class WebTextPaneUI extends WebEditorPaneUI
-{
-    @SuppressWarnings ( "UnusedParameters" )
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebTextPaneUI ();
+public class WebTextPaneUI extends WebEditorPaneUI {
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebTextPaneUI();
     }
-
+    
     @Override
-    protected String getPropertyPrefix ()
-    {
+    protected String getPropertyPrefix() {
         return "TextPane";
     }
 }

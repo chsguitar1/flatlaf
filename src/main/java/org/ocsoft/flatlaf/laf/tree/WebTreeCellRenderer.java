@@ -30,18 +30,18 @@ import org.ocsoft.flatlaf.utils.TextUtils;
  * @author Mikle Garin
  */
 
-public class WebTreeCellRenderer extends WebTreeElement implements TreeCellRenderer
-{
+public class WebTreeCellRenderer extends WebTreeElement implements
+        TreeCellRenderer {
     /**
      * Renderer ID prefix.
      */
     public static final String ID_PREFIX = "WTCR";
-
+    
     /**
      * Renderer unique ID used to cache tree icons.
      */
     protected String id;
-
+    
     /**
      * Icon used to show non-leaf nodes that are expanded.
      */
@@ -50,176 +50,185 @@ public class WebTreeCellRenderer extends WebTreeElement implements TreeCellRende
      * Icon used to show non-leaf nodes that are expanded.
      */
     protected ImageIcon openIcon = WebTreeUI.OPEN_ICON;
-
+    
     /**
      * Icon used to show non-leaf nodes that aren't expanded.
      */
     protected ImageIcon closedIcon = WebTreeUI.CLOSED_ICON;
-
+    
     /**
      * Icon used to show leaf nodes.
      */
     protected ImageIcon leafIcon = WebTreeUI.LEAF_ICON;
-
+    
     /**
      * Constructs default tree cell renderer.
      */
-    public WebTreeCellRenderer ()
-    {
-        super ();
-        setId ();
-        setName ( "Tree.cellRenderer" );
-        setForeground ( UIManager.getColor ( "Tree.textForeground" ) );
+    public WebTreeCellRenderer() {
+        super();
+        setId();
+        setName("Tree.cellRenderer");
+        setForeground(UIManager.getColor("Tree.textForeground"));
     }
-
+    
     /**
      * Setup unique renderer ID.
      */
-    private void setId ()
-    {
-        this.id = TextUtils.generateId ( ID_PREFIX );
+    private void setId() {
+        this.id = TextUtils.generateId(ID_PREFIX);
     }
-
+    
     /**
      * Returns tree cell renderer component.
      *
-     * @param tree       tree
-     * @param value      cell value
-     * @param isSelected whether cell is selected or not
-     * @param expanded   whether cell is expanded or not
-     * @param leaf       whether cell is leaf or not
-     * @param row        cell row number
-     * @param hasFocus   whether cell has focus or not
+     * @param tree
+     *            tree
+     * @param value
+     *            cell value
+     * @param isSelected
+     *            whether cell is selected or not
+     * @param expanded
+     *            whether cell is expanded or not
+     * @param leaf
+     *            whether cell is leaf or not
+     * @param row
+     *            cell row number
+     * @param hasFocus
+     *            whether cell has focus or not
      * @return cell renderer component
      */
     @Override
-    public WebTreeElement getTreeCellRendererComponent ( final JTree tree, final Object value, final boolean isSelected,
-                                                         final boolean expanded, final boolean leaf, final int row, final boolean hasFocus )
-    {
-        final boolean enabled = tree.isEnabled ();
-
+    public WebTreeElement getTreeCellRendererComponent(final JTree tree,
+            final Object value, final boolean isSelected,
+            final boolean expanded, final boolean leaf, final int row,
+            final boolean hasFocus) {
+        final boolean enabled = tree.isEnabled();
+        
         // Visual settings
-        setFont ( tree.getFont () );
-        setEnabled ( enabled );
-
+        setFont(tree.getFont());
+        setEnabled(enabled);
+        
         // Icon
-        final ImageIcon icon = leaf ? leafIcon : tree.getModel ().getRoot () == value ? rootIcon : expanded ? openIcon : closedIcon;
-        if ( enabled )
-        {
-            setIcon ( icon );
+        final ImageIcon icon = leaf ? leafIcon
+                : tree.getModel().getRoot() == value ? rootIcon
+                        : expanded ? openIcon : closedIcon;
+        if (enabled) {
+            setIcon(icon);
+        } else {
+            final String type = leaf ? "leaf"
+                    : tree.getModel().getRoot() == value ? "root"
+                            : expanded ? "open" : "closed";
+            setIcon(ImageUtils.getDisabledCopy(getIconTypeKey(type), icon));
         }
-        else
-        {
-            final String type = leaf ? "leaf" : tree.getModel ().getRoot () == value ? "root" : expanded ? "open" : "closed";
-            setIcon ( ImageUtils.getDisabledCopy ( getIconTypeKey ( type ), icon ) );
-        }
-
+        
         // Text
-        setText ( tree.convertValueToText ( value, isSelected, expanded, leaf, row, hasFocus ) );
-
+        setText(tree.convertValueToText(value, isSelected, expanded, leaf, row,
+                hasFocus));
+        
         // Border
-        final TreeUI tui = tree.getUI ();
-        final int sw = tui instanceof WebTreeUI ? ( ( WebTreeUI ) tui ).getSelectionShadeWidth () : WebTreeStyle.selectionShadeWidth;
-        setMargin ( sw + 2, sw + 2, sw + 2, sw + 4 );
-
+        final TreeUI tui = tree.getUI();
+        final int sw = tui instanceof WebTreeUI ? ((WebTreeUI) tui)
+                .getSelectionShadeWidth() : WebTreeStyle.selectionShadeWidth;
+        setMargin(sw + 2, sw + 2, sw + 2, sw + 4);
+        
         // Orientation
-        setComponentOrientation ( tree.getComponentOrientation () );
-
+        setComponentOrientation(tree.getComponentOrientation());
+        
         return this;
     }
-
+    
     /**
      * Returns icon type key for this cell renderer.
      *
-     * @param type icon type
+     * @param type
+     *            icon type
      * @return icon type key for this cell renderer
      */
-    private String getIconTypeKey ( final String type )
-    {
+    private String getIconTypeKey(final String type) {
         return "WebTreeCellRenderer." + id + "." + type;
     }
-
+    
     /**
      * Returns the icon used to present root node.
      *
      * @return icon used to present root node
      */
-    public Icon getRootIcon ()
-    {
+    public Icon getRootIcon() {
         return rootIcon;
     }
-
+    
     /**
      * Sets the icon used to present root node.
      *
-     * @param rootIcon icon used to present root node
+     * @param rootIcon
+     *            icon used to present root node
      */
-    public void setRootIcon ( final Icon rootIcon )
-    {
-        this.rootIcon = rootIcon != null ? ImageUtils.getImageIcon ( rootIcon ) : null;
-        ImageUtils.clearDisabledCopyCache ( getIconTypeKey ( "root" ) );
+    public void setRootIcon(final Icon rootIcon) {
+        this.rootIcon = rootIcon != null ? ImageUtils.getImageIcon(rootIcon)
+                : null;
+        ImageUtils.clearDisabledCopyCache(getIconTypeKey("root"));
     }
-
+    
     /**
      * Returns the icon used to represent non-leaf nodes that are expanded.
      *
      * @return icon used to represent non-leaf nodes that are expanded.
      */
-    public Icon getOpenIcon ()
-    {
+    public Icon getOpenIcon() {
         return openIcon;
     }
-
+    
     /**
      * Sets the icon used to represent non-leaf nodes that are expanded.
      *
-     * @param openIcon icon used to represent non-leaf nodes that are expanded
+     * @param openIcon
+     *            icon used to represent non-leaf nodes that are expanded
      */
-    public void setOpenIcon ( final Icon openIcon )
-    {
-        this.openIcon = openIcon != null ? ImageUtils.getImageIcon ( openIcon ) : null;
-        ImageUtils.clearDisabledCopyCache ( getIconTypeKey ( "open" ) );
+    public void setOpenIcon(final Icon openIcon) {
+        this.openIcon = openIcon != null ? ImageUtils.getImageIcon(openIcon)
+                : null;
+        ImageUtils.clearDisabledCopyCache(getIconTypeKey("open"));
     }
-
+    
     /**
      * Returns the icon used to represent non-leaf nodes that are not expanded.
      *
      * @return icon used to represent non-leaf nodes that are not expanded
      */
-    public Icon getClosedIcon ()
-    {
+    public Icon getClosedIcon() {
         return closedIcon;
     }
-
+    
     /**
      * Sets the icon used to represent non-leaf nodes that are not expanded.
      *
-     * @param closedIcon icon used to represent non-leaf nodes that are not expanded
+     * @param closedIcon
+     *            icon used to represent non-leaf nodes that are not expanded
      */
-    public void setClosedIcon ( final Icon closedIcon )
-    {
-        this.closedIcon = closedIcon != null ? ImageUtils.getImageIcon ( closedIcon ) : null;
-        ImageUtils.clearDisabledCopyCache ( getIconTypeKey ( "closed" ) );
+    public void setClosedIcon(final Icon closedIcon) {
+        this.closedIcon = closedIcon != null ? ImageUtils
+                .getImageIcon(closedIcon) : null;
+        ImageUtils.clearDisabledCopyCache(getIconTypeKey("closed"));
     }
-
+    
     /**
      * Returns the icon used to represent leaf nodes.
      *
      * @return the icon used to represent leaf nodes
      */
-    public Icon getLeafIcon ()
-    {
+    public Icon getLeafIcon() {
         return leafIcon;
     }
-
+    
     /**
      * Sets the icon used to represent leaf nodes.
      *
-     * @param leafIcon icon used to represent leaf nodes
+     * @param leafIcon
+     *            icon used to represent leaf nodes
      */
-    public void setLeafIcon ( final Icon leafIcon )
-    {
-        this.leafIcon = leafIcon != null ? ImageUtils.getImageIcon ( leafIcon ) : null;
-        ImageUtils.clearDisabledCopyCache ( getIconTypeKey ( "leaf" ) );
+    public void setLeafIcon(final Icon leafIcon) {
+        this.leafIcon = leafIcon != null ? ImageUtils.getImageIcon(leafIcon)
+                : null;
+        ImageUtils.clearDisabledCopyCache(getIconTypeKey("leaf"));
     }
 }

@@ -26,30 +26,25 @@ import org.ocsoft.flatlaf.laf.panel.WebPanel;
  * User: mgarin Date: 28.09.12 Time: 16:31
  */
 
-public class VerticalPanel extends WebPanel
-{
-    public VerticalPanel ( Component... components )
-    {
-        this ( true, components );
+public class VerticalPanel extends WebPanel {
+    public VerticalPanel(Component... components) {
+        this(true, components);
     }
-
-    public VerticalPanel ( int gap, Component... components )
-    {
-        this ( gap, true, components );
+    
+    public VerticalPanel(int gap, Component... components) {
+        this(gap, true, components);
     }
-
-    public VerticalPanel ( boolean fill, Component... components )
-    {
-        this ( 0, fill, components );
+    
+    public VerticalPanel(boolean fill, Component... components) {
+        this(0, fill, components);
     }
-
-    public VerticalPanel ( int gap, boolean fill, Component... components )
-    {
-        super ( new VerticalFlowLayout ( VerticalFlowLayout.TOP, gap, gap, fill, false ) );
-
-        for ( Component component : components )
-        {
-            add ( component );
+    
+    public VerticalPanel(int gap, boolean fill, Component... components) {
+        super(new VerticalFlowLayout(VerticalFlowLayout.TOP, gap, gap, fill,
+                false));
+        
+        for (Component component : components) {
+            add(component);
         }
     }
 }

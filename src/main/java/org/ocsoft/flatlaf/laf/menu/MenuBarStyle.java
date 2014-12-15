@@ -23,17 +23,15 @@ package org.ocsoft.flatlaf.laf.menu;
  * @author Mikle Garin
  */
 
-public enum MenuBarStyle
-{
+public enum MenuBarStyle {
     /**
-     * Standalone menubar.
-     * May be used to display menubar separately from frame borders or elements.
+     * Standalone menubar. May be used to display menubar separately from frame
+     * borders or elements.
      */
     standalone,
-
+    
     /**
-     * Attached menubar.
-     * Usually used as the default style for window menubar.
+     * Attached menubar. Usually used as the default style for window menubar.
      */
     attached
 }

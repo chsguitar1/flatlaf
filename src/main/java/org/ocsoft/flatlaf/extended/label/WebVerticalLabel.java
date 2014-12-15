@@ -25,156 +25,142 @@ import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
- * This WebLabel extension class allows you to display text vertically and provides a direct access to WebVerticalLabelUI methods.
- * It also provides a few additional constructors nad methods to setup the label.
+ * This WebLabel extension class allows you to display text vertically and
+ * provides a direct access to WebVerticalLabelUI methods. It also provides a
+ * few additional constructors nad methods to setup the label.
  * <p/>
- * This component should never be used with a non-Web UIs as it might cause an unexpected behavior.
- * You could still use that component even if WebLaF is not your application L&amp;F as this component will use Web-UI in any case.
+ * This component should never be used with a non-Web UIs as it might cause an
+ * unexpected behavior. You could still use that component even if WebLaF is not
+ * your application L&amp;F as this component will use Web-UI in any case.
  *
  * @author Mikle Garin
  */
 
-public class WebVerticalLabel extends WebLabel
-{
+public class WebVerticalLabel extends WebLabel {
     /**
-     * todo 1. Integrate rotation right into WebLabel and remove WebVerticalLabel
+     * todo 1. Integrate rotation right into WebLabel and remove
+     * WebVerticalLabel
      */
-
+    
     /**
      * Unique UI class ID.
      *
      * @see #getUIClassID
      */
     private static final String uiClassID = "VerticalLabelUI";
-
-    public WebVerticalLabel ()
-    {
-        this ( false );
+    
+    public WebVerticalLabel() {
+        this(false);
     }
-
-    public WebVerticalLabel ( final boolean clockwise )
-    {
-        super ();
-        setClockwise ( clockwise );
+    
+    public WebVerticalLabel(final boolean clockwise) {
+        super();
+        setClockwise(clockwise);
     }
-
-    public WebVerticalLabel ( final Icon image )
-    {
-        this ( image, false );
+    
+    public WebVerticalLabel(final Icon image) {
+        this(image, false);
     }
-
-    public WebVerticalLabel ( final Icon image, final boolean clockwise )
-    {
-        super ( image );
-        setClockwise ( clockwise );
+    
+    public WebVerticalLabel(final Icon image, final boolean clockwise) {
+        super(image);
+        setClockwise(clockwise);
     }
-
-    public WebVerticalLabel ( final Icon image, final int horizontalAlignment )
-    {
-        this ( image, horizontalAlignment, false );
+    
+    public WebVerticalLabel(final Icon image, final int horizontalAlignment) {
+        this(image, horizontalAlignment, false);
     }
-
-    public WebVerticalLabel ( final Icon image, final int horizontalAlignment, final boolean clockwise )
-    {
-        super ( image, horizontalAlignment );
-        setClockwise ( clockwise );
+    
+    public WebVerticalLabel(final Icon image, final int horizontalAlignment,
+            final boolean clockwise) {
+        super(image, horizontalAlignment);
+        setClockwise(clockwise);
     }
-
-    public WebVerticalLabel ( final String text )
-    {
-        this ( text, false );
+    
+    public WebVerticalLabel(final String text) {
+        this(text, false);
     }
-
-    public WebVerticalLabel ( final String text, final boolean clockwise )
-    {
-        super ( text );
-        setClockwise ( clockwise );
+    
+    public WebVerticalLabel(final String text, final boolean clockwise) {
+        super(text);
+        setClockwise(clockwise);
     }
-
-    public WebVerticalLabel ( final String text, final int horizontalAlignment )
-    {
-        this ( text, horizontalAlignment, false );
+    
+    public WebVerticalLabel(final String text, final int horizontalAlignment) {
+        this(text, horizontalAlignment, false);
     }
-
-    public WebVerticalLabel ( final String text, final int horizontalAlignment, final boolean clockwise )
-    {
-        super ( text, horizontalAlignment );
-        setClockwise ( clockwise );
+    
+    public WebVerticalLabel(final String text, final int horizontalAlignment,
+            final boolean clockwise) {
+        super(text, horizontalAlignment);
+        setClockwise(clockwise);
     }
-
-    public WebVerticalLabel ( final String text, final Icon icon, final int horizontalAlignment )
-    {
-        this ( text, icon, horizontalAlignment, false );
+    
+    public WebVerticalLabel(final String text, final Icon icon,
+            final int horizontalAlignment) {
+        this(text, icon, horizontalAlignment, false);
     }
-
-    public WebVerticalLabel ( final String text, final Icon icon, final int horizontalAlignment, final boolean clockwise )
-    {
-        super ( text, icon, horizontalAlignment );
-        setClockwise ( clockwise );
+    
+    public WebVerticalLabel(final String text, final Icon icon,
+            final int horizontalAlignment, final boolean clockwise) {
+        super(text, icon, horizontalAlignment);
+        setClockwise(clockwise);
     }
-
+    
     /**
      * Returns whether text should be rotated clockwise or not.
      *
-     * @return true if text should be rotated clockwise, false if counter-clockwise
+     * @return true if text should be rotated clockwise, false if
+     *         counter-clockwise
      */
-    public boolean isClockwise ()
-    {
-        return getWebUI ().isClockwise ();
+    public boolean isClockwise() {
+        return getWebUI().isClockwise();
     }
-
+    
     /**
      * Sets whether text should be rotated clockwise or not.
      *
-     * @param clockwise whether text should be rotated clockwise or not
+     * @param clockwise
+     *            whether text should be rotated clockwise or not
      */
-    public void setClockwise ( final boolean clockwise )
-    {
-        getWebUI ().setClockwise ( clockwise );
+    public void setClockwise(final boolean clockwise) {
+        getWebUI().setClockwise(clockwise);
     }
-
+    
     /**
      * Returns Web-UI applied to this class.
      *
      * @return Web-UI applied to this class
      */
     @Override
-    public WebVerticalLabelUI getWebUI ()
-    {
-        return ( WebVerticalLabelUI ) getUI ();
+    public WebVerticalLabelUI getWebUI() {
+        return (WebVerticalLabelUI) getUI();
     }
-
+    
     /**
      * Installs a Web-UI into this component.
      */
     @Override
-    public void updateUI ()
-    {
-        if ( getUI () == null || !( getUI () instanceof WebVerticalLabelUI ) )
-        {
-            try
-            {
-                setUI ( ( WebVerticalLabelUI ) ReflectUtils.createInstance ( FlatLafSettings.verticalLabelUI ) );
-
+    public void updateUI() {
+        if (getUI() == null || !(getUI() instanceof WebVerticalLabelUI)) {
+            try {
+                setUI((WebVerticalLabelUI) ReflectUtils
+                        .createInstance(FlatLafSettings.verticalLabelUI));
+                
+            } catch (final Throwable e) {
+                FlatLafLogger.error(this, e);
+                setUI(new WebVerticalLabelUI());
             }
-            catch ( final Throwable e )
-            {
-                FlatLafLogger.error ( this, e );
-                setUI ( new WebVerticalLabelUI () );
-            }
-        }
-        else
-        {
-            setUI ( getUI () );
+        } else {
+            setUI(getUI());
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getUIClassID ()
-    {
+    public String getUIClassID() {
         return uiClassID;
     }
 }

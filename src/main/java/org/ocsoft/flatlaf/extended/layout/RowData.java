@@ -25,49 +25,40 @@ import java.util.List;
  * User: mgarin Date: 18.04.12 Time: 17:17
  */
 
-public class RowData
-{
+public class RowData {
     private int width = 0;
     private int height = 0;
-    private List<Component> components = new ArrayList<Component> ();
-
-    public RowData ()
-    {
-        super ();
+    private List<Component> components = new ArrayList<Component>();
+    
+    public RowData() {
+        super();
     }
-
-    public int getWidth ()
-    {
+    
+    public int getWidth() {
         return width;
     }
-
-    public void setWidth ( final int width )
-    {
+    
+    public void setWidth(final int width) {
         this.width = width;
     }
-
-    public int getHeight ()
-    {
+    
+    public int getHeight() {
         return height;
     }
-
-    public void setHeight ( final int height )
-    {
+    
+    public void setHeight(final int height) {
         this.height = height;
     }
-
-    public List<Component> getComponents ()
-    {
+    
+    public List<Component> getComponents() {
         return components;
     }
-
-    public void setComponents ( final List<Component> components )
-    {
+    
+    public void setComponents(final List<Component> components) {
         this.components = components;
     }
-
-    public void addComponent ( final Component component )
-    {
-        this.components.add ( component );
+    
+    public void addComponent(final Component component) {
+        this.components.add(component);
     }
 }

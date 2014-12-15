@@ -27,91 +27,86 @@ import javax.swing.text.PlainDocument;
  * @author Mikle Garin
  */
 
-public class LimitedDocument extends PlainDocument
-{
+public class LimitedDocument extends PlainDocument {
     /**
      * Characters limit.
      */
     private final int limit;
-
+    
     /**
      * Whether should translate all characters to upper case or not.
      */
     private final boolean toUppercase;
-
+    
     /**
      * Constructs new limited document.
      */
-    public LimitedDocument ()
-    {
-        super ();
+    public LimitedDocument() {
+        super();
         this.limit = 0;
         this.toUppercase = false;
     }
-
+    
     /**
      * Constructs new limited document.
      *
-     * @param limit characters limit
+     * @param limit
+     *            characters limit
      */
-    public LimitedDocument ( final int limit )
-    {
-        super ();
+    public LimitedDocument(final int limit) {
+        super();
         this.limit = limit;
         this.toUppercase = false;
     }
-
+    
     /**
      * Constructs new limited document.
      *
-     * @param limit characters limit
-     * @param upper whether should translate all characters to upper case or not
+     * @param limit
+     *            characters limit
+     * @param upper
+     *            whether should translate all characters to upper case or not
      */
-    public LimitedDocument ( final int limit, final boolean upper )
-    {
-        super ();
+    public LimitedDocument(final int limit, final boolean upper) {
+        super();
         this.limit = limit;
         this.toUppercase = upper;
     }
-
+    
     /**
      * Returns document characters limit.
      *
      * @return document characters limit
      */
-    public int getLimit ()
-    {
+    public int getLimit() {
         return limit;
     }
-
+    
     /**
      * Returns whether should translate all characters to upper case or not.
      *
-     * @return true if should translate all characters to upper case, false otherwise
+     * @return true if should translate all characters to upper case, false
+     *         otherwise
      */
-    public boolean isToUppercase ()
-    {
+    public boolean isToUppercase() {
         return toUppercase;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void insertString ( final int offset, String str, final AttributeSet attr ) throws BadLocationException
-    {
-        if ( str == null )
-        {
+    public void insertString(final int offset, String str,
+            final AttributeSet attr) throws BadLocationException {
+        if (str == null) {
             return;
         }
-
-        if ( getLimit () > 0 && ( getLength () + str.length () ) <= getLimit () )
-        {
-            if ( isToUppercase () )
-            {
-                str = str.toUpperCase ();
+        
+        if (getLimit() > 0 && (getLength() + str.length()) <= getLimit()) {
+            if (isToUppercase()) {
+                str = str.toUpperCase();
             }
-            super.insertString ( offset, str, attr );
+            super.insertString(offset, str, attr);
         }
     }
 }

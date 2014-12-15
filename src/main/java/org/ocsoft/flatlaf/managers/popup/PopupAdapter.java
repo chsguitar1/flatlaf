@@ -23,29 +23,24 @@ import org.ocsoft.flatlaf.utils.swing.PopupListener;
  * User: mgarin Date: 04.06.12 Time: 12:39
  */
 
-public abstract class PopupAdapter implements PopupListener
-{
+public abstract class PopupAdapter implements PopupListener {
     @Override
-    public void popupWillBeOpened ()
-    {
+    public void popupWillBeOpened() {
         // Do nothing
     }
-
+    
     @Override
-    public void popupOpened ()
-    {
+    public void popupOpened() {
         // Do nothing
     }
-
+    
     @Override
-    public void popupWillBeClosed ()
-    {
+    public void popupWillBeClosed() {
         // Do nothing
     }
-
+    
     @Override
-    public void popupClosed ()
-    {
+    public void popupClosed() {
         // Do nothing
     }
 }

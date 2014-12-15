@@ -25,92 +25,92 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import java.awt.*;
 
 /**
- * WebMenu, WebMenuItem, WebCheckBoxMenuItem and WebRadioButtonMenuItem style class.
+ * WebMenu, WebMenuItem, WebCheckBoxMenuItem and WebRadioButtonMenuItem style
+ * class.
  *
  * @author Mikle Garin
  */
 
-public final class WebMenuItemStyle
-{
+public final class WebMenuItemStyle {
     /**
      * Menu item content margin.
      */
     public static Insets margin = FlatLafStyleConstants.emptyMargin;
-
+    
     /**
      * Spacing between menu item content and its left/right borders.
      */
     public static int sideSpacing = WebPopupMenuStyle.round;
-
+    
     /**
-     * Separate menu item corners rounding.
-     * This will be applied to menu items that are placed outside popup menu.
+     * Separate menu item corners rounding. This will be applied to menu items
+     * that are placed outside popup menu.
      */
     public static int round = FlatLafStyleConstants.smallRound;
-
+    
     /**
-     * Separate menu item shade width.
-     * This will be applied to menu items that are placed outside popup menu.
+     * Separate menu item shade width. This will be applied to menu items that
+     * are placed outside popup menu.
      */
     public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Disabled menu item foreground.
      */
     public static Color disabledFg = Color.LIGHT_GRAY;
-
+    
     /**
      * Checkbox and radiobutton menu items check color.
      */
-    public static Color checkColor = new Color ( 230, 230, 220 );
-
+    public static Color checkColor = new Color(230, 230, 220);
+    
     /**
      * Top background color for selected item.
      */
-    public static Color selectedTopBg = new Color ( 208, 208, 198 );
-
+    public static Color selectedTopBg = new Color(208, 208, 198);
+    
     /**
      * Bottom background color for selected item.
      */
-    public static Color selectedBottomBg = new Color ( 196, 196, 186 );
-
+    public static Color selectedBottomBg = new Color(196, 196, 186);
+    
     /**
      * Accelerator text foreground.
      */
-    public static Color acceleratorFg = new Color ( 90, 90, 90 );
-
+    public static Color acceleratorFg = new Color(90, 90, 90);
+    
     /**
      * Disabld accelerator text foreground.
      */
-    public static Color acceleratorDisabledFg = new Color ( 170, 170, 170 );
-
+    public static Color acceleratorDisabledFg = new Color(170, 170, 170);
+    
     /**
-     * Accelerator text background.
-     * Set to null to disable it.
+     * Accelerator text background. Set to null to disable it.
      */
-    public static Color acceleratorBg = new Color ( 255, 255, 255, 200 );
-
+    public static Color acceleratorBg = new Color(255, 255, 255, 200);
+    
     /**
      * Gap between item icon and text.
      */
     public static int iconTextGap = 7;
-
+    
     /**
      * Gap between item icon/text and accelerator text/sub-menu arrow.
      */
     public static int itemSidesGap = 15;
-
+    
     /**
-     * Whether should align all item texts to a single vertical line within single popup menu or not.
+     * Whether should align all item texts to a single vertical line within
+     * single popup menu or not.
      */
     public static boolean alignTextToMenuIcons = true;
-
+    
     /**
-     * Icon alignment.
-     * This property is used only when item texts are aligned to a single vertical line.
+     * Icon alignment. This property is used only when item texts are aligned to
+     * a single vertical line.
      */
     public static int iconAlignment = SwingConstants.CENTER;
-
+    
     /**
      * Item painter.
      */

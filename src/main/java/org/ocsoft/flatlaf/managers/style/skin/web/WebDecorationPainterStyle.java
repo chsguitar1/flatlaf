@@ -25,64 +25,63 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class WebDecorationPainterStyle
-{
+public final class WebDecorationPainterStyle {
     /**
      * Whether should paint decoration or not.
      */
     public static boolean undecorated = false;
-
+    
     /**
-     * Whether should paint panel focus or not.
-     * This variable doesn't affect anything if undecorated.
+     * Whether should paint panel focus or not. This variable doesn't affect
+     * anything if undecorated.
      */
     public static boolean paintFocus = false;
-
+    
     /**
-     * Decoration corners rounding.
-     * This variable doesn't affect anything if undecorated.
+     * Decoration corners rounding. This variable doesn't affect anything if
+     * undecorated.
      */
     public static int round = FlatLafStyleConstants.smallRound;
-
+    
     /**
-     * Decoration shade width.
-     * This variable doesn't affect anything if undecorated.
+     * Decoration shade width. This variable doesn't affect anything if
+     * undecorated.
      */
     public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Decoration shade transparency.
      */
     public static float shadeTransparency = 0.75f;
-
+    
     /**
-     * Decoration border stroke.
-     * This variable doesn't affect anything if undecorated.
+     * Decoration border stroke. This variable doesn't affect anything if
+     * undecorated.
      */
     public static Stroke borderStroke = null;
-
+    
     /**
      * Decoration border color.
      */
     public static Color borderColor = FlatLafStyleConstants.darkBorderColor;
-
+    
     /**
      * Disabled decoration border color.
      */
     public static Color disabledBorderColor = FlatLafStyleConstants.disabledBorderColor;
-
+    
     /**
-     * Whether should paint decoration background or not.
-     * This variable doesn't affect anything if undecorated.
+     * Whether should paint decoration background or not. This variable doesn't
+     * affect anything if undecorated.
      */
     public static boolean paintBackground = true;
-
+    
     /**
-     * Whether should paint web-styled background or not.
-     * This variable doesn't affect anything if undecorated.
+     * Whether should paint web-styled background or not. This variable doesn't
+     * affect anything if undecorated.
      */
     public static boolean webColoredBackground = true;
-
+    
     /**
      * Decoration background color.
      */

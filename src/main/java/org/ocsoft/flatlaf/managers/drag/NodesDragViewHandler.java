@@ -39,149 +39,140 @@ import java.util.List;
  * @author Mikle Garin
  */
 
-public abstract class NodesDragViewHandler<E extends DefaultMutableTreeNode> implements DragViewHandler<List<E>>
-{
+public abstract class NodesDragViewHandler<E extends DefaultMutableTreeNode>
+        implements DragViewHandler<List<E>> {
     /**
-     * Returns maximum amount of nodes displayed when dragged.
-     * If there are more nodes than limit allows additional label will be added informing about it.
+     * Returns maximum amount of nodes displayed when dragged. If there are more
+     * nodes than limit allows additional label will be added informing about
+     * it.
      *
      * @return maximum amount of nodes displayed when dragged
      */
-    public abstract int getNodesViewLimit ();
-
+    public abstract int getNodesViewLimit();
+    
     /**
-     * Retturns additional X offset for "more" text.
-     * Might be useful to move this text according to node icons.
+     * Retturns additional X offset for "more" text. Might be useful to move
+     * this text according to node icons.
      *
      * @return additional X offset for "more" text
      */
-    public Insets getMoreTextMargin ()
-    {
-        return new Insets ( 0, 0, 0, 0 );
+    public Insets getMoreTextMargin() {
+        return new Insets(0, 0, 0, 0);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public BufferedImage getView ( final List<E> nodes, final DragSourceDragEvent dragSourceDragEvent )
-    {
-        if ( dragSourceDragEvent.getSource () instanceof DragSourceContext )
-        {
-            final DragSourceContext dsc = ( DragSourceContext ) dragSourceDragEvent.getSource ();
-            if ( dsc.getComponent () instanceof WebTree )
-            {
-                final WebTree tree = ( WebTree ) dsc.getComponent ();
+    public BufferedImage getView(final List<E> nodes,
+            final DragSourceDragEvent dragSourceDragEvent) {
+        if (dragSourceDragEvent.getSource() instanceof DragSourceContext) {
+            final DragSourceContext dsc = (DragSourceContext) dragSourceDragEvent
+                    .getSource();
+            if (dsc.getComponent() instanceof WebTree) {
+                final WebTree tree = (WebTree) dsc.getComponent();
                 final List<E> realNodes;
-                if ( nodes.get ( 0 ) instanceof UniqueNode )
-                {
-                    final List<UniqueNode> uniqueNodes = ( List<UniqueNode> ) nodes;
-                    if ( tree instanceof WebExTree )
-                    {
-                        final WebExTree exTree = ( WebExTree ) tree;
-                        realNodes = new ArrayList<E> ();
-                        for ( final UniqueNode node : uniqueNodes )
-                        {
-                            realNodes.add ( ( E ) exTree.findNode ( node.getId () ) );
+                if (nodes.get(0) instanceof UniqueNode) {
+                    final List<UniqueNode> uniqueNodes = (List<UniqueNode>) nodes;
+                    if (tree instanceof WebExTree) {
+                        final WebExTree exTree = (WebExTree) tree;
+                        realNodes = new ArrayList<E>();
+                        for (final UniqueNode node : uniqueNodes) {
+                            realNodes.add((E) exTree.findNode(node.getId()));
                         }
-                    }
-                    else if ( tree instanceof WebExTree )
-                    {
-                        final WebAsyncTree exTree = ( WebAsyncTree ) tree;
-                        realNodes = new ArrayList<E> ();
-                        for ( final UniqueNode node : uniqueNodes )
-                        {
-                            realNodes.add ( ( E ) exTree.findNode ( node.getId () ) );
+                    } else if (tree instanceof WebExTree) {
+                        final WebAsyncTree exTree = (WebAsyncTree) tree;
+                        realNodes = new ArrayList<E>();
+                        for (final UniqueNode node : uniqueNodes) {
+                            realNodes.add((E) exTree.findNode(node.getId()));
                         }
-                    }
-                    else
-                    {
+                    } else {
                         realNodes = nodes;
                     }
-                }
-                else
-                {
+                } else {
                     realNodes = nodes;
                 }
-
-                final FontMetrics fm = tree.getFontMetrics ( tree.getFont () );
-                final int fmh = fm.getHeight ();
-
-                final int limit = getNodesViewLimit ();
-                final int amount = realNodes.size () - limit;
-                final String text = amount > 1 ? "And %s more elements" : "And one more element";
-                final String moreText = limit > 0 ? String.format ( text, amount ) : null;
-                final Insets moreTextOffset = getMoreTextMargin ();
-
+                
+                final FontMetrics fm = tree.getFontMetrics(tree.getFont());
+                final int fmh = fm.getHeight();
+                
+                final int limit = getNodesViewLimit();
+                final int amount = realNodes.size() - limit;
+                final String text = amount > 1 ? "And %s more elements"
+                        : "And one more element";
+                final String moreText = limit > 0 ? String.format(text, amount)
+                        : null;
+                final Insets moreTextOffset = getMoreTextMargin();
+                
                 int width = 0;
                 int height = 0;
                 int count = 0;
-                for ( final DefaultMutableTreeNode node : realNodes )
-                {
-                    if ( limit <= 0 || limit > count )
-                    {
-                        final Rectangle bounds = tree.getNodeBounds ( node );
-                        width = Math.max ( bounds.width, width );
+                for (final DefaultMutableTreeNode node : realNodes) {
+                    if (limit <= 0 || limit > count) {
+                        final Rectangle bounds = tree.getNodeBounds(node);
+                        width = Math.max(bounds.width, width);
                         height += bounds.height;
                         count++;
-                    }
-                    else
-                    {
-                        width = Math.max ( moreTextOffset.left + fm.stringWidth ( moreText ) + moreTextOffset.right, width );
-                        height += moreTextOffset.top + fmh + moreTextOffset.bottom;
+                    } else {
+                        width = Math.max(
+                                moreTextOffset.left + fm.stringWidth(moreText)
+                                        + moreTextOffset.right, width);
+                        height += moreTextOffset.top + fmh
+                                + moreTextOffset.bottom;
                         break;
                     }
                 }
-
-                final BufferedImage image = ImageUtils.createCompatibleImage ( width, height, BufferedImage.TRANSLUCENT );
-                final Graphics2D g2d = image.createGraphics ();
+                
+                final BufferedImage image = ImageUtils.createCompatibleImage(
+                        width, height, BufferedImage.TRANSLUCENT);
+                final Graphics2D g2d = image.createGraphics();
                 int y = 0;
                 count = 0;
-                for ( final E node : realNodes )
-                {
-                    if ( limit <= 0 || limit > count )
-                    {
-                        final int row = tree.getRowForNode ( node );
-                        final boolean exp = tree.isExpanded ( node );
-                        final boolean leaf = tree.getModel ().isLeaf ( node );
-                        final Component r =
-                                tree.getCellRenderer ().getTreeCellRendererComponent ( tree, node, false, exp, leaf, row, false );
-                        final Dimension ps = r.getPreferredSize ();
-                        tree.getCellRendererPane ().paintComponent ( g2d, r, null, 0, y, ps.width, ps.height );
+                for (final E node : realNodes) {
+                    if (limit <= 0 || limit > count) {
+                        final int row = tree.getRowForNode(node);
+                        final boolean exp = tree.isExpanded(node);
+                        final boolean leaf = tree.getModel().isLeaf(node);
+                        final Component r = tree.getCellRenderer()
+                                .getTreeCellRendererComponent(tree, node,
+                                        false, exp, leaf, row, false);
+                        final Dimension ps = r.getPreferredSize();
+                        tree.getCellRendererPane().paintComponent(g2d, r, null,
+                                0, y, ps.width, ps.height);
                         y += ps.height;
                         count++;
-                    }
-                    else
-                    {
-                        SwingUtils.setupTextAntialias ( g2d );
-                        g2d.setPaint ( Color.BLACK );
-                        g2d.drawString ( moreText, moreTextOffset.left,
-                                y + moreTextOffset.top + fmh / 2 + LafUtils.getTextCenterShearY ( fm ) );
+                    } else {
+                        SwingUtils.setupTextAntialias(g2d);
+                        g2d.setPaint(Color.BLACK);
+                        g2d.drawString(
+                                moreText,
+                                moreTextOffset.left,
+                                y + moreTextOffset.top + fmh / 2
+                                        + LafUtils.getTextCenterShearY(fm));
                         break;
                     }
                 }
-                g2d.dispose ();
+                g2d.dispose();
                 return image;
             }
         }
         return null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Point getViewRelativeLocation ( final List<E> nodes, final DragSourceDragEvent dragSourceDragEvent )
-    {
-        return new Point ( 25, 5 );
+    public Point getViewRelativeLocation(final List<E> nodes,
+            final DragSourceDragEvent dragSourceDragEvent) {
+        return new Point(25, 5);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void dragEnded ( final List<E> nodes, final DragSourceDropEvent event )
-    {
+    public void dragEnded(final List<E> nodes, final DragSourceDropEvent event) {
         // Do nothing here
     }
 }

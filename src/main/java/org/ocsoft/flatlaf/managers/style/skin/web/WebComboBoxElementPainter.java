@@ -24,8 +24,8 @@ import org.ocsoft.flatlaf.laf.combobox.WebComboBoxElement;
 import org.ocsoft.flatlaf.laf.menu.WebMenuItemStyle;
 
 /**
- * Custom painter for default combobox elements renderer.
- * It simply paints gradient background for selected elements in combobox popup list.
+ * Custom painter for default combobox elements renderer. It simply paints
+ * gradient background for selected elements in combobox popup list.
  *
  * @author Mikle Garin
  * @see org.ocsoft.flatlaf.managers.style.skin.web.WebLabelPainter
@@ -33,126 +33,128 @@ import org.ocsoft.flatlaf.laf.menu.WebMenuItemStyle;
  * @see org.ocsoft.flatlaf.extended.painter.Painter
  */
 
-public class WebComboBoxElementPainter<E extends WebComboBoxElement> extends WebLabelPainter<E>
-{
+public class WebComboBoxElementPainter<E extends WebComboBoxElement> extends
+        WebLabelPainter<E> {
     /**
      * Style settings.
      */
     protected Color topSelectedBackgroundColor = WebMenuItemStyle.selectedTopBg;
     protected Color bottomSelectedBackgroundColor = WebMenuItemStyle.selectedBottomBg;
-
+    
     /**
      * Constructs new combobox element painter.
      */
-    public WebComboBoxElementPainter ()
-    {
-        super ();
+    public WebComboBoxElementPainter() {
+        super();
     }
-
+    
     /**
      * Returns top selected background color.
      *
      * @return top selected background color
      */
-    public Color getTopSelectedBackgroundColor ()
-    {
+    public Color getTopSelectedBackgroundColor() {
         return topSelectedBackgroundColor;
     }
-
+    
     /**
      * Sets top selected background color.
      *
-     * @param color new top selected background color
+     * @param color
+     *            new top selected background color
      */
-    public void setTopSelectedBackgroundColor ( final Color color )
-    {
+    public void setTopSelectedBackgroundColor(final Color color) {
         this.topSelectedBackgroundColor = color;
     }
-
+    
     /**
      * Returns bottom selected background color.
      *
      * @return bottom selected background color
      */
-    public Color getBottomSelectedBackgroundColor ()
-    {
+    public Color getBottomSelectedBackgroundColor() {
         return bottomSelectedBackgroundColor;
     }
-
+    
     /**
      * Sets bottom selected background color.
      *
-     * @param color new bottom selected background color
+     * @param color
+     *            new bottom selected background color
      */
-    public void setBottomSelectedBackgroundColor ( final Color color )
-    {
+    public void setBottomSelectedBackgroundColor(final Color color) {
         this.bottomSelectedBackgroundColor = color;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void paint ( final Graphics2D g2d, final Rectangle bounds, final E element )
-    {
+    public void paint(final Graphics2D g2d, final Rectangle bounds,
+            final E element) {
         // Painting background
-        if ( element.getType () == ComboBoxElementType.box )
-        {
+        if (element.getType() == ComboBoxElementType.box) {
             // Painting box background
-            paintBoxBackground ( g2d, bounds, element );
-        }
-        else if ( element.isSelected () )
-        {
+            paintBoxBackground(g2d, bounds, element);
+        } else if (element.isSelected()) {
             // Painting selected list element background
-            paintListSelectedBackground ( g2d, bounds, element );
-        }
-        else
-        {
+            paintListSelectedBackground(g2d, bounds, element);
+        } else {
             // Painting deselected list element background
-            paintListDeselectedBackground ( g2d, bounds, element );
+            paintListDeselectedBackground(g2d, bounds, element);
         }
-
+        
         // Painting label
-        super.paint ( g2d, bounds, element );
+        super.paint(g2d, bounds, element);
     }
-
+    
     /**
      * Paints combobox box element background.
      *
-     * @param g2d     graphics context
-     * @param bounds  element bounds
-     * @param element combobox element
+     * @param g2d
+     *            graphics context
+     * @param bounds
+     *            element bounds
+     * @param element
+     *            combobox element
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    protected void paintBoxBackground ( final Graphics2D g2d, final Rectangle bounds, final E element )
-    {
+    @SuppressWarnings("UnusedParameters")
+    protected void paintBoxBackground(final Graphics2D g2d,
+            final Rectangle bounds, final E element) {
         //
     }
-
+    
     /**
      * Paints selected combobox popup list element background.
      *
-     * @param g2d     graphics context
-     * @param b       element bounds
-     * @param element combobox element
+     * @param g2d
+     *            graphics context
+     * @param b
+     *            element bounds
+     * @param element
+     *            combobox element
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    protected void paintListSelectedBackground ( final Graphics2D g2d, final Rectangle b, final E element )
-    {
-        g2d.setPaint ( new GradientPaint ( 0, b.y, topSelectedBackgroundColor, 0, b.y + b.height, bottomSelectedBackgroundColor ) );
-        g2d.fillRect ( 0, 0, element.getWidth (), element.getHeight () );
+    @SuppressWarnings("UnusedParameters")
+    protected void paintListSelectedBackground(final Graphics2D g2d,
+            final Rectangle b, final E element) {
+        g2d.setPaint(new GradientPaint(0, b.y, topSelectedBackgroundColor, 0,
+                b.y + b.height, bottomSelectedBackgroundColor));
+        g2d.fillRect(0, 0, element.getWidth(), element.getHeight());
     }
-
+    
     /**
      * Paints deselected combobox popup list element background.
      *
-     * @param g2d     graphics context
-     * @param bounds  element bounds
-     * @param element combobox element
+     * @param g2d
+     *            graphics context
+     * @param bounds
+     *            element bounds
+     * @param element
+     *            combobox element
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    protected void paintListDeselectedBackground ( final Graphics2D g2d, final Rectangle bounds, final E element )
-    {
+    @SuppressWarnings("UnusedParameters")
+    protected void paintListDeselectedBackground(final Graphics2D g2d,
+            final Rectangle bounds, final E element) {
         // Doesn't paint anything by default
     }
 }

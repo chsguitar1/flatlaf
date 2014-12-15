@@ -25,12 +25,12 @@ import javax.swing.event.DocumentEvent;
  * @author Mikle Garin
  */
 
-public interface DocumentEventRunnable
-{
+public interface DocumentEventRunnable {
     /**
      * Performs action according to document event.
      *
-     * @param e occured document event
+     * @param e
+     *            occured document event
      */
-    public void run ( DocumentEvent e );
+    public void run(DocumentEvent e);
 }

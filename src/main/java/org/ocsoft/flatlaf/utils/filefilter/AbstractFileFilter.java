@@ -25,35 +25,37 @@ import java.io.File;
 import java.io.FileFilter;
 
 /**
- * Default file filter for WebLaF file chooser that provides additional filter information.
- * This class overrides IO, Swing and utils filter classes.
+ * Default file filter for WebLaF file chooser that provides additional filter
+ * information. This class overrides IO, Swing and utils filter classes.
  *
  * @author Mikle Garin
  */
 
-public abstract class AbstractFileFilter extends javax.swing.filechooser.FileFilter implements FileFilter, Filter<File>
-{
+public abstract class AbstractFileFilter extends
+        javax.swing.filechooser.FileFilter implements FileFilter, Filter<File> {
     /**
      * Returns file filter icon.
      *
      * @return file filter icon
      */
-    public abstract ImageIcon getIcon ();
-
+    public abstract ImageIcon getIcon();
+    
     /**
      * Returns short file filter description.
      *
      * @return short file filter description
      */
     @Override
-    public abstract String getDescription ();
-
+    public abstract String getDescription();
+    
     /**
      * Returns whether the given file is accepted by this filter or not.
      *
-     * @param file file to process
-     * @return true if the given file is accepted by this filter, false otherwise
+     * @param file
+     *            file to process
+     * @return true if the given file is accepted by this filter, false
+     *         otherwise
      */
     @Override
-    public abstract boolean accept ( File file );
+    public abstract boolean accept(File file);
 }

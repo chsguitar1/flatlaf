@@ -25,10 +25,9 @@ import org.ocsoft.flatlaf.utils.FileUtils;
  * @author Mikle Garin
  */
 
-public final class WebFileChooserStyle
-{
+public final class WebFileChooserStyle {
     /**
      * Default file chooser directory.
      */
-    public static final String defaultDirectory = FileUtils.getUserHomePath ();
+    public static final String defaultDirectory = FileUtils.getUserHomePath();
 }

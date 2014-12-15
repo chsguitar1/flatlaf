@@ -31,56 +31,47 @@ import java.io.File;
  * @author Mikle Garin
  */
 
-public class WebFileTableCellRenderer extends WebTableCellRenderer
-{
+public class WebFileTableCellRenderer extends WebTableCellRenderer {
     /**
      * {@inheritDoc}
      */
     @Override
-    public Component getTableCellRendererComponent ( JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column )
-    {
-        super.getTableCellRendererComponent ( table, value, isSelected, hasFocus, row, column );
-
-        final File file = ( File ) value;
-        final String columnId = ( String ) table.getColumnModel ().getColumn ( column ).getIdentifier ();
-        final boolean isFile = FileUtils.isFile ( file );
-        if ( columnId.equals ( WebFileTableModel.NUMBER_COLUMN ) )
-        {
-            setIcon ( null );
-            setText ( "" + ( row + 1 ) );
-            setHorizontalAlignment ( TRAILING );
+    public Component getTableCellRendererComponent(JTable table, Object value,
+            boolean isSelected, boolean hasFocus, int row, int column) {
+        super.getTableCellRendererComponent(table, value, isSelected, hasFocus,
+                row, column);
+        
+        final File file = (File) value;
+        final String columnId = (String) table.getColumnModel()
+                .getColumn(column).getIdentifier();
+        final boolean isFile = FileUtils.isFile(file);
+        if (columnId.equals(WebFileTableModel.NUMBER_COLUMN)) {
+            setIcon(null);
+            setText("" + (row + 1));
+            setHorizontalAlignment(TRAILING);
+        } else if (columnId.equals(WebFileTableModel.NAME_COLUMN)) {
+            setIcon(FileUtils.getFileIcon(file));
+            setText(FileUtils.getDisplayFileName(file));
+            setHorizontalAlignment(LEADING);
+        } else if (columnId.equals(WebFileTableModel.SIZE_COLUMN)) {
+            setIcon(null);
+            setText(isFile ? FileUtils.getDisplayFileSize(file) : "");
+            setHorizontalAlignment(LEADING);
+        } else if (columnId.equals(WebFileTableModel.EXTENSION_COLUMN)) {
+            setIcon(null);
+            setText(isFile ? FileUtils.getFileExtPart(file.getName(), true)
+                    : "");
+            setHorizontalAlignment(LEADING);
+        } else if (columnId.equals(WebFileTableModel.CREATION_DATE_COLUMN)) {
+            setIcon(null);
+            setText(FileUtils.getDisplayFileCreationDate(file));
+            setHorizontalAlignment(LEADING);
+        } else if (columnId.equals(WebFileTableModel.MODIFICATION_DATE_COLUMN)) {
+            setIcon(null);
+            setText(FileUtils.getDisplayFileModificationDate(file));
+            setHorizontalAlignment(LEADING);
         }
-        else if ( columnId.equals ( WebFileTableModel.NAME_COLUMN ) )
-        {
-            setIcon ( FileUtils.getFileIcon ( file ) );
-            setText ( FileUtils.getDisplayFileName ( file ) );
-            setHorizontalAlignment ( LEADING );
-        }
-        else if ( columnId.equals ( WebFileTableModel.SIZE_COLUMN ) )
-        {
-            setIcon ( null );
-            setText ( isFile ? FileUtils.getDisplayFileSize ( file ) : "" );
-            setHorizontalAlignment ( LEADING );
-        }
-        else if ( columnId.equals ( WebFileTableModel.EXTENSION_COLUMN ) )
-        {
-            setIcon ( null );
-            setText ( isFile ? FileUtils.getFileExtPart ( file.getName (), true ) : "" );
-            setHorizontalAlignment ( LEADING );
-        }
-        else if ( columnId.equals ( WebFileTableModel.CREATION_DATE_COLUMN ) )
-        {
-            setIcon ( null );
-            setText ( FileUtils.getDisplayFileCreationDate ( file ) );
-            setHorizontalAlignment ( LEADING );
-        }
-        else if ( columnId.equals ( WebFileTableModel.MODIFICATION_DATE_COLUMN ) )
-        {
-            setIcon ( null );
-            setText ( FileUtils.getDisplayFileModificationDate ( file ) );
-            setHorizontalAlignment ( LEADING );
-        }
-
+        
         return this;
     }
 }

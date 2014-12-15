@@ -21,46 +21,46 @@ package org.ocsoft.flatlaf.extended.tab;
  * Extension for WebDocumentPane documents state listener.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-WebDocumentPane">How to use WebDocumentPane</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-WebDocumentPane">How
+ *      to use WebDocumentPane</a>
  * @see org.ocsoft.flatlaf.extended.tab.WebDocumentPane
  */
 
-public abstract class DocumentAdapter<T extends DocumentData> implements DocumentListener<T>
-{
+public abstract class DocumentAdapter<T extends DocumentData> implements
+        DocumentListener<T> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void opened ( final T document, final PaneData<T> pane, final int index )
-    {
+    public void opened(final T document, final PaneData<T> pane, final int index) {
         // Do nothing by default
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void selected ( final T document, final PaneData<T> pane, final int index )
-    {
+    public void selected(final T document, final PaneData<T> pane,
+            final int index) {
         // Do nothing by default
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean closing ( final T document, final PaneData<T> pane, final int index )
-    {
+    public boolean closing(final T document, final PaneData<T> pane,
+            final int index) {
         // Return true by default
         return true;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void closed ( final T document, final PaneData<T> pane, final int index )
-    {
+    public void closed(final T document, final PaneData<T> pane, final int index) {
         // Do nothing by default
     }
 }

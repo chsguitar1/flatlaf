@@ -21,54 +21,57 @@ package org.ocsoft.flatlaf.extended.tab;
  * Extension for WebDocumentPane listener.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-WebDocumentPane">How to use WebDocumentPane</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-WebDocumentPane">How
+ *      to use WebDocumentPane</a>
  * @see org.ocsoft.flatlaf.extended.tab.WebDocumentPane
  */
 
-public abstract class DocumentPaneAdapter<T extends DocumentData> implements DocumentPaneListener<T>
-{
+public abstract class DocumentPaneAdapter<T extends DocumentData> implements
+        DocumentPaneListener<T> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void splitted ( final WebDocumentPane<T> documentPane, final PaneData<T> splittedPane, final SplitData<T> newSplitData )
-    {
+    public void splitted(final WebDocumentPane<T> documentPane,
+            final PaneData<T> splittedPane, final SplitData<T> newSplitData) {
         // Do nothing by default
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void merged ( final WebDocumentPane<T> documentPane, final SplitData<T> mergedSplit, final StructureData<T> newStructureData )
-    {
+    public void merged(final WebDocumentPane<T> documentPane,
+            final SplitData<T> mergedSplit,
+            final StructureData<T> newStructureData) {
         // Do nothing by default
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void orientationChanged ( final WebDocumentPane<T> documentPane, final SplitData<T> splitData )
-    {
+    public void orientationChanged(final WebDocumentPane<T> documentPane,
+            final SplitData<T> splitData) {
         // Do nothing by default
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void sidesSwapped ( final WebDocumentPane<T> documentPane, final SplitData<T> splitData )
-    {
+    public void sidesSwapped(final WebDocumentPane<T> documentPane,
+            final SplitData<T> splitData) {
         // Do nothing by default
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void dividerLocationChanged ( final WebDocumentPane<T> documentPane, final SplitData<T> splitData )
-    {
+    public void dividerLocationChanged(final WebDocumentPane<T> documentPane,
+            final SplitData<T> splitData) {
         // Do nothing by default
     }
 }

@@ -23,22 +23,18 @@ import java.text.NumberFormat;
  * User: mgarin Date: 31.10.12 Time: 16:14
  */
 
-public class WebDoubleRenderer extends WebNumberRenderer
-{
+public class WebDoubleRenderer extends WebNumberRenderer {
     private NumberFormat formatter;
-
-    public WebDoubleRenderer ()
-    {
-        super ();
+    
+    public WebDoubleRenderer() {
+        super();
     }
-
+    
     @Override
-    public void setValue ( Object value )
-    {
-        if ( formatter == null )
-        {
-            formatter = NumberFormat.getInstance ();
+    public void setValue(Object value) {
+        if (formatter == null) {
+            formatter = NumberFormat.getInstance();
         }
-        setText ( ( value == null ) ? "" : formatter.format ( value ) );
+        setText((value == null) ? "" : formatter.format(value));
     }
 }

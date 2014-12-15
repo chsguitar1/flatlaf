@@ -27,14 +27,12 @@ import org.ocsoft.flatlaf.utils.general.TextProvider;
  * @author Mikle Garin
  */
 
-public class FileNameProvider implements TextProvider<File>
-{
+public class FileNameProvider implements TextProvider<File> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public String provide ( final File object )
-    {
-        return object.getName ();
+    public String provide(final File object) {
+        return object.getName();
     }
 }

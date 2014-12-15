@@ -23,18 +23,17 @@ package org.ocsoft.flatlaf.extended.panel;
  * @author Mikle Garin
  */
 
-public enum AccordionStyle
-{
+public enum AccordionStyle {
     /**
      * Undecorated accordion.
      */
     none,
-
+    
     /**
      * Accordion with united collapsible panes.
      */
     united,
-
+    
     /**
      * Accordion with separated collapsible panes.
      */

@@ -23,7 +23,6 @@ package org.ocsoft.flatlaf.extended.painter;
  * @author Mikle Garin
  */
 
-public final class TitledBorderPainterStyle
-{
+public final class TitledBorderPainterStyle {
     //
 }

@@ -23,11 +23,10 @@ package org.ocsoft.flatlaf.managers.language.updaters;
  * @author Mikle Garin
  */
 
-public class LanguageUpdaterSettings
-{
+public class LanguageUpdaterSettings {
     /**
-     * This is JTabbedPaneLU settings.
-     * Whether should use tab component name to determine tab translation key or not.
+     * This is JTabbedPaneLU settings. Whether should use tab component name to
+     * determine tab translation key or not.
      */
     public static boolean useTabComponentNames = false;
 }

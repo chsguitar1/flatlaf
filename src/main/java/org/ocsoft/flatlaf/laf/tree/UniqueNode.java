@@ -26,116 +26,111 @@ import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import java.io.Serializable;
 
 /**
- * This class provides a custom node with a specific ID.
- * This node is used in various WebLookAndFeel tree components to properly save selections and expansion states.
- * This node might also be used for some advanced cases like asynchronous tree.
+ * This class provides a custom node with a specific ID. This node is used in
+ * various WebLookAndFeel tree components to properly save selections and
+ * expansion states. This node might also be used for some advanced cases like
+ * asynchronous tree.
  *
  * @author Mikle Garin
  */
 
-public class UniqueNode extends DefaultMutableTreeNode implements Serializable
-{
+public class UniqueNode extends DefaultMutableTreeNode implements Serializable {
     /**
      * Prefix for node ID.
      */
     protected static final String ID_PREFIX = "UN";
-
+    
     /**
      * Unique node ID.
      */
     protected String id;
-
+    
     /**
      * Costructs a simple node.
      */
-    public UniqueNode ()
-    {
-        super ();
-        setId ();
+    public UniqueNode() {
+        super();
+        setId();
     }
-
+    
     /**
      * Costructs a node with a specified user object.
      *
-     * @param userObject custom user object
+     * @param userObject
+     *            custom user object
      */
-    public UniqueNode ( final Object userObject )
-    {
-        super ( userObject );
-        setId ();
+    public UniqueNode(final Object userObject) {
+        super(userObject);
+        setId();
     }
-
+    
     /**
      * Costructs a node with a specified user object and node ID.
      *
-     * @param id         node ID
-     * @param userObject custom user object
+     * @param id
+     *            node ID
+     * @param userObject
+     *            custom user object
      */
-    public UniqueNode ( final String id, final Object userObject )
-    {
-        super ( userObject );
-        setId ( id );
+    public UniqueNode(final String id, final Object userObject) {
+        super(userObject);
+        setId(id);
     }
-
+    
     /**
      * Returns node ID and creates it if it doesn't exist.
      *
      * @return node ID
      */
-    public String getId ()
-    {
-        if ( id == null )
-        {
-            setId ();
+    public String getId() {
+        if (id == null) {
+            setId();
         }
         return id;
     }
-
+    
     /**
      * Changes node ID.
      *
-     * @param id new node ID
+     * @param id
+     *            new node ID
      */
-    public void setId ( final String id )
-    {
+    public void setId(final String id) {
         this.id = id;
     }
-
+    
     /**
      * Changes node ID to new random ID.
      */
-    protected void setId ()
-    {
-        this.id = TextUtils.generateId ( ID_PREFIX );
+    protected void setId() {
+        this.id = TextUtils.generateId(ID_PREFIX);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public UniqueNode getParent ()
-    {
-        return ( UniqueNode ) super.getParent ();
+    public UniqueNode getParent() {
+        return (UniqueNode) super.getParent();
     }
-
+    
     /**
      * Returns TreePath for this node.
      *
      * @return TreePath for this node
      */
-    public TreePath getTreePath ()
-    {
-        return new TreePath ( getPath () );
+    public TreePath getTreePath() {
+        return new TreePath(getPath());
     }
-
+    
     /**
      * Returns text node representation.
      *
      * @return text node representation
      */
     @Override
-    public String toString ()
-    {
-        return userObject != null && userObject != this ? userObject.toString () : ReflectUtils.getClassName ( this.getClass () );
+    public String toString() {
+        return userObject != null && userObject != this ? userObject.toString()
+                : ReflectUtils.getClassName(this.getClass());
     }
 }

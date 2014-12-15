@@ -23,8 +23,7 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * User: mgarin Date: 14.06.12 Time: 17:54
  */
 
-public final class ShadeLayerStyle
-{
+public final class ShadeLayerStyle {
     /**
      * Animate popup appearance
      */

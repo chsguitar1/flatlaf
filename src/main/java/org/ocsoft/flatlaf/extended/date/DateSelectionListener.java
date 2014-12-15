@@ -24,7 +24,6 @@ import java.util.EventListener;
  * User: mgarin Date: 03.11.11 Time: 11:58
  */
 
-public interface DateSelectionListener extends EventListener
-{
-    public void dateSelected ( Date date );
+public interface DateSelectionListener extends EventListener {
+    public void dateSelected(Date date);
 }

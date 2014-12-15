@@ -26,23 +26,19 @@ import javax.swing.event.PopupMenuListener;
  * @author Mikle Garin
  */
 
-public abstract class PopupMenuAdapter implements PopupMenuListener
-{
+public abstract class PopupMenuAdapter implements PopupMenuListener {
     @Override
-    public void popupMenuWillBecomeVisible ( final PopupMenuEvent e )
-    {
+    public void popupMenuWillBecomeVisible(final PopupMenuEvent e) {
         // Do nothing
     }
-
+    
     @Override
-    public void popupMenuWillBecomeInvisible ( final PopupMenuEvent e )
-    {
+    public void popupMenuWillBecomeInvisible(final PopupMenuEvent e) {
         // Do nothing
     }
-
+    
     @Override
-    public void popupMenuCanceled ( final PopupMenuEvent e )
-    {
+    public void popupMenuCanceled(final PopupMenuEvent e) {
         // Do nothing
     }
 }

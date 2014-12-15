@@ -36,153 +36,140 @@ import java.io.File;
  * @author Mikle Garin
  */
 
-public class WebFileListCellEditor extends AbstractListCellEditor<WebTextField, FileElement>
-{
+public class WebFileListCellEditor extends
+        AbstractListCellEditor<WebTextField, FileElement> {
     /**
      * Last saved selection.
      */
     protected Object savedSelection = null;
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void installStartEditActions ( final JList list )
-    {
-        keyAdapter = new KeyAdapter ()
-        {
+    protected void installStartEditActions(final JList list) {
+        keyAdapter = new KeyAdapter() {
             @Override
-            public void keyReleased ( final KeyEvent e )
-            {
-                if ( Hotkey.F2.isTriggered ( e ) )
-                {
-                    startEdit ( list, list.getSelectedIndex () );
+            public void keyReleased(final KeyEvent e) {
+                if (Hotkey.F2.isTriggered(e)) {
+                    startEdit(list, list.getSelectedIndex());
                 }
             }
         };
-        list.addKeyListener ( keyAdapter );
+        list.addKeyListener(keyAdapter);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void uninstallStartEditActions ( final JList list )
-    {
-        list.removeKeyListener ( keyAdapter );
+    protected void uninstallStartEditActions(final JList list) {
+        list.removeKeyListener(keyAdapter);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isCellEditable ( final JList list, final int index, final FileElement value )
-    {
-        final File file = value != null ? value.getFile () : null;
-        return file != null && FileUtils.isNameEditable ( file ) && super.isCellEditable ( list, index, value );
+    public boolean isCellEditable(final JList list, final int index,
+            final FileElement value) {
+        final File file = value != null ? value.getFile() : null;
+        return file != null && FileUtils.isNameEditable(file)
+                && super.isCellEditable(list, index, value);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected WebTextField createCellEditor ( final JList list, final int index, final FileElement value )
-    {
-        final WebTextField editor = WebTextField.createWebTextField ( true, WebListStyle.selectionRound, WebListStyle.selectionShadeWidth );
-        editor.setDrawFocus ( false );
-        FileUtils.displayFileName ( editor, value.getFile () );
-
-        if ( list instanceof WebFileList )
-        {
-            final boolean tiles = ( ( WebFileList ) list ).getFileListViewType ().equals ( FileListViewType.tiles );
-            editor.setHorizontalAlignment ( tiles ? WebTextField.LEFT : WebTextField.CENTER );
+    protected WebTextField createCellEditor(final JList list, final int index,
+            final FileElement value) {
+        final WebTextField editor = WebTextField.createWebTextField(true,
+                WebListStyle.selectionRound, WebListStyle.selectionShadeWidth);
+        editor.setDrawFocus(false);
+        FileUtils.displayFileName(editor, value.getFile());
+        
+        if (list instanceof WebFileList) {
+            final boolean tiles = ((WebFileList) list).getFileListViewType()
+                    .equals(FileListViewType.tiles);
+            editor.setHorizontalAlignment(tiles ? WebTextField.LEFT
+                    : WebTextField.CENTER);
         }
-
+        
         return editor;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected Rectangle getEditorBounds ( final JList list, final int index, final FileElement value, final Rectangle cellBounds )
-    {
-        if ( list instanceof WebFileList )
-        {
-            final WebFileListCellRenderer cellRenderer = ( ( WebFileList ) list ).getWebFileListCellRenderer ();
-            final Rectangle dpBounds = cellRenderer.getDescriptionBounds ();
-            final Dimension size = editor.getPreferredSize ();
-            return new Rectangle ( dpBounds.x, dpBounds.y + dpBounds.height / 2 - size.height / 2, dpBounds.width, size.height );
-        }
-        else
-        {
-            return super.getEditorBounds ( list, index, value, cellBounds );
+    protected Rectangle getEditorBounds(final JList list, final int index,
+            final FileElement value, final Rectangle cellBounds) {
+        if (list instanceof WebFileList) {
+            final WebFileListCellRenderer cellRenderer = ((WebFileList) list)
+                    .getWebFileListCellRenderer();
+            final Rectangle dpBounds = cellRenderer.getDescriptionBounds();
+            final Dimension size = editor.getPreferredSize();
+            return new Rectangle(dpBounds.x, dpBounds.y + dpBounds.height / 2
+                    - size.height / 2, dpBounds.width, size.height);
+        } else {
+            return super.getEditorBounds(list, index, value, cellBounds);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public FileElement getCellEditorValue ( final JList list, final int index, final FileElement oldValue )
-    {
+    public FileElement getCellEditorValue(final JList list, final int index,
+            final FileElement oldValue) {
         // Saving initial selection
-        savedSelection = list.getSelectedValue ();
-
+        savedSelection = list.getSelectedValue();
+        
         // Finishing edit
-        final File renamed = new File ( oldValue.getFile ().getParent (), editor.getText () );
-        if ( oldValue.getFile ().renameTo ( renamed ) )
-        {
-            if ( savedSelection == oldValue )
-            {
+        final File renamed = new File(oldValue.getFile().getParent(),
+                editor.getText());
+        if (oldValue.getFile().renameTo(renamed)) {
+            if (savedSelection == oldValue) {
                 savedSelection = renamed;
             }
-            return new FileElement ( renamed );
-        }
-        else
-        {
+            return new FileElement(renamed);
+        } else {
             return oldValue;
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean updateListModel ( final JList list, final int index, final FileElement oldValue, final FileElement newValue,
-                                     final boolean updateSelection )
-    {
+    public boolean updateListModel(final JList list, final int index,
+            final FileElement oldValue, final FileElement newValue,
+            final boolean updateSelection) {
         // Updating model
-        if ( list.getModel () instanceof FileListModel )
-        {
-            final FileListModel model = ( FileListModel ) list.getModel ();
-
+        if (list.getModel() instanceof FileListModel) {
+            final FileListModel model = (FileListModel) list.getModel();
+            
             // If name was actually changed
-            if ( !oldValue.getFile ().getAbsolutePath ().equals ( newValue.getFile ().getAbsolutePath () ) )
-            {
+            if (!oldValue.getFile().getAbsolutePath()
+                    .equals(newValue.getFile().getAbsolutePath())) {
                 // Updating model value
-                model.setElementAt ( newValue, index );
-
+                model.setElementAt(newValue, index);
+                
                 // Updating list
-                if ( savedSelection != null )
-                {
-                    list.setSelectedValue ( savedSelection, true );
+                if (savedSelection != null) {
+                    list.setSelectedValue(savedSelection, true);
+                } else {
+                    list.clearSelection();
                 }
-                else
-                {
-                    list.clearSelection ();
-                }
-                list.repaint ();
+                list.repaint();
                 return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
-        }
-        else
-        {
-            return super.updateListModel ( list, index, oldValue, newValue, updateSelection );
+        } else {
+            return super.updateListModel(list, index, oldValue, newValue,
+                    updateSelection);
         }
     }
 }

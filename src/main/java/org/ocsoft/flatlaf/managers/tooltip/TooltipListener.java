@@ -25,25 +25,24 @@ import java.util.EventListener;
  * @author Mikle Garin
  */
 
-public interface TooltipListener extends EventListener
-{
+public interface TooltipListener extends EventListener {
     /**
      * Notifies that tooltip started to appear.
      */
-    public void tooltipShowing ();
-
+    public void tooltipShowing();
+    
     /**
      * Notifies that tooltip was fully shown.
      */
-    public void tooltipShown ();
-
+    public void tooltipShown();
+    
     /**
      * Notifies that tooltip was hidden.
      */
-    public void tooltipHidden ();
-
+    public void tooltipHidden();
+    
     /**
      * Notifies that tooltip was destroyed.
      */
-    public void tooltipDestroyed ();
+    public void tooltipDestroyed();
 }

@@ -30,40 +30,38 @@ import org.ocsoft.flatlaf.extended.painter.Painter;
  * @see NotificationManager
  */
 
-public enum NotificationStyle
-{
+public enum NotificationStyle {
     /**
      * WebLaF notification style.
      */
     web,
-
+    
     /**
      * Mac OS X notification style.
      */
     mac;
-
+    
     /**
-     * Map of cached painters.
-     * Painter is created only when used first time, there is no point to load it before that moment - that will be memory waste.
+     * Map of cached painters. Painter is created only when used first time,
+     * there is no point to load it before that moment - that will be memory
+     * waste.
      */
-    private static final Map<NotificationStyle, Painter> paintersCache =
-            new EnumMap<NotificationStyle, Painter> ( NotificationStyle.class );
-
+    private static final Map<NotificationStyle, Painter> paintersCache = new EnumMap<NotificationStyle, Painter>(
+            NotificationStyle.class);
+    
     /**
      * Returns cached painter for this notification style.
      *
      * @return cached painter for this notification style
      */
-    public Painter getPainter ()
-    {
-        if ( paintersCache.containsKey ( this ) )
-        {
-            return paintersCache.get ( this );
-        }
-        else
-        {
-            Painter painter = new NinePatchIconPainter ( NotificationStyle.class.getResource ( "icons/styles/" + this + ".9.png" ) );
-            paintersCache.put ( this, painter );
+    public Painter getPainter() {
+        if (paintersCache.containsKey(this)) {
+            return paintersCache.get(this);
+        } else {
+            Painter painter = new NinePatchIconPainter(
+                    NotificationStyle.class.getResource("icons/styles/" + this
+                            + ".9.png"));
+            paintersCache.put(this, painter);
             return painter;
         }
     }

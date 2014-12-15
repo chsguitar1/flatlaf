@@ -23,15 +23,14 @@ package org.ocsoft.flatlaf.extended.tree;
  * @author Mikle Garin
  */
 
-public interface AsyncUpdateListener
-{
+public interface AsyncUpdateListener {
     /**
      * Called when update operation succeed.
      */
-    public void succeed ();
-
+    public void succeed();
+    
     /**
      * Caled when update operation failed.
      */
-    public void failed ();
+    public void failed();
 }

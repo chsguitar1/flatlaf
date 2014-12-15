@@ -20,30 +20,36 @@ package org.ocsoft.flatlaf.managers.language;
 import org.ocsoft.flatlaf.utils.swing.SwingMethods;
 
 /**
- * This interface provides a set of methods that should be added into containers that might contain translateable components.
- * Basically containers which implement these methods can simplify language keys used for contained components translation.
+ * This interface provides a set of methods that should be added into containers
+ * that might contain translateable components. Basically containers which
+ * implement these methods can simplify language keys used for contained
+ * components translation.
  *
  * @author Mikle Garin
  */
 
-public interface LanguageContainerMethods extends SwingMethods
-{
+public interface LanguageContainerMethods extends SwingMethods {
     /**
-     * Sets language container key for container which implements this interface.
+     * Sets language container key for container which implements this
+     * interface.
      *
-     * @param key language container key
+     * @param key
+     *            language container key
      */
-    public void setLanguageContainerKey ( String key );
-
+    public void setLanguageContainerKey(String key);
+    
     /**
-     * Removes language container key for container which implements this interface.
+     * Removes language container key for container which implements this
+     * interface.
      */
-    public void removeLanguageContainerKey ();
-
+    public void removeLanguageContainerKey();
+    
     /**
-     * Returns language container key for container which implements this interface.
+     * Returns language container key for container which implements this
+     * interface.
      *
-     * @return language container key for container which implements this interface
+     * @return language container key for container which implements this
+     *         interface
      */
-    public String getLanguageContainerKey ();
+    public String getLanguageContainerKey();
 }

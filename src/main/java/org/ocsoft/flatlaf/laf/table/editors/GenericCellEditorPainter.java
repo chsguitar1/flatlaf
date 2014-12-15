@@ -30,40 +30,37 @@ import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
  * @see org.ocsoft.flatlaf.extended.painter.Painter
  */
 
-public class GenericCellEditorPainter extends AbstractPainter<GenericCellEditor>
-{
+public class GenericCellEditorPainter extends
+        AbstractPainter<GenericCellEditor> {
     /**
      * Constructs new generic cell editor painter.
      */
-    public GenericCellEditorPainter ()
-    {
-        super ();
+    public GenericCellEditorPainter() {
+        super();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Insets getMargin ( GenericCellEditor c )
-    {
-        return new Insets ( 0, 1, 0, 1 );
+    public Insets getMargin(GenericCellEditor c) {
+        return new Insets(0, 1, 0, 1);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void paint ( final Graphics2D g2d, final Rectangle bounds, final GenericCellEditor c )
-    {
-        g2d.setPaint ( Color.WHITE );
-        g2d.fillRect ( bounds.x, bounds.y, bounds.width, bounds.height );
-
-        if ( c.isInvalidValue () )
-        {
-            final Composite old = GraphicsUtils.setupAlphaComposite ( g2d, 0.25f );
-            g2d.setPaint ( Color.RED );
-            g2d.fillRect ( bounds.x, bounds.y, bounds.width, bounds.height );
-            GraphicsUtils.restoreComposite ( g2d, old );
+    public void paint(final Graphics2D g2d, final Rectangle bounds,
+            final GenericCellEditor c) {
+        g2d.setPaint(Color.WHITE);
+        g2d.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+        
+        if (c.isInvalidValue()) {
+            final Composite old = GraphicsUtils.setupAlphaComposite(g2d, 0.25f);
+            g2d.setPaint(Color.RED);
+            g2d.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+            GraphicsUtils.restoreComposite(g2d, old);
         }
     }
 }

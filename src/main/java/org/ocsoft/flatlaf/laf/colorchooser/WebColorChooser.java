@@ -31,133 +31,107 @@ import java.awt.*;
  * User: mgarin Date: 01.02.2010 Time: 15:00:20
  */
 
-public class WebColorChooser extends JColorChooser implements DialogOptions
-{
-    public WebColorChooser ()
-    {
-        super ();
+public class WebColorChooser extends JColorChooser implements DialogOptions {
+    public WebColorChooser() {
+        super();
     }
-
-    public WebColorChooser ( final Color initialColor )
-    {
-        super ( initialColor );
+    
+    public WebColorChooser(final Color initialColor) {
+        super(initialColor);
     }
-
-    public WebColorChooser ( final ColorSelectionModel model )
-    {
-        super ( model );
+    
+    public WebColorChooser(final ColorSelectionModel model) {
+        super(model);
     }
-
-    public boolean isShowButtonsPanel ()
-    {
-        return getWebUI ().isShowButtonsPanel ();
+    
+    public boolean isShowButtonsPanel() {
+        return getWebUI().isShowButtonsPanel();
     }
-
-    public void setShowButtonsPanel ( final boolean showButtonsPanel )
-    {
-        getWebUI ().setShowButtonsPanel ( showButtonsPanel );
+    
+    public void setShowButtonsPanel(final boolean showButtonsPanel) {
+        getWebUI().setShowButtonsPanel(showButtonsPanel);
     }
-
-    public boolean isWebOnlyColors ()
-    {
-        return getWebUI ().isWebOnlyColors ();
+    
+    public boolean isWebOnlyColors() {
+        return getWebUI().isWebOnlyColors();
     }
-
-    public void setWebOnlyColors ( final boolean webOnlyColors )
-    {
-        getWebUI ().setWebOnlyColors ( webOnlyColors );
+    
+    public void setWebOnlyColors(final boolean webOnlyColors) {
+        getWebUI().setWebOnlyColors(webOnlyColors);
     }
-
-    public Color getOldColor ()
-    {
-        return getWebUI ().getOldColor ();
+    
+    public Color getOldColor() {
+        return getWebUI().getOldColor();
     }
-
-    public void setOldColor ( final Color oldColor )
-    {
-        getWebUI ().setOldColor ( oldColor );
+    
+    public void setOldColor(final Color oldColor) {
+        getWebUI().setOldColor(oldColor);
     }
-
-    public void resetResult ()
-    {
-        getWebUI ().resetResult ();
+    
+    public void resetResult() {
+        getWebUI().resetResult();
     }
-
-    public void setResult ( final int result )
-    {
-        getWebUI ().setResult ( result );
+    
+    public void setResult(final int result) {
+        getWebUI().setResult(result);
     }
-
-    public int getResult ()
-    {
-        return getWebUI ().getResult ();
+    
+    public int getResult() {
+        return getWebUI().getResult();
     }
-
-    public void addColorChooserListener ( final ColorChooserListener colorChooserListener )
-    {
-        getWebUI ().addColorChooserListener ( colorChooserListener );
+    
+    public void addColorChooserListener(
+            final ColorChooserListener colorChooserListener) {
+        getWebUI().addColorChooserListener(colorChooserListener);
     }
-
-    public void removeColorChooserListener ( final ColorChooserListener colorChooserListener )
-    {
-        getWebUI ().removeColorChooserListener ( colorChooserListener );
+    
+    public void removeColorChooserListener(
+            final ColorChooserListener colorChooserListener) {
+        getWebUI().removeColorChooserListener(colorChooserListener);
     }
-
-    public WebColorChooserUI getWebUI ()
-    {
-        return ( WebColorChooserUI ) getUI ();
+    
+    public WebColorChooserUI getWebUI() {
+        return (WebColorChooserUI) getUI();
     }
-
+    
     @Override
-    public void updateUI ()
-    {
-        if ( getUI () == null || !( getUI () instanceof WebColorChooserUI ) )
-        {
-            try
-            {
-                setUI ( ( WebColorChooserUI ) ReflectUtils.createInstance ( FlatLafSettings.colorChooserUI ) );
+    public void updateUI() {
+        if (getUI() == null || !(getUI() instanceof WebColorChooserUI)) {
+            try {
+                setUI((WebColorChooserUI) ReflectUtils
+                        .createInstance(FlatLafSettings.colorChooserUI));
+            } catch (final Throwable e) {
+                FlatLafLogger.error(this, e);
+                setUI(new WebColorChooserUI());
             }
-            catch ( final Throwable e )
-            {
-                FlatLafLogger.error ( this, e );
-                setUI ( new WebColorChooserUI () );
-            }
-        }
-        else
-        {
-            setUI ( getUI () );
+        } else {
+            setUI(getUI());
         }
     }
-
-    public static Color showDialog ( final Component parent )
-    {
-        return showDialog ( parent, null, null );
+    
+    public static Color showDialog(final Component parent) {
+        return showDialog(parent, null, null);
     }
-
-    public static Color showDialog ( final Component parent, final String title )
-    {
-        return showDialog ( parent, title, null );
+    
+    public static Color showDialog(final Component parent, final String title) {
+        return showDialog(parent, title, null);
     }
-
-    public static Color showDialog ( final Component parent, final Color color )
-    {
-        return showDialog ( parent, null, color );
+    
+    public static Color showDialog(final Component parent, final Color color) {
+        return showDialog(parent, null, color);
     }
-
-    public static Color showDialog ( final Component parent, final String title, final Color color )
-    {
-        final WebColorChooserDialog wcc = new WebColorChooserDialog ( parent, title );
-        if ( color != null )
-        {
-            wcc.setColor ( color );
+    
+    public static Color showDialog(final Component parent, final String title,
+            final Color color) {
+        final WebColorChooserDialog wcc = new WebColorChooserDialog(parent,
+                title);
+        if (color != null) {
+            wcc.setColor(color);
         }
-        wcc.setVisible ( true );
-        if ( wcc.getResult () == OK_OPTION )
-        {
-            return wcc.getColor ();
-        }
-        else
-        {
+        wcc.setVisible(true);
+        if (wcc.getResult() == OK_OPTION) {
+            return wcc.getColor();
+        } else {
             return null;
         }
     }

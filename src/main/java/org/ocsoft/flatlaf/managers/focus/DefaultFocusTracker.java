@@ -31,116 +31,99 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
  * @author Mikle Garin
  */
 
-public abstract class DefaultFocusTracker implements FocusTracker
-{
+public abstract class DefaultFocusTracker implements FocusTracker {
     /**
      * Whether tracking is currently enabled or not.
      */
     private boolean enabled;
-
+    
     /**
-     * Whether component and its childs in components tree should be counted as a single component or not.
+     * Whether component and its childs in components tree should be counted as
+     * a single component or not.
      */
     private boolean uniteWithChilds;
-
+    
     /**
      * Custom childs which should be tracked together with this component.
      */
     private List<WeakReference<Component>> customChildren;
-
+    
     /**
      * Constructs new tracker with the specified tracked component.
      */
-    public DefaultFocusTracker ()
-    {
-        this ( true );
+    public DefaultFocusTracker() {
+        this(true);
     }
-
+    
     /**
      * Constructs new tracker with the specified tracked component.
      *
-     * @param uniteWithChilds whether component and its childs in components tree should be counted as a single component or not
+     * @param uniteWithChilds
+     *            whether component and its childs in components tree should be
+     *            counted as a single component or not
      */
-    public DefaultFocusTracker ( final boolean uniteWithChilds )
-    {
-        super ();
+    public DefaultFocusTracker(final boolean uniteWithChilds) {
+        super();
         this.enabled = true;
         this.uniteWithChilds = uniteWithChilds;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isTrackingEnabled ()
-    {
+    public boolean isTrackingEnabled() {
         return enabled;
     }
-
+    
     /**
      * Sets whether tracking is currently enabled or not.
      *
-     * @param enabled whether tracking is currently enabled or not
+     * @param enabled
+     *            whether tracking is currently enabled or not
      */
-    public void setTrackingEnabled ( final boolean enabled )
-    {
+    public void setTrackingEnabled(final boolean enabled) {
         this.enabled = enabled;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isInvolved ( final Component component, final Component tracked )
-    {
-        if ( isUniteWithChilds () )
-        {
-            if ( SwingUtils.isEqualOrChild ( tracked, component ) )
-            {
+    public boolean isInvolved(final Component component, final Component tracked) {
+        if (isUniteWithChilds()) {
+            if (SwingUtils.isEqualOrChild(tracked, component)) {
                 return true;
             }
-            if ( customChildren != null )
-            {
-                final Iterator<WeakReference<Component>> iterator = customChildren.iterator ();
-                while ( iterator.hasNext () )
-                {
-                    final WeakReference<Component> next = iterator.next ();
-                    final Component customChild = next.get ();
-                    if ( customChild == null )
-                    {
-                        iterator.remove ();
-                    }
-                    else
-                    {
-                        if ( SwingUtils.isEqualOrChild ( customChild, component ) )
-                        {
+            if (customChildren != null) {
+                final Iterator<WeakReference<Component>> iterator = customChildren
+                        .iterator();
+                while (iterator.hasNext()) {
+                    final WeakReference<Component> next = iterator.next();
+                    final Component customChild = next.get();
+                    if (customChild == null) {
+                        iterator.remove();
+                    } else {
+                        if (SwingUtils.isEqualOrChild(customChild, component)) {
                             return true;
                         }
                     }
                 }
             }
-        }
-        else
-        {
-            if ( tracked == component )
-            {
+        } else {
+            if (tracked == component) {
                 return true;
             }
-            if ( customChildren != null )
-            {
-                final Iterator<WeakReference<Component>> iterator = customChildren.iterator ();
-                while ( iterator.hasNext () )
-                {
-                    final WeakReference<Component> next = iterator.next ();
-                    final Component customChild = next.get ();
-                    if ( customChild == null )
-                    {
-                        iterator.remove ();
-                    }
-                    else
-                    {
-                        if ( customChild == component )
-                        {
+            if (customChildren != null) {
+                final Iterator<WeakReference<Component>> iterator = customChildren
+                        .iterator();
+                while (iterator.hasNext()) {
+                    final WeakReference<Component> next = iterator.next();
+                    final Component customChild = next.get();
+                    if (customChild == null) {
+                        iterator.remove();
+                    } else {
+                        if (customChild == component) {
                             return true;
                         }
                     }
@@ -149,108 +132,106 @@ public abstract class DefaultFocusTracker implements FocusTracker
         }
         return false;
     }
-
+    
     /**
-     * Returns whether component and its childs in components tree should be counted as a single component or not.
-     * In case component and its childs are counted as one focus changes within them will be ignored by tracker.
+     * Returns whether component and its childs in components tree should be
+     * counted as a single component or not. In case component and its childs
+     * are counted as one focus changes within them will be ignored by tracker.
      *
-     * @return true if component and its childs in components tree should be counted as a single component, false otherwise
+     * @return true if component and its childs in components tree should be
+     *         counted as a single component, false otherwise
      */
-    public boolean isUniteWithChilds ()
-    {
+    public boolean isUniteWithChilds() {
         return uniteWithChilds;
     }
-
+    
     /**
-     * Sets whether component and its childs in components tree should be counted as a single component or not.
+     * Sets whether component and its childs in components tree should be
+     * counted as a single component or not.
      *
-     * @param uniteWithChilds whether component and its childs in components tree should be counted as a single component or not
+     * @param uniteWithChilds
+     *            whether component and its childs in components tree should be
+     *            counted as a single component or not
      */
-    public void setUniteWithChilds ( final boolean uniteWithChilds )
-    {
+    public void setUniteWithChilds(final boolean uniteWithChilds) {
         this.uniteWithChilds = uniteWithChilds;
     }
-
+    
     /**
-     * Returns custom childs which should be tracked together with this component.
-     * Note that `isUniteWithChilds` value will also affect how these childs focus is checked.
+     * Returns custom childs which should be tracked together with this
+     * component. Note that `isUniteWithChilds` value will also affect how these
+     * childs focus is checked.
      *
-     * @return custom childs which should be tracked together with this component
+     * @return custom childs which should be tracked together with this
+     *         component
      */
-    public List<Component> getCustomChildren ()
-    {
-        final List<Component> children = new ArrayList<Component> ( customChildren.size () );
-        final Iterator<WeakReference<Component>> iterator = customChildren.iterator ();
-        while ( iterator.hasNext () )
-        {
-            final WeakReference<Component> next = iterator.next ();
-            final Component component = next.get ();
-            if ( component == null )
-            {
-                iterator.remove ();
-            }
-            else
-            {
-                children.add ( component );
+    public List<Component> getCustomChildren() {
+        final List<Component> children = new ArrayList<Component>(
+                customChildren.size());
+        final Iterator<WeakReference<Component>> iterator = customChildren
+                .iterator();
+        while (iterator.hasNext()) {
+            final WeakReference<Component> next = iterator.next();
+            final Component component = next.get();
+            if (component == null) {
+                iterator.remove();
+            } else {
+                children.add(component);
             }
         }
         return children;
     }
-
+    
     /**
      * Returns weakly-referenced custom children.
      *
      * @return weakly-referenced custom children
      */
-    public List<WeakReference<Component>> getWeakCustomChildren ()
-    {
+    public List<WeakReference<Component>> getWeakCustomChildren() {
         return customChildren;
     }
-
+    
     /**
      * Sets custom childs which should be tracked together with this component.
      *
-     * @param customChildren custom childs which should be tracked together with this component
+     * @param customChildren
+     *            custom childs which should be tracked together with this
+     *            component
      */
-    public void setCustomChildren ( final List<Component> customChildren )
-    {
-        for ( final Component customChild : customChildren )
-        {
-            addCustomChild ( customChild );
+    public void setCustomChildren(final List<Component> customChildren) {
+        for (final Component customChild : customChildren) {
+            addCustomChild(customChild);
         }
     }
-
+    
     /**
      * Adds new custom child.
      *
-     * @param customChild custom child to add
+     * @param customChild
+     *            custom child to add
      */
-    public void addCustomChild ( final Component customChild )
-    {
-        if ( customChildren == null )
-        {
-            customChildren = new ArrayList<WeakReference<Component>> ( 1 );
+    public void addCustomChild(final Component customChild) {
+        if (customChildren == null) {
+            customChildren = new ArrayList<WeakReference<Component>>(1);
         }
-        customChildren.add ( new WeakReference<Component> ( customChild ) );
+        customChildren.add(new WeakReference<Component>(customChild));
     }
-
+    
     /**
      * Removes custom child.
      *
-     * @param customChild custom child to remove
+     * @param customChild
+     *            custom child to remove
      */
-    public void removeCustomChild ( final Component customChild )
-    {
-        if ( customChildren != null )
-        {
-            final Iterator<WeakReference<Component>> iterator = customChildren.iterator ();
-            while ( iterator.hasNext () )
-            {
-                final WeakReference<Component> next = iterator.next ();
-                final Component component = next.get ();
-                if ( component == null || component == customChild )
-                {
-                    iterator.remove ();
+    public void removeCustomChild(final Component customChild) {
+        if (customChildren != null) {
+            final Iterator<WeakReference<Component>> iterator = customChildren
+                    .iterator();
+            while (iterator.hasNext()) {
+                final WeakReference<Component> next = iterator.next();
+                final Component component = next.get();
+                if (component == null || component == customChild) {
+                    iterator.remove();
                 }
             }
         }

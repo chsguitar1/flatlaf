@@ -35,14 +35,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
- * Web-style painter for JScrollBar component.
- * It is used as WebScrollBarUI default painter.
+ * Web-style painter for JScrollBar component. It is used as WebScrollBarUI
+ * default painter.
  *
  * @author Mikle Garin
  */
 
-public class WebScrollBarPainter<E extends JScrollBar> extends AbstractPainter<E> implements ScrollBarPainter<E>
-{
+public class WebScrollBarPainter<E extends JScrollBar> extends
+        AbstractPainter<E> implements ScrollBarPainter<E> {
     /**
      * Style settings.
      */
@@ -60,7 +60,7 @@ public class WebScrollBarPainter<E extends JScrollBar> extends AbstractPainter<E
     protected Color thumbRolloverBackgroundColor = WebScrollBarStyle.thumbRolloverBackgroundColor;
     protected Color thumbPressedBorderColor = WebScrollBarStyle.thumbPressedBorderColor;
     protected Color thumbPressedBackgroundColor = WebScrollBarStyle.thumbPressedBackgroundColor;
-
+    
     /**
      * Runtime variables.
      */
@@ -75,717 +75,668 @@ public class WebScrollBarPainter<E extends JScrollBar> extends AbstractPainter<E
     protected Insets thumbMarginR;
     protected Insets thumbMarginHL;
     protected Insets thumbMarginHR;
-
+    
     /**
      * Listeners.
      */
     protected MouseAdapter mouseAdapter;
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void install ( final E scrollbar )
-    {
-        super.install ( scrollbar );
-
+    public void install(final E scrollbar) {
+        super.install(scrollbar);
+        
         // This styling is animated
         animated = true;
-
+        
         // Mouse listener
-        mouseAdapter = new MouseAdapter ()
-        {
+        mouseAdapter = new MouseAdapter() {
             @Override
-            public void mousePressed ( final MouseEvent e )
-            {
-                setPressed ( true );
+            public void mousePressed(final MouseEvent e) {
+                setPressed(true);
             }
-
+            
             @Override
-            public void mouseReleased ( final MouseEvent e )
-            {
-                setPressed ( false );
+            public void mouseReleased(final MouseEvent e) {
+                setPressed(false);
             }
-
+            
             @Override
-            public void mouseEntered ( final MouseEvent e )
-            {
-                setRollover ( thumbBounds.contains ( e.getPoint () ) );
+            public void mouseEntered(final MouseEvent e) {
+                setRollover(thumbBounds.contains(e.getPoint()));
             }
-
+            
             @Override
-            public void mouseMoved ( final MouseEvent e )
-            {
-                setRollover ( thumbBounds.contains ( e.getPoint () ) );
+            public void mouseMoved(final MouseEvent e) {
+                setRollover(thumbBounds.contains(e.getPoint()));
             }
-
+            
             @Override
-            public void mouseExited ( final MouseEvent e )
-            {
-                setRollover ( false );
+            public void mouseExited(final MouseEvent e) {
+                setRollover(false);
             }
         };
-        scrollbar.addMouseListener ( mouseAdapter );
-        scrollbar.addMouseMotionListener ( mouseAdapter );
+        scrollbar.addMouseListener(mouseAdapter);
+        scrollbar.addMouseMotionListener(mouseAdapter);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void uninstall ( final E scrollbar )
-    {
+    public void uninstall(final E scrollbar) {
         // Removing listeners
-        scrollbar.removeMouseListener ( mouseAdapter );
-        scrollbar.removeMouseMotionListener ( mouseAdapter );
-
-        super.uninstall ( scrollbar );
+        scrollbar.removeMouseListener(mouseAdapter);
+        scrollbar.removeMouseMotionListener(mouseAdapter);
+        
+        super.uninstall(scrollbar);
     }
-
+    
     /**
-     * Returns whether scroll bar arrow buttons are visible or not.
-     * Buttons are painted separately, this mark simply informs whether they are actually visible or not.
+     * Returns whether scroll bar arrow buttons are visible or not. Buttons are
+     * painted separately, this mark simply informs whether they are actually
+     * visible or not.
      *
      * @return true if scroll bar arrow buttons are visible, false otherwise
      */
-    public boolean isPaintButtons ()
-    {
+    public boolean isPaintButtons() {
         return paintButtons;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintButtons ( final boolean paint )
-    {
-        if ( this.paintButtons != paint )
-        {
+    public void setPaintButtons(final boolean paint) {
+        if (this.paintButtons != paint) {
             this.paintButtons = paint;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * Returns whether scroll bar track should be painted or not.
      *
      * @return true if scroll bar track should be painted, false otherwise
      */
-    public boolean isPaintTrack ()
-    {
+    public boolean isPaintTrack() {
         return paintTrack;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintTrack ( final boolean paint )
-    {
-        if ( this.paintTrack != paint )
-        {
+    public void setPaintTrack(final boolean paint) {
+        if (this.paintTrack != paint) {
             this.paintTrack = paint;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * Returns scroll bar thumb corners rounding.
      *
      * @return scroll bar thumb corners rounding
      */
-    public int getThumbRound ()
-    {
+    public int getThumbRound() {
         return thumbRound;
     }
-
+    
     /**
      * Sets scroll bar thumb corners rounding.
      *
-     * @param round new scroll bar thumb corners rounding
+     * @param round
+     *            new scroll bar thumb corners rounding
      */
-    public void setThumbRound ( final int round )
-    {
-        if ( this.thumbRound != round )
-        {
+    public void setThumbRound(final int round) {
+        if (this.thumbRound != round) {
             this.thumbRound = round;
-            repaintThumb ();
+            repaintThumb();
         }
     }
-
+    
     /**
-     * Returns scroll bar thumb margin.
-     * This value doesn't affect scroll bar size, just the visual representation of the thumb.
-     * Also these margins are the same only for vertical scroll bar, and are rotated clockwise for horizontal scroll bar.
+     * Returns scroll bar thumb margin. This value doesn't affect scroll bar
+     * size, just the visual representation of the thumb. Also these margins are
+     * the same only for vertical scroll bar, and are rotated clockwise for
+     * horizontal scroll bar.
      *
      * @return scroll bar thumb margin
      */
-    public Insets getThumbMargin ()
-    {
+    public Insets getThumbMargin() {
         return thumbMargin;
     }
-
+    
     /**
-     * Sets scroll bar thumb margin.
-     * This value doesn't affect scroll bar size, just the visual representation of the thumb.
-     * Also these margins are the same only for vertical scroll bar, and are rotated clockwise for horizontal scroll bar.
+     * Sets scroll bar thumb margin. This value doesn't affect scroll bar size,
+     * just the visual representation of the thumb. Also these margins are the
+     * same only for vertical scroll bar, and are rotated clockwise for
+     * horizontal scroll bar.
      *
-     * @param margin new scroll bar thumb margin
+     * @param margin
+     *            new scroll bar thumb margin
      */
-    public void setThumbMargin ( final Insets margin )
-    {
-        if ( this.thumbMargin != margin )
-        {
+    public void setThumbMargin(final Insets margin) {
+        if (this.thumbMargin != margin) {
             this.thumbMargin = margin;
-            updateThumbMargins ();
-            repaintThumb ();
-        }
-        else if ( thumbMarginR == null )
-        {
-            updateThumbMargins ();
+            updateThumbMargins();
+            repaintThumb();
+        } else if (thumbMarginR == null) {
+            updateThumbMargins();
         }
     }
-
+    
     /**
      * Updates cached thumb margins.
      */
-    protected void updateThumbMargins ()
-    {
-        this.thumbMarginR = new Insets ( thumbMargin.top, thumbMargin.right, thumbMargin.bottom, thumbMargin.left );
-        this.thumbMarginHL = new Insets ( thumbMargin.left, thumbMargin.bottom, thumbMargin.right, thumbMargin.top );
-        this.thumbMarginHR = new Insets ( thumbMargin.right, thumbMargin.top, thumbMargin.left, thumbMargin.bottom );
+    protected void updateThumbMargins() {
+        this.thumbMarginR = new Insets(thumbMargin.top, thumbMargin.right,
+                thumbMargin.bottom, thumbMargin.left);
+        this.thumbMarginHL = new Insets(thumbMargin.left, thumbMargin.bottom,
+                thumbMargin.right, thumbMargin.top);
+        this.thumbMarginHR = new Insets(thumbMargin.right, thumbMargin.top,
+                thumbMargin.left, thumbMargin.bottom);
     }
-
+    
     /**
      * Returns scroll bar track border color.
      *
      * @return scroll bar track border color
      */
-    public Color getTrackBorderColor ()
-    {
+    public Color getTrackBorderColor() {
         return trackBorderColor;
     }
-
+    
     /**
      * Sets scroll bar track border color.
      *
-     * @param color new scroll bar track border color
+     * @param color
+     *            new scroll bar track border color
      */
-    public void setTrackBorderColor ( final Color color )
-    {
-        if ( this.trackBorderColor != color )
-        {
+    public void setTrackBorderColor(final Color color) {
+        if (this.trackBorderColor != color) {
             this.trackBorderColor = color;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns scroll bar track background color.
      *
      * @return scroll bar track background color
      */
-    public Color getTrackBackgroundColor ()
-    {
+    public Color getTrackBackgroundColor() {
         return trackBackgroundColor;
     }
-
+    
     /**
      * Sets scroll bar track background color.
      *
-     * @param color new scroll bar track background color
+     * @param color
+     *            new scroll bar track background color
      */
-    public void setTrackBackgroundColor ( final Color color )
-    {
-        if ( this.trackBackgroundColor != color )
-        {
+    public void setTrackBackgroundColor(final Color color) {
+        if (this.trackBackgroundColor != color) {
             this.trackBackgroundColor = color;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns scroll bar thumb border color.
      *
      * @return scroll bar thumb border color
      */
-    public Color getThumbBorderColor ()
-    {
+    public Color getThumbBorderColor() {
         return thumbBorderColor;
     }
-
+    
     /**
      * Sets scroll bar thumb border color.
      *
-     * @param color new scroll bar thumb border color
+     * @param color
+     *            new scroll bar thumb border color
      */
-    public void setThumbBorderColor ( final Color color )
-    {
-        if ( this.thumbBorderColor != color )
-        {
+    public void setThumbBorderColor(final Color color) {
+        if (this.thumbBorderColor != color) {
             this.thumbBorderColor = color;
-            repaintThumb ();
+            repaintThumb();
         }
     }
-
+    
     /**
      * Returns scroll bar thumb background color.
      *
      * @return scroll bar thumb background color
      */
-    public Color getThumbBackgroundColor ()
-    {
+    public Color getThumbBackgroundColor() {
         return thumbBackgroundColor;
     }
-
+    
     /**
      * Sets scroll bar thumb background color.
      *
-     * @param color new scroll bar thumb background color
+     * @param color
+     *            new scroll bar thumb background color
      */
-    public void setThumbBackgroundColor ( final Color color )
-    {
-        if ( this.thumbBackgroundColor != color )
-        {
+    public void setThumbBackgroundColor(final Color color) {
+        if (this.thumbBackgroundColor != color) {
             this.thumbBackgroundColor = color;
-            repaintThumb ();
+            repaintThumb();
         }
     }
-
+    
     /**
      * Returns disabled scroll bar thumb border color.
      *
      * @return disabled scroll bar thumb border color
      */
-    public Color getThumbDisabledBorderColor ()
-    {
+    public Color getThumbDisabledBorderColor() {
         return thumbDisabledBorderColor;
     }
-
+    
     /**
      * Sets disabled scroll bar thumb border color.
      *
-     * @param color new disabled scroll bar thumb border color
+     * @param color
+     *            new disabled scroll bar thumb border color
      */
-    public void setThumbDisabledBorderColor ( final Color color )
-    {
-        if ( this.thumbDisabledBorderColor != color )
-        {
+    public void setThumbDisabledBorderColor(final Color color) {
+        if (this.thumbDisabledBorderColor != color) {
             this.thumbDisabledBorderColor = color;
-            repaintThumb ();
+            repaintThumb();
         }
     }
-
+    
     /**
      * Returns disabled scroll bar thumb background color.
      *
      * @return disabled scroll bar thumb background color
      */
-    public Color getThumbDisabledBackgroundColor ()
-    {
+    public Color getThumbDisabledBackgroundColor() {
         return thumbDisabledBackgroundColor;
     }
-
+    
     /**
      * Sets disabled scroll bar thumb background color.
      *
-     * @param color new disabled scroll bar thumb background color
+     * @param color
+     *            new disabled scroll bar thumb background color
      */
-    public void setThumbDisabledBackgroundColor ( final Color color )
-    {
-        if ( this.thumbDisabledBackgroundColor != color )
-        {
+    public void setThumbDisabledBackgroundColor(final Color color) {
+        if (this.thumbDisabledBackgroundColor != color) {
             this.thumbDisabledBackgroundColor = color;
-            repaintThumb ();
+            repaintThumb();
         }
     }
-
+    
     /**
      * Returns scroll bar rollover thumb border color.
      *
      * @return scroll bar rollover thumb border color
      */
-    public Color getThumbRolloverBorderColor ()
-    {
+    public Color getThumbRolloverBorderColor() {
         return thumbRolloverBorderColor;
     }
-
+    
     /**
      * Sets scroll bar rollover thumb border color.
      *
-     * @param color new scroll bar rollover thumb border color
+     * @param color
+     *            new scroll bar rollover thumb border color
      */
-    public void setThumbRolloverBorderColor ( final Color color )
-    {
-        if ( this.thumbRolloverBorderColor != color )
-        {
+    public void setThumbRolloverBorderColor(final Color color) {
+        if (this.thumbRolloverBorderColor != color) {
             this.thumbRolloverBorderColor = color;
-            repaintThumb ();
+            repaintThumb();
         }
     }
-
+    
     /**
      * Returns scroll bar rollover thumb background color.
      *
      * @return scroll bar rollover thumb background color
      */
-    public Color getThumbRolloverBackgroundColor ()
-    {
+    public Color getThumbRolloverBackgroundColor() {
         return thumbRolloverBackgroundColor;
     }
-
+    
     /**
      * Sets scroll bar rollover thumb background color.
      *
-     * @param color new scroll bar rollover thumb background color
+     * @param color
+     *            new scroll bar rollover thumb background color
      */
-    public void setThumbRolloverBackgroundColor ( final Color color )
-    {
-        if ( this.thumbRolloverBackgroundColor != color )
-        {
+    public void setThumbRolloverBackgroundColor(final Color color) {
+        if (this.thumbRolloverBackgroundColor != color) {
             this.thumbRolloverBackgroundColor = color;
-            repaintThumb ();
+            repaintThumb();
         }
     }
-
+    
     /**
      * Returns scroll bar pressed thumb border color.
      *
      * @return scroll bar pressed thumb border color
      */
-    public Color getThumbPressedBorderColor ()
-    {
+    public Color getThumbPressedBorderColor() {
         return thumbPressedBorderColor;
     }
-
+    
     /**
      * Returns scroll bar pressed thumb border color.
      *
-     * @param color new scroll bar pressed thumb border color
+     * @param color
+     *            new scroll bar pressed thumb border color
      */
-    public void setThumbPressedBorderColor ( final Color color )
-    {
-        if ( this.thumbPressedBorderColor != color )
-        {
+    public void setThumbPressedBorderColor(final Color color) {
+        if (this.thumbPressedBorderColor != color) {
             this.thumbPressedBorderColor = color;
-            repaintThumb ();
+            repaintThumb();
         }
     }
-
+    
     /**
      * Returns scroll bar pressed thumb background color.
      *
      * @return scroll bar pressed thumb background color
      */
-    public Color getThumbPressedBackgroundColor ()
-    {
+    public Color getThumbPressedBackgroundColor() {
         return thumbPressedBackgroundColor;
     }
-
+    
     /**
      * Sets scroll bar pressed thumb background color.
      *
-     * @param color new scroll bar pressed thumb background color
+     * @param color
+     *            new scroll bar pressed thumb background color
      */
-    public void setThumbPressedBackgroundColor ( final Color color )
-    {
-        if ( this.thumbPressedBackgroundColor != color )
-        {
+    public void setThumbPressedBackgroundColor(final Color color) {
+        if (this.thumbPressedBackgroundColor != color) {
             this.thumbPressedBackgroundColor = color;
-            repaintThumb ();
+            repaintThumb();
         }
     }
-
+    
     /**
      * Returns whether scroll bar thumb is in rollover state or not.
      *
      * @return true if scroll bar thumb is in rollover state, false otherwise
      */
-    public boolean isRollover ()
-    {
+    public boolean isRollover() {
         return rollover;
     }
-
+    
     /**
      * Sets whether scroll bar thumb is in rollover state or not.
      *
-     * @param rollover whether scroll bar thumb is in rollover state or not
+     * @param rollover
+     *            whether scroll bar thumb is in rollover state or not
      */
-    public void setRollover ( final boolean rollover )
-    {
-        if ( this.rollover != rollover )
-        {
+    public void setRollover(final boolean rollover) {
+        if (this.rollover != rollover) {
             this.rollover = rollover;
-            if ( animated )
-            {
-                if ( rollover )
-                {
-                    if ( rolloverAnimator != null )
-                    {
-                        rolloverAnimator.stop ();
+            if (animated) {
+                if (rollover) {
+                    if (rolloverAnimator != null) {
+                        rolloverAnimator.stop();
                     }
-                    repaintThumb ();
-                }
-                else
-                {
-                    if ( rolloverAnimator == null )
-                    {
-                        rolloverAnimator = new WebTimer ( FlatLafStyleConstants.avgAnimationDelay, new ActionListener ()
-                        {
-                            @Override
-                            public void actionPerformed ( final ActionEvent e )
-                            {
-                                if ( rolloverState > 0f )
-                                {
-                                    rolloverState -= 0.1f;
-                                    repaintThumb ();
-                                }
-                                else
-                                {
-                                    rolloverState = 0f;
-                                    rolloverAnimator.stop ();
-                                }
-                            }
-                        } );
+                    repaintThumb();
+                } else {
+                    if (rolloverAnimator == null) {
+                        rolloverAnimator = new WebTimer(
+                                FlatLafStyleConstants.avgAnimationDelay,
+                                new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(
+                                            final ActionEvent e) {
+                                        if (rolloverState > 0f) {
+                                            rolloverState -= 0.1f;
+                                            repaintThumb();
+                                        } else {
+                                            rolloverState = 0f;
+                                            rolloverAnimator.stop();
+                                        }
+                                    }
+                                });
                     }
                     rolloverState = 1f;
-                    rolloverAnimator.start ();
+                    rolloverAnimator.start();
                 }
-            }
-            else
-            {
+            } else {
                 rolloverState = rollover ? 1f : 0f;
-                repaintThumb ();
+                repaintThumb();
             }
         }
     }
-
+    
     /**
      * Returns whether scroll bar thumb is pressed or not.
      *
      * @return true if scroll bar thumb is pressed, false otherwise
      */
-    public boolean isPressed ()
-    {
+    public boolean isPressed() {
         return pressed;
     }
-
+    
     /**
      * Sets whether scroll bar thumb is pressed or not.
      *
-     * @param pressed whether scroll bar thumb is pressed or not
+     * @param pressed
+     *            whether scroll bar thumb is pressed or not
      */
-    public void setPressed ( final boolean pressed )
-    {
-        if ( this.pressed != pressed )
-        {
+    public void setPressed(final boolean pressed) {
+        if (this.pressed != pressed) {
             this.pressed = pressed;
-            repaintThumb ();
+            repaintThumb();
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setDragged ( final boolean dragged )
-    {
+    public void setDragged(final boolean dragged) {
         this.dragged = dragged;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setTrackBounds ( final Rectangle bounds )
-    {
+    public void setTrackBounds(final Rectangle bounds) {
         this.trackBounds = bounds;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setThumbBounds ( final Rectangle bounds )
-    {
+    public void setThumbBounds(final Rectangle bounds) {
         this.thumbBounds = bounds;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Boolean isOpaque ( final E scrollbar )
-    {
+    public Boolean isOpaque(final E scrollbar) {
         return paintTrack;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Insets getMargin ( final E scrollbar )
-    {
-        if ( paintTrack )
-        {
+    public Insets getMargin(final E scrollbar) {
+        if (paintTrack) {
             // Additional 1px border at scroll bar side
             // Orientation will be taken into account by the UI itself
-            final boolean hor = scrollbar.getOrientation () == SwingConstants.HORIZONTAL;
-            return new Insets ( hor ? 1 : 0, hor ? 0 : 1, 0, 0 );
-        }
-        else
-        {
+            final boolean hor = scrollbar.getOrientation() == SwingConstants.HORIZONTAL;
+            return new Insets(hor ? 1 : 0, hor ? 0 : 1, 0, 0);
+        } else {
             return null;
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void paint ( final Graphics2D g2d, final Rectangle bounds, final E scrollbar )
-    {
-        final Object aa = GraphicsUtils.setupAntialias ( g2d );
-        paintBackground ( g2d, scrollbar, bounds );
-        paintTrack ( g2d, scrollbar, trackBounds );
-        paintThumb ( g2d, scrollbar, thumbBounds );
-        GraphicsUtils.restoreAntialias ( g2d, aa );
+    public void paint(final Graphics2D g2d, final Rectangle bounds,
+            final E scrollbar) {
+        final Object aa = GraphicsUtils.setupAntialias(g2d);
+        paintBackground(g2d, scrollbar, bounds);
+        paintTrack(g2d, scrollbar, trackBounds);
+        paintThumb(g2d, scrollbar, thumbBounds);
+        GraphicsUtils.restoreAntialias(g2d, aa);
     }
-
+    
     /**
-     * Paints scroll bar background.
-     * Background area includes the space under arrow buttons.
+     * Paints scroll bar background. Background area includes the space under
+     * arrow buttons.
      *
-     * @param g2d       graphics context
-     * @param scrollbar scroll bar
-     * @param bounds    scroll bar bounds
+     * @param g2d
+     *            graphics context
+     * @param scrollbar
+     *            scroll bar
+     * @param bounds
+     *            scroll bar bounds
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    protected void paintBackground ( final Graphics2D g2d, final E scrollbar, final Rectangle bounds )
-    {
-        if ( paintTrack )
-        {
-            g2d.setPaint ( trackBackgroundColor );
-            g2d.fillRect ( bounds.x, bounds.y, bounds.width, bounds.height );
-
-            if ( scrollbar.getOrientation () == JScrollBar.VERTICAL )
-            {
-                final boolean ltr = scrollbar.getComponentOrientation ().isLeftToRight ();
+    @SuppressWarnings("UnusedParameters")
+    protected void paintBackground(final Graphics2D g2d, final E scrollbar,
+            final Rectangle bounds) {
+        if (paintTrack) {
+            g2d.setPaint(trackBackgroundColor);
+            g2d.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+            
+            if (scrollbar.getOrientation() == JScrollBar.VERTICAL) {
+                final boolean ltr = scrollbar.getComponentOrientation()
+                        .isLeftToRight();
                 final int x = ltr ? bounds.x : bounds.x + bounds.width - 1;
-                g2d.setColor ( trackBorderColor );
-                g2d.drawLine ( x, bounds.y, x, bounds.height - 1 );
-            }
-            else
-            {
-                g2d.setColor ( trackBorderColor );
-                g2d.drawLine ( bounds.x, bounds.y, bounds.x + bounds.width - 1, bounds.y );
+                g2d.setColor(trackBorderColor);
+                g2d.drawLine(x, bounds.y, x, bounds.height - 1);
+            } else {
+                g2d.setColor(trackBorderColor);
+                g2d.drawLine(bounds.x, bounds.y, bounds.x + bounds.width - 1,
+                        bounds.y);
             }
         }
     }
-
+    
     /**
-     * Paints scroll bar track.
-     * Track area only excludes the space under arrow buttons.
+     * Paints scroll bar track. Track area only excludes the space under arrow
+     * buttons.
      *
-     * @param g2d       graphics context
-     * @param scrollbar scroll bar
-     * @param bounds    track bounds
+     * @param g2d
+     *            graphics context
+     * @param scrollbar
+     *            scroll bar
+     * @param bounds
+     *            track bounds
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    protected void paintTrack ( final Graphics2D g2d, final E scrollbar, final Rectangle bounds )
-    {
+    @SuppressWarnings("UnusedParameters")
+    protected void paintTrack(final Graphics2D g2d, final E scrollbar,
+            final Rectangle bounds) {
         // You can paint your own track decoration by overriding this method
     }
-
+    
     /**
-     * Paints scroll bar thumb.
-     * Thumb area is limited to thumb bounds and might be changed frequently.
+     * Paints scroll bar thumb. Thumb area is limited to thumb bounds and might
+     * be changed frequently.
      *
-     * @param g2d       graphics context
-     * @param scrollbar scroll bar component
-     * @param bounds    thumb bounds
+     * @param g2d
+     *            graphics context
+     * @param scrollbar
+     *            scroll bar component
+     * @param bounds
+     *            thumb bounds
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    protected void paintThumb ( final Graphics2D g2d, final E scrollbar, final Rectangle bounds )
-    {
-        final Insets m = getCurrentThumbMargin ( scrollbar );
+    @SuppressWarnings("UnusedParameters")
+    protected void paintThumb(final Graphics2D g2d, final E scrollbar,
+            final Rectangle bounds) {
+        final Insets m = getCurrentThumbMargin(scrollbar);
         final int w = bounds.width - m.left - m.right;
         final int h = bounds.height - m.top - m.bottom;
-
-        // Round is limited to thumb minimum width/height to avoid painting artifacts
-        final int round = MathUtils.min ( thumbRound, w - 1, h - 1 );
-
+        
+        // Round is limited to thumb minimum width/height to avoid painting
+        // artifacts
+        final int round = MathUtils.min(thumbRound, w - 1, h - 1);
+        
         // Painting thumb background
-        g2d.setPaint ( getCurrentThumbBackgroundColor ( scrollbar ) );
-        g2d.fillRoundRect ( bounds.x + m.left, bounds.y + m.top, w, h, round, round );
-
+        g2d.setPaint(getCurrentThumbBackgroundColor(scrollbar));
+        g2d.fillRoundRect(bounds.x + m.left, bounds.y + m.top, w, h, round,
+                round);
+        
         // Painting thumb border
-        g2d.setPaint ( getCurrentThumbBorderColor ( scrollbar ) );
-        g2d.drawRoundRect ( bounds.x + m.left, bounds.y + m.top, w - 1, h - 1, round, round );
+        g2d.setPaint(getCurrentThumbBorderColor(scrollbar));
+        g2d.drawRoundRect(bounds.x + m.left, bounds.y + m.top, w - 1, h - 1,
+                round, round);
     }
-
+    
     /**
      * Returns current thumb margin rotated into proper position.
      *
-     * @param scrollbar scroll bar component
+     * @param scrollbar
+     *            scroll bar component
      * @return current thumb margin rotated into proper position
      */
-    protected Insets getCurrentThumbMargin ( final E scrollbar )
-    {
-        if ( thumbMargin != null )
-        {
-            if ( thumbMarginR == null )
-            {
-                updateThumbMargins ();
+    protected Insets getCurrentThumbMargin(final E scrollbar) {
+        if (thumbMargin != null) {
+            if (thumbMarginR == null) {
+                updateThumbMargins();
             }
-            final boolean ver = scrollbar.getOrientation () == SwingConstants.VERTICAL;
-            final boolean ltr = scrollbar.getComponentOrientation ().isLeftToRight ();
-            return ver ? ( ltr ? thumbMargin : thumbMarginR ) : ( ltr ? thumbMarginHL : thumbMarginHR );
-        }
-        else
-        {
-            return new Insets ( 0, 0, 0, 0 );
+            final boolean ver = scrollbar.getOrientation() == SwingConstants.VERTICAL;
+            final boolean ltr = scrollbar.getComponentOrientation()
+                    .isLeftToRight();
+            return ver ? (ltr ? thumbMargin : thumbMarginR)
+                    : (ltr ? thumbMarginHL : thumbMarginHR);
+        } else {
+            return new Insets(0, 0, 0, 0);
         }
     }
-
+    
     /**
      * Returns current thumb border color.
      *
-     * @param scrollbar scroll bar component
+     * @param scrollbar
+     *            scroll bar component
      * @return current thumb border color
      */
-    protected Color getCurrentThumbBorderColor ( final E scrollbar )
-    {
-        return scrollbar.isEnabled () ? ( pressed || dragged ? thumbPressedBorderColor : ( rollover ? thumbRolloverBorderColor :
-                ColorUtils.getIntermediateColor ( thumbBorderColor, thumbRolloverBorderColor, rolloverState ) ) ) :
-                thumbDisabledBorderColor;
+    protected Color getCurrentThumbBorderColor(final E scrollbar) {
+        return scrollbar.isEnabled() ? (pressed || dragged ? thumbPressedBorderColor
+                : (rollover ? thumbRolloverBorderColor : ColorUtils
+                        .getIntermediateColor(thumbBorderColor,
+                                thumbRolloverBorderColor, rolloverState)))
+                : thumbDisabledBorderColor;
     }
-
+    
     /**
      * Returns current thumb background color.
      *
-     * @param scrollbar scroll bar component
+     * @param scrollbar
+     *            scroll bar component
      * @return current thumb background color
      */
-    protected Color getCurrentThumbBackgroundColor ( final E scrollbar )
-    {
-        return scrollbar.isEnabled () ? ( pressed || dragged ? thumbPressedBackgroundColor : ( rollover ? thumbRolloverBackgroundColor :
-                ColorUtils.getIntermediateColor ( thumbBackgroundColor, thumbRolloverBackgroundColor, rolloverState ) ) ) :
-                thumbDisabledBackgroundColor;
+    protected Color getCurrentThumbBackgroundColor(final E scrollbar) {
+        return scrollbar.isEnabled() ? (pressed || dragged ? thumbPressedBackgroundColor
+                : (rollover ? thumbRolloverBackgroundColor : ColorUtils
+                        .getIntermediateColor(thumbBackgroundColor,
+                                thumbRolloverBackgroundColor, rolloverState)))
+                : thumbDisabledBackgroundColor;
     }
-
+    
     /**
      * Forces scroll bar thumb to be repainted.
      */
-    public void repaintThumb ()
-    {
-        if ( thumbBounds != null )
-        {
-            repaint ( thumbBounds );
-        }
-        else
-        {
-            repaint ();
+    public void repaintThumb() {
+        if (thumbBounds != null) {
+            repaint(thumbBounds);
+        } else {
+            repaint();
         }
     }
 }

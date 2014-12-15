@@ -31,27 +31,25 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class NPScrollBarButtonPainter<E extends AbstractButton> extends AbstractPainter<E> implements ScrollBarButtonPainter<E>
-{
+public class NPScrollBarButtonPainter<E extends AbstractButton> extends
+        AbstractPainter<E> implements ScrollBarButtonPainter<E> {
     /**
-     * todo 1. Implement when ButtonPainter/WebButtonPainter will be added and available
+     * todo 1. Implement when ButtonPainter/WebButtonPainter will be added and
+     * available
      */
-
+    
     @Override
-    public void setButtonType ( final ScrollBarButtonType type )
-    {
+    public void setButtonType(final ScrollBarButtonType type) {
         // todo
     }
-
+    
     @Override
-    public void setScrollbar ( final JScrollBar scrollbar )
-    {
+    public void setScrollbar(final JScrollBar scrollbar) {
         // todo
     }
-
+    
     @Override
-    public void paint ( final Graphics2D g2d, final Rectangle bounds, final E c )
-    {
+    public void paint(final Graphics2D g2d, final Rectangle bounds, final E c) {
         // todo
     }
 }

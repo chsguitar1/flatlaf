@@ -30,44 +30,50 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public interface ScrollBarPainter<E extends JScrollBar> extends Painter<E>, SpecificPainter
-{
+public interface ScrollBarPainter<E extends JScrollBar> extends Painter<E>,
+        SpecificPainter {
     /**
-     * Sets whether scroll bar arrow buttons are visible or not.
-     * Buttons are painted separately, this mark simply informs whether they are actually visible or not.
+     * Sets whether scroll bar arrow buttons are visible or not. Buttons are
+     * painted separately, this mark simply informs whether they are actually
+     * visible or not.
      *
-     * @param paint whether scroll bar arrow buttons are visible or not
+     * @param paint
+     *            whether scroll bar arrow buttons are visible or not
      */
-    public void setPaintButtons ( boolean paint );
-
+    public void setPaintButtons(boolean paint);
+    
     /**
      * Sets whether scroll bar track should be painted or not.
      *
-     * @param paint whether scroll bar track should be painted or not
+     * @param paint
+     *            whether scroll bar track should be painted or not
      */
-    public void setPaintTrack ( boolean paint );
-
+    public void setPaintTrack(boolean paint);
+    
     /**
-     * Sets whether scroll bar thumb is being dragged or not.
-     * This value is updated by WebScrollBarUI when drag event starts or ends.
+     * Sets whether scroll bar thumb is being dragged or not. This value is
+     * updated by WebScrollBarUI when drag event starts or ends.
      *
-     * @param dragged whether scroll bar thumb is being dragged or not
+     * @param dragged
+     *            whether scroll bar thumb is being dragged or not
      */
-    public void setDragged ( boolean dragged );
-
+    public void setDragged(boolean dragged);
+    
     /**
-     * Sets scroll bar track bounds.
-     * This value is updated by WebScrollBarUI on each paint call to ensure that proper bounds presented.
+     * Sets scroll bar track bounds. This value is updated by WebScrollBarUI on
+     * each paint call to ensure that proper bounds presented.
      *
-     * @param bounds new scroll bar track bounds
+     * @param bounds
+     *            new scroll bar track bounds
      */
-    public void setTrackBounds ( Rectangle bounds );
-
+    public void setTrackBounds(Rectangle bounds);
+    
     /**
-     * Sets scroll bar thumb bounds.
-     * This value is updated by WebScrollBarUI on each paint call to ensure that proper bounds presented.
+     * Sets scroll bar thumb bounds. This value is updated by WebScrollBarUI on
+     * each paint call to ensure that proper bounds presented.
      *
-     * @param bounds new scroll bar thumb bounds
+     * @param bounds
+     *            new scroll bar thumb bounds
      */
-    public void setThumbBounds ( Rectangle bounds );
+    public void setThumbBounds(Rectangle bounds);
 }

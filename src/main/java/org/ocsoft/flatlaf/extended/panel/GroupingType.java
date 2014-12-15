@@ -24,23 +24,22 @@ package org.ocsoft.flatlaf.extended.panel;
  * @see GroupPanel
  */
 
-public enum GroupingType
-{
+public enum GroupingType {
     // Uses default fill settings
     none,
-
+    
     // Only first component fills free space
     fillFirst,
-
+    
     // All middle components (excluding first and last) fill free space
     fillMiddle,
-
+    
     // Only last component fills free space
     fillLast,
-
+    
     // Only first and last components fill free space
     fillFirstAndLast,
-
+    
     // All components fill free space
     fillAll
 }

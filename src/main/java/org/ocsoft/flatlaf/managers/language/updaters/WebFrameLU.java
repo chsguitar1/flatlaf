@@ -31,29 +31,27 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class WebFrameLU extends DefaultLanguageUpdater<Frame>
-{
+public class WebFrameLU extends DefaultLanguageUpdater<Frame> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void update ( final Frame c, final String key, final Value value, final Object... data )
-    {
-        if ( c instanceof JFrame )
-        {
-            final JRootPane rootPane = ( ( JFrame ) c ).getRootPane ();
-            if ( rootPane.getUI () instanceof WebRootPaneUI )
-            {
-                final JComponent titleComponent = ( ( WebRootPaneUI ) rootPane.getUI () ).getTitleComponent ();
-                if ( titleComponent != null )
-                {
-                    titleComponent.repaint ();
-
-                    // final JLabel title = SwingUtils.getFirst ( titleComponent, JLabel.class );
+    public void update(final Frame c, final String key, final Value value,
+            final Object... data) {
+        if (c instanceof JFrame) {
+            final JRootPane rootPane = ((JFrame) c).getRootPane();
+            if (rootPane.getUI() instanceof WebRootPaneUI) {
+                final JComponent titleComponent = ((WebRootPaneUI) rootPane
+                        .getUI()).getTitleComponent();
+                if (titleComponent != null) {
+                    titleComponent.repaint();
+                    
+                    // final JLabel title = SwingUtils.getFirst (
+                    // titleComponent, JLabel.class );
                     // title.setText ( getDefaultText ( value, data ) );
                 }
             }
         }
-        c.setTitle ( getDefaultText ( value, data ) );
+        c.setTitle(getDefaultText(value, data));
     }
 }

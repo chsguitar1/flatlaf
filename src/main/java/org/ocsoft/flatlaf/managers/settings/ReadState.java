@@ -23,35 +23,36 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  * This enumeration represents SettingsGroup read states.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How to use SettingsManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How
+ *      to use SettingsManager</a>
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  * @see org.ocsoft.flatlaf.managers.settings.SettingsGroupState
  * @see org.ocsoft.flatlaf.managers.settings.SettingsGroup
  */
 
-@XStreamAlias ("ReadState")
-public enum ReadState
-{
+@XStreamAlias("ReadState")
+public enum ReadState {
     /**
      * Not read yet.
      */
     none,
-
+    
     /**
      * New one was created.
      */
     created,
-
+    
     /**
      * Read sucessfully.
      */
     ok,
-
+    
     /**
      * Successfully restored from dump.
      */
     restored,
-
+    
     /**
      * Failed to load.
      */

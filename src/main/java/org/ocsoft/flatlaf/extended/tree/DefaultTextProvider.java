@@ -25,14 +25,12 @@ import org.ocsoft.flatlaf.utils.general.TextProvider;
  * @author Mikle Garin
  */
 
-public class DefaultTextProvider implements TextProvider
-{
+public class DefaultTextProvider implements TextProvider {
     /**
      * {@inheritDoc}
      */
     @Override
-    public String provide ( final Object object )
-    {
-        return object != null ? object.toString () : "";
+    public String provide(final Object object) {
+        return object != null ? object.toString() : "";
     }
 }

@@ -25,80 +25,68 @@ import org.ocsoft.flatlaf.utils.swing.DataProvider;
  * User: mgarin Date: 05.06.12 Time: 20:06
  */
 
-public class OverlayData
-{
+public class OverlayData {
     private OverlayLocation location;
     private int halign;
     private int valign;
     private DataProvider<Rectangle> rectangleProvider;
-
-    public OverlayData ()
-    {
-        super ();
+    
+    public OverlayData() {
+        super();
         this.location = OverlayLocation.fill;
     }
-
-    public OverlayData ( int halign, int valign )
-    {
-        super ();
+    
+    public OverlayData(int halign, int valign) {
+        super();
         this.location = OverlayLocation.align;
         this.halign = halign;
         this.valign = valign;
     }
-
-    public OverlayData ( DataProvider<Rectangle> rectangleProvider )
-    {
-        super ();
+    
+    public OverlayData(DataProvider<Rectangle> rectangleProvider) {
+        super();
         this.location = OverlayLocation.custom;
         this.rectangleProvider = rectangleProvider;
     }
-
-    public OverlayData ( OverlayLocation location, int halign, int valign, DataProvider<Rectangle> rectangleProvider )
-    {
-        super ();
+    
+    public OverlayData(OverlayLocation location, int halign, int valign,
+            DataProvider<Rectangle> rectangleProvider) {
+        super();
         this.location = location;
         this.halign = halign;
         this.valign = valign;
         this.rectangleProvider = rectangleProvider;
     }
-
-    public OverlayLocation getLocation ()
-    {
+    
+    public OverlayLocation getLocation() {
         return location;
     }
-
-    public void setLocation ( OverlayLocation location )
-    {
+    
+    public void setLocation(OverlayLocation location) {
         this.location = location;
     }
-
-    public int getHalign ()
-    {
+    
+    public int getHalign() {
         return halign;
     }
-
-    public void setHalign ( int halign )
-    {
+    
+    public void setHalign(int halign) {
         this.halign = halign;
     }
-
-    public int getValign ()
-    {
+    
+    public int getValign() {
         return valign;
     }
-
-    public void setValign ( int valign )
-    {
+    
+    public void setValign(int valign) {
         this.valign = valign;
     }
-
-    public DataProvider<Rectangle> getRectangleProvider ()
-    {
+    
+    public DataProvider<Rectangle> getRectangleProvider() {
         return rectangleProvider;
     }
-
-    public void setRectangleProvider ( DataProvider<Rectangle> rectangleProvider )
-    {
+    
+    public void setRectangleProvider(DataProvider<Rectangle> rectangleProvider) {
         this.rectangleProvider = rectangleProvider;
     }
 }

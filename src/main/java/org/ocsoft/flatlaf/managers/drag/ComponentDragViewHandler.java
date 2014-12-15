@@ -31,64 +31,61 @@ import java.lang.ref.WeakReference;
  * @author Mikle Garin
  */
 
-public abstract class ComponentDragViewHandler<T extends JComponent> implements DragViewHandler<T>
-{
+public abstract class ComponentDragViewHandler<T extends JComponent> implements
+        DragViewHandler<T> {
     /**
-     * Initial mouse location on dragged component.
-     * Used to position component snapshot correctly under the mouse.
+     * Initial mouse location on dragged component. Used to position component
+     * snapshot correctly under the mouse.
      */
     protected Point location;
-
+    
     /**
      * Dragged object reference.
      */
     protected WeakReference<T> reference;
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public BufferedImage getView ( final T object, final DragSourceDragEvent event )
-    {
+    public BufferedImage getView(final T object, final DragSourceDragEvent event) {
         // Saving initial mouse location
-        if ( reference == null || reference.get () != object )
-        {
-            final Point los = object.getLocationOnScreen ();
-            final Point eloc = event.getLocation ();
-            location = new Point ( los.x - eloc.x, los.y - eloc.y );
-            reference = new WeakReference<T> ( object );
+        if (reference == null || reference.get() != object) {
+            final Point los = object.getLocationOnScreen();
+            final Point eloc = event.getLocation();
+            location = new Point(los.x - eloc.x, los.y - eloc.y);
+            reference = new WeakReference<T>(object);
         }
-
+        
         // Returning component snapshot
-        return SwingUtils.createComponentSnapshot ( object, getSnapshotTransparency () );
+        return SwingUtils.createComponentSnapshot(object,
+                getSnapshotTransparency());
     }
-
+    
     /**
-     * Returns component snapshot transparency.
-     * By default snapshot is semi-transparent for usability purposes.
+     * Returns component snapshot transparency. By default snapshot is
+     * semi-transparent for usability purposes.
      *
      * @return component snapshot transparency
      */
-    public float getSnapshotTransparency ()
-    {
+    public float getSnapshotTransparency() {
         return 0.8f;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Point getViewRelativeLocation ( final T object, final DragSourceDragEvent event )
-    {
+    public Point getViewRelativeLocation(final T object,
+            final DragSourceDragEvent event) {
         return location;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void dragEnded ( final T object, final DragSourceDropEvent event )
-    {
+    public void dragEnded(final T object, final DragSourceDropEvent event) {
         // Clearing initial mouse location
         location = null;
         reference = null;

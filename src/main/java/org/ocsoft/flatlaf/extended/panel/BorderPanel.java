@@ -26,37 +26,30 @@ import org.ocsoft.flatlaf.laf.panel.WebPanel;
  * User: mgarin Date: 03.06.11 Time: 17:46
  */
 
-public class BorderPanel extends WebPanel
-{
-    public BorderPanel ( final Component component )
-    {
-        this ( component, 0 );
+public class BorderPanel extends WebPanel {
+    public BorderPanel(final Component component) {
+        this(component, 0);
     }
-
-    public BorderPanel ( final Component component, final int border )
-    {
-        this ( component, border, border, border, border );
+    
+    public BorderPanel(final Component component, final int border) {
+        this(component, border, border, border, border);
     }
-
-    public BorderPanel ( final Component component, final int top, final int left, final int bottom, final int right )
-    {
-        this ( component, new Insets ( top, left, bottom, right ) );
+    
+    public BorderPanel(final Component component, final int top,
+            final int left, final int bottom, final int right) {
+        this(component, new Insets(top, left, bottom, right));
     }
-
-    public BorderPanel ( final Component component, final Insets margin )
-    {
-        super ();
-        setMargin ( margin );
-        if ( component != null )
-        {
-            setOpaque ( component.isOpaque () );
-            setBackground ( component.getBackground () );
-            add ( component, BorderLayout.CENTER );
-        }
-        else
-        {
-            setOpaque ( true );
-            setBackground ( FlatLafStyleConstants.backgroundColor );
+    
+    public BorderPanel(final Component component, final Insets margin) {
+        super();
+        setMargin(margin);
+        if (component != null) {
+            setOpaque(component.isOpaque());
+            setBackground(component.getBackground());
+            add(component, BorderLayout.CENTER);
+        } else {
+            setOpaque(true);
+            setBackground(FlatLafStyleConstants.backgroundColor);
         }
     }
 }

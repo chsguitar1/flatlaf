@@ -27,43 +27,42 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class WebSeparatorStyle
-{
+public final class WebSeparatorStyle {
     /**
      * Light upper separator line color.
      */
     public static Color separatorLightUpperColor = FlatLafStyleConstants.separatorLightUpperColor;
-
+    
     /**
      * Light middle separator line color.
      */
     public static Color separatorLightColor = FlatLafStyleConstants.separatorLightColor;
-
+    
     /**
      * Upper separator line color.
      */
     public static Color separatorUpperColor = FlatLafStyleConstants.separatorUpperColor;
-
+    
     /**
      * Middle separator line color.
      */
     public static Color separatorColor = FlatLafStyleConstants.separatorColor;
-
+    
     /**
      * Whether should use reversed colors or not.
      */
     public static boolean reversedColors = false;
-
+    
     /**
      * Whether should draw additional leading light line or not.
      */
     public static boolean drawLeadingLine = false;
-
+    
     /**
      * Whether should draw additional trailing light line or not.
      */
     public static boolean drawTrailingLine = true;
-
+    
     /**
      * Default separator margin.
      */

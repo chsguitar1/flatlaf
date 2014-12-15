@@ -23,13 +23,13 @@ package org.ocsoft.flatlaf.utils.general;
  * @author Mikle Garin
  */
 
-public interface TextProvider<T>
-{
+public interface TextProvider<T> {
     /**
      * Returns string value for specified object.
      *
-     * @param object object to process
+     * @param object
+     *            object to process
      * @return string value for specified object
      */
-    public String provide ( T object );
+    public String provide(T object);
 }

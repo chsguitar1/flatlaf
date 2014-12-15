@@ -28,43 +28,45 @@ import org.ocsoft.flatlaf.utils.ImageUtils;
  * @author Mikle Garin
  */
 
-public final class WebAccordionStyle
-{
+public final class WebAccordionStyle {
     /**
      * Whether animate transition between states or not.
      */
     public static boolean animate = FlatLafStyleConstants.animate;
-
+    
     /**
      * Accordion style.
      */
     public static AccordionStyle accordionStyle = AccordionStyle.united;
-
+    
     /**
      * Accordion orientation.
      */
     public static int orientation = SwingConstants.VERTICAL;
-
+    
     /**
      * Collapsed state icon.
      */
-    public static ImageIcon expandIcon = new ImageIcon ( WebAccordionStyle.class.getResource ( "icons/arrow.png" ) );
-
+    public static ImageIcon expandIcon = new ImageIcon(
+            WebAccordionStyle.class.getResource("icons/arrow.png"));
+    
     /**
      * Expanded state icon.
      */
-    public static ImageIcon collapseIcon = ImageUtils.rotateImage90CW ( expandIcon );
-
+    public static ImageIcon collapseIcon = ImageUtils
+            .rotateImage90CW(expandIcon);
+    
     /**
-     * Whether accordion must fill all available space with expanded panes or not
+     * Whether accordion must fill all available space with expanded panes or
+     * not
      */
     public static boolean fillSpace = true;
-
+    
     /**
      * Whether multiply expanded panes are allowed or not
      */
     public static boolean multiplySelectionAllowed = true;
-
+    
     /**
      * Gap between panes.
      */

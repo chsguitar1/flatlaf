@@ -23,71 +23,71 @@ import org.ocsoft.flatlaf.laf.tree.UniqueNode;
 import org.ocsoft.flatlaf.utils.general.Filter;
 
 /**
- * Abstract data provider with implemented comparator and filter getters and setters.
+ * Abstract data provider with implemented comparator and filter getters and
+ * setters.
  *
  * @author Mikle Garin
  */
 
-public abstract class AbstractExTreeDataProvider<E extends UniqueNode> implements ExTreeDataProvider<E>
-{
+public abstract class AbstractExTreeDataProvider<E extends UniqueNode>
+        implements ExTreeDataProvider<E> {
     /**
      * Childs comparator.
      */
     protected Comparator<E> comparator = null;
-
+    
     /**
      * Childs filter.
      */
     protected Filter<E> filter = null;
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Comparator<E> getChildsComparator ( final E node )
-    {
+    public Comparator<E> getChildsComparator(final E node) {
         return comparator;
     }
-
+    
     /**
      * Sets childs comparator for all nodes.
      *
-     * @param comparator childs comparator for all nodes
+     * @param comparator
+     *            childs comparator for all nodes
      */
-    public void setChildsComparator ( final Comparator<E> comparator )
-    {
+    public void setChildsComparator(final Comparator<E> comparator) {
         this.comparator = comparator;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Filter<E> getChildsFilter ( final E node )
-    {
+    public Filter<E> getChildsFilter(final E node) {
         return filter;
     }
-
+    
     /**
      * Sets childs filter for all nodes.
      *
-     * @param filter childs filter for all nodes
+     * @param filter
+     *            childs filter for all nodes
      */
-    public void setChildsFilter ( final Filter<E> filter )
-    {
+    public void setChildsFilter(final Filter<E> filter) {
         this.filter = filter;
     }
-
+    
     /**
-     * Returns false by default to allow childs load requests.
-     * It is recommended to override this behavior if you can easily determine whether node is leaf or not.
+     * Returns false by default to allow childs load requests. It is recommended
+     * to override this behavior if you can easily determine whether node is
+     * leaf or not.
      *
-     * @param node node
+     * @param node
+     *            node
      * @return false
      */
     @Override
-    public boolean isLeaf ( final E node )
-    {
+    public boolean isLeaf(final E node) {
         return false;
     }
 }

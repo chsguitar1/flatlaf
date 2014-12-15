@@ -23,32 +23,32 @@ import org.ocsoft.flatlaf.managers.proxy.ProxyManager;
  * ProxyManager extension that provides basic visualization for proxy setup.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-ProxyManager">How to use ProxyManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-ProxyManager">How
+ *      to use ProxyManager</a>
  * @see org.ocsoft.flatlaf.managers.proxy.ProxyManager
  */
 
-public class WebProxyManager
-{
+public class WebProxyManager {
     /**
      * Whether manager is initialized or not.
      */
     protected static boolean initialized = false;
-
+    
     /**
      * Initializes manager if it wasn't already initialized.
      */
-    public static synchronized void initialize ()
-    {
-        if ( !initialized )
-        {
+    public static synchronized void initialize() {
+        if (!initialized) {
             initialized = true;
-
+            
             // Default proxy authentificator
-            ProxyManager.setAuthenticator ( new WebProxyAuthenticator () );
-            ProxyManager.setSystemProxyConfirmationSupport ( new WebSystemProxyConfirmationSupport () );
-
+            ProxyManager.setAuthenticator(new WebProxyAuthenticator());
+            ProxyManager
+                    .setSystemProxyConfirmationSupport(new WebSystemProxyConfirmationSupport());
+            
             // Ensure ProxyManager is initialized
-            ProxyManager.initialize ();
+            ProxyManager.initialize();
         }
     }
 }

@@ -28,61 +28,59 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class WebDateFieldStyle
-{
+public final class WebDateFieldStyle {
     /**
      * Field margin.
      */
-    public static Insets fieldMargin = new Insets ( 0, 0, 0, 0 );
-
+    public static Insets fieldMargin = new Insets(0, 0, 0, 0);
+    
     /**
      * Whether date field should be decorated with default border or not.
      */
     public static boolean drawBorder = FlatLafStyleConstants.drawBorder;
-
+    
     /**
      * Whether should draw date field focus or not.
      */
     public static boolean drawFocus = FlatLafStyleConstants.drawFocus;
-
+    
     /**
      * Decoration rounding.
      */
     public static int round = FlatLafStyleConstants.smallRound;
-
+    
     /**
      * Decoration shade width.
      */
     public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Decorated date field margin.
      */
-    public static Insets margin = new Insets ( -1, 0, -1, -1 );
-
+    public static Insets margin = new Insets(-1, 0, -1, -1);
+    
     /**
      * Undecorated date field margin.
      */
-    public static Insets undecoratedMargin = new Insets ( 0, 0, 0, 0 );
-
+    public static Insets undecoratedMargin = new Insets(0, 0, 0, 0);
+    
     /**
      * Whether should fill decoration background or not.
      */
     public static boolean drawBackground = true;
-
+    
     /**
      * Whether should draw web-styled decoration background or not.
      */
     public static boolean webColored = false;
-
+    
     /**
      * Background color.
      */
     public static Color backgroundColor = Color.WHITE;
-
+    
     /**
-     * Custom panel decoration painter.
-     * If set it will override WebLaF styling.
+     * Custom panel decoration painter. If set it will override WebLaF styling.
      */
     public static Painter painter = null;
 }

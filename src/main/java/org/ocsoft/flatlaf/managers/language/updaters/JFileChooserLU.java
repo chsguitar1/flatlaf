@@ -27,14 +27,13 @@ import org.ocsoft.flatlaf.managers.language.data.Value;
  * @author Mikle Garin
  */
 
-public class JFileChooserLU extends DefaultLanguageUpdater<JFileChooser>
-{
+public class JFileChooserLU extends DefaultLanguageUpdater<JFileChooser> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void update ( final JFileChooser c, final String key, final Value value, final Object... data )
-    {
-        c.setDialogTitle ( getDefaultText ( value, data ) );
+    public void update(final JFileChooser c, final String key,
+            final Value value, final Object... data) {
+        c.setDialogTitle(getDefaultText(value, data));
     }
 }

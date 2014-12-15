@@ -31,113 +31,94 @@ import java.awt.event.ActionListener;
  * User: mgarin Date: 11.04.12 Time: 17:30
  */
 
-public class SlidingLayout extends AbstractLayoutManager
-{
+public class SlidingLayout extends AbstractLayoutManager {
     protected int slideY = 0;
     protected WebTimer animator = null;
     protected int height = 0;
     protected int slideSpeed = 5;
-
+    
     protected JComponent container;
-
-    public SlidingLayout ( JComponent container )
-    {
-        super ();
+    
+    public SlidingLayout(JComponent container) {
+        super();
         this.container = container;
     }
-
-    public void slideIn ()
-    {
-        if ( animator != null && animator.isRunning () )
-        {
-            animator.stop ();
+    
+    public void slideIn() {
+        if (animator != null && animator.isRunning()) {
+            animator.stop();
         }
-
+        
         slideY = 0;
-        animator = new WebTimer ( "SlidingLayout.slideInTimer", FlatLafStyleConstants.avgAnimationDelay, new ActionListener ()
-        {
-            @Override
-            public void actionPerformed ( ActionEvent e )
-            {
-                if ( slideY < height )
-                {
-                    slideY += slideSpeed;
-                    container.revalidate ();
-                }
-                else
-                {
-                    slideY = height;
-                    animator.stop ();
-                }
-            }
-        } );
-        animator.start ();
+        animator = new WebTimer("SlidingLayout.slideInTimer",
+                FlatLafStyleConstants.avgAnimationDelay, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (slideY < height) {
+                            slideY += slideSpeed;
+                            container.revalidate();
+                        } else {
+                            slideY = height;
+                            animator.stop();
+                        }
+                    }
+                });
+        animator.start();
     }
-
-    public int getSlideSpeed ()
-    {
+    
+    public int getSlideSpeed() {
         return slideSpeed;
     }
-
-    public void setSlideSpeed ( int slideSpeed )
-    {
+    
+    public void setSlideSpeed(int slideSpeed) {
         this.slideSpeed = slideSpeed;
     }
-
-    public void slideOut ()
-    {
-        if ( animator != null && animator.isRunning () )
-        {
-            animator.stop ();
+    
+    public void slideOut() {
+        if (animator != null && animator.isRunning()) {
+            animator.stop();
         }
-
+        
         slideY = height;
-        animator = new WebTimer ( "SlidingLayout.slideOutTimer", FlatLafStyleConstants.avgAnimationDelay, new ActionListener ()
-        {
-            @Override
-            public void actionPerformed ( ActionEvent e )
-            {
-                if ( slideY > 0 )
-                {
-                    slideY -= slideSpeed;
-                    container.revalidate ();
-                }
-                else
-                {
-                    slideY = 0;
-                    animator.stop ();
-                }
-            }
-        } );
-        animator.start ();
+        animator = new WebTimer("SlidingLayout.slideOutTimer",
+                FlatLafStyleConstants.avgAnimationDelay, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (slideY > 0) {
+                            slideY -= slideSpeed;
+                            container.revalidate();
+                        } else {
+                            slideY = 0;
+                            animator.stop();
+                        }
+                    }
+                });
+        animator.start();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Dimension preferredLayoutSize ( Container parent )
-    {
-        Dimension ps = new Dimension ( 0, 0 );
-        for ( Component c : parent.getComponents () )
-        {
-            ps = SwingUtils.max ( ps, c.getPreferredSize () );
+    public Dimension preferredLayoutSize(Container parent) {
+        Dimension ps = new Dimension(0, 0);
+        for (Component c : parent.getComponents()) {
+            ps = SwingUtils.max(ps, c.getPreferredSize());
         }
         ps.height = slideY < ps.height ? slideY : ps.height;
         return ps;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void layoutContainer ( Container parent )
-    {
-        for ( Component c : parent.getComponents () )
-        {
-            final Dimension ps = c.getPreferredSize ();
-            c.setBounds ( 0, slideY < ps.height ? slideY - ps.height : 0, parent.getWidth (), ps.height );
-            height = Math.max ( height, ps.height );
+    public void layoutContainer(Container parent) {
+        for (Component c : parent.getComponents()) {
+            final Dimension ps = c.getPreferredSize();
+            c.setBounds(0, slideY < ps.height ? slideY - ps.height : 0,
+                    parent.getWidth(), ps.height);
+            height = Math.max(height, ps.height);
         }
     }
 }

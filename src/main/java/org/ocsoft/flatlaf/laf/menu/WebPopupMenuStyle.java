@@ -30,78 +30,82 @@ import org.ocsoft.flatlaf.utils.ProprietaryUtils;
  * @author Mikle Garin
  */
 
-public final class WebPopupMenuStyle
-{
+public final class WebPopupMenuStyle {
     /**
      * Popup menu style.
      */
     public static PopupStyle popupStyle = WebPopupPainterStyle.popupStyle;
-
+    
     /**
-     * Whether should apply dropdown popup menu style to popup menues within menubar.
+     * Whether should apply dropdown popup menu style to popup menues within
+     * menubar.
      */
     public static boolean dropdownStyleForMenuBar = true;
-
+    
     /**
      * Popup menu background color.
      */
     public static Color backgroundColor = Color.WHITE;
-
+    
     /**
      * Popup menu border color.
      */
     public static Color borderColor = WebPopupPainterStyle.borderColor;
-
+    
     /**
-     * Popup menu corners rounding.
-     * This value might vary depending on available underlying system features.
+     * Popup menu corners rounding. This value might vary depending on available
+     * underlying system features.
      */
-    public static int round = ProprietaryUtils.isWindowTransparencyAllowed () ? WebPopupPainterStyle.round : FlatLafStyleConstants.smallRound;
-
+    public static int round = ProprietaryUtils.isWindowTransparencyAllowed() ? WebPopupPainterStyle.round
+            : FlatLafStyleConstants.smallRound;
+    
     /**
-     * Popup menu shade width.
-     * Be aware that this value should always be greater or equal to cornerWidth due to Swing menu processing limitations.
-     * This value might vary depending on available underlying system features.
+     * Popup menu shade width. Be aware that this value should always be greater
+     * or equal to cornerWidth due to Swing menu processing limitations. This
+     * value might vary depending on available underlying system features.
      */
-    public static int shadeWidth = ProprietaryUtils.isWindowTransparencyAllowed () ? WebPopupPainterStyle.shadeWidth : 0;
-
+    public static int shadeWidth = ProprietaryUtils
+            .isWindowTransparencyAllowed() ? WebPopupPainterStyle.shadeWidth
+            : 0;
+    
     /**
      * Popup menu shade transparency.
      */
     public static float shadeTransparency = WebPopupPainterStyle.shadeTransparency;
-
+    
     /**
-     * Popup menu dropdown style corner width.
-     * This property is used only when corner location is not being fixed.
+     * Popup menu dropdown style corner width. This property is used only when
+     * corner location is not being fixed.
      */
     public static int cornerWidth = WebPopupPainterStyle.cornerWidth;
-
+    
     /**
      * Popup menu dropdown corner alignment.
      */
     public static int cornerAlignment = -1;
-
+    
     /**
      * Popup menu background transparency.
      */
     public static float transparency = WebPopupPainterStyle.transparency;
-
+    
     /**
      * Popup menu margin.
      */
     public static Insets margin = FlatLafStyleConstants.emptyMargin;
-
+    
     /**
      * Spacing between different popup menus.
      */
     public static int menuSpacing = 1;
-
+    
     /**
-     * Whether should fix initial popup menu location or not.
-     * If set to true popup menu will try to use best possible location to show up.
+     * Whether should fix initial popup menu location or not. If set to true
+     * popup menu will try to use best possible location to show up.
      * <p/>
-     * This is set to true by default to place menubar and menu popups correctly.
-     * You might want to set this to false for some specific popup menu, but not all of them at once.
+     * This is set to true by default to place menubar and menu popups
+     * correctly. You might want to set this to false for some specific popup
+     * menu, but not all of them at once.
      */
     public static boolean fixLocation = true;
 }

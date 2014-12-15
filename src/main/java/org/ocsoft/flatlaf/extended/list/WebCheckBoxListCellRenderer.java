@@ -34,81 +34,84 @@ import java.util.Map;
  * @author Mikle Garin
  */
 
-public class WebCheckBoxListCellRenderer implements ListCellRenderer
-{
+public class WebCheckBoxListCellRenderer implements ListCellRenderer {
     /**
      * Checkbox list elements cache.
      */
-    protected Map<String, WebCheckBoxListElement> elements = new HashMap<String, WebCheckBoxListElement> ();
-
+    protected Map<String, WebCheckBoxListElement> elements = new HashMap<String, WebCheckBoxListElement>();
+    
     /**
      * Constructs default checkbox list cell renderer.
      */
-    public WebCheckBoxListCellRenderer ()
-    {
-        super ();
+    public WebCheckBoxListCellRenderer() {
+        super();
     }
-
+    
     /**
      * Returns list cell renderer component.
      *
-     * @param list         tree
-     * @param value        cell value
-     * @param index        cell index
-     * @param isSelected   whether cell is selected or not
-     * @param cellHasFocus whether cell has focus or not
+     * @param list
+     *            tree
+     * @param value
+     *            cell value
+     * @param index
+     *            cell index
+     * @param isSelected
+     *            whether cell is selected or not
+     * @param cellHasFocus
+     *            whether cell has focus or not
      * @return cell renderer component
      */
     @Override
-    public Component getListCellRendererComponent ( final JList list, final Object value, final int index, final boolean isSelected,
-                                                    final boolean cellHasFocus )
-    {
+    public Component getListCellRendererComponent(final JList list,
+            final Object value, final int index, final boolean isSelected,
+            final boolean cellHasFocus) {
         // Cell data
-        final CheckBoxCellData data = ( CheckBoxCellData ) value;
-
+        final CheckBoxCellData data = (CheckBoxCellData) value;
+        
         // Actual renderer for cell
-        final WebCheckBoxListElement renderer = getElement ( data );
-
+        final WebCheckBoxListElement renderer = getElement(data);
+        
         // Visual settings
-        renderer.setFont ( list.getFont () );
-        renderer.setEnabled ( list.isEnabled () );
-        renderer.setForeground ( isSelected ? list.getSelectionForeground () : list.getForeground () );
-
+        renderer.setFont(list.getFont());
+        renderer.setEnabled(list.isEnabled());
+        renderer.setForeground(isSelected ? list.getSelectionForeground()
+                : list.getForeground());
+        
         // Selection and text
-        renderer.setText ( data.getUserObject () == null ? "" : data.getUserObject ().toString () );
-
+        renderer.setText(data.getUserObject() == null ? "" : data
+                .getUserObject().toString());
+        
         // Border
-        final ListUI lui = list.getUI ();
-        final int sw = lui instanceof WebListUI ? ( ( WebListUI ) lui ).getSelectionShadeWidth () : WebListStyle.selectionShadeWidth;
-        renderer.setMargin ( sw + 2, sw + 2, sw + 2, sw + 4 );
-
+        final ListUI lui = list.getUI();
+        final int sw = lui instanceof WebListUI ? ((WebListUI) lui)
+                .getSelectionShadeWidth() : WebListStyle.selectionShadeWidth;
+        renderer.setMargin(sw + 2, sw + 2, sw + 2, sw + 4);
+        
         // Orientation
-        renderer.setComponentOrientation ( list.getComponentOrientation () );
-
+        renderer.setComponentOrientation(list.getComponentOrientation());
+        
         return renderer;
     }
-
+    
     /**
      * Returns cached checkbox element for specified data.
      *
-     * @param data data to process
+     * @param data
+     *            data to process
      * @return cached checkbox element
      */
-    public WebCheckBoxListElement getElement ( final CheckBoxCellData data )
-    {
-        final String key = data.getId ();
-        if ( elements.containsKey ( key ) )
-        {
-            final WebCheckBoxListElement element = elements.get ( key );
-            element.setSelected ( data.isSelected (), WebCheckBoxStyle.animated );
+    public WebCheckBoxListElement getElement(final CheckBoxCellData data) {
+        final String key = data.getId();
+        if (elements.containsKey(key)) {
+            final WebCheckBoxListElement element = elements.get(key);
+            element.setSelected(data.isSelected(), WebCheckBoxStyle.animated);
             return element;
-        }
-        else
-        {
-            final WebCheckBoxListElement element = new WebCheckBoxListElement ();
-            element.setName ( "List.cellRenderer" );
-            element.setSelected ( data.isSelected (), false );
-            elements.put ( key, element );
+        } else {
+            final WebCheckBoxListElement element = new WebCheckBoxListElement();
+            element.setName("List.cellRenderer");
+            element.setSelected(data.isSelected(), false);
+            elements.put(key, element);
             return element;
         }
     }

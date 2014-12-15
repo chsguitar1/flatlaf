@@ -42,657 +42,596 @@ import java.util.List;
  * @author Mikle Garin
  */
 
-public class WebSpinner extends JSpinner implements EventMethods, ToolTipMethods, ShapeProvider, FontMethods<WebSpinner>
-{
-    public WebSpinner ()
-    {
-        super ();
+public class WebSpinner extends JSpinner implements EventMethods,
+        ToolTipMethods, ShapeProvider, FontMethods<WebSpinner> {
+    public WebSpinner() {
+        super();
     }
-
-    public WebSpinner ( final SpinnerModel model )
-    {
-        super ( model );
+    
+    public WebSpinner(final SpinnerModel model) {
+        super(model);
     }
-
-    public int getShadeWidth ()
-    {
-        return getWebUI ().getShadeWidth ();
+    
+    public int getShadeWidth() {
+        return getWebUI().getShadeWidth();
     }
-
-    public void setShadeWidth ( final int shadeWidth )
-    {
-        getWebUI ().setShadeWidth ( shadeWidth );
+    
+    public void setShadeWidth(final int shadeWidth) {
+        getWebUI().setShadeWidth(shadeWidth);
     }
-
-    public int getRound ()
-    {
-        return getWebUI ().getRound ();
+    
+    public int getRound() {
+        return getWebUI().getRound();
     }
-
-    public void setRound ( final int round )
-    {
-        getWebUI ().setRound ( round );
+    
+    public void setRound(final int round) {
+        getWebUI().setRound(round);
     }
-
-    public boolean isDrawBorder ()
-    {
-        return getWebUI ().isDrawBorder ();
+    
+    public boolean isDrawBorder() {
+        return getWebUI().isDrawBorder();
     }
-
-    public void setDrawBorder ( final boolean drawBorder )
-    {
-        getWebUI ().setDrawBorder ( drawBorder );
+    
+    public void setDrawBorder(final boolean drawBorder) {
+        getWebUI().setDrawBorder(drawBorder);
     }
-
-    public boolean isDrawFocus ()
-    {
-        return getWebUI ().isDrawFocus ();
+    
+    public boolean isDrawFocus() {
+        return getWebUI().isDrawFocus();
     }
-
-    public void setDrawFocus ( final boolean drawFocus )
-    {
-        getWebUI ().setDrawFocus ( drawFocus );
+    
+    public void setDrawFocus(final boolean drawFocus) {
+        getWebUI().setDrawFocus(drawFocus);
     }
-
+    
     @Override
-    protected JComponent createEditor ( final SpinnerModel model )
-    {
-        if ( model instanceof SpinnerDateModel )
-        {
-            final DateEditor dateEditor = new DateEditor ( this );
-            WebSpinnerUI.installFieldUI ( dateEditor.getTextField (), WebSpinner.this );
+    protected JComponent createEditor(final SpinnerModel model) {
+        if (model instanceof SpinnerDateModel) {
+            final DateEditor dateEditor = new DateEditor(this);
+            WebSpinnerUI.installFieldUI(dateEditor.getTextField(),
+                    WebSpinner.this);
             return dateEditor;
-        }
-        else if ( model instanceof SpinnerListModel )
-        {
-            final ListEditor listEditor = new ListEditor ( this );
-            WebSpinnerUI.installFieldUI ( listEditor.getTextField (), WebSpinner.this );
+        } else if (model instanceof SpinnerListModel) {
+            final ListEditor listEditor = new ListEditor(this);
+            WebSpinnerUI.installFieldUI(listEditor.getTextField(),
+                    WebSpinner.this);
             return listEditor;
-        }
-        else if ( model instanceof SpinnerNumberModel )
-        {
-            final NumberEditor numberEditor = new NumberEditor ( this );
-            WebSpinnerUI.installFieldUI ( numberEditor.getTextField (), WebSpinner.this );
+        } else if (model instanceof SpinnerNumberModel) {
+            final NumberEditor numberEditor = new NumberEditor(this);
+            WebSpinnerUI.installFieldUI(numberEditor.getTextField(),
+                    WebSpinner.this);
             return numberEditor;
-        }
-        else
-        {
-            final DefaultEditor defaultEditor = new DefaultEditor ( this );
-            WebSpinnerUI.installFieldUI ( defaultEditor.getTextField (), WebSpinner.this );
+        } else {
+            final DefaultEditor defaultEditor = new DefaultEditor(this);
+            WebSpinnerUI.installFieldUI(defaultEditor.getTextField(),
+                    WebSpinner.this);
             return defaultEditor;
         }
     }
-
+    
     @Override
-    public Shape provideShape ()
-    {
-        return getWebUI ().provideShape ();
+    public Shape provideShape() {
+        return getWebUI().provideShape();
     }
-
-    public WebSpinnerUI getWebUI ()
-    {
-        return ( WebSpinnerUI ) getUI ();
+    
+    public WebSpinnerUI getWebUI() {
+        return (WebSpinnerUI) getUI();
     }
-
+    
     @Override
-    public void updateUI ()
-    {
-        if ( getUI () == null || !( getUI () instanceof WebSpinnerUI ) )
-        {
-            try
-            {
-                setUI ( ( WebSpinnerUI ) ReflectUtils.createInstance ( FlatLafSettings.spinnerUI ) );
+    public void updateUI() {
+        if (getUI() == null || !(getUI() instanceof WebSpinnerUI)) {
+            try {
+                setUI((WebSpinnerUI) ReflectUtils
+                        .createInstance(FlatLafSettings.spinnerUI));
+            } catch (final Throwable e) {
+                FlatLafLogger.error(this, e);
+                setUI(new WebSpinnerUI());
             }
-            catch ( final Throwable e )
-            {
-                FlatLafLogger.error ( this, e );
-                setUI ( new WebSpinnerUI () );
-            }
+        } else {
+            setUI(getUI());
         }
-        else
-        {
-            setUI ( getUI () );
-        }
-        revalidate ();
+        revalidate();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMousePress ( final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMousePress ( this, runnable );
+    public MouseAdapter onMousePress(final MouseEventRunnable runnable) {
+        return EventUtils.onMousePress(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMousePress ( final MouseButton mouseButton, final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMousePress ( this, mouseButton, runnable );
+    public MouseAdapter onMousePress(final MouseButton mouseButton,
+            final MouseEventRunnable runnable) {
+        return EventUtils.onMousePress(this, mouseButton, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMouseEnter ( final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMouseEnter ( this, runnable );
+    public MouseAdapter onMouseEnter(final MouseEventRunnable runnable) {
+        return EventUtils.onMouseEnter(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMouseExit ( final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMouseExit ( this, runnable );
+    public MouseAdapter onMouseExit(final MouseEventRunnable runnable) {
+        return EventUtils.onMouseExit(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMouseDrag ( final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMouseDrag ( this, runnable );
+    public MouseAdapter onMouseDrag(final MouseEventRunnable runnable) {
+        return EventUtils.onMouseDrag(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMouseDrag ( final MouseButton mouseButton, final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMouseDrag ( this, mouseButton, runnable );
+    public MouseAdapter onMouseDrag(final MouseButton mouseButton,
+            final MouseEventRunnable runnable) {
+        return EventUtils.onMouseDrag(this, mouseButton, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMouseClick ( final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMouseClick ( this, runnable );
+    public MouseAdapter onMouseClick(final MouseEventRunnable runnable) {
+        return EventUtils.onMouseClick(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMouseClick ( final MouseButton mouseButton, final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMouseClick ( this, mouseButton, runnable );
+    public MouseAdapter onMouseClick(final MouseButton mouseButton,
+            final MouseEventRunnable runnable) {
+        return EventUtils.onMouseClick(this, mouseButton, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onDoubleClick ( final MouseEventRunnable runnable )
-    {
-        return EventUtils.onDoubleClick ( this, runnable );
+    public MouseAdapter onDoubleClick(final MouseEventRunnable runnable) {
+        return EventUtils.onDoubleClick(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public MouseAdapter onMenuTrigger ( final MouseEventRunnable runnable )
-    {
-        return EventUtils.onMenuTrigger ( this, runnable );
+    public MouseAdapter onMenuTrigger(final MouseEventRunnable runnable) {
+        return EventUtils.onMenuTrigger(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public KeyAdapter onKeyType ( final KeyEventRunnable runnable )
-    {
-        return EventUtils.onKeyType ( this, runnable );
+    public KeyAdapter onKeyType(final KeyEventRunnable runnable) {
+        return EventUtils.onKeyType(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public KeyAdapter onKeyType ( final HotkeyData hotkey, final KeyEventRunnable runnable )
-    {
-        return EventUtils.onKeyType ( this, hotkey, runnable );
+    public KeyAdapter onKeyType(final HotkeyData hotkey,
+            final KeyEventRunnable runnable) {
+        return EventUtils.onKeyType(this, hotkey, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public KeyAdapter onKeyPress ( final KeyEventRunnable runnable )
-    {
-        return EventUtils.onKeyPress ( this, runnable );
+    public KeyAdapter onKeyPress(final KeyEventRunnable runnable) {
+        return EventUtils.onKeyPress(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public KeyAdapter onKeyPress ( final HotkeyData hotkey, final KeyEventRunnable runnable )
-    {
-        return EventUtils.onKeyPress ( this, hotkey, runnable );
+    public KeyAdapter onKeyPress(final HotkeyData hotkey,
+            final KeyEventRunnable runnable) {
+        return EventUtils.onKeyPress(this, hotkey, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public KeyAdapter onKeyRelease ( final KeyEventRunnable runnable )
-    {
-        return EventUtils.onKeyRelease ( this, runnable );
+    public KeyAdapter onKeyRelease(final KeyEventRunnable runnable) {
+        return EventUtils.onKeyRelease(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public KeyAdapter onKeyRelease ( final HotkeyData hotkey, final KeyEventRunnable runnable )
-    {
-        return EventUtils.onKeyRelease ( this, hotkey, runnable );
+    public KeyAdapter onKeyRelease(final HotkeyData hotkey,
+            final KeyEventRunnable runnable) {
+        return EventUtils.onKeyRelease(this, hotkey, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public FocusAdapter onFocusGain ( final FocusEventRunnable runnable )
-    {
-        return EventUtils.onFocusGain ( this, runnable );
+    public FocusAdapter onFocusGain(final FocusEventRunnable runnable) {
+        return EventUtils.onFocusGain(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public FocusAdapter onFocusLoss ( final FocusEventRunnable runnable )
-    {
-        return EventUtils.onFocusLoss ( this, runnable );
+    public FocusAdapter onFocusLoss(final FocusEventRunnable runnable) {
+        return EventUtils.onFocusLoss(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip setToolTip ( final String tooltip )
-    {
-        return TooltipManager.setTooltip ( this, tooltip );
+    public WebCustomTooltip setToolTip(final String tooltip) {
+        return TooltipManager.setTooltip(this, tooltip);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip setToolTip ( final Icon icon, final String tooltip )
-    {
-        return TooltipManager.setTooltip ( this, icon, tooltip );
+    public WebCustomTooltip setToolTip(final Icon icon, final String tooltip) {
+        return TooltipManager.setTooltip(this, icon, tooltip);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip setToolTip ( final String tooltip, final TooltipWay tooltipWay )
-    {
-        return TooltipManager.setTooltip ( this, tooltip, tooltipWay );
+    public WebCustomTooltip setToolTip(final String tooltip,
+            final TooltipWay tooltipWay) {
+        return TooltipManager.setTooltip(this, tooltip, tooltipWay);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip setToolTip ( final Icon icon, final String tooltip, final TooltipWay tooltipWay )
-    {
-        return TooltipManager.setTooltip ( this, icon, tooltip, tooltipWay );
+    public WebCustomTooltip setToolTip(final Icon icon, final String tooltip,
+            final TooltipWay tooltipWay) {
+        return TooltipManager.setTooltip(this, icon, tooltip, tooltipWay);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip setToolTip ( final String tooltip, final TooltipWay tooltipWay, final int delay )
-    {
-        return TooltipManager.setTooltip ( this, tooltip, tooltipWay, delay );
+    public WebCustomTooltip setToolTip(final String tooltip,
+            final TooltipWay tooltipWay, final int delay) {
+        return TooltipManager.setTooltip(this, tooltip, tooltipWay, delay);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip setToolTip ( final Icon icon, final String tooltip, final TooltipWay tooltipWay, final int delay )
-    {
-        return TooltipManager.setTooltip ( this, icon, tooltip, tooltipWay, delay );
+    public WebCustomTooltip setToolTip(final Icon icon, final String tooltip,
+            final TooltipWay tooltipWay, final int delay) {
+        return TooltipManager
+                .setTooltip(this, icon, tooltip, tooltipWay, delay);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip setToolTip ( final JComponent tooltip )
-    {
-        return TooltipManager.setTooltip ( this, tooltip );
+    public WebCustomTooltip setToolTip(final JComponent tooltip) {
+        return TooltipManager.setTooltip(this, tooltip);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip setToolTip ( final JComponent tooltip, final int delay )
-    {
-        return TooltipManager.setTooltip ( this, tooltip, delay );
+    public WebCustomTooltip setToolTip(final JComponent tooltip, final int delay) {
+        return TooltipManager.setTooltip(this, tooltip, delay);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip setToolTip ( final JComponent tooltip, final TooltipWay tooltipWay )
-    {
-        return TooltipManager.setTooltip ( this, tooltip, tooltipWay );
+    public WebCustomTooltip setToolTip(final JComponent tooltip,
+            final TooltipWay tooltipWay) {
+        return TooltipManager.setTooltip(this, tooltip, tooltipWay);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip setToolTip ( final JComponent tooltip, final TooltipWay tooltipWay, final int delay )
-    {
-        return TooltipManager.setTooltip ( this, tooltip, tooltipWay, delay );
+    public WebCustomTooltip setToolTip(final JComponent tooltip,
+            final TooltipWay tooltipWay, final int delay) {
+        return TooltipManager.setTooltip(this, tooltip, tooltipWay, delay);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip addToolTip ( final String tooltip )
-    {
-        return TooltipManager.addTooltip ( this, tooltip );
+    public WebCustomTooltip addToolTip(final String tooltip) {
+        return TooltipManager.addTooltip(this, tooltip);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip addToolTip ( final Icon icon, final String tooltip )
-    {
-        return TooltipManager.addTooltip ( this, icon, tooltip );
+    public WebCustomTooltip addToolTip(final Icon icon, final String tooltip) {
+        return TooltipManager.addTooltip(this, icon, tooltip);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip addToolTip ( final String tooltip, final TooltipWay tooltipWay )
-    {
-        return TooltipManager.addTooltip ( this, tooltip, tooltipWay );
+    public WebCustomTooltip addToolTip(final String tooltip,
+            final TooltipWay tooltipWay) {
+        return TooltipManager.addTooltip(this, tooltip, tooltipWay);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip addToolTip ( final Icon icon, final String tooltip, final TooltipWay tooltipWay )
-    {
-        return TooltipManager.addTooltip ( this, icon, tooltip, tooltipWay );
+    public WebCustomTooltip addToolTip(final Icon icon, final String tooltip,
+            final TooltipWay tooltipWay) {
+        return TooltipManager.addTooltip(this, icon, tooltip, tooltipWay);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip addToolTip ( final String tooltip, final TooltipWay tooltipWay, final int delay )
-    {
-        return TooltipManager.addTooltip ( this, tooltip, tooltipWay, delay );
+    public WebCustomTooltip addToolTip(final String tooltip,
+            final TooltipWay tooltipWay, final int delay) {
+        return TooltipManager.addTooltip(this, tooltip, tooltipWay, delay);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip addToolTip ( final Icon icon, final String tooltip, final TooltipWay tooltipWay, final int delay )
-    {
-        return TooltipManager.addTooltip ( this, icon, tooltip, tooltipWay, delay );
+    public WebCustomTooltip addToolTip(final Icon icon, final String tooltip,
+            final TooltipWay tooltipWay, final int delay) {
+        return TooltipManager
+                .addTooltip(this, icon, tooltip, tooltipWay, delay);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip addToolTip ( final JComponent tooltip )
-    {
-        return TooltipManager.addTooltip ( this, tooltip );
+    public WebCustomTooltip addToolTip(final JComponent tooltip) {
+        return TooltipManager.addTooltip(this, tooltip);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip addToolTip ( final JComponent tooltip, final int delay )
-    {
-        return TooltipManager.addTooltip ( this, tooltip, delay );
+    public WebCustomTooltip addToolTip(final JComponent tooltip, final int delay) {
+        return TooltipManager.addTooltip(this, tooltip, delay);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip addToolTip ( final JComponent tooltip, final TooltipWay tooltipWay )
-    {
-        return TooltipManager.addTooltip ( this, tooltip, tooltipWay );
+    public WebCustomTooltip addToolTip(final JComponent tooltip,
+            final TooltipWay tooltipWay) {
+        return TooltipManager.addTooltip(this, tooltip, tooltipWay);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebCustomTooltip addToolTip ( final JComponent tooltip, final TooltipWay tooltipWay, final int delay )
-    {
-        return TooltipManager.addTooltip ( this, tooltip, tooltipWay, delay );
+    public WebCustomTooltip addToolTip(final JComponent tooltip,
+            final TooltipWay tooltipWay, final int delay) {
+        return TooltipManager.addTooltip(this, tooltip, tooltipWay, delay);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeToolTip ( final WebCustomTooltip tooltip )
-    {
-        TooltipManager.removeTooltip ( this, tooltip );
+    public void removeToolTip(final WebCustomTooltip tooltip) {
+        TooltipManager.removeTooltip(this, tooltip);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeToolTips ()
-    {
-        TooltipManager.removeTooltips ( this );
+    public void removeToolTips() {
+        TooltipManager.removeTooltips(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeToolTips ( final WebCustomTooltip... tooltips )
-    {
-        TooltipManager.removeTooltips ( this, tooltips );
+    public void removeToolTips(final WebCustomTooltip... tooltips) {
+        TooltipManager.removeTooltips(this, tooltips);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeToolTips ( final List<WebCustomTooltip> tooltips )
-    {
-        TooltipManager.removeTooltips ( this, tooltips );
+    public void removeToolTips(final List<WebCustomTooltip> tooltips) {
+        TooltipManager.removeTooltips(this, tooltips);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebSpinner setPlainFont ()
-    {
-        return SwingUtils.setPlainFont ( this );
+    public WebSpinner setPlainFont() {
+        return SwingUtils.setPlainFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebSpinner setPlainFont ( final boolean apply )
-    {
-        return SwingUtils.setPlainFont ( this, apply );
+    public WebSpinner setPlainFont(final boolean apply) {
+        return SwingUtils.setPlainFont(this, apply);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isPlainFont ()
-    {
-        return SwingUtils.isPlainFont ( this );
+    public boolean isPlainFont() {
+        return SwingUtils.isPlainFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebSpinner setBoldFont ()
-    {
-        return SwingUtils.setBoldFont ( this );
+    public WebSpinner setBoldFont() {
+        return SwingUtils.setBoldFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebSpinner setBoldFont ( final boolean apply )
-    {
-        return SwingUtils.setBoldFont ( this, apply );
+    public WebSpinner setBoldFont(final boolean apply) {
+        return SwingUtils.setBoldFont(this, apply);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isBoldFont ()
-    {
-        return SwingUtils.isBoldFont ( this );
+    public boolean isBoldFont() {
+        return SwingUtils.isBoldFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebSpinner setItalicFont ()
-    {
-        return SwingUtils.setItalicFont ( this );
+    public WebSpinner setItalicFont() {
+        return SwingUtils.setItalicFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebSpinner setItalicFont ( final boolean apply )
-    {
-        return SwingUtils.setItalicFont ( this, apply );
+    public WebSpinner setItalicFont(final boolean apply) {
+        return SwingUtils.setItalicFont(this, apply);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isItalicFont ()
-    {
-        return SwingUtils.isItalicFont ( this );
+    public boolean isItalicFont() {
+        return SwingUtils.isItalicFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebSpinner setFontStyle ( final boolean bold, final boolean italic )
-    {
-        return SwingUtils.setFontStyle ( this, bold, italic );
+    public WebSpinner setFontStyle(final boolean bold, final boolean italic) {
+        return SwingUtils.setFontStyle(this, bold, italic);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebSpinner setFontStyle ( final int style )
-    {
-        return SwingUtils.setFontStyle ( this, style );
+    public WebSpinner setFontStyle(final int style) {
+        return SwingUtils.setFontStyle(this, style);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebSpinner setFontSize ( final int fontSize )
-    {
-        return SwingUtils.setFontSize ( this, fontSize );
+    public WebSpinner setFontSize(final int fontSize) {
+        return SwingUtils.setFontSize(this, fontSize);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebSpinner changeFontSize ( final int change )
-    {
-        return SwingUtils.changeFontSize ( this, change );
+    public WebSpinner changeFontSize(final int change) {
+        return SwingUtils.changeFontSize(this, change);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public int getFontSize ()
-    {
-        return SwingUtils.getFontSize ( this );
+    public int getFontSize() {
+        return SwingUtils.getFontSize(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebSpinner setFontSizeAndStyle ( final int fontSize, final boolean bold, final boolean italic )
-    {
-        return SwingUtils.setFontSizeAndStyle ( this, fontSize, bold, italic );
+    public WebSpinner setFontSizeAndStyle(final int fontSize,
+            final boolean bold, final boolean italic) {
+        return SwingUtils.setFontSizeAndStyle(this, fontSize, bold, italic);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebSpinner setFontSizeAndStyle ( final int fontSize, final int style )
-    {
-        return SwingUtils.setFontSizeAndStyle ( this, fontSize, style );
+    public WebSpinner setFontSizeAndStyle(final int fontSize, final int style) {
+        return SwingUtils.setFontSizeAndStyle(this, fontSize, style);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebSpinner setFontName ( final String fontName )
-    {
-        return SwingUtils.setFontName ( this, fontName );
+    public WebSpinner setFontName(final String fontName) {
+        return SwingUtils.setFontName(this, fontName);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getFontName ()
-    {
-        return SwingUtils.getFontName ( this );
+    public String getFontName() {
+        return SwingUtils.getFontName(this);
     }
 }

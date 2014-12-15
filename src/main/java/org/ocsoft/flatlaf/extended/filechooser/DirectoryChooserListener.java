@@ -28,12 +28,12 @@ import java.util.EventListener;
  * @see WebDirectoryChooser
  */
 
-public interface DirectoryChooserListener extends EventListener
-{
+public interface DirectoryChooserListener extends EventListener {
     /**
      * Notifies about directory selection changes.
      *
-     * @param file newly selected directory or null if none selected
+     * @param file
+     *            newly selected directory or null if none selected
      */
-    public void selectionChanged ( File file );
+    public void selectionChanged(File file);
 }

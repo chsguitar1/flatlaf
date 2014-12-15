@@ -34,66 +34,71 @@ import java.util.Map;
  * @author Mikle Garin
  */
 
-public class TreeStateConverter extends ReflectionConverter
-{
+public class TreeStateConverter extends ReflectionConverter {
     /**
-     * Constructs TreeStateConverter with the specified mapper and reflection provider.
+     * Constructs TreeStateConverter with the specified mapper and reflection
+     * provider.
      *
-     * @param mapper             mapper
-     * @param reflectionProvider reflection provider
+     * @param mapper
+     *            mapper
+     * @param reflectionProvider
+     *            reflection provider
      */
-    public TreeStateConverter ( final Mapper mapper, final ReflectionProvider reflectionProvider )
-    {
-        super ( mapper, reflectionProvider );
+    public TreeStateConverter(final Mapper mapper,
+            final ReflectionProvider reflectionProvider) {
+        super(mapper, reflectionProvider);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean canConvert ( final Class type )
-    {
-        return type.equals ( TreeState.class );
+    public boolean canConvert(final Class type) {
+        return type.equals(TreeState.class);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void marshal ( final Object source, final HierarchicalStreamWriter writer, final MarshallingContext context )
-    {
-        final TreeState treeState = ( TreeState ) source;
-        for ( final Map.Entry<String, NodeState> entry : treeState.getStates ().entrySet () )
-        {
-            final String nodeId = entry.getKey ();
-            final NodeState nodeState = entry.getValue ();
-            writer.startNode ( "node" );
-            writer.addAttribute ( "id", nodeId );
-            writer.addAttribute ( "expanded", "" + nodeState.isExpanded () );
-            writer.addAttribute ( "selected", "" + nodeState.isSelected () );
-            writer.endNode ();
+    public void marshal(final Object source,
+            final HierarchicalStreamWriter writer,
+            final MarshallingContext context) {
+        final TreeState treeState = (TreeState) source;
+        for (final Map.Entry<String, NodeState> entry : treeState.getStates()
+                .entrySet()) {
+            final String nodeId = entry.getKey();
+            final NodeState nodeState = entry.getValue();
+            writer.startNode("node");
+            writer.addAttribute("id", nodeId);
+            writer.addAttribute("expanded", "" + nodeState.isExpanded());
+            writer.addAttribute("selected", "" + nodeState.isSelected());
+            writer.endNode();
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Object unmarshal ( final HierarchicalStreamReader reader, final UnmarshallingContext context )
-    {
-        final Map<String, NodeState> states = new LinkedHashMap<String, NodeState> ();
-        while ( reader.hasMoreChildren () )
-        {
-            reader.moveDown ();
-            final String nodeIdAttribue = reader.getAttribute ( "id" );
-            final String nodeId = nodeIdAttribue != null ? nodeIdAttribue : reader.getNodeName ();
-            final String expandedAttribue = reader.getAttribute ( "expanded" );
-            final String expanded = expandedAttribue != null ? expandedAttribue : "false";
-            final String selectedAttribue = reader.getAttribute ( "selected" );
-            final String selected = selectedAttribue != null ? selectedAttribue : "false";
-            states.put ( nodeId, new NodeState ( Boolean.parseBoolean ( expanded ), Boolean.parseBoolean ( selected ) ) );
-            reader.moveUp ();
+    public Object unmarshal(final HierarchicalStreamReader reader,
+            final UnmarshallingContext context) {
+        final Map<String, NodeState> states = new LinkedHashMap<String, NodeState>();
+        while (reader.hasMoreChildren()) {
+            reader.moveDown();
+            final String nodeIdAttribue = reader.getAttribute("id");
+            final String nodeId = nodeIdAttribue != null ? nodeIdAttribue
+                    : reader.getNodeName();
+            final String expandedAttribue = reader.getAttribute("expanded");
+            final String expanded = expandedAttribue != null ? expandedAttribue
+                    : "false";
+            final String selectedAttribue = reader.getAttribute("selected");
+            final String selected = selectedAttribue != null ? selectedAttribue
+                    : "false";
+            states.put(nodeId, new NodeState(Boolean.parseBoolean(expanded),
+                    Boolean.parseBoolean(selected)));
+            reader.moveUp();
         }
-        return new TreeState ( states );
+        return new TreeState(states);
     }
 }

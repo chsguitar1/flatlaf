@@ -26,63 +26,53 @@ import java.io.Serializable;
  * @author Mikle Garin
  */
 
-@XStreamAlias ("langInfo")
-public class LanguageInfo implements Serializable
-{
+@XStreamAlias("langInfo")
+public class LanguageInfo implements Serializable {
     @XStreamAsAttribute
     private String lang;
-
+    
     @XStreamAsAttribute
     private String author;
-
+    
     @XStreamAsAttribute
     private String info;
-
+    
     @XStreamAsAttribute
     private String title;
-
-    public LanguageInfo ()
-    {
-        super ();
+    
+    public LanguageInfo() {
+        super();
     }
-
-    public String getLang ()
-    {
+    
+    public String getLang() {
         return lang;
     }
-
-    public void setLang ( final String lang )
-    {
+    
+    public void setLang(final String lang) {
         this.lang = lang;
     }
-
-    public String getAuthor ()
-    {
+    
+    public String getAuthor() {
         return author;
     }
-
-    public void setAuthor ( final String author )
-    {
+    
+    public void setAuthor(final String author) {
         this.author = author;
     }
-
-    public String getInfo ()
-    {
+    
+    public String getInfo() {
         return info;
     }
-
-    public void setInfo ( final String info )
-    {
+    
+    public void setInfo(final String info) {
         this.info = info;
     }
-
-    public String getTitle ()
-    {
+    
+    public String getTitle() {
         return title;
     }
-
-    public void setTitle ( final String title )
-    {
+    
+    public void setTitle(final String title) {
         this.title = title;
     }
 }

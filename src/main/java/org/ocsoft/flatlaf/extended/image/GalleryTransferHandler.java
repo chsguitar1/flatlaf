@@ -29,27 +29,21 @@ import java.util.List;
  * @author Mikle Garin
  */
 
-public class GalleryTransferHandler extends FileDragAndDropHandler
-{
+public class GalleryTransferHandler extends FileDragAndDropHandler {
     private WebImageGallery gallery = null;
-
-    public GalleryTransferHandler ( final WebImageGallery gallery )
-    {
-        super ();
+    
+    public GalleryTransferHandler(final WebImageGallery gallery) {
+        super();
         this.gallery = gallery;
     }
-
+    
     @Override
-    public boolean filesDropped ( final List<File> files )
-    {
+    public boolean filesDropped(final List<File> files) {
         boolean added = false;
-        if ( gallery != null )
-        {
-            for ( final File file : files )
-            {
-                if ( ImageUtils.isImageLoadable ( file.getName () ) )
-                {
-                    gallery.addImage ( new ImageIcon ( file.getAbsolutePath () ) );
+        if (gallery != null) {
+            for (final File file : files) {
+                if (ImageUtils.isImageLoadable(file.getName())) {
+                    gallery.addImage(new ImageIcon(file.getAbsolutePath()));
                     added = true;
                 }
             }

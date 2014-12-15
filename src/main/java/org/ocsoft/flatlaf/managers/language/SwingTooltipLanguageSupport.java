@@ -31,32 +31,26 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class SwingTooltipLanguageSupport implements TooltipLanguageSupport
-{
+public class SwingTooltipLanguageSupport implements TooltipLanguageSupport {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setupTooltip ( final Component component, final Value value )
-    {
+    public void setupTooltip(final Component component, final Value value) {
         final boolean swingComponent = component instanceof JComponent;
-        if ( swingComponent )
-        {
-            final JComponent jComponent = ( JComponent ) component;
-
+        if (swingComponent) {
+            final JComponent jComponent = (JComponent) component;
+            
             // Clearing tooltip
-            jComponent.setToolTipText ( null );
-
+            jComponent.setToolTipText(null);
+            
             // Installing new tooltip
-            if ( value != null && value.getTooltips () != null && value.getTooltips ().size () > 0 )
-            {
-                for ( final Tooltip tooltip : value.getTooltips () )
-                {
-                    if ( tooltip.getType ().equals ( TooltipType.swing ) )
-                    {
-                        if ( swingComponent )
-                        {
-                            jComponent.setToolTipText ( tooltip.getText () );
+            if (value != null && value.getTooltips() != null
+                    && value.getTooltips().size() > 0) {
+                for (final Tooltip tooltip : value.getTooltips()) {
+                    if (tooltip.getType().equals(TooltipType.swing)) {
+                        if (swingComponent) {
+                            jComponent.setToolTipText(tooltip.getText());
                         }
                     }
                 }

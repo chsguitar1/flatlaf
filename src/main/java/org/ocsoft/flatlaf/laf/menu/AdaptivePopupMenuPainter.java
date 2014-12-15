@@ -25,75 +25,70 @@ import org.ocsoft.flatlaf.extended.painter.Painter;
 import java.awt.*;
 
 /**
- * Simple PopupMenuPainter adapter class.
- * It is used to install simple non-specific painters into WebPopupMenuUI.
+ * Simple PopupMenuPainter adapter class. It is used to install simple
+ * non-specific painters into WebPopupMenuUI.
  *
  * @author Mikle Garin
  */
 
-public class AdaptivePopupMenuPainter<E extends JPopupMenu> extends AdaptivePainter<E> implements PopupMenuPainter<E>
-{
+public class AdaptivePopupMenuPainter<E extends JPopupMenu> extends
+        AdaptivePainter<E> implements PopupMenuPainter<E> {
     /**
      * Constructs new AdaptiveLabelPainter for the specified painter.
      *
-     * @param painter painter to adapt
+     * @param painter
+     *            painter to adapt
      */
-    public AdaptivePopupMenuPainter ( final Painter painter )
-    {
-        super ( painter );
+    public AdaptivePopupMenuPainter(final Painter painter) {
+        super(painter);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setTransparent ( final boolean transparent )
-    {
+    public void setTransparent(final boolean transparent) {
         // Ignore this method in adaptive class
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setMenuSpacing ( final int spacing )
-    {
+    public void setMenuSpacing(final int spacing) {
         // Ignore this method in adaptive class
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setFixLocation ( final boolean fix )
-    {
+    public void setFixLocation(final boolean fix) {
         // Ignore this method in adaptive class
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPopupMenuWay ( final PopupMenuWay way )
-    {
+    public void setPopupMenuWay(final PopupMenuWay way) {
         // Ignore this method in adaptive class
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPopupMenuType ( final PopupMenuType type )
-    {
+    public void setPopupMenuType(final PopupMenuType type) {
         // Ignore this method in adaptive class
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Point preparePopupMenu ( final E popupMenu, final Component invoker, final int x, final int y )
-    {
-        return new Point ( x, y );
+    public Point preparePopupMenu(final E popupMenu, final Component invoker,
+            final int x, final int y) {
+        return new Point(x, y);
     }
 }

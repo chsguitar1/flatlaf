@@ -20,107 +20,98 @@ package org.ocsoft.flatlaf.managers.notification;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 
 /**
- * This enumeration represents available predefined question notification option types.
+ * This enumeration represents available predefined question notification option
+ * types.
  *
  * @author Mikle Garin
  */
 
-public enum NotificationOption
-{
+public enum NotificationOption {
     /**
      * Yes option.
      */
     yes,
-
+    
     /**
      * No option.
      */
     no,
-
+    
     /**
      * Cancel option.
      */
     cancel,
-
+    
     /**
      * Choose option.
      */
     choose,
-
+    
     /**
      * Accept option.
      */
     accept,
-
+    
     /**
      * Decline option.
      */
     decline,
-
+    
     /**
      * Decline option.
      */
     apply,
-
+    
     /**
      * Decline option.
      */
     commit,
-
+    
     /**
      * Discard option.
      */
     discard,
-
+    
     /**
      * Reset option.
      */
     reset,
-
+    
     /**
      * Retry option.
      */
     retry,
-
+    
     /**
      * Save option.
      */
     save,
-
+    
     /**
      * Open option.
      */
     open;
-
+    
     /**
-     * todo Add in future:
-     * todo play
-     * todo pause
-     * todo stop
-     * todo download
-     * todo upload
-     * todo delete
-     * todo find
-     * todo replace
+     * todo Add in future: todo play todo pause todo stop todo download todo
+     * upload todo delete todo find todo replace
      */
-
+    
     /**
      * Returns language key for this option.
      *
      * @return language key for this option
      */
-    public String getLanguageKey ()
-    {
+    public String getLanguageKey() {
         return "weblaf.ex.notification." + this;
     }
-
+    
     /**
      * Returns translation text for this option.
      *
      * @return translation text for this option
      */
-    public String getText ()
-    {
-        return LanguageManager.get ( getLanguageKey () );
+    public String getText() {
+        return LanguageManager.get(getLanguageKey());
     }
 }

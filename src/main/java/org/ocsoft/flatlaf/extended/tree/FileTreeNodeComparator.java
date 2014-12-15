@@ -27,14 +27,13 @@ import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
  * @author Mikle Garin
  */
 
-public class FileTreeNodeComparator implements Comparator<FileTreeNode>
-{
+public class FileTreeNodeComparator implements Comparator<FileTreeNode> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public int compare ( final FileTreeNode o1, final FileTreeNode o2 )
-    {
-        return FlatLafConstants.FILE_COMPARATOR.compare ( o1.getFile (), o2.getFile () );
+    public int compare(final FileTreeNode o1, final FileTreeNode o2) {
+        return FlatLafConstants.FILE_COMPARATOR.compare(o1.getFile(),
+                o2.getFile());
     }
 }

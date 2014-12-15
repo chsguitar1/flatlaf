@@ -26,52 +26,57 @@ import java.awt.image.ImageObserver;
  * @author Mikle Garin
  */
 
-public class NodeImageObserver implements ImageObserver
-{
+public class NodeImageObserver implements ImageObserver {
     /**
      * Asynchronous tree.
      */
     protected WebAsyncTree tree;
-
+    
     /**
      * Observed node.
      */
     protected AsyncUniqueNode node;
-
+    
     /**
      * Constructs default node observer.
      *
-     * @param tree asynchronous tree
-     * @param node observed node
+     * @param tree
+     *            asynchronous tree
+     * @param node
+     *            observed node
      */
-    public NodeImageObserver ( final WebAsyncTree tree, final AsyncUniqueNode node )
-    {
+    public NodeImageObserver(final WebAsyncTree tree, final AsyncUniqueNode node) {
         this.tree = tree;
         this.node = node;
     }
-
+    
     /**
      * Updates loader icon view in tree cell.
      *
-     * @param img   image being observed
-     * @param flags bitwise inclusive OR of flags
-     * @param x     x coordinate
-     * @param y     y coordinate
-     * @param w     width
-     * @param h     height
-     * @return false if the infoflags indicate that the image is completely loaded, true otherwise
+     * @param img
+     *            image being observed
+     * @param flags
+     *            bitwise inclusive OR of flags
+     * @param x
+     *            x coordinate
+     * @param y
+     *            y coordinate
+     * @param w
+     *            width
+     * @param h
+     *            height
+     * @return false if the infoflags indicate that the image is completely
+     *         loaded, true otherwise
      */
     @Override
-    public boolean imageUpdate ( final Image img, final int flags, final int x, final int y, final int w, final int h )
-    {
-        if ( node.isLoading () && ( flags & ( FRAMEBITS | ALLBITS ) ) != 0 )
-        {
-            final Rectangle rect = tree.getPathBounds ( node.getTreePath () );
-            if ( rect != null )
-            {
-                tree.repaint ( rect );
+    public boolean imageUpdate(final Image img, final int flags, final int x,
+            final int y, final int w, final int h) {
+        if (node.isLoading() && (flags & (FRAMEBITS | ALLBITS)) != 0) {
+            final Rectangle rect = tree.getPathBounds(node.getTreePath());
+            if (rect != null) {
+                tree.repaint(rect);
             }
         }
-        return ( flags & ( ALLBITS | ABORT ) ) == 0;
+        return (flags & (ALLBITS | ABORT)) == 0;
     }
 }

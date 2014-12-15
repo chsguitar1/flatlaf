@@ -23,23 +23,22 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * User: mgarin Date: 11/15/11 Time: 1:41 PM
  */
 
-public final class WebSpinnerStyle
-{
+public final class WebSpinnerStyle {
     /**
      * Draw spinner border
      */
     public static boolean drawBorder = FlatLafStyleConstants.drawBorder;
-
+    
     /**
      * Draw spinner focus.
      */
     public static boolean drawFocus = FlatLafStyleConstants.drawFocus;
-
+    
     /**
      * Decoration rounding
      */
     public static int round = FlatLafStyleConstants.bigRound;
-
+    
     /**
      * Decoration shade width
      */

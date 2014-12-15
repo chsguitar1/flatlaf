@@ -18,18 +18,19 @@
 package org.ocsoft.flatlaf.utils.swing;
 
 /**
- * This interface allows you to create customizer for objects of any type.
- * They can be easily passed into any method to customize or modify any component or data when requested.
+ * This interface allows you to create customizer for objects of any type. They
+ * can be easily passed into any method to customize or modify any component or
+ * data when requested.
  *
  * @author Mikle Garin
  */
 
-public interface Customizer<T>
-{
+public interface Customizer<T> {
     /**
      * Customizes the specified object.
      *
-     * @param object object to customize
+     * @param object
+     *            object to customize
      */
-    public void customize ( T object );
+    public void customize(T object);
 }

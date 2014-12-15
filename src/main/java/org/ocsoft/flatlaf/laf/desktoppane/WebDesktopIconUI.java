@@ -31,30 +31,27 @@ import java.awt.*;
  * User: mgarin Date: 17.08.11 Time: 23:14
  */
 
-public class WebDesktopIconUI extends BasicDesktopIconUI
-{
-    @SuppressWarnings ( "UnusedParameters" )
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebDesktopIconUI ();
+public class WebDesktopIconUI extends BasicDesktopIconUI {
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebDesktopIconUI();
     }
-
+    
     @Override
-    public void installUI ( final JComponent c )
-    {
-        super.installUI ( c );
-
+    public void installUI(final JComponent c) {
+        super.installUI(c);
+        
         // Default settings
-        SwingUtils.setOrientation ( c );
-        c.setBorder ( LafUtils.createWebBorder ( 0, 0, 0, 0 ) );
-        LookAndFeel.installProperty ( c, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        SwingUtils.setOrientation(c);
+        c.setBorder(LafUtils.createWebBorder(0, 0, 0, 0));
+        LookAndFeel.installProperty(c, FlatLookAndFeel.OPAQUE_PROPERTY,
+                Boolean.FALSE);
     }
-
+    
     @Override
-    protected void installComponents ()
-    {
-        iconPane = new WebInternalFrameIconPane ( frame );
-        desktopIcon.setLayout ( new BorderLayout () );
-        desktopIcon.add ( iconPane, BorderLayout.CENTER );
+    protected void installComponents() {
+        iconPane = new WebInternalFrameIconPane(frame);
+        desktopIcon.setLayout(new BorderLayout());
+        desktopIcon.add(iconPane, BorderLayout.CENTER);
     }
 }

@@ -29,191 +29,161 @@ import org.ocsoft.flatlaf.utils.swing.WebTimer;
  * User: mgarin Date: 24.07.12 Time: 17:53
  */
 
-public class WebFadeDialog extends WebDialog implements ActionListener, WindowFocusListener, WindowListener
-{
+public class WebFadeDialog extends WebDialog implements ActionListener,
+        WindowFocusListener, WindowListener {
     private float maximumOpacity = 0.9f;
     private float minimumOpacity = 0.3f;
     private int minimumOpacityDistance = 200;
-
+    
     private float opacity = 1f;
     private WebTimer updater;
-
-    public WebFadeDialog ()
-    {
-        super ();
-
-        updater = new WebTimer ( "WebFadeDialog.updater", FlatLafStyleConstants.fastAnimationDelay, this );
-        addWindowFocusListener ( this );
-        addWindowListener ( this );
+    
+    public WebFadeDialog() {
+        super();
+        
+        updater = new WebTimer("WebFadeDialog.updater",
+                FlatLafStyleConstants.fastAnimationDelay, this);
+        addWindowFocusListener(this);
+        addWindowListener(this);
     }
-
-    public float getMaximumOpacity ()
-    {
+    
+    public float getMaximumOpacity() {
         return maximumOpacity;
     }
-
-    public void setMaximumOpacity ( float maximumOpacity )
-    {
+    
+    public void setMaximumOpacity(float maximumOpacity) {
         this.maximumOpacity = maximumOpacity;
     }
-
-    public float getMinimumOpacity ()
-    {
+    
+    public float getMinimumOpacity() {
         return minimumOpacity;
     }
-
-    public void setMinimumOpacity ( float minimumOpacity )
-    {
+    
+    public void setMinimumOpacity(float minimumOpacity) {
         this.minimumOpacity = minimumOpacity;
     }
-
-    public int getMinimumOpacityDistance ()
-    {
+    
+    public int getMinimumOpacityDistance() {
         return minimumOpacityDistance;
     }
-
-    public void setMinimumOpacityDistance ( int minimumOpacityDistance )
-    {
+    
+    public void setMinimumOpacityDistance(int minimumOpacityDistance) {
         this.minimumOpacityDistance = minimumOpacityDistance;
     }
-
+    
     @Override
-    public void windowGainedFocus ( WindowEvent e )
-    {
-        updater.stop ();
+    public void windowGainedFocus(WindowEvent e) {
+        updater.stop();
         opacity = maximumOpacity;
-        updateOpacity ();
+        updateOpacity();
     }
-
+    
     @Override
-    public void windowLostFocus ( WindowEvent e )
-    {
-        if ( isShowing () )
-        {
-            updater.start ();
+    public void windowLostFocus(WindowEvent e) {
+        if (isShowing()) {
+            updater.start();
         }
     }
-
+    
     @Override
-    public void windowOpened ( WindowEvent e )
-    {
+    public void windowOpened(WindowEvent e) {
         //
     }
-
+    
     @Override
-    public void windowClosed ( WindowEvent e )
-    {
-        updater.stop ();
+    public void windowClosed(WindowEvent e) {
+        updater.stop();
     }
-
+    
     @Override
-    public void windowClosing ( WindowEvent e )
-    {
-
+    public void windowClosing(WindowEvent e) {
+        
     }
-
+    
     @Override
-    public void windowIconified ( WindowEvent e )
-    {
-
+    public void windowIconified(WindowEvent e) {
+        
     }
-
+    
     @Override
-    public void windowDeiconified ( WindowEvent e )
-    {
-
+    public void windowDeiconified(WindowEvent e) {
+        
     }
-
+    
     @Override
-    public void windowActivated ( WindowEvent e )
-    {
-
+    public void windowActivated(WindowEvent e) {
+        
     }
-
+    
     @Override
-    public void windowDeactivated ( WindowEvent e )
-    {
-
+    public void windowDeactivated(WindowEvent e) {
+        
     }
-
+    
     @Override
-    public void actionPerformed ( ActionEvent e )
-    {
+    public void actionPerformed(ActionEvent e) {
         float newOpacity;
-        if ( !WebFadeDialog.this.isActive () )
-        {
-            Point mp = MouseInfo.getPointerInfo ().getLocation ();
-            Rectangle bounds = WebFadeDialog.this.getBounds ();
-            if ( bounds.contains ( mp ) )
-            {
+        if (!WebFadeDialog.this.isActive()) {
+            Point mp = MouseInfo.getPointerInfo().getLocation();
+            Rectangle bounds = WebFadeDialog.this.getBounds();
+            if (bounds.contains(mp)) {
                 newOpacity = maximumOpacity;
-            }
-            else
-            {
+            } else {
                 int distance;
-                if ( mp.y < bounds.y )
-                {
-                    if ( mp.x < bounds.x )
-                    {
-                        distance = minimumOpacityDistance -
-                                ( MathUtils.sqrt ( MathUtils.sqr ( bounds.y - mp.y ) + MathUtils.sqr ( bounds.x - mp.x ) ) );
+                if (mp.y < bounds.y) {
+                    if (mp.x < bounds.x) {
+                        distance = minimumOpacityDistance
+                                - (MathUtils.sqrt(MathUtils
+                                        .sqr(bounds.y - mp.y)
+                                        + MathUtils.sqr(bounds.x - mp.x)));
+                    } else if (mp.x > bounds.x + bounds.width) {
+                        distance = minimumOpacityDistance
+                                - (MathUtils.sqrt(MathUtils
+                                        .sqr(bounds.y - mp.y)
+                                        + MathUtils.sqr(mp.x - bounds.x
+                                                - bounds.width)));
+                    } else {
+                        distance = minimumOpacityDistance - (bounds.y - mp.y);
                     }
-                    else if ( mp.x > bounds.x + bounds.width )
-                    {
-                        distance = minimumOpacityDistance -
-                                ( MathUtils.sqrt ( MathUtils.sqr ( bounds.y - mp.y ) + MathUtils.sqr ( mp.x - bounds.x - bounds.width ) ) );
+                } else if (mp.y > bounds.y && mp.y < bounds.y + bounds.height) {
+                    if (mp.x < bounds.x) {
+                        distance = minimumOpacityDistance - (bounds.x - mp.x);
+                    } else {
+                        distance = minimumOpacityDistance
+                                - (mp.x - bounds.x - bounds.width);
                     }
-                    else
-                    {
-                        distance = minimumOpacityDistance - ( bounds.y - mp.y );
-                    }
-                }
-                else if ( mp.y > bounds.y && mp.y < bounds.y + bounds.height )
-                {
-                    if ( mp.x < bounds.x )
-                    {
-                        distance = minimumOpacityDistance - ( bounds.x - mp.x );
-                    }
-                    else
-                    {
-                        distance = minimumOpacityDistance - ( mp.x - bounds.x - bounds.width );
-                    }
-                }
-                else
-                {
-                    if ( mp.x < bounds.x )
-                    {
-                        distance = minimumOpacityDistance - ( MathUtils
-                                .sqrt ( MathUtils.sqr ( mp.y - bounds.y - bounds.height ) + MathUtils.sqr ( bounds.x - mp.x ) ) );
-                    }
-                    else if ( mp.x > bounds.x + bounds.width )
-                    {
-                        distance = minimumOpacityDistance - ( MathUtils.sqrt ( MathUtils.sqr ( mp.y - bounds.y - bounds.height ) +
-                                MathUtils.sqr ( mp.x - bounds.x - bounds.width ) ) );
-                    }
-                    else
-                    {
-                        distance = minimumOpacityDistance - ( mp.y - bounds.y - bounds.height );
+                } else {
+                    if (mp.x < bounds.x) {
+                        distance = minimumOpacityDistance
+                                - (MathUtils.sqrt(MathUtils.sqr(mp.y - bounds.y
+                                        - bounds.height)
+                                        + MathUtils.sqr(bounds.x - mp.x)));
+                    } else if (mp.x > bounds.x + bounds.width) {
+                        distance = minimumOpacityDistance
+                                - (MathUtils.sqrt(MathUtils.sqr(mp.y - bounds.y
+                                        - bounds.height)
+                                        + MathUtils.sqr(mp.x - bounds.x
+                                                - bounds.width)));
+                    } else {
+                        distance = minimumOpacityDistance
+                                - (mp.y - bounds.y - bounds.height);
                     }
                 }
-                newOpacity = minimumOpacity +
-                        ( maximumOpacity - minimumOpacity ) * ( ( float ) Math.max ( 0, distance ) / minimumOpacityDistance );
+                newOpacity = minimumOpacity
+                        + (maximumOpacity - minimumOpacity)
+                        * ((float) Math.max(0, distance) / minimumOpacityDistance);
             }
-        }
-        else
-        {
+        } else {
             newOpacity = maximumOpacity;
         }
-
-        if ( newOpacity != opacity )
-        {
+        
+        if (newOpacity != opacity) {
             opacity = newOpacity;
-            updateOpacity ();
+            updateOpacity();
         }
     }
-
-    private void updateOpacity ()
-    {
-        setWindowOpacity ( opacity );
+    
+    private void updateOpacity() {
+        setWindowOpacity(opacity);
     }
 }

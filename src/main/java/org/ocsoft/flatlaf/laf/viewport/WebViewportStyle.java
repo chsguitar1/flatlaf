@@ -25,8 +25,7 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public final class WebViewportStyle
-{
+public final class WebViewportStyle {
     /**
      * Viewport background color.
      */

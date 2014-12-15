@@ -25,103 +25,102 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * User: mgarin Date: 11/15/11 Time: 1:46 PM
  */
 
-public final class WebSliderStyle
-{
+public final class WebSliderStyle {
     /**
      * Top track background color
      */
     public static Color trackBgTop = FlatLafStyleConstants.topDarkBgColor;
-
+    
     /**
      * Bottom track background color
      */
     public static Color trackBgBottom = FlatLafStyleConstants.bottomBgColor;
-
+    
     /**
      * Track height
      */
     public static int trackHeight = 9;
-
+    
     /**
      * Track round
      */
     public static int trackRound = FlatLafStyleConstants.bigRound;
-
+    
     /**
      * Track shade width
      */
     public static int trackShadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Should draw progress inside slider track
      */
     public static boolean drawProgress = true;
-
+    
     /**
      * Progress round
      */
     public static int progressRound = FlatLafStyleConstants.smallRound;
-
+    
     /**
      * Progress shade width
      */
     public static int progressShadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Should draw slider thumb
      */
     public static boolean drawThumb = true;
-
+    
     /**
      * Top gripper background color
      */
     public static Color thumbBgTop = FlatLafStyleConstants.topBgColor;
-
+    
     /**
      * Bottom gripper background color
      */
     public static Color thumbBgBottom = FlatLafStyleConstants.bottomBgColor;
-
+    
     /**
      * Gripper width
      */
     public static int thumbWidth = 8;
-
+    
     /**
      * Gripper height
      */
     public static int thumbHeight = 18;
-
+    
     /**
      * Gripper round
      */
     public static int thumbRound = FlatLafStyleConstants.smallRound;
-
+    
     /**
      * Gripper shade width
      */
     public static int thumbShadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Should use angled gripper
      */
     public static boolean angledThumb = true;
-
+    
     /**
      * Should the angle be sharp
      */
     public static boolean sharpThumbAngle = true;
-
+    
     /**
      * Gripper angle length
      */
     public static int thumbAngleLength = 4;
-
+    
     /**
      * Should animate component
      */
     public static boolean animated = FlatLafStyleConstants.animate;
-
+    
     /**
      * Dark component border only on mouseover
      */

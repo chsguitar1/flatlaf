@@ -25,16 +25,16 @@ import org.ocsoft.flatlaf.utils.general.Filter;
  * @author Mikle Garin
  */
 
-public final class WebFileTreeStyle
-{
+public final class WebFileTreeStyle {
     /**
-     * Whether allow files location search by dropping a file onto the tree or not.
+     * Whether allow files location search by dropping a file onto the tree or
+     * not.
      */
     public static boolean filesDropSearchEnabled = true;
-
+    
     /**
-     * Default tree file filter.
-     * Set to null if you want to display all available files.
+     * Default tree file filter. Set to null if you want to display all
+     * available files.
      */
-    public static Filter<FileTreeNode> filter = new FileTreeNodeFilter ();
+    public static Filter<FileTreeNode> filter = new FileTreeNodeFilter();
 }

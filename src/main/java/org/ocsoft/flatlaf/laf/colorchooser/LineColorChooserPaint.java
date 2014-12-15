@@ -32,115 +32,101 @@ import org.ocsoft.flatlaf.utils.ColorUtils;
  * User: mgarin Date: 07.07.2010 Time: 17:30:17
  */
 
-public class LineColorChooserPaint implements Paint
-{
+public class LineColorChooserPaint implements Paint {
     private boolean webSafe = false;
-
-    private ColorModel model = ColorModel.getRGBdefault ();
-
+    
+    private ColorModel model = ColorModel.getRGBdefault();
+    
     private int y;
     private int height;
-
-    public LineColorChooserPaint ( int y, int height )
-    {
-        super ();
+    
+    public LineColorChooserPaint(int y, int height) {
+        super();
         this.y = y;
         this.height = height;
     }
-
+    
     @Override
-    public PaintContext createContext ( ColorModel cm, Rectangle deviceBounds, Rectangle2D userBounds, final AffineTransform xform,
-                                        RenderingHints hints )
-    {
-        return new PaintContext ()
-        {
-            private Map<Rectangle, WritableRaster> rastersCache = new HashMap<Rectangle, WritableRaster> ();
-
+    public PaintContext createContext(ColorModel cm, Rectangle deviceBounds,
+            Rectangle2D userBounds, final AffineTransform xform,
+            RenderingHints hints) {
+        return new PaintContext() {
+            private Map<Rectangle, WritableRaster> rastersCache = new HashMap<Rectangle, WritableRaster>();
+            
             @Override
-            public void dispose ()
-            {
-                rastersCache.clear ();
+            public void dispose() {
+                rastersCache.clear();
             }
-
+            
             @Override
-            public ColorModel getColorModel ()
-            {
+            public ColorModel getColorModel() {
                 return model;
             }
-
+            
             @Override
-            public Raster getRaster ( int x, int y, int w, int h )
-            {
-                Rectangle r = new Rectangle ( x, y, w, h );
-                if ( rastersCache.containsKey ( r ) )
-                {
-                    return rastersCache.get ( r );
-                }
-                else
-                {
-                    WritableRaster raster = model.createCompatibleWritableRaster ( w, h );
-
-                    y -= Math.round ( xform.getTranslateY () );
-
-                    int[] data = new int[ w * h * 4 ];
-                    for ( int j = 0; j < h; j++ )
-                    {
-                        for ( int i = 0; i < w; i++ )
-                        {
-                            Color color = new HSBColor ( 1f - ( float ) ( y + j ) / ( LineColorChooserPaint.this.y * 2 + height ), 1f, 1f )
-                                    .getColor ();
-
-                            int base = ( j * w + i ) * 4;
-                            data[ base ] = getWebSafe ( color.getRed () );
-                            data[ base + 1 ] = getWebSafe ( color.getGreen () );
-                            data[ base + 2 ] = getWebSafe ( color.getBlue () );
-                            data[ base + 3 ] = 255;
+            public Raster getRaster(int x, int y, int w, int h) {
+                Rectangle r = new Rectangle(x, y, w, h);
+                if (rastersCache.containsKey(r)) {
+                    return rastersCache.get(r);
+                } else {
+                    WritableRaster raster = model
+                            .createCompatibleWritableRaster(w, h);
+                    
+                    y -= Math.round(xform.getTranslateY());
+                    
+                    int[] data = new int[w * h * 4];
+                    for (int j = 0; j < h; j++) {
+                        for (int i = 0; i < w; i++) {
+                            Color color = new HSBColor(
+                                    1f
+                                            - (float) (y + j)
+                                            / (LineColorChooserPaint.this.y * 2 + height),
+                                    1f, 1f).getColor();
+                            
+                            int base = (j * w + i) * 4;
+                            data[base] = getWebSafe(color.getRed());
+                            data[base + 1] = getWebSafe(color.getGreen());
+                            data[base + 2] = getWebSafe(color.getBlue());
+                            data[base + 3] = 255;
                         }
                     }
-                    raster.setPixels ( 0, 0, w, h, data );
-
-                    rastersCache.put ( r, raster );
+                    raster.setPixels(0, 0, w, h, data);
+                    
+                    rastersCache.put(r, raster);
                     return raster;
                 }
             }
         };
     }
-
-    public Color getColor ( int yCoord )
-    {
-        return new HSBColor ( 1f - Math.max ( 0, Math.min ( ( float ) ( yCoord - y ) / height, 1f ) ), 1f, 1f ).getColor ();
+    
+    public Color getColor(int yCoord) {
+        return new HSBColor(1f - Math.max(0,
+                Math.min((float) (yCoord - y) / height, 1f)), 1f, 1f)
+                .getColor();
     }
-
-    private int getWebSafe ( int color )
-    {
-        if ( webSafe )
-        {
-            color = ColorUtils.getWebSafeValue ( color );
+    
+    private int getWebSafe(int color) {
+        if (webSafe) {
+            color = ColorUtils.getWebSafeValue(color);
         }
-        if ( color < 0 )
-        {
+        if (color < 0) {
             color = 0;
-        }
-        else if ( color > 255 )
-        {
+        } else if (color > 255) {
             color = 255;
         }
         return color;
     }
-
+    
     @Override
-    public int getTransparency ()
-    {
+    public int getTransparency() {
         return OPAQUE;
     }
-
-    public boolean isWebSafe ()
-    {
+    
+    public boolean isWebSafe() {
         return webSafe;
     }
-
-    public void setWebSafe ( boolean webSafe )
-    {
+    
+    public void setWebSafe(boolean webSafe) {
         this.webSafe = webSafe;
     }
 }

@@ -31,87 +31,83 @@ import org.ocsoft.flatlaf.extended.painter.Painter;
  * @see org.ocsoft.flatlaf.managers.popup.WebPopup
  */
 
-public enum PopupStyle
-{
+public enum PopupStyle {
     /**
      * Undecorated popup.
      */
     none,
-
+    
     /**
      * Simple bordered popup.
      */
     bordered,
-
+    
     /**
      * Light-colored popup.
      */
     light,
-
+    
     /**
      * Light-colored popup with small border.
      */
     lightSmall,
-
+    
     /**
      * Green-colored popup with large border.
      */
     greenLarge,
-
+    
     /**
      * Popup with bevel border.
      */
     bevel,
-
+    
     /**
      * Gray-colored popup.
      */
     gray,
-
+    
     /**
      * Gray-colored popup with small border.
      */
     graySmall,
-
+    
     /**
      * Gray-colored popup with etched border.
      */
     grayEtched,
-
+    
     /**
      * Gray-colored tooltip-styled popup.
      */
     grayDownTip,
-
+    
     /**
      * Dark-colored popup.
      */
     dark;
-
+    
     /**
      * Style painters cache.
      */
-    private static final Map<PopupStyle, Painter> stylePainters = new HashMap<PopupStyle, Painter> ();
-
+    private static final Map<PopupStyle, Painter> stylePainters = new HashMap<PopupStyle, Painter>();
+    
     /**
      * Returns popup painter for this popup style.
      *
      * @return popup painter for this popup style
      */
-    public synchronized Painter getPainter ()
-    {
-        Painter painter = stylePainters.get ( this );
-        if ( painter == null )
-        {
-            if ( this == PopupStyle.none )
-            {
+    public synchronized Painter getPainter() {
+        Painter painter = stylePainters.get(this);
+        if (painter == null) {
+            if (this == PopupStyle.none) {
                 painter = null;
+            } else {
+                painter = new NinePatchIconPainter(
+                        PopupManager.class.getResource("icons/popup/" + this
+                                + ".9.png"));
             }
-            else
-            {
-                painter = new NinePatchIconPainter ( PopupManager.class.getResource ( "icons/popup/" + this + ".9.png" ) );
-            }
-            stylePainters.put ( this, painter );
+            stylePainters.put(this, painter);
         }
         return painter;
     }

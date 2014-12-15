@@ -26,8 +26,7 @@ import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
  * @author Mikle Garin
  */
 
-public final class WebFileTableStyle
-{
+public final class WebFileTableStyle {
     /**
      * File filter.
      */

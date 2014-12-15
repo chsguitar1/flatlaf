@@ -23,16 +23,13 @@ import javax.swing.*;
  * User: mgarin Date: 22.09.11 Time: 14:44
  */
 
-public class WebInternalFrameIconPane extends WebInternalFrameTitlePane
-{
-    public WebInternalFrameIconPane ( JInternalFrame f )
-    {
-        super ( f );
+public class WebInternalFrameIconPane extends WebInternalFrameTitlePane {
+    public WebInternalFrameIconPane(JInternalFrame f) {
+        super(f);
     }
-
+    
     @Override
-    protected boolean isFrameTitle ()
-    {
+    protected boolean isFrameTitle() {
         return false;
     }
 }

@@ -24,39 +24,35 @@ import org.ocsoft.flatlaf.utils.swing.AbstractScreenLayout;
 import java.awt.*;
 
 /**
- * Custom screen layout for NotificationManager.
- * It properly places notification windows on the screen.
+ * Custom screen layout for NotificationManager. It properly places notification
+ * windows on the screen.
  *
  * @author Mikle Garin
  * @see org.ocsoft.flatlaf.managers.notification.NotificationManager
  * @see org.ocsoft.flatlaf.managers.notification.NotificationsLayoutUtils
  */
 
-public class NotificationsScreenLayout extends AbstractScreenLayout<Window, Object> implements SwingConstants
-{
+public class NotificationsScreenLayout extends
+        AbstractScreenLayout<Window, Object> implements SwingConstants {
     @Override
-    public void layoutScreen ()
-    {
-        synchronized ( lock )
-        {
-            if ( windows.size () > 0 )
-            {
+    public void layoutScreen() {
+        synchronized (lock) {
+            if (windows.size() > 0) {
                 // Screen settings
                 final Rectangle bounds;
-                final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment ();
-                if ( NotificationManager.isAvoidOverlappingSystemToolbar () )
-                {
+                final GraphicsEnvironment ge = GraphicsEnvironment
+                        .getLocalGraphicsEnvironment();
+                if (NotificationManager.isAvoidOverlappingSystemToolbar()) {
                     // Correcting bounds by taking system toolbar into account
-                    bounds = ge.getMaximumWindowBounds ();
-                }
-                else
-                {
+                    bounds = ge.getMaximumWindowBounds();
+                } else {
                     // Using default screen bounds
-                    bounds = ge.getDefaultScreenDevice ().getDefaultConfiguration ().getBounds ();
+                    bounds = ge.getDefaultScreenDevice()
+                            .getDefaultConfiguration().getBounds();
                 }
-
+                
                 // Layout notifications
-                NotificationsLayoutUtils.layout ( windows, bounds );
+                NotificationsLayoutUtils.layout(windows, bounds);
             }
         }
     }

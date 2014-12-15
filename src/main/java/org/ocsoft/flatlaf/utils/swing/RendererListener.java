@@ -21,17 +21,17 @@ package org.ocsoft.flatlaf.utils.swing;
  * @author Mikle Garin
  */
 
-public interface RendererListener
-{
+public interface RendererListener {
     /**
-     * Forces component that uses this renderer to repaint.
-     * It is useful if renderer might change in runtime and requires component to repaint after.
+     * Forces component that uses this renderer to repaint. It is useful if
+     * renderer might change in runtime and requires component to repaint after.
      */
-    public void repaint ();
-
+    public void repaint();
+    
     /**
-     * Forces component that uses this renderer to revalidate its size.
-     * It is useful if renderer might change its size in runtime and requires component to update its size after.
+     * Forces component that uses this renderer to revalidate its size. It is
+     * useful if renderer might change its size in runtime and requires
+     * component to update its size after.
      */
-    public void revalidate ();
+    public void revalidate();
 }

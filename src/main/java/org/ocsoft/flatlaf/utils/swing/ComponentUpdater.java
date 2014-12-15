@@ -28,191 +28,177 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 /**
- * This class allows you to install (and uninstall if needed) component updater to any JComponent quickly without any additional coding,
- * which allows you to add optimized rolling updates for the component from the added ActionListeners.
+ * This class allows you to install (and uninstall if needed) component updater
+ * to any JComponent quickly without any additional coding, which allows you to
+ * add optimized rolling updates for the component from the added
+ * ActionListeners.
  *
  * @author Mikle Garin
  */
 
-public class ComponentUpdater extends WebTimer implements AncestorListener
-{
+public class ComponentUpdater extends WebTimer implements AncestorListener {
     private JComponent component;
-
-    public ComponentUpdater ( final JComponent component )
-    {
-        super ( FlatLafStyleConstants.avgAnimationDelay );
-        initialize ( component );
+    
+    public ComponentUpdater(final JComponent component) {
+        super(FlatLafStyleConstants.avgAnimationDelay);
+        initialize(component);
     }
-
-    public ComponentUpdater ( final JComponent component, final long delay )
-    {
-        super ( delay );
-        initialize ( component );
+    
+    public ComponentUpdater(final JComponent component, final long delay) {
+        super(delay);
+        initialize(component);
     }
-
-    public ComponentUpdater ( final JComponent component, final String name, final long delay )
-    {
-        super ( name, delay );
-        initialize ( component );
+    
+    public ComponentUpdater(final JComponent component, final String name,
+            final long delay) {
+        super(name, delay);
+        initialize(component);
     }
-
-    public ComponentUpdater ( final JComponent component, final long delay, final long initialDelay )
-    {
-        super ( delay, initialDelay );
-        initialize ( component );
+    
+    public ComponentUpdater(final JComponent component, final long delay,
+            final long initialDelay) {
+        super(delay, initialDelay);
+        initialize(component);
     }
-
-    public ComponentUpdater ( final JComponent component, final String name, final long delay, final long initialDelay )
-    {
-        super ( name, delay, initialDelay );
-        initialize ( component );
+    
+    public ComponentUpdater(final JComponent component, final String name,
+            final long delay, final long initialDelay) {
+        super(name, delay, initialDelay);
+        initialize(component);
     }
-
-    public ComponentUpdater ( final JComponent component, final long delay, final ActionListener listener )
-    {
-        super ( delay, listener );
-        initialize ( component );
+    
+    public ComponentUpdater(final JComponent component, final long delay,
+            final ActionListener listener) {
+        super(delay, listener);
+        initialize(component);
     }
-
-    public ComponentUpdater ( final JComponent component, final String name, final long delay, final ActionListener listener )
-    {
-        super ( name, delay, listener );
-        initialize ( component );
+    
+    public ComponentUpdater(final JComponent component, final String name,
+            final long delay, final ActionListener listener) {
+        super(name, delay, listener);
+        initialize(component);
     }
-
-    public ComponentUpdater ( final JComponent component, final long delay, final long initialDelay, final ActionListener listener )
-    {
-        super ( delay, initialDelay, listener );
-        initialize ( component );
+    
+    public ComponentUpdater(final JComponent component, final long delay,
+            final long initialDelay, final ActionListener listener) {
+        super(delay, initialDelay, listener);
+        initialize(component);
     }
-
-    public ComponentUpdater ( final JComponent component, final String name, final long delay, final long initialDelay,
-                              final ActionListener listener )
-    {
-        super ( name, delay, initialDelay, listener );
-        initialize ( component );
+    
+    public ComponentUpdater(final JComponent component, final String name,
+            final long delay, final long initialDelay,
+            final ActionListener listener) {
+        super(name, delay, initialDelay, listener);
+        initialize(component);
     }
-
-    private void initialize ( final JComponent component )
-    {
+    
+    private void initialize(final JComponent component) {
         this.component = component;
-        component.addAncestorListener ( this );
+        component.addAncestorListener(this);
     }
-
-    public void uninstall ()
-    {
-        component.removeAncestorListener ( this );
+    
+    public void uninstall() {
+        component.removeAncestorListener(this);
     }
-
-    public Component getComponent ()
-    {
+    
+    public Component getComponent() {
         return component;
     }
-
+    
     @Override
-    public void ancestorAdded ( final AncestorEvent event )
-    {
-        start ();
+    public void ancestorAdded(final AncestorEvent event) {
+        start();
     }
-
+    
     @Override
-    public void ancestorRemoved ( final AncestorEvent event )
-    {
-        stop ();
+    public void ancestorRemoved(final AncestorEvent event) {
+        stop();
     }
-
+    
     @Override
-    public void ancestorMoved ( final AncestorEvent event )
-    {
+    public void ancestorMoved(final AncestorEvent event) {
         //
     }
-
+    
     /**
      * Installs component updater and ensures that it is the only installed
      */
-
-    public static ComponentUpdater install ( final JComponent component )
-    {
-        uninstall ( component );
-        return new ComponentUpdater ( component );
+    
+    public static ComponentUpdater install(final JComponent component) {
+        uninstall(component);
+        return new ComponentUpdater(component);
     }
-
-    public static ComponentUpdater install ( final JComponent component, final long delay )
-    {
-        uninstall ( component );
-        return new ComponentUpdater ( component, delay );
+    
+    public static ComponentUpdater install(final JComponent component,
+            final long delay) {
+        uninstall(component);
+        return new ComponentUpdater(component, delay);
     }
-
-    public static ComponentUpdater install ( final JComponent component, final String name, final long delay )
-    {
-        uninstall ( component );
-        return new ComponentUpdater ( component, name, delay );
+    
+    public static ComponentUpdater install(final JComponent component,
+            final String name, final long delay) {
+        uninstall(component);
+        return new ComponentUpdater(component, name, delay);
     }
-
-    public static ComponentUpdater install ( final JComponent component, final long delay, final long initialDelay )
-    {
-        uninstall ( component );
-        return new ComponentUpdater ( component, delay, initialDelay );
+    
+    public static ComponentUpdater install(final JComponent component,
+            final long delay, final long initialDelay) {
+        uninstall(component);
+        return new ComponentUpdater(component, delay, initialDelay);
     }
-
-    public static ComponentUpdater install ( final JComponent component, final String name, final long delay, final long initialDelay )
-    {
-        uninstall ( component );
-        return new ComponentUpdater ( component, name, delay, initialDelay );
+    
+    public static ComponentUpdater install(final JComponent component,
+            final String name, final long delay, final long initialDelay) {
+        uninstall(component);
+        return new ComponentUpdater(component, name, delay, initialDelay);
     }
-
-    public static ComponentUpdater install ( final JComponent component, final long delay, final ActionListener listener )
-    {
-        uninstall ( component );
-        return new ComponentUpdater ( component, delay, listener );
+    
+    public static ComponentUpdater install(final JComponent component,
+            final long delay, final ActionListener listener) {
+        uninstall(component);
+        return new ComponentUpdater(component, delay, listener);
     }
-
-    public static ComponentUpdater install ( final JComponent component, final String name, final long delay,
-                                             final ActionListener listener )
-    {
-        uninstall ( component );
-        return new ComponentUpdater ( component, name, delay, listener );
+    
+    public static ComponentUpdater install(final JComponent component,
+            final String name, final long delay, final ActionListener listener) {
+        uninstall(component);
+        return new ComponentUpdater(component, name, delay, listener);
     }
-
-    public static ComponentUpdater install ( final JComponent component, final long delay, final long initialDelay,
-                                             final ActionListener listener )
-    {
-        uninstall ( component );
-        return new ComponentUpdater ( component, delay, initialDelay, listener );
+    
+    public static ComponentUpdater install(final JComponent component,
+            final long delay, final long initialDelay,
+            final ActionListener listener) {
+        uninstall(component);
+        return new ComponentUpdater(component, delay, initialDelay, listener);
     }
-
-    public static ComponentUpdater install ( final JComponent component, final String name, final long delay, final long initialDelay,
-                                             final ActionListener listener )
-    {
-        uninstall ( component );
-        return new ComponentUpdater ( component, name, delay, initialDelay, listener );
+    
+    public static ComponentUpdater install(final JComponent component,
+            final String name, final long delay, final long initialDelay,
+            final ActionListener listener) {
+        uninstall(component);
+        return new ComponentUpdater(component, name, delay, initialDelay,
+                listener);
     }
-
+    
     /**
      * Uninstalls any existing component updater from component
      */
-
-    public static void uninstall ( final JComponent component )
-    {
-        for ( final AncestorListener listener : component.getAncestorListeners () )
-        {
-            if ( listener instanceof ComponentUpdater )
-            {
-                component.removeAncestorListener ( listener );
+    
+    public static void uninstall(final JComponent component) {
+        for (final AncestorListener listener : component.getAncestorListeners()) {
+            if (listener instanceof ComponentUpdater) {
+                component.removeAncestorListener(listener);
             }
         }
     }
-
+    
     /**
      * Checks if component has any component updater installed
      */
-
-    public static boolean isInstalled ( final JComponent component )
-    {
-        for ( final AncestorListener listener : component.getAncestorListeners () )
-        {
-            if ( listener instanceof ComponentUpdater )
-            {
+    
+    public static boolean isInstalled(final JComponent component) {
+        for (final AncestorListener listener : component.getAncestorListeners()) {
+            if (listener instanceof ComponentUpdater) {
                 return true;
             }
         }

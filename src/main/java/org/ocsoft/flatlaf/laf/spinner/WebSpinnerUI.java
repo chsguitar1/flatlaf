@@ -39,185 +39,168 @@ import java.awt.event.FocusEvent;
  * @author Mikle Garin
  */
 
-public class WebSpinnerUI extends BasicSpinnerUI implements ShapeProvider, BorderMethods
-{
-    private static final ImageIcon UP_ICON = new ImageIcon ( WebSpinnerUI.class.getResource ( "icons/up.png" ) );
-    private static final ImageIcon DOWN_ICON = new ImageIcon ( WebSpinnerUI.class.getResource ( "icons/down.png" ) );
-
+public class WebSpinnerUI extends BasicSpinnerUI implements ShapeProvider,
+        BorderMethods {
+    private static final ImageIcon UP_ICON = new ImageIcon(
+            WebSpinnerUI.class.getResource("icons/up.png"));
+    private static final ImageIcon DOWN_ICON = new ImageIcon(
+            WebSpinnerUI.class.getResource("icons/down.png"));
+    
     private boolean drawBorder = WebSpinnerStyle.drawBorder;
     private boolean drawFocus = WebSpinnerStyle.drawFocus;
     private int round = WebSpinnerStyle.round;
     private int shadeWidth = WebSpinnerStyle.shadeWidth;
-
-    @SuppressWarnings ( "UnusedParameters" )
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebSpinnerUI ();
+    
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebSpinnerUI();
     }
-
+    
     @Override
-    public void installUI ( final JComponent c )
-    {
-        super.installUI ( c );
-
+    public void installUI(final JComponent c) {
+        super.installUI(c);
+        
         // Default settings
-        SwingUtils.setOrientation ( spinner );
-        LookAndFeel.installProperty ( spinner, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
-        spinner.setBackground ( Color.WHITE );
-
+        SwingUtils.setOrientation(spinner);
+        LookAndFeel.installProperty(spinner, FlatLookAndFeel.OPAQUE_PROPERTY,
+                Boolean.FALSE);
+        spinner.setBackground(Color.WHITE);
+        
         // Updating border
-        updateBorder ();
+        updateBorder();
     }
-
+    
     @Override
-    public Shape provideShape ()
-    {
-        return LafUtils.getWebBorderShape ( spinner, getShadeWidth (), getRound () );
+    public Shape provideShape() {
+        return LafUtils.getWebBorderShape(spinner, getShadeWidth(), getRound());
     }
-
+    
     @Override
-    public void updateBorder ()
-    {
-        if ( spinner != null )
-        {
+    public void updateBorder() {
+        if (spinner != null) {
             // Preserve old borders
-            if ( SwingUtils.isPreserveBorders ( spinner ) )
-            {
+            if (SwingUtils.isPreserveBorders(spinner)) {
                 return;
             }
-
-            if ( drawBorder )
-            {
-                spinner.setBorder ( BorderFactory.createEmptyBorder ( shadeWidth + 2, shadeWidth + 2, shadeWidth + 2, shadeWidth + 2 ) );
-            }
-            else
-            {
-                spinner.setBorder ( BorderFactory.createEmptyBorder ( 1, 1, 1, 1 ) );
+            
+            if (drawBorder) {
+                spinner.setBorder(BorderFactory.createEmptyBorder(
+                        shadeWidth + 2, shadeWidth + 2, shadeWidth + 2,
+                        shadeWidth + 2));
+            } else {
+                spinner.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
             }
         }
     }
-
-    public int getShadeWidth ()
-    {
+    
+    public int getShadeWidth() {
         return shadeWidth;
     }
-
-    public void setShadeWidth ( final int shadeWidth )
-    {
+    
+    public void setShadeWidth(final int shadeWidth) {
         this.shadeWidth = shadeWidth;
-        updateBorder ();
+        updateBorder();
     }
-
-    public int getRound ()
-    {
+    
+    public int getRound() {
         return round;
     }
-
-    public void setRound ( final int round )
-    {
+    
+    public void setRound(final int round) {
         this.round = round;
-        updateBorder ();
+        updateBorder();
     }
-
-    public boolean isDrawBorder ()
-    {
+    
+    public boolean isDrawBorder() {
         return drawBorder;
     }
-
-    public void setDrawBorder ( final boolean drawBorder )
-    {
+    
+    public void setDrawBorder(final boolean drawBorder) {
         this.drawBorder = drawBorder;
-        updateBorder ();
+        updateBorder();
     }
-
-    public boolean isDrawFocus ()
-    {
+    
+    public boolean isDrawFocus() {
         return drawFocus;
     }
-
-    public void setDrawFocus ( final boolean drawFocus )
-    {
+    
+    public void setDrawFocus(final boolean drawFocus) {
         this.drawFocus = drawFocus;
     }
-
+    
     @Override
-    public void paint ( final Graphics g, final JComponent c )
-    {
+    public void paint(final Graphics g, final JComponent c) {
         // Border, background and shade
-        LafUtils.drawWebStyle ( ( Graphics2D ) g, c,
-                drawFocus && SwingUtils.hasFocusOwner ( spinner ) ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor, shadeWidth,
-                round );
-
-        super.paint ( g, c );
+        LafUtils.drawWebStyle(
+                (Graphics2D) g,
+                c,
+                drawFocus && SwingUtils.hasFocusOwner(spinner) ? FlatLafStyleConstants.fieldFocusColor
+                        : FlatLafStyleConstants.shadeColor, shadeWidth, round);
+        
+        super.paint(g, c);
     }
-
+    
     @Override
-    protected Component createNextButton ()
-    {
-        final WebButton nextButton = WebButton.createIconWebButton ( UP_ICON, FlatLafStyleConstants.smallRound, 1, 2 );
-        nextButton.setLeftRightSpacing ( 1 );
-        nextButton.setDrawFocus ( false );
-        nextButton.setFocusable ( false );
-
-        nextButton.setName ( "Spinner.nextButton" );
-        installNextButtonListeners ( nextButton );
-
+    protected Component createNextButton() {
+        final WebButton nextButton = WebButton.createIconWebButton(UP_ICON,
+                FlatLafStyleConstants.smallRound, 1, 2);
+        nextButton.setLeftRightSpacing(1);
+        nextButton.setDrawFocus(false);
+        nextButton.setFocusable(false);
+        
+        nextButton.setName("Spinner.nextButton");
+        installNextButtonListeners(nextButton);
+        
         return nextButton;
     }
-
+    
     @Override
-    protected Component createPreviousButton ()
-    {
-        final WebButton previousButton = WebButton.createIconWebButton ( DOWN_ICON, FlatLafStyleConstants.smallRound, 1, 2 );
-        previousButton.setLeftRightSpacing ( 1 );
-        previousButton.setDrawFocus ( false );
-        previousButton.setFocusable ( false );
-
-        previousButton.setName ( "Spinner.previousButton" );
-        installPreviousButtonListeners ( previousButton );
-
+    protected Component createPreviousButton() {
+        final WebButton previousButton = WebButton.createIconWebButton(
+                DOWN_ICON, FlatLafStyleConstants.smallRound, 1, 2);
+        previousButton.setLeftRightSpacing(1);
+        previousButton.setDrawFocus(false);
+        previousButton.setFocusable(false);
+        
+        previousButton.setName("Spinner.previousButton");
+        installPreviousButtonListeners(previousButton);
+        
         return previousButton;
     }
-
+    
     @Override
-    protected JComponent createEditor ()
-    {
-        final JComponent editor = super.createEditor ();
-        if ( editor instanceof JTextComponent )
-        {
-            installFieldUI ( ( JTextComponent ) editor, spinner );
-        }
-        else
-        {
-            installFieldUI ( ( ( JSpinner.DefaultEditor ) editor ).getTextField (), spinner );
+    protected JComponent createEditor() {
+        final JComponent editor = super.createEditor();
+        if (editor instanceof JTextComponent) {
+            installFieldUI((JTextComponent) editor, spinner);
+        } else {
+            installFieldUI(((JSpinner.DefaultEditor) editor).getTextField(),
+                    spinner);
         }
         return editor;
     }
-
-    public static void installFieldUI ( final JTextComponent field, final JSpinner spinner )
-    {
-        field.setMargin ( new Insets ( 0, 0, 0, 0 ) );
-        field.setBorder ( BorderFactory.createEmptyBorder ( 0, 0, 0, 0 ) );
-
-        final WebTextFieldUI textFieldUI = new WebTextFieldUI ();
-        textFieldUI.setDrawBorder ( false );
-        field.setUI ( textFieldUI );
-
-        field.setOpaque ( true );
-        field.setBackground ( Color.WHITE );
-        field.addFocusListener ( new FocusAdapter ()
-        {
+    
+    public static void installFieldUI(final JTextComponent field,
+            final JSpinner spinner) {
+        field.setMargin(new Insets(0, 0, 0, 0));
+        field.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        
+        final WebTextFieldUI textFieldUI = new WebTextFieldUI();
+        textFieldUI.setDrawBorder(false);
+        field.setUI(textFieldUI);
+        
+        field.setOpaque(true);
+        field.setBackground(Color.WHITE);
+        field.addFocusListener(new FocusAdapter() {
             @Override
-            public void focusGained ( final FocusEvent e )
-            {
-                spinner.repaint ();
+            public void focusGained(final FocusEvent e) {
+                spinner.repaint();
             }
-
+            
             @Override
-            public void focusLost ( final FocusEvent e )
-            {
-                spinner.repaint ();
+            public void focusLost(final FocusEvent e) {
+                spinner.repaint();
             }
-        } );
+        });
     }
 }

@@ -34,130 +34,117 @@ import org.ocsoft.flatlaf.utils.general.Pair;
  * @see WebDocumentPane#setDocumentPaneState(DocumentPaneState)
  */
 
-@XStreamAlias ( "DocumentPaneState" )
-public class DocumentPaneState implements Serializable
-{
+@XStreamAlias("DocumentPaneState")
+public class DocumentPaneState implements Serializable {
     /**
      * Whether or not this document pane structure level represents split.
      */
     @XStreamAsAttribute
     private Boolean split;
-
+    
     /**
-     * Selected document ID on this document pane structure level.
-     * Specified only when this is not split.
+     * Selected document ID on this document pane structure level. Specified
+     * only when this is not split.
      */
     @XStreamAsAttribute
     private String selectedId;
-
+    
     /**
-     * Document IDs opened on this document pane structure level.
-     * Specified only when this is not split.
+     * Document IDs opened on this document pane structure level. Specified only
+     * when this is not split.
      */
     @XStreamImplicit
     private List<String> documentIds;
-
+    
     /**
-     * Split orientation on this document pane structure level.
-     * Specified only when this is split.
+     * Split orientation on this document pane structure level. Specified only
+     * when this is split.
      */
     @XStreamAsAttribute
     private Integer splitOrientation;
-
+    
     /**
-     * Split divider location on this document pane structure level.
-     * We have to save only proportions, otherwise it will be incorrect in case split size changes.
-     * Specified only when this is split.
+     * Split divider location on this document pane structure level. We have to
+     * save only proportions, otherwise it will be incorrect in case split size
+     * changes. Specified only when this is split.
      */
     @XStreamAsAttribute
     private Double dividerLocation;
-
+    
     /**
-     * Split side states on this document pane structure level.
-     * Specified only when this is split.
+     * Split side states on this document pane structure level. Specified only
+     * when this is split.
      */
     private Pair<DocumentPaneState, DocumentPaneState> splitState;
-
-    public DocumentPaneState ()
-    {
-        super ();
+    
+    public DocumentPaneState() {
+        super();
     }
-
-    public DocumentPaneState ( final String selectedId, final List<String> documentIds )
-    {
-        super ();
+    
+    public DocumentPaneState(final String selectedId,
+            final List<String> documentIds) {
+        super();
         this.split = false;
         this.selectedId = selectedId;
         this.documentIds = documentIds;
     }
-
-    public DocumentPaneState ( final int orientation, final double dividerLocation,
-                               final Pair<DocumentPaneState, DocumentPaneState> splitState )
-    {
-        super ();
+    
+    public DocumentPaneState(final int orientation,
+            final double dividerLocation,
+            final Pair<DocumentPaneState, DocumentPaneState> splitState) {
+        super();
         this.split = true;
         this.splitOrientation = orientation;
         this.dividerLocation = dividerLocation;
         this.splitState = splitState;
     }
-
-    public Boolean isSplit ()
-    {
+    
+    public Boolean isSplit() {
         return split != null && split;
     }
-
-    public void setSplit ( final Boolean split )
-    {
+    
+    public void setSplit(final Boolean split) {
         this.split = split;
     }
-
-    public String getSelectedId ()
-    {
+    
+    public String getSelectedId() {
         return selectedId;
     }
-
-    public void setSelectedId ( final String selectedId )
-    {
+    
+    public void setSelectedId(final String selectedId) {
         this.selectedId = selectedId;
     }
-
-    public List<String> getDocumentIds ()
-    {
+    
+    public List<String> getDocumentIds() {
         return documentIds;
     }
-
-    public void setDocumentIds ( final List<String> documentIds )
-    {
+    
+    public void setDocumentIds(final List<String> documentIds) {
         this.documentIds = documentIds;
     }
-
-    public Integer getSplitOrientation ()
-    {
+    
+    public Integer getSplitOrientation() {
         return splitOrientation;
     }
-
-    public void setSplitOrientation ( final Integer orientation )
-    {
+    
+    public void setSplitOrientation(final Integer orientation) {
         this.splitOrientation = orientation;
     }
-
-    public Double getDividerLocation ()
-    {
+    
+    public Double getDividerLocation() {
         return dividerLocation;
     }
-
-    public void setDividerLocation ( final Double location )
-    {
+    
+    public void setDividerLocation(final Double location) {
         this.dividerLocation = location;
     }
-
-    public Pair<DocumentPaneState, DocumentPaneState> getSplitState ()
-    {
+    
+    public Pair<DocumentPaneState, DocumentPaneState> getSplitState() {
         return splitState;
     }
-
-    public void setSplitState ( final Pair<DocumentPaneState, DocumentPaneState> splitState )
-    {
+    
+    public void setSplitState(
+            final Pair<DocumentPaneState, DocumentPaneState> splitState) {
         this.splitState = splitState;
     }
 }

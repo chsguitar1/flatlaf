@@ -32,138 +32,115 @@ import java.awt.event.WindowEvent;
  * User: mgarin Date: 20.12.12 Time: 18:31
  */
 
-public class WebColorChooserDialog extends WebDialog implements DialogOptions
-{
-    public static final ImageIcon COLOR_CHOOSER_ICON =
-            new ImageIcon ( WebColorChooserDialog.class.getResource ( "icons/color_chooser.png" ) );
-
+public class WebColorChooserDialog extends WebDialog implements DialogOptions {
+    public static final ImageIcon COLOR_CHOOSER_ICON = new ImageIcon(
+            WebColorChooserDialog.class.getResource("icons/color_chooser.png"));
+    
     private WebColorChooser colorChooser;
-
-    public WebColorChooserDialog ()
-    {
-        this ( new WebColorChooser () );
+    
+    public WebColorChooserDialog() {
+        this(new WebColorChooser());
     }
-
-    public WebColorChooserDialog ( Component parent )
-    {
-        this ( new WebColorChooser (), parent );
+    
+    public WebColorChooserDialog(Component parent) {
+        this(new WebColorChooser(), parent);
     }
-
-    public WebColorChooserDialog ( String title )
-    {
-        this ( new WebColorChooser (), title );
+    
+    public WebColorChooserDialog(String title) {
+        this(new WebColorChooser(), title);
     }
-
-    public WebColorChooserDialog ( Component parent, String title )
-    {
-        this ( new WebColorChooser (), parent, title );
+    
+    public WebColorChooserDialog(Component parent, String title) {
+        this(new WebColorChooser(), parent, title);
     }
-
-    public WebColorChooserDialog ( WebColorChooser webColorChooser )
-    {
-        this ( webColorChooser, null, null );
+    
+    public WebColorChooserDialog(WebColorChooser webColorChooser) {
+        this(webColorChooser, null, null);
     }
-
-    public WebColorChooserDialog ( WebColorChooser webColorChooser, Component parent )
-    {
-        this ( webColorChooser, parent, null );
+    
+    public WebColorChooserDialog(WebColorChooser webColorChooser,
+            Component parent) {
+        this(webColorChooser, parent, null);
     }
-
-    public WebColorChooserDialog ( WebColorChooser webColorChooser, String title )
-    {
-        this ( webColorChooser, null, title );
+    
+    public WebColorChooserDialog(WebColorChooser webColorChooser, String title) {
+        this(webColorChooser, null, title);
     }
-
-    public WebColorChooserDialog ( WebColorChooser webColorChooser, Component parent, String title )
-    {
-        super ( SwingUtils.getWindowAncestor ( parent ) );
-        updateTitle ( title );
-        setIconImage ( COLOR_CHOOSER_ICON.getImage () );
-        setLayout ( new BorderLayout ( 0, 0 ) );
-
+    
+    public WebColorChooserDialog(WebColorChooser webColorChooser,
+            Component parent, String title) {
+        super(SwingUtils.getWindowAncestor(parent));
+        updateTitle(title);
+        setIconImage(COLOR_CHOOSER_ICON.getImage());
+        setLayout(new BorderLayout(0, 0));
+        
         colorChooser = webColorChooser;
-        colorChooser.setOpaque ( false );
-        colorChooser.setShowButtonsPanel ( true );
-        getContentPane ().add ( colorChooser, BorderLayout.CENTER );
-
-        addWindowListener ( new WindowAdapter ()
-        {
+        colorChooser.setOpaque(false);
+        colorChooser.setShowButtonsPanel(true);
+        getContentPane().add(colorChooser, BorderLayout.CENTER);
+        
+        addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosed ( WindowEvent e )
-            {
-                colorChooser.setResult ( CLOSE_OPTION );
+            public void windowClosed(WindowEvent e) {
+                colorChooser.setResult(CLOSE_OPTION);
             }
-        } );
-
-        colorChooser.addColorChooserListener ( new ColorChooserListener ()
-        {
+        });
+        
+        colorChooser.addColorChooserListener(new ColorChooserListener() {
             @Override
-            public void okPressed ( ActionEvent e )
-            {
-                WebColorChooserDialog.this.dispose ();
+            public void okPressed(ActionEvent e) {
+                WebColorChooserDialog.this.dispose();
             }
-
+            
             @Override
-            public void resetPressed ( ActionEvent e )
-            {
+            public void resetPressed(ActionEvent e) {
                 //
             }
-
+            
             @Override
-            public void cancelPressed ( ActionEvent e )
-            {
-                WebColorChooserDialog.this.dispose ();
+            public void cancelPressed(ActionEvent e) {
+                WebColorChooserDialog.this.dispose();
             }
-        } );
-
-        setResizable ( false );
-        setModal ( true );
-        pack ();
-        setDefaultCloseOperation ( JDialog.DISPOSE_ON_CLOSE );
+        });
+        
+        setResizable(false);
+        setModal(true);
+        pack();
+        setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
     }
-
-    public void updateTitle ( String title )
-    {
-        if ( title == null )
-        {
-            setLanguage ( "weblaf.colorchooser.title" );
-        }
-        else
-        {
-            removeLanguage ();
-            setTitle ( title );
+    
+    public void updateTitle(String title) {
+        if (title == null) {
+            setLanguage("weblaf.colorchooser.title");
+        } else {
+            removeLanguage();
+            setTitle(title);
         }
     }
-
-    public int getResult ()
-    {
-        return colorChooser.getResult ();
+    
+    public int getResult() {
+        return colorChooser.getResult();
     }
-
-    public int showDialog ()
-    {
-        setVisible ( true );
-        return getResult ();
+    
+    public int showDialog() {
+        setVisible(true);
+        return getResult();
     }
-
-    public Color getColor ()
-    {
-        return colorChooser.getColor ();
+    
+    public Color getColor() {
+        return colorChooser.getColor();
     }
-
-    public void setColor ( Color color )
-    {
-        colorChooser.setColor ( color );
+    
+    public void setColor(Color color) {
+        colorChooser.setColor(color);
     }
-
+    
     @Override
-    public void setVisible ( boolean b )
-    {
-        if ( b )
-        {
-            colorChooser.resetResult ();
-            setLocationRelativeTo ( getOwner () );
+    public void setVisible(boolean b) {
+        if (b) {
+            colorChooser.resetResult();
+            setLocationRelativeTo(getOwner());
         }
-        super.setVisible ( b );
+        super.setVisible(b);
     }
 }

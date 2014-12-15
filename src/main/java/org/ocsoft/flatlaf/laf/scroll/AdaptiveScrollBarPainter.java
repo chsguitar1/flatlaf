@@ -25,66 +25,61 @@ import org.ocsoft.flatlaf.extended.painter.Painter;
 import java.awt.*;
 
 /**
- * Simple ScrollBarPainter adapter class.
- * It is used to install simple non-specific painters into WebScrollBarUI.
+ * Simple ScrollBarPainter adapter class. It is used to install simple
+ * non-specific painters into WebScrollBarUI.
  *
  * @author Mikle Garin
  */
 
-public class AdaptiveScrollBarPainter<E extends JScrollBar> extends AdaptivePainter<E> implements ScrollBarPainter<E>
-{
+public class AdaptiveScrollBarPainter<E extends JScrollBar> extends
+        AdaptivePainter<E> implements ScrollBarPainter<E> {
     /**
      * Constructs new AdaptiveScrollBarPainter for the specified painter.
      *
-     * @param painter painter to adapt
+     * @param painter
+     *            painter to adapt
      */
-    public AdaptiveScrollBarPainter ( final Painter painter )
-    {
-        super ( painter );
+    public AdaptiveScrollBarPainter(final Painter painter) {
+        super(painter);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintButtons ( final boolean paint )
-    {
+    public void setPaintButtons(final boolean paint) {
         // Ignore this method in adaptive class
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintTrack ( final boolean paint )
-    {
+    public void setPaintTrack(final boolean paint) {
         // Ignore this method in adaptive class
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setDragged ( final boolean dragged )
-    {
+    public void setDragged(final boolean dragged) {
         // Ignore this method in adaptive class
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setTrackBounds ( final Rectangle bounds )
-    {
+    public void setTrackBounds(final Rectangle bounds) {
         // Ignore this method in adaptive class
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setThumbBounds ( final Rectangle bounds )
-    {
+    public void setThumbBounds(final Rectangle bounds) {
         // Ignore this method in adaptive class
     }
 }

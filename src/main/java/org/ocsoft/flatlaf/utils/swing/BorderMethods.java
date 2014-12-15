@@ -20,17 +20,17 @@ package org.ocsoft.flatlaf.utils.swing;
 import org.ocsoft.flatlaf.utils.swing.SwingMethods;
 
 /**
- * This interface provides a set of methods that should be added into components or UIs that support custom WebLaF borders.
+ * This interface provides a set of methods that should be added into components
+ * or UIs that support custom WebLaF borders.
  *
  * @author Mikle Garin
  * @see SwingMethods
  * @see org.ocsoft.flatlaf.utils.SwingUtils
  */
 
-public interface BorderMethods extends SwingMethods
-{
+public interface BorderMethods extends SwingMethods {
     /**
      * Updates custom WebLaF border.
      */
-    public void updateBorder ();
+    public void updateBorder();
 }

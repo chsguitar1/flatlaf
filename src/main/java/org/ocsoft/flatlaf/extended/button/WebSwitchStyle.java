@@ -23,23 +23,23 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * User: mgarin Date: 04.01.13 Time: 17:09
  */
 
-public final class WebSwitchStyle
-{
+public final class WebSwitchStyle {
     /**
      * Decoration rounding
      */
     public static int round = FlatLafStyleConstants.bigRound;
-
+    
     /**
      * Decoration rounding
      */
-    public static int gripperRound = Math.max ( 0, FlatLafStyleConstants.bigRound - 3 );
-
+    public static int gripperRound = Math.max(0,
+            FlatLafStyleConstants.bigRound - 3);
+    
     /**
      * Decoration shade width
      */
     public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Animate component
      */

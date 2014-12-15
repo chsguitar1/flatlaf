@@ -26,23 +26,20 @@ import java.util.List;
  * @author Mikle Garin
  */
 
-public abstract class FileChooserAdapter implements FileChooserListener
-{
+public abstract class FileChooserAdapter implements FileChooserListener {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void directoryChanged ( File newDirectory )
-    {
+    public void directoryChanged(File newDirectory) {
         //
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void selectionChanged ( List<File> selectedFiles )
-    {
+    public void selectionChanged(List<File> selectedFiles) {
         //
     }
 }

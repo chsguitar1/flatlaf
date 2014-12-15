@@ -29,26 +29,27 @@ import java.awt.*;
  * User: mgarin Date: 31.10.12 Time: 15:27
  */
 
-public class WebBooleanRenderer extends WebCheckBox implements TableCellRenderer, UIResource
-{
-    public WebBooleanRenderer ()
-    {
-        super ();
-        setOpaque ( true );
-        setAnimated ( false );
-        setHorizontalAlignment ( JLabel.CENTER );
-        setShadeWidth ( 0 );
-        setIconWidth ( 12 );
-        setIconHeight ( 12 );
+public class WebBooleanRenderer extends WebCheckBox implements
+        TableCellRenderer, UIResource {
+    public WebBooleanRenderer() {
+        super();
+        setOpaque(true);
+        setAnimated(false);
+        setHorizontalAlignment(JLabel.CENTER);
+        setShadeWidth(0);
+        setIconWidth(12);
+        setIconHeight(12);
     }
-
+    
     @Override
-    public Component getTableCellRendererComponent ( JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column )
-    {
-        setForeground ( isSelected ? table.getSelectionForeground () : table.getForeground () );
-        setBackground ( isSelected ? table.getSelectionBackground () : table.getBackground () );
-        setSelected ( value != null && ( Boolean ) value );
-        setEnabled ( table.isEnabled () );
+    public Component getTableCellRendererComponent(JTable table, Object value,
+            boolean isSelected, boolean hasFocus, int row, int column) {
+        setForeground(isSelected ? table.getSelectionForeground() : table
+                .getForeground());
+        setBackground(isSelected ? table.getSelectionBackground() : table
+                .getBackground());
+        setSelected(value != null && (Boolean) value);
+        setEnabled(table.isEnabled());
         return this;
     }
 }

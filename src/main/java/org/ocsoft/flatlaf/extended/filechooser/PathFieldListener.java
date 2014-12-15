@@ -27,12 +27,12 @@ import java.util.EventListener;
  * @see WebPathField
  */
 
-public interface PathFieldListener extends EventListener
-{
+public interface PathFieldListener extends EventListener {
     /**
      * Notifies about directory selection changes.
      *
-     * @param newDirectory newly selected directory or null if none selected
+     * @param newDirectory
+     *            newly selected directory or null if none selected
      */
-    public void directoryChanged ( File newDirectory );
+    public void directoryChanged(File newDirectory);
 }

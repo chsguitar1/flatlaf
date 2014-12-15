@@ -32,67 +32,74 @@ import java.util.WeakHashMap;
  * @author Mikle Garin
  */
 
-public class WebAsyncTreeCellRenderer extends WebTreeCellRenderer
-{
+public class WebAsyncTreeCellRenderer extends WebTreeCellRenderer {
     /**
      * todo 1. Create getIcon & getText methods to simplify rendererers usage
      */
-
+    
     /**
      * Special failed state icon.
      */
-    public static final ImageIcon failedStateIcon = new ImageIcon ( AsyncUniqueNode.class.getResource ( "icons/failed.png" ) );
-
+    public static final ImageIcon failedStateIcon = new ImageIcon(
+            AsyncUniqueNode.class.getResource("icons/failed.png"));
+    
     /**
      * User failed icons cache.
      */
-    public static final Map<ImageIcon, ImageIcon> failedStateIcons = new WeakHashMap<ImageIcon, ImageIcon> ( 5 );
-
+    public static final Map<ImageIcon, ImageIcon> failedStateIcons = new WeakHashMap<ImageIcon, ImageIcon>(
+            5);
+    
     /**
      * Returns user failed state icon.
      *
-     * @param icon base icon
+     * @param icon
+     *            base icon
      * @return user failed state icon
      */
-    public static ImageIcon getFailedStateIcon ( final ImageIcon icon )
-    {
-        ImageIcon failedIcon = failedStateIcons.get ( icon );
-        if ( failedIcon == null )
-        {
-            failedIcon = ImageUtils.mergeIcons ( icon, failedStateIcon );
-            failedStateIcons.put ( icon, failedIcon );
+    public static ImageIcon getFailedStateIcon(final ImageIcon icon) {
+        ImageIcon failedIcon = failedStateIcons.get(icon);
+        if (failedIcon == null) {
+            failedIcon = ImageUtils.mergeIcons(icon, failedStateIcon);
+            failedStateIcons.put(icon, failedIcon);
         }
         return failedIcon;
     }
-
+    
     /**
      * Returns tree cell renderer component.
      *
-     * @param tree       tree
-     * @param value      cell value
-     * @param isSelected whether cell is selected or not
-     * @param expanded   whether cell is expanded or not
-     * @param leaf       whether cell is leaf or not
-     * @param row        cell row number
-     * @param hasFocus   whether cell has focus or not
+     * @param tree
+     *            tree
+     * @param value
+     *            cell value
+     * @param isSelected
+     *            whether cell is selected or not
+     * @param expanded
+     *            whether cell is expanded or not
+     * @param leaf
+     *            whether cell is leaf or not
+     * @param row
+     *            cell row number
+     * @param hasFocus
+     *            whether cell has focus or not
      * @return cell renderer component
      */
     @Override
-    public WebTreeElement getTreeCellRendererComponent ( final JTree tree, final Object value, final boolean isSelected,
-                                                         final boolean expanded, final boolean leaf, final int row, final boolean hasFocus )
-    {
-        super.getTreeCellRendererComponent ( tree, value, isSelected, expanded, leaf, row, hasFocus );
-
+    public WebTreeElement getTreeCellRendererComponent(final JTree tree,
+            final Object value, final boolean isSelected,
+            final boolean expanded, final boolean leaf, final int row,
+            final boolean hasFocus) {
+        super.getTreeCellRendererComponent(tree, value, isSelected, expanded,
+                leaf, row, hasFocus);
+        
         // Custom loader icon for busy state
-        if ( value instanceof AsyncUniqueNode )
-        {
-            final AsyncUniqueNode node = ( AsyncUniqueNode ) value;
-            if ( node.isLoading () )
-            {
-                setIcon ( node.getLoaderIcon () );
+        if (value instanceof AsyncUniqueNode) {
+            final AsyncUniqueNode node = (AsyncUniqueNode) value;
+            if (node.isLoading()) {
+                setIcon(node.getLoaderIcon());
             }
         }
-
+        
         return this;
     }
 }

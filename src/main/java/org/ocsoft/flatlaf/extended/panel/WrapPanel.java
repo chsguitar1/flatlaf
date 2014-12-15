@@ -26,25 +26,20 @@ import org.ocsoft.flatlaf.laf.panel.WebPanel;
  * User: mgarin Date: 23.05.12 Time: 21:29
  */
 
-public class WrapPanel extends WebPanel
-{
-    public WrapPanel ( Component... components )
-    {
-        this ( 0, components );
+public class WrapPanel extends WebPanel {
+    public WrapPanel(Component... components) {
+        this(0, components);
     }
-
-    public WrapPanel ( int gap, Component... components )
-    {
-        this ( gap, gap, components );
+    
+    public WrapPanel(int gap, Component... components) {
+        this(gap, gap, components);
     }
-
-    public WrapPanel ( int hgap, int vgap, Component... components )
-    {
-        super ( new WrapFlowLayout ( false, hgap, vgap ) );
-        setOpaque ( false );
-        for ( Component component : components )
-        {
-            add ( component );
+    
+    public WrapPanel(int hgap, int vgap, Component... components) {
+        super(new WrapFlowLayout(false, hgap, vgap));
+        setOpaque(false);
+        for (Component component : components) {
+            add(component);
         }
     }
 }

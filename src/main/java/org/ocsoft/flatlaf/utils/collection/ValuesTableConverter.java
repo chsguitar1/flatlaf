@@ -31,86 +31,87 @@ import com.thoughtworks.xstream.mapper.Mapper;
  * @author Mikle Garin
  */
 
-public class ValuesTableConverter extends ReflectionConverter
-{
+public class ValuesTableConverter extends ReflectionConverter {
     /**
      * Constructs new ValuesTableConverter.
      *
      * @param mapper
      * @param reflectionProvider
      */
-    public ValuesTableConverter ( Mapper mapper, ReflectionProvider reflectionProvider )
-    {
-        super ( mapper, reflectionProvider );
+    public ValuesTableConverter(Mapper mapper,
+            ReflectionProvider reflectionProvider) {
+        super(mapper, reflectionProvider);
     }
-
+    
     /**
      * Determines whether the converter can marshall a particular type.
      *
-     * @param type the Class representing the object type to be converted
-     * @return true if this class type can be converted using this converter, false otherwise
+     * @param type
+     *            the Class representing the object type to be converted
+     * @return true if this class type can be converted using this converter,
+     *         false otherwise
      */
     @Override
-    public boolean canConvert ( Class type )
-    {
-        return ValuesTable.class.getCanonicalName ().equals ( type.getCanonicalName () );
+    public boolean canConvert(Class type) {
+        return ValuesTable.class.getCanonicalName().equals(
+                type.getCanonicalName());
     }
-
+    
     /**
      * Convert an object to textual data.
      *
-     * @param source  object to be marshalled
-     * @param writer  stream to write to
-     * @param context context that allows nested objects to be processed by XStream
+     * @param source
+     *            object to be marshalled
+     * @param writer
+     *            stream to write to
+     * @param context
+     *            context that allows nested objects to be processed by XStream
      */
     @Override
-    public void marshal ( Object source, HierarchicalStreamWriter writer, MarshallingContext context )
-    {
-        ValuesTable valuesTable = ( ValuesTable ) source;
-        for ( int i = 0; i < valuesTable.size (); i++ )
-        {
+    public void marshal(Object source, HierarchicalStreamWriter writer,
+            MarshallingContext context) {
+        ValuesTable valuesTable = (ValuesTable) source;
+        for (int i = 0; i < valuesTable.size(); i++) {
             // Converting key
-            Object key = valuesTable.getKey ( i );
-            writer.startNode ( mapper.serializedClass ( key.getClass () ) );
-            context.convertAnother ( key );
-            writer.endNode ();
-
+            Object key = valuesTable.getKey(i);
+            writer.startNode(mapper.serializedClass(key.getClass()));
+            context.convertAnother(key);
+            writer.endNode();
+            
             // Converting value
-            Object value = valuesTable.getValue ( i );
-            writer.startNode ( mapper.serializedClass ( value.getClass () ) );
-            context.convertAnother ( value );
-            writer.endNode ();
+            Object value = valuesTable.getValue(i);
+            writer.startNode(mapper.serializedClass(value.getClass()));
+            context.convertAnother(value);
+            writer.endNode();
         }
     }
-
+    
     /**
      * Convert textual data back into an object.
      *
-     * @param reader  stream to read the text from
-     * @param context unmarshalling context
+     * @param reader
+     *            stream to read the text from
+     * @param context
+     *            unmarshalling context
      * @return resulting object
      */
     @Override
-    public Object unmarshal ( HierarchicalStreamReader reader, UnmarshallingContext context )
-    {
-        ValuesTable valuesTable = new ValuesTable ();
+    public Object unmarshal(HierarchicalStreamReader reader,
+            UnmarshallingContext context) {
+        ValuesTable valuesTable = new ValuesTable();
         int row = 0;
         Object key = null;
-        while ( reader.hasMoreChildren () )
-        {
-            reader.moveDown ();
-            Class c = mapper.realClass ( reader.getNodeName () );
-            if ( row % 2 == 0 )
-            {
+        while (reader.hasMoreChildren()) {
+            reader.moveDown();
+            Class c = mapper.realClass(reader.getNodeName());
+            if (row % 2 == 0) {
                 // Reading key
-                key = context.convertAnother ( valuesTable, c );
-            }
-            else
-            {
+                key = context.convertAnother(valuesTable, c);
+            } else {
                 // Reading value and adding a new table record
-                valuesTable.put ( key, context.convertAnother ( valuesTable, c ) );
+                valuesTable.put(key, context.convertAnother(valuesTable, c));
             }
-            reader.moveUp ();
+            reader.moveUp();
             row++;
         }
         return valuesTable;

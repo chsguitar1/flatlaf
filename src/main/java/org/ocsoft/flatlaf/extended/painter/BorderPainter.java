@@ -27,251 +27,253 @@ import java.awt.geom.RectangularShape;
 import java.awt.geom.RoundRectangle2D;
 
 /**
- * Simple border painter.
- * This painter might be used instead of LineBorder in any component that supports painters.
+ * Simple border painter. This painter might be used instead of LineBorder in
+ * any component that supports painters.
  *
- * @param <E> component type
+ * @param <E>
+ *            component type
  * @author Mikle Garin
  * @see AbstractPainter
  * @see Painter
  */
 
-public class BorderPainter<E extends JComponent> extends AbstractPainter<E>
-{
+public class BorderPainter<E extends JComponent> extends AbstractPainter<E> {
     /**
      * Border width.
      */
     protected int width = BorderPainterStyle.width;
-
+    
     /**
      * Border round.
      */
     protected int round = BorderPainterStyle.round;
-
+    
     /**
      * Border color.
      */
     protected Color color = BorderPainterStyle.color;
-
+    
     /**
      * Border stroke.
      */
     protected Stroke stroke = null;
-
+    
     /**
      * Constructs default border painter.
      */
-    public BorderPainter ()
-    {
-        super ();
-        updateStroke ();
+    public BorderPainter() {
+        super();
+        updateStroke();
     }
-
+    
     /**
      * Constructs border painter with a specified width.
      *
-     * @param width border width
+     * @param width
+     *            border width
      */
-    public BorderPainter ( final int width )
-    {
-        super ();
+    public BorderPainter(final int width) {
+        super();
         this.width = width;
     }
-
+    
     /**
      * Constructs border painter with a specified color.
      *
-     * @param color border color
+     * @param color
+     *            border color
      */
-    public BorderPainter ( final Color color )
-    {
-        super ();
+    public BorderPainter(final Color color) {
+        super();
         this.color = color;
-        updateStroke ();
+        updateStroke();
     }
-
+    
     /**
      * Constructs border painter with a specified width and color.
      *
-     * @param width border width
-     * @param color border color
+     * @param width
+     *            border width
+     * @param color
+     *            border color
      */
-    public BorderPainter ( final int width, final Color color )
-    {
-        super ();
+    public BorderPainter(final int width, final Color color) {
+        super();
         this.width = width;
         this.color = color;
     }
-
+    
     /**
      * Returns border width.
      *
      * @return border width
      */
-    public int getWidth ()
-    {
+    public int getWidth() {
         return width;
     }
-
+    
     /**
-     * Sets border width.
-     * This will also force stroke to update and overwrite old stroke value.
+     * Sets border width. This will also force stroke to update and overwrite
+     * old stroke value.
      *
-     * @param width new border width
+     * @param width
+     *            new border width
      */
-    public void setWidth ( final int width )
-    {
+    public void setWidth(final int width) {
         this.width = width;
-        updateStroke ();
-        updateAll ();
+        updateStroke();
+        updateAll();
     }
-
+    
     /**
      * Returns border round.
      *
      * @return border round
      */
-    public int getRound ()
-    {
+    public int getRound() {
         return round;
     }
-
+    
     /**
-     * Sets border round.
-     * This will also force stroke to update and overwrite old stroke value.
+     * Sets border round. This will also force stroke to update and overwrite
+     * old stroke value.
      *
-     * @param round new border round
+     * @param round
+     *            new border round
      */
-    public void setRound ( final int round )
-    {
+    public void setRound(final int round) {
         this.round = round;
-        updateStroke ();
-        repaint ();
+        updateStroke();
+        repaint();
     }
-
+    
     /**
      * Returns border color.
      *
      * @return border color
      */
-    public Color getColor ()
-    {
+    public Color getColor() {
         return color;
     }
-
+    
     /**
      * Sets border color.
      *
-     * @param color new border color
+     * @param color
+     *            new border color
      */
-    public void setColor ( final Color color )
-    {
+    public void setColor(final Color color) {
         this.color = color;
-        repaint ();
+        repaint();
     }
-
+    
     /**
      * Returns border stroke.
      *
      * @return border stroke
      */
-    public Stroke getStroke ()
-    {
+    public Stroke getStroke() {
         return stroke;
     }
-
+    
     /**
-     * Sets border stroke.
-     * Be aware that this value might be overwritten when you modify other painter settings.
+     * Sets border stroke. Be aware that this value might be overwritten when
+     * you modify other painter settings.
      *
-     * @param stroke new border stroke
+     * @param stroke
+     *            new border stroke
      * @see #setWidth(int)
      * @see #setRound(int)
      */
-    public void setStroke ( final Stroke stroke )
-    {
+    public void setStroke(final Stroke stroke) {
         this.stroke = stroke;
-        repaint ();
+        repaint();
     }
-
+    
     /**
      * Updates border stroke depending on painter settings.
      */
-    protected void updateStroke ()
-    {
-        stroke = new BasicStroke ( getWidth (), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND );
+    protected void updateStroke() {
+        stroke = new BasicStroke(getWidth(), BasicStroke.CAP_ROUND,
+                BasicStroke.JOIN_ROUND);
     }
-
+    
     /**
-     * Returns preferred size required for proper painting of visual data provided by this painter.
-     * This should not take into account any sizes not related to this painter settings (for example text size on button).
+     * Returns preferred size required for proper painting of visual data
+     * provided by this painter. This should not take into account any sizes not
+     * related to this painter settings (for example text size on button).
      *
-     * @param c component to process
-     * @return preferred size required for proper painting of visual data provided by this painter
+     * @param c
+     *            component to process
+     * @return preferred size required for proper painting of visual data
+     *         provided by this painter
      */
     @Override
-    public Dimension getPreferredSize ( final E c )
-    {
-        return new Dimension ( Math.max ( width * 2, round * 2 ), Math.max ( width * 2, round * 2 ) );
+    public Dimension getPreferredSize(final E c) {
+        return new Dimension(Math.max(width * 2, round * 2), Math.max(
+                width * 2, round * 2));
     }
-
+    
     /**
-     * Returns margin required for visual data provided by this painter.
-     * This margin is usually added to component's margin when the final component border is calculated.
+     * Returns margin required for visual data provided by this painter. This
+     * margin is usually added to component's margin when the final component
+     * border is calculated.
      *
-     * @param c component to process
+     * @param c
+     *            component to process
      * @return margin required for visual data provided by this painter
      */
     @Override
-    public Insets getMargin ( final E c )
-    {
-        final Insets m = super.getMargin ( c );
-        return new Insets ( m.top + width, m.left + width, m.bottom + width, m.right + width );
+    public Insets getMargin(final E c) {
+        final Insets m = super.getMargin(c);
+        return new Insets(m.top + width, m.left + width, m.bottom + width,
+                m.right + width);
     }
-
+    
     /**
-     * Paints visual data onto the component graphics.
-     * Provided graphics and component are taken directly from component UI paint method.
-     * Provided bounds are usually fake (zero location, component size) but in some cases it might be specified by componentUI.
+     * Paints visual data onto the component graphics. Provided graphics and
+     * component are taken directly from component UI paint method. Provided
+     * bounds are usually fake (zero location, component size) but in some cases
+     * it might be specified by componentUI.
      *
-     * @param g2d    component graphics
-     * @param bounds bounds for painter visual data
-     * @param c      component to process
+     * @param g2d
+     *            component graphics
+     * @param bounds
+     *            bounds for painter visual data
+     * @param c
+     *            component to process
      */
     @Override
-    public void paint ( final Graphics2D g2d, final Rectangle bounds, final E c )
-    {
-        if ( width > 0 && stroke != null && color != null )
-        {
-            final Object aa = GraphicsUtils.setupAntialias ( g2d );
-            final Stroke os = GraphicsUtils.setupStroke ( g2d, stroke, stroke != null );
-
-            g2d.setPaint ( color );
-            g2d.draw ( getBorderShape ( bounds ) );
-
-            GraphicsUtils.restoreStroke ( g2d, os, stroke != null );
-            GraphicsUtils.restoreAntialias ( g2d, aa );
+    public void paint(final Graphics2D g2d, final Rectangle bounds, final E c) {
+        if (width > 0 && stroke != null && color != null) {
+            final Object aa = GraphicsUtils.setupAntialias(g2d);
+            final Stroke os = GraphicsUtils.setupStroke(g2d, stroke,
+                    stroke != null);
+            
+            g2d.setPaint(color);
+            g2d.draw(getBorderShape(bounds));
+            
+            GraphicsUtils.restoreStroke(g2d, os, stroke != null);
+            GraphicsUtils.restoreAntialias(g2d, aa);
         }
     }
-
+    
     /**
      * Returns border shape for the specified limiting bounds.
      *
-     * @param bounds limiting bounds
+     * @param bounds
+     *            limiting bounds
      * @return border shape for the specified limiting bounds
      */
-    protected RectangularShape getBorderShape ( final Rectangle bounds )
-    {
-        final double shear = width == 1 ? 0 : ( double ) width / 2;
-        if ( round > 0 )
-        {
-            return new RoundRectangle2D.Double ( bounds.x + shear, bounds.y + shear, bounds.width - shear * 2 - 1,
-                    bounds.height - shear * 2 - 1, round * 2, round * 2 );
-        }
-        else
-        {
-            return new Rectangle2D.Double ( bounds.x + shear, bounds.y + shear, bounds.width - shear * 2 - 1,
-                    bounds.height - shear * 2 - 1 );
+    protected RectangularShape getBorderShape(final Rectangle bounds) {
+        final double shear = width == 1 ? 0 : (double) width / 2;
+        if (round > 0) {
+            return new RoundRectangle2D.Double(bounds.x + shear, bounds.y
+                    + shear, bounds.width - shear * 2 - 1, bounds.height
+                    - shear * 2 - 1, round * 2, round * 2);
+        } else {
+            return new Rectangle2D.Double(bounds.x + shear, bounds.y + shear,
+                    bounds.width - shear * 2 - 1, bounds.height - shear * 2 - 1);
         }
     }
 }

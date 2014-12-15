@@ -27,117 +27,111 @@ import org.ocsoft.flatlaf.utils.xml.XmlUtils;
 import java.util.List;
 
 /**
- * This theme is used by StyleManager for cases when theme settings are stored within XML.
- * To use it simply specify XML location relative to your skin class or provide SkinInfo object.
- * All settings and painters will be loaded and applied by this skin automatically when it is used.
+ * This theme is used by StyleManager for cases when theme settings are stored
+ * within XML. To use it simply specify XML location relative to your skin class
+ * or provide SkinInfo object. All settings and painters will be loaded and
+ * applied by this skin automatically when it is used.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-StyleManager">How to use StyleManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-StyleManager">How
+ *      to use StyleManager</a>
  * @see org.ocsoft.flatlaf.managers.style.StyleManager
  * @see org.ocsoft.flatlaf.managers.style.skin.WebLafSkin
  * @see org.ocsoft.flatlaf.managers.style.data.SkinInfo
  */
 
-public class CustomSkin extends WebLafSkin
-{
+public class CustomSkin extends WebLafSkin {
     /**
-     * Theme information.
-     * Contains complete information about this theme.
+     * Theme information. Contains complete information about this theme.
      */
     protected SkinInfo skinInfo;
-
+    
     /**
      * Constructs new custom theme.
      *
-     * @param location skin info XML location relative to this class
+     * @param location
+     *            skin info XML location relative to this class
      */
-    public CustomSkin ( final String location )
-    {
-        super ();
-        this.skinInfo = XmlUtils.fromXML ( this.getClass ().getResource ( location ) );
+    public CustomSkin(final String location) {
+        super();
+        this.skinInfo = XmlUtils.fromXML(this.getClass().getResource(location));
     }
-
+    
     /**
      * Constructs new custom theme.
      *
-     * @param skinInfo theme information
+     * @param skinInfo
+     *            theme information
      */
-    public CustomSkin ( final SkinInfo skinInfo )
-    {
-        super ();
+    public CustomSkin(final SkinInfo skinInfo) {
+        super();
         this.skinInfo = skinInfo;
     }
-
+    
     /**
      * Returns theme information.
      *
      * @return theme information
      */
-    public SkinInfo getSkinInfo ()
-    {
+    public SkinInfo getSkinInfo() {
         return skinInfo;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getId ()
-    {
-        return skinInfo.getId ();
+    public String getId() {
+        return skinInfo.getId();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getName ()
-    {
-        return skinInfo.getName ();
+    public String getName() {
+        return skinInfo.getName();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getDescription ()
-    {
-        return skinInfo.getDescription ();
+    public String getDescription() {
+        return skinInfo.getDescription();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getAuthor ()
-    {
-        return skinInfo.getAuthor ();
+    public String getAuthor() {
+        return skinInfo.getAuthor();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public List<String> getSupportedSystems ()
-    {
-        return skinInfo.getSupportedSystemsList ();
+    public List<String> getSupportedSystems() {
+        return skinInfo.getSupportedSystemsList();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getSkinClass ()
-    {
-        return skinInfo.getSkinClass ();
+    public String getSkinClass() {
+        return skinInfo.getSkinClass();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public ComponentStyle getComponentStyle ( final JComponent component, final SupportedComponent type )
-    {
-        return skinInfo.getStyle ( component, type );
+    public ComponentStyle getComponentStyle(final JComponent component,
+            final SupportedComponent type) {
+        return skinInfo.getStyle(component, type);
     }
 }

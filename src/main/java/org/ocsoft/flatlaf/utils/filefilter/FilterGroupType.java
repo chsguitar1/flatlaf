@@ -23,13 +23,12 @@ package org.ocsoft.flatlaf.utils.filefilter;
  * @author Mikle Garin
  */
 
-public enum FilterGroupType
-{
+public enum FilterGroupType {
     /**
      * Filter accepts file if atleast one of grouped filters accept that file.
      */
     OR,
-
+    
     /**
      * Filter accepts file if all of grouped filters accept that file.
      */

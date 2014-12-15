@@ -37,26 +37,28 @@ import java.awt.*;
 import java.awt.geom.GeneralPath;
 
 /**
- * Web-style background painter for any component.
- * Commonly used as a base class for various Swing components like JPanel, JButton and others.
+ * Web-style background painter for any component. Commonly used as a base class
+ * for various Swing components like JPanel, JButton and others.
  *
  * @author Mikle Garin
  */
 
-public class WebDecorationPainter<E extends JComponent> extends AbstractPainter<E> implements PainterShapeProvider<E>, PartialDecoration
-{
+public class WebDecorationPainter<E extends JComponent> extends
+        AbstractPainter<E> implements PainterShapeProvider<E>,
+        PartialDecoration {
     /**
-     * todo 1. Border stroke -> create stroke format for XML and allow to specify it there (XStream converter for Stroke)
-     * todo 2. Inner shadow paint methods and settings
-     * todo 3. Return correct preferred size according to large shade 9-patch icon
+     * todo 1. Border stroke -> create stroke format for XML and allow to
+     * specify it there (XStream converter for Stroke) todo 2. Inner shadow
+     * paint methods and settings todo 3. Return correct preferred size
+     * according to large shade 9-patch icon
      */
-
+    
     /**
      * Shape cache keys.
      */
     protected static final String BORDER_SHAPE = "border";
     protected static final String BACKGROUND_SHAPE = "background";
-
+    
     /**
      * Style settings.
      */
@@ -78,13 +80,13 @@ public class WebDecorationPainter<E extends JComponent> extends AbstractPainter<
     protected boolean paintLeftLine = false;
     protected boolean paintBottomLine = false;
     protected boolean paintRightLine = false;
-
+    
     /**
      * Runtime variables.
      */
     protected FocusTracker focusTracker;
     protected boolean focused = false;
-
+    
     /**
      * Painting variables.
      */
@@ -93,839 +95,784 @@ public class WebDecorationPainter<E extends JComponent> extends AbstractPainter<
     protected boolean actualPaintRight;
     protected int w;
     protected int h;
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void install ( final E c )
-    {
-        super.install ( c );
-
+    public void install(final E c) {
+        super.install(c);
+        
         // Installing FocusTracker to keep an eye on focused state
-        focusTracker = new DefaultFocusTracker ()
-        {
+        focusTracker = new DefaultFocusTracker() {
             @Override
-            public boolean isTrackingEnabled ()
-            {
+            public boolean isTrackingEnabled() {
                 return !undecorated && paintFocus;
             }
-
+            
             @Override
-            public void focusChanged ( final boolean focused )
-            {
+            public void focusChanged(final boolean focused) {
                 WebDecorationPainter.this.focused = focused;
-                repaint ();
+                repaint();
             }
         };
-        FocusManager.addFocusTracker ( c, focusTracker );
+        FocusManager.addFocusTracker(c, focusTracker);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void uninstall ( final E c )
-    {
+    public void uninstall(final E c) {
         // Removing FocusTracker
-        FocusManager.removeFocusTracker ( focusTracker );
+        FocusManager.removeFocusTracker(focusTracker);
         focusTracker = null;
-
-        super.uninstall ( c );
+        
+        super.uninstall(c);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Shape provideShape ( final E component, final Rectangle bounds )
-    {
-        return undecorated ? bounds : getShape ( component, true );
+    public Shape provideShape(final E component, final Rectangle bounds) {
+        return undecorated ? bounds : getShape(component, true);
     }
-
+    
     /**
      * Returns whether decoration should be painted or not.
      *
      * @return true if decoration should be painted, false otherwise
      */
-    public boolean isUndecorated ()
-    {
+    public boolean isUndecorated() {
         return undecorated;
     }
-
+    
     /**
      * Sets whether decoration should be painted or not.
      *
-     * @param undecorated whether decoration should be painted or not
+     * @param undecorated
+     *            whether decoration should be painted or not
      */
-    public void setUndecorated ( final boolean undecorated )
-    {
-        if ( this.undecorated != undecorated )
-        {
+    public void setUndecorated(final boolean undecorated) {
+        if (this.undecorated != undecorated) {
             this.undecorated = undecorated;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * Returns whether focus should be painted or not.
      *
      * @return true if focus should be painted, false otherwise
      */
-    public boolean isPaintFocus ()
-    {
+    public boolean isPaintFocus() {
         return paintFocus;
     }
-
+    
     /**
      * Sets whether focus should be painted or not.
      *
-     * @param paint whether focus should be painted or not
+     * @param paint
+     *            whether focus should be painted or not
      */
-    public void setPaintFocus ( final boolean paint )
-    {
-        if ( this.paintFocus != paint )
-        {
+    public void setPaintFocus(final boolean paint) {
+        if (this.paintFocus != paint) {
             this.paintFocus = paint;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns decoration corners rounding.
      *
      * @return decoration corners rounding
      */
-    public int getRound ()
-    {
+    public int getRound() {
         return round;
     }
-
+    
     /**
      * Sets decoration corners rounding.
      *
-     * @param round decoration corners rounding
+     * @param round
+     *            decoration corners rounding
      */
-    public void setRound ( final int round )
-    {
-        if ( this.round != round )
-        {
+    public void setRound(final int round) {
+        if (this.round != round) {
             this.round = round;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns decoration shade width.
      *
      * @return decoration shade width
      */
-    public int getShadeWidth ()
-    {
+    public int getShadeWidth() {
         return shadeWidth;
     }
-
+    
     /**
      * Sets decoration shade width.
      *
-     * @param width decoration shade width
+     * @param width
+     *            decoration shade width
      */
-    public void setShadeWidth ( final int width )
-    {
-        if ( this.shadeWidth != width )
-        {
+    public void setShadeWidth(final int width) {
+        if (this.shadeWidth != width) {
             this.shadeWidth = width;
-            revalidate ();
+            revalidate();
         }
     }
-
+    
     /**
      * Returns decoration shade transparency.
      *
      * @return decoration shade transparency
      */
-    public float getShadeTransparency ()
-    {
+    public float getShadeTransparency() {
         return shadeTransparency;
     }
-
+    
     /**
      * Sets decoration shade transparency.
      *
-     * @param transparency new decoration shade transparency
+     * @param transparency
+     *            new decoration shade transparency
      */
-    public void setShadeTransparency ( final float transparency )
-    {
-        if ( this.shadeTransparency != transparency )
-        {
+    public void setShadeTransparency(final float transparency) {
+        if (this.shadeTransparency != transparency) {
             this.shadeTransparency = transparency;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns decoration border stroke.
      *
      * @return decoration border stroke
      */
-    public Stroke getBorderStroke ()
-    {
+    public Stroke getBorderStroke() {
         return borderStroke;
     }
-
+    
     /**
      * Sets decoration border stroke.
      *
-     * @param stroke decoration border stroke
+     * @param stroke
+     *            decoration border stroke
      */
-    public void setBorderStroke ( final Stroke stroke )
-    {
-        if ( this.borderStroke != stroke )
-        {
+    public void setBorderStroke(final Stroke stroke) {
+        if (this.borderStroke != stroke) {
             this.borderStroke = stroke;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns decoration border color.
      *
      * @return decoration border color
      */
-    public Color getBorderColor ()
-    {
+    public Color getBorderColor() {
         return borderColor;
     }
-
+    
     /**
      * Sets decoration border color.
      *
-     * @param color decoration border color
+     * @param color
+     *            decoration border color
      */
-    public void setBorderColor ( final Color color )
-    {
-        if ( this.borderColor != color )
-        {
+    public void setBorderColor(final Color color) {
+        if (this.borderColor != color) {
             this.borderColor = color;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns decoration disabled border color.
      *
      * @return decoration disabled border color
      */
-    public Color getDisabledBorderColor ()
-    {
+    public Color getDisabledBorderColor() {
         return disabledBorderColor;
     }
-
+    
     /**
      * Sets decoration disabled border color.
      *
-     * @param color decoration disabled border color
+     * @param color
+     *            decoration disabled border color
      */
-    public void setDisabledBorderColor ( final Color color )
-    {
-        if ( this.disabledBorderColor != color )
-        {
+    public void setDisabledBorderColor(final Color color) {
+        if (this.disabledBorderColor != color) {
             this.disabledBorderColor = color;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns whether should paint decoration background or not.
      *
      * @return true if should paint decoration background, false otherwise
      */
-    public boolean isPaintBackground ()
-    {
+    public boolean isPaintBackground() {
         return paintBackground;
     }
-
+    
     /**
      * Sets whether should paint decoration background or not.
      *
-     * @param paint whether should paint decoration background or not
+     * @param paint
+     *            whether should paint decoration background or not
      */
-    public void setPaintBackground ( final boolean paint )
-    {
-        if ( this.paintBackground != paint )
-        {
+    public void setPaintBackground(final boolean paint) {
+        if (this.paintBackground != paint) {
             this.paintBackground = paint;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Sets whether should paint web-styled background or not.
      *
      * @return true if should paint web-styled background, false otherwise
      */
-    public boolean isWebColoredBackground ()
-    {
+    public boolean isWebColoredBackground() {
         return webColoredBackground;
     }
-
+    
     /**
      * Sets whether should paint web-styled background or not.
      *
-     * @param webColored whether should paint web-styled background or not
+     * @param webColored
+     *            whether should paint web-styled background or not
      */
-    public void setWebColoredBackground ( final boolean webColored )
-    {
-        if ( this.webColoredBackground != webColored )
-        {
+    public void setWebColoredBackground(final boolean webColored) {
+        if (this.webColoredBackground != webColored) {
             this.webColoredBackground = webColored;
-            repaint ();
+            repaint();
         }
     }
-
+    
     /**
      * Returns whether should paint top side or not.
      *
      * @return true if should paint top side, false otherwise
      */
-    public boolean isPaintTop ()
-    {
+    public boolean isPaintTop() {
         return paintTop;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintTop ( final boolean top )
-    {
-        if ( this.paintTop != top )
-        {
+    public void setPaintTop(final boolean top) {
+        if (this.paintTop != top) {
             this.paintTop = top;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * Returns whether should paint left side or not.
      *
      * @return true if should paint left side, false otherwise
      */
-    public boolean isPaintLeft ()
-    {
+    public boolean isPaintLeft() {
         return paintLeft;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintLeft ( final boolean left )
-    {
-        if ( this.paintLeft != left )
-        {
+    public void setPaintLeft(final boolean left) {
+        if (this.paintLeft != left) {
             this.paintLeft = left;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * Returns whether should paint bottom side or not.
      *
      * @return true if should paint bottom side, false otherwise
      */
-    public boolean isPaintBottom ()
-    {
+    public boolean isPaintBottom() {
         return paintBottom;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintBottom ( final boolean bottom )
-    {
-        if ( this.paintBottom != bottom )
-        {
+    public void setPaintBottom(final boolean bottom) {
+        if (this.paintBottom != bottom) {
             this.paintBottom = bottom;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * Returns whether should paint right side or not.
      *
      * @return true if should paint right side, false otherwise
      */
-    public boolean isPaintRight ()
-    {
+    public boolean isPaintRight() {
         return paintRight;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintRight ( final boolean right )
-    {
-        if ( this.paintRight != right )
-        {
+    public void setPaintRight(final boolean right) {
+        if (this.paintRight != right) {
             this.paintRight = right;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintSides ( final boolean top, final boolean left, final boolean bottom, final boolean right )
-    {
-        if ( this.paintTop != top || this.paintLeft != left || this.paintBottom != bottom || this.paintRight != right )
-        {
+    public void setPaintSides(final boolean top, final boolean left,
+            final boolean bottom, final boolean right) {
+        if (this.paintTop != top || this.paintLeft != left
+                || this.paintBottom != bottom || this.paintRight != right) {
             this.paintTop = top;
             this.paintLeft = left;
             this.paintBottom = bottom;
             this.paintRight = right;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * Returns whether should paint top side line or not.
      *
      * @return true if should paint top side line, false otherwise
      */
-    public boolean isPaintTopLine ()
-    {
+    public boolean isPaintTopLine() {
         return paintTopLine;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintTopLine ( final boolean top )
-    {
-        if ( this.paintTopLine != top )
-        {
+    public void setPaintTopLine(final boolean top) {
+        if (this.paintTopLine != top) {
             this.paintTopLine = top;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * Returns whether should paint left side line or not.
      *
      * @return true if should paint left side line, false otherwise
      */
-    public boolean isPaintLeftLine ()
-    {
+    public boolean isPaintLeftLine() {
         return paintLeftLine;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintLeftLine ( final boolean left )
-    {
-        if ( this.paintLeftLine != left )
-        {
+    public void setPaintLeftLine(final boolean left) {
+        if (this.paintLeftLine != left) {
             this.paintLeftLine = left;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * Returns whether should paint bottom side line or not.
      *
      * @return true if should paint bottom side line, false otherwise
      */
-    public boolean isPaintBottomLine ()
-    {
+    public boolean isPaintBottomLine() {
         return paintBottomLine;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintBottomLine ( final boolean bottom )
-    {
-        if ( this.paintBottomLine != bottom )
-        {
+    public void setPaintBottomLine(final boolean bottom) {
+        if (this.paintBottomLine != bottom) {
             this.paintBottomLine = bottom;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * Returns whether should paint right side line or not.
      *
      * @return true if should paint right side line, false otherwise
      */
-    public boolean isPaintRightLine ()
-    {
+    public boolean isPaintRightLine() {
         return paintRightLine;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintRightLine ( final boolean right )
-    {
-        if ( this.paintRightLine != right )
-        {
+    public void setPaintRightLine(final boolean right) {
+        if (this.paintRightLine != right) {
             this.paintRightLine = right;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setPaintSideLines ( final boolean top, final boolean left, final boolean bottom, final boolean right )
-    {
-        if ( this.paintTopLine != top || this.paintLeftLine != left || this.paintBottomLine != bottom || this.paintRightLine != right )
-        {
+    public void setPaintSideLines(final boolean top, final boolean left,
+            final boolean bottom, final boolean right) {
+        if (this.paintTopLine != top || this.paintLeftLine != left
+                || this.paintBottomLine != bottom
+                || this.paintRightLine != right) {
             this.paintTopLine = top;
             this.paintLeftLine = left;
             this.paintBottomLine = bottom;
             this.paintRightLine = right;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Boolean isOpaque ( final E c )
-    {
+    public Boolean isOpaque(final E c) {
         return undecorated;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Insets getMargin ( final E c )
-    {
-        if ( undecorated )
-        {
+    public Insets getMargin(final E c) {
+        if (undecorated) {
             // Empty painter margin
             return null;
-        }
-        else
-        {
+        } else {
             // Decoration border margin
             final int spacing = shadeWidth + 1;
             final int top = paintTop ? spacing : paintTopLine ? 1 : 0;
             final int left = paintLeft ? spacing : paintLeftLine ? 1 : 0;
             final int bottom = paintBottom ? spacing : paintBottomLine ? 1 : 0;
             final int right = paintRight ? spacing : paintRightLine ? 1 : 0;
-            return new Insets ( top, left, bottom, right );
+            return new Insets(top, left, bottom, right);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void paint ( final Graphics2D g2d, final Rectangle bounds, final E c )
-    {
-        if ( !undecorated )
-        {
-            ltr = c.getComponentOrientation ().isLeftToRight ();
+    public void paint(final Graphics2D g2d, final Rectangle bounds, final E c) {
+        if (!undecorated) {
+            ltr = c.getComponentOrientation().isLeftToRight();
             actualPaintLeft = ltr ? paintLeft : paintRight;
             actualPaintRight = ltr ? paintRight : paintLeft;
-            w = c.getWidth ();
-            h = c.getHeight ();
-
+            w = c.getWidth();
+            h = c.getHeight();
+            
             // Checking need of painting
-            final boolean anyBorder = paintTop || paintRight || paintBottom || paintLeft;
-            if ( anyBorder || paintBackground )
-            {
-                final Object aa = GraphicsUtils.setupAntialias ( g2d );
-                final boolean enabled = c.isEnabled ();
-
+            final boolean anyBorder = paintTop || paintRight || paintBottom
+                    || paintLeft;
+            if (anyBorder || paintBackground) {
+                final Object aa = GraphicsUtils.setupAntialias(g2d);
+                final boolean enabled = c.isEnabled();
+                
                 // Border shape
-                final Shape borderShape = getShape ( c, false );
-                final Shape backgroundShape = getShape ( c, true );
-
+                final Shape borderShape = getShape(c, false);
+                final Shape backgroundShape = getShape(c, true);
+                
                 // Outer shadow
-                if ( anyBorder && shadeWidth > 0 )
-                {
-                    paintShade ( g2d, bounds, c, borderShape );
+                if (anyBorder && shadeWidth > 0) {
+                    paintShade(g2d, bounds, c, borderShape);
                 }
-
+                
                 // Background
-                if ( paintBackground )
-                {
-                    paintBackground ( g2d, bounds, c, backgroundShape );
+                if (paintBackground) {
+                    paintBackground(g2d, bounds, c, backgroundShape);
                 }
-
+                
                 // Border
-                if ( anyBorder && ( enabled ? borderColor != null : disabledBorderColor != null ) )
-                {
-                    paintBorder ( g2d, bounds, c, borderShape );
+                if (anyBorder
+                        && (enabled ? borderColor != null
+                                : disabledBorderColor != null)) {
+                    paintBorder(g2d, bounds, c, borderShape);
                 }
-
-                GraphicsUtils.restoreAntialias ( g2d, aa );
+                
+                GraphicsUtils.restoreAntialias(g2d, aa);
             }
         }
     }
-
+    
     /**
      * Paints outer decoration shade.
      *
-     * @param g2d         graphics context
-     * @param bounds      painting bounds
-     * @param c           painted component
-     * @param borderShape component border shape
+     * @param g2d
+     *            graphics context
+     * @param bounds
+     *            painting bounds
+     * @param c
+     *            painted component
+     * @param borderShape
+     *            component border shape
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    protected void paintShade ( final Graphics2D g2d, final Rectangle bounds, final E c, final Shape borderShape )
-    {
-        if ( shadeWidth < 4 )
-        {
+    @SuppressWarnings("UnusedParameters")
+    protected void paintShade(final Graphics2D g2d, final Rectangle bounds,
+            final E c, final Shape borderShape) {
+        if (shadeWidth < 4) {
             // Paint shape-based small shade
-            final Composite oc = GraphicsUtils.setupAlphaComposite ( g2d, shadeTransparency, shadeTransparency < 1f );
-            final Color shadeColor = paintFocus && focused ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor;
-            GraphicsUtils.drawShade ( g2d, borderShape, shadeColor, shadeWidth );
-            GraphicsUtils.restoreComposite ( g2d, oc, shadeTransparency < 1f );
-        }
-        else
-        {
+            final Composite oc = GraphicsUtils.setupAlphaComposite(g2d,
+                    shadeTransparency, shadeTransparency < 1f);
+            final Color shadeColor = paintFocus && focused ? FlatLafStyleConstants.fieldFocusColor
+                    : FlatLafStyleConstants.shadeColor;
+            GraphicsUtils.drawShade(g2d, borderShape, shadeColor, shadeWidth);
+            GraphicsUtils.restoreComposite(g2d, oc, shadeTransparency < 1f);
+        } else {
             // Retrieve shade 9-patch icon
-            final NinePatchIcon shade = NinePatchUtils.getShadeIcon ( shadeWidth, round, shadeTransparency );
-
+            final NinePatchIcon shade = NinePatchUtils.getShadeIcon(shadeWidth,
+                    round, shadeTransparency);
+            
             // Calculate shade bounds and paint it
             final int x = actualPaintLeft ? 0 : -shadeWidth * 2;
-            final int width = w + ( actualPaintLeft ? 0 : shadeWidth * 2 ) + ( actualPaintRight ? 0 : shadeWidth * 2 );
+            final int width = w + (actualPaintLeft ? 0 : shadeWidth * 2)
+                    + (actualPaintRight ? 0 : shadeWidth * 2);
             final int y = paintTop ? 0 : -shadeWidth * 2;
-            final int height = h + ( paintTop ? 0 : shadeWidth * 2 ) + ( paintBottom ? 0 : shadeWidth * 2 );
-            shade.paintIcon ( g2d, x, y, width, height );
+            final int height = h + (paintTop ? 0 : shadeWidth * 2)
+                    + (paintBottom ? 0 : shadeWidth * 2);
+            shade.paintIcon(g2d, x, y, width, height);
         }
     }
-
+    
     /**
      * Paints decoration background.
      *
-     * @param g2d             graphics context
-     * @param bounds          painting bounds
-     * @param c               painted component
-     * @param backgroundShape component background shape
+     * @param g2d
+     *            graphics context
+     * @param bounds
+     *            painting bounds
+     * @param c
+     *            painted component
+     * @param backgroundShape
+     *            component background shape
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    protected void paintBackground ( final Graphics2D g2d, final Rectangle bounds, final E c, final Shape backgroundShape )
-    {
-        if ( webColoredBackground )
-        {
+    @SuppressWarnings("UnusedParameters")
+    protected void paintBackground(final Graphics2D g2d,
+            final Rectangle bounds, final E c, final Shape backgroundShape) {
+        if (webColoredBackground) {
             // Setup cached gradient paint
-            final Rectangle bgBounds = backgroundShape.getBounds ();
-            g2d.setPaint ( LafUtils.getWebGradientPaint ( 0, bgBounds.y, 0, bgBounds.y + bgBounds.height ) );
-        }
-        else
-        {
+            final Rectangle bgBounds = backgroundShape.getBounds();
+            g2d.setPaint(LafUtils.getWebGradientPaint(0, bgBounds.y, 0,
+                    bgBounds.y + bgBounds.height));
+        } else {
             // Setup single color paint
-            g2d.setPaint ( c.getBackground () );
+            g2d.setPaint(c.getBackground());
         }
-        g2d.fill ( backgroundShape );
+        g2d.fill(backgroundShape);
     }
-
+    
     /**
      * Paints decoration border.
      *
-     * @param g2d         graphics context
-     * @param bounds      painting bounds
-     * @param c           painted component
-     * @param borderShape component border shape
+     * @param g2d
+     *            graphics context
+     * @param bounds
+     *            painting bounds
+     * @param c
+     *            painted component
+     * @param borderShape
+     *            component border shape
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    protected void paintBorder ( final Graphics2D g2d, final Rectangle bounds, final E c, final Shape borderShape )
-    {
-        final Stroke os = GraphicsUtils.setupStroke ( g2d, borderStroke, borderStroke != null );
-        g2d.setPaint ( c.isEnabled () ? borderColor : disabledBorderColor );
-
+    @SuppressWarnings("UnusedParameters")
+    protected void paintBorder(final Graphics2D g2d, final Rectangle bounds,
+            final E c, final Shape borderShape) {
+        final Stroke os = GraphicsUtils.setupStroke(g2d, borderStroke,
+                borderStroke != null);
+        g2d.setPaint(c.isEnabled() ? borderColor : disabledBorderColor);
+        
         // Painting smart border
-        g2d.draw ( borderShape );
-
+        g2d.draw(borderShape);
+        
         // Painting enabled side lines
-        if ( paintTopLine )
-        {
+        if (paintTopLine) {
             final int x = actualPaintLeft ? shadeWidth : 0;
-            g2d.drawLine ( x, 0, x + c.getWidth () - ( actualPaintLeft ? shadeWidth : 0 ) -
-                    ( actualPaintRight ? shadeWidth + 1 : 0 ), 0 );
+            g2d.drawLine(x, 0, x + c.getWidth()
+                    - (actualPaintLeft ? shadeWidth : 0)
+                    - (actualPaintRight ? shadeWidth + 1 : 0), 0);
         }
-        if ( paintBottomLine )
-        {
+        if (paintBottomLine) {
             final int x = actualPaintLeft ? shadeWidth : 0;
-            g2d.drawLine ( x, c.getHeight () - 1, x + c.getWidth () - ( actualPaintLeft ? shadeWidth : 0 ) -
-                    ( actualPaintRight ? shadeWidth + 1 : 0 ), c.getHeight () - 1 );
+            g2d.drawLine(x, c.getHeight() - 1, x + c.getWidth()
+                    - (actualPaintLeft ? shadeWidth : 0)
+                    - (actualPaintRight ? shadeWidth + 1 : 0),
+                    c.getHeight() - 1);
         }
-        if ( paintLeftLine )
-        {
+        if (paintLeftLine) {
             final int y = paintTop ? shadeWidth : 0;
-            g2d.drawLine ( 0, y, 0, y + c.getHeight () - ( paintTop ? shadeWidth : 0 ) -
-                    ( paintBottom ? shadeWidth + 1 : 0 ) );
+            g2d.drawLine(0, y, 0, y + c.getHeight()
+                    - (paintTop ? shadeWidth : 0)
+                    - (paintBottom ? shadeWidth + 1 : 0));
         }
-        if ( paintRightLine )
-        {
+        if (paintRightLine) {
             final int y = paintTop ? shadeWidth : 0;
-            g2d.drawLine ( c.getWidth () - 1, y, c.getWidth () - 1, y + c.getHeight () - ( paintTop ? shadeWidth : 0 ) -
-                    ( paintBottom ? shadeWidth + 1 : 0 ) );
+            g2d.drawLine(c.getWidth() - 1, y, c.getWidth() - 1,
+                    y + c.getHeight() - (paintTop ? shadeWidth : 0)
+                            - (paintBottom ? shadeWidth + 1 : 0));
         }
-
-        GraphicsUtils.restoreStroke ( g2d, os, borderStroke != null );
+        
+        GraphicsUtils.restoreStroke(g2d, os, borderStroke != null);
     }
-
+    
     /**
      * Returns decoration border shape.
      *
-     * @param c          painted component
-     * @param background whether should return background shape or not
+     * @param c
+     *            painted component
+     * @param background
+     *            whether should return background shape or not
      * @return decoration border shape
      */
-    protected Shape getShape ( final E c, final boolean background )
-    {
-        return ShapeCache.getShape ( c, background ? BACKGROUND_SHAPE : BORDER_SHAPE, new DataProvider<Shape> ()
-        {
+    protected Shape getShape(final E c, final boolean background) {
+        return ShapeCache.getShape(c, background ? BACKGROUND_SHAPE
+                : BORDER_SHAPE, new DataProvider<Shape>() {
             @Override
-            public Shape provide ()
-            {
-                return createShape ( c, background );
+            public Shape provide() {
+                return createShape(c, background);
             }
-        }, getCachedShapeSettings ( c ) );
+        }, getCachedShapeSettings(c));
     }
-
+    
     /**
      * Returns an array of shape settings cached along with the shape.
      *
-     * @param c painted component
+     * @param c
+     *            painted component
      * @return an array of shape settings cached along with the shape
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    protected Object[] getCachedShapeSettings ( final E c )
-    {
-        return new Object[]{ w, h, ltr, round, shadeWidth, paintTop, paintLeft, paintBottom, paintRight, paintTopLine, paintLeftLine,
-                paintBottomLine, paintRightLine };
+    @SuppressWarnings("UnusedParameters")
+    protected Object[] getCachedShapeSettings(final E c) {
+        return new Object[] { w, h, ltr, round, shadeWidth, paintTop,
+                paintLeft, paintBottom, paintRight, paintTopLine,
+                paintLeftLine, paintBottomLine, paintRightLine };
     }
-
+    
     /**
      * Returns decoration border shape.
      *
-     * @param c          painted component
-     * @param background whether should return background shape or not
+     * @param c
+     *            painted component
+     * @param background
+     *            whether should return background shape or not
      * @return decoration border shape
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    protected Shape createShape ( final E c, final boolean background )
-    {
-        if ( background )
-        {
-            final Point[] corners = new Point[ 4 ];
-            final boolean[] rounded = new boolean[ 4 ];
-
-            corners[ 0 ] = p ( actualPaintLeft ? shadeWidth : 0, paintTop ? shadeWidth : 0 );
-            rounded[ 0 ] = actualPaintLeft && paintTop;
-
-            corners[ 1 ] = p ( actualPaintRight ? w - shadeWidth : w, paintTop ? shadeWidth : 0 );
-            rounded[ 1 ] = actualPaintRight && paintTop;
-
-            corners[ 2 ] = p ( actualPaintRight ? w - shadeWidth : w, paintBottom ? h - shadeWidth : h );
-            rounded[ 2 ] = actualPaintRight && paintBottom;
-
-            corners[ 3 ] = p ( actualPaintLeft ? shadeWidth : 0, paintBottom ? h - shadeWidth : h );
-            rounded[ 3 ] = actualPaintLeft && paintBottom;
-
-            return LafUtils.createRoundedShape ( round > 0 ? round + 1 : 0, corners, rounded );
-        }
-        else
-        {
-            final GeneralPath shape = new GeneralPath ( GeneralPath.WIND_EVEN_ODD );
+    @SuppressWarnings("UnusedParameters")
+    protected Shape createShape(final E c, final boolean background) {
+        if (background) {
+            final Point[] corners = new Point[4];
+            final boolean[] rounded = new boolean[4];
+            
+            corners[0] = p(actualPaintLeft ? shadeWidth : 0,
+                    paintTop ? shadeWidth : 0);
+            rounded[0] = actualPaintLeft && paintTop;
+            
+            corners[1] = p(actualPaintRight ? w - shadeWidth : w,
+                    paintTop ? shadeWidth : 0);
+            rounded[1] = actualPaintRight && paintTop;
+            
+            corners[2] = p(actualPaintRight ? w - shadeWidth : w,
+                    paintBottom ? h - shadeWidth : h);
+            rounded[2] = actualPaintRight && paintBottom;
+            
+            corners[3] = p(actualPaintLeft ? shadeWidth : 0, paintBottom ? h
+                    - shadeWidth : h);
+            rounded[3] = actualPaintLeft && paintBottom;
+            
+            return LafUtils.createRoundedShape(round > 0 ? round + 1 : 0,
+                    corners, rounded);
+        } else {
+            final GeneralPath shape = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
             boolean connect = false;
             boolean moved = false;
-            if ( paintTop )
-            {
-                shape.moveTo ( actualPaintLeft ? shadeWidth + round : 0, shadeWidth );
-                if ( actualPaintRight )
-                {
-                    shape.lineTo ( w - shadeWidth - round - 1, shadeWidth );
-                    shape.quadTo ( w - shadeWidth - 1, shadeWidth, w - shadeWidth - 1, shadeWidth + round );
-                }
-                else
-                {
-                    shape.lineTo ( w - 1, shadeWidth );
+            if (paintTop) {
+                shape.moveTo(actualPaintLeft ? shadeWidth + round : 0,
+                        shadeWidth);
+                if (actualPaintRight) {
+                    shape.lineTo(w - shadeWidth - round - 1, shadeWidth);
+                    shape.quadTo(w - shadeWidth - 1, shadeWidth, w - shadeWidth
+                            - 1, shadeWidth + round);
+                } else {
+                    shape.lineTo(w - 1, shadeWidth);
                 }
                 connect = true;
             }
-            if ( actualPaintRight )
-            {
-                if ( !connect )
-                {
-                    shape.moveTo ( w - shadeWidth - 1, paintTop ? shadeWidth + round : 0 );
+            if (actualPaintRight) {
+                if (!connect) {
+                    shape.moveTo(w - shadeWidth - 1, paintTop ? shadeWidth
+                            + round : 0);
                     moved = true;
                 }
-                if ( paintBottom )
-                {
-                    shape.lineTo ( w - shadeWidth - 1, h - shadeWidth - round - 1 );
-                    shape.quadTo ( w - shadeWidth - 1, h - shadeWidth - 1, w - shadeWidth - round - 1, h - shadeWidth - 1 );
-                }
-                else
-                {
-                    shape.lineTo ( w - shadeWidth - 1, h - 1 );
+                if (paintBottom) {
+                    shape.lineTo(w - shadeWidth - 1, h - shadeWidth - round - 1);
+                    shape.quadTo(w - shadeWidth - 1, h - shadeWidth - 1, w
+                            - shadeWidth - round - 1, h - shadeWidth - 1);
+                } else {
+                    shape.lineTo(w - shadeWidth - 1, h - 1);
                 }
                 connect = true;
-            }
-            else
-            {
+            } else {
                 connect = false;
             }
-            if ( paintBottom )
-            {
-                if ( !connect )
-                {
-                    shape.moveTo ( actualPaintRight ? w - shadeWidth - round - 1 : w - 1, h - shadeWidth - 1 );
+            if (paintBottom) {
+                if (!connect) {
+                    shape.moveTo(actualPaintRight ? w - shadeWidth - round - 1
+                            : w - 1, h - shadeWidth - 1);
                     moved = true;
                 }
-                if ( actualPaintLeft )
-                {
-                    shape.lineTo ( shadeWidth + round, h - shadeWidth - 1 );
-                    shape.quadTo ( shadeWidth, h - shadeWidth - 1, shadeWidth, h - shadeWidth - round - 1 );
-                }
-                else
-                {
-                    shape.lineTo ( 0, h - shadeWidth - 1 );
+                if (actualPaintLeft) {
+                    shape.lineTo(shadeWidth + round, h - shadeWidth - 1);
+                    shape.quadTo(shadeWidth, h - shadeWidth - 1, shadeWidth, h
+                            - shadeWidth - round - 1);
+                } else {
+                    shape.lineTo(0, h - shadeWidth - 1);
                 }
                 connect = true;
-            }
-            else
-            {
+            } else {
                 connect = false;
             }
-            if ( actualPaintLeft )
-            {
-                if ( !connect )
-                {
-                    shape.moveTo ( shadeWidth, paintBottom ? h - shadeWidth - round - 1 : h - 1 );
+            if (actualPaintLeft) {
+                if (!connect) {
+                    shape.moveTo(shadeWidth, paintBottom ? h - shadeWidth
+                            - round - 1 : h - 1);
                     moved = true;
                 }
-                if ( paintTop )
-                {
-                    shape.lineTo ( shadeWidth, shadeWidth + round );
-                    shape.quadTo ( shadeWidth, shadeWidth, shadeWidth + round, shadeWidth );
-                    if ( !moved )
-                    {
-                        shape.closePath ();
+                if (paintTop) {
+                    shape.lineTo(shadeWidth, shadeWidth + round);
+                    shape.quadTo(shadeWidth, shadeWidth, shadeWidth + round,
+                            shadeWidth);
+                    if (!moved) {
+                        shape.closePath();
                     }
-                }
-                else
-                {
-                    shape.lineTo ( shadeWidth, 0 );
+                } else {
+                    shape.lineTo(shadeWidth, 0);
                 }
             }
             return shape;

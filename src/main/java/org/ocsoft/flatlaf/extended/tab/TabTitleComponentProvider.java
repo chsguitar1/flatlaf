@@ -20,21 +20,23 @@ package org.ocsoft.flatlaf.extended.tab;
 import javax.swing.*;
 
 /**
- * Custom interface used to create document tab title provider.
- * It can be used to completely alter WebDocumentPane tab title components.
+ * Custom interface used to create document tab title provider. It can be used
+ * to completely alter WebDocumentPane tab title components.
  *
  * @author Mikle Garin
  * @see org.ocsoft.flatlaf.extended.tab.DefaultTabTitleComponentProvider
  */
 
-public interface TabTitleComponentProvider<T extends DocumentData>
-{
+public interface TabTitleComponentProvider<T extends DocumentData> {
     /**
      * Returns newly created tab title component.
      *
-     * @param paneData PaneData containing document
-     * @param document document to create tab title component for
+     * @param paneData
+     *            PaneData containing document
+     * @param document
+     *            document to create tab title component for
      * @return newly created tab title component
      */
-    public JComponent createTabTitleComponent ( final PaneData<T> paneData, final T document );
+    public JComponent createTabTitleComponent(final PaneData<T> paneData,
+            final T document);
 }

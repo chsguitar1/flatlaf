@@ -24,10 +24,9 @@ package org.ocsoft.flatlaf.extended.painter;
  * @author Mikle Garin
  */
 
-public interface SpecificPainter
-{
+public interface SpecificPainter {
     /**
-     * This interface has no methods so far.
-     * Some optional methods might be added here later when moved to JDK8.
+     * This interface has no methods so far. Some optional methods might be
+     * added here later when moved to JDK8.
      */
 }

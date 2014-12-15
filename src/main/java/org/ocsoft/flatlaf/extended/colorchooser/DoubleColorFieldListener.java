@@ -25,15 +25,14 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public interface DoubleColorFieldListener
-{
+public interface DoubleColorFieldListener {
     /**
      * Called when new color part clicked.
      */
-    public void newColorPressed ( Color newColor );
-
+    public void newColorPressed(Color newColor);
+    
     /**
      * Called when old color part clicked.
      */
-    public void oldColorPressed ( Color currentColor );
+    public void oldColorPressed(Color currentColor);
 }

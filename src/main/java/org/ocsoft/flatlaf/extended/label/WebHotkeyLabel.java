@@ -23,47 +23,42 @@ import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 
 /**
- * This class provides a quick access to hotkey-styled label with additional costructors for quick hotkey text initialization.
- * This label is only a hotkey visualization and have nothing to do with real hotkeys.
- * To modify actual hotkeys use HotkeyManager or key listeners.
+ * This class provides a quick access to hotkey-styled label with additional
+ * costructors for quick hotkey text initialization. This label is only a hotkey
+ * visualization and have nothing to do with real hotkeys. To modify actual
+ * hotkeys use HotkeyManager or key listeners.
  *
  * @author Mikle Garin
  */
 
-public class WebHotkeyLabel extends WebLabel
-{
-    public WebHotkeyLabel ()
-    {
-        super ();
-        initializeView ();
+public class WebHotkeyLabel extends WebLabel {
+    public WebHotkeyLabel() {
+        super();
+        initializeView();
     }
-
-    public WebHotkeyLabel ( final int keyCode )
-    {
-        super ( KeyEvent.getKeyText ( keyCode ) );
-        initializeView ();
+    
+    public WebHotkeyLabel(final int keyCode) {
+        super(KeyEvent.getKeyText(keyCode));
+        initializeView();
     }
-
-    public WebHotkeyLabel ( final int keyCode, final int modifiers )
-    {
-        super ( KeyEvent.getKeyModifiersText ( modifiers ) + "+" + KeyEvent.getKeyText ( keyCode ) );
-        initializeView ();
+    
+    public WebHotkeyLabel(final int keyCode, final int modifiers) {
+        super(KeyEvent.getKeyModifiersText(modifiers) + "+"
+                + KeyEvent.getKeyText(keyCode));
+        initializeView();
     }
-
-    public WebHotkeyLabel ( final HotkeyData hotkeyData )
-    {
-        super ( hotkeyData.toString () );
-        initializeView ();
+    
+    public WebHotkeyLabel(final HotkeyData hotkeyData) {
+        super(hotkeyData.toString());
+        initializeView();
     }
-
-    public WebHotkeyLabel ( final String text )
-    {
-        super ( text );
-        initializeView ();
+    
+    public WebHotkeyLabel(final String text) {
+        super(text);
+        initializeView();
     }
-
-    private void initializeView ()
-    {
-        setStyleId ( "hotkey-label" );
+    
+    private void initializeView() {
+        setStyleId("hotkey-label");
     }
 }

@@ -24,28 +24,27 @@ package org.ocsoft.flatlaf.utils.swing;
  */
 
 // todo Add those options to WebTimer
-public enum WebTimerType
-{
+public enum WebTimerType {
     /**
      * Fire event when current minute ends.
      */
     atMinuteEnd,
-
+    
     /**
      * Fire event when current hour ends.
      */
     atHourEnd,
-
+    
     /**
      * Fire event when current day ends.
      */
     atDayEnd,
-
+    
     /**
      * Fire event when current month ends.
      */
     atMonthEnd,
-
+    
     /**
      * Fire event when current year ends.
      */

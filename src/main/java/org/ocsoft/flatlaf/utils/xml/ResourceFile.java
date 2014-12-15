@@ -28,80 +28,69 @@ import org.ocsoft.flatlaf.utils.CompareUtils;
  * User: mgarin Date: 17.02.12 Time: 11:55
  */
 
-@XStreamAlias ("ResourceFile")
-public class ResourceFile implements Serializable
-{
+@XStreamAlias("ResourceFile")
+public class ResourceFile implements Serializable {
     @XStreamAsAttribute
     private ResourceLocation location;
-
+    
     @XStreamAsAttribute
     private String source;
-
+    
     @XStreamAsAttribute
     private String className;
-
-    public ResourceFile ( final ResourceLocation location, final String source )
-    {
-        this ( location, source, ( String ) null );
+    
+    public ResourceFile(final ResourceLocation location, final String source) {
+        this(location, source, (String) null);
     }
-
-    public ResourceFile ( final ResourceLocation location, final String source, final Class nearClass )
-    {
-        this ( location, source, nearClass.getCanonicalName () );
+    
+    public ResourceFile(final ResourceLocation location, final String source,
+            final Class nearClass) {
+        this(location, source, nearClass.getCanonicalName());
     }
-
-    public ResourceFile ( final ResourceLocation location, final String source, final String className )
-    {
-        super ();
-        setLocation ( location );
-        setSource ( source );
-        setClassName ( className );
+    
+    public ResourceFile(final ResourceLocation location, final String source,
+            final String className) {
+        super();
+        setLocation(location);
+        setSource(source);
+        setClassName(className);
     }
-
-    public ResourceLocation getLocation ()
-    {
+    
+    public ResourceLocation getLocation() {
         return location;
     }
-
-    public void setLocation ( final ResourceLocation location )
-    {
+    
+    public void setLocation(final ResourceLocation location) {
         this.location = location;
     }
-
-    public String getSource ()
-    {
+    
+    public String getSource() {
         return source;
     }
-
-    public void setSource ( final String source )
-    {
+    
+    public void setSource(final String source) {
         this.source = source;
     }
-
-    public String getClassName ()
-    {
+    
+    public String getClassName() {
         return className;
     }
-
-    public void setClassName ( final String className )
-    {
+    
+    public void setClassName(final String className) {
         this.className = className;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean equals ( final Object object )
-    {
-        if ( object != null && object instanceof ResourceFile )
-        {
-            final ResourceFile other = ( ResourceFile ) object;
-            return other.location == location && CompareUtils.equals ( other.source, source ) &&
-                    CompareUtils.equals ( other.className, className );
-        }
-        else
-        {
+    public boolean equals(final Object object) {
+        if (object != null && object instanceof ResourceFile) {
+            final ResourceFile other = (ResourceFile) object;
+            return other.location == location
+                    && CompareUtils.equals(other.source, source)
+                    && CompareUtils.equals(other.className, className);
+        } else {
             return false;
         }
     }

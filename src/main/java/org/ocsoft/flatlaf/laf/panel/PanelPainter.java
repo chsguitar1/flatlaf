@@ -29,20 +29,22 @@ import org.ocsoft.flatlaf.extended.painter.SpecificPainter;
  * @author Mikle Garin
  */
 
-public interface PanelPainter<E extends JPanel> extends Painter<E>, PartialDecoration, SpecificPainter
-{
+public interface PanelPainter<E extends JPanel> extends Painter<E>,
+        PartialDecoration, SpecificPainter {
     /**
      * Sets whether panel decoration should be painted or not.
      *
-     * @param undecorated whether panel decoration should be painted or not
+     * @param undecorated
+     *            whether panel decoration should be painted or not
      */
-    public void setUndecorated ( boolean undecorated );
-
+    public void setUndecorated(boolean undecorated);
+    
     /**
-     * Sets whether focus should be painted or not.
-     * Panel focus is displayed when either panel or one of its children are focused.
+     * Sets whether focus should be painted or not. Panel focus is displayed
+     * when either panel or one of its children are focused.
      *
-     * @param paint whether focus should be painted or not
+     * @param paint
+     *            whether focus should be painted or not
      */
-    public void setPaintFocus ( final boolean paint );
+    public void setPaintFocus(final boolean paint);
 }

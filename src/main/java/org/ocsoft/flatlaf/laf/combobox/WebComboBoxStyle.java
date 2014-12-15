@@ -30,74 +30,75 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public final class WebComboBoxStyle
-{
+public final class WebComboBoxStyle {
     /**
      * Expand icon.
      */
-    public static ImageIcon expandIcon = new ImageIcon ( WebComboBoxStyle.class.getResource ( "icons/arrow.png" ) );
-
+    public static ImageIcon expandIcon = new ImageIcon(
+            WebComboBoxStyle.class.getResource("icons/arrow.png"));
+    
     /**
      * Collapse icon.
      */
-    public static ImageIcon collapseIcon = ImageUtils.rotateImage180 ( expandIcon );
-
+    public static ImageIcon collapseIcon = ImageUtils
+            .rotateImage180(expandIcon);
+    
     /**
      * Icon side spacing.
      */
     public static int iconSpacing = 3;
-
+    
     /**
      * Draw combobox border.
      */
     public static boolean drawBorder = FlatLafStyleConstants.drawBorder;
-
+    
     /**
      * Whether should paint web-styled background or not.
      */
     public static boolean webColoredBackground = true;
-
+    
     /**
      * Expanded combobox background color.
      */
-    public static Color expandedBgColor = new Color ( 223, 220, 213 );
-
+    public static Color expandedBgColor = new Color(223, 220, 213);
+    
     /**
      * Draw combobox focus.
      */
     public static boolean drawFocus = true;
-
+    
     /**
      * Decoration rounding.
      */
     public static int round = FlatLafStyleConstants.smallRound;
-
+    
     /**
      * Decoration shade width.
      */
     public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Values scrolling using mouse wheel enabled.
      */
     public static boolean mouseWheelScrollingEnabled = true;
-
+    
     /**
-     * Scroll bar thumb corners rounding.
-     * todo Not used, but should be specified under combobox style XML later
+     * Scroll bar thumb corners rounding. todo Not used, but should be specified
+     * under combobox style XML later
      */
     public static int scrollBarThumbRound = 4;
-
+    
     /**
      * Scroll bar margin.
      */
-    public static Insets scrollBarMargin = new Insets ( 0, 1, 0, 1 );
-
+    public static Insets scrollBarMargin = new Insets(0, 1, 0, 1);
+    
     /**
      * Whether should display scroll bar buttons or not.
      */
     public static boolean scrollBarButtonsVisible = false;
-
+    
     /**
      * Whether should display scroll bar track or not.
      */

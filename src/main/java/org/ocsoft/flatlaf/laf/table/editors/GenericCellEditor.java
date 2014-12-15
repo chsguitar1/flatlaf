@@ -23,26 +23,22 @@ import org.ocsoft.flatlaf.laf.text.WebTextField;
  * User: mgarin Date: 28.11.12 Time: 14:19
  */
 
-public class GenericCellEditor extends WebTextField
-{
+public class GenericCellEditor extends WebTextField {
     private boolean invalidValue = false;
-
-    public GenericCellEditor ()
-    {
-        super ( false );
-        setMargin ( 0 );
-        setFieldMargin ( 0 );
-        setPainter ( new GenericCellEditorPainter () );
+    
+    public GenericCellEditor() {
+        super(false);
+        setMargin(0);
+        setFieldMargin(0);
+        setPainter(new GenericCellEditorPainter());
     }
-
-    public boolean isInvalidValue ()
-    {
+    
+    public boolean isInvalidValue() {
         return invalidValue;
     }
-
-    public void setInvalidValue ( final boolean invalidValue )
-    {
+    
+    public void setInvalidValue(final boolean invalidValue) {
         this.invalidValue = invalidValue;
-        repaint ();
+        repaint();
     }
 }

@@ -23,20 +23,20 @@ package org.ocsoft.flatlaf.extended.image;
  * @author Mikle Garin
  */
 
-public enum DisplayType
-{
+public enum DisplayType {
     /**
      * Image fits its own size.
      */
     preferred,
-
+    
     /**
      * Image fits component size.
      */
     fitComponent,
-
+    
     /**
-     * Image fits its own size but repeats to cover the whole component background.
+     * Image fits its own size but repeats to cover the whole component
+     * background.
      */
     repeat
 }

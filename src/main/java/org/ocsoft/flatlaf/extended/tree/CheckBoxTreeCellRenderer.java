@@ -27,33 +27,33 @@ import org.ocsoft.flatlaf.extended.checkbox.WebTristateCheckBox;
  * @author Mikle Garin
  */
 
-public interface CheckBoxTreeCellRenderer extends TreeCellRenderer
-{
+public interface CheckBoxTreeCellRenderer extends TreeCellRenderer {
     /**
      * Returns gap between checkbox and actual cell renderer.
      *
      * @return gap between checkbox and actual cell renderer
      */
-    public int getCheckBoxRendererGap ();
-
+    public int getCheckBoxRendererGap();
+    
     /**
      * Sets gap between checkbox and actual cell renderer.
      *
-     * @param checkBoxRendererGap new gap between checkbox and actual cell renderer
+     * @param checkBoxRendererGap
+     *            new gap between checkbox and actual cell renderer
      */
-    public void setCheckBoxRendererGap ( int checkBoxRendererGap );
-
+    public void setCheckBoxRendererGap(int checkBoxRendererGap);
+    
     /**
      * Returns checkbox part width in this cell renderer.
      *
      * @return checkbox part width in this cell renderer
      */
-    public int getCheckBoxWidth ();
-
+    public int getCheckBoxWidth();
+    
     /**
      * Returns checkbox used for rendering.
      *
      * @return checkbox used for rendering
      */
-    public WebTristateCheckBox getCheckBox ();
+    public WebTristateCheckBox getCheckBox();
 }

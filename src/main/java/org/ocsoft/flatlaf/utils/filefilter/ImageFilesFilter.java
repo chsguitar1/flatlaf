@@ -31,37 +31,35 @@ import java.io.File;
  * @author Mikle Garin
  */
 
-public class ImageFilesFilter extends AbstractFileFilter
-{
+public class ImageFilesFilter extends AbstractFileFilter {
     /**
      * Filter icon.
      */
-    public static final ImageIcon ICON = new ImageIcon ( ImageFilesFilter.class.getResource ( "icons/image.png" ) );
-
+    public static final ImageIcon ICON = new ImageIcon(
+            ImageFilesFilter.class.getResource("icons/image.png"));
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public ImageIcon getIcon ()
-    {
+    public ImageIcon getIcon() {
         return ICON;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getDescription ()
-    {
-        return LanguageManager.get ( "weblaf.file.filter.images" );
+    public String getDescription() {
+        return LanguageManager.get("weblaf.file.filter.images");
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean accept ( final File file )
-    {
-        return FlatLafConstants.IMAGE_FORMATS.contains ( FileUtils.getFileExtPart ( file.getName ().toLowerCase (), false ) );
+    public boolean accept(final File file) {
+        return FlatLafConstants.IMAGE_FORMATS.contains(FileUtils
+                .getFileExtPart(file.getName().toLowerCase(), false));
     }
 }

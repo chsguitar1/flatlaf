@@ -23,17 +23,16 @@ package org.ocsoft.flatlaf.laf.tabbedpane;
  * @author Mikle Garin
  */
 
-public enum TabbedPaneStyle
-{
+public enum TabbedPaneStyle {
     /**
-     * Standalone tabbed pane style.
-     * It has its own borders around the component and looks complete.
+     * Standalone tabbed pane style. It has its own borders around the component
+     * and looks complete.
      */
     standalone,
-
+    
     /**
-     * Attached tabbed pane style.
-     * It doesn't have its own borders around the component and might be attached to some other styled container.
+     * Attached tabbed pane style. It doesn't have its own borders around the
+     * component and might be attached to some other styled container.
      */
     attached
 }

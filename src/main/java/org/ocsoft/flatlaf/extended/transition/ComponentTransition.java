@@ -34,369 +34,326 @@ import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
  * User: mgarin Date: 26.10.11 Time: 12:57
  */
 
-public class ComponentTransition extends WebPanel
-{
+public class ComponentTransition extends WebPanel {
     // Transition listeners
-    protected List<TransitionListener> transitionListeners = new ArrayList<TransitionListener> ( 1 );
-
+    protected List<TransitionListener> transitionListeners = new ArrayList<TransitionListener>(
+            1);
+    
     // Whether should restore focus after transition or not
     protected boolean restoreFocus = true;
-
+    
     // Variables
     protected boolean animating = false;
-
+    
     // Current transition
     protected ImageTransition transition = null;
-
+    
     // Added effects
     protected List<TransitionEffect> transitionEffects = null;
-
+    
     // Last component
     protected Component lastContent;
-
-    public ComponentTransition ()
-    {
-        this ( ( Component ) null );
+    
+    public ComponentTransition() {
+        this((Component) null);
     }
-
-    public ComponentTransition ( final Component content )
-    {
-        this ( content, null );
+    
+    public ComponentTransition(final Component content) {
+        this(content, null);
     }
-
-    public ComponentTransition ( final TransitionEffect transitionEffect )
-    {
-        this ( null, transitionEffect );
+    
+    public ComponentTransition(final TransitionEffect transitionEffect) {
+        this(null, transitionEffect);
     }
-
-    public ComponentTransition ( final Component content, final TransitionEffect transitionEffect )
-    {
+    
+    public ComponentTransition(final Component content,
+            final TransitionEffect transitionEffect) {
         // Special layout allowing double content
-        super ( new StackLayout () );
-
-        setFocusable ( false );
-
+        super(new StackLayout());
+        
+        setFocusable(false);
+        
         // Transition effect
-        setTransitionEffect ( transitionEffect );
-
+        setTransitionEffect(transitionEffect);
+        
         // Add initial content
         lastContent = content;
-        if ( content != null )
-        {
-            add ( content );
+        if (content != null) {
+            add(content);
         }
     }
-
-    public boolean isRestoreFocus ()
-    {
+    
+    public boolean isRestoreFocus() {
         return restoreFocus;
     }
-
-    public void setRestoreFocus ( final boolean restoreFocus )
-    {
+    
+    public void setRestoreFocus(final boolean restoreFocus) {
         this.restoreFocus = restoreFocus;
     }
-
+    
     /**
      * Operations with content
      */
-
-    public Component getContent ()
-    {
-        return getComponentCount () > 0 ? getComponent ( 0 ) : null;
+    
+    public Component getContent() {
+        return getComponentCount() > 0 ? getComponent(0) : null;
     }
-
-    public void setContent ( final Component content )
-    {
-        if ( !isAnimating () )
-        {
+    
+    public void setContent(final Component content) {
+        if (!isAnimating()) {
             lastContent = content;
-            removeAll ();
-            add ( content );
-            revalidate ();
-            repaint ();
+            removeAll();
+            add(content);
+            revalidate();
+            repaint();
         }
     }
-
+    
     /**
      * Instant transition
      */
-
-    public void performTransition ( final Component content )
-    {
-        SwingUtils.invokeLater ( new Runnable ()
-        {
+    
+    public void performTransition(final Component content) {
+        SwingUtils.invokeLater(new Runnable() {
             @Override
-            public void run ()
-            {
-                performTransitionImpl ( content );
+            public void run() {
+                performTransitionImpl(content);
             }
-        } );
+        });
     }
-
+    
     /**
      * Delayed transition
      */
-
-    public void delayTransition ( final long delay, final Component content )
-    {
-        SwingUtils.delayInvokeLater ( delay, new Runnable ()
-        {
+    
+    public void delayTransition(final long delay, final Component content) {
+        SwingUtils.delayInvokeLater(delay, new Runnable() {
             @Override
-            public void run ()
-            {
-                performTransitionImpl ( content );
+            public void run() {
+                performTransitionImpl(content);
             }
-        } );
+        });
     }
-
+    
     /**
      * Transition call
      */
-
-    protected void performTransitionImpl ( final Component content )
-    {
+    
+    protected void performTransitionImpl(final Component content) {
         // Ignore repeated change or change to same content
-        if ( lastContent == content )
-        {
+        if (lastContent == content) {
             return;
         }
-
+        
         // Remember new content to which area is switched
         lastContent = content;
-
-        // When animation disabled or component is not shown performing transition instantly
-        if ( !canAnimate () )
-        {
-            finishTransitionImpl ( content );
+        
+        // When animation disabled or component is not shown performing
+        // transition instantly
+        if (!canAnimate()) {
+            finishTransitionImpl(content);
             return;
         }
-
+        
         // Check for old transition
-        if ( transition != null )
-        {
-            if ( isAnimating () )
-            {
+        if (transition != null) {
+            if (isAnimating()) {
                 // Cancel old transition if it is already running
-                transition.cancelTransition ();
-            }
-            else
-            {
+                transition.cancelTransition();
+            } else {
                 // Block transition if it has not yet started
-                transition.setBlocked ( true );
+                transition.setBlocked(true);
             }
         }
-
+        
         // Marking new transition start
         animating = true;
-
+        
         // Width and height
-        final int width = getWidth ();
-        final int height = getHeight ();
-
+        final int width = getWidth();
+        final int height = getHeight();
+        
         // Current content image
         final BufferedImage currentSnapshot;
-        if ( transition != null )
-        {
-            currentSnapshot = transition.getOtherImage ();
+        if (transition != null) {
+            currentSnapshot = transition.getOtherImage();
+        } else {
+            final Component currentContent = getComponentCount() > 0 ? getComponent(0)
+                    : null;
+            currentSnapshot = SwingUtils.createComponentSnapshot(
+                    currentContent, width, height);
         }
-        else
-        {
-            final Component currentContent = getComponentCount () > 0 ? getComponent ( 0 ) : null;
-            currentSnapshot = SwingUtils.createComponentSnapshot ( currentContent, width, height );
-        }
-
+        
         // Enabling focus for transition time so you can focus the panel
-        // It will transfer focus onto inner components (or next, if no focusable inner components available) when transition ends
-        setFocusable ( true );
-
+        // It will transfer focus onto inner components (or next, if no
+        // focusable inner components available) when transition ends
+        setFocusable(true);
+        
         // Passing the focus from subcomponents onto the transition panel
-        if ( restoreFocus && SwingUtils.hasFocusOwner ( ComponentTransition.this ) )
-        {
+        if (restoreFocus && SwingUtils.hasFocusOwner(ComponentTransition.this)) {
             // Focus handler required to wait for focus change
-            // This is required to handle focus properly and have atleast one component focused withing window of calendar
-            // Otherwise focus will be lost and window may become "bugged" and may require additiona user actions in some cases
-            final FocusAdapter focusHandle = new FocusAdapter ()
-            {
+            // This is required to handle focus properly and have atleast one
+            // component focused withing window of calendar
+            // Otherwise focus will be lost and window may become "bugged" and
+            // may require additiona user actions in some cases
+            final FocusAdapter focusHandle = new FocusAdapter() {
                 @Override
-                public void focusGained ( final FocusEvent e )
-                {
-                    removeFocusListener ( this );
-                    continueTransitionImpl ( content, width, height, currentSnapshot );
+                public void focusGained(final FocusEvent e) {
+                    removeFocusListener(this);
+                    continueTransitionImpl(content, width, height,
+                            currentSnapshot);
                 }
             };
-            addFocusListener ( focusHandle );
-
+            addFocusListener(focusHandle);
+            
             // Requesting focus into transition panel
-            if ( !ComponentTransition.this.requestFocusInWindow () )
-            {
+            if (!ComponentTransition.this.requestFocusInWindow()) {
                 // Request focus failed, continue without changing focus
-                removeFocusListener ( focusHandle );
-                continueTransitionImpl ( content, width, height, currentSnapshot );
+                removeFocusListener(focusHandle);
+                continueTransitionImpl(content, width, height, currentSnapshot);
             }
-        }
-        else
-        {
-            continueTransitionImpl ( content, width, height, currentSnapshot );
+        } else {
+            continueTransitionImpl(content, width, height, currentSnapshot);
         }
     }
-
-    protected boolean canAnimate ()
-    {
-        return getTransitionEffect () != null && isShowing ();
+    
+    protected boolean canAnimate() {
+        return getTransitionEffect() != null && isShowing();
     }
-
-    protected void continueTransitionImpl ( final Component content, final int width, final int height,
-                                            final BufferedImage currentSnapshot )
-    {
+    
+    protected void continueTransitionImpl(final Component content,
+            final int width, final int height,
+            final BufferedImage currentSnapshot) {
         // New content image
-        removeAll ();
-        if ( content != null )
-        {
-            add ( content, StackLayout.HIDDEN );
+        removeAll();
+        if (content != null) {
+            add(content, StackLayout.HIDDEN);
         }
-
+        
         // Creating snapshot before removing all components
-        final BufferedImage otherSnapshot = SwingUtils.createComponentSnapshot ( content, width, height );
-
+        final BufferedImage otherSnapshot = SwingUtils.createComponentSnapshot(
+                content, width, height);
+        
         // Transition panel
-        removeAll ();
-        transition = new ImageTransition ( currentSnapshot, otherSnapshot );
-        transition.setTransitionEffects ( transitionEffects );
-        add ( transition );
-        revalidate ();
-        repaint ();
-
+        removeAll();
+        transition = new ImageTransition(currentSnapshot, otherSnapshot);
+        transition.setTransitionEffects(transitionEffects);
+        add(transition);
+        revalidate();
+        repaint();
+        
         // After-transition actions
-        transition.addTransitionListener ( new TransitionListener ()
-        {
+        transition.addTransitionListener(new TransitionListener() {
             @Override
-            public void transitionStarted ()
-            {
-                fireTransitionStarted ();
+            public void transitionStarted() {
+                fireTransitionStarted();
             }
-
+            
             @Override
-            public void transitionFinished ()
-            {
-                finishTransitionImpl ( content );
+            public void transitionFinished() {
+                finishTransitionImpl(content);
             }
-        } );
-
+        });
+        
         // Start transition
-        transition.performTransition ();
+        transition.performTransition();
     }
-
-    protected void finishTransitionImpl ( final Component content )
-    {
+    
+    protected void finishTransitionImpl(final Component content) {
         // Destroying all image links
-        this.removeAll ();
-
+        this.removeAll();
+        
         // Adding final content to area
-        if ( content != null )
-        {
-            this.add ( content );
+        if (content != null) {
+            this.add(content);
         }
-        this.revalidate ();
-        this.repaint ();
+        this.revalidate();
+        this.repaint();
         animating = false;
-
+        
         // Returning focus back into content and disabling focus
-        if ( isFocusOwner () )
-        {
-            transferFocus ();
+        if (isFocusOwner()) {
+            transferFocus();
         }
-        setFocusable ( false );
-
+        setFocusable(false);
+        
         // Cleaning collapse animation resourcs
-        if ( transition != null )
-        {
-            transition.destroy ();
+        if (transition != null) {
+            transition.destroy();
             transition = null;
         }
-
+        
         // Informing listeners
-        fireTransitionFinished ();
+        fireTransitionFinished();
     }
-
-    public boolean isAnimating ()
-    {
+    
+    public boolean isAnimating() {
         return animating;
     }
-
-    public List<TransitionEffect> getTransitionEffects ()
-    {
+    
+    public List<TransitionEffect> getTransitionEffects() {
         return transitionEffects;
     }
-
-    public TransitionEffect getTransitionEffect ()
-    {
-        return transitionEffects != null && transitionEffects.size () > 0 ? transitionEffects.get ( 0 ) : null;
+    
+    public TransitionEffect getTransitionEffect() {
+        return transitionEffects != null && transitionEffects.size() > 0 ? transitionEffects
+                .get(0) : null;
     }
-
-    public void addTransitionEffect ( final TransitionEffect transitionEffect )
-    {
-        if ( transitionEffects == null )
-        {
-            transitionEffects = new ArrayList<TransitionEffect> ();
+    
+    public void addTransitionEffect(final TransitionEffect transitionEffect) {
+        if (transitionEffects == null) {
+            transitionEffects = new ArrayList<TransitionEffect>();
         }
-        transitionEffects.add ( transitionEffect );
+        transitionEffects.add(transitionEffect);
     }
-
-    public void clearTransitionEffects ()
-    {
-        if ( transitionEffects != null )
-        {
+    
+    public void clearTransitionEffects() {
+        if (transitionEffects != null) {
             transitionEffects = null;
         }
     }
-
-    public void removeTransitionEffect ( final TransitionEffect transitionEffect )
-    {
-        if ( transitionEffects != null )
-        {
-            transitionEffects.remove ( transitionEffect );
+    
+    public void removeTransitionEffect(final TransitionEffect transitionEffect) {
+        if (transitionEffects != null) {
+            transitionEffects.remove(transitionEffect);
         }
     }
-
-    public void setTransitionEffect ( final TransitionEffect transitionEffect )
-    {
-        transitionEffects = transitionEffect != null ? CollectionUtils.copy ( transitionEffect ) : null;
+    
+    public void setTransitionEffect(final TransitionEffect transitionEffect) {
+        transitionEffects = transitionEffect != null ? CollectionUtils
+                .copy(transitionEffect) : null;
     }
-
-    public void setTransitionEffects ( final List<TransitionEffect> transitionEffects )
-    {
+    
+    public void setTransitionEffects(
+            final List<TransitionEffect> transitionEffects) {
         this.transitionEffects = transitionEffects;
     }
-
-    public void setTransitionEffects ( final TransitionEffect... transitionEffects )
-    {
-        this.transitionEffects = transitionEffects != null ? CollectionUtils.copy ( transitionEffects ) : null;
+    
+    public void setTransitionEffects(
+            final TransitionEffect... transitionEffects) {
+        this.transitionEffects = transitionEffects != null ? CollectionUtils
+                .copy(transitionEffects) : null;
     }
-
-    public void addTransitionListener ( final TransitionListener listener )
-    {
-        transitionListeners.add ( listener );
+    
+    public void addTransitionListener(final TransitionListener listener) {
+        transitionListeners.add(listener);
     }
-
-    public void removeTransitionListener ( final TransitionListener listener )
-    {
-        transitionListeners.remove ( listener );
+    
+    public void removeTransitionListener(final TransitionListener listener) {
+        transitionListeners.remove(listener);
     }
-
-    public void fireTransitionStarted ()
-    {
-        for ( final TransitionListener listener : CollectionUtils.copy ( transitionListeners ) )
-        {
-            listener.transitionStarted ();
+    
+    public void fireTransitionStarted() {
+        for (final TransitionListener listener : CollectionUtils
+                .copy(transitionListeners)) {
+            listener.transitionStarted();
         }
     }
-
-    public void fireTransitionFinished ()
-    {
-        for ( final TransitionListener listener : CollectionUtils.copy ( transitionListeners ) )
-        {
-            listener.transitionFinished ();
+    
+    public void fireTransitionFinished() {
+        for (final TransitionListener listener : CollectionUtils
+                .copy(transitionListeners)) {
+            listener.transitionFinished();
         }
     }
 }

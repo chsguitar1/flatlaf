@@ -29,90 +29,82 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
  * User: mgarin Date: 27.04.12 Time: 16:27
  */
 
-public class TooltipConverter implements Converter
-{
+public class TooltipConverter implements Converter {
     @Override
-    public boolean canConvert ( final Class type )
-    {
-        return Tooltip.class.getCanonicalName ().equals ( type.getCanonicalName () );
+    public boolean canConvert(final Class type) {
+        return Tooltip.class.getCanonicalName().equals(type.getCanonicalName());
     }
-
+    
     @Override
-    public void marshal ( final Object source, final HierarchicalStreamWriter writer, final MarshallingContext context )
-    {
-        final Tooltip value = ( Tooltip ) source;
-
+    public void marshal(final Object source,
+            final HierarchicalStreamWriter writer,
+            final MarshallingContext context) {
+        final Tooltip value = (Tooltip) source;
+        
         // Adding delay
-        if ( shouldWriteDelay ( value ) )
-        {
-            writer.addAttribute ( "delay", value.getDelay ().toString () );
+        if (shouldWriteDelay(value)) {
+            writer.addAttribute("delay", value.getDelay().toString());
         }
-
+        
         // Adding way
-        if ( shouldWriteWay ( value ) )
-        {
-            writer.addAttribute ( "way", value.getWay ().toString () );
+        if (shouldWriteWay(value)) {
+            writer.addAttribute("way", value.getWay().toString());
         }
-
+        
         // Adding type
-        if ( shouldWriteType ( value ) )
-        {
-            writer.addAttribute ( "type", value.getType ().toString () );
+        if (shouldWriteType(value)) {
+            writer.addAttribute("type", value.getType().toString());
         }
-
+        
         // Adding value
-        writer.setValue ( value.getText () );
+        writer.setValue(value.getText());
     }
-
-    public static boolean shouldWriteDelay ( final Tooltip value )
-    {
-        return value.getDelay () != null;
+    
+    public static boolean shouldWriteDelay(final Tooltip value) {
+        return value.getDelay() != null;
     }
-
-    public static boolean shouldWriteWay ( final Tooltip value )
-    {
-        return value.getWay () != null;
+    
+    public static boolean shouldWriteWay(final Tooltip value) {
+        return value.getWay() != null;
     }
-
-    public static boolean shouldWriteType ( final Tooltip value )
-    {
-        return value.getType () != null && value.getType () != LanguageManager.getDefaultTooltipType ();
+    
+    public static boolean shouldWriteType(final Tooltip value) {
+        return value.getType() != null
+                && value.getType() != LanguageManager.getDefaultTooltipType();
     }
-
+    
     @Override
-    public Object unmarshal ( final HierarchicalStreamReader reader, final UnmarshallingContext context )
-    {
+    public Object unmarshal(final HierarchicalStreamReader reader,
+            final UnmarshallingContext context) {
         // Reading type
-        final String typeV = reader.getAttribute ( "type" );
-        final TooltipType type = parseType ( typeV );
-
+        final String typeV = reader.getAttribute("type");
+        final TooltipType type = parseType(typeV);
+        
         // Reading way
-        final String wayV = reader.getAttribute ( "way" );
-        final TooltipWay way = parseWay ( wayV );
-
+        final String wayV = reader.getAttribute("way");
+        final TooltipWay way = parseWay(wayV);
+        
         // Reading delay
-        final String delayV = reader.getAttribute ( "delay" );
-        final Integer delay = parseDelay ( delayV );
-
+        final String delayV = reader.getAttribute("delay");
+        final Integer delay = parseDelay(delayV);
+        
         // Reading value
-        final String text = reader.getValue ();
-
+        final String text = reader.getValue();
+        
         // Creating Value object
-        return new Tooltip ( type, way, delay, text );
+        return new Tooltip(type, way, delay, text);
     }
-
-    public static TooltipType parseType ( final String typeV )
-    {
-        return typeV != null ? TooltipType.valueOf ( typeV ) : LanguageManager.getDefaultTooltipType ();
+    
+    public static TooltipType parseType(final String typeV) {
+        return typeV != null ? TooltipType.valueOf(typeV) : LanguageManager
+                .getDefaultTooltipType();
     }
-
-    public static TooltipWay parseWay ( final String wayV )
-    {
-        return wayV != null ? TooltipWay.valueOf ( wayV ) : null;
+    
+    public static TooltipWay parseWay(final String wayV) {
+        return wayV != null ? TooltipWay.valueOf(wayV) : null;
     }
-
-    public static Integer parseDelay ( final String delayV )
-    {
-        return delayV != null ? Integer.parseInt ( delayV ) : null;
+    
+    public static Integer parseDelay(final String delayV) {
+        return delayV != null ? Integer.parseInt(delayV) : null;
     }
 }

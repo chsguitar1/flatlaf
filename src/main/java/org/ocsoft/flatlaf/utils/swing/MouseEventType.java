@@ -23,43 +23,42 @@ package org.ocsoft.flatlaf.utils.swing;
  * @author Mikle Garin
  */
 
-public enum MouseEventType
-{
+public enum MouseEventType {
     /**
      * Mouse clicked event.
      */
     mouseClicked,
-
+    
     /**
      * Mouse pressed event.
      */
     mousePressed,
-
+    
     /**
      * Mouse dragged event.
      */
     mouseDragged,
-
+    
     /**
      * Mouse released event.
      */
     mouseReleased,
-
+    
     /**
      * Mouse entered event.
      */
     mouseEntered,
-
+    
     /**
      * Mouse exited event.
      */
     mouseExited,
-
+    
     /**
      * Mouse moved event.
      */
     mouseMoved,
-
+    
     /**
      * Mouse wheel moved event.
      */

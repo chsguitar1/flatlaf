@@ -23,13 +23,12 @@ package org.ocsoft.flatlaf.managers.notification;
  * @author Mikle Garin
  */
 
-public enum DisplayType
-{
+public enum DisplayType {
     /**
      * Display all active notification together, one after another.
      */
     flow,
-
+    
     /**
      * Display notification stacked together.
      */

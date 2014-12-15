@@ -23,29 +23,28 @@ package org.ocsoft.flatlaf.laf.menu;
  * @author Mikle Garin
  */
 
-public enum PopupMenuType
-{
+public enum PopupMenuType {
     /**
-     * Popup menu displayed directly from the menubar.
-     * In default styling such menus have a dropdown corner.
+     * Popup menu displayed directly from the menubar. In default styling such
+     * menus have a dropdown corner.
      */
     menuBarMenu,
-
+    
     /**
-     * Popup menu displayed as a sub menu from another menu in menubar.
-     * In default styling such menus doesn't have dropdown corner.
+     * Popup menu displayed as a sub menu from another menu in menubar. In
+     * default styling such menus doesn't have dropdown corner.
      */
     menuBarSubMenu,
-
+    
     /**
-     * Popup menu displayed under a combobox.
-     * In default styling such menus have a dropdown corner.
+     * Popup menu displayed under a combobox. In default styling such menus have
+     * a dropdown corner.
      */
     comboBoxMenu,
-
+    
     /**
-     * Custom user popup menu that can be opened anywhere.
-     * In default styling such menus have a dropdown corner.
+     * Custom user popup menu that can be opened anywhere. In default styling
+     * such menus have a dropdown corner.
      */
     customPopupMenu
 }

@@ -25,43 +25,42 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * User: mgarin Date: 11/15/11 Time: 4:51 PM
  */
 
-public final class WebScrollPaneStyle
-{
+public final class WebScrollPaneStyle {
     /**
      * Border color
      */
     public static Color borderColor = Color.LIGHT_GRAY;
-
+    
     /**
      * Dark border color
      */
-    public static Color darkBorder = new Color ( 170, 170, 170 );
-
+    public static Color darkBorder = new Color(170, 170, 170);
+    
     /**
      * Draw border
      */
     public static boolean drawBorder = FlatLafStyleConstants.drawBorder;
-
+    
     /**
      * Decoration rounding
      */
     public static int round = FlatLafStyleConstants.smallRound;
-
+    
     /**
      * Decoration shade width
      */
     public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Default scroll pane margin
      */
     public static Insets margin = FlatLafStyleConstants.emptyMargin;
-
+    
     /**
      * Draw focus when ancestor of focused component
      */
     public static boolean drawFocus = true;
-
+    
     /**
      * Draw background
      */

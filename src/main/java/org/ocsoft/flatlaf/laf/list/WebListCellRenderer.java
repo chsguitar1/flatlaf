@@ -27,64 +27,67 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class WebListCellRenderer extends WebListElement implements ListCellRenderer
-{
+public class WebListCellRenderer extends WebListElement implements
+        ListCellRenderer {
     /**
      * Constructs default list cell renderer.
      */
-    public WebListCellRenderer ()
-    {
-        super ();
-        setName ( "List.cellRenderer" );
+    public WebListCellRenderer() {
+        super();
+        setName("List.cellRenderer");
     }
-
+    
     /**
      * Returns list cell renderer component.
      *
-     * @param list         tree
-     * @param value        cell value
-     * @param index        cell index
-     * @param isSelected   whether cell is selected or not
-     * @param cellHasFocus whether cell has focus or not
+     * @param list
+     *            tree
+     * @param value
+     *            cell value
+     * @param index
+     *            cell index
+     * @param isSelected
+     *            whether cell is selected or not
+     * @param cellHasFocus
+     *            whether cell has focus or not
      * @return cell renderer component
      */
     @Override
-    public Component getListCellRendererComponent ( final JList list, final Object value, final int index, final boolean isSelected,
-                                                    final boolean cellHasFocus )
-    {
+    public Component getListCellRendererComponent(final JList list,
+            final Object value, final int index, final boolean isSelected,
+            final boolean cellHasFocus) {
         // Visual settings
-        setFont ( list.getFont () );
-        setEnabled ( list.isEnabled () );
-        setForeground ( isSelected ? list.getSelectionForeground () : list.getForeground () );
-
+        setFont(list.getFont());
+        setEnabled(list.isEnabled());
+        setForeground(isSelected ? list.getSelectionForeground() : list
+                .getForeground());
+        
         // Icon and text
-        if ( value instanceof Icon )
-        {
-            setIcon ( ( Icon ) value );
-            setText ( "" );
+        if (value instanceof Icon) {
+            setIcon((Icon) value);
+            setText("");
+        } else {
+            setIcon(null);
+            setText(value == null ? "" : value.toString());
         }
-        else
-        {
-            setIcon ( null );
-            setText ( value == null ? "" : value.toString () );
-        }
-
+        
         // Border
-        final ListUI lui = list.getUI ();
-        final int sw = lui instanceof WebListUI ? ( ( WebListUI ) lui ).getSelectionShadeWidth () : WebListStyle.selectionShadeWidth;
-        setMargin ( sw + 2, sw + ( getIcon () != null ? 2 : 4 ), sw + 2, sw + 4 );
-
+        final ListUI lui = list.getUI();
+        final int sw = lui instanceof WebListUI ? ((WebListUI) lui)
+                .getSelectionShadeWidth() : WebListStyle.selectionShadeWidth;
+        setMargin(sw + 2, sw + (getIcon() != null ? 2 : 4), sw + 2, sw + 4);
+        
         // Orientation
-        setComponentOrientation ( list.getComponentOrientation () );
-
+        setComponentOrientation(list.getComponentOrientation());
+        
         return this;
     }
-
+    
     /**
      * A subclass of WebListCellRenderer that implements UIResource.
      */
-    public static class UIResource extends WebListCellRenderer implements javax.swing.plaf.UIResource
-    {
+    public static class UIResource extends WebListCellRenderer implements
+            javax.swing.plaf.UIResource {
         //
     }
 }

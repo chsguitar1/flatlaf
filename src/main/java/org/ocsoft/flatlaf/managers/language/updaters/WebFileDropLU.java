@@ -27,14 +27,13 @@ import org.ocsoft.flatlaf.managers.language.updaters.DefaultLanguageUpdater;
  * @author Mikle Garin
  */
 
-public class WebFileDropLU extends DefaultLanguageUpdater<WebFileDrop>
-{
+public class WebFileDropLU extends DefaultLanguageUpdater<WebFileDrop> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void update ( final WebFileDrop c, final String key, final Value value, final Object... data )
-    {
-        c.setDropText ( getDefaultText ( DROP_TEXT, true, value, data ) );
+    public void update(final WebFileDrop c, final String key,
+            final Value value, final Object... data) {
+        c.setDropText(getDefaultText(DROP_TEXT, true, value, data));
     }
 }

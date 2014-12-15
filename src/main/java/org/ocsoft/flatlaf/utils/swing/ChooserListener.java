@@ -22,17 +22,19 @@ import java.util.EventListener;
 /**
  * Base listener for any chooser component.
  *
- * @param <T> chooser data type
+ * @param <T>
+ *            chooser data type
  * @author Mikle Garin
  */
 
-public interface ChooserListener<T> extends EventListener
-{
+public interface ChooserListener<T> extends EventListener {
     /**
      * Informs that chooser's selected data has changed.
      *
-     * @param oldData previously selected data
-     * @param newData new selected data
+     * @param oldData
+     *            previously selected data
+     * @param newData
+     *            new selected data
      */
-    public void selected ( T oldData, T newData );
+    public void selected(T oldData, T newData);
 }

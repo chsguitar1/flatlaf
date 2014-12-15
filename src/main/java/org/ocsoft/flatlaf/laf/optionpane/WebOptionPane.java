@@ -27,67 +27,56 @@ import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
  * User: mgarin Date: 28.08.11 Time: 22:01
  */
 
-public class WebOptionPane extends JOptionPane
-{
-    public WebOptionPane ()
-    {
-        super ();
+public class WebOptionPane extends JOptionPane {
+    public WebOptionPane() {
+        super();
     }
-
-    public WebOptionPane ( final Object message )
-    {
-        super ( message );
+    
+    public WebOptionPane(final Object message) {
+        super(message);
     }
-
-    public WebOptionPane ( final Object message, final int messageType )
-    {
-        super ( message, messageType );
+    
+    public WebOptionPane(final Object message, final int messageType) {
+        super(message, messageType);
     }
-
-    public WebOptionPane ( final Object message, final int messageType, final int optionType )
-    {
-        super ( message, messageType, optionType );
+    
+    public WebOptionPane(final Object message, final int messageType,
+            final int optionType) {
+        super(message, messageType, optionType);
     }
-
-    public WebOptionPane ( final Object message, final int messageType, final int optionType, final Icon icon )
-    {
-        super ( message, messageType, optionType, icon );
+    
+    public WebOptionPane(final Object message, final int messageType,
+            final int optionType, final Icon icon) {
+        super(message, messageType, optionType, icon);
     }
-
-    public WebOptionPane ( final Object message, final int messageType, final int optionType, final Icon icon, final Object[] options )
-    {
-        super ( message, messageType, optionType, icon, options );
+    
+    public WebOptionPane(final Object message, final int messageType,
+            final int optionType, final Icon icon, final Object[] options) {
+        super(message, messageType, optionType, icon, options);
     }
-
-    public WebOptionPane ( final Object message, final int messageType, final int optionType, final Icon icon, final Object[] options,
-                           final Object initialValue )
-    {
-        super ( message, messageType, optionType, icon, options, initialValue );
+    
+    public WebOptionPane(final Object message, final int messageType,
+            final int optionType, final Icon icon, final Object[] options,
+            final Object initialValue) {
+        super(message, messageType, optionType, icon, options, initialValue);
     }
-
-    public WebOptionPaneUI getWebUI ()
-    {
-        return ( WebOptionPaneUI ) getUI ();
+    
+    public WebOptionPaneUI getWebUI() {
+        return (WebOptionPaneUI) getUI();
     }
-
+    
     @Override
-    public void updateUI ()
-    {
-        if ( getUI () == null || !( getUI () instanceof WebOptionPaneUI ) )
-        {
-            try
-            {
-                setUI ( ( WebOptionPaneUI ) ReflectUtils.createInstance ( FlatLafSettings.optionPaneUI ) );
+    public void updateUI() {
+        if (getUI() == null || !(getUI() instanceof WebOptionPaneUI)) {
+            try {
+                setUI((WebOptionPaneUI) ReflectUtils
+                        .createInstance(FlatLafSettings.optionPaneUI));
+            } catch (final Throwable e) {
+                FlatLafLogger.error(this, e);
+                setUI(new WebOptionPaneUI());
             }
-            catch ( final Throwable e )
-            {
-                FlatLafLogger.error ( this, e );
-                setUI ( new WebOptionPaneUI () );
-            }
-        }
-        else
-        {
-            setUI ( getUI () );
+        } else {
+            setUI(getUI());
         }
     }
 }

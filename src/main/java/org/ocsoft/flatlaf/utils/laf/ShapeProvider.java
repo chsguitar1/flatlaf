@@ -20,18 +20,17 @@ package org.ocsoft.flatlaf.utils.laf;
 import java.awt.*;
 
 /**
- * This interface provides a single method for requesting shape.
- * This can be used by components to provide their shape for various usage cases.
+ * This interface provides a single method for requesting shape. This can be
+ * used by components to provide their shape for various usage cases.
  *
  * @author Mikle Garin
  */
 
-public interface ShapeProvider
-{
+public interface ShapeProvider {
     /**
      * Returns component shape.
      *
      * @return component shape
      */
-    public Shape provideShape ();
+    public Shape provideShape();
 }

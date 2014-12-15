@@ -18,52 +18,54 @@
 package org.ocsoft.flatlaf.managers.style;
 
 /**
- * Special exception class used to display various style problems.
- * It extends RuntimeException to allow throwing this exception while normal runtime.
+ * Special exception class used to display various style problems. It extends
+ * RuntimeException to allow throwing this exception while normal runtime.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-StyleManager">How to use StyleManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-StyleManager">How
+ *      to use StyleManager</a>
  * @see org.ocsoft.flatlaf.managers.style.StyleManager
  */
 
-public class StyleException extends RuntimeException
-{
+public class StyleException extends RuntimeException {
     /**
      * Constructs a new StyleException with {@code null} as its detail message.
      */
-    public StyleException ()
-    {
-        super ();
+    public StyleException() {
+        super();
     }
-
+    
     /**
      * Constructs a new StyleException with the specified detail message.
      *
-     * @param message exception message
+     * @param message
+     *            exception message
      */
-    public StyleException ( final String message )
-    {
-        super ( message );
+    public StyleException(final String message) {
+        super(message);
     }
-
+    
     /**
-     * Constructs a new StyleException with the specified detail message and cause.
+     * Constructs a new StyleException with the specified detail message and
+     * cause.
      *
-     * @param message exception message
-     * @param cause   exception cause
+     * @param message
+     *            exception message
+     * @param cause
+     *            exception cause
      */
-    public StyleException ( final String message, final Throwable cause )
-    {
-        super ( message, cause );
+    public StyleException(final String message, final Throwable cause) {
+        super(message, cause);
     }
-
+    
     /**
      * Constructs a new StyleException with the specified cause.
      *
-     * @param cause exception cause
+     * @param cause
+     *            exception cause
      */
-    public StyleException ( final Throwable cause )
-    {
-        super ( cause );
+    public StyleException(final Throwable cause) {
+        super(cause);
     }
 }

@@ -28,127 +28,112 @@ import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
  * User: mgarin Date: 09.11.12 Time: 18:56
  */
 
-public class ZoomTransitionEffect extends DefaultTransitionEffect
-{
+public class ZoomTransitionEffect extends DefaultTransitionEffect {
     private static final String ZOOM_MINIMUM_SPEED = "ZOOM_MINIMUM_SPEED";
     private static final String ZOOM_SPEED = "ZOOM_SPEED";
     private static final String ZOOM_FADE = "ZOOM_FADE";
     private static final String ZOOM_TYPE = "ZOOM_TYPE";
-
+    
     private float minimumSpeed;
     private float speed;
     private ZoomType type;
-
+    
     private float size;
-
-    public ZoomTransitionEffect ()
-    {
-        super ();
+    
+    public ZoomTransitionEffect() {
+        super();
     }
-
-    public float getMinimumSpeed ()
-    {
-        return get ( ZOOM_MINIMUM_SPEED, 0.02f );
+    
+    public float getMinimumSpeed() {
+        return get(ZOOM_MINIMUM_SPEED, 0.02f);
     }
-
-    public void setMinimumSpeed ( float speed )
-    {
-        put ( ZOOM_MINIMUM_SPEED, speed );
+    
+    public void setMinimumSpeed(float speed) {
+        put(ZOOM_MINIMUM_SPEED, speed);
     }
-
-    public float getSpeed ()
-    {
-        return get ( ZOOM_SPEED, 0.1f );
+    
+    public float getSpeed() {
+        return get(ZOOM_SPEED, 0.1f);
     }
-
-    public void setSpeed ( float speed )
-    {
-        put ( ZOOM_SPEED, speed );
+    
+    public void setSpeed(float speed) {
+        put(ZOOM_SPEED, speed);
     }
-
-    public boolean isFade ()
-    {
-        return get ( ZOOM_FADE, true );
+    
+    public boolean isFade() {
+        return get(ZOOM_FADE, true);
     }
-
-    public void setFade ( boolean transparent )
-    {
-        put ( ZOOM_FADE, transparent );
+    
+    public void setFade(boolean transparent) {
+        put(ZOOM_FADE, transparent);
     }
-
-    public ZoomType getType ()
-    {
-        return get ( ZOOM_TYPE, ZoomType.random );
+    
+    public ZoomType getType() {
+        return get(ZOOM_TYPE, ZoomType.random);
     }
-
-    public void setType ( ZoomType type )
-    {
-        put ( ZOOM_TYPE, type );
+    
+    public void setType(ZoomType type) {
+        put(ZOOM_TYPE, type);
     }
-
+    
     @Override
-    public void prepareAnimation ( ImageTransition imageTransition )
-    {
+    public void prepareAnimation(ImageTransition imageTransition) {
         // Updating settings
-        minimumSpeed = getMinimumSpeed ();
-        speed = getSpeed ();
-        type = TransitionUtils.getActualValue ( getType () );
-
+        minimumSpeed = getMinimumSpeed();
+        speed = getSpeed();
+        type = TransitionUtils.getActualValue(getType());
+        
         // Updating runtime values
         size = 0f;
-
+        
         // Updating view
-        imageTransition.repaint ();
+        imageTransition.repaint();
     }
-
+    
     @Override
-    public boolean performAnimation ( ImageTransition imageTransition )
-    {
-        if ( size < 1f )
-        {
-            size = Math.min ( size + getCurrentSpeed (), 1f );
-            imageTransition.repaint ();
+    public boolean performAnimation(ImageTransition imageTransition) {
+        if (size < 1f) {
+            size = Math.min(size + getCurrentSpeed(), 1f);
+            imageTransition.repaint();
             return false;
-        }
-        else
-        {
+        } else {
             return true;
         }
     }
-
-    private float getCurrentSpeed ()
-    {
-        return Math.max ( minimumSpeed, speed * ( float ) Math.sqrt ( ( 1f - size ) / 1f ) );
+    
+    private float getCurrentSpeed() {
+        return Math.max(minimumSpeed,
+                speed * (float) Math.sqrt((1f - size) / 1f));
     }
-
+    
     @Override
-    public void paint ( Graphics2D g2d, ImageTransition transition )
-    {
-        int tw = transition.getWidth ();
-        int th = transition.getHeight ();
-        if ( type.equals ( ZoomType.zoomIn ) )
-        {
+    public void paint(Graphics2D g2d, ImageTransition transition) {
+        int tw = transition.getWidth();
+        int th = transition.getHeight();
+        if (type.equals(ZoomType.zoomIn)) {
             // Painting old image behind the new one
-            g2d.drawImage ( transition.getCurrentImage (), 0, 0, tw, th, null );
-
+            g2d.drawImage(transition.getCurrentImage(), 0, 0, tw, th, null);
+            
             // Fading in new image
-            Composite old = GraphicsUtils.setupAlphaComposite ( g2d, size, isFade () );
-            int w = Math.round ( tw * size );
-            int h = Math.round ( th * size );
-            g2d.drawImage ( transition.getOtherImage (), tw / 2 - w / 2, th / 2 - h / 2, w, h, null );
-            GraphicsUtils.restoreComposite ( g2d, old, isFade () );
-        }
-        else
-        {
+            Composite old = GraphicsUtils.setupAlphaComposite(g2d, size,
+                    isFade());
+            int w = Math.round(tw * size);
+            int h = Math.round(th * size);
+            g2d.drawImage(transition.getOtherImage(), tw / 2 - w / 2, th / 2
+                    - h / 2, w, h, null);
+            GraphicsUtils.restoreComposite(g2d, old, isFade());
+        } else {
             // Painting new image behind the old one
-            g2d.drawImage ( transition.getOtherImage (), 0, 0, tw, th, null );
-
+            g2d.drawImage(transition.getOtherImage(), 0, 0, tw, th, null);
+            
             // Fading in new image
-            Composite old = GraphicsUtils.setupAlphaComposite ( g2d, 1f - size, isFade () );
-            int w = Math.round ( tw * ( 1f - size ) );
-            int h = Math.round ( th * ( 1f - size ) );
-            g2d.drawImage ( transition.getCurrentImage (), tw / 2 - w / 2, th / 2 - h / 2, w, h, null );
-            GraphicsUtils.restoreComposite ( g2d, old, isFade () );
+            Composite old = GraphicsUtils.setupAlphaComposite(g2d, 1f - size,
+                    isFade());
+            int w = Math.round(tw * (1f - size));
+            int h = Math.round(th * (1f - size));
+            g2d.drawImage(transition.getCurrentImage(), tw / 2 - w / 2, th / 2
+                    - h / 2, w, h, null);
+            GraphicsUtils.restoreComposite(g2d, old, isFade());
         }
     }
 }

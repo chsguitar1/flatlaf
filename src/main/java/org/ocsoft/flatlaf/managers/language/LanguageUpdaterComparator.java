@@ -27,26 +27,19 @@ import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
  * @author Mikle Garin
  */
 
-public class LanguageUpdaterComparator implements Comparator<LanguageUpdater>
-{
+public class LanguageUpdaterComparator implements Comparator<LanguageUpdater> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public int compare ( final LanguageUpdater lu1, final LanguageUpdater lu2 )
-    {
-        final Class cc1 = lu1.getComponentClass ();
-        final Class cc2 = lu2.getComponentClass ();
-        if ( cc1.equals ( cc2 ) )
-        {
+    public int compare(final LanguageUpdater lu1, final LanguageUpdater lu2) {
+        final Class cc1 = lu1.getComponentClass();
+        final Class cc2 = lu2.getComponentClass();
+        if (cc1.equals(cc2)) {
             return 0;
-        }
-        else if ( cc1.isAssignableFrom ( cc2 ) )
-        {
+        } else if (cc1.isAssignableFrom(cc2)) {
             return 1;
-        }
-        else
-        {
+        } else {
             return -1;
         }
     }

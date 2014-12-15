@@ -27,63 +27,62 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class WebProgressBarStyle
-{
+public final class WebProgressBarStyle {
     /**
      * Top background gradient color.
      */
-    public static Color bgTop = new Color ( 242, 242, 242 );
-
+    public static Color bgTop = new Color(242, 242, 242);
+    
     /**
      * Bottom background gradient color.
      */
-    public static Color bgBottom = new Color ( 223, 223, 223 );
-
+    public static Color bgBottom = new Color(223, 223, 223);
+    
     /**
      * Inner progress background top gradient color.
      */
     public static Color progressTopColor = Color.WHITE;
-
+    
     /**
      * Inner progress background bottom gradient color.
      */
-    public static Color progressBottomColor = new Color ( 223, 223, 223 );
-
+    public static Color progressBottomColor = new Color(223, 223, 223);
+    
     /**
      * Highlight color.
      */
-    public static Color highlightWhite = new Color ( 255, 255, 255, 180 );
-
+    public static Color highlightWhite = new Color(255, 255, 255, 180);
+    
     /**
      * Highlight dark color.
      */
-    public static Color highlightDarkWhite = new Color ( 255, 255, 255, 210 );
-
+    public static Color highlightDarkWhite = new Color(255, 255, 255, 210);
+    
     /**
      * Indeterminate border color.
      */
-    public static Color indeterminateBorder = new Color ( 210, 210, 210 );
-
+    public static Color indeterminateBorder = new Color(210, 210, 210);
+    
     /**
      * Decoration rounding.
      */
     public static int round = FlatLafStyleConstants.bigRound;
-
+    
     /**
      * Inner progress rounding.
      */
     public static int innerRound = FlatLafStyleConstants.smallRound;
-
+    
     /**
      * Decoration shade width.
      */
     public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Whether should paint border for indeterminate state or not.
      */
     public static boolean paintIndeterminateBorder = true;
-
+    
     /**
      * Default preferred progress width.
      */

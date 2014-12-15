@@ -18,31 +18,34 @@
 package org.ocsoft.flatlaf.utils.laf;
 
 /**
- * This interface must be implemented by components and UIs which support styling through WebLaF skins.
- * It provides only two methods to allow default component style ID modifications.
+ * This interface must be implemented by components and UIs which support
+ * styling through WebLaF skins. It provides only two methods to allow default
+ * component style ID modifications.
  *
  * @author Mikle Garin
  * @see org.ocsoft.flatlaf.managers.style.StyleManager
  * @see org.ocsoft.flatlaf.managers.style.skin.WebLafSkin
  */
 
-public interface Styleable
-{
+public interface Styleable {
     /**
-     * Returns component style ID.
-     * Custom ID can be specified to override default component style using "setStyleId" method.
-     * If style for such custom ID is not found in skin descriptor then default style for that component is used.
+     * Returns component style ID. Custom ID can be specified to override
+     * default component style using "setStyleId" method. If style for such
+     * custom ID is not found in skin descriptor then default style for that
+     * component is used.
      *
      * @return component style ID
      */
-    public String getStyleId ();
-
+    public String getStyleId();
+    
     /**
-     * Sets custom component style ID.
-     * If style for such custom ID is not found in skin descriptor default style will be used for that component.
-     * This method forces component to instantly use component style with the specified ID.
+     * Sets custom component style ID. If style for such custom ID is not found
+     * in skin descriptor default style will be used for that component. This
+     * method forces component to instantly use component style with the
+     * specified ID.
      *
-     * @param id custom component style ID
+     * @param id
+     *            custom component style ID
      */
-    public void setStyleId ( String id );
+    public void setStyleId(String id);
 }

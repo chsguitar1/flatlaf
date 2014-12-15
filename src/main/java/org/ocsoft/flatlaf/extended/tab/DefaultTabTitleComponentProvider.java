@@ -28,71 +28,77 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Default document tab title provider.
- * It is used in all WebDocumentPanes by default but can be easily replaced.
+ * Default document tab title provider. It is used in all WebDocumentPanes by
+ * default but can be easily replaced.
  *
  * @author Mikle Garin
  * @see org.ocsoft.flatlaf.extended.tab.TabTitleComponentProvider
  */
 
-public class DefaultTabTitleComponentProvider<T extends DocumentData> implements TabTitleComponentProvider<T>
-{
+public class DefaultTabTitleComponentProvider<T extends DocumentData>
+        implements TabTitleComponentProvider<T> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public JComponent createTabTitleComponent ( final PaneData<T> paneData, final T document )
-    {
-        final WebPanel tabTitleComponent = new WebPanel ( new BorderLayout ( 2, 0 ) );
-        tabTitleComponent.setOpaque ( false );
-
+    public JComponent createTabTitleComponent(final PaneData<T> paneData,
+            final T document) {
+        final WebPanel tabTitleComponent = new WebPanel(new BorderLayout(2, 0));
+        tabTitleComponent.setOpaque(false);
+        
         // Creating title label
-        tabTitleComponent.add ( createTitleLabel ( paneData, document ), BorderLayout.CENTER );
-
+        tabTitleComponent.add(createTitleLabel(paneData, document),
+                BorderLayout.CENTER);
+        
         // Creating close button
-        if ( paneData.getDocumentPane ().isCloseable () && document.isCloseable () )
-        {
-            tabTitleComponent.add ( createCloseButton ( paneData, document ), BorderLayout.LINE_END );
+        if (paneData.getDocumentPane().isCloseable() && document.isCloseable()) {
+            tabTitleComponent.add(createCloseButton(paneData, document),
+                    BorderLayout.LINE_END);
         }
-
+        
         return tabTitleComponent;
     }
-
+    
     /**
      * Returns newly created tab title label.
      *
-     * @param paneData PaneData containing document
-     * @param document document to create tab title component for
+     * @param paneData
+     *            PaneData containing document
+     * @param document
+     *            document to create tab title component for
      * @return newly created tab title label
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    protected JComponent createTitleLabel ( final PaneData<T> paneData, final T document )
-    {
-        final WebLabel titleLabel = new WebLabel ( document.getTitle (), document.getIcon () );
-        titleLabel.setForeground ( document.getForeground () );
+    @SuppressWarnings("UnusedParameters")
+    protected JComponent createTitleLabel(final PaneData<T> paneData,
+            final T document) {
+        final WebLabel titleLabel = new WebLabel(document.getTitle(),
+                document.getIcon());
+        titleLabel.setForeground(document.getForeground());
         return titleLabel;
     }
-
+    
     /**
      * Returns newly created tab close button.
      *
-     * @param paneData PaneData containing document
-     * @param document document to create tab title component for
+     * @param paneData
+     *            PaneData containing document
+     * @param document
+     *            document to create tab title component for
      * @return newly created tab close button
      */
-    protected JComponent createCloseButton ( final PaneData<T> paneData, final T document )
-    {
-        final WebButton closeButton = new WebButton ( WebDocumentPane.closeTabIcon, WebDocumentPane.closeTabRolloverIcon );
-        closeButton.setUndecorated ( true );
-        closeButton.setFocusable ( false );
-        closeButton.addActionListener ( new ActionListener ()
-        {
+    protected JComponent createCloseButton(final PaneData<T> paneData,
+            final T document) {
+        final WebButton closeButton = new WebButton(
+                WebDocumentPane.closeTabIcon,
+                WebDocumentPane.closeTabRolloverIcon);
+        closeButton.setUndecorated(true);
+        closeButton.setFocusable(false);
+        closeButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed ( final ActionEvent e )
-            {
-                paneData.close ( document );
+            public void actionPerformed(final ActionEvent e) {
+                paneData.close(document);
             }
-        } );
+        });
         return closeButton;
     }
 }

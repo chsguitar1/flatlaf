@@ -26,23 +26,20 @@ import javax.swing.event.ChangeEvent;
  * @author Mikle Garin
  */
 
-public abstract class CellEditorAdapter implements CellEditorListener
-{
+public abstract class CellEditorAdapter implements CellEditorListener {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void editingStopped ( ChangeEvent e )
-    {
+    public void editingStopped(ChangeEvent e) {
         // Do nothing
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void editingCanceled ( ChangeEvent e )
-    {
+    public void editingCanceled(ChangeEvent e) {
         // Do nothing
     }
 }

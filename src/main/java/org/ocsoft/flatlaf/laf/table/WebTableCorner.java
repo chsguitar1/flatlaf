@@ -27,49 +27,44 @@ import java.awt.*;
  * User: mgarin Date: 22.08.11 Time: 13:07
  */
 
-public class WebTableCorner extends JComponent
-{
+public class WebTableCorner extends JComponent {
     private boolean right;
-
-    public WebTableCorner ( boolean right )
-    {
-        super ();
+    
+    public WebTableCorner(boolean right) {
+        super();
         this.right = right;
-        SwingUtils.setOrientation ( this );
+        SwingUtils.setOrientation(this);
     }
-
+    
     @Override
-    protected void paintComponent ( Graphics g )
-    {
-        super.paintComponent ( g );
-
-        Graphics2D g2d = ( Graphics2D ) g;
-
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        
+        Graphics2D g2d = (Graphics2D) g;
+        
         // todo Proper painting for RTL
         // boolean ltr = getComponentOrientation ().isLeftToRight ();
-
+        
         // Highlight
-        g2d.setPaint ( WebTableHeaderUI.topLineColor );
-        g2d.drawLine ( 0, 0, getWidth () - 1, 0 );
-
+        g2d.setPaint(WebTableHeaderUI.topLineColor);
+        g2d.drawLine(0, 0, getWidth() - 1, 0);
+        
         // Background
-        g2d.setPaint ( WebTableHeaderUI.createBackgroundPaint ( 0, 1, 0, getHeight () - 1 ) );
-        g2d.fillRect ( 0, 1, getWidth (), getHeight () - 1 );
-
+        g2d.setPaint(WebTableHeaderUI.createBackgroundPaint(0, 1, 0,
+                getHeight() - 1));
+        g2d.fillRect(0, 1, getWidth(), getHeight() - 1);
+        
         // Bottom line
-        g2d.setColor ( WebTableHeaderUI.bottomLineColor );
-        g2d.drawLine ( 0, getHeight () - 1, getWidth () - 1, getHeight () - 1 );
-
+        g2d.setColor(WebTableHeaderUI.bottomLineColor);
+        g2d.drawLine(0, getHeight() - 1, getWidth() - 1, getHeight() - 1);
+        
         // Right line
-        if ( right )
-        {
-            g2d.setColor ( WebTableStyle.gridColor );
-            g2d.drawLine ( 0, 2, 0, getHeight () - 4 );
-        }
-        else
-        {
-            g2d.setColor ( WebTableStyle.gridColor );
-            g2d.drawLine ( getWidth () - 1, 2, getWidth () - 1, getHeight () - 4 );
+        if (right) {
+            g2d.setColor(WebTableStyle.gridColor);
+            g2d.drawLine(0, 2, 0, getHeight() - 4);
+        } else {
+            g2d.setColor(WebTableStyle.gridColor);
+            g2d.drawLine(getWidth() - 1, 2, getWidth() - 1, getHeight() - 4);
         }
     }
 }

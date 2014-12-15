@@ -18,68 +18,68 @@
 package org.ocsoft.flatlaf.extended.painter;
 
 /**
- * This class contains default state constants supported by NinePatchStatePainter.
+ * This class contains default state constants supported by
+ * NinePatchStatePainter.
  *
  * @author Mikle Garin
  * @see NinePatchStatePainter
  */
 
-public class ComponentState
-{
+public class ComponentState {
     /**
      * Normal state.
      */
     public static String normal = "normal";
-
+    
     /**
      * Disabled state.
      */
     public static String disabled = "disabled";
-
+    
     /**
      * Rollover state.
      */
     public static String rollover = "rollover";
-
+    
     /**
      * Pressed state.
      */
     public static String pressed = "pressed";
-
+    
     /**
      * Selected state.
      */
     public static String selected = "selected";
-
+    
     /**
      * Selected and rollover state.
      */
     public static String selectedRollover = "selectedRollover";
-
+    
     /**
      * Selected and disabled state.
      */
     public static String selectedDisabled = "selectedDisabled";
-
+    
     /**
      * Selected and pressed state.
      */
     public static String selectedPressed = "selectedPressed";
-
+    
     /**
      * Floating toolbar state.
      */
     public static String floating = "floating";
-
+    
     /**
      * Floating and disabled toolbar state.
      */
     public static String floatingDisabled = "floatingDisabled";
-
+    
     /**
-     * Focused component state.
-     * This state is rendered differently and not shared with other states.
-     * 9-patch icon for this state will be painted atop of other state icons.
+     * Focused component state. This state is rendered differently and not
+     * shared with other states. 9-patch icon for this state will be painted
+     * atop of other state icons.
      */
     public static String focused = "focused";
 }

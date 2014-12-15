@@ -27,113 +27,108 @@ import java.awt.*;
 
 /**
  * Custom component to create spacings where layout can't do the stuff you need.
- * It is basically better to use this, instead of combining two containers with two layouts.
- * The best case is of course when layout handles the spacing, but its not always that easy.
+ * It is basically better to use this, instead of combining two containers with
+ * two layouts. The best case is of course when layout handles the spacing, but
+ * its not always that easy.
  *
  * @author Mikle Garin
  */
 
-public class WhiteSpace extends JComponent implements SwingConstants
-{
+public class WhiteSpace extends JComponent implements SwingConstants {
     /**
      * Spacing amount in px.
      */
     private int spacing;
-
+    
     /**
      * Spacing orientation.
      */
     private int orientation;
-
+    
     /**
      * Constructs new spacer.
      */
-    public WhiteSpace ()
-    {
-        this ( FlatLafStyleConstants.contentSpacing );
+    public WhiteSpace() {
+        this(FlatLafStyleConstants.contentSpacing);
     }
-
-    /**
-     * Constructs new spacer.
-     *
-     * @param spacing space amount
-     */
-    public WhiteSpace ( final int spacing )
-    {
-        this ( spacing, -1 );
-    }
-
+    
     /**
      * Constructs new spacer.
      *
-     * @param spacing     space amount
-     * @param orientation space orientation
+     * @param spacing
+     *            space amount
      */
-    public WhiteSpace ( final int spacing, final int orientation )
-    {
-        super ();
-        SwingUtils.setOrientation ( this );
-        setSpacing ( spacing );
-        setOrientation ( orientation );
+    public WhiteSpace(final int spacing) {
+        this(spacing, -1);
     }
-
+    
+    /**
+     * Constructs new spacer.
+     *
+     * @param spacing
+     *            space amount
+     * @param orientation
+     *            space orientation
+     */
+    public WhiteSpace(final int spacing, final int orientation) {
+        super();
+        SwingUtils.setOrientation(this);
+        setSpacing(spacing);
+        setOrientation(orientation);
+    }
+    
     /**
      * Returns spacing orientation.
      *
      * @return spacing orientation
      */
-    public int getOrientation ()
-    {
+    public int getOrientation() {
         return orientation;
     }
-
+    
     /**
-     * Sets spacing orientation.
-     * Specify {@code -1} to have spacing for both orientations.
+     * Sets spacing orientation. Specify {@code -1} to have spacing for both
+     * orientations.
      *
-     * @param orientation new spacing orientation
+     * @param orientation
+     *            new spacing orientation
      */
-    public void setOrientation ( final int orientation )
-    {
+    public void setOrientation(final int orientation) {
         this.orientation = orientation;
     }
-
+    
     /**
      * Returns spacing amount in px.
      *
      * @return spacing amount in px
      */
-    public int getSpacing ()
-    {
+    public int getSpacing() {
         return spacing;
     }
-
+    
     /**
      * Sets spacing amount in px.
      *
-     * @param spacing new spacing amount in px
+     * @param spacing
+     *            new spacing amount in px
      */
-    public void setSpacing ( final int spacing )
-    {
+    public void setSpacing(final int spacing) {
         this.spacing = spacing;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Dimension getPreferredSize ()
-    {
-        final Container container = getParent ();
-        if ( container != null && container.getLayout () instanceof ToolbarLayout )
-        {
-            final ToolbarLayout layout = ( ToolbarLayout ) container.getLayout ();
-            return new Dimension ( layout.getOrientation () != VERTICAL ? spacing : 0,
-                    layout.getOrientation () != HORIZONTAL ? spacing : 0 );
-        }
-        else
-        {
-            return new Dimension ( orientation != VERTICAL ? spacing : 0, orientation != HORIZONTAL ? spacing : 0 );
+    public Dimension getPreferredSize() {
+        final Container container = getParent();
+        if (container != null && container.getLayout() instanceof ToolbarLayout) {
+            final ToolbarLayout layout = (ToolbarLayout) container.getLayout();
+            return new Dimension(layout.getOrientation() != VERTICAL ? spacing
+                    : 0, layout.getOrientation() != HORIZONTAL ? spacing : 0);
+        } else {
+            return new Dimension(orientation != VERTICAL ? spacing : 0,
+                    orientation != HORIZONTAL ? spacing : 0);
         }
     }
 }

@@ -22,19 +22,21 @@ import java.util.Date;
 import org.ocsoft.flatlaf.laf.button.WebToggleButton;
 
 /**
- * This interface allows you to provide custom date buttons customizer into WebCalendar component.
+ * This interface allows you to provide custom date buttons customizer into
+ * WebCalendar component.
  *
  * @author Mikle Garin
  * @see WebCalendar
  */
 
-public interface DateCustomizer
-{
+public interface DateCustomizer {
     /**
      * Customize single date button.
      *
-     * @param button button to customize
-     * @param date   date
+     * @param button
+     *            button to customize
+     * @param date
+     *            date
      */
-    public void customize ( WebToggleButton button, Date date );
+    public void customize(WebToggleButton button, Date date);
 }

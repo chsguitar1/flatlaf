@@ -31,29 +31,27 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class WebDialogLU extends DefaultLanguageUpdater<Dialog>
-{
+public class WebDialogLU extends DefaultLanguageUpdater<Dialog> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void update ( final Dialog c, final String key, final Value value, final Object... data )
-    {
-        if ( c instanceof JDialog )
-        {
-            final JRootPane rootPane = ( ( JDialog ) c ).getRootPane ();
-            if ( rootPane.getUI () instanceof WebRootPaneUI )
-            {
-                final JComponent titleComponent = ( ( WebRootPaneUI ) rootPane.getUI () ).getTitleComponent ();
-                if ( titleComponent != null )
-                {
-                    titleComponent.repaint ();
-
-                    // final JLabel title = SwingUtils.getFirst ( titleComponent, JLabel.class );
+    public void update(final Dialog c, final String key, final Value value,
+            final Object... data) {
+        if (c instanceof JDialog) {
+            final JRootPane rootPane = ((JDialog) c).getRootPane();
+            if (rootPane.getUI() instanceof WebRootPaneUI) {
+                final JComponent titleComponent = ((WebRootPaneUI) rootPane
+                        .getUI()).getTitleComponent();
+                if (titleComponent != null) {
+                    titleComponent.repaint();
+                    
+                    // final JLabel title = SwingUtils.getFirst (
+                    // titleComponent, JLabel.class );
                     // title.setText ( getDefaultText ( value, data ) );
                 }
             }
         }
-        c.setTitle ( getDefaultText ( value, data ) );
+        c.setTitle(getDefaultText(value, data));
     }
 }

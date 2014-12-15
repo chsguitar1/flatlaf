@@ -34,72 +34,63 @@ import java.util.List;
  * @see org.ocsoft.flatlaf.managers.notification.NotificationsLayoutUtils
  */
 
-public class NotificationsLayout extends AbstractLayoutManager implements SwingConstants
-{
+public class NotificationsLayout extends AbstractLayoutManager implements
+        SwingConstants {
     /**
      * Cached notifications.
      */
-    protected final List<WebInnerNotification> notifications = new ArrayList<WebInnerNotification> ( 2 );
-
+    protected final List<WebInnerNotification> notifications = new ArrayList<WebInnerNotification>(
+            2);
+    
     /**
      * Notifications lock.
      */
-    protected final Object lock = new Object ();
-
+    protected final Object lock = new Object();
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void addComponent ( final Component component, final Object constraints )
-    {
-        synchronized ( lock )
-        {
-            if ( component instanceof WebInnerNotification )
-            {
-                notifications.add ( ( WebInnerNotification ) component );
+    public void addComponent(final Component component, final Object constraints) {
+        synchronized (lock) {
+            if (component instanceof WebInnerNotification) {
+                notifications.add((WebInnerNotification) component);
             }
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeComponent ( final Component component )
-    {
-        synchronized ( lock )
-        {
-            if ( component instanceof WebInnerNotification )
-            {
-                notifications.remove ( component );
+    public void removeComponent(final Component component) {
+        synchronized (lock) {
+            if (component instanceof WebInnerNotification) {
+                notifications.remove(component);
             }
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Dimension preferredLayoutSize ( final Container parent )
-    {
+    public Dimension preferredLayoutSize(final Container parent) {
         return null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void layoutContainer ( final Container parent )
-    {
-        synchronized ( lock )
-        {
-            if ( notifications.size () > 0 )
-            {
+    public void layoutContainer(final Container parent) {
+        synchronized (lock) {
+            if (notifications.size() > 0) {
                 // Container bounds
-                final Rectangle bounds = SwingUtils.size ( parent );
-
+                final Rectangle bounds = SwingUtils.size(parent);
+                
                 // Layout notifications
-                NotificationsLayoutUtils.layout ( notifications, bounds );
+                NotificationsLayoutUtils.layout(notifications, bounds);
             }
         }
     }

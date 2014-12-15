@@ -29,220 +29,224 @@ import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
  * @author Mikle Garin
  */
 
-public final class CollectionUtils
-{
+public final class CollectionUtils {
     /**
      * Returns sub list with copied values.
      *
-     * @param list      source list
-     * @param fromIndex start index
-     * @param toIndex   end index
-     * @param <T>       data type
+     * @param list
+     *            source list
+     * @param fromIndex
+     *            start index
+     * @param toIndex
+     *            end index
+     * @param <T>
+     *            data type
      * @return sub list with copied values
      */
-    public static <T> ArrayList<T> copySubList ( final List<T> list, final int fromIndex, final int toIndex )
-    {
-        return new ArrayList<T> ( list.subList ( fromIndex, toIndex ) );
+    public static <T> ArrayList<T> copySubList(final List<T> list,
+            final int fromIndex, final int toIndex) {
+        return new ArrayList<T>(list.subList(fromIndex, toIndex));
     }
-
+    
     /**
      * Returns sub list with cloned values.
      *
-     * @param list      source list
-     * @param fromIndex start index
-     * @param toIndex   end index
-     * @param <T>       data type
+     * @param list
+     *            source list
+     * @param fromIndex
+     *            start index
+     * @param toIndex
+     *            end index
+     * @param <T>
+     *            data type
      * @return sub list with cloned values
      */
-    public static <T extends Cloneable> ArrayList<T> cloneSubList ( final List<T> list, final int fromIndex, final int toIndex )
-    {
-        final ArrayList<T> clone = new ArrayList<T> ( toIndex - fromIndex );
-        for ( int i = fromIndex; i < toIndex; i++ )
-        {
-            clone.add ( ReflectUtils.cloneSafely ( list.get ( i ) ) );
+    public static <T extends Cloneable> ArrayList<T> cloneSubList(
+            final List<T> list, final int fromIndex, final int toIndex) {
+        final ArrayList<T> clone = new ArrayList<T>(toIndex - fromIndex);
+        for (int i = fromIndex; i < toIndex; i++) {
+            clone.add(ReflectUtils.cloneSafely(list.get(i)));
         }
         return clone;
     }
-
+    
     /**
      * Returns data converted into list.
      *
-     * @param data data
-     * @param <T>  data type
+     * @param data
+     *            data
+     * @param <T>
+     *            data type
      * @return data list
      */
-    public static <T> ArrayList<T> asList ( final T... data )
-    {
-        final ArrayList<T> list = new ArrayList<T> ( data.length );
-        Collections.addAll ( list, data );
+    public static <T> ArrayList<T> asList(final T... data) {
+        final ArrayList<T> list = new ArrayList<T>(data.length);
+        Collections.addAll(list, data);
         return list;
     }
-
+    
     /**
      * Adds all objects into the specified list.
      *
-     * @param collection list to fill
-     * @param objects    objects
-     * @param <T>        objects type
-     * @return true if list changed as the result of this operation, false otherwise
+     * @param collection
+     *            list to fill
+     * @param objects
+     *            objects
+     * @param <T>
+     *            objects type
+     * @return true if list changed as the result of this operation, false
+     *         otherwise
      */
-    public static <T> boolean addAll ( final Collection<T> collection, final T... objects )
-    {
+    public static <T> boolean addAll(final Collection<T> collection,
+            final T... objects) {
         boolean result = false;
-        for ( final T object : objects )
-        {
-            if ( !collection.contains ( object ) )
-            {
-                result |= collection.add ( object );
+        for (final T object : objects) {
+            if (!collection.contains(object)) {
+                result |= collection.add(object);
             }
         }
         return result;
     }
-
+    
     /**
      * Adds all non-null objects into the specified list.
      *
-     * @param collection list to fill
-     * @param objects    objects
-     * @param <T>        objects type
-     * @return true if list changed as the result of this operation, false otherwise
+     * @param collection
+     *            list to fill
+     * @param objects
+     *            objects
+     * @param <T>
+     *            objects type
+     * @return true if list changed as the result of this operation, false
+     *         otherwise
      */
-    public static <T> boolean addAllNonNull ( final Collection<T> collection, final T... objects )
-    {
+    public static <T> boolean addAllNonNull(final Collection<T> collection,
+            final T... objects) {
         boolean result = false;
-        for ( final T object : objects )
-        {
-            if ( !collection.contains ( object ) && object != null )
-            {
-                result |= collection.add ( object );
+        for (final T object : objects) {
+            if (!collection.contains(object) && object != null) {
+                result |= collection.add(object);
             }
         }
         return result;
     }
-
+    
     /**
      * Removes all objects from the specified list.
      *
-     * @param collection list to fill
-     * @param objects    objects
-     * @param <T>        objects type
-     * @return true if list changed as the result of this operation, false otherwise
+     * @param collection
+     *            list to fill
+     * @param objects
+     *            objects
+     * @param <T>
+     *            objects type
+     * @return true if list changed as the result of this operation, false
+     *         otherwise
      */
-    public static <T> boolean removeAll ( final Collection<T> collection, final T... objects )
-    {
+    public static <T> boolean removeAll(final Collection<T> collection,
+            final T... objects) {
         boolean result = false;
-        for ( final T object : objects )
-        {
-            result |= collection.remove ( object );
+        for (final T object : objects) {
+            result |= collection.remove(object);
         }
         return result;
     }
-
+    
     /**
-     * Returns copy of the specified list.
-     * Note that this method will copy same list values into the new list.
+     * Returns copy of the specified list. Note that this method will copy same
+     * list values into the new list.
      *
-     * @param collection list to copy
-     * @param <T>        list type
+     * @param collection
+     *            list to copy
+     * @param <T>
+     *            list type
      * @return copy of the specified list
      */
-    public static <T> ArrayList<T> copy ( final Collection<T> collection )
-    {
-        if ( collection == null )
-        {
+    public static <T> ArrayList<T> copy(final Collection<T> collection) {
+        if (collection == null) {
             return null;
         }
-        return new ArrayList<T> ( collection );
+        return new ArrayList<T>(collection);
     }
-
+    
     /**
-     * Returns clone of the specified list.
-     * Note that this method will clone all values into new list.
+     * Returns clone of the specified list. Note that this method will clone all
+     * values into new list.
      *
-     * @param collection list to clone
-     * @param <T>        list type
+     * @param collection
+     *            list to clone
+     * @param <T>
+     *            list type
      * @return clone of the specified list
      */
-    public static <T extends Cloneable> ArrayList<T> clone ( final Collection<T> collection )
-    {
-        if ( collection == null )
-        {
+    public static <T extends Cloneable> ArrayList<T> clone(
+            final Collection<T> collection) {
+        if (collection == null) {
             return null;
         }
-        final ArrayList<T> cloned = new ArrayList<T> ( collection.size () );
-        for ( final T value : collection )
-        {
-            cloned.add ( ReflectUtils.cloneSafely ( value ) );
+        final ArrayList<T> cloned = new ArrayList<T>(collection.size());
+        for (final T value : collection) {
+            cloned.add(ReflectUtils.cloneSafely(value));
         }
         return cloned;
     }
-
+    
     /**
      * Returns data converted into list.
      *
-     * @param data data
-     * @param <T>  data type
+     * @param data
+     *            data
+     * @param <T>
+     *            data type
      * @return data list
      */
-    public static <T> ArrayList<T> copy ( final T... data )
-    {
-        final ArrayList<T> list = new ArrayList<T> ( data.length );
-        Collections.addAll ( list, data );
+    public static <T> ArrayList<T> copy(final T... data) {
+        final ArrayList<T> list = new ArrayList<T>(data.length);
+        Collections.addAll(list, data);
         return list;
     }
-
+    
     /**
      * Removes all null elements from list.
      *
-     * @param list list to refactor
-     * @param <T>  list type
+     * @param list
+     *            list to refactor
+     * @param <T>
+     *            list type
      * @return refactored list
      */
-    public static <T> List<T> removeNulls ( final List<T> list )
-    {
-        if ( list == null )
-        {
+    public static <T> List<T> removeNulls(final List<T> list) {
+        if (list == null) {
             return null;
         }
-        for ( int i = list.size () - 1; i >= 0; i-- )
-        {
-            if ( list.get ( i ) == null )
-            {
-                list.remove ( i );
+        for (int i = list.size() - 1; i >= 0; i--) {
+            if (list.get(i) == null) {
+                list.remove(i);
             }
         }
         return list;
     }
-
+    
     /**
      * Returns whether lists are equal or not.
      *
-     * @param list1 first list
-     * @param list2 second list
+     * @param list1
+     *            first list
+     * @param list2
+     *            second list
      * @return true if lists are equal, false otherwise
      */
-    public static boolean areEqual ( final List list1, final List list2 )
-    {
-        if ( list1 == null && list2 == null )
-        {
+    public static boolean areEqual(final List list1, final List list2) {
+        if (list1 == null && list2 == null) {
             return true;
-        }
-        else if ( ( list1 == null || list2 == null ) && list1 != list2 )
-        {
+        } else if ((list1 == null || list2 == null) && list1 != list2) {
             return false;
-        }
-        else
-        {
-            if ( list1.size () != list2.size () )
-            {
+        } else {
+            if (list1.size() != list2.size()) {
                 return false;
-            }
-            else
-            {
-                for ( final Object object : list1 )
-                {
-                    if ( !list2.contains ( object ) )
-                    {
+            } else {
+                for (final Object object : list1) {
+                    if (!list2.contains(object)) {
                         return false;
                     }
                 }
@@ -250,135 +254,143 @@ public final class CollectionUtils
             }
         }
     }
-
+    
     /**
      * Returns list of strings extracted from the specified elements list.
      *
-     * @param list         elements list
-     * @param textProvider text provider
-     * @param <T>          elements type
+     * @param list
+     *            elements list
+     * @param textProvider
+     *            text provider
+     * @param <T>
+     *            elements type
      * @return list of strings extracted from the specified elements list
      */
-    public static <T> ArrayList<String> toStringList ( final List<T> list, final TextProvider<T> textProvider )
-    {
-        final ArrayList<String> stringList = new ArrayList<String> ( list.size () );
-        for ( final T element : list )
-        {
-            stringList.add ( textProvider.provide ( element ) );
+    public static <T> ArrayList<String> toStringList(final List<T> list,
+            final TextProvider<T> textProvider) {
+        final ArrayList<String> stringList = new ArrayList<String>(list.size());
+        for (final T element : list) {
+            stringList.add(textProvider.provide(element));
         }
         return stringList;
     }
-
+    
     /**
      * Returns an int array created using Integer list.
      *
-     * @param list Integer list
+     * @param list
+     *            Integer list
      * @return int array
      */
-    public static int[] toArray ( final List<Integer> list )
-    {
-        final int[] array = new int[ list.size () ];
-        for ( int i = 0; i < list.size (); i++ )
-        {
-            final Integer integer = list.get ( i );
-            array[ i ] = integer != null ? integer : 0;
+    public static int[] toArray(final List<Integer> list) {
+        final int[] array = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            final Integer integer = list.get(i);
+            array[i] = integer != null ? integer : 0;
         }
         return array;
     }
-
+    
     /**
      * Returns a list of objects converted from array.
      *
-     * @param array data array
-     * @param <T>   data type
+     * @param array
+     *            data array
+     * @param <T>
+     *            data type
      * @return data list
      */
-    public static <T> ArrayList<T> toList ( final T[] array )
-    {
-        final ArrayList<T> list = new ArrayList<T> ( array.length );
-        Collections.addAll ( list, array );
+    public static <T> ArrayList<T> toList(final T[] array) {
+        final ArrayList<T> list = new ArrayList<T>(array.length);
+        Collections.addAll(list, array);
         return list;
     }
-
+    
     /**
      * Returns a list of objects converted from deque.
      *
-     * @param deque data deque
-     * @param <T>   data type
+     * @param deque
+     *            data deque
+     * @param <T>
+     *            data type
      * @return data list
      */
-    public static <T> ArrayList<T> toList ( final Deque<T> deque )
-    {
-        return new ArrayList<T> ( deque );
+    public static <T> ArrayList<T> toList(final Deque<T> deque) {
+        return new ArrayList<T>(deque);
     }
-
+    
     /**
      * Returns list of elements filtered from collection.
      *
-     * @param collection collecton to filter
-     * @param filter     filter to process
-     * @param <T>        elements type
+     * @param collection
+     *            collecton to filter
+     * @param filter
+     *            filter to process
+     * @param <T>
+     *            elements type
      * @return list of elements filtered from collection
      */
-    public static <T> ArrayList<T> filter ( final Collection<T> collection, final Filter<T> filter )
-    {
-        final ArrayList<T> filtered = new ArrayList<T> ( collection.size () );
-        for ( final T element : collection )
-        {
-            if ( filter.accept ( element ) )
-            {
-                filtered.add ( element );
+    public static <T> ArrayList<T> filter(final Collection<T> collection,
+            final Filter<T> filter) {
+        final ArrayList<T> filtered = new ArrayList<T>(collection.size());
+        for (final T element : collection) {
+            if (filter.accept(element)) {
+                filtered.add(element);
             }
         }
         return filtered;
     }
-
+    
     /**
      * Returns map keys list.
      *
-     * @param map map to process
-     * @param <K> key object type
-     * @param <V> value object type
+     * @param map
+     *            map to process
+     * @param <K>
+     *            key object type
+     * @param <V>
+     *            value object type
      * @return map keys list
      */
-    public static <K, V> ArrayList<K> keysList ( final Map<K, V> map )
-    {
-        return new ArrayList<K> ( map.keySet () );
+    public static <K, V> ArrayList<K> keysList(final Map<K, V> map) {
+        return new ArrayList<K>(map.keySet());
     }
-
+    
     /**
      * Returns map values list.
      *
-     * @param map map to process
-     * @param <K> key object type
-     * @param <V> value object type
+     * @param map
+     *            map to process
+     * @param <K>
+     *            key object type
+     * @param <V>
+     *            value object type
      * @return map values list
      */
-    public static <K, V> ArrayList<V> valuesList ( final Map<K, V> map )
-    {
-        return new ArrayList<V> ( map.values () );
+    public static <K, V> ArrayList<V> valuesList(final Map<K, V> map) {
+        return new ArrayList<V>(map.values());
     }
-
+    
     /**
      * Returns map values summary list with unique elements only.
      *
-     * @param map map to process
-     * @param <K> key object type
-     * @param <V> value object type
+     * @param map
+     *            map to process
+     * @param <K>
+     *            key object type
+     * @param <V>
+     *            value object type
      * @return map values summary list with unique elements only
      */
-    public static <K, V> ArrayList<V> valuesSummaryList ( final Map<K, List<V>> map )
-    {
-        final ArrayList<V> summary = new ArrayList<V> ( 0 );
-        for ( final Map.Entry<K, List<V>> entry : map.entrySet () )
-        {
-            final List<V> list = entry.getValue ();
-            summary.ensureCapacity ( summary.size () + list.size () );
-            for ( final V value : list )
-            {
-                if ( !summary.contains ( value ) )
-                {
-                    summary.add ( value );
+    public static <K, V> ArrayList<V> valuesSummaryList(
+            final Map<K, List<V>> map) {
+        final ArrayList<V> summary = new ArrayList<V>(0);
+        for (final Map.Entry<K, List<V>> entry : map.entrySet()) {
+            final List<V> list = entry.getValue();
+            summary.ensureCapacity(summary.size() + list.size());
+            for (final V value : list) {
+                if (!summary.contains(value)) {
+                    summary.add(value);
                 }
             }
         }

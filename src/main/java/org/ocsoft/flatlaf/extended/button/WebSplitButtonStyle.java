@@ -27,29 +27,31 @@ import org.ocsoft.flatlaf.laf.menu.PopupMenuWay;
  * @author Mikle Garin
  */
 
-public class WebSplitButtonStyle
-{
+public class WebSplitButtonStyle {
     /**
      * Split button icon.
      */
-    public static ImageIcon splitIcon = new ImageIcon ( WebSplitButtonStyle.class.getResource ( "icons/splitIcon.png" ) );
-
+    public static ImageIcon splitIcon = new ImageIcon(
+            WebSplitButtonStyle.class.getResource("icons/splitIcon.png"));
+    
     /**
      * Gap between split icon and split part sides.
      */
     public static int splitIconGap = 1;
-
+    
     /**
-     * Gap between split part (split icon) and button content (button icon and text).
+     * Gap between split part (split icon) and button content (button icon and
+     * text).
      */
     public static int contentGap = 6;
-
+    
     /**
      * Whether should always display popup menu when button is clicked or not.
-     * If set to false popup menu will only be displayed when split button part is clicked.
+     * If set to false popup menu will only be displayed when split button part
+     * is clicked.
      */
     public static boolean alwaysShowMenu = false;
-
+    
     /**
      * Popup menu display way.
      */

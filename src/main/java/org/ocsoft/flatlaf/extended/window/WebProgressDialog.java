@@ -31,291 +31,233 @@ import java.awt.*;
 /**
  * User: mgarin Date: 14.02.12 Time: 12:08
  * <p/>
- * This class provides a quick way to display a progress dialog anywhere you need it and change the progress values without any additional
- * efforts like working with Swing thread to update progress
+ * This class provides a quick way to display a progress dialog anywhere you
+ * need it and change the progress values without any additional efforts like
+ * working with Swing thread to update progress
  */
 
-public class WebProgressDialog extends WebDialog
-{
+public class WebProgressDialog extends WebDialog {
     private int preferredProgressWidth = 0;
     private boolean shownOnce = false;
-
+    
     private final WebPanel container;
     private final WebLabel titleText;
     private final WebProgressBar progressBar;
     private Component middleComponent = null;
-
-    public WebProgressDialog ( final String title )
-    {
-        this ( null, title );
+    
+    public WebProgressDialog(final String title) {
+        this(null, title);
     }
-
-    public WebProgressDialog ( final Window owner, final String title )
-    {
-        super ( owner );
-        setLayout ( new BorderLayout () );
-
-        if ( LanguageManager.contains ( title ) )
-        {
-            setLanguage ( title );
+    
+    public WebProgressDialog(final Window owner, final String title) {
+        super(owner);
+        setLayout(new BorderLayout());
+        
+        if (LanguageManager.contains(title)) {
+            setLanguage(title);
+        } else {
+            setTitle(title);
         }
-        else
-        {
-            setTitle ( title );
-        }
-
-        container = new WebPanel ( new BorderLayout ( 5, 5 ) );
-        container.setMargin ( 10, 10, 10, 10 );
-        container.setOpaque ( false );
-        add ( container, BorderLayout.CENTER );
-
+        
+        container = new WebPanel(new BorderLayout(5, 5));
+        container.setMargin(10, 10, 10, 10);
+        container.setOpaque(false);
+        add(container, BorderLayout.CENTER);
+        
         // Creating label with single space to hold label height on pack
-        titleText = new WebLabel ( " ", WebLabel.CENTER )
-        {
+        titleText = new WebLabel(" ", WebLabel.CENTER) {
             @Override
-            public Dimension getPreferredSize ()
-            {
-                final Dimension ps = super.getPreferredSize ();
+            public Dimension getPreferredSize() {
+                final Dimension ps = super.getPreferredSize();
                 ps.width = 0;
                 return ps;
             }
         };
-        titleText.setDrawShade ( true );
-        container.add ( titleText, BorderLayout.NORTH );
-
+        titleText.setDrawShade(true);
+        container.add(titleText, BorderLayout.NORTH);
+        
         // Default progress bar
-        progressBar = new WebProgressBar ( WebProgressBar.HORIZONTAL, 0, 100 )
-        {
+        progressBar = new WebProgressBar(WebProgressBar.HORIZONTAL, 0, 100) {
             @Override
-            public Dimension getPreferredSize ()
-            {
-                final Dimension ps = super.getPreferredSize ();
-                if ( preferredProgressWidth > 0 )
-                {
+            public Dimension getPreferredSize() {
+                final Dimension ps = super.getPreferredSize();
+                if (preferredProgressWidth > 0) {
                     ps.width = preferredProgressWidth;
                 }
                 return ps;
             }
         };
-        progressBar.setStringPainted ( true );
-        container.add ( progressBar, BorderLayout.SOUTH );
-
-        setDefaultCloseOperation ( JDialog.DISPOSE_ON_CLOSE );
-        setResizable ( false );
-        setModal ( false );
-
-        updateBounds ();
-        setLocationRelativeTo ( owner );
+        progressBar.setStringPainted(true);
+        container.add(progressBar, BorderLayout.SOUTH);
+        
+        setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        setModal(false);
+        
+        updateBounds();
+        setLocationRelativeTo(owner);
     }
-
-    public void setText ( final String text )
-    {
-        SwingUtils.invokeLater ( new Runnable ()
-        {
+    
+    public void setText(final String text) {
+        SwingUtils.invokeLater(new Runnable() {
             @Override
-            public void run ()
-            {
-                titleText.setText ( text );
+            public void run() {
+                titleText.setText(text);
             }
-        } );
+        });
     }
-
-    public void setTextKey ( final String key )
-    {
-        SwingUtils.invokeLater ( new Runnable ()
-        {
+    
+    public void setTextKey(final String key) {
+        SwingUtils.invokeLater(new Runnable() {
             @Override
-            public void run ()
-            {
-                titleText.setLanguage ( key );
+            public void run() {
+                titleText.setLanguage(key);
             }
-        } );
+        });
     }
-
-    public String getText ()
-    {
-        return titleText.getText ();
+    
+    public String getText() {
+        return titleText.getText();
     }
-
-    public void setProgressText ( final String progressText )
-    {
-        SwingUtils.invokeLater ( new Runnable ()
-        {
+    
+    public void setProgressText(final String progressText) {
+        SwingUtils.invokeLater(new Runnable() {
             @Override
-            public void run ()
-            {
-                progressBar.setString ( progressText );
+            public void run() {
+                progressBar.setString(progressText);
             }
-        } );
+        });
     }
-
-    public String getProgressText ()
-    {
-        return progressBar.getString ();
+    
+    public String getProgressText() {
+        return progressBar.getString();
     }
-
-    public void setShowProgressText ( final boolean showProgressText )
-    {
-        SwingUtils.invokeLater ( new Runnable ()
-        {
+    
+    public void setShowProgressText(final boolean showProgressText) {
+        SwingUtils.invokeLater(new Runnable() {
             @Override
-            public void run ()
-            {
-                progressBar.setStringPainted ( showProgressText );
-                updateBounds ();
+            public void run() {
+                progressBar.setStringPainted(showProgressText);
+                updateBounds();
             }
-        } );
+        });
     }
-
-    public boolean isShowProgressText ()
-    {
-        return progressBar.isStringPainted ();
+    
+    public boolean isShowProgressText() {
+        return progressBar.isStringPainted();
     }
-
-    public void setIndeterminate ( final boolean indeterminate )
-    {
-        SwingUtils.invokeLater ( new Runnable ()
-        {
+    
+    public void setIndeterminate(final boolean indeterminate) {
+        SwingUtils.invokeLater(new Runnable() {
             @Override
-            public void run ()
-            {
-                progressBar.setIndeterminate ( indeterminate );
+            public void run() {
+                progressBar.setIndeterminate(indeterminate);
             }
-        } );
+        });
     }
-
-    public boolean isIndeterminate ()
-    {
-        return progressBar.isIndeterminate ();
+    
+    public boolean isIndeterminate() {
+        return progressBar.isIndeterminate();
     }
-
-    public void setMinimum ( final int minimum )
-    {
-        SwingUtils.invokeLater ( new Runnable ()
-        {
+    
+    public void setMinimum(final int minimum) {
+        SwingUtils.invokeLater(new Runnable() {
             @Override
-            public void run ()
-            {
-                progressBar.setMinimum ( minimum );
+            public void run() {
+                progressBar.setMinimum(minimum);
             }
-        } );
+        });
     }
-
-    public int getMinimum ()
-    {
-        return progressBar.getMinimum ();
+    
+    public int getMinimum() {
+        return progressBar.getMinimum();
     }
-
-    public void setMaximum ( final int maximum )
-    {
-        SwingUtils.invokeLater ( new Runnable ()
-        {
+    
+    public void setMaximum(final int maximum) {
+        SwingUtils.invokeLater(new Runnable() {
             @Override
-            public void run ()
-            {
-                progressBar.setMaximum ( maximum );
+            public void run() {
+                progressBar.setMaximum(maximum);
             }
-        } );
+        });
     }
-
-    public int getMaximum ()
-    {
-        return progressBar.getMaximum ();
+    
+    public int getMaximum() {
+        return progressBar.getMaximum();
     }
-
-    public void setProgress ( final int progress )
-    {
-        SwingUtils.invokeLater ( new Runnable ()
-        {
+    
+    public void setProgress(final int progress) {
+        SwingUtils.invokeLater(new Runnable() {
             @Override
-            public void run ()
-            {
-                progressBar.setValue ( progress );
+            public void run() {
+                progressBar.setValue(progress);
             }
-        } );
+        });
     }
-
-    public int getPreferredProgressWidth ()
-    {
+    
+    public int getPreferredProgressWidth() {
         return preferredProgressWidth;
     }
-
-    public void setPreferredProgressWidth ( final int preferredProgressWidth )
-    {
+    
+    public void setPreferredProgressWidth(final int preferredProgressWidth) {
         this.preferredProgressWidth = preferredProgressWidth;
-        updateBounds ();
+        updateBounds();
     }
-
-    public int getProgress ()
-    {
-        return progressBar.getValue ();
+    
+    public int getProgress() {
+        return progressBar.getValue();
     }
-
-    public WebLabel getTitleLabel ()
-    {
+    
+    public WebLabel getTitleLabel() {
         return titleText;
     }
-
-    public Component getMiddleComponent ()
-    {
+    
+    public Component getMiddleComponent() {
         return middleComponent;
     }
-
-    public void setMiddleComponent ( final Component middleComponent )
-    {
-        if ( this.middleComponent != null )
-        {
-            container.remove ( middleComponent );
+    
+    public void setMiddleComponent(final Component middleComponent) {
+        if (this.middleComponent != null) {
+            container.remove(middleComponent);
         }
         this.middleComponent = middleComponent;
-        container.add ( middleComponent, BorderLayout.CENTER );
-        container.revalidate ();
-        updateBounds ();
+        container.add(middleComponent, BorderLayout.CENTER);
+        container.revalidate();
+        updateBounds();
     }
-
-    public WebProgressBar getProgressBar ()
-    {
+    
+    public WebProgressBar getProgressBar() {
         return progressBar;
     }
-
-    public void setShowProgressBar ( final boolean showProgressBar )
-    {
-        if ( showProgressBar )
-        {
-            if ( progressBar.getParent () != container )
-            {
-                container.add ( progressBar, BorderLayout.SOUTH );
-                container.revalidate ();
-                updateBounds ();
+    
+    public void setShowProgressBar(final boolean showProgressBar) {
+        if (showProgressBar) {
+            if (progressBar.getParent() != container) {
+                container.add(progressBar, BorderLayout.SOUTH);
+                container.revalidate();
+                updateBounds();
             }
-        }
-        else
-        {
-            if ( progressBar.getParent () == container )
-            {
-                container.remove ( progressBar );
-                container.revalidate ();
-                updateBounds ();
+        } else {
+            if (progressBar.getParent() == container) {
+                container.remove(progressBar);
+                container.revalidate();
+                updateBounds();
             }
         }
     }
-
-    private void updateBounds ()
-    {
-        pack ();
-        if ( !shownOnce )
-        {
-            setLocationRelativeTo ( getOwner () );
+    
+    private void updateBounds() {
+        pack();
+        if (!shownOnce) {
+            setLocationRelativeTo(getOwner());
         }
     }
-
+    
     @Override
-    public void setVisible ( final boolean b )
-    {
-        if ( b )
-        {
+    public void setVisible(final boolean b) {
+        if (b) {
             shownOnce = true;
         }
-        super.setVisible ( b );
+        super.setVisible(b);
     }
 }

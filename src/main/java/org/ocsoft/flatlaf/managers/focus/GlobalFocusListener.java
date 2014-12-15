@@ -26,14 +26,16 @@ import java.util.EventListener;
  * @author Mikle Garin
  */
 
-public interface GlobalFocusListener extends EventListener
-{
+public interface GlobalFocusListener extends EventListener {
     /**
-     * Informs about global focus changes within the application.
-     * In case focus goes outside the application or comes from other application one of components might be null.
+     * Informs about global focus changes within the application. In case focus
+     * goes outside the application or comes from other application one of
+     * components might be null.
      *
-     * @param oldFocus previously focused component
-     * @param newFocus currently focused component
+     * @param oldFocus
+     *            previously focused component
+     * @param newFocus
+     *            currently focused component
      */
-    public void focusChanged ( Component oldFocus, Component newFocus );
+    public void focusChanged(Component oldFocus, Component newFocus);
 }

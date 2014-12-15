@@ -21,7 +21,6 @@ package org.ocsoft.flatlaf.laf.table.renderers;
  * @author Mikle Garin
  */
 
-public class WebColorRenderer
-{
+public class WebColorRenderer {
     // todo
 }

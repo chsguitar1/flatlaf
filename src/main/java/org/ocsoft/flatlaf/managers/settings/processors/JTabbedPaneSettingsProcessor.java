@@ -28,74 +28,70 @@ import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
  * Custom SettingsProcessor for JTabbedPane component.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How to use SettingsManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How
+ *      to use SettingsManager</a>
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  * @see org.ocsoft.flatlaf.managers.settings.SettingsProcessor
  */
 
-public class JTabbedPaneSettingsProcessor extends SettingsProcessor<JTabbedPane, Integer>
-{
+public class JTabbedPaneSettingsProcessor extends
+        SettingsProcessor<JTabbedPane, Integer> {
     /**
      * Tab selection change listener.
      */
     private ChangeListener listener;
-
+    
     /**
      * Constructs SettingsProcessor using the specified SettingsProcessorData.
      *
-     * @param data SettingsProcessorData
+     * @param data
+     *            SettingsProcessorData
      */
-    public JTabbedPaneSettingsProcessor ( final SettingsProcessorData data )
-    {
-        super ( data );
+    public JTabbedPaneSettingsProcessor(final SettingsProcessorData data) {
+        super(data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doInit ( final JTabbedPane component )
-    {
-        listener = new ChangeListener ()
-        {
+    protected void doInit(final JTabbedPane component) {
+        listener = new ChangeListener() {
             @Override
-            public void stateChanged ( final ChangeEvent e )
-            {
-                save ();
+            public void stateChanged(final ChangeEvent e) {
+                save();
             }
         };
-        component.addChangeListener ( listener );
+        component.addChangeListener(listener);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doDestroy ( final JTabbedPane component )
-    {
-        component.removeChangeListener ( listener );
+    protected void doDestroy(final JTabbedPane component) {
+        component.removeChangeListener(listener);
         listener = null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doLoad ( final JTabbedPane component )
-    {
-        final Integer index = loadValue ();
-        if ( index != null && index >= 0 && component.getTabCount () > index && index != component.getSelectedIndex () )
-        {
-            component.setSelectedIndex ( index );
+    protected void doLoad(final JTabbedPane component) {
+        final Integer index = loadValue();
+        if (index != null && index >= 0 && component.getTabCount() > index
+                && index != component.getSelectedIndex()) {
+            component.setSelectedIndex(index);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doSave ( final JTabbedPane component )
-    {
-        saveValue ( component.getSelectedIndex () );
+    protected void doSave(final JTabbedPane component) {
+        saveValue(component.getSelectedIndex());
     }
 }

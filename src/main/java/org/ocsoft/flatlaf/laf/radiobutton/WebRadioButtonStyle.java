@@ -27,58 +27,57 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class WebRadioButtonStyle
-{
+public final class WebRadioButtonStyle {
     /**
      * Border color.
      */
     public static Color borderColor = FlatLafStyleConstants.borderColor;
-
+    
     /**
      * Dark border color.
      */
     public static Color darkBorderColor = FlatLafStyleConstants.darkBorderColor;
-
+    
     /**
      * Disabled border color.
      */
     public static Color disabledBorderColor = FlatLafStyleConstants.disabledBorderColor;
-
+    
     /**
      * Top background gradient color.
      */
     public static Color topBgColor = FlatLafStyleConstants.topBgColor;
-
+    
     /**
      * Bottom background gradient color.
      */
     public static Color bottomBgColor = FlatLafStyleConstants.bottomBgColor;
-
+    
     /**
      * Top background gradient color on selection.
      */
     public static Color topSelectedBgColor = FlatLafStyleConstants.topSelectedBgColor;
-
+    
     /**
      * Bottom background gradient color on selection.
      */
     public static Color bottomSelectedBgColor = FlatLafStyleConstants.bottomSelectedBgColor;
-
+    
     /**
      * Decoration shade width.
      */
     public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Default checkbox margin.
      */
     public static Insets margin = FlatLafStyleConstants.emptyMargin;
-
+    
     /**
      * Whether should animate selection changes or not.
      */
     public static boolean animated = FlatLafStyleConstants.animate;
-
+    
     /**
      * Whether should display dark border only on rollover or not.
      */

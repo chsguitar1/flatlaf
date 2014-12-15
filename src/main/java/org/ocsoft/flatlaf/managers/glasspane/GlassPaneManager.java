@@ -26,60 +26,58 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 /**
- * This manager provides an instance of WebGlassPane for specified JRootPane instance.
+ * This manager provides an instance of WebGlassPane for specified JRootPane
+ * instance.
  *
  * @author Mikle Garin
  * @see WebGlassPane
  */
 
-public class GlassPaneManager
-{
+public class GlassPaneManager {
     /**
      * Registered glass panes per JRootPane.
      */
-    protected static final Map<JRootPane, WebGlassPane> registeredWindows = new WeakHashMap<JRootPane, WebGlassPane> ();
-
+    protected static final Map<JRootPane, WebGlassPane> registeredWindows = new WeakHashMap<JRootPane, WebGlassPane>();
+    
     /**
-     * Returns registered WebGlassPane for JRootPane under the specified component.
-     * If WebGlassPane is not yet registered for that JRootPane then it will be created.
-     * Might return null if no WebGlassPane could be registered for that JRootPane.
+     * Returns registered WebGlassPane for JRootPane under the specified
+     * component. If WebGlassPane is not yet registered for that JRootPane then
+     * it will be created. Might return null if no WebGlassPane could be
+     * registered for that JRootPane.
      *
-     * @param component component to process
-     * @return registered WebGlassPane for JRootPane under the specified component or null if it cannot be registered
+     * @param component
+     *            component to process
+     * @return registered WebGlassPane for JRootPane under the specified
+     *         component or null if it cannot be registered
      */
-    public static WebGlassPane getGlassPane ( final Component component )
-    {
-        return getGlassPane ( SwingUtils.getRootPane ( component ) );
+    public static WebGlassPane getGlassPane(final Component component) {
+        return getGlassPane(SwingUtils.getRootPane(component));
     }
-
+    
     /**
-     * Returns registered WebGlassPane for the specified JRootPane.
-     * If WebGlassPane is not yet registered for that JRootPane then it will be created.
-     * Might return null if no WebGlassPane could be registered for that JRootPane.
+     * Returns registered WebGlassPane for the specified JRootPane. If
+     * WebGlassPane is not yet registered for that JRootPane then it will be
+     * created. Might return null if no WebGlassPane could be registered for
+     * that JRootPane.
      *
-     * @param rootPane JRootPane to process
-     * @return registered WebGlassPane for JRootPane under the specified component or null if it cannot be registered
+     * @param rootPane
+     *            JRootPane to process
+     * @return registered WebGlassPane for JRootPane under the specified
+     *         component or null if it cannot be registered
      */
-    public static WebGlassPane getGlassPane ( final JRootPane rootPane )
-    {
-        if ( rootPane != null )
-        {
-            if ( registeredWindows.containsKey ( rootPane ) )
-            {
-                return registeredWindows.get ( rootPane );
-            }
-            else
-            {
-                final WebGlassPane glassPane = new WebGlassPane ( rootPane );
-                rootPane.setGlassPane ( glassPane );
-                glassPane.setVisible ( true );
-                rootPane.invalidate ();
-                registeredWindows.put ( rootPane, glassPane );
+    public static WebGlassPane getGlassPane(final JRootPane rootPane) {
+        if (rootPane != null) {
+            if (registeredWindows.containsKey(rootPane)) {
+                return registeredWindows.get(rootPane);
+            } else {
+                final WebGlassPane glassPane = new WebGlassPane(rootPane);
+                rootPane.setGlassPane(glassPane);
+                glassPane.setVisible(true);
+                rootPane.invalidate();
+                registeredWindows.put(rootPane, glassPane);
                 return glassPane;
             }
-        }
-        else
-        {
+        } else {
             return null;
         }
     }

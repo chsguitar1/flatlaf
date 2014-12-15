@@ -27,39 +27,36 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
  * User: mgarin Date: 27.04.12 Time: 16:27
  */
 
-public class TextConverter implements Converter
-{
+public class TextConverter implements Converter {
     @Override
-    public boolean canConvert ( Class type )
-    {
-        return Text.class.getCanonicalName ().equals ( type.getCanonicalName () );
+    public boolean canConvert(Class type) {
+        return Text.class.getCanonicalName().equals(type.getCanonicalName());
     }
-
+    
     @Override
-    public void marshal ( Object source, HierarchicalStreamWriter writer, MarshallingContext context )
-    {
-        Text value = ( Text ) source;
-
+    public void marshal(Object source, HierarchicalStreamWriter writer,
+            MarshallingContext context) {
+        Text value = (Text) source;
+        
         // Adding state
-        if ( value.getState () != null )
-        {
-            writer.addAttribute ( "state", "" + value.getState () );
+        if (value.getState() != null) {
+            writer.addAttribute("state", "" + value.getState());
         }
-
+        
         // Adding value
-        writer.setValue ( value.getText () );
+        writer.setValue(value.getText());
     }
-
+    
     @Override
-    public Object unmarshal ( HierarchicalStreamReader reader, UnmarshallingContext context )
-    {
+    public Object unmarshal(HierarchicalStreamReader reader,
+            UnmarshallingContext context) {
         // Reading state
-        String state = reader.getAttribute ( "state" );
-
+        String state = reader.getAttribute("state");
+        
         // Reading value
-        String value = reader.getValue ();
-
+        String value = reader.getValue();
+        
         // Creating Text object
-        return new Text ( value, state );
+        return new Text(value, state);
     }
 }

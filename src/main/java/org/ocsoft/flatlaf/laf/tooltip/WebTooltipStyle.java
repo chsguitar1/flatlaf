@@ -27,28 +27,27 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class WebTooltipStyle
-{
+public final class WebTooltipStyle {
     /**
      * Tooltip text color.
      */
     public static Color textColor = FlatLafStyleConstants.tooltipTextColor;
-
+    
     /**
      * Tooltip background color.
      */
     public static Color backgroundColor = Color.BLACK;
-
+    
     /**
      * Tooltip background trasparency.
      */
     public static float trasparency = FlatLafStyleConstants.mediumTransparent;
-
+    
     /**
      * Tooltip content margin.
      */
-    public static Insets contentMargin = new Insets ( 3, 3, 3, 3 );
-
+    public static Insets contentMargin = new Insets(3, 3, 3, 3);
+    
     /**
      * Decoration rounding.
      */

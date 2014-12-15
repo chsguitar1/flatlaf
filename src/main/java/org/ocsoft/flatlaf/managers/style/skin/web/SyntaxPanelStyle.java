@@ -23,13 +23,12 @@ package org.ocsoft.flatlaf.managers.style.skin.web;
  * @author Mikle Garin
  */
 
-public enum SyntaxPanelStyle
-{
+public enum SyntaxPanelStyle {
     /**
      * Bold border.
      */
     bold,
-
+    
     /**
      * Thick border.
      */

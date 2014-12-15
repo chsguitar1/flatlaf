@@ -23,18 +23,22 @@ import java.util.EventListener;
  * Settings change listener interface.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How to use SettingsManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How
+ *      to use SettingsManager</a>
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  */
 
-public interface SettingsListener extends EventListener
-{
+public interface SettingsListener extends EventListener {
     /**
      * Called when settings with the specified group and key is changed.
      *
-     * @param group    settings group
-     * @param key      settings key
-     * @param newValue new value
+     * @param group
+     *            settings group
+     * @param key
+     *            settings key
+     * @param newValue
+     *            new value
      */
-    public void settingsChanged ( String group, String key, Object newValue );
+    public void settingsChanged(String group, String key, Object newValue);
 }

@@ -28,185 +28,183 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-@XStreamAlias ("Line")
-public class Line
-{
+@XStreamAlias("Line")
+public class Line {
     /**
      * First X coordinate.
      */
     @XStreamAsAttribute
     public int x1;
-
+    
     /**
      * First Y coordinate.
      */
     @XStreamAsAttribute
     public int y1;
-
+    
     /**
      * Second X coordinate.
      */
     @XStreamAsAttribute
     public int x2;
-
+    
     /**
      * Second Y coordinate.
      */
     @XStreamAsAttribute
     public int y2;
-
+    
     /**
      * Conscturcts a line using empty coordinates.
      */
-    public Line ()
-    {
-        super ();
+    public Line() {
+        super();
     }
-
+    
     /**
      * Constructs a line using the specifed coordinates.
      *
-     * @param x1 first X coordinate
-     * @param y1 first Y coordinate
-     * @param x2 second X coordinate
-     * @param y2 second Y coordinate
+     * @param x1
+     *            first X coordinate
+     * @param y1
+     *            first Y coordinate
+     * @param x2
+     *            second X coordinate
+     * @param y2
+     *            second Y coordinate
      */
-    public Line ( int x1, int y1, int x2, int y2 )
-    {
-        super ();
+    public Line(int x1, int y1, int x2, int y2) {
+        super();
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
     }
-
+    
     /**
      * Constructs a line using the specifed points.
      *
-     * @param p1 first point
-     * @param p2 second point
+     * @param p1
+     *            first point
+     * @param p2
+     *            second point
      */
-    public Line ( Point p1, Point p2 )
-    {
-        super ();
+    public Line(Point p1, Point p2) {
+        super();
         this.x1 = p1.x;
         this.y1 = p1.y;
         this.x2 = p2.x;
         this.y2 = p2.y;
     }
-
+    
     /**
      * Constructs a line using coordinates from the specified line.
      *
-     * @param line line to process
+     * @param line
+     *            line to process
      */
-    public Line ( Line line )
-    {
-        super ();
+    public Line(Line line) {
+        super();
         this.x1 = line.x1;
         this.y1 = line.y1;
         this.x2 = line.x2;
         this.y2 = line.y2;
     }
-
+    
     /**
      * Returns first X coordinate.
      *
      * @return first X coordinate
      */
-    public double getX1 ()
-    {
+    public double getX1() {
         return x1;
     }
-
+    
     /**
      * Sets first X coordinate.
      *
-     * @param x1 first X coordinate
+     * @param x1
+     *            first X coordinate
      */
-    public void setX1 ( int x1 )
-    {
+    public void setX1(int x1) {
         this.x1 = x1;
     }
-
+    
     /**
      * Returns first Y coordinate.
      *
      * @return first Y coordinate
      */
-    public double getY1 ()
-    {
+    public double getY1() {
         return y1;
     }
-
+    
     /**
      * Sets first Y coordinate.
      *
-     * @param y1 first Y coordinate
+     * @param y1
+     *            first Y coordinate
      */
-    public void setY1 ( int y1 )
-    {
+    public void setY1(int y1) {
         this.y1 = y1;
     }
-
+    
     /**
      * Returns second X coordinate.
      *
      * @return second X coordinate
      */
-    public double getX2 ()
-    {
+    public double getX2() {
         return x2;
     }
-
+    
     /**
      * Sets second X coordinate.
      *
-     * @param x2 second X coordinate
+     * @param x2
+     *            second X coordinate
      */
-    public void setX2 ( int x2 )
-    {
+    public void setX2(int x2) {
         this.x2 = x2;
     }
-
+    
     /**
      * Returns second Y coordinate.
      *
      * @return second Y coordinate
      */
-    public double getY2 ()
-    {
+    public double getY2() {
         return y2;
     }
-
+    
     /**
      * Sets second Y coordinate.
      *
-     * @param y2 second Y coordinate
+     * @param y2
+     *            second Y coordinate
      */
-    public void setY2 ( int y2 )
-    {
+    public void setY2(int y2) {
         this.y2 = y2;
     }
-
+    
     /**
      * Sets first point.
      *
-     * @param p1 first point
+     * @param p1
+     *            first point
      */
-    public void setPoint1 ( Point p1 )
-    {
+    public void setPoint1(Point p1) {
         this.x1 = p1.x;
         this.y1 = p1.y;
     }
-
+    
     /**
      * Sets second point.
      *
-     * @param p2 second point
+     * @param p2
+     *            second point
      */
-    public void setPoint2 ( Point p2 )
-    {
+    public void setPoint2(Point p2) {
         this.x2 = p2.x;
         this.y2 = p2.y;
     }

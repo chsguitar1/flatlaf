@@ -20,15 +20,15 @@ package org.ocsoft.flatlaf.managers.hotkey;
 import org.ocsoft.flatlaf.utils.swing.SwingMethods;
 
 /**
- * This interface provides a set of methods that should be added into button components.
- * Basically all these methods are already implemented in HotkeyManager but it is much easier to call them directly from component.
+ * This interface provides a set of methods that should be added into button
+ * components. Basically all these methods are already implemented in
+ * HotkeyManager but it is much easier to call them directly from component.
  *
  * @author Mikle Garin
  * @see org.ocsoft.flatlaf.utils.swing.SwingMethods
  * @see org.ocsoft.flatlaf.managers.hotkey.HotkeyManager
  */
 
-public interface ButtonHotkeyMethods extends SwingMethods
-{
+public interface ButtonHotkeyMethods extends SwingMethods {
     // todo
 }

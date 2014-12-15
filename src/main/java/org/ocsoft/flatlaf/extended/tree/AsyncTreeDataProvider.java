@@ -24,57 +24,65 @@ import org.ocsoft.flatlaf.utils.general.Filter;
 /**
  * This interface provides methods for asynchronous tree data retrieval.
  *
- * @param <E> custom node type
+ * @param <E>
+ *            custom node type
  * @author Mikle Garin
  * @see org.ocsoft.flatlaf.extended.tree.WebAsyncTree
  * @see org.ocsoft.flatlaf.extended.tree.AsyncTreeModel
  */
 
-public interface AsyncTreeDataProvider<E extends AsyncUniqueNode>
-{
+public interface AsyncTreeDataProvider<E extends AsyncUniqueNode> {
     /**
-     * Returns asynchronous tree root node.
-     * This request uses the EDT and should be processed quickly.
+     * Returns asynchronous tree root node. This request uses the EDT and should
+     * be processed quickly.
      *
      * @return root node
      */
-    public E getRoot ();
-
+    public E getRoot();
+    
     /**
-     * Starts loading child nodes for the specified asynchronous tree node.
-     * When you finish loading childs for the specified node or you failed to load them, simply inform the listener about that.
-     * This request uses a separate thread and might take a lot of time to process without having any UI issues.
+     * Starts loading child nodes for the specified asynchronous tree node. When
+     * you finish loading childs for the specified node or you failed to load
+     * them, simply inform the listener about that. This request uses a separate
+     * thread and might take a lot of time to process without having any UI
+     * issues.
      *
-     * @param node     parent node
-     * @param listener childs loading progress listener
+     * @param node
+     *            parent node
+     * @param listener
+     *            childs loading progress listener
      */
-    public void loadChilds ( E node, ChildsListener<E> listener );
-
+    public void loadChilds(E node, ChildsListener<E> listener);
+    
     /**
      * Returns child nodes comparator for the specified asynchronous tree node.
      * No sorting applied to childs in case null is returned.
      *
-     * @param node parent node
+     * @param node
+     *            parent node
      * @return child nodes comparator
      */
-    public Comparator<E> getChildsComparator ( E node );
-
+    public Comparator<E> getChildsComparator(E node);
+    
     /**
-     * Returns child nodes filter for the specified asynchronous tree node.
-     * No filtering applied to childs in case null is returned.
+     * Returns child nodes filter for the specified asynchronous tree node. No
+     * filtering applied to childs in case null is returned.
      *
-     * @param node parent node
+     * @param node
+     *            parent node
      * @return child nodes filter
      */
-    public Filter<E> getChildsFilter ( E node );
-
+    public Filter<E> getChildsFilter(E node);
+    
     /**
-     * Returns whether the specified node is leaf (doesn't have any childs) or not.
-     * This request uses the EDT and should be processed quickly.
-     * If you are not sure if the node is leaf or not - simply return false, that will allow the tree to expand this node on request.
+     * Returns whether the specified node is leaf (doesn't have any childs) or
+     * not. This request uses the EDT and should be processed quickly. If you
+     * are not sure if the node is leaf or not - simply return false, that will
+     * allow the tree to expand this node on request.
      *
-     * @param node node
+     * @param node
+     *            node
      * @return true if the specified node is leaf, false otherwise
      */
-    public boolean isLeaf ( E node );
+    public boolean isLeaf(E node);
 }

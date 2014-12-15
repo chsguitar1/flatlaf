@@ -25,57 +25,58 @@ import javax.swing.*;
  * @author Mikle Garin
  */
 
-public enum PopupMenuWay
-{
+public enum PopupMenuWay {
     /**
-     * Displays popup menu above the invoker component starting at its leading side.
+     * Displays popup menu above the invoker component starting at its leading
+     * side.
      */
     aboveStart,
-
+    
     /**
      * Displays popup menu above the invoker component at its middle.
      */
     aboveMiddle,
-
+    
     /**
-     * Displays popup menu above the invoker component starting at its trailing side.
+     * Displays popup menu above the invoker component starting at its trailing
+     * side.
      */
     aboveEnd,
-
+    
     /**
-     * Displays popup menu under the invoker component starting at its leading side.
+     * Displays popup menu under the invoker component starting at its leading
+     * side.
      */
     belowStart,
-
+    
     /**
      * Displays popup menu under the invoker component at its middle.
      */
     belowMiddle,
-
+    
     /**
-     * Displays popup menu under the invoker component starting at its trailing side.
+     * Displays popup menu under the invoker component starting at its trailing
+     * side.
      */
     belowEnd;
-
+    
     /**
      * Returns corner side for this popup menu display location.
      *
      * @return corner side for this popup menu display location
      */
-    public int getCornerSide ()
-    {
-        switch ( this )
-        {
-            case aboveStart:
-            case aboveMiddle:
-            case aboveEnd:
-                return SwingConstants.BOTTOM;
-            case belowStart:
-            case belowMiddle:
-            case belowEnd:
-            default:
-                return SwingConstants.TOP;
-
+    public int getCornerSide() {
+        switch (this) {
+        case aboveStart:
+        case aboveMiddle:
+        case aboveEnd:
+            return SwingConstants.BOTTOM;
+        case belowStart:
+        case belowMiddle:
+        case belowEnd:
+        default:
+            return SwingConstants.TOP;
+            
         }
     }
 }

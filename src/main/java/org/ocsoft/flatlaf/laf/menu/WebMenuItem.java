@@ -33,631 +33,603 @@ import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import java.awt.*;
 
 /**
- * This JMenuItem extension class provides a direct access to WebMenuItemUI methods.
+ * This JMenuItem extension class provides a direct access to WebMenuItemUI
+ * methods.
  *
  * @author Mikle Garin
  */
 
-public class WebMenuItem extends JMenuItem implements LanguageMethods, FontMethods<WebMenuItem>
-{
+public class WebMenuItem extends JMenuItem implements LanguageMethods,
+        FontMethods<WebMenuItem> {
     /**
      * Constructs new menu item.
      */
-    public WebMenuItem ()
-    {
-        super ();
+    public WebMenuItem() {
+        super();
     }
-
+    
     /**
      * Constructs new menu item using the specified settings.
      *
-     * @param icon menu item icon
+     * @param icon
+     *            menu item icon
      */
-    public WebMenuItem ( final Icon icon )
-    {
-        super ( icon );
+    public WebMenuItem(final Icon icon) {
+        super(icon);
     }
-
+    
     /**
      * Constructs new menu item using the specified settings.
      *
-     * @param text menu item text
+     * @param text
+     *            menu item text
      */
-    public WebMenuItem ( final String text )
-    {
-        super ( text );
+    public WebMenuItem(final String text) {
+        super(text);
     }
-
+    
     /**
      * Constructs new menu item using the specified settings.
      *
-     * @param text        menu item text
-     * @param accelerator menu item accelerator
+     * @param text
+     *            menu item text
+     * @param accelerator
+     *            menu item accelerator
      */
-    public WebMenuItem ( final String text, final KeyStroke accelerator )
-    {
-        super ( text );
-        setAccelerator ( accelerator );
+    public WebMenuItem(final String text, final KeyStroke accelerator) {
+        super(text);
+        setAccelerator(accelerator);
     }
-
+    
     /**
      * Constructs new menu item using the specified settings.
      *
-     * @param text        menu item text
-     * @param accelerator menu item accelerator
+     * @param text
+     *            menu item text
+     * @param accelerator
+     *            menu item accelerator
      */
-    public WebMenuItem ( final String text, final HotkeyData accelerator )
-    {
-        super ( text );
-        setAccelerator ( accelerator );
+    public WebMenuItem(final String text, final HotkeyData accelerator) {
+        super(text);
+        setAccelerator(accelerator);
     }
-
+    
     /**
      * Constructs new menu item using the specified settings.
      *
-     * @param a menu item action
+     * @param a
+     *            menu item action
      */
-    public WebMenuItem ( final Action a )
-    {
-        super ( a );
+    public WebMenuItem(final Action a) {
+        super(a);
     }
-
+    
     /**
      * Constructs new menu item using the specified settings.
      *
-     * @param text menu item text
-     * @param icon menu item icon
+     * @param text
+     *            menu item text
+     * @param icon
+     *            menu item icon
      */
-    public WebMenuItem ( final String text, final Icon icon )
-    {
-        super ( text, icon );
+    public WebMenuItem(final String text, final Icon icon) {
+        super(text, icon);
     }
-
+    
     /**
      * Constructs new menu item using the specified settings.
      *
-     * @param text     menu item text
-     * @param mnemonic menu item mnemonic
+     * @param text
+     *            menu item text
+     * @param mnemonic
+     *            menu item mnemonic
      */
-    public WebMenuItem ( final String text, final int mnemonic )
-    {
-        super ( text, mnemonic );
+    public WebMenuItem(final String text, final int mnemonic) {
+        super(text, mnemonic);
     }
-
+    
     /**
      * Constructs new menu item using the specified settings.
      *
-     * @param text        menu item text
-     * @param icon        menu item icon
-     * @param accelerator menu item accelerator
+     * @param text
+     *            menu item text
+     * @param icon
+     *            menu item icon
+     * @param accelerator
+     *            menu item accelerator
      */
-    public WebMenuItem ( final String text, final Icon icon, final KeyStroke accelerator )
-    {
-        super ( text, icon );
-        setAccelerator ( accelerator );
+    public WebMenuItem(final String text, final Icon icon,
+            final KeyStroke accelerator) {
+        super(text, icon);
+        setAccelerator(accelerator);
     }
-
+    
     /**
      * Constructs new menu item using the specified settings.
      *
-     * @param text        menu item text
-     * @param icon        menu item icon
-     * @param accelerator menu item accelerator
+     * @param text
+     *            menu item text
+     * @param icon
+     *            menu item icon
+     * @param accelerator
+     *            menu item accelerator
      */
-    public WebMenuItem ( final String text, final Icon icon, final HotkeyData accelerator )
-    {
-        super ( text, icon );
-        setAccelerator ( accelerator );
+    public WebMenuItem(final String text, final Icon icon,
+            final HotkeyData accelerator) {
+        super(text, icon);
+        setAccelerator(accelerator);
     }
-
+    
     /**
-     * Sets the key combination which invokes the menu item's action listeners without navigating the menu hierarchy.
+     * Sets the key combination which invokes the menu item's action listeners
+     * without navigating the menu hierarchy.
      *
-     * @param hotkey hotkey data
+     * @param hotkey
+     *            hotkey data
      */
-    public void setAccelerator ( final HotkeyData hotkey )
-    {
-        SwingUtils.setAccelerator ( this, hotkey );
+    public void setAccelerator(final HotkeyData hotkey) {
+        SwingUtils.setAccelerator(this, hotkey);
     }
-
+    
     /**
      * Returns menu item margin.
      *
      * @return menu item margin
      */
     @Override
-    public Insets getMargin ()
-    {
-        return getWebUI ().getMargin ();
+    public Insets getMargin() {
+        return getWebUI().getMargin();
     }
-
+    
     /**
      * Sets menu item margin.
      *
-     * @param margin new menu item margin
+     * @param margin
+     *            new menu item margin
      */
     @Override
-    public void setMargin ( final Insets margin )
-    {
-        getWebUI ().setMargin ( margin );
+    public void setMargin(final Insets margin) {
+        getWebUI().setMargin(margin);
     }
-
+    
     /**
      * Returns spacing between menu item content and its left/right borders.
      *
      * @return spacing between menu item content and its left/right borders
      */
-    public int getSideSpacing ()
-    {
-        return getWebUI ().getSideSpacing ();
+    public int getSideSpacing() {
+        return getWebUI().getSideSpacing();
     }
-
+    
     /**
      * Sets spacing between menu item content and its left/right borders
      *
-     * @param sideSpacing spacing between menu item content and its left/right borders
+     * @param sideSpacing
+     *            spacing between menu item content and its left/right borders
      */
-    public void setSideSpacing ( final int sideSpacing )
-    {
-        getWebUI ().setSideSpacing ( sideSpacing );
+    public void setSideSpacing(final int sideSpacing) {
+        getWebUI().setSideSpacing(sideSpacing);
     }
-
+    
     /**
      * Returns disabled menu item foreground.
      *
      * @return disabled menu item foreground
      */
-    public Color getDisabledFg ()
-    {
-        return getWebUI ().getDisabledFg ();
+    public Color getDisabledFg() {
+        return getWebUI().getDisabledFg();
     }
-
+    
     /**
      * Sets disabled menu item foreground.
      *
-     * @param foreground new disabled menu item foreground
+     * @param foreground
+     *            new disabled menu item foreground
      */
-    public void setDisabledFg ( final Color foreground )
-    {
-        getWebUI ().setDisabledFg ( foreground );
+    public void setDisabledFg(final Color foreground) {
+        getWebUI().setDisabledFg(foreground);
     }
-
+    
     /**
      * Returns top background color for selected item.
      *
      * @return top background color for selected item
      */
-    public Color getSelectedTopBg ()
-    {
-        return getWebUI ().getSelectedTopBg ();
+    public Color getSelectedTopBg() {
+        return getWebUI().getSelectedTopBg();
     }
-
+    
     /**
      * Sets top background color for selected item.
      *
-     * @param background new top background color for selected item
+     * @param background
+     *            new top background color for selected item
      */
-    public void setSelectedTopBg ( final Color background )
-    {
-        getWebUI ().setSelectedTopBg ( background );
+    public void setSelectedTopBg(final Color background) {
+        getWebUI().setSelectedTopBg(background);
     }
-
+    
     /**
      * Returns bottom background color for selected item.
      *
      * @return bottom background color for selected item
      */
-    public Color getSelectedBottomBg ()
-    {
-        return getWebUI ().getSelectedBottomBg ();
+    public Color getSelectedBottomBg() {
+        return getWebUI().getSelectedBottomBg();
     }
-
+    
     /**
      * Sets bottom background color for selected item.
      *
-     * @param background new bottom background color for selected item
+     * @param background
+     *            new bottom background color for selected item
      */
-    public void setSelectedBottomBg ( final Color background )
-    {
-        getWebUI ().setSelectedBottomBg ( background );
+    public void setSelectedBottomBg(final Color background) {
+        getWebUI().setSelectedBottomBg(background);
     }
-
+    
     /**
      * Returns accelerator text background.
      *
      * @return accelerator text background
      */
-    public Color getAcceleratorBg ()
-    {
-        return getWebUI ().getAcceleratorBg ();
+    public Color getAcceleratorBg() {
+        return getWebUI().getAcceleratorBg();
     }
-
+    
     /**
      * Sets accelerator text background.
      *
-     * @param background new accelerator text background
+     * @param background
+     *            new accelerator text background
      */
-    public void setAcceleratorBg ( final Color background )
-    {
-        getWebUI ().setAcceleratorBg ( background );
+    public void setAcceleratorBg(final Color background) {
+        getWebUI().setAcceleratorBg(background);
     }
-
+    
     /**
      * Returns accelerator foreground.
      *
      * @return accelerator foreground
      */
-    public Color getAcceleratorFg ()
-    {
-        return getWebUI ().getAcceleratorFg ();
+    public Color getAcceleratorFg() {
+        return getWebUI().getAcceleratorFg();
     }
-
+    
     /**
      * Sets accelerator foreground.
      *
-     * @param foreground new accelerator foreground
+     * @param foreground
+     *            new accelerator foreground
      */
-    public void setAcceleratorFg ( final Color foreground )
-    {
-        getWebUI ().setAcceleratorFg ( foreground );
+    public void setAcceleratorFg(final Color foreground) {
+        getWebUI().setAcceleratorFg(foreground);
     }
-
+    
     /**
      * Returns disabled accelerator foreground.
      *
      * @return disabled accelerator foreground
      */
-    public Color getAcceleratorDisabledFg ()
-    {
-        return getWebUI ().getAcceleratorDisabledFg ();
+    public Color getAcceleratorDisabledFg() {
+        return getWebUI().getAcceleratorDisabledFg();
     }
-
+    
     /**
      * Sets disabled accelerator foreground.
      *
-     * @param foreground new disabled accelerator foreground
+     * @param foreground
+     *            new disabled accelerator foreground
      */
-    public void setAcceleratorDisabledFg ( final Color foreground )
-    {
-        getWebUI ().setAcceleratorDisabledFg ( foreground );
+    public void setAcceleratorDisabledFg(final Color foreground) {
+        getWebUI().setAcceleratorDisabledFg(foreground);
     }
-
+    
     /**
      * Returns gap between menu item icon/text and accelerator.
      *
      * @return gap between menu item icon/text and accelerator
      */
-    public int getAcceleratorGap ()
-    {
-        return getWebUI ().getAcceleratorGap ();
+    public int getAcceleratorGap() {
+        return getWebUI().getAcceleratorGap();
     }
-
+    
     /**
      * Sets gap between menu icon/text and accelerator.
      *
-     * @param gap new gap between menu icon/text and accelerator
+     * @param gap
+     *            new gap between menu icon/text and accelerator
      */
-    public void setAcceleratorGap ( final int gap )
-    {
-        getWebUI ().setAcceleratorGap ( gap );
+    public void setAcceleratorGap(final int gap) {
+        getWebUI().setAcceleratorGap(gap);
     }
-
+    
     /**
-     * Returns whether should align all item texts to a single vertical line within single popup menu or not.
+     * Returns whether should align all item texts to a single vertical line
+     * within single popup menu or not.
      *
-     * @return true if should align all item texts to a single vertical line within single popup menu, false otherwise
+     * @return true if should align all item texts to a single vertical line
+     *         within single popup menu, false otherwise
      */
-    public boolean isAlignTextToMenuIcons ()
-    {
-        return getWebUI ().isAlignTextToMenuIcons ();
+    public boolean isAlignTextToMenuIcons() {
+        return getWebUI().isAlignTextToMenuIcons();
     }
-
+    
     /**
-     * Sets whether should align all item texts to a single vertical line within single popup menu or not.
+     * Sets whether should align all item texts to a single vertical line within
+     * single popup menu or not.
      *
-     * @param align whether should align all item texts to a single vertical line within single popup menu or not
+     * @param align
+     *            whether should align all item texts to a single vertical line
+     *            within single popup menu or not
      */
-    public void setAlignTextToMenuIcons ( final boolean align )
-    {
-        getWebUI ().setAlignTextToMenuIcons ( align );
+    public void setAlignTextToMenuIcons(final boolean align) {
+        getWebUI().setAlignTextToMenuIcons(align);
     }
-
+    
     /**
      * Returns icon alignment.
      *
      * @return icon alignment
      */
-    public int getIconAlignment ()
-    {
-        return getWebUI ().getIconAlignment ();
+    public int getIconAlignment() {
+        return getWebUI().getIconAlignment();
     }
-
+    
     /**
      * Sets icon alignment
      *
-     * @param alignment new icon alignment
+     * @param alignment
+     *            new icon alignment
      */
-    public void setIconAlignment ( final int alignment )
-    {
-        getWebUI ().setIconAlignment ( alignment );
+    public void setIconAlignment(final int alignment) {
+        getWebUI().setIconAlignment(alignment);
     }
-
+    
     /**
      * Returns menu item painter.
      *
      * @return menu item painter
      */
-    public Painter getPainter ()
-    {
-        return getWebUI ().getPainter ();
+    public Painter getPainter() {
+        return getWebUI().getPainter();
     }
-
+    
     /**
      * Sets menu item painter.
      *
-     * @param painter new menu item painter
+     * @param painter
+     *            new menu item painter
      */
-    public void setPainter ( final Painter painter )
-    {
-        getWebUI ().setPainter ( painter );
+    public void setPainter(final Painter painter) {
+        getWebUI().setPainter(painter);
     }
-
+    
     /**
      * Returns Web-UI applied to this class.
      *
      * @return Web-UI applied to this class
      */
-    public WebMenuItemUI getWebUI ()
-    {
-        return ( WebMenuItemUI ) getUI ();
+    public WebMenuItemUI getWebUI() {
+        return (WebMenuItemUI) getUI();
     }
-
+    
     /**
      * Installs a Web-UI into this component.
      */
     @Override
-    public void updateUI ()
-    {
-        if ( getUI () == null || !( getUI () instanceof WebMenuItemUI ) )
-        {
-            try
-            {
-                setUI ( ( WebMenuItemUI ) ReflectUtils.createInstance ( FlatLafSettings.menuItemUI ) );
+    public void updateUI() {
+        if (getUI() == null || !(getUI() instanceof WebMenuItemUI)) {
+            try {
+                setUI((WebMenuItemUI) ReflectUtils
+                        .createInstance(FlatLafSettings.menuItemUI));
+            } catch (final Throwable e) {
+                FlatLafLogger.error(this, e);
+                setUI(new WebMenuItemUI());
             }
-            catch ( final Throwable e )
-            {
-                FlatLafLogger.error ( this, e );
-                setUI ( new WebMenuItemUI () );
-            }
-        }
-        else
-        {
-            setUI ( getUI () );
+        } else {
+            setUI(getUI());
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setLanguage ( final String key, final Object... data )
-    {
-        LanguageManager.registerComponent ( this, key, data );
+    public void setLanguage(final String key, final Object... data) {
+        LanguageManager.registerComponent(this, key, data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void updateLanguage ( final Object... data )
-    {
-        LanguageManager.updateComponent ( this, data );
+    public void updateLanguage(final Object... data) {
+        LanguageManager.updateComponent(this, data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void updateLanguage ( final String key, final Object... data )
-    {
-        LanguageManager.updateComponent ( this, key, data );
+    public void updateLanguage(final String key, final Object... data) {
+        LanguageManager.updateComponent(this, key, data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeLanguage ()
-    {
-        LanguageManager.unregisterComponent ( this );
+    public void removeLanguage() {
+        LanguageManager.unregisterComponent(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isLanguageSet ()
-    {
-        return LanguageManager.isRegisteredComponent ( this );
+    public boolean isLanguageSet() {
+        return LanguageManager.isRegisteredComponent(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setLanguageUpdater ( final LanguageUpdater updater )
-    {
-        LanguageManager.registerLanguageUpdater ( this, updater );
+    public void setLanguageUpdater(final LanguageUpdater updater) {
+        LanguageManager.registerLanguageUpdater(this, updater);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeLanguageUpdater ()
-    {
-        LanguageManager.unregisterLanguageUpdater ( this );
+    public void removeLanguageUpdater() {
+        LanguageManager.unregisterLanguageUpdater(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebMenuItem setPlainFont ()
-    {
-        return SwingUtils.setPlainFont ( this );
+    public WebMenuItem setPlainFont() {
+        return SwingUtils.setPlainFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebMenuItem setPlainFont ( final boolean apply )
-    {
-        return SwingUtils.setPlainFont ( this, apply );
+    public WebMenuItem setPlainFont(final boolean apply) {
+        return SwingUtils.setPlainFont(this, apply);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isPlainFont ()
-    {
-        return SwingUtils.isPlainFont ( this );
+    public boolean isPlainFont() {
+        return SwingUtils.isPlainFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebMenuItem setBoldFont ()
-    {
-        return SwingUtils.setBoldFont ( this );
+    public WebMenuItem setBoldFont() {
+        return SwingUtils.setBoldFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebMenuItem setBoldFont ( final boolean apply )
-    {
-        return SwingUtils.setBoldFont ( this, apply );
+    public WebMenuItem setBoldFont(final boolean apply) {
+        return SwingUtils.setBoldFont(this, apply);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isBoldFont ()
-    {
-        return SwingUtils.isBoldFont ( this );
+    public boolean isBoldFont() {
+        return SwingUtils.isBoldFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebMenuItem setItalicFont ()
-    {
-        return SwingUtils.setItalicFont ( this );
+    public WebMenuItem setItalicFont() {
+        return SwingUtils.setItalicFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebMenuItem setItalicFont ( final boolean apply )
-    {
-        return SwingUtils.setItalicFont ( this, apply );
+    public WebMenuItem setItalicFont(final boolean apply) {
+        return SwingUtils.setItalicFont(this, apply);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isItalicFont ()
-    {
-        return SwingUtils.isItalicFont ( this );
+    public boolean isItalicFont() {
+        return SwingUtils.isItalicFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebMenuItem setFontStyle ( final boolean bold, final boolean italic )
-    {
-        return SwingUtils.setFontStyle ( this, bold, italic );
+    public WebMenuItem setFontStyle(final boolean bold, final boolean italic) {
+        return SwingUtils.setFontStyle(this, bold, italic);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebMenuItem setFontStyle ( final int style )
-    {
-        return SwingUtils.setFontStyle ( this, style );
+    public WebMenuItem setFontStyle(final int style) {
+        return SwingUtils.setFontStyle(this, style);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebMenuItem setFontSize ( final int fontSize )
-    {
-        return SwingUtils.setFontSize ( this, fontSize );
+    public WebMenuItem setFontSize(final int fontSize) {
+        return SwingUtils.setFontSize(this, fontSize);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebMenuItem changeFontSize ( final int change )
-    {
-        return SwingUtils.changeFontSize ( this, change );
+    public WebMenuItem changeFontSize(final int change) {
+        return SwingUtils.changeFontSize(this, change);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public int getFontSize ()
-    {
-        return SwingUtils.getFontSize ( this );
+    public int getFontSize() {
+        return SwingUtils.getFontSize(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebMenuItem setFontSizeAndStyle ( final int fontSize, final boolean bold, final boolean italic )
-    {
-        return SwingUtils.setFontSizeAndStyle ( this, fontSize, bold, italic );
+    public WebMenuItem setFontSizeAndStyle(final int fontSize,
+            final boolean bold, final boolean italic) {
+        return SwingUtils.setFontSizeAndStyle(this, fontSize, bold, italic);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebMenuItem setFontSizeAndStyle ( final int fontSize, final int style )
-    {
-        return SwingUtils.setFontSizeAndStyle ( this, fontSize, style );
+    public WebMenuItem setFontSizeAndStyle(final int fontSize, final int style) {
+        return SwingUtils.setFontSizeAndStyle(this, fontSize, style);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebMenuItem setFontName ( final String fontName )
-    {
-        return SwingUtils.setFontName ( this, fontName );
+    public WebMenuItem setFontName(final String fontName) {
+        return SwingUtils.setFontName(this, fontName);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getFontName ()
-    {
-        return SwingUtils.getFontName ( this );
+    public String getFontName() {
+        return SwingUtils.getFontName(this);
     }
 }

@@ -30,89 +30,89 @@ import org.ocsoft.flatlaf.utils.collection.ValuesTable;
  * @author Mikle Garin
  */
 
-public class ColorConverter extends AbstractSingleValueConverter
-{
+public class ColorConverter extends AbstractSingleValueConverter {
     /**
      * Null color constant.
      */
     public static final String NULL_COLOR = "null";
-
+    
     /**
      * Default colors map.
      */
-    private static final ValuesTable<String, Color> defaultColors = new ValuesTable<String, Color> ();
-
-    static
-    {
+    private static final ValuesTable<String, Color> defaultColors = new ValuesTable<String, Color>();
+    
+    static {
         // Special value for null color
-        defaultColors.put ( NULL_COLOR, null );
-
+        defaultColors.put(NULL_COLOR, null);
+        
         // Standard Swing color set
-        defaultColors.put ( "black", Color.BLACK );
-        defaultColors.put ( "white", Color.WHITE );
-        defaultColors.put ( "red", Color.RED );
-        defaultColors.put ( "green", Color.GREEN );
-        defaultColors.put ( "blue", Color.BLUE );
-        defaultColors.put ( "lightGray", Color.LIGHT_GRAY );
-        defaultColors.put ( "gray", Color.GRAY );
-        defaultColors.put ( "darkGray", Color.DARK_GRAY );
-        defaultColors.put ( "pink", Color.PINK );
-        defaultColors.put ( "orange", Color.ORANGE );
-        defaultColors.put ( "yellow", Color.YELLOW );
-        defaultColors.put ( "magenta", Color.MAGENTA );
-        defaultColors.put ( "cyan", Color.CYAN );
+        defaultColors.put("black", Color.BLACK);
+        defaultColors.put("white", Color.WHITE);
+        defaultColors.put("red", Color.RED);
+        defaultColors.put("green", Color.GREEN);
+        defaultColors.put("blue", Color.BLUE);
+        defaultColors.put("lightGray", Color.LIGHT_GRAY);
+        defaultColors.put("gray", Color.GRAY);
+        defaultColors.put("darkGray", Color.DARK_GRAY);
+        defaultColors.put("pink", Color.PINK);
+        defaultColors.put("orange", Color.ORANGE);
+        defaultColors.put("yellow", Color.YELLOW);
+        defaultColors.put("magenta", Color.MAGENTA);
+        defaultColors.put("cyan", Color.CYAN);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean canConvert ( final Class type )
-    {
-        return type.equals ( Color.class );
+    public boolean canConvert(final Class type) {
+        return type.equals(Color.class);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Object fromString ( final String color )
-    {
-        return parseColor ( color );
+    public Object fromString(final String color) {
+        return parseColor(color);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String toString ( final Object object )
-    {
-        final Color color = ( Color ) object;
-        return convertColor ( color );
+    public String toString(final Object object) {
+        final Color color = (Color) object;
+        return convertColor(color);
     }
-
+    
     /**
      * Parses Color from its string form.
      *
-     * @param color string form to parse
+     * @param color
+     *            string form to parse
      * @return parsed color
      */
-    public static Color parseColor ( final String color )
-    {
-        return defaultColors.containsKey ( color ) ? defaultColors.get ( color ) :
-                color.contains ( "#" ) ? ColorUtils.parseHexColor ( color ) : ColorUtils.parseRgbColor ( color );
+    public static Color parseColor(final String color) {
+        return defaultColors.containsKey(color) ? defaultColors.get(color)
+                : color.contains("#") ? ColorUtils.parseHexColor(color)
+                        : ColorUtils.parseRgbColor(color);
     }
-
+    
     /**
      * Convert specified color into string form.
      *
-     * @param color color to convert
+     * @param color
+     *            color to convert
      * @return string color representation.
      */
-    public static String convertColor ( final Color color )
-    {
-        return defaultColors.containsValue ( color ) ? defaultColors.getKey ( color ) :
-                color.getRed () + "," + color.getGreen () + "," + color.getBlue () +
-                        ( color.getAlpha () < 255 ? "," + color.getAlpha () : "" );
+    public static String convertColor(final Color color) {
+        return defaultColors.containsValue(color) ? defaultColors.getKey(color)
+                : color.getRed()
+                        + ","
+                        + color.getGreen()
+                        + ","
+                        + color.getBlue()
+                        + (color.getAlpha() < 255 ? "," + color.getAlpha() : "");
     }
 }

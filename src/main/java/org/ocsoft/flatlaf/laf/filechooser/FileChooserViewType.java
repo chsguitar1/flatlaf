@@ -23,37 +23,35 @@ package org.ocsoft.flatlaf.laf.filechooser;
  * @author Mikle Garin
  */
 
-public enum FileChooserViewType
-{
+public enum FileChooserViewType {
     /**
      * Display list with file icon/thumbnail and its name.
      */
     icons,
-
+    
     /**
-     * Display list with file icon/thumbnail, its name, description and some additional information.
+     * Display list with file icon/thumbnail, its name, description and some
+     * additional information.
      */
     tiles,
-
+    
     /**
      * Display table with detailed file information.
      */
     table;
-
+    
     /**
      * Returns component index for the specified view type.
      *
      * @return component index for the specified view type
      */
-    public int getComponentIndex ()
-    {
-        switch ( this )
-        {
-            case icons:
-            case tiles:
-                return 0;
-            case table:
-                return 1;
+    public int getComponentIndex() {
+        switch (this) {
+        case icons:
+        case tiles:
+            return 0;
+        case table:
+            return 1;
         }
         return -1;
     }

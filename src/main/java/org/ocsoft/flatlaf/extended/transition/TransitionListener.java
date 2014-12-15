@@ -25,15 +25,14 @@ import java.util.EventListener;
  * @author Mikle Garin
  */
 
-public interface TransitionListener extends EventListener
-{
+public interface TransitionListener extends EventListener {
     /**
      * Notifies when transition starts.
      */
-    public void transitionStarted ();
-
+    public void transitionStarted();
+    
     /**
      * Notifies when transition ends.
      */
-    public void transitionFinished ();
+    public void transitionFinished();
 }

@@ -24,26 +24,22 @@ import java.awt.event.KeyEvent;
  * User: mgarin Date: 30.11.12 Time: 17:15
  */
 
-public class ButtonHotkeyRunnable implements HotkeyRunnable
-{
+public class ButtonHotkeyRunnable implements HotkeyRunnable {
     private AbstractButton button;
     private int pressTime;
-
-    public ButtonHotkeyRunnable ( AbstractButton button )
-    {
-        this ( button, 0 );
+    
+    public ButtonHotkeyRunnable(AbstractButton button) {
+        this(button, 0);
     }
-
-    public ButtonHotkeyRunnable ( AbstractButton button, int pressTime )
-    {
-        super ();
+    
+    public ButtonHotkeyRunnable(AbstractButton button, int pressTime) {
+        super();
         this.button = button;
         this.pressTime = pressTime;
     }
-
+    
     @Override
-    public void run ( KeyEvent e )
-    {
-        button.doClick ( pressTime );
+    public void run(KeyEvent e) {
+        button.doClick(pressTime);
     }
 }

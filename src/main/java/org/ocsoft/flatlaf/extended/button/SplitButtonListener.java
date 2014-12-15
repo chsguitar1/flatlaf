@@ -26,19 +26,20 @@ import java.util.EventListener;
  * @author Mikle Garin
  */
 
-public interface SplitButtonListener extends EventListener
-{
+public interface SplitButtonListener extends EventListener {
     /**
      * Invoked when the button part is clicked.
      *
-     * @param e occured action event
+     * @param e
+     *            occured action event
      */
-    public void buttonClicked ( ActionEvent e );
-
+    public void buttonClicked(ActionEvent e);
+    
     /**
      * Invoked when split part is clicked.
      *
-     * @param e occured action event
+     * @param e
+     *            occured action event
      */
-    public void splitButtonClicked ( ActionEvent e );
+    public void splitButtonClicked(ActionEvent e);
 }

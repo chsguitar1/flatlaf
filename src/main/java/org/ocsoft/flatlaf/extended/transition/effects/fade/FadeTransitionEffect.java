@@ -27,86 +27,76 @@ import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
  * User: mgarin Date: 09.11.12 Time: 14:32
  */
 
-public class FadeTransitionEffect extends DefaultTransitionEffect
-{
+public class FadeTransitionEffect extends DefaultTransitionEffect {
     private static final String FADE_MINIMUM_SPEED = "FADE_MINIMUM_SPEED";
     private static final String FADE_SPEED = "FADE_SPEED";
-
+    
     private float minimumSpeed;
     private float speed;
-
+    
     private float opacity;
-
-    public FadeTransitionEffect ()
-    {
-        super ();
+    
+    public FadeTransitionEffect() {
+        super();
     }
-
-    public float getMinimumSpeed ()
-    {
-        return get ( FADE_MINIMUM_SPEED, 0.02f );
+    
+    public float getMinimumSpeed() {
+        return get(FADE_MINIMUM_SPEED, 0.02f);
     }
-
-    public void setMinimumSpeed ( float speed )
-    {
-        put ( FADE_MINIMUM_SPEED, speed );
+    
+    public void setMinimumSpeed(float speed) {
+        put(FADE_MINIMUM_SPEED, speed);
     }
-
-    public float getSpeed ()
-    {
-        return get ( FADE_SPEED, 0.1f );
+    
+    public float getSpeed() {
+        return get(FADE_SPEED, 0.1f);
     }
-
-    public void setSpeed ( float speed )
-    {
-        put ( FADE_SPEED, speed );
+    
+    public void setSpeed(float speed) {
+        put(FADE_SPEED, speed);
     }
-
+    
     @Override
-    public void prepareAnimation ( ImageTransition imageTransition )
-    {
+    public void prepareAnimation(ImageTransition imageTransition) {
         // Updating settings
-        minimumSpeed = getMinimumSpeed ();
-        speed = getSpeed ();
-
+        minimumSpeed = getMinimumSpeed();
+        speed = getSpeed();
+        
         // Updating runtime values
         opacity = 0f;
-
+        
         // Updating view
-        imageTransition.repaint ();
+        imageTransition.repaint();
     }
-
+    
     @Override
-    public boolean performAnimation ( ImageTransition imageTransition )
-    {
-        if ( opacity < 1f )
-        {
-            opacity = Math.min ( opacity + getCurrentSpeed (), 1f );
-            imageTransition.repaint ();
+    public boolean performAnimation(ImageTransition imageTransition) {
+        if (opacity < 1f) {
+            opacity = Math.min(opacity + getCurrentSpeed(), 1f);
+            imageTransition.repaint();
             return false;
-        }
-        else
-        {
+        } else {
             return true;
         }
     }
-
-    private float getCurrentSpeed ()
-    {
-        return Math.max ( minimumSpeed, speed * ( float ) Math.sqrt ( ( 1f - opacity ) / 1f ) );
+    
+    private float getCurrentSpeed() {
+        return Math.max(minimumSpeed,
+                speed * (float) Math.sqrt((1f - opacity) / 1f));
     }
-
+    
     @Override
-    public void paint ( Graphics2D g2d, ImageTransition transition )
-    {
+    public void paint(Graphics2D g2d, ImageTransition transition) {
         // Fading out old image
-        Composite old = GraphicsUtils.setupAlphaComposite ( g2d, 1f - opacity );
-        g2d.drawImage ( transition.getCurrentImage (), 0, 0, transition.getWidth (), transition.getHeight (), null );
-        GraphicsUtils.restoreComposite ( g2d, old );
-
+        Composite old = GraphicsUtils.setupAlphaComposite(g2d, 1f - opacity);
+        g2d.drawImage(transition.getCurrentImage(), 0, 0,
+                transition.getWidth(), transition.getHeight(), null);
+        GraphicsUtils.restoreComposite(g2d, old);
+        
         // Fading in new image
-        GraphicsUtils.setupAlphaComposite ( g2d, opacity );
-        g2d.drawImage ( transition.getOtherImage (), 0, 0, transition.getWidth (), transition.getHeight (), null );
-        GraphicsUtils.restoreComposite ( g2d, old );
+        GraphicsUtils.setupAlphaComposite(g2d, opacity);
+        g2d.drawImage(transition.getOtherImage(), 0, 0, transition.getWidth(),
+                transition.getHeight(), null);
+        GraphicsUtils.restoreComposite(g2d, old);
     }
 }

@@ -23,18 +23,17 @@ package org.ocsoft.flatlaf.extended.tree.sample;
  * @author Mikle Garin
  */
 
-public enum SampleNodeType
-{
+public enum SampleNodeType {
     /**
      * Root element type.
      */
     root,
-
+    
     /**
      * Folder element type.
      */
     folder,
-
+    
     /**
      * Leaf element type.
      */

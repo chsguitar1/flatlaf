@@ -21,7 +21,6 @@ package org.ocsoft.flatlaf.managers.task;
  * @author Mikle Garin
  */
 
-public class TaskManager
-{
+public class TaskManager {
     // todo
 }

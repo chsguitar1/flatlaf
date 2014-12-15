@@ -21,49 +21,46 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * This is a ScrollPaneLayout extension that properly places scroll pane shade layer.
+ * This is a ScrollPaneLayout extension that properly places scroll pane shade
+ * layer.
  *
  * @author Mikle Garin
  */
 
-public class WebScrollPaneLayout extends ScrollPaneLayout
-{
+public class WebScrollPaneLayout extends ScrollPaneLayout {
     /**
      * Shade layer component.
      */
     private final JComponent shadeLayer;
-
+    
     /**
      * Constructs new WebScrollPaneLayout with the specified shade layer.
      *
      * @param shadeLayer
      */
-    public WebScrollPaneLayout ( final JComponent shadeLayer )
-    {
-        super ();
+    public WebScrollPaneLayout(final JComponent shadeLayer) {
+        super();
         this.shadeLayer = shadeLayer;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void layoutContainer ( final Container parent )
-    {
-        super.layoutContainer ( parent );
-
-        shadeLayer.setBounds ( new Rectangle ( viewport.getBounds () ) );
-        parent.setComponentZOrder ( shadeLayer, 0 );
+    public void layoutContainer(final Container parent) {
+        super.layoutContainer(parent);
+        
+        shadeLayer.setBounds(new Rectangle(viewport.getBounds()));
+        parent.setComponentZOrder(shadeLayer, 0);
     }
-
+    
     /**
      * The UI resource version of <code>WebScrollPaneLayout</code>.
      */
-    public static class UIResource extends WebScrollPaneLayout implements javax.swing.plaf.UIResource
-    {
-        public UIResource ( final JComponent shadeLayer )
-        {
-            super ( shadeLayer );
+    public static class UIResource extends WebScrollPaneLayout implements
+            javax.swing.plaf.UIResource {
+        public UIResource(final JComponent shadeLayer) {
+            super(shadeLayer);
         }
     }
 }

@@ -25,32 +25,25 @@ import org.ocsoft.flatlaf.utils.LafUtils;
  * User: mgarin Date: 12/6/11 Time: 3:52 PM
  */
 
-public class WebShapeProducer extends ShapeProducer
-{
+public class WebShapeProducer extends ShapeProducer {
     private ShapeProvider shapeProvider;
-
-    public WebShapeProducer ( final Component component )
-    {
-        super ( component );
+    
+    public WebShapeProducer(final Component component) {
+        super(component);
     }
-
+    
     @Override
-    public void setProduceFor ( final Component produceFor )
-    {
-        super.setProduceFor ( produceFor );
-
-        this.shapeProvider = LafUtils.getShapeProvider ( produceFor );
+    public void setProduceFor(final Component produceFor) {
+        super.setProduceFor(produceFor);
+        
+        this.shapeProvider = LafUtils.getShapeProvider(produceFor);
     }
-
+    
     @Override
-    public Shape produce ()
-    {
-        if ( shapeProvider != null )
-        {
-            return shapeProvider.provideShape ();
-        }
-        else
-        {
+    public Shape produce() {
+        if (shapeProvider != null) {
+            return shapeProvider.provideShape();
+        } else {
             return null;
         }
     }

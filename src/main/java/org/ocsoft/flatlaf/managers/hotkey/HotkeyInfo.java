@@ -27,117 +27,102 @@ import org.ocsoft.flatlaf.utils.TextUtils;
  * User: mgarin Date: 11.07.11 Time: 12:57
  */
 
-public class HotkeyInfo
-{
+public class HotkeyInfo {
     public static final String ID_PREFIX = "HI";
-
+    
     // Hotkey id
     private String id = null;
-
+    
     // Should hotkey be hidden in tooltip
     private boolean hidden = false;
-
-    // Top component (usually container) under which this hotkey works, if null then "forComponent" ancestor window will be used
+    
+    // Top component (usually container) under which this hotkey works, if null
+    // then "forComponent" ancestor window will be used
     private WeakReference<Component> topComponent = null;
-
-    // Component that listens for hotkey, if this and "topComponent" are null then hotkey counts as global
+    
+    // Component that listens for hotkey, if this and "topComponent" are null
+    // then hotkey counts as global
     private WeakReference<Component> forComponent = null;
-
+    
     // Actual hotkey data
     private HotkeyData hotkeyData = null;
-
-    // Hotkey tooltip display way, this doesn't affect component's tooltip displayWay - only sole hotkey tip one-time tooltip
+    
+    // Hotkey tooltip display way, this doesn't affect component's tooltip
+    // displayWay - only sole hotkey tip one-time tooltip
     private TooltipWay hotkeyDisplayWay = null;
-
+    
     // Hotkey action
     private HotkeyRunnable action = null;
-
-    public HotkeyInfo ()
-    {
-        super ();
+    
+    public HotkeyInfo() {
+        super();
     }
-
-    public String getId ()
-    {
-        if ( id == null )
-        {
-            setId ();
+    
+    public String getId() {
+        if (id == null) {
+            setId();
         }
         return id;
     }
-
-    public void setId ( String id )
-    {
+    
+    public void setId(String id) {
         this.id = id;
     }
-
-    public void setId ()
-    {
-        id = TextUtils.generateId ( ID_PREFIX );
+    
+    public void setId() {
+        id = TextUtils.generateId(ID_PREFIX);
     }
-
-    public boolean isHidden ()
-    {
+    
+    public boolean isHidden() {
         return hidden;
     }
-
-    public HotkeyInfo setHidden ( boolean hidden )
-    {
+    
+    public HotkeyInfo setHidden(boolean hidden) {
         this.hidden = hidden;
         return this;
     }
-
-    public Component getTopComponent ()
-    {
-        return topComponent != null ? topComponent.get () : null;
+    
+    public Component getTopComponent() {
+        return topComponent != null ? topComponent.get() : null;
     }
-
-    public HotkeyInfo setTopComponent ( Component topComponent )
-    {
-        this.topComponent = new WeakReference<Component> ( topComponent );
+    
+    public HotkeyInfo setTopComponent(Component topComponent) {
+        this.topComponent = new WeakReference<Component>(topComponent);
         return this;
     }
-
-    public Component getForComponent ()
-    {
-        return forComponent != null ? forComponent.get () : null;
+    
+    public Component getForComponent() {
+        return forComponent != null ? forComponent.get() : null;
     }
-
-    public HotkeyInfo setForComponent ( Component forComponent )
-    {
-        this.forComponent = new WeakReference<Component> ( forComponent );
+    
+    public HotkeyInfo setForComponent(Component forComponent) {
+        this.forComponent = new WeakReference<Component>(forComponent);
         return this;
     }
-
-    public HotkeyData getHotkeyData ()
-    {
+    
+    public HotkeyData getHotkeyData() {
         return hotkeyData;
     }
-
-    public HotkeyInfo setHotkeyData ( HotkeyData hotkeyData )
-    {
+    
+    public HotkeyInfo setHotkeyData(HotkeyData hotkeyData) {
         this.hotkeyData = hotkeyData;
         return this;
     }
-
-    public TooltipWay getHotkeyDisplayWay ()
-    {
+    
+    public TooltipWay getHotkeyDisplayWay() {
         return hotkeyDisplayWay;
     }
-
-    public HotkeyInfo setHotkeyDisplayWay ( TooltipWay hotkeyDisplayWay )
-    {
+    
+    public HotkeyInfo setHotkeyDisplayWay(TooltipWay hotkeyDisplayWay) {
         this.hotkeyDisplayWay = hotkeyDisplayWay;
         return this;
     }
-
-    public HotkeyRunnable getAction ()
-    {
+    
+    public HotkeyRunnable getAction() {
         return action;
     }
-
-    public HotkeyInfo setAction ( HotkeyRunnable action )
-    {
+    
+    public HotkeyInfo setAction(HotkeyRunnable action) {
         this.action = action;
         return this;
     }

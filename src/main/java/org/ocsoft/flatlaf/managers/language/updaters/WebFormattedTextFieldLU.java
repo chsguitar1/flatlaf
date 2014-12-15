@@ -22,20 +22,21 @@ import org.ocsoft.flatlaf.managers.language.data.Value;
 import org.ocsoft.flatlaf.managers.language.updaters.DefaultLanguageUpdater;
 
 /**
- * This class provides language default updates for WebFormattedTextField component.
+ * This class provides language default updates for WebFormattedTextField
+ * component.
  *
  * @author Mikle Garin
  */
 
-public class WebFormattedTextFieldLU extends DefaultLanguageUpdater<WebFormattedTextField>
-{
+public class WebFormattedTextFieldLU extends
+        DefaultLanguageUpdater<WebFormattedTextField> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void update ( final WebFormattedTextField c, final String key, final Value value, final Object... data )
-    {
-        c.setText ( getDefaultText ( value, data ) );
-        c.setInputPrompt ( getDefaultText ( INPUT_PROMPT, value, data ) );
+    public void update(final WebFormattedTextField c, final String key,
+            final Value value, final Object... data) {
+        c.setText(getDefaultText(value, data));
+        c.setInputPrompt(getDefaultText(INPUT_PROMPT, value, data));
     }
 }

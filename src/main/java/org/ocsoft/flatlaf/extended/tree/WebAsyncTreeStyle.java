@@ -23,8 +23,7 @@ package org.ocsoft.flatlaf.extended.tree;
  * @author Mikle Garin
  */
 
-public final class WebAsyncTreeStyle
-{
+public final class WebAsyncTreeStyle {
     /**
      * WebAsyncTree loader icon type.
      */

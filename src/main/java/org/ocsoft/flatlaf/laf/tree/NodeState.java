@@ -28,92 +28,88 @@ import java.io.Serializable;
  * @author Mikle Garin
  */
 
-@XStreamAlias ( "NodeState" )
-public class NodeState implements Serializable, Cloneable
-{
+@XStreamAlias("NodeState")
+public class NodeState implements Serializable, Cloneable {
     /**
      * Whether node is expanded or not.
      */
     @XStreamAsAttribute
     protected boolean expanded;
-
+    
     /**
      * Whether node is selected or not.
      */
     @XStreamAsAttribute
     protected boolean selected;
-
+    
     /**
      * Constructs empty node state.
      */
-    public NodeState ()
-    {
-        super ();
+    public NodeState() {
+        super();
         this.expanded = false;
         this.selected = false;
     }
-
+    
     /**
      * Constructs node state with the specified expansion and selection states.
      *
-     * @param expanded expansion state
-     * @param selected selection state
+     * @param expanded
+     *            expansion state
+     * @param selected
+     *            selection state
      */
-    public NodeState ( boolean expanded, boolean selected )
-    {
-        super ();
+    public NodeState(boolean expanded, boolean selected) {
+        super();
         this.expanded = expanded;
         this.selected = selected;
     }
-
+    
     /**
      * Returns whether node is expanded or not.
      *
      * @return true if node is expanded, false otherwise
      */
-    public boolean isExpanded ()
-    {
+    public boolean isExpanded() {
         return expanded;
     }
-
+    
     /**
      * Sets whether node is expanded or not.
      *
-     * @param expanded whether node is expanded or not
+     * @param expanded
+     *            whether node is expanded or not
      */
-    public void setExpanded ( boolean expanded )
-    {
+    public void setExpanded(boolean expanded) {
         this.expanded = expanded;
     }
-
+    
     /**
      * Returns whether node is selected or not.
      *
      * @return true if node is selected, false otherwise
      */
-    public boolean isSelected ()
-    {
+    public boolean isSelected() {
         return selected;
     }
-
+    
     /**
      * Sets whether node is selected or not.
      *
-     * @param selected whether node is selected or not
+     * @param selected
+     *            whether node is selected or not
      */
-    public void setSelected ( boolean selected )
-    {
+    public void setSelected(boolean selected) {
         this.selected = selected;
     }
-
+    
     /**
      * Returns cloned node state.
      *
      * @return cloned node state
      */
     @Override
-    protected NodeState clone ()
-    {
-        return new NodeState ( expanded, selected );
+    protected NodeState clone() {
+        return new NodeState(expanded, selected);
     }
 }

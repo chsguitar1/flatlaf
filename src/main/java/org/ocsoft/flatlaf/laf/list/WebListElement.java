@@ -25,127 +25,136 @@ import org.ocsoft.flatlaf.laf.label.WebLabel;
  * @author Mikle Garin
  */
 
-public class WebListElement extends WebLabel
-{
+public class WebListElement extends WebLabel {
     /**
      * Constructs default list cell renderer element.
      */
-    public WebListElement ()
-    {
-        super ();
-        setOpaque ( false );
+    public WebListElement() {
+        super();
+        setOpaque(false);
     }
-
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    public void validate ()
-    //    {
-    //    }
+    
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // public void validate ()
+    // {
+    // }
     //
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    public void invalidate ()
-    //    {
-    //    }
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // public void invalidate ()
+    // {
+    // }
     //
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    public void repaint ()
-    //    {
-    //    }
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // public void repaint ()
+    // {
+    // }
     //
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    public void revalidate ()
-    //    {
-    //    }
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // public void revalidate ()
+    // {
+    // }
     //
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    public void repaint ( long tm, int x, int y, int width, int height )
-    //    {
-    //    }
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // public void repaint ( long tm, int x, int y, int width, int height )
+    // {
+    // }
     //
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    public void repaint ( Rectangle r )
-    //    {
-    //    }
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // public void repaint ( Rectangle r )
+    // {
+    // }
     //
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    protected void firePropertyChange ( String propertyName, Object oldValue, Object newValue )
-    //    {
-    //        // Strings get interned
-    //        // noinspection StringEquality
-    //        if ( propertyName == "text" || ( ( propertyName == "font" || propertyName == "foreground" ) && oldValue != newValue &&
-    //                getClientProperty ( javax.swing.plaf.basic.BasicHTML.propertyKey ) != null ) )
-    //        {
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // protected void firePropertyChange ( String propertyName, Object oldValue,
+    // Object newValue )
+    // {
+    // // Strings get interned
+    // // noinspection StringEquality
+    // if ( propertyName == "text" || ( ( propertyName == "font" || propertyName
+    // == "foreground" ) && oldValue != newValue &&
+    // getClientProperty ( javax.swing.plaf.basic.BasicHTML.propertyKey ) !=
+    // null ) )
+    // {
     //
-    //            super.firePropertyChange ( propertyName, oldValue, newValue );
-    //        }
-    //    }
+    // super.firePropertyChange ( propertyName, oldValue, newValue );
+    // }
+    // }
     //
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    public void firePropertyChange ( String propertyName, byte oldValue, byte newValue )
-    //    {
-    //    }
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // public void firePropertyChange ( String propertyName, byte oldValue, byte
+    // newValue )
+    // {
+    // }
     //
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    public void firePropertyChange ( String propertyName, char oldValue, char newValue )
-    //    {
-    //    }
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // public void firePropertyChange ( String propertyName, char oldValue, char
+    // newValue )
+    // {
+    // }
     //
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    public void firePropertyChange ( String propertyName, short oldValue, short newValue )
-    //    {
-    //    }
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // public void firePropertyChange ( String propertyName, short oldValue,
+    // short newValue )
+    // {
+    // }
     //
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    public void firePropertyChange ( String propertyName, int oldValue, int newValue )
-    //    {
-    //    }
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // public void firePropertyChange ( String propertyName, int oldValue, int
+    // newValue )
+    // {
+    // }
     //
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    public void firePropertyChange ( String propertyName, long oldValue, long newValue )
-    //    {
-    //    }
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // public void firePropertyChange ( String propertyName, long oldValue, long
+    // newValue )
+    // {
+    // }
     //
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    public void firePropertyChange ( String propertyName, float oldValue, float newValue )
-    //    {
-    //    }
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // public void firePropertyChange ( String propertyName, float oldValue,
+    // float newValue )
+    // {
+    // }
     //
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    public void firePropertyChange ( String propertyName, double oldValue, double newValue )
-    //    {
-    //    }
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // public void firePropertyChange ( String propertyName, double oldValue,
+    // double newValue )
+    // {
+    // }
     //
-    //    /**
-    //     * Overridden for performance reasons.
-    //     */
-    //    public void firePropertyChange ( String propertyName, boolean oldValue, boolean newValue )
-    //    {
-    //    }
+    // /**
+    // * Overridden for performance reasons.
+    // */
+    // public void firePropertyChange ( String propertyName, boolean oldValue,
+    // boolean newValue )
+    // {
+    // }
 }

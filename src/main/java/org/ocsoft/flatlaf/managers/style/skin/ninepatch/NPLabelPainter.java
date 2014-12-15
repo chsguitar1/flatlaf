@@ -33,240 +33,222 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class NPLabelPainter<E extends JLabel> extends WebLabelPainter<E>
-{
+public class NPLabelPainter<E extends JLabel> extends WebLabelPainter<E> {
     /**
      * Style settings.
      */
     protected boolean undecorated = false;
     protected boolean paintFocus = false;
-
+    
     /**
      * Used 9-patch icons.
      */
     protected NinePatchIcon backgroundIcon = null;
     protected NinePatchIcon focusedBackgroundIcon = null;
-
-
+    
     /**
      * Runtime variables.
      */
     protected FocusTracker focusTracker;
     protected boolean focused = false;
-
+    
     /**
-     * Constructs default 9-patch label painter.
-     * todo Initialize default settings in this constructor?
+     * Constructs default 9-patch label painter. todo Initialize default
+     * settings in this constructor?
      */
-    public NPLabelPainter ()
-    {
-        super ();
+    public NPLabelPainter() {
+        super();
     }
-
+    
     /**
      * Constructs 9-patch label painter using the specified background icon.
      *
-     * @param backgroundIcon background 9-patch icon
+     * @param backgroundIcon
+     *            background 9-patch icon
      */
-    public NPLabelPainter ( final NinePatchIcon backgroundIcon )
-    {
-        super ();
-        setBackgroundIcon ( backgroundIcon );
+    public NPLabelPainter(final NinePatchIcon backgroundIcon) {
+        super();
+        setBackgroundIcon(backgroundIcon);
     }
-
+    
     /**
      * Constructs 9-patch label painter using the specified background icons.
      *
-     * @param backgroundIcon        background 9-patch icon
-     * @param focusedBackgroundIcon focused background 9-patch icon
+     * @param backgroundIcon
+     *            background 9-patch icon
+     * @param focusedBackgroundIcon
+     *            focused background 9-patch icon
      */
-    public NPLabelPainter ( final NinePatchIcon backgroundIcon, final NinePatchIcon focusedBackgroundIcon )
-    {
-        super ();
-        setBackgroundIcon ( backgroundIcon );
-        setFocusedBackgroundIcon ( focusedBackgroundIcon );
+    public NPLabelPainter(final NinePatchIcon backgroundIcon,
+            final NinePatchIcon focusedBackgroundIcon) {
+        super();
+        setBackgroundIcon(backgroundIcon);
+        setFocusedBackgroundIcon(focusedBackgroundIcon);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void install ( final E c )
-    {
-        super.install ( c );
-
+    public void install(final E c) {
+        super.install(c);
+        
         // Installing FocusTracker to keep an eye on focused state
-        focusTracker = new DefaultFocusTracker ()
-        {
+        focusTracker = new DefaultFocusTracker() {
             @Override
-            public boolean isTrackingEnabled ()
-            {
+            public boolean isTrackingEnabled() {
                 return !undecorated && paintFocus;
             }
-
+            
             @Override
-            public void focusChanged ( final boolean focused )
-            {
+            public void focusChanged(final boolean focused) {
                 NPLabelPainter.this.focused = focused;
-                repaint ();
+                repaint();
             }
         };
-        FocusManager.addFocusTracker ( c, focusTracker );
+        FocusManager.addFocusTracker(c, focusTracker);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void uninstall ( final E c )
-    {
+    public void uninstall(final E c) {
         // Removing FocusTracker
-        FocusManager.removeFocusTracker ( focusTracker );
+        FocusManager.removeFocusTracker(focusTracker);
         focusTracker = null;
-
-        super.uninstall ( c );
+        
+        super.uninstall(c);
     }
-
+    
     /**
      * Returns whether decoration should be painted or not.
      *
      * @return true if decoration should be painted, false otherwise
      */
-    public boolean isUndecorated ()
-    {
+    public boolean isUndecorated() {
         return undecorated;
     }
-
+    
     /**
      * Sets whether decoration should be painted or not.
      *
-     * @param undecorated whether decoration should be painted or not
+     * @param undecorated
+     *            whether decoration should be painted or not
      */
-    public void setUndecorated ( final boolean undecorated )
-    {
-        if ( this.undecorated != undecorated )
-        {
+    public void setUndecorated(final boolean undecorated) {
+        if (this.undecorated != undecorated) {
             this.undecorated = undecorated;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * Returns whether focus should be painted or not.
      *
      * @return true if focus should be painted, false otherwise
      */
-    public boolean isPaintFocus ()
-    {
+    public boolean isPaintFocus() {
         return paintFocus;
     }
-
+    
     /**
      * Sets whether focus should be painted or not.
      *
-     * @param paint whether focus should be painted or not
+     * @param paint
+     *            whether focus should be painted or not
      */
-    public void setPaintFocus ( final boolean paint )
-    {
-        if ( this.paintFocus != paint )
-        {
+    public void setPaintFocus(final boolean paint) {
+        if (this.paintFocus != paint) {
             this.paintFocus = paint;
-            updateAll ();
+            updateAll();
         }
     }
-
+    
     /**
      * Returns background 9-patch icon.
      *
      * @return background 9-patch icon
      */
-    public NinePatchIcon getBackgroundIcon ()
-    {
+    public NinePatchIcon getBackgroundIcon() {
         return backgroundIcon;
     }
-
+    
     /**
      * Sets background 9-patch icon.
      *
-     * @param icon background 9-patch icon
+     * @param icon
+     *            background 9-patch icon
      */
-    public void setBackgroundIcon ( final NinePatchIcon icon )
-    {
+    public void setBackgroundIcon(final NinePatchIcon icon) {
         this.backgroundIcon = icon;
-        if ( !undecorated && ( !paintFocus || !focused ) )
-        {
-            updateAll ();
+        if (!undecorated && (!paintFocus || !focused)) {
+            updateAll();
         }
     }
-
+    
     /**
      * Returns focused background 9-patch icon.
      *
      * @return focused background 9-patch icon
      */
-    public NinePatchIcon getFocusedBackgroundIcon ()
-    {
+    public NinePatchIcon getFocusedBackgroundIcon() {
         return focusedBackgroundIcon;
     }
-
+    
     /**
      * Sets focused background 9-patch icon.
      *
-     * @param icon focused background 9-patch icon
+     * @param icon
+     *            focused background 9-patch icon
      */
-    public void setFocusedBackgroundIcon ( final NinePatchIcon icon )
-    {
+    public void setFocusedBackgroundIcon(final NinePatchIcon icon) {
         this.focusedBackgroundIcon = icon;
-        if ( !undecorated && ( paintFocus && focused ) )
-        {
-            updateAll ();
+        if (!undecorated && (paintFocus && focused)) {
+            updateAll();
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Insets getMargin ( final E label )
-    {
-        final NinePatchIcon backgroundIcon = getCurrentBackgroundIcon ();
-        return !undecorated && backgroundIcon != null ? backgroundIcon.getMargin () : super.getMargin ( label );
+    public Insets getMargin(final E label) {
+        final NinePatchIcon backgroundIcon = getCurrentBackgroundIcon();
+        return !undecorated && backgroundIcon != null ? backgroundIcon
+                .getMargin() : super.getMargin(label);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void paint ( final Graphics2D g2d, final Rectangle bounds, final E c )
-    {
+    public void paint(final Graphics2D g2d, final Rectangle bounds, final E c) {
         // Paint simple background if undecorated & opaque
-        if ( undecorated && c.isOpaque () )
-        {
-            g2d.setPaint ( c.getBackground () );
-            g2d.fillRect ( bounds.x, bounds.y, bounds.width, bounds.height );
+        if (undecorated && c.isOpaque()) {
+            g2d.setPaint(c.getBackground());
+            g2d.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
         }
-
+        
         // Painting background decoration
-        if ( !undecorated )
-        {
-            final NinePatchIcon backgroundIcon = getCurrentBackgroundIcon ();
-            if ( backgroundIcon != null )
-            {
-                backgroundIcon.paintIcon ( g2d, bounds );
+        if (!undecorated) {
+            final NinePatchIcon backgroundIcon = getCurrentBackgroundIcon();
+            if (backgroundIcon != null) {
+                backgroundIcon.paintIcon(g2d, bounds);
             }
         }
-
+        
         // Painting label
-        super.paint ( g2d, bounds, c );
+        super.paint(g2d, bounds, c);
     }
-
+    
     /**
      * Returns background 9-patch icon that should be painted right now.
      *
      * @return background 9-patch icon that should be painted right now
      */
-    protected NinePatchIcon getCurrentBackgroundIcon ()
-    {
-        return focused && focusedBackgroundIcon != null ? focusedBackgroundIcon : backgroundIcon;
+    protected NinePatchIcon getCurrentBackgroundIcon() {
+        return focused && focusedBackgroundIcon != null ? focusedBackgroundIcon
+                : backgroundIcon;
     }
 }

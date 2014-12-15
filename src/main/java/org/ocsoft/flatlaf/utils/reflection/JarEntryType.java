@@ -23,28 +23,27 @@ package org.ocsoft.flatlaf.utils.reflection;
  * @author Mikle Garin
  */
 
-public enum JarEntryType
-{
+public enum JarEntryType {
     /**
      * Jar entry.
      */
     jarEntry,
-
+    
     /**
      * Package entry.
      */
     packageEntry,
-
+    
     /**
      * Java class entry.
      */
     classEntry,
-
+    
     /**
      * Java class source entry.
      */
     javaEntry,
-
+    
     /**
      * File entry.
      */

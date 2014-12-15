@@ -23,7 +23,6 @@ import java.awt.*;
  * User: mgarin Date: 09.10.12 Time: 13:22
  */
 
-public interface HotkeyCondition
-{
-    public boolean checkCondition ( Component component );
+public interface HotkeyCondition {
+    public boolean checkCondition(Component component);
 }

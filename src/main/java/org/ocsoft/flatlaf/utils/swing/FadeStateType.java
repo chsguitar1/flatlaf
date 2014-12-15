@@ -18,24 +18,23 @@
 package org.ocsoft.flatlaf.utils.swing;
 
 /**
- * This enumeration represents possible fade animation states.
- * It might be used by various components to perform fade animation.
+ * This enumeration represents possible fade animation states. It might be used
+ * by various components to perform fade animation.
  *
  * @author Mikle Garin
  */
 
-public enum FadeStateType
-{
+public enum FadeStateType {
     /**
      * Not animating.
      */
     none,
-
+    
     /**
      * Fading-in.
      */
     fadeIn,
-
+    
     /**
      * Fading-out.
      */

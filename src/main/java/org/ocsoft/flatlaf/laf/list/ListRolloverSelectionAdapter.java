@@ -23,95 +23,95 @@ import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
 
 /**
- * This adapter allows you to install (and uninstall if needed) select-on-rollover behavior into any JList without any additional coding.
+ * This adapter allows you to install (and uninstall if needed)
+ * select-on-rollover behavior into any JList without any additional coding.
  *
  * @author Mikle Garin
  */
 
-public class ListRolloverSelectionAdapter extends MouseMotionAdapter
-{
+public class ListRolloverSelectionAdapter extends MouseMotionAdapter {
     /**
      * List into which this adapter is installed.
      */
     private final JList list;
-
+    
     /**
      * Constructs rollover selection adapter for the specified list.
      *
-     * @param list list into which this adapter is installed
+     * @param list
+     *            list into which this adapter is installed
      */
-    public ListRolloverSelectionAdapter ( final JList list )
-    {
-        super ();
+    public ListRolloverSelectionAdapter(final JList list) {
+        super();
         this.list = list;
     }
-
+    
     /**
      * Performs selection change on rollover.
      *
-     * @param e mouse event
+     * @param e
+     *            mouse event
      */
     @Override
-    public void mouseMoved ( final MouseEvent e )
-    {
+    public void mouseMoved(final MouseEvent e) {
         // Disabled lists aren't affected
-        if ( list.isEnabled () )
-        {
+        if (list.isEnabled()) {
             // Compute cell under point
-            final int index = list.locationToIndex ( e.getPoint () );
-            if ( index != list.getSelectedIndex () )
-            {
+            final int index = list.locationToIndex(e.getPoint());
+            if (index != list.getSelectedIndex()) {
                 // Change selection
-                list.setSelectedIndex ( index );
+                list.setSelectedIndex(index);
             }
         }
     }
-
+    
     /**
-     * Installs rollover selection adapter into list and ensures that it is the only one installed.
+     * Installs rollover selection adapter into list and ensures that it is the
+     * only one installed.
      *
-     * @param list list to modify
+     * @param list
+     *            list to modify
      * @return installed rollover selection adapter
      */
-    public static ListRolloverSelectionAdapter install ( final JList list )
-    {
+    public static ListRolloverSelectionAdapter install(final JList list) {
         // Uninstall old adapters first
-        uninstall ( list );
-
+        uninstall(list);
+        
         // Add new adapter
-        final ListRolloverSelectionAdapter adapter = new ListRolloverSelectionAdapter ( list );
-        list.addMouseMotionListener ( adapter );
+        final ListRolloverSelectionAdapter adapter = new ListRolloverSelectionAdapter(
+                list);
+        list.addMouseMotionListener(adapter);
         return adapter;
     }
-
+    
     /**
      * Uninstalls all rollover selection adapters from the specified list.
      *
-     * @param list list to modify
+     * @param list
+     *            list to modify
      */
-    public static void uninstall ( final JList list )
-    {
-        for ( final MouseMotionListener listener : list.getMouseMotionListeners () )
-        {
-            if ( listener instanceof ListRolloverSelectionAdapter )
-            {
-                list.removeMouseMotionListener ( listener );
+    public static void uninstall(final JList list) {
+        for (final MouseMotionListener listener : list
+                .getMouseMotionListeners()) {
+            if (listener instanceof ListRolloverSelectionAdapter) {
+                list.removeMouseMotionListener(listener);
             }
         }
     }
-
+    
     /**
-     * Returns whether the specified list has any rollover selection adapters installed or not.
+     * Returns whether the specified list has any rollover selection adapters
+     * installed or not.
      *
-     * @param list list to process
-     * @return true if the specified list has any rollover selection adapters installed, false otherwise
+     * @param list
+     *            list to process
+     * @return true if the specified list has any rollover selection adapters
+     *         installed, false otherwise
      */
-    public static boolean isInstalled ( final JList list )
-    {
-        for ( final MouseMotionListener listener : list.getMouseMotionListeners () )
-        {
-            if ( listener instanceof ListRolloverSelectionAdapter )
-            {
+    public static boolean isInstalled(final JList list) {
+        for (final MouseMotionListener listener : list
+                .getMouseMotionListeners()) {
+            if (listener instanceof ListRolloverSelectionAdapter) {
                 return true;
             }
         }

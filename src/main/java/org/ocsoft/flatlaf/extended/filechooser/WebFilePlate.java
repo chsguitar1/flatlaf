@@ -43,357 +43,305 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This is a custom panel that represents a single File within any container.
- * It is basically used within WebFileDrop component to render selected files.
+ * This is a custom panel that represents a single File within any container. It
+ * is basically used within WebFileDrop component to render selected files.
  *
  * @author Mikle Garin
  */
 
-public class WebFilePlate extends WebPanel
-{
-    public static final ImageIcon CROSS_ICON = new ImageIcon ( WebFilePlate.class.getResource ( "icons/cross.png" ) );
-
-    protected final List<ActionListener> closeListeners = new ArrayList<ActionListener> ( 1 );
-
+public class WebFilePlate extends WebPanel {
+    public static final ImageIcon CROSS_ICON = new ImageIcon(
+            WebFilePlate.class.getResource("icons/cross.png"));
+    
+    protected final List<ActionListener> closeListeners = new ArrayList<ActionListener>(
+            1);
+    
     protected boolean showRemoveButton = true;
     protected boolean showFileExtensions = false;
     protected final boolean animate = FlatLafStyleConstants.animate;
-
+    
     private boolean dragEnabled = false;
     private int dragAction = TransferHandler.MOVE;
-
+    
     protected final File file;
-
+    
     protected WebTimer animator = null;
     protected float opacity = 0f;
-
+    
     protected final WebLabel fileName;
     protected WebButton remove = null;
-
-    public WebFilePlate ( final File file )
-    {
-        this ( file, true );
+    
+    public WebFilePlate(final File file) {
+        this(file, true);
     }
-
-    public WebFilePlate ( final File file, final boolean decorated )
-    {
-        super ( decorated );
-
+    
+    public WebFilePlate(final File file, final boolean decorated) {
+        super(decorated);
+        
         this.file = file;
-
+        
         // setPaintFocus ( true );
-        setMargin ( 0, 3, 0, 0 );
-
-        final TableLayout tableLayout =
-                new TableLayout ( new double[][]{ { TableLayout.FILL, TableLayout.PREFERRED }, { TableLayout.PREFERRED } } );
-        tableLayout.setHGap ( 0 );
-        tableLayout.setVGap ( 0 );
-        setLayout ( tableLayout );
-
+        setMargin(0, 3, 0, 0);
+        
+        final TableLayout tableLayout = new TableLayout(new double[][] {
+                { TableLayout.FILL, TableLayout.PREFERRED },
+                { TableLayout.PREFERRED } });
+        tableLayout.setHGap(0);
+        tableLayout.setVGap(0);
+        setLayout(tableLayout);
+        
         // Displayed file name
-        fileName = new WebLabel ();
-        fileName.setMargin ( 0, 0, 0, showRemoveButton ? 1 : 0 );
-        add ( fileName, "0,0" );
-
+        fileName = new WebLabel();
+        fileName.setMargin(0, 0, 0, showRemoveButton ? 1 : 0);
+        add(fileName, "0,0");
+        
         // Updating current file name
-        updateFileName ();
-
+        updateFileName();
+        
         // Adding remove button if needed
-        if ( showRemoveButton )
-        {
-            add ( getRemoveButton (), "1,0" );
+        if (showRemoveButton) {
+            add(getRemoveButton(), "1,0");
         }
-
+        
         // Adding appear listener
-        addAncestorListener ( new AncestorAdapter ()
-        {
+        addAncestorListener(new AncestorAdapter() {
             @Override
-            public void ancestorAdded ( final AncestorEvent event )
-            {
-                if ( animator != null && animator.isRunning () )
-                {
-                    animator.stop ();
+            public void ancestorAdded(final AncestorEvent event) {
+                if (animator != null && animator.isRunning()) {
+                    animator.stop();
                 }
-                if ( animate )
-                {
-                    animator = new WebTimer ( "WebFilePlate.fadeInTimer", FlatLafStyleConstants.animationDelay, new ActionListener ()
-                    {
-                        @Override
-                        public void actionPerformed ( final ActionEvent e )
-                        {
-                            opacity += 0.1f;
-                            if ( opacity < 1f )
-                            {
-                                WebFilePlate.this.repaint ();
-                            }
-                            else
-                            {
-                                opacity = 1f;
-                                WebFilePlate.this.repaint ();
-                                animator.stop ();
-                            }
-                        }
-                    } );
-                    animator.start ();
-                }
-                else
-                {
+                if (animate) {
+                    animator = new WebTimer("WebFilePlate.fadeInTimer",
+                            FlatLafStyleConstants.animationDelay,
+                            new ActionListener() {
+                                @Override
+                                public void actionPerformed(final ActionEvent e) {
+                                    opacity += 0.1f;
+                                    if (opacity < 1f) {
+                                        WebFilePlate.this.repaint();
+                                    } else {
+                                        opacity = 1f;
+                                        WebFilePlate.this.repaint();
+                                        animator.stop();
+                                    }
+                                }
+                            });
+                    animator.start();
+                } else {
                     opacity = 1f;
-                    WebFilePlate.this.repaint ();
+                    WebFilePlate.this.repaint();
                 }
             }
-        } );
-
+        });
+        
         // Custom file drag handler
-        final MouseAdapter ma = new MouseAdapter ()
-        {
+        final MouseAdapter ma = new MouseAdapter() {
             public boolean doDrag;
-
+            
             @Override
-            public void mousePressed ( final MouseEvent e )
-            {
+            public void mousePressed(final MouseEvent e) {
                 doDrag = true;
             }
-
+            
             @Override
-            public void mouseDragged ( final MouseEvent e )
-            {
-                if ( doDrag )
-                {
-                    final TransferHandler transferHandler = getTransferHandler ();
-                    transferHandler.exportAsDrag ( WebFilePlate.this, e, transferHandler.getSourceActions ( WebFilePlate.this ) );
+            public void mouseDragged(final MouseEvent e) {
+                if (doDrag) {
+                    final TransferHandler transferHandler = getTransferHandler();
+                    transferHandler
+                            .exportAsDrag(WebFilePlate.this, e, transferHandler
+                                    .getSourceActions(WebFilePlate.this));
                     doDrag = false;
                 }
             }
         };
-        addMouseListener ( ma );
-        addMouseMotionListener ( ma );
-        setTransferHandler ( new FileDragAndDropHandler ( true, true )
-        {
+        addMouseListener(ma);
+        addMouseMotionListener(ma);
+        setTransferHandler(new FileDragAndDropHandler(true, true) {
             @Override
-            public boolean isDragEnabled ()
-            {
-                final Container parent = WebFilePlate.this.getParent ();
-                if ( parent instanceof WebFileDrop )
-                {
-                    return ( ( WebFileDrop ) parent ).isFilesDragEnabled ();
+            public boolean isDragEnabled() {
+                final Container parent = WebFilePlate.this.getParent();
+                if (parent instanceof WebFileDrop) {
+                    return ((WebFileDrop) parent).isFilesDragEnabled();
                 }
-                return WebFilePlate.this.isDragEnabled ();
+                return WebFilePlate.this.isDragEnabled();
             }
-
+            
             @Override
-            public int getDragAction ()
-            {
-                final Container parent = WebFilePlate.this.getParent ();
-                if ( parent instanceof WebFileDrop )
-                {
-                    return ( ( WebFileDrop ) parent ).getDragAction ();
+            public int getDragAction() {
+                final Container parent = WebFilePlate.this.getParent();
+                if (parent instanceof WebFileDrop) {
+                    return ((WebFileDrop) parent).getDragAction();
                 }
-                return WebFilePlate.this.getDragAction ();
+                return WebFilePlate.this.getDragAction();
             }
-
+            
             @Override
-            public File fileDragged ()
-            {
+            public File fileDragged() {
                 // Remove this plate from WebFileDrop if it is a move action
-                if ( getDragAction () == MOVE )
-                {
-                    final Container parent = getParent ();
-                    if ( parent instanceof WebFileDrop )
-                    {
-                        performPlateRemoval ( new ActionEvent ( WebFilePlate.this, 0, "File moved by drag" ), false );
+                if (getDragAction() == MOVE) {
+                    final Container parent = getParent();
+                    if (parent instanceof WebFileDrop) {
+                        performPlateRemoval(new ActionEvent(WebFilePlate.this,
+                                0, "File moved by drag"), false);
                     }
                 }
-
+                
                 // Pass this plate's file
                 return file;
             }
-
+            
             @Override
-            public boolean importData ( final TransferSupport info )
-            {
+            public boolean importData(final TransferSupport info) {
                 // Special workaround to make this plate drop-transparent
-                return DragUtils.passDropAction ( WebFilePlate.this, info );
+                return DragUtils.passDropAction(WebFilePlate.this, info);
             }
-        } );
+        });
     }
-
-    public boolean isDragEnabled ()
-    {
+    
+    public boolean isDragEnabled() {
         return dragEnabled;
     }
-
-    public void setDragEnabled ( final boolean dragEnabled )
-    {
+    
+    public void setDragEnabled(final boolean dragEnabled) {
         this.dragEnabled = dragEnabled;
     }
-
-    public int getDragAction ()
-    {
+    
+    public int getDragAction() {
         return dragAction;
     }
-
-    public void setDragAction ( final int dragAction )
-    {
+    
+    public void setDragAction(final int dragAction) {
         this.dragAction = dragAction;
     }
-
-    protected void updateFileName ()
-    {
-        fileName.setIcon ( getDisplayIcon ( file ) );
-        fileName.setText ( getDisplayName ( file ) );
+    
+    protected void updateFileName() {
+        fileName.setIcon(getDisplayIcon(file));
+        fileName.setText(getDisplayName(file));
     }
-
-    protected WebButton getRemoveButton ()
-    {
-        if ( remove == null )
-        {
-            remove = WebButton.createIconWebButton ( CROSS_ICON, FlatLafStyleConstants.smallRound, 3, 1, true, false );
-            remove.setFocusable ( false );
-            remove.addActionListener ( new ActionListener ()
-            {
+    
+    protected WebButton getRemoveButton() {
+        if (remove == null) {
+            remove = WebButton.createIconWebButton(CROSS_ICON,
+                    FlatLafStyleConstants.smallRound, 3, 1, true, false);
+            remove.setFocusable(false);
+            remove.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed ( final ActionEvent ae )
-                {
-                    performPlateRemoval ( ae, animate );
+                public void actionPerformed(final ActionEvent ae) {
+                    performPlateRemoval(ae, animate);
                 }
-            } );
+            });
         }
         return remove;
     }
-
-    protected void performPlateRemoval ( final ActionEvent ae, final boolean animate )
-    {
-        if ( animator != null && animator.isRunning () )
-        {
-            animator.stop ();
+    
+    protected void performPlateRemoval(final ActionEvent ae,
+            final boolean animate) {
+        if (animator != null && animator.isRunning()) {
+            animator.stop();
         }
-        if ( animate )
-        {
-            animator = new WebTimer ( "WebFilePlate.fadeOutTimer", FlatLafStyleConstants.animationDelay, new ActionListener ()
-            {
-                @Override
-                public void actionPerformed ( final ActionEvent e )
-                {
-                    opacity -= 0.1f;
-                    if ( opacity > 0f )
-                    {
-                        WebFilePlate.this.repaint ();
-                    }
-                    else
-                    {
-                        // Remove file plate
-                        removeFromParent ();
-
-                        // Stopping animation
-                        animator.stop ();
-                    }
-                }
-            } );
-            animator.start ();
-        }
-        else
-        {
+        if (animate) {
+            animator = new WebTimer("WebFilePlate.fadeOutTimer",
+                    FlatLafStyleConstants.animationDelay, new ActionListener() {
+                        @Override
+                        public void actionPerformed(final ActionEvent e) {
+                            opacity -= 0.1f;
+                            if (opacity > 0f) {
+                                WebFilePlate.this.repaint();
+                            } else {
+                                // Remove file plate
+                                removeFromParent();
+                                
+                                // Stopping animation
+                                animator.stop();
+                            }
+                        }
+                    });
+            animator.start();
+        } else {
             // Remove file plate
-            removeFromParent ();
+            removeFromParent();
         }
-
+        
         // Firing close listeners
-        fireCloseActionPerformed ( ae );
+        fireCloseActionPerformed(ae);
     }
-
-    protected void removeFromParent ()
-    {
+    
+    protected void removeFromParent() {
         // Change visibility option
         opacity = 0f;
-
+        
         // Remove file
-        final Container container = this.getParent ();
-        if ( container != null && container instanceof JComponent )
-        {
-            final JComponent parent = ( JComponent ) container;
-            parent.remove ( this );
-            parent.revalidate ();
-            parent.repaint ();
+        final Container container = this.getParent();
+        if (container != null && container instanceof JComponent) {
+            final JComponent parent = (JComponent) container;
+            parent.remove(this);
+            parent.revalidate();
+            parent.repaint();
         }
     }
-
-    protected ImageIcon getDisplayIcon ( final File file )
-    {
-        return FileUtils.getFileIcon ( file, false );
+    
+    protected ImageIcon getDisplayIcon(final File file) {
+        return FileUtils.getFileIcon(file, false);
     }
-
-    protected String getDisplayName ( final File file )
-    {
-        final String name = FileUtils.getDisplayFileName ( file );
-        return showFileExtensions || file.isDirectory () ? name : FileUtils.getFileNamePart ( name );
+    
+    protected String getDisplayName(final File file) {
+        final String name = FileUtils.getDisplayFileName(file);
+        return showFileExtensions || file.isDirectory() ? name : FileUtils
+                .getFileNamePart(name);
     }
-
-    public boolean isShowRemoveButton ()
-    {
+    
+    public boolean isShowRemoveButton() {
         return showRemoveButton;
     }
-
-    public void setShowRemoveButton ( final boolean showRemoveButton )
-    {
-        if ( this.showRemoveButton != showRemoveButton )
-        {
+    
+    public void setShowRemoveButton(final boolean showRemoveButton) {
+        if (this.showRemoveButton != showRemoveButton) {
             this.showRemoveButton = showRemoveButton;
-            if ( showRemoveButton )
-            {
-                add ( getRemoveButton (), "1,0" );
+            if (showRemoveButton) {
+                add(getRemoveButton(), "1,0");
+            } else {
+                remove(getRemoveButton());
             }
-            else
-            {
-                remove ( getRemoveButton () );
-            }
-            revalidate ();
+            revalidate();
         }
     }
-
-    public boolean isShowFileExtensions ()
-    {
+    
+    public boolean isShowFileExtensions() {
         return showFileExtensions;
     }
-
-    public void setShowFileExtensions ( final boolean showFileExtensions )
-    {
+    
+    public void setShowFileExtensions(final boolean showFileExtensions) {
         this.showFileExtensions = showFileExtensions;
-        updateFileName ();
+        updateFileName();
     }
-
-    public File getFile ()
-    {
+    
+    public File getFile() {
         return file;
     }
-
-    public void remove ()
-    {
-        remove.doClick ( 0 );
+    
+    public void remove() {
+        remove.doClick(0);
     }
-
+    
     @Override
-    protected void paintComponent ( final Graphics g )
-    {
-        GraphicsUtils.setupAlphaComposite ( ( Graphics2D ) g, opacity, opacity < 1f );
-        super.paintComponent ( g );
+    protected void paintComponent(final Graphics g) {
+        GraphicsUtils
+                .setupAlphaComposite((Graphics2D) g, opacity, opacity < 1f);
+        super.paintComponent(g);
     }
-
-    public void addCloseListener ( final ActionListener actionListener )
-    {
-        closeListeners.add ( actionListener );
+    
+    public void addCloseListener(final ActionListener actionListener) {
+        closeListeners.add(actionListener);
     }
-
-    public void removeCloseListener ( final ActionListener actionListener )
-    {
-        closeListeners.remove ( actionListener );
+    
+    public void removeCloseListener(final ActionListener actionListener) {
+        closeListeners.remove(actionListener);
     }
-
-    protected void fireCloseActionPerformed ( final ActionEvent e )
-    {
-        for ( final ActionListener listener : CollectionUtils.copy ( closeListeners ) )
-        {
-            listener.actionPerformed ( e );
+    
+    protected void fireCloseActionPerformed(final ActionEvent e) {
+        for (final ActionListener listener : CollectionUtils
+                .copy(closeListeners)) {
+            listener.actionPerformed(e);
         }
     }
 }

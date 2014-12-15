@@ -27,62 +27,53 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class WebScrollPaneCorner extends JComponent
-{
+public class WebScrollPaneCorner extends JComponent {
     /**
-     * todo 1. Create UI for this corner component
-     * todo 2. Create custom painter for corners
+     * todo 1. Create UI for this corner component todo 2. Create custom painter
+     * for corners
      */
-
+    
     private final String corner;
-
-    public WebScrollPaneCorner ( final String corner )
-    {
-        super ();
+    
+    public WebScrollPaneCorner(final String corner) {
+        super();
         this.corner = corner;
-        SwingUtils.setOrientation ( this );
+        SwingUtils.setOrientation(this);
     }
-
+    
     @Override
-    protected void paintComponent ( final Graphics g )
-    {
-        super.paintComponent ( g );
-
-        final boolean ltr = getComponentOrientation ().isLeftToRight ();
-        if ( corner.equals ( JScrollPane.LOWER_LEADING_CORNER ) )
-        {
-            final int vBorder = ltr ? getWidth () - 1 : 0;
-            g.setColor ( WebScrollBarStyle.trackBackgroundColor );
-            g.fillRect ( 0, 0, getWidth (), getHeight () );
-            g.setColor ( WebScrollBarStyle.trackBorderColor );
-            g.drawLine ( 0, 0, getWidth () - 1, 0 );
-            g.drawLine ( vBorder, 0, vBorder, getHeight () - 1 );
-        }
-        else if ( corner.equals ( JScrollPane.LOWER_TRAILING_CORNER ) )
-        {
-            final int vBorder = ltr ? 0 : getWidth () - 1;
-            g.setColor ( WebScrollBarStyle.trackBackgroundColor );
-            g.fillRect ( 0, 0, getWidth (), getHeight () );
-            g.setColor ( WebScrollBarStyle.trackBorderColor );
-            g.drawLine ( 0, 0, getWidth () - 1, 0 );
-            g.drawLine ( vBorder, 0, vBorder, getHeight () - 1 );
-        }
-        else if ( corner.equals ( JScrollPane.UPPER_TRAILING_CORNER ) )
-        {
-            final int vBorder = ltr ? 0 : getWidth () - 1;
-            g.setColor ( WebScrollBarStyle.trackBackgroundColor );
-            g.fillRect ( 0, 0, getWidth (), getHeight () );
-            g.setColor ( WebScrollBarStyle.trackBorderColor );
-            g.drawLine ( 0, getHeight () - 1, getWidth () - 1, getHeight () - 1 );
-            g.drawLine ( vBorder, 0, vBorder, getHeight () - 1 );
+    protected void paintComponent(final Graphics g) {
+        super.paintComponent(g);
+        
+        final boolean ltr = getComponentOrientation().isLeftToRight();
+        if (corner.equals(JScrollPane.LOWER_LEADING_CORNER)) {
+            final int vBorder = ltr ? getWidth() - 1 : 0;
+            g.setColor(WebScrollBarStyle.trackBackgroundColor);
+            g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(WebScrollBarStyle.trackBorderColor);
+            g.drawLine(0, 0, getWidth() - 1, 0);
+            g.drawLine(vBorder, 0, vBorder, getHeight() - 1);
+        } else if (corner.equals(JScrollPane.LOWER_TRAILING_CORNER)) {
+            final int vBorder = ltr ? 0 : getWidth() - 1;
+            g.setColor(WebScrollBarStyle.trackBackgroundColor);
+            g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(WebScrollBarStyle.trackBorderColor);
+            g.drawLine(0, 0, getWidth() - 1, 0);
+            g.drawLine(vBorder, 0, vBorder, getHeight() - 1);
+        } else if (corner.equals(JScrollPane.UPPER_TRAILING_CORNER)) {
+            final int vBorder = ltr ? 0 : getWidth() - 1;
+            g.setColor(WebScrollBarStyle.trackBackgroundColor);
+            g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(WebScrollBarStyle.trackBorderColor);
+            g.drawLine(0, getHeight() - 1, getWidth() - 1, getHeight() - 1);
+            g.drawLine(vBorder, 0, vBorder, getHeight() - 1);
         }
     }
-
+    
     @Override
-    public Dimension getPreferredSize ()
-    {
+    public Dimension getPreferredSize() {
         // We don't want corners to force scroll pane size changes
         // By default this value is not even queued though
-        return new Dimension ( 0, 0 );
+        return new Dimension(0, 0);
     }
 }

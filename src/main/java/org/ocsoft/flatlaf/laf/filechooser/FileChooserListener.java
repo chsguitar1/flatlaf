@@ -27,19 +27,20 @@ import java.util.List;
  * @author Mikle Garin
  */
 
-public interface FileChooserListener extends EventListener
-{
+public interface FileChooserListener extends EventListener {
     /**
      * Called when currently viewed in chooser directory changes.
      *
-     * @param newDirectory new viewed directory
+     * @param newDirectory
+     *            new viewed directory
      */
-    public void directoryChanged ( File newDirectory );
-
+    public void directoryChanged(File newDirectory);
+    
     /**
      * Called when files selected in file chooser change.
      *
-     * @param selectedFiles new list of selected files
+     * @param selectedFiles
+     *            new list of selected files
      */
-    public void selectionChanged ( List<File> selectedFiles );
+    public void selectionChanged(List<File> selectedFiles);
 }

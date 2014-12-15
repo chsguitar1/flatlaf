@@ -25,27 +25,23 @@ import javax.swing.*;
  * @author Mikle Garin
  */
 
-public class UnselectableListModel extends DefaultListSelectionModel
-{
+public class UnselectableListModel extends DefaultListSelectionModel {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void clearSelection ()
-    {
+    public void clearSelection() {
         // Do nothing
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeSelectionInterval ( int index0, int index1 )
-    {
+    public void removeSelectionInterval(int index0, int index1) {
         // Check that at least some selection will be left after this action
-        if ( index0 > getMinSelectionIndex () || index1 < getMaxSelectionIndex () )
-        {
-            super.removeSelectionInterval ( index0, index1 );
+        if (index0 > getMinSelectionIndex() || index1 < getMaxSelectionIndex()) {
+            super.removeSelectionInterval(index0, index1);
         }
     }
 }

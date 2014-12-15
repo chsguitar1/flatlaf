@@ -28,157 +28,155 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class WebTableCellRenderer extends WebLabel implements TableCellRenderer
-{
+public class WebTableCellRenderer extends WebLabel implements TableCellRenderer {
     private Color unselectedForeground;
     private Color unselectedBackground;
-
-    public WebTableCellRenderer ()
-    {
-        super ();
-        setOpaque ( true );
-        setMargin ( 2 );
-        setName ( "Table.cellRenderer" );
+    
+    public WebTableCellRenderer() {
+        super();
+        setOpaque(true);
+        setMargin(2);
+        setName("Table.cellRenderer");
     }
-
+    
     @Override
-    public void setForeground ( final Color c )
-    {
-        super.setForeground ( c );
+    public void setForeground(final Color c) {
+        super.setForeground(c);
         unselectedForeground = c;
     }
-
+    
     @Override
-    public void setBackground ( final Color c )
-    {
-        super.setBackground ( c );
+    public void setBackground(final Color c) {
+        super.setBackground(c);
         unselectedBackground = c;
     }
-
+    
     @Override
-    public void updateUI ()
-    {
-        super.updateUI ();
-        setForeground ( null );
-        setBackground ( null );
+    public void updateUI() {
+        super.updateUI();
+        setForeground(null);
+        setBackground(null);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Component getTableCellRendererComponent ( final JTable table, final Object value, final boolean isSelected,
-                                                     final boolean hasFocus, final int row, final int column )
-    {
+    public Component getTableCellRendererComponent(final JTable table,
+            final Object value, final boolean isSelected,
+            final boolean hasFocus, final int row, final int column) {
         final Color fg = null;
         final Color bg = null;
-
+        
         // todo Drop indication
-        //        JTable.DropLocation dropLocation = table.getDropLocation ();
-        //        if ( dropLocation != null && !dropLocation.isInsertRow () && !dropLocation.isInsertColumn () && dropLocation.getRow () == row &&
-        //                dropLocation.getColumn () == column )
-        //        {
+        // JTable.DropLocation dropLocation = table.getDropLocation ();
+        // if ( dropLocation != null && !dropLocation.isInsertRow () &&
+        // !dropLocation.isInsertColumn () && dropLocation.getRow () == row &&
+        // dropLocation.getColumn () == column )
+        // {
         //
-        //            fg = UIManager.getColor ( "Table.dropCellForeground" );
-        //            bg = UIManager.getColor ( "Table.dropCellBackground" );
-        //            isSelected = true;
-        //        }
-
-        if ( isSelected )
-        {
-            super.setForeground ( fg == null ? table.getSelectionForeground () : fg );
-            super.setBackground ( bg == null ? table.getSelectionBackground () : bg );
-        }
-        else
-        {
-            Color background = unselectedBackground != null ? unselectedBackground : table.getBackground ();
-            if ( background == null || background instanceof javax.swing.plaf.UIResource )
-            {
-                final Color alternateColor = UIManager.getColor ( "Table.alternateRowColor" );
-                if ( alternateColor != null && row % 2 == 0 )
-                {
+        // fg = UIManager.getColor ( "Table.dropCellForeground" );
+        // bg = UIManager.getColor ( "Table.dropCellBackground" );
+        // isSelected = true;
+        // }
+        
+        if (isSelected) {
+            super.setForeground(fg == null ? table.getSelectionForeground()
+                    : fg);
+            super.setBackground(bg == null ? table.getSelectionBackground()
+                    : bg);
+        } else {
+            Color background = unselectedBackground != null ? unselectedBackground
+                    : table.getBackground();
+            if (background == null
+                    || background instanceof javax.swing.plaf.UIResource) {
+                final Color alternateColor = UIManager
+                        .getColor("Table.alternateRowColor");
+                if (alternateColor != null && row % 2 == 0) {
                     background = alternateColor;
                 }
             }
-            super.setForeground ( unselectedForeground != null ? unselectedForeground : table.getForeground () );
-            super.setBackground ( background );
+            super.setForeground(unselectedForeground != null ? unselectedForeground
+                    : table.getForeground());
+            super.setBackground(background);
         }
-
-        setFont ( table.getFont () );
-        setValue ( value );
-        setEnabled ( table.isEnabled () );
-
+        
+        setFont(table.getFont());
+        setValue(value);
+        setEnabled(table.isEnabled());
+        
         return this;
     }
-
+    
     @Override
-    public boolean isOpaque ()
-    {
-        final Color back = getBackground ();
-        Component p = getParent ();
-        if ( p != null )
-        {
-            p = p.getParent ();
+    public boolean isOpaque() {
+        final Color back = getBackground();
+        Component p = getParent();
+        if (p != null) {
+            p = p.getParent();
         }
-
+        
         // p should now be the JTable.
-        final boolean colorMatch = ( back != null ) && ( p != null ) && back.equals ( p.getBackground () ) && p.isOpaque ();
-        return !colorMatch && super.isOpaque ();
+        final boolean colorMatch = (back != null) && (p != null)
+                && back.equals(p.getBackground()) && p.isOpaque();
+        return !colorMatch && super.isOpaque();
     }
-
-    protected void setValue ( final Object value )
-    {
-        setText ( ( value == null ) ? "" : value.toString () );
+    
+    protected void setValue(final Object value) {
+        setText((value == null) ? "" : value.toString());
     }
-
-    public static class UIResource extends WebTableCellRenderer implements javax.swing.plaf.UIResource
-    {
+    
+    public static class UIResource extends WebTableCellRenderer implements
+            javax.swing.plaf.UIResource {
     }
-
+    
     /**
      * Overridden for performance reasons.
      */
-
+    
     // Doesn't work well on OpenJDK
-
-    //    protected void firePropertyChange ( String propertyName, Object oldValue, Object newValue )
-    //    {
-    //        if ( propertyName.equals ( "text" ) || propertyName.equals ( "labelFor" ) || propertyName.equals ( "displayedMnemonic" ) ||
-    //                ( ( propertyName.equals ( "font" ) || propertyName.equals ( "foreground" ) ) && oldValue != newValue &&
-    //                        getClientProperty ( javax.swing.plaf.basic.BasicHTML.propertyKey ) != null ) )
-    //        {
+    
+    // protected void firePropertyChange ( String propertyName, Object oldValue,
+    // Object newValue )
+    // {
+    // if ( propertyName.equals ( "text" ) || propertyName.equals ( "labelFor" )
+    // || propertyName.equals ( "displayedMnemonic" ) ||
+    // ( ( propertyName.equals ( "font" ) || propertyName.equals ( "foreground"
+    // ) ) && oldValue != newValue &&
+    // getClientProperty ( javax.swing.plaf.basic.BasicHTML.propertyKey ) !=
+    // null ) )
+    // {
     //
-    //            super.firePropertyChange ( propertyName, oldValue, newValue );
-    //        }
-    //    }
+    // super.firePropertyChange ( propertyName, oldValue, newValue );
+    // }
+    // }
     //
-    //    public void firePropertyChange ( String propertyName, boolean oldValue, boolean newValue )
-    //    {
-    //    }
-
-    //    public void invalidate ()
-    //    {
-    //    }
+    // public void firePropertyChange ( String propertyName, boolean oldValue,
+    // boolean newValue )
+    // {
+    // }
+    
+    // public void invalidate ()
+    // {
+    // }
     //
-    //    public void validate ()
-    //    {
-    //    }
+    // public void validate ()
+    // {
+    // }
     //
-    //    public void revalidate ()
-    //    {
-    //    }
+    // public void revalidate ()
+    // {
+    // }
     //
-    //    public void repaint ( long tm, int x, int y, int width, int height )
-    //    {
-    //    }
+    // public void repaint ( long tm, int x, int y, int width, int height )
+    // {
+    // }
     //
-    //    public void repaint ( Rectangle r )
-    //    {
-    //    }
+    // public void repaint ( Rectangle r )
+    // {
+    // }
     //
-    //    public void repaint ()
-    //    {
-    //    }
+    // public void repaint ()
+    // {
+    // }
 }
-
-

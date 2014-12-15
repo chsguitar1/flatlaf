@@ -30,197 +30,177 @@ import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
 /**
- * This class provides a quick access to step-styled label which can be used to visualize some process steps.
+ * This class provides a quick access to step-styled label which can be used to
+ * visualize some process steps.
  *
  * @author Mikle Garin
  */
 
-public class WebStepLabel extends WebLabel implements ShapeProvider, LanguageMethods
-{
+public class WebStepLabel extends WebLabel implements ShapeProvider,
+        LanguageMethods {
     /**
-     * todo 1. Move painting to a proper separate painter
-     * todo 2. Add custom UI for that kind of component
+     * todo 1. Move painting to a proper separate painter todo 2. Add custom UI
+     * for that kind of component
      */
-
+    
     private Color topBgColor = FlatLafStyleConstants.topBgColor;
     private Color bottomBgColor = FlatLafStyleConstants.bottomBgColor;
     private Color selectedBgColor = FlatLafStyleConstants.selectedBgColor;
     private Color borderColor = FlatLafStyleConstants.darkBorderColor;
     private Color disabledBorderColor = FlatLafStyleConstants.disabledBorderColor;
-
-    private final Stroke stroke = new BasicStroke ( 2.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1f );
-
+    
+    private final Stroke stroke = new BasicStroke(2.5f, BasicStroke.CAP_ROUND,
+            BasicStroke.JOIN_ROUND, 1f);
+    
     private boolean selected = false;
-
-    public WebStepLabel ()
-    {
-        super ();
-        setupSettings ();
+    
+    public WebStepLabel() {
+        super();
+        setupSettings();
     }
-
-    public WebStepLabel ( final Icon image )
-    {
-        super ( image );
-        setupSettings ();
+    
+    public WebStepLabel(final Icon image) {
+        super(image);
+        setupSettings();
     }
-
-    public WebStepLabel ( final Icon image, final int horizontalAlignment )
-    {
-        super ( image, horizontalAlignment );
-        setupSettings ();
+    
+    public WebStepLabel(final Icon image, final int horizontalAlignment) {
+        super(image, horizontalAlignment);
+        setupSettings();
     }
-
-    public WebStepLabel ( final String text )
-    {
-        super ( text );
-        setupSettings ();
+    
+    public WebStepLabel(final String text) {
+        super(text);
+        setupSettings();
     }
-
-    public WebStepLabel ( final String text, final int horizontalAlignment )
-    {
-        super ( text, horizontalAlignment );
-        setupSettings ();
+    
+    public WebStepLabel(final String text, final int horizontalAlignment) {
+        super(text, horizontalAlignment);
+        setupSettings();
     }
-
-    public WebStepLabel ( final String text, final Icon icon, final int horizontalAlignment )
-    {
-        super ( text, icon, horizontalAlignment );
-        setupSettings ();
+    
+    public WebStepLabel(final String text, final Icon icon,
+            final int horizontalAlignment) {
+        super(text, icon, horizontalAlignment);
+        setupSettings();
     }
-
-    protected void setupSettings ()
-    {
-        setOpaque ( false );
-        setDrawShade ( true );
-        setForeground ( Color.DARK_GRAY );
-        setShadeColor ( Color.LIGHT_GRAY );
-        setMargin ( 8 );
-        setHorizontalAlignment ( WebStepLabel.CENTER );
-
-        SwingUtils.setBoldFont ( this );
-        SwingUtils.setFontSize ( this, 20 );
+    
+    protected void setupSettings() {
+        setOpaque(false);
+        setDrawShade(true);
+        setForeground(Color.DARK_GRAY);
+        setShadeColor(Color.LIGHT_GRAY);
+        setMargin(8);
+        setHorizontalAlignment(WebStepLabel.CENTER);
+        
+        SwingUtils.setBoldFont(this);
+        SwingUtils.setFontSize(this, 20);
     }
-
-    public Color getTopBgColor ()
-    {
+    
+    public Color getTopBgColor() {
         return topBgColor;
     }
-
-    public void setTopBgColor ( final Color topBgColor )
-    {
+    
+    public void setTopBgColor(final Color topBgColor) {
         this.topBgColor = topBgColor;
-        this.repaint ();
+        this.repaint();
     }
-
-    public Color getBottomBgColor ()
-    {
+    
+    public Color getBottomBgColor() {
         return bottomBgColor;
     }
-
-    public void setBottomBgColor ( final Color bottomBgColor )
-    {
+    
+    public void setBottomBgColor(final Color bottomBgColor) {
         this.bottomBgColor = bottomBgColor;
-        this.repaint ();
+        this.repaint();
     }
-
-    public Color getSelectedBgColor ()
-    {
+    
+    public Color getSelectedBgColor() {
         return selectedBgColor;
     }
-
-    public void setSelectedBgColor ( final Color selectedBgColor )
-    {
+    
+    public void setSelectedBgColor(final Color selectedBgColor) {
         this.selectedBgColor = selectedBgColor;
-        this.repaint ();
+        this.repaint();
     }
-
-    public Color getBorderColor ()
-    {
+    
+    public Color getBorderColor() {
         return borderColor;
     }
-
-    public void setBorderColor ( final Color borderColor )
-    {
+    
+    public void setBorderColor(final Color borderColor) {
         this.borderColor = borderColor;
-        this.repaint ();
+        this.repaint();
     }
-
-    public Color getDisabledBorderColor ()
-    {
+    
+    public Color getDisabledBorderColor() {
         return disabledBorderColor;
     }
-
-    public void setDisabledBorderColor ( final Color disabledBorderColor )
-    {
+    
+    public void setDisabledBorderColor(final Color disabledBorderColor) {
         this.disabledBorderColor = disabledBorderColor;
-        this.repaint ();
+        this.repaint();
     }
-
-    public boolean isSelected ()
-    {
+    
+    public boolean isSelected() {
         return selected;
     }
-
-    public void setSelected ( final boolean selected )
-    {
+    
+    public void setSelected(final boolean selected) {
         this.selected = selected;
-        this.repaint ();
+        this.repaint();
     }
-
+    
     @Override
-    public Shape provideShape ()
-    {
-        final int width = getWidth ();
-        final int height = getHeight ();
-        final int length = Math.min ( width, height );
-        return new RoundRectangle2D.Double ( width / 2 - length / 2 + 1, height / 2 - length / 2 + 1, length - 3, length - 3,
-                getWidth () - 4, getHeight () - 4 );
+    public Shape provideShape() {
+        final int width = getWidth();
+        final int height = getHeight();
+        final int length = Math.min(width, height);
+        return new RoundRectangle2D.Double(width / 2 - length / 2 + 1, height
+                / 2 - length / 2 + 1, length - 3, length - 3, getWidth() - 4,
+                getHeight() - 4);
     }
-
+    
     @Override
-    protected void paintComponent ( final Graphics g )
-    {
-        final Graphics2D g2d = ( Graphics2D ) g;
-        final Object aa = GraphicsUtils.setupAntialias ( g2d );
-
-        final int width = getWidth ();
-        final int height = getHeight ();
-        final int length = Math.min ( width, height );
-
+    protected void paintComponent(final Graphics g) {
+        final Graphics2D g2d = (Graphics2D) g;
+        final Object aa = GraphicsUtils.setupAntialias(g2d);
+        
+        final int width = getWidth();
+        final int height = getHeight();
+        final int length = Math.min(width, height);
+        
         // Background
-        if ( getBackground () != null )
-        {
-            if ( selected )
-            {
-                g2d.setPaint ( selectedBgColor );
+        if (getBackground() != null) {
+            if (selected) {
+                g2d.setPaint(selectedBgColor);
+            } else {
+                g2d.setPaint(new GradientPaint(0, 0, topBgColor, 0,
+                        getHeight(), bottomBgColor));
             }
-            else
-            {
-                g2d.setPaint ( new GradientPaint ( 0, 0, topBgColor, 0, getHeight (), bottomBgColor ) );
-            }
-            g2d.fillRoundRect ( width / 2 - length / 2 + 1, height / 2 - length / 2 + 1, length - 2, length - 2, getWidth () - 4,
-                    getHeight () - 4 );
+            g2d.fillRoundRect(width / 2 - length / 2 + 1, height / 2 - length
+                    / 2 + 1, length - 2, length - 2, getWidth() - 4,
+                    getHeight() - 4);
         }
-
+        
         // Border
-        if ( getBorderColor () != null )
-        {
-            g2d.setStroke ( stroke );
-            g2d.setPaint ( isEnabled () ? borderColor : disabledBorderColor );
-            g2d.drawRoundRect ( width / 2 - length / 2 + 1, height / 2 - length / 2 + 1, length - 3, length - 3, getWidth () - 4,
-                    getHeight () - 4 );
+        if (getBorderColor() != null) {
+            g2d.setStroke(stroke);
+            g2d.setPaint(isEnabled() ? borderColor : disabledBorderColor);
+            g2d.drawRoundRect(width / 2 - length / 2 + 1, height / 2 - length
+                    / 2 + 1, length - 3, length - 3, getWidth() - 4,
+                    getHeight() - 4);
         }
-
-        GraphicsUtils.restoreAntialias ( g2d, aa );
-
-        super.paintComponent ( g );
+        
+        GraphicsUtils.restoreAntialias(g2d, aa);
+        
+        super.paintComponent(g);
     }
-
+    
     @Override
-    public Dimension getPreferredSize ()
-    {
-        final Dimension ps = super.getPreferredSize ();
-        final int max = Math.max ( ps.width, ps.height );
+    public Dimension getPreferredSize() {
+        final Dimension ps = super.getPreferredSize();
+        final int max = Math.max(ps.width, ps.height);
         ps.width = max;
         ps.height = max;
         return ps;

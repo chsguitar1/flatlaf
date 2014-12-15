@@ -27,46 +27,40 @@ import javax.swing.text.PlainDocument;
  * @author Mikle Garin
  */
 
-public class IntTextDocument extends PlainDocument
-{
+public class IntTextDocument extends PlainDocument {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void insertString ( final int offs, final String str, final AttributeSet a ) throws BadLocationException
-    {
-        if ( str == null )
-        {
+    public void insertString(final int offs, final String str,
+            final AttributeSet a) throws BadLocationException {
+        if (str == null) {
             return;
         }
-        final int length = getLength ();
-        if ( length + str.length () <= 5 )
-        {
-            final String oldString = getText ( 0, length );
-            final String newString = oldString.substring ( 0, offs ) + str + oldString.substring ( offs );
-            try
-            {
-                if ( accept ( Integer.parseInt ( newString + "0" ) ) )
-                {
-                    super.insertString ( offs, str, a );
+        final int length = getLength();
+        if (length + str.length() <= 5) {
+            final String oldString = getText(0, length);
+            final String newString = oldString.substring(0, offs) + str
+                    + oldString.substring(offs);
+            try {
+                if (accept(Integer.parseInt(newString + "0"))) {
+                    super.insertString(offs, str, a);
                 }
-            }
-            catch ( final NumberFormatException ignored )
-            {
+            } catch (final NumberFormatException ignored) {
                 // Ignore any exceptions here
             }
         }
     }
-
+    
     /**
      * Returns whether entered integer number is accepted or not.
      *
-     * @param integer entered integer number
+     * @param integer
+     *            entered integer number
      * @return true if entered integer number is accepted, false otherwise
      */
-    @SuppressWarnings ("UnusedParameters")
-    protected boolean accept ( final int integer )
-    {
+    @SuppressWarnings("UnusedParameters")
+    protected boolean accept(final int integer) {
         return true;
     }
 }

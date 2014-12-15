@@ -27,23 +27,26 @@ import org.ocsoft.flatlaf.extended.painter.Painter;
  * @author Mikle Garin
  */
 
-public interface ScrollBarButtonPainter<E extends AbstractButton> extends Painter<E>
-{
+public interface ScrollBarButtonPainter<E extends AbstractButton> extends
+        Painter<E> {
     /**
-     * todo 1. Extend ButtonPainter later, when button painter will be implemented
+     * todo 1. Extend ButtonPainter later, when button painter will be
+     * implemented
      */
-
+    
     /**
      * Sets scroll bar button type.
      *
-     * @param type scroll bar button type
+     * @param type
+     *            scroll bar button type
      */
-    public void setButtonType ( ScrollBarButtonType type );
-
+    public void setButtonType(ScrollBarButtonType type);
+    
     /**
      * Sets scroll bar which uses this button.
      *
-     * @param scrollbar scroll bar which uses this button
+     * @param scrollbar
+     *            scroll bar which uses this button
      */
-    public void setScrollbar ( JScrollBar scrollbar );
+    public void setScrollbar(JScrollBar scrollbar);
 }

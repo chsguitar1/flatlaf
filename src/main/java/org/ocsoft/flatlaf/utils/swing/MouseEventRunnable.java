@@ -25,12 +25,12 @@ import java.awt.event.MouseEvent;
  * @author Mikle Garin
  */
 
-public interface MouseEventRunnable
-{
+public interface MouseEventRunnable {
     /**
      * Performs action according to mouse event.
      *
-     * @param e occured mouse event
+     * @param e
+     *            occured mouse event
      */
-    public void run ( MouseEvent e );
+    public void run(MouseEvent e);
 }

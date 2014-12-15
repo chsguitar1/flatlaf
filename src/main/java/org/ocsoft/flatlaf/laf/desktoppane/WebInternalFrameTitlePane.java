@@ -33,185 +33,172 @@ import java.awt.*;
  * User: mgarin Date: 24.08.11 Time: 20:30
  */
 
-public class WebInternalFrameTitlePane extends BasicInternalFrameTitlePane
-{
-    public static final ImageIcon iconifyIcon = new ImageIcon ( WebInternalFrameTitlePane.class.getResource ( "icons/minimize.png" ) );
-    public static final ImageIcon maximizeIcon = new ImageIcon ( WebInternalFrameTitlePane.class.getResource ( "icons/maximize.png" ) );
-    public static final ImageIcon restoreIcon = new ImageIcon ( WebInternalFrameTitlePane.class.getResource ( "icons/restore.png" ) );
-    public static final ImageIcon closeIcon = new ImageIcon ( WebInternalFrameTitlePane.class.getResource ( "icons/close.png" ) );
-
-    public WebInternalFrameTitlePane ( final JInternalFrame f )
-    {
-        super ( f );
-
-        setOpaque ( false );
-        setBorder ( BorderFactory.createEmptyBorder ( FlatLafStyleConstants.shadeWidth, FlatLafStyleConstants.shadeWidth, FlatLafStyleConstants.shadeWidth,
-                FlatLafStyleConstants.shadeWidth ) );
-
-        if ( !isFrameTitle () )
-        {
-            setBackground ( new Color ( 90, 90, 90, 220 ) );
+public class WebInternalFrameTitlePane extends BasicInternalFrameTitlePane {
+    public static final ImageIcon iconifyIcon = new ImageIcon(
+            WebInternalFrameTitlePane.class.getResource("icons/minimize.png"));
+    public static final ImageIcon maximizeIcon = new ImageIcon(
+            WebInternalFrameTitlePane.class.getResource("icons/maximize.png"));
+    public static final ImageIcon restoreIcon = new ImageIcon(
+            WebInternalFrameTitlePane.class.getResource("icons/restore.png"));
+    public static final ImageIcon closeIcon = new ImageIcon(
+            WebInternalFrameTitlePane.class.getResource("icons/close.png"));
+    
+    public WebInternalFrameTitlePane(final JInternalFrame f) {
+        super(f);
+        
+        setOpaque(false);
+        setBorder(BorderFactory.createEmptyBorder(
+                FlatLafStyleConstants.shadeWidth,
+                FlatLafStyleConstants.shadeWidth,
+                FlatLafStyleConstants.shadeWidth,
+                FlatLafStyleConstants.shadeWidth));
+        
+        if (!isFrameTitle()) {
+            setBackground(new Color(90, 90, 90, 220));
         }
     }
-
-    protected boolean isFrameTitle ()
-    {
+    
+    protected boolean isFrameTitle() {
         return true;
     }
-
+    
     @Override
-    public void paintComponent ( final Graphics g )
-    {
+    public void paintComponent(final Graphics g) {
         // super.paintComponent ( g );
-        if ( !isFrameTitle () )
-        {
-            LafUtils.drawWebStyle ( ( Graphics2D ) g, WebInternalFrameTitlePane.this, FlatLafStyleConstants.shadeColor, FlatLafStyleConstants.shadeWidth,
-                    FlatLafStyleConstants.bigRound, true, false );
+        if (!isFrameTitle()) {
+            LafUtils.drawWebStyle((Graphics2D) g,
+                    WebInternalFrameTitlePane.this,
+                    FlatLafStyleConstants.shadeColor,
+                    FlatLafStyleConstants.shadeWidth,
+                    FlatLafStyleConstants.bigRound, true, false);
         }
     }
-
+    
     @Override
-    protected LayoutManager createLayout ()
-    {
-        return new BorderLayout ();
+    protected LayoutManager createLayout() {
+        return new BorderLayout();
     }
-
+    
     @Override
-    protected void addSubComponents ()
-    {
-        add ( new BorderPanel ( new WebLabel ( frame.getTitle (), new Icon ()
-        {
+    protected void addSubComponents() {
+        add(new BorderPanel(new WebLabel(frame.getTitle(), new Icon() {
             @Override
-            public void paintIcon ( final Component c, final Graphics g, final int x, final int y )
-            {
-                if ( frame.getFrameIcon () != null )
-                {
-                    frame.getFrameIcon ().paintIcon ( c, g, x, y );
+            public void paintIcon(final Component c, final Graphics g,
+                    final int x, final int y) {
+                if (frame.getFrameIcon() != null) {
+                    frame.getFrameIcon().paintIcon(c, g, x, y);
                 }
             }
-
+            
             @Override
-            public int getIconWidth ()
-            {
-                return frame.getFrameIcon () != null ? frame.getFrameIcon ().getIconWidth () : 16;
+            public int getIconWidth() {
+                return frame.getFrameIcon() != null ? frame.getFrameIcon()
+                        .getIconWidth() : 16;
             }
-
+            
             @Override
-            public int getIconHeight ()
-            {
-                return frame.getFrameIcon () != null ? frame.getFrameIcon ().getIconHeight () : 16;
+            public int getIconHeight() {
+                return frame.getFrameIcon() != null ? frame.getFrameIcon()
+                        .getIconHeight() : 16;
             }
-        }, WebLabel.LEFT )
-        {
+        }, WebLabel.LEFT) {
             {
-                setOpaque ( false );
-                setForeground ( Color.WHITE );
-                setFont ( WebFonts.getSystemTitleFont () );
+                setOpaque(false);
+                setForeground(Color.WHITE);
+                setFont(WebFonts.getSystemTitleFont());
             }
-        }, isFrameTitle () ? 3 : 1, 3, 0, 3 ), BorderLayout.CENTER );
-
-        final int buttons = ( frame.isIconifiable () ? 1 : 0 ) + ( frame.isMaximizable () ? 1 : 0 ) +
-                ( frame.isClosable () ? 1 : 0 );
-        final JPanel buttonsPanel = new JPanel ( new GridLayout ( 1, buttons ) );
-        buttonsPanel.setOpaque ( false );
-        if ( frame.isIconifiable () )
-        {
-            buttonsPanel.add ( iconButton );
+        }, isFrameTitle() ? 3 : 1, 3, 0, 3), BorderLayout.CENTER);
+        
+        final int buttons = (frame.isIconifiable() ? 1 : 0)
+                + (frame.isMaximizable() ? 1 : 0)
+                + (frame.isClosable() ? 1 : 0);
+        final JPanel buttonsPanel = new JPanel(new GridLayout(1, buttons));
+        buttonsPanel.setOpaque(false);
+        if (frame.isIconifiable()) {
+            buttonsPanel.add(iconButton);
         }
-        if ( frame.isMaximizable () )
-        {
-            buttonsPanel.add ( maxButton );
+        if (frame.isMaximizable()) {
+            buttonsPanel.add(maxButton);
         }
-        if ( frame.isClosable () )
-        {
-            buttonsPanel.add ( closeButton );
+        if (frame.isClosable()) {
+            buttonsPanel.add(closeButton);
         }
-        add ( new BorderPanel ( buttonsPanel, 0, 0, 0, 0 ), BorderLayout.EAST );
+        add(new BorderPanel(buttonsPanel, 0, 0, 0, 0), BorderLayout.EAST);
     }
-
+    
     @Override
-    protected void createButtons ()
-    {
-        iconButton = new WebButton ()
-        {
+    protected void createButtons() {
+        iconButton = new WebButton() {
             {
-                setEnabled ( frame.isIconifiable () );
-                setRolloverDarkBorderOnly ( false );
-                setShadeWidth ( 0 );
-                setRound ( FlatLafStyleConstants.bigRound );
-                setInnerShadeWidth ( 2 );
-                setFocusable ( false );
-                if ( isFrameTitle () )
-                {
-                    setDrawRight ( false );
-                    setDrawRightLine ( true );
-                    setDrawTop ( false );
-                    setDrawTopLine ( true );
+                setEnabled(frame.isIconifiable());
+                setRolloverDarkBorderOnly(false);
+                setShadeWidth(0);
+                setRound(FlatLafStyleConstants.bigRound);
+                setInnerShadeWidth(2);
+                setFocusable(false);
+                if (isFrameTitle()) {
+                    setDrawRight(false);
+                    setDrawRightLine(true);
+                    setDrawTop(false);
+                    setDrawTopLine(true);
+                } else {
+                    setDrawLeft(false);
+                    setDrawLeftLine(true);
+                    setDrawRight(false);
+                    setDrawRightLine(true);
                 }
-                else
-                {
-                    setDrawLeft ( false );
-                    setDrawLeftLine ( true );
-                    setDrawRight ( false );
-                    setDrawRightLine ( true );
-                }
-                setBorder ( BorderFactory.createEmptyBorder ( 4, 7, 4, 6 ) );
+                setBorder(BorderFactory.createEmptyBorder(4, 7, 4, 6));
             }
         };
-        iconButton.addActionListener ( iconifyAction );
-
-        maxButton = new WebButton ()
-        {
+        iconButton.addActionListener(iconifyAction);
+        
+        maxButton = new WebButton() {
             {
-                setEnabled ( frame.isMaximizable () );
-                setRolloverDarkBorderOnly ( false );
-                setShadeWidth ( 0 );
-                setRound ( FlatLafStyleConstants.bigRound );
-                setInnerShadeWidth ( 2 );
-                setFocusable ( false );
-                setDrawLeft ( false );
-                setDrawLeftLine ( false );
-                setDrawRight ( false );
-                setDrawRightLine ( true );
-                setBorder ( BorderFactory.createEmptyBorder ( 4, 6, 4, 6 ) );
+                setEnabled(frame.isMaximizable());
+                setRolloverDarkBorderOnly(false);
+                setShadeWidth(0);
+                setRound(FlatLafStyleConstants.bigRound);
+                setInnerShadeWidth(2);
+                setFocusable(false);
+                setDrawLeft(false);
+                setDrawLeftLine(false);
+                setDrawRight(false);
+                setDrawRightLine(true);
+                setBorder(BorderFactory.createEmptyBorder(4, 6, 4, 6));
             }
         };
-        maxButton.addActionListener ( maximizeAction );
-
-        closeButton = new WebButton ()
-        {
+        maxButton.addActionListener(maximizeAction);
+        
+        closeButton = new WebButton() {
             {
-                setEnabled ( frame.isClosable () );
-                setRolloverDarkBorderOnly ( false );
-                setShadeWidth ( 0 );
-                setRound ( FlatLafStyleConstants.bigRound );
-                setInnerShadeWidth ( 2 );
-                setFocusable ( false );
-                if ( isFrameTitle () )
-                {
-                    setDrawLeft ( false );
-                    setDrawLeftLine ( false );
-                    setDrawBottom ( false );
-                    setDrawBottomLine ( true );
+                setEnabled(frame.isClosable());
+                setRolloverDarkBorderOnly(false);
+                setShadeWidth(0);
+                setRound(FlatLafStyleConstants.bigRound);
+                setInnerShadeWidth(2);
+                setFocusable(false);
+                if (isFrameTitle()) {
+                    setDrawLeft(false);
+                    setDrawLeftLine(false);
+                    setDrawBottom(false);
+                    setDrawBottomLine(true);
+                } else {
+                    setDrawLeft(false);
+                    setDrawLeftLine(false);
                 }
-                else
-                {
-                    setDrawLeft ( false );
-                    setDrawLeftLine ( false );
-                }
-                setBorder ( BorderFactory.createEmptyBorder ( 4, 6, 4, 7 ) );
+                setBorder(BorderFactory.createEmptyBorder(4, 6, 4, 7));
             }
         };
-        closeButton.addActionListener ( closeAction );
-
-        setButtonIcons ();
+        closeButton.addActionListener(closeAction);
+        
+        setButtonIcons();
     }
-
+    
     @Override
-    protected void setButtonIcons ()
-    {
-        iconButton.setIcon ( frame.isIcon () ? restoreIcon : iconifyIcon );
-        maxButton.setIcon ( frame.isIcon () ? maximizeIcon : ( frame.isMaximum () ? restoreIcon : maximizeIcon ) );
-        closeButton.setIcon ( closeIcon );
+    protected void setButtonIcons() {
+        iconButton.setIcon(frame.isIcon() ? restoreIcon : iconifyIcon);
+        maxButton.setIcon(frame.isIcon() ? maximizeIcon
+                : (frame.isMaximum() ? restoreIcon : maximizeIcon));
+        closeButton.setIcon(closeIcon);
     }
 }

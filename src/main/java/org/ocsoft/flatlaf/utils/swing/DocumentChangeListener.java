@@ -28,57 +28,50 @@ import javax.swing.text.Document;
  * @author Mikle Garin
  */
 
-public abstract class DocumentChangeListener implements DocumentListener
-{
+public abstract class DocumentChangeListener implements DocumentListener {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void insertUpdate ( final DocumentEvent e )
-    {
-        documentChanged ( e );
+    public void insertUpdate(final DocumentEvent e) {
+        documentChanged(e);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeUpdate ( final DocumentEvent e )
-    {
-        documentChanged ( e );
+    public void removeUpdate(final DocumentEvent e) {
+        documentChanged(e);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void changedUpdate ( final DocumentEvent e )
-    {
-        documentChanged ( e );
+    public void changedUpdate(final DocumentEvent e) {
+        documentChanged(e);
     }
-
+    
     /**
      * Informs that document has changed in some way.
      *
-     * @param e document event
+     * @param e
+     *            document event
      */
-    public abstract void documentChanged ( DocumentEvent e );
-
+    public abstract void documentChanged(DocumentEvent e);
+    
     /**
      * Returns text contained in the event's document.
      *
      * @return text contained in the event's document
      */
-    protected String getText ( final DocumentEvent e )
-    {
-        final Document doc = e.getDocument ();
+    protected String getText(final DocumentEvent e) {
+        final Document doc = e.getDocument();
         String txt;
-        try
-        {
-            txt = doc.getText ( 0, doc.getLength () );
-        }
-        catch ( final BadLocationException ex )
-        {
+        try {
+            txt = doc.getText(0, doc.getLength());
+        } catch (final BadLocationException ex) {
             txt = null;
         }
         return txt;

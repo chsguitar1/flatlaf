@@ -29,225 +29,200 @@ import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 import java.awt.*;
 
 /**
- * This JToolTip extension class provides a direct access to WebToolTipUI methods.
+ * This JToolTip extension class provides a direct access to WebToolTipUI
+ * methods.
  *
  * @author Mikle Garin
  */
 
-public class WebToolTip extends JToolTip implements ShapeProvider, FontMethods<WebToolTip>
-{
+public class WebToolTip extends JToolTip implements ShapeProvider,
+        FontMethods<WebToolTip> {
     /**
      * Constructs empty tooltip.
      */
-    public WebToolTip ()
-    {
-        super ();
+    public WebToolTip() {
+        super();
     }
-
+    
     /**
      * Returns component shape.
      *
      * @return component shape
      */
     @Override
-    public Shape provideShape ()
-    {
-        return getWebUI ().provideShape ();
+    public Shape provideShape() {
+        return getWebUI().provideShape();
     }
-
+    
     /**
      * Returns Web-UI applied to this class.
      *
      * @return Web-UI applied to this class
      */
-    public WebToolTipUI getWebUI ()
-    {
-        return ( WebToolTipUI ) getUI ();
+    public WebToolTipUI getWebUI() {
+        return (WebToolTipUI) getUI();
     }
-
+    
     /**
      * Installs a Web-UI into this component.
      */
     @Override
-    public void updateUI ()
-    {
-        if ( getUI () == null || !( getUI () instanceof WebToolTipUI ) )
-        {
-            try
-            {
-                setUI ( ( WebToolTipUI ) ReflectUtils.createInstance ( FlatLafSettings.toolTipUI ) );
+    public void updateUI() {
+        if (getUI() == null || !(getUI() instanceof WebToolTipUI)) {
+            try {
+                setUI((WebToolTipUI) ReflectUtils
+                        .createInstance(FlatLafSettings.toolTipUI));
+            } catch (final Throwable e) {
+                FlatLafLogger.error(this, e);
+                setUI(new WebToolTipUI());
             }
-            catch ( final Throwable e )
-            {
-                FlatLafLogger.error ( this, e );
-                setUI ( new WebToolTipUI () );
-            }
-        }
-        else
-        {
-            setUI ( getUI () );
+        } else {
+            setUI(getUI());
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebToolTip setPlainFont ()
-    {
-        return SwingUtils.setPlainFont ( this );
+    public WebToolTip setPlainFont() {
+        return SwingUtils.setPlainFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebToolTip setPlainFont ( final boolean apply )
-    {
-        return SwingUtils.setPlainFont ( this, apply );
+    public WebToolTip setPlainFont(final boolean apply) {
+        return SwingUtils.setPlainFont(this, apply);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isPlainFont ()
-    {
-        return SwingUtils.isPlainFont ( this );
+    public boolean isPlainFont() {
+        return SwingUtils.isPlainFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebToolTip setBoldFont ()
-    {
-        return SwingUtils.setBoldFont ( this );
+    public WebToolTip setBoldFont() {
+        return SwingUtils.setBoldFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebToolTip setBoldFont ( final boolean apply )
-    {
-        return SwingUtils.setBoldFont ( this, apply );
+    public WebToolTip setBoldFont(final boolean apply) {
+        return SwingUtils.setBoldFont(this, apply);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isBoldFont ()
-    {
-        return SwingUtils.isBoldFont ( this );
+    public boolean isBoldFont() {
+        return SwingUtils.isBoldFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebToolTip setItalicFont ()
-    {
-        return SwingUtils.setItalicFont ( this );
+    public WebToolTip setItalicFont() {
+        return SwingUtils.setItalicFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebToolTip setItalicFont ( final boolean apply )
-    {
-        return SwingUtils.setItalicFont ( this, apply );
+    public WebToolTip setItalicFont(final boolean apply) {
+        return SwingUtils.setItalicFont(this, apply);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isItalicFont ()
-    {
-        return SwingUtils.isItalicFont ( this );
+    public boolean isItalicFont() {
+        return SwingUtils.isItalicFont(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebToolTip setFontStyle ( final boolean bold, final boolean italic )
-    {
-        return SwingUtils.setFontStyle ( this, bold, italic );
+    public WebToolTip setFontStyle(final boolean bold, final boolean italic) {
+        return SwingUtils.setFontStyle(this, bold, italic);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebToolTip setFontStyle ( final int style )
-    {
-        return SwingUtils.setFontStyle ( this, style );
+    public WebToolTip setFontStyle(final int style) {
+        return SwingUtils.setFontStyle(this, style);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebToolTip setFontSize ( final int fontSize )
-    {
-        return SwingUtils.setFontSize ( this, fontSize );
+    public WebToolTip setFontSize(final int fontSize) {
+        return SwingUtils.setFontSize(this, fontSize);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebToolTip changeFontSize ( final int change )
-    {
-        return SwingUtils.changeFontSize ( this, change );
+    public WebToolTip changeFontSize(final int change) {
+        return SwingUtils.changeFontSize(this, change);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public int getFontSize ()
-    {
-        return SwingUtils.getFontSize ( this );
+    public int getFontSize() {
+        return SwingUtils.getFontSize(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebToolTip setFontSizeAndStyle ( final int fontSize, final boolean bold, final boolean italic )
-    {
-        return SwingUtils.setFontSizeAndStyle ( this, fontSize, bold, italic );
+    public WebToolTip setFontSizeAndStyle(final int fontSize,
+            final boolean bold, final boolean italic) {
+        return SwingUtils.setFontSizeAndStyle(this, fontSize, bold, italic);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebToolTip setFontSizeAndStyle ( final int fontSize, final int style )
-    {
-        return SwingUtils.setFontSizeAndStyle ( this, fontSize, style );
+    public WebToolTip setFontSizeAndStyle(final int fontSize, final int style) {
+        return SwingUtils.setFontSizeAndStyle(this, fontSize, style);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebToolTip setFontName ( final String fontName )
-    {
-        return SwingUtils.setFontName ( this, fontName );
+    public WebToolTip setFontName(final String fontName) {
+        return SwingUtils.setFontName(this, fontName);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getFontName ()
-    {
-        return SwingUtils.getFontName ( this );
+    public String getFontName() {
+        return SwingUtils.getFontName(this);
     }
 }

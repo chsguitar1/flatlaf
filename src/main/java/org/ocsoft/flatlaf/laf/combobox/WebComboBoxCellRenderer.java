@@ -29,148 +29,142 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Custom cell renderer for JComboBox value and popup list and some other similar cases.
- * It uses {@code WebComboBoxElement} as renderer which is being styled by a custom LabelPainter.
+ * Custom cell renderer for JComboBox value and popup list and some other
+ * similar cases. It uses {@code WebComboBoxElement} as renderer which is being
+ * styled by a custom LabelPainter.
  *
  * @author Mikle Garin
  * @see org.ocsoft.flatlaf.laf.combobox.WebComboBoxElement
  * @see org.ocsoft.flatlaf.managers.style.skin.web.WebComboBoxElementPainter
  */
 
-public class WebComboBoxCellRenderer implements ListCellRenderer
-{
+public class WebComboBoxCellRenderer implements ListCellRenderer {
     /**
      * Renderer listeners.
      */
-    protected List<RendererListener> rendererListeners = new ArrayList<RendererListener> ( 1 );
-
+    protected List<RendererListener> rendererListeners = new ArrayList<RendererListener>(
+            1);
+    
     /**
      * Actual renderer components.
      */
     protected WebComboBoxElement boxRenderer;
     protected WebComboBoxElement elementRenderer;
-
+    
     /**
      * Constructs new combo box renderer.
      */
-    public WebComboBoxCellRenderer ()
-    {
-        super ();
-
+    public WebComboBoxCellRenderer() {
+        super();
+        
         // Additional renderer for combo box selected value rendering
-        this.boxRenderer = new WebComboBoxElement ( ComboBoxElementType.box );
-
+        this.boxRenderer = new WebComboBoxElement(ComboBoxElementType.box);
+        
         // Elements renderer
-        this.elementRenderer = new WebComboBoxElement ( ComboBoxElementType.list );
-
+        this.elementRenderer = new WebComboBoxElement(ComboBoxElementType.list);
+        
         // Painter change listener
-        final PropertyChangeListener listener = new PropertyChangeListener ()
-        {
+        final PropertyChangeListener listener = new PropertyChangeListener() {
             @Override
-            public void propertyChange ( final PropertyChangeEvent evt )
-            {
-                fireRevalidate ();
+            public void propertyChange(final PropertyChangeEvent evt) {
+                fireRevalidate();
             }
         };
-        this.boxRenderer.addPropertyChangeListener ( FlatLookAndFeel.PAINTER_PROPERTY, listener );
-        this.elementRenderer.addPropertyChangeListener ( FlatLookAndFeel.PAINTER_PROPERTY, listener );
+        this.boxRenderer.addPropertyChangeListener(
+                FlatLookAndFeel.PAINTER_PROPERTY, listener);
+        this.elementRenderer.addPropertyChangeListener(
+                FlatLookAndFeel.PAINTER_PROPERTY, listener);
     }
-
+    
     /**
      * Returns actual combo box value renderer.
      *
      * @return actual combo box value renderer
      */
-    public WebComboBoxElement getBoxRenderer ()
-    {
+    public WebComboBoxElement getBoxRenderer() {
         return boxRenderer;
     }
-
+    
     /**
      * Returns actual elements renderer.
      *
      * @return actual elements renderer
      */
-    public WebComboBoxElement getElementRenderer ()
-    {
+    public WebComboBoxElement getElementRenderer() {
         return elementRenderer;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Component getListCellRendererComponent ( final JList list, final Object value, final int index, final boolean isSelected,
-                                                    final boolean cellHasFocus )
-    {
+    public Component getListCellRendererComponent(final JList list,
+            final Object value, final int index, final boolean isSelected,
+            final boolean cellHasFocus) {
         // Choosing actual renderer
-        final WebComboBoxElement renderer = index == -1 ? boxRenderer : elementRenderer;
-
+        final WebComboBoxElement renderer = index == -1 ? boxRenderer
+                : elementRenderer;
+        
         // Updating runtime variables
-        renderer.setIndex ( index );
-        renderer.setTotalElements ( list.getModel ().getSize () );
-        renderer.setSelected ( isSelected );
-
+        renderer.setIndex(index);
+        renderer.setTotalElements(list.getModel().getSize());
+        renderer.setSelected(isSelected);
+        
         // Updating renderer visual settings
-        renderer.setEnabled ( list.isEnabled () );
-        renderer.setFont ( list.getFont () );
-        renderer.setForeground ( isSelected ? list.getSelectionForeground () : list.getForeground () );
-        renderer.setComponentOrientation ( list.getComponentOrientation () );
-
+        renderer.setEnabled(list.isEnabled());
+        renderer.setFont(list.getFont());
+        renderer.setForeground(isSelected ? list.getSelectionForeground()
+                : list.getForeground());
+        renderer.setComponentOrientation(list.getComponentOrientation());
+        
         // Updating icon and text
-        if ( value instanceof Icon )
-        {
-            renderer.setIcon ( ( Icon ) value );
-            renderer.setText ( "" );
+        if (value instanceof Icon) {
+            renderer.setIcon((Icon) value);
+            renderer.setText("");
+        } else {
+            renderer.setIcon(null);
+            renderer.setText(value == null || value.toString().equals("") ? " "
+                    : value.toString());
         }
-        else
-        {
-            renderer.setIcon ( null );
-            renderer.setText ( value == null || value.toString ().equals ( "" ) ? " " : value.toString () );
-        }
-
+        
         return renderer;
     }
-
+    
     /**
      * Adds RendererListener to this renderer.
      *
-     * @param listener RendererListener to add
+     * @param listener
+     *            RendererListener to add
      */
-    public void addRendererListener ( final RendererListener listener )
-    {
-        rendererListeners.add ( listener );
+    public void addRendererListener(final RendererListener listener) {
+        rendererListeners.add(listener);
     }
-
+    
     /**
      * Removes RendererListener from this renderer.
      *
-     * @param listener RendererListener to remove
+     * @param listener
+     *            RendererListener to remove
      */
-    public void removeRendererListener ( final RendererListener listener )
-    {
-        rendererListeners.remove ( listener );
+    public void removeRendererListener(final RendererListener listener) {
+        rendererListeners.remove(listener);
     }
-
+    
     /**
      * Fires repaint event.
      */
-    public void fireRepaint ()
-    {
-        for ( final RendererListener listener : rendererListeners )
-        {
-            listener.repaint ();
+    public void fireRepaint() {
+        for (final RendererListener listener : rendererListeners) {
+            listener.repaint();
         }
     }
-
+    
     /**
      * Fires revalidate event.
      */
-    public void fireRevalidate ()
-    {
-        for ( final RendererListener listener : rendererListeners )
-        {
-            listener.revalidate ();
+    public void fireRevalidate() {
+        for (final RendererListener listener : rendererListeners) {
+            listener.revalidate();
         }
     }
 }

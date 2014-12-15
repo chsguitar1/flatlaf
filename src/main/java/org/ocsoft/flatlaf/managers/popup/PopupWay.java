@@ -18,26 +18,18 @@
 package org.ocsoft.flatlaf.managers.popup;
 
 /**
- * This enumeration represents possible popup display ways relative to invoker component.
+ * This enumeration represents possible popup display ways relative to invoker
+ * component.
  *
  * @author Mikle Garin
  */
 
-public enum PopupWay
-{
-    upCenter,
-    upLeft,
-    upRight,
-
-    leftCenter,
-    leftUp,
-    leftDown,
-
-    downCenter,
-    downLeft,
-    downRight,
-
-    rightCenter,
-    rightUp,
-    rightDown
+public enum PopupWay {
+    upCenter, upLeft, upRight,
+    
+    leftCenter, leftUp, leftDown,
+    
+    downCenter, downLeft, downRight,
+    
+    rightCenter, rightUp, rightDown
 }

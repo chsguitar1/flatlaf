@@ -26,26 +26,28 @@ import java.util.EventListener;
  * @author Mikle Garin
  */
 
-public interface ColorChooserListener extends EventListener
-{
+public interface ColorChooserListener extends EventListener {
     /**
      * Called when "ok" button is pressed in color chooser.
      *
-     * @param e ok button event
+     * @param e
+     *            ok button event
      */
-    public void okPressed ( ActionEvent e );
-
+    public void okPressed(ActionEvent e);
+    
     /**
      * Called when "reset" button is pressed in color chooser.
      *
-     * @param e reset button event
+     * @param e
+     *            reset button event
      */
-    public void resetPressed ( ActionEvent e );
-
+    public void resetPressed(ActionEvent e);
+    
     /**
      * Called when "cancel" button is pressed in color chooser.
      *
-     * @param e cancel button event
+     * @param e
+     *            cancel button event
      */
-    public void cancelPressed ( ActionEvent e );
+    public void cancelPressed(ActionEvent e);
 }

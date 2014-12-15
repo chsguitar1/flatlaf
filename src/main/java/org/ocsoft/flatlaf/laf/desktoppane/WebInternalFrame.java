@@ -32,147 +32,117 @@ import java.beans.PropertyVetoException;
  * User: mgarin Date: 24.08.11 Time: 18:11
  */
 
-public class WebInternalFrame extends JInternalFrame implements LanguageMethods
-{
-    public WebInternalFrame ()
-    {
-        super ();
+public class WebInternalFrame extends JInternalFrame implements LanguageMethods {
+    public WebInternalFrame() {
+        super();
     }
-
-    public WebInternalFrame ( final String title )
-    {
-        super ( title );
+    
+    public WebInternalFrame(final String title) {
+        super(title);
     }
-
-    public WebInternalFrame ( final String title, final boolean resizable )
-    {
-        super ( title, resizable );
+    
+    public WebInternalFrame(final String title, final boolean resizable) {
+        super(title, resizable);
     }
-
-    public WebInternalFrame ( final String title, final boolean resizable, final boolean closable )
-    {
-        super ( title, resizable, closable );
+    
+    public WebInternalFrame(final String title, final boolean resizable,
+            final boolean closable) {
+        super(title, resizable, closable);
     }
-
-    public WebInternalFrame ( final String title, final boolean resizable, final boolean closable, final boolean maximizable )
-    {
-        super ( title, resizable, closable, maximizable );
+    
+    public WebInternalFrame(final String title, final boolean resizable,
+            final boolean closable, final boolean maximizable) {
+        super(title, resizable, closable, maximizable);
     }
-
-    public WebInternalFrame ( final String title, final boolean resizable, final boolean closable, final boolean maximizable,
-                              final boolean iconifiable )
-    {
-        super ( title, resizable, closable, maximizable, iconifiable );
+    
+    public WebInternalFrame(final String title, final boolean resizable,
+            final boolean closable, final boolean maximizable,
+            final boolean iconifiable) {
+        super(title, resizable, closable, maximizable, iconifiable);
     }
-
-    public WebInternalFrameUI getWebUI ()
-    {
-        return ( WebInternalFrameUI ) getUI ();
+    
+    public WebInternalFrameUI getWebUI() {
+        return (WebInternalFrameUI) getUI();
     }
-
+    
     @Override
-    public void setIcon ( final boolean b )
-    {
-        try
-        {
-            super.setIcon ( b );
-        }
-        catch ( final PropertyVetoException e )
-        {
-            FlatLafLogger.error ( this, e );
+    public void setIcon(final boolean b) {
+        try {
+            super.setIcon(b);
+        } catch (final PropertyVetoException e) {
+            FlatLafLogger.error(this, e);
         }
     }
-
-    public void close ()
-    {
-        try
-        {
-            setClosed ( true );
-        }
-        catch ( final PropertyVetoException e )
-        {
-            FlatLafLogger.error ( this, e );
+    
+    public void close() {
+        try {
+            setClosed(true);
+        } catch (final PropertyVetoException e) {
+            FlatLafLogger.error(this, e);
         }
     }
-
-    public void open ()
-    {
-        try
-        {
-            setClosed ( false );
-            setVisible ( true );
-        }
-        catch ( final PropertyVetoException e )
-        {
-            FlatLafLogger.error ( this, e );
+    
+    public void open() {
+        try {
+            setClosed(false);
+            setVisible(true);
+        } catch (final PropertyVetoException e) {
+            FlatLafLogger.error(this, e);
         }
     }
-
+    
     @Override
-    public void updateUI ()
-    {
-        if ( getUI () == null || !( getUI () instanceof WebInternalFrameUI ) )
-        {
-            try
-            {
-                setUI ( ( WebInternalFrameUI ) ReflectUtils.createInstance ( FlatLafSettings.internalFrameUI, this ) );
+    public void updateUI() {
+        if (getUI() == null || !(getUI() instanceof WebInternalFrameUI)) {
+            try {
+                setUI((WebInternalFrameUI) ReflectUtils.createInstance(
+                        FlatLafSettings.internalFrameUI, this));
+            } catch (final Throwable e) {
+                FlatLafLogger.error(this, e);
+                setUI(new WebInternalFrameUI(this));
             }
-            catch ( final Throwable e )
-            {
-                FlatLafLogger.error ( this, e );
-                setUI ( new WebInternalFrameUI ( this ) );
-            }
+        } else {
+            setUI(getUI());
         }
-        else
-        {
-            setUI ( getUI () );
-        }
-        invalidate ();
+        invalidate();
     }
-
+    
     /**
      * Language methods
      */
-
+    
     @Override
-    public void setLanguage ( final String key, final Object... data )
-    {
-        LanguageManager.registerComponent ( this, key, data );
+    public void setLanguage(final String key, final Object... data) {
+        LanguageManager.registerComponent(this, key, data);
     }
-
+    
     @Override
-    public void updateLanguage ( final Object... data )
-    {
-        LanguageManager.updateComponent ( this, data );
+    public void updateLanguage(final Object... data) {
+        LanguageManager.updateComponent(this, data);
     }
-
+    
     @Override
-    public void updateLanguage ( final String key, final Object... data )
-    {
-        LanguageManager.updateComponent ( this, key, data );
+    public void updateLanguage(final String key, final Object... data) {
+        LanguageManager.updateComponent(this, key, data);
     }
-
+    
     @Override
-    public void removeLanguage ()
-    {
-        LanguageManager.unregisterComponent ( this );
+    public void removeLanguage() {
+        LanguageManager.unregisterComponent(this);
     }
-
+    
     @Override
-    public boolean isLanguageSet ()
-    {
-        return LanguageManager.isRegisteredComponent ( this );
+    public boolean isLanguageSet() {
+        return LanguageManager.isRegisteredComponent(this);
     }
-
+    
     @Override
-    public void setLanguageUpdater ( final LanguageUpdater updater )
-    {
-        LanguageManager.registerLanguageUpdater ( this, updater );
+    public void setLanguageUpdater(final LanguageUpdater updater) {
+        LanguageManager.registerLanguageUpdater(this, updater);
     }
-
+    
     @Override
-    public void removeLanguageUpdater ()
-    {
-        LanguageManager.unregisterLanguageUpdater ( this );
+    public void removeLanguageUpdater() {
+        LanguageManager.unregisterLanguageUpdater(this);
     }
 }

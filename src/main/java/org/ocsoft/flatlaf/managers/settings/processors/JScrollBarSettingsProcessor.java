@@ -30,84 +30,78 @@ import java.awt.event.AdjustmentListener;
  * Custom SettingsProcessor for JScrollBar component.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How to use SettingsManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How
+ *      to use SettingsManager</a>
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  * @see org.ocsoft.flatlaf.managers.settings.SettingsProcessor
  */
 
-public class JScrollBarSettingsProcessor extends SettingsProcessor<JScrollBar, Integer>
-{
+public class JScrollBarSettingsProcessor extends
+        SettingsProcessor<JScrollBar, Integer> {
     /**
      * Scroll bar value change listener.
      */
     private AdjustmentListener adjustmentListener;
-
+    
     /**
      * Constructs SettingsProcessor using the specified SettingsProcessorData.
      *
-     * @param data SettingsProcessorData
+     * @param data
+     *            SettingsProcessorData
      */
-    public JScrollBarSettingsProcessor ( final SettingsProcessorData data )
-    {
-        super ( data );
+    public JScrollBarSettingsProcessor(final SettingsProcessorData data) {
+        super(data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Integer getDefaultValue ()
-    {
-        Integer defaultValue = super.getDefaultValue ();
-        if ( defaultValue == null )
-        {
-            defaultValue = getComponent ().getMinimum ();
+    public Integer getDefaultValue() {
+        Integer defaultValue = super.getDefaultValue();
+        if (defaultValue == null) {
+            defaultValue = getComponent().getMinimum();
         }
         return defaultValue;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doInit ( final JScrollBar scrollBar )
-    {
-        adjustmentListener = new AdjustmentListener ()
-        {
+    protected void doInit(final JScrollBar scrollBar) {
+        adjustmentListener = new AdjustmentListener() {
             @Override
-            public void adjustmentValueChanged ( final AdjustmentEvent e )
-            {
-                save ();
+            public void adjustmentValueChanged(final AdjustmentEvent e) {
+                save();
             }
         };
-        scrollBar.addAdjustmentListener ( adjustmentListener );
+        scrollBar.addAdjustmentListener(adjustmentListener);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doDestroy ( final JScrollBar scrollBar )
-    {
-        scrollBar.removeAdjustmentListener ( adjustmentListener );
+    protected void doDestroy(final JScrollBar scrollBar) {
+        scrollBar.removeAdjustmentListener(adjustmentListener);
         adjustmentListener = null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doLoad ( final JScrollBar scrollBar )
-    {
-        scrollBar.setValue ( loadValue () );
+    protected void doLoad(final JScrollBar scrollBar) {
+        scrollBar.setValue(loadValue());
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doSave ( final JScrollBar scrollBar )
-    {
-        SettingsManager.set ( getGroup (), getKey (), scrollBar.getValue () );
+    protected void doSave(final JScrollBar scrollBar) {
+        SettingsManager.set(getGroup(), getKey(), scrollBar.getValue());
     }
 }

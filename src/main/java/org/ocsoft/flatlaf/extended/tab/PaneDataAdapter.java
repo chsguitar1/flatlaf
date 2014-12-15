@@ -25,58 +25,56 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class PaneDataAdapter<T extends DocumentData> implements DocumentDataListener<T>
-{
+public class PaneDataAdapter<T extends DocumentData> implements
+        DocumentDataListener<T> {
     /**
      * PaneData listening to DocumentData changes.
      */
     private final PaneData paneData;
-
+    
     /**
      * Constructs new PaneDataAdapter for the specified PaneData.
      *
-     * @param paneData PaneData listening to DocumentData changes
+     * @param paneData
+     *            PaneData listening to DocumentData changes
      */
-    public PaneDataAdapter ( final PaneData paneData )
-    {
-        super ();
+    public PaneDataAdapter(final PaneData paneData) {
+        super();
         this.paneData = paneData;
     }
-
+    
     /**
      * Returns PaneData listening to DocumentData changes.
      *
      * @return PaneData listening to DocumentData changes
      */
-    public PaneData getPaneData ()
-    {
+    public PaneData getPaneData() {
         return paneData;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void titleChanged ( final T document )
-    {
-        paneData.updateTabTitleComponent ( document );
+    public void titleChanged(final T document) {
+        paneData.updateTabTitleComponent(document);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void backgroundChanged ( final T document, final Color oldBackground, final Color newBackground )
-    {
-        paneData.updateTabBackground ( document );
+    public void backgroundChanged(final T document, final Color oldBackground,
+            final Color newBackground) {
+        paneData.updateTabBackground(document);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void contentChanged ( final T document, final Component oldComponent, final Component newComponent )
-    {
-        paneData.updateTabComponent ( document );
+    public void contentChanged(final T document, final Component oldComponent,
+            final Component newComponent) {
+        paneData.updateTabComponent(document);
     }
 }

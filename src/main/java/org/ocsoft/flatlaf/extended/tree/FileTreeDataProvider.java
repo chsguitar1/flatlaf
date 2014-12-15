@@ -31,147 +31,143 @@ import org.ocsoft.flatlaf.utils.general.Filter;
  * @author Mikle Garin
  */
 
-public class FileTreeDataProvider extends AbstractAsyncTreeDataProvider<FileTreeNode>
-{
+public class FileTreeDataProvider extends
+        AbstractAsyncTreeDataProvider<FileTreeNode> {
     /**
      * Tree root files.
      */
     protected List<File> rootFiles;
-
+    
     /**
      * Constructs file tree data provider with the specified files as root.
      *
-     * @param rootFiles tree root files
+     * @param rootFiles
+     *            tree root files
      */
-    public FileTreeDataProvider ( final File... rootFiles )
-    {
-        super ();
-        this.rootFiles = CollectionUtils.copy ( rootFiles );
-        this.comparator = new FileTreeNodeComparator ();
+    public FileTreeDataProvider(final File... rootFiles) {
+        super();
+        this.rootFiles = CollectionUtils.copy(rootFiles);
+        this.comparator = new FileTreeNodeComparator();
         this.filter = WebFileTreeStyle.filter;
     }
-
+    
     /**
      * Constructs file tree data provider with the specified files as root.
      *
-     * @param rootFiles tree root files
+     * @param rootFiles
+     *            tree root files
      */
-    public FileTreeDataProvider ( final List<File> rootFiles )
-    {
-        super ();
+    public FileTreeDataProvider(final List<File> rootFiles) {
+        super();
         this.rootFiles = rootFiles;
-        this.comparator = new FileTreeNodeComparator ();
+        this.comparator = new FileTreeNodeComparator();
         this.filter = WebFileTreeStyle.filter;
     }
-
+    
     /**
      * Constructs file tree data provider with the specified files as root.
      *
-     * @param filter    tree nodes filter
-     * @param rootFiles tree root files
+     * @param filter
+     *            tree nodes filter
+     * @param rootFiles
+     *            tree root files
      */
-    public FileTreeDataProvider ( final Filter<FileTreeNode> filter, final File... rootFiles )
-    {
-        super ();
-        this.rootFiles = CollectionUtils.copy ( rootFiles );
-        this.comparator = new FileTreeNodeComparator ();
+    public FileTreeDataProvider(final Filter<FileTreeNode> filter,
+            final File... rootFiles) {
+        super();
+        this.rootFiles = CollectionUtils.copy(rootFiles);
+        this.comparator = new FileTreeNodeComparator();
         this.filter = filter;
     }
-
+    
     /**
      * Constructs file tree data provider with the specified files as root.
      *
-     * @param filter    tree nodes filter
-     * @param rootFiles tree root files
+     * @param filter
+     *            tree nodes filter
+     * @param rootFiles
+     *            tree root files
      */
-    public FileTreeDataProvider ( final Filter<FileTreeNode> filter, final List<File> rootFiles )
-    {
-        super ();
+    public FileTreeDataProvider(final Filter<FileTreeNode> filter,
+            final List<File> rootFiles) {
+        super();
         this.rootFiles = rootFiles;
-        this.comparator = new FileTreeNodeComparator ();
+        this.comparator = new FileTreeNodeComparator();
         this.filter = filter;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public FileTreeNode getRoot ()
-    {
-        return rootFiles.size () == 1 ? new FileTreeNode ( rootFiles.get ( 0 ) ) : new FileTreeNode ( null );
+    public FileTreeNode getRoot() {
+        return rootFiles.size() == 1 ? new FileTreeNode(rootFiles.get(0))
+                : new FileTreeNode(null);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void loadChilds ( final FileTreeNode parent, final ChildsListener<FileTreeNode> listener )
-    {
-        try
-        {
-            listener.childsLoadCompleted ( parent.getFile () == null ? getRootChilds () : getFileChilds ( parent ) );
-        }
-        catch ( final Throwable cause )
-        {
-            listener.childsLoadFailed ( cause );
+    public void loadChilds(final FileTreeNode parent,
+            final ChildsListener<FileTreeNode> listener) {
+        try {
+            listener.childsLoadCompleted(parent.getFile() == null ? getRootChilds()
+                    : getFileChilds(parent));
+        } catch (final Throwable cause) {
+            listener.childsLoadFailed(cause);
         }
     }
-
+    
     /**
      * Returns root child nodes.
      *
      * @return root child nodes
      */
-    protected List<FileTreeNode> getRootChilds ()
-    {
-        final List<FileTreeNode> childs = new ArrayList<FileTreeNode> ( rootFiles.size () );
-        for ( final File rootFile : rootFiles )
-        {
-            childs.add ( new FileTreeNode ( rootFile ) );
+    protected List<FileTreeNode> getRootChilds() {
+        final List<FileTreeNode> childs = new ArrayList<FileTreeNode>(
+                rootFiles.size());
+        for (final File rootFile : rootFiles) {
+            childs.add(new FileTreeNode(rootFile));
         }
         return childs;
     }
-
+    
     /**
      * Returns child nodes for specified node.
      *
-     * @param node parent node
+     * @param node
+     *            parent node
      * @return child nodes
      */
-    public List<FileTreeNode> getFileChilds ( final FileTreeNode node )
-    {
-        final File[] childsList = node.getFile ().listFiles ();
-        if ( childsList == null || childsList.length == 0 )
-        {
-            return new ArrayList<FileTreeNode> ( 0 );
-        }
-        else
-        {
-            final List<FileTreeNode> childs = new ArrayList<FileTreeNode> ( childsList.length );
-            for ( final File f : childsList )
-            {
-                childs.add ( new FileTreeNode ( f ) );
+    public List<FileTreeNode> getFileChilds(final FileTreeNode node) {
+        final File[] childsList = node.getFile().listFiles();
+        if (childsList == null || childsList.length == 0) {
+            return new ArrayList<FileTreeNode>(0);
+        } else {
+            final List<FileTreeNode> childs = new ArrayList<FileTreeNode>(
+                    childsList.length);
+            for (final File f : childsList) {
+                childs.add(new FileTreeNode(f));
             }
             return childs;
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Filter<FileTreeNode> getChildsFilter ( final FileTreeNode node )
-    {
+    public Filter<FileTreeNode> getChildsFilter(final FileTreeNode node) {
         // We must not filter out given roots
-        return node.getFile () == null ? null : super.getChildsFilter ( node );
+        return node.getFile() == null ? null : super.getChildsFilter(node);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isLeaf ( final FileTreeNode node )
-    {
-        return node.getFile () != null && !FileUtils.isDirectory ( node.getFile () );
+    public boolean isLeaf(final FileTreeNode node) {
+        return node.getFile() != null && !FileUtils.isDirectory(node.getFile());
     }
 }

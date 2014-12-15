@@ -26,93 +26,93 @@ import java.io.Serializable;
  * This class contains information about single SettingsGroup read state.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How to use SettingsManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How
+ *      to use SettingsManager</a>
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  * @see org.ocsoft.flatlaf.managers.settings.SettingsGroup
  */
 
-@XStreamAlias ("SettingsGroupState")
-public class SettingsGroupState implements Serializable
-{
+@XStreamAlias("SettingsGroupState")
+public class SettingsGroupState implements Serializable {
     /**
      * SettingsGroup read state.
      */
     @XStreamAsAttribute
     private ReadState readState;
-
+    
     /**
      * Occured error.
      */
     private Throwable error;
-
+    
     /**
      * Constructs none SettingsGroupState.
      */
-    public SettingsGroupState ()
-    {
-        this ( ReadState.none, null );
+    public SettingsGroupState() {
+        this(ReadState.none, null);
     }
-
+    
     /**
      * Constructs SettingsGroupState with the specified read state.
      *
-     * @param readState read state
+     * @param readState
+     *            read state
      */
-    public SettingsGroupState ( final ReadState readState )
-    {
-        this ( readState, null );
+    public SettingsGroupState(final ReadState readState) {
+        this(readState, null);
     }
-
+    
     /**
-     * Constructs SettingsGroupState with the specified read state and occured error.
+     * Constructs SettingsGroupState with the specified read state and occured
+     * error.
      *
-     * @param readState read state
-     * @param error     occured error
+     * @param readState
+     *            read state
+     * @param error
+     *            occured error
      */
-    public SettingsGroupState ( final ReadState readState, final Throwable error )
-    {
-        super ();
-        setReadState ( readState );
-        setError ( error );
+    public SettingsGroupState(final ReadState readState, final Throwable error) {
+        super();
+        setReadState(readState);
+        setError(error);
     }
-
+    
     /**
      * Returns SettingsGroup read state.
      *
      * @return SettingsGroup read state
      */
-    public ReadState getReadState ()
-    {
+    public ReadState getReadState() {
         return readState;
     }
-
+    
     /**
      * Sets SettingsGroup read state.
      *
-     * @param readState new SettingsGroup read state
+     * @param readState
+     *            new SettingsGroup read state
      */
-    public void setReadState ( final ReadState readState )
-    {
+    public void setReadState(final ReadState readState) {
         this.readState = readState;
     }
-
+    
     /**
      * Returns occured error.
      *
      * @return occured error
      */
-    public Throwable getError ()
-    {
+    public Throwable getError() {
         return error;
     }
-
+    
     /**
      * Sets occured error.
      *
-     * @param error occured error
+     * @param error
+     *            occured error
      */
-    public void setError ( final Throwable error )
-    {
+    public void setError(final Throwable error) {
         this.error = error;
     }
 }

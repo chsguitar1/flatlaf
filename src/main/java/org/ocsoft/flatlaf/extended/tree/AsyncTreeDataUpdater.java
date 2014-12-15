@@ -20,53 +20,75 @@ package org.ocsoft.flatlaf.extended.tree;
 import java.util.List;
 
 /**
- * This interface provides methods for asynchronous tree data update.
- * Basically these methods called when some tree node is renamed, moved or removed.
- * This interface will be informed about such changes so you can perform data update actions.
+ * This interface provides methods for asynchronous tree data update. Basically
+ * these methods called when some tree node is renamed, moved or removed. This
+ * interface will be informed about such changes so you can perform data update
+ * actions.
  *
  * @author Mikle Garin
  */
 
-public interface AsyncTreeDataUpdater<E extends AsyncUniqueNode>
-{
+public interface AsyncTreeDataUpdater<E extends AsyncUniqueNode> {
     /**
-     * Called when node add operation performed.
-     * At this point node is already added visually, but you can still cancel this action if you cannot update data properly.
+     * Called when node add operation performed. At this point node is already
+     * added visually, but you can still cancel this action if you cannot update
+     * data properly.
      *
-     * @param nodes      added nodes list
-     * @param parentNode parent node where specified nodes were added
-     * @param addFailed  runnable you should call in case data update failed, it will cancel changes
+     * @param nodes
+     *            added nodes list
+     * @param parentNode
+     *            parent node where specified nodes were added
+     * @param addFailed
+     *            runnable you should call in case data update failed, it will
+     *            cancel changes
      */
-    public void nodesAdded ( List<E> nodes, E parentNode, Runnable addFailed );
-
+    public void nodesAdded(List<E> nodes, E parentNode, Runnable addFailed);
+    
     /**
-     * Called when node rename operation performed.
-     * At this point node is already renamed visually, but you can still cancel this action if you cannot update data properly.
+     * Called when node rename operation performed. At this point node is
+     * already renamed visually, but you can still cancel this action if you
+     * cannot update data properly.
      *
-     * @param node         renamed node
-     * @param oldName      old node name
-     * @param newName      new node name
-     * @param renameFailed runnable you should call in case data update failed, it will cancel changes
+     * @param node
+     *            renamed node
+     * @param oldName
+     *            old node name
+     * @param newName
+     *            new node name
+     * @param renameFailed
+     *            runnable you should call in case data update failed, it will
+     *            cancel changes
      */
-    public void nodeRenamed ( E node, String oldName, String newName, Runnable renameFailed );
-
+    public void nodeRenamed(E node, String oldName, String newName,
+            Runnable renameFailed);
+    
     /**
-     * Called when node move (D&D or cut/paste) operation performed.
-     * At this point node is already moved visually, but you can still cancel this action if you cannot update data properly.
+     * Called when node move (D&D or cut/paste) operation performed. At this
+     * point node is already moved visually, but you can still cancel this
+     * action if you cannot update data properly.
      *
-     * @param node       moved node
-     * @param oldParent  old parent node
-     * @param newParent  new parent node
-     * @param moveFailed runnable you should call in case data update failed, it will cancel changes
+     * @param node
+     *            moved node
+     * @param oldParent
+     *            old parent node
+     * @param newParent
+     *            new parent node
+     * @param moveFailed
+     *            runnable you should call in case data update failed, it will
+     *            cancel changes
      */
-    public void nodeMoved ( E node, E oldParent, E newParent, Runnable moveFailed );
-
+    public void nodeMoved(E node, E oldParent, E newParent, Runnable moveFailed);
+    
     /**
-     * Called when node remove operation performed.
-     * At this point node is already removed visually, but you can still cancel this action if you cannot update data properly.
+     * Called when node remove operation performed. At this point node is
+     * already removed visually, but you can still cancel this action if you
+     * cannot update data properly.
      *
-     * @param node         removed node
-     * @param removeFailed runnable you should call in case data update failed, it will cancel changes
+     * @param node
+     *            removed node
+     * @param removeFailed
+     *            runnable you should call in case data update failed, it will
+     *            cancel changes
      */
-    public void nodeRemoved ( E node, Runnable removeFailed );
+    public void nodeRemoved(E node, Runnable removeFailed);
 }

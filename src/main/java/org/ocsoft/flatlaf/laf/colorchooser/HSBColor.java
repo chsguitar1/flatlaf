@@ -26,87 +26,74 @@ import java.awt.*;
  * User: mgarin Date: 10.03.11 Time: 18:52
  */
 
-@XStreamAlias ( "HSBColor" )
-public class HSBColor
-{
+@XStreamAlias("HSBColor")
+public class HSBColor {
     // Values: 0f-1f (0-360 degrees)
     @XStreamAsAttribute
     private float hue = 0f;
-
+    
     // Values: 0f-1f (0-100%)
     @XStreamAsAttribute
     private float saturation = 0f;
-
+    
     // Values: 0f-1f (0-100%)
     @XStreamAsAttribute
     private float brightness = 0f;
-
-    public HSBColor ()
-    {
-        super ();
+    
+    public HSBColor() {
+        super();
     }
-
-    public HSBColor ( float hue, float saturation, float brightness )
-    {
-        super ();
+    
+    public HSBColor(float hue, float saturation, float brightness) {
+        super();
         this.hue = hue;
         this.saturation = saturation;
         this.brightness = brightness;
     }
-
-    public HSBColor ( Color color )
-    {
-        this ( color.getRed (), color.getGreen (), color.getBlue () );
+    
+    public HSBColor(Color color) {
+        this(color.getRed(), color.getGreen(), color.getBlue());
     }
-
-    public HSBColor ( int red, int green, int blue )
-    {
-        super ();
-
-        float[] values = Color.RGBtoHSB ( red, green, blue, null );
-        this.hue = values[ 0 ];
-        this.saturation = values[ 1 ];
-        this.brightness = values[ 2 ];
+    
+    public HSBColor(int red, int green, int blue) {
+        super();
+        
+        float[] values = Color.RGBtoHSB(red, green, blue, null);
+        this.hue = values[0];
+        this.saturation = values[1];
+        this.brightness = values[2];
     }
-
-    public float getBrightness ()
-    {
+    
+    public float getBrightness() {
         return brightness;
     }
-
-    public void setBrightness ( float brightness )
-    {
+    
+    public void setBrightness(float brightness) {
         this.brightness = brightness;
     }
-
-    public float getHue ()
-    {
+    
+    public float getHue() {
         return hue;
     }
-
-    public void setHue ( float hue )
-    {
+    
+    public void setHue(float hue) {
         this.hue = hue;
     }
-
-    public float getSaturation ()
-    {
+    
+    public float getSaturation() {
         return saturation;
     }
-
-    public void setSaturation ( float saturation )
-    {
+    
+    public void setSaturation(float saturation) {
         this.saturation = saturation;
     }
-
-    public Color getColor ()
-    {
-        return new Color ( Color.HSBtoRGB ( hue, saturation, brightness ) );
+    
+    public Color getColor() {
+        return new Color(Color.HSBtoRGB(hue, saturation, brightness));
     }
-
-    public String toString ()
-    {
-        return getClass ().getCanonicalName () + "[h=" + getHue () + ",s=" + getSaturation () +
-                ",b=" + getBrightness () + "]";
+    
+    public String toString() {
+        return getClass().getCanonicalName() + "[h=" + getHue() + ",s="
+                + getSaturation() + ",b=" + getBrightness() + "]";
     }
 }

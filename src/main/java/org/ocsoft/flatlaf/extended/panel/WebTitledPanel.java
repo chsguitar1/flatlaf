@@ -25,61 +25,53 @@ import org.ocsoft.flatlaf.laf.panel.WebPanel;
  * User: mgarin Date: 12.04.12 Time: 14:03
  */
 
-public class WebTitledPanel extends WebPanel
-{
+public class WebTitledPanel extends WebPanel {
     private final WebPanel title;
     private final WebPanel content;
-
-    public WebTitledPanel ()
-    {
-        super ( true );
-        setMargin ( 0 );
-        setWebColoredBackground ( false );
-
-        title = new WebPanel ( true );
-        title.setPaintSides ( false, false, true, false );
-        title.setMargin ( 0 );
-        title.setShadeWidth ( 0 );
-        add ( title, BorderLayout.NORTH );
-
-        content = new WebPanel ();
-        content.setMargin ( 0 );
-        add ( content, BorderLayout.CENTER );
+    
+    public WebTitledPanel() {
+        super(true);
+        setMargin(0);
+        setWebColoredBackground(false);
+        
+        title = new WebPanel(true);
+        title.setPaintSides(false, false, true, false);
+        title.setMargin(0);
+        title.setShadeWidth(0);
+        add(title, BorderLayout.NORTH);
+        
+        content = new WebPanel();
+        content.setMargin(0);
+        add(content, BorderLayout.CENTER);
     }
-
-    public WebPanel getTitlePanel ()
-    {
+    
+    public WebPanel getTitlePanel() {
         return title;
     }
-
-    public WebPanel getContentPanel ()
-    {
+    
+    public WebPanel getContentPanel() {
         return content;
     }
-
-    public Component getTitle ()
-    {
-        return title.getComponentCount () > 0 ? title.getComponent ( 0 ) : null;
+    
+    public Component getTitle() {
+        return title.getComponentCount() > 0 ? title.getComponent(0) : null;
     }
-
-    public void setTitle ( final Component titleComponent )
-    {
-        title.removeAll ();
-        title.add ( titleComponent );
-        title.revalidate ();
-        title.repaint ();
+    
+    public void setTitle(final Component titleComponent) {
+        title.removeAll();
+        title.add(titleComponent);
+        title.revalidate();
+        title.repaint();
     }
-
-    public Component getContent ()
-    {
-        return content.getComponentCount () > 0 ? content.getComponent ( 0 ) : null;
+    
+    public Component getContent() {
+        return content.getComponentCount() > 0 ? content.getComponent(0) : null;
     }
-
-    public void setContent ( final Component contentComponent )
-    {
-        content.removeAll ();
-        content.add ( contentComponent );
-        content.revalidate ();
-        content.repaint ();
+    
+    public void setContent(final Component contentComponent) {
+        content.removeAll();
+        content.add(contentComponent);
+        content.revalidate();
+        content.repaint();
     }
 }

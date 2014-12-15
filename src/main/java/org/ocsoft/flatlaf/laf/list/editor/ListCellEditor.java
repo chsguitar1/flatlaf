@@ -21,129 +21,162 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * This interface provides base methods for list cell editor creation.
- * Cell editor is not available in Swing for JList, this a custom WebLaF-exclusive editor.
+ * This interface provides base methods for list cell editor creation. Cell
+ * editor is not available in Swing for JList, this a custom WebLaF-exclusive
+ * editor.
  *
- * @param <E> Editor component type
- * @param <T> Editor value type
+ * @param <E>
+ *            Editor component type
+ * @param <T>
+ *            Editor value type
  * @author Mikle Garin
  */
 
-public interface ListCellEditor<E extends Component, T>
-{
+public interface ListCellEditor<E extends Component, T> {
     /**
-     * Installs cell editor in the list.
-     * This method should add all required listeners in the list that will cause editing to start.
+     * Installs cell editor in the list. This method should add all required
+     * listeners in the list that will cause editing to start.
      *
-     * @param list list to process
+     * @param list
+     *            list to process
      */
-    public void install ( JList list );
-
+    public void install(JList list);
+    
     /**
-     * Uninstalls cell editor from the list.
-     * This method should remove all listeners from the list and cleanup all associated resources.
+     * Uninstalls cell editor from the list. This method should remove all
+     * listeners from the list and cleanup all associated resources.
      *
-     * @param list list to process
+     * @param list
+     *            list to process
      */
-    public void uninstall ( JList list );
-
+    public void uninstall(JList list);
+    
     /**
      * Returns whether list cell under the specified index is editable or not.
      *
-     * @param list  list to process
-     * @param index cell index
-     * @param value cell value
+     * @param list
+     *            list to process
+     * @param index
+     *            cell index
+     * @param value
+     *            cell value
      * @return whether list cell under the specified index is editable or not
      */
-    public boolean isCellEditable ( JList list, int index, T value );
-
+    public boolean isCellEditable(JList list, int index, T value);
+    
     /**
      * Returns list cell editor created for the cell under specified index.
      *
-     * @param list  list to process
-     * @param index cell index
-     * @param value cell value
+     * @param list
+     *            list to process
+     * @param index
+     *            cell index
+     * @param value
+     *            cell value
      * @return list cell editor created for the cell under specified index
      */
-    public E getCellEditor ( JList list, int index, T value );
-
+    public E getCellEditor(JList list, int index, T value);
+    
     /**
      * Starts specified list cell editing.
      *
-     * @param list  list to process
-     * @param index cell index
+     * @param list
+     *            list to process
+     * @param index
+     *            cell index
      */
-    public void startEdit ( JList list, int index );
-
+    public void startEdit(JList list, int index);
+    
     /**
      * Cancels list cell editing.
      *
-     * @param list list to process
+     * @param list
+     *            list to process
      */
-    public void cancelEdit ( JList list );
-
+    public void cancelEdit(JList list);
+    
     /**
-     * Stops list cell editing.
-     * Usually if value did not change editCancelled event will be thrown, but that depends on implementation.
+     * Stops list cell editing. Usually if value did not change editCancelled
+     * event will be thrown, but that depends on implementation.
      *
-     * @param list list to process
+     * @param list
+     *            list to process
      * @return true if cell editing was stopped or cancelled, false otherwise
      */
-    public boolean stopEdit ( JList list );
-
+    public boolean stopEdit(JList list);
+    
     /**
-     * Returns editor value that will replace the specified old value in the model.
+     * Returns editor value that will replace the specified old value in the
+     * model.
      *
-     * @param list     list to process
-     * @param index    cell index
-     * @param oldValue old cell value
+     * @param list
+     *            list to process
+     * @param index
+     *            cell index
+     * @param oldValue
+     *            old cell value
      * @return editor value
      */
-    public T getCellEditorValue ( JList list, int index, T oldValue );
-
+    public T getCellEditorValue(JList list, int index, T oldValue);
+    
     /**
      * Returns whether value update operation completed successfully or not.
-     * Basically this method should replace old value with a new one in list model and update list view.
+     * Basically this method should replace old value with a new one in list
+     * model and update list view.
      *
-     * @param list            list to process
-     * @param index           cell index
-     * @param oldValue        old cell value
-     * @param newValue        new cell value
-     * @param updateSelection whether update list selection or not
+     * @param list
+     *            list to process
+     * @param index
+     *            cell index
+     * @param oldValue
+     *            old cell value
+     * @param newValue
+     *            new cell value
+     * @param updateSelection
+     *            whether update list selection or not
      * @return true if list model was updated
      */
-    public boolean updateListModel ( JList list, int index, T oldValue, T newValue, boolean updateSelection );
-
+    public boolean updateListModel(JList list, int index, T oldValue,
+            T newValue, boolean updateSelection);
+    
     /**
      * Notifies that list cell editing has started.
      *
-     * @param list  list to process
-     * @param index edited cell index
+     * @param list
+     *            list to process
+     * @param index
+     *            edited cell index
      */
-    public void editStarted ( JList list, int index );
-
+    public void editStarted(JList list, int index);
+    
     /**
      * Notifies that list cell editing has finished.
      *
-     * @param list     list to process
-     * @param index    edited cell index
-     * @param oldValue old cell value
-     * @param newValue new cell value
+     * @param list
+     *            list to process
+     * @param index
+     *            edited cell index
+     * @param oldValue
+     *            old cell value
+     * @param newValue
+     *            new cell value
      */
-    public void editStopped ( JList list, int index, T oldValue, T newValue );
-
+    public void editStopped(JList list, int index, T oldValue, T newValue);
+    
     /**
      * Notifies that list cell editing was cancelled.
      *
-     * @param list  list to process
-     * @param index edited cell index
+     * @param list
+     *            list to process
+     * @param index
+     *            edited cell index
      */
-    public void editCancelled ( JList list, int index );
-
+    public void editCancelled(JList list, int index);
+    
     /**
      * Returns whether editor is currently active or not.
      *
      * @return true if editor is currently active, false otherwise
      */
-    public boolean isEditing ();
+    public boolean isEditing();
 }

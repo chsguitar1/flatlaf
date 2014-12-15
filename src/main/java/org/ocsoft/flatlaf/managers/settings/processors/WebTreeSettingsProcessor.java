@@ -32,96 +32,88 @@ import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
  * Custom SettingsProcessor for WebTree component.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How to use SettingsManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How
+ *      to use SettingsManager</a>
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  * @see org.ocsoft.flatlaf.managers.settings.SettingsProcessor
  */
 
-public class WebTreeSettingsProcessor extends SettingsProcessor<WebTree<? extends UniqueNode>, TreeState>
-        implements TreeSelectionListener, TreeExpansionListener
-{
+public class WebTreeSettingsProcessor extends
+        SettingsProcessor<WebTree<? extends UniqueNode>, TreeState> implements
+        TreeSelectionListener, TreeExpansionListener {
     /**
      * Constructs SettingsProcessor using the specified SettingsProcessorData.
      *
-     * @param data SettingsProcessorData
+     * @param data
+     *            SettingsProcessorData
      */
-    public WebTreeSettingsProcessor ( final SettingsProcessorData data )
-    {
-        super ( data );
+    public WebTreeSettingsProcessor(final SettingsProcessorData data) {
+        super(data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doInit ( final WebTree<? extends UniqueNode> component )
-    {
-        component.addTreeSelectionListener ( this );
-        component.addTreeExpansionListener ( this );
+    protected void doInit(final WebTree<? extends UniqueNode> component) {
+        component.addTreeSelectionListener(this);
+        component.addTreeExpansionListener(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doDestroy ( final WebTree<? extends UniqueNode> component )
-    {
-        component.removeTreeExpansionListener ( this );
-        component.removeTreeSelectionListener ( this );
+    protected void doDestroy(final WebTree<? extends UniqueNode> component) {
+        component.removeTreeExpansionListener(this);
+        component.removeTreeSelectionListener(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void treeExpanded ( final TreeExpansionEvent event )
-    {
-        save ();
+    public void treeExpanded(final TreeExpansionEvent event) {
+        save();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void treeCollapsed ( final TreeExpansionEvent event )
-    {
-        save ();
+    public void treeCollapsed(final TreeExpansionEvent event) {
+        save();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void valueChanged ( final TreeSelectionEvent e )
-    {
-        save ();
+    public void valueChanged(final TreeSelectionEvent e) {
+        save();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doLoad ( final WebTree<? extends UniqueNode> component )
-    {
-        if ( component.getRootNode () instanceof UniqueNode )
-        {
-            final TreeState value = loadValue ();
-            if ( value != null )
-            {
-                component.setTreeState ( value );
+    protected void doLoad(final WebTree<? extends UniqueNode> component) {
+        if (component.getRootNode() instanceof UniqueNode) {
+            final TreeState value = loadValue();
+            if (value != null) {
+                component.setTreeState(value);
             }
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doSave ( final WebTree<? extends UniqueNode> component )
-    {
-        if ( component.getRootNode () instanceof UniqueNode )
-        {
-            saveValue ( component.getTreeState () );
+    protected void doSave(final WebTree<? extends UniqueNode> component) {
+        if (component.getRootNode() instanceof UniqueNode) {
+            saveValue(component.getTreeState());
         }
     }
 }

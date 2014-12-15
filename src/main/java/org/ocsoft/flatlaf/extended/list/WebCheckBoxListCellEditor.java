@@ -31,56 +31,72 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class WebCheckBoxListCellEditor extends AbstractListCellEditor<WebTextField, CheckBoxCellData>
-{
+public class WebCheckBoxListCellEditor extends
+        AbstractListCellEditor<WebTextField, CheckBoxCellData> {
     /**
      * Creates list cell editor component for the cell nder specified index.
      *
-     * @param list  list to process
-     * @param index cell index
-     * @param value cell value
+     * @param list
+     *            list to process
+     * @param index
+     *            cell index
+     * @param value
+     *            cell value
      * @return list cell editor created for the cell under specified index
      */
     @Override
-    protected WebTextField createCellEditor ( final JList list, final int index, final CheckBoxCellData value )
-    {
-        final WebTextField field = WebTextField.createWebTextField ( true, WebListStyle.selectionRound, WebListStyle.selectionShadeWidth );
-        field.setDrawFocus ( false );
-        field.setText ( value.getUserObject () != null ? value.getUserObject ().toString () : "" );
-        field.selectAll ();
+    protected WebTextField createCellEditor(final JList list, final int index,
+            final CheckBoxCellData value) {
+        final WebTextField field = WebTextField.createWebTextField(true,
+                WebListStyle.selectionRound, WebListStyle.selectionShadeWidth);
+        field.setDrawFocus(false);
+        field.setText(value.getUserObject() != null ? value.getUserObject()
+                .toString() : "");
+        field.selectAll();
         return field;
     }
-
+    
     /**
      * Returns list cell editor bounds within the cell.
      *
-     * @param list       list to process
-     * @param index      cell index
-     * @param value      cell value
-     * @param cellBounds cell bounds
+     * @param list
+     *            list to process
+     * @param index
+     *            cell index
+     * @param value
+     *            cell value
+     * @param cellBounds
+     *            cell bounds
      * @return list cell editor bounds within the list
      */
     @Override
-    protected Rectangle getEditorBounds ( final JList list, final int index, final CheckBoxCellData value, final Rectangle cellBounds )
-    {
-        final WebCheckBoxListElement element = ( ( WebCheckBoxList ) list ).getWebCheckBoxListCellRenderer ().getElement ( value );
-        final Rectangle ir = element.getWebUI ().getIconRect ();
-        final int shear = ir.x + ir.width + element.getIconTextGap () - editor.getInsets ().left;
-        return new Rectangle ( shear, 0, cellBounds.width - shear, cellBounds.height );
+    protected Rectangle getEditorBounds(final JList list, final int index,
+            final CheckBoxCellData value, final Rectangle cellBounds) {
+        final WebCheckBoxListElement element = ((WebCheckBoxList) list)
+                .getWebCheckBoxListCellRenderer().getElement(value);
+        final Rectangle ir = element.getWebUI().getIconRect();
+        final int shear = ir.x + ir.width + element.getIconTextGap()
+                - editor.getInsets().left;
+        return new Rectangle(shear, 0, cellBounds.width - shear,
+                cellBounds.height);
     }
-
+    
     /**
-     * Returns editor value that will replace the specified old value in the model.
+     * Returns editor value that will replace the specified old value in the
+     * model.
      *
-     * @param list     list to process
-     * @param index    cell index
-     * @param oldValue old cell value
+     * @param list
+     *            list to process
+     * @param index
+     *            cell index
+     * @param oldValue
+     *            old cell value
      * @return editor value
      */
     @Override
-    public CheckBoxCellData getCellEditorValue ( final JList list, final int index, final CheckBoxCellData oldValue )
-    {
-        oldValue.setUserObject ( editor.getText () );
+    public CheckBoxCellData getCellEditorValue(final JList list,
+            final int index, final CheckBoxCellData oldValue) {
+        oldValue.setUserObject(editor.getText());
         return oldValue;
     }
 }

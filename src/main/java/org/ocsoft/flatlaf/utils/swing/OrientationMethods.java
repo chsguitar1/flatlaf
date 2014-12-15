@@ -22,27 +22,27 @@ import java.awt.*;
 import org.ocsoft.flatlaf.utils.swing.SwingMethods;
 
 /**
- * This interface provides a set of methods that should be added into components that support orientation changes.
+ * This interface provides a set of methods that should be added into components
+ * that support orientation changes.
  *
  * @author Mikle Garin
  */
 
 // todo Make custom saveable component orientation possible
-public interface OrientationMethods<C extends Component> extends SwingMethods
-{
-    public C updateOrientation ();
-
-    public boolean isInvertOrientation ();
-
-    public C setInvertOrientation ();
-
-    public boolean isLeftToRight ();
-
-    public C setLeftToRight ( boolean ltr );
-
+public interface OrientationMethods<C extends Component> extends SwingMethods {
+    public C updateOrientation();
+    
+    public boolean isInvertOrientation();
+    
+    public C setInvertOrientation();
+    
+    public boolean isLeftToRight();
+    
+    public C setLeftToRight(boolean ltr);
+    
     // todo Might need a renaming for some components
-    public ComponentOrientation getOrientation ();
-
+    public ComponentOrientation getOrientation();
+    
     // todo Might need a renaming for some components
-    public C setOrientation ( ComponentOrientation orientation );
+    public C setOrientation(ComponentOrientation orientation);
 }

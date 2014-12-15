@@ -28,11 +28,12 @@ import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 
 /**
- * WebLaF managers simple initialization class.
- * Used by WebLookAndFeel to initialize managers together with or separately from the L&F.
+ * WebLaF managers simple initialization class. Used by WebLookAndFeel to
+ * initialize managers together with or separately from the L&F.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-WebLaF">How to use WebLaF</a>
+ * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-WebLaF">How to
+ *      use WebLaF</a>
  * @see org.ocsoft.flatlaf.utils.system.FlatLafLogger
  * @see org.ocsoft.flatlaf.managers.version.VersionManager
  * @see org.ocsoft.flatlaf.managers.language.WebLanguageManager
@@ -45,22 +46,19 @@ import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
  * @see org.ocsoft.flatlaf.managers.drag.DragManager
  */
 
-public class FlatLafManagers
-{
+public class FlatLafManagers {
     /**
-     * Initializes WebLaF managers.
-     * Managers initialization order does matter!
+     * Initializes WebLaF managers. Managers initialization order does matter!
      */
-    public static synchronized void initialize ()
-    {
-        FlatLafLogger.initialize ();
-        WebLanguageManager.initialize ();
-        WebSettingsManager.initialize ();
-        HotkeyManager.initialize ();
-        FocusManager.initialize ();
-        TooltipManager.initialize ();
-        StyleManager.initialize ();
-        WebProxyManager.initialize ();
-        DragManager.initialize ();
+    public static synchronized void initialize() {
+        FlatLafLogger.initialize();
+        WebLanguageManager.initialize();
+        WebSettingsManager.initialize();
+        HotkeyManager.initialize();
+        FocusManager.initialize();
+        TooltipManager.initialize();
+        StyleManager.initialize();
+        WebProxyManager.initialize();
+        DragManager.initialize();
     }
 }

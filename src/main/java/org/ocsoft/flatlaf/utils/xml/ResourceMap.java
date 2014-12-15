@@ -28,39 +28,32 @@ import java.util.Map;
  * User: mgarin Date: 17.02.12 Time: 12:25
  */
 
-@XStreamAlias ("ResourceMap")
-public class ResourceMap implements Serializable
-{
+@XStreamAlias("ResourceMap")
+public class ResourceMap implements Serializable {
     @XStreamImplicit
-    private Map<String, ResourceFile> states = new HashMap<String, ResourceFile> ();
-
-    public ResourceMap ()
-    {
-        super ();
+    private Map<String, ResourceFile> states = new HashMap<String, ResourceFile>();
+    
+    public ResourceMap() {
+        super();
     }
-
-    public void addState ( final String state, final ResourceFile resource )
-    {
-        states.put ( state, resource );
+    
+    public void addState(final String state, final ResourceFile resource) {
+        states.put(state, resource);
     }
-
-    public void removeState ( final String state )
-    {
-        states.remove ( state );
+    
+    public void removeState(final String state) {
+        states.remove(state);
     }
-
-    public ResourceFile getState ( final String state )
-    {
-        return states.get ( state );
+    
+    public ResourceFile getState(final String state) {
+        return states.get(state);
     }
-
-    public Map<String, ResourceFile> getStates ()
-    {
+    
+    public Map<String, ResourceFile> getStates() {
         return states;
     }
-
-    public void setStates ( final Map<String, ResourceFile> states )
-    {
+    
+    public void setStates(final Map<String, ResourceFile> states) {
         this.states = states;
     }
 }

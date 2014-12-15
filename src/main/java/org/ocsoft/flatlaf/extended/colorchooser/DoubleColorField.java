@@ -38,134 +38,125 @@ import java.util.Map;
  * User: mgarin Date: 08.07.2010 Time: 14:12:13
  */
 
-public class DoubleColorField extends WebPanel
-{
-    private List<DoubleColorFieldListener> listeners = new ArrayList<DoubleColorFieldListener> ( 1 );
-
+public class DoubleColorField extends WebPanel {
+    private List<DoubleColorFieldListener> listeners = new ArrayList<DoubleColorFieldListener>(
+            1);
+    
     private Color newColor;
     private Color oldColor;
-
+    
     private HSBColor newHSBColor;
     private HSBColor oldHSBColor;
-
+    
     private String newText = "new";
     private String currentText = "current";
-
-    public DoubleColorField ()
-    {
-        super ();
-
-        addMouseListener ( new MouseAdapter ()
-        {
+    
+    public DoubleColorField() {
+        super();
+        
+        addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed ( MouseEvent e )
-            {
-                if ( SwingUtilities.isLeftMouseButton ( e ) )
-                {
-                    if ( e.getY () <= getHeight () / 2 )
-                    {
-                        newColorPressed ();
-                    }
-                    else
-                    {
-                        oldColorPressed ();
+            public void mousePressed(MouseEvent e) {
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    if (e.getY() <= getHeight() / 2) {
+                        newColorPressed();
+                    } else {
+                        oldColorPressed();
                     }
                 }
             }
-        } );
-
-        LanguageManager.addLanguageListener ( new LanguageAdapter ()
-        {
+        });
+        
+        LanguageManager.addLanguageListener(new LanguageAdapter() {
             @Override
-            public void languageUpdated ()
-            {
-                repaint ();
-                revalidate ();
+            public void languageUpdated() {
+                repaint();
+                revalidate();
             }
-        } );
+        });
     }
-
+    
     @Override
-    public void paint ( Graphics g )
-    {
-        super.paint ( g );
-
-        Graphics2D g2d = ( Graphics2D ) g;
-        FontMetrics fm = g2d.getFontMetrics ();
-
-        Map hints = SwingUtils.setupTextAntialias ( g2d );
-
-        g2d.setPaint ( Color.GRAY );
-        g2d.drawRect ( 0, 0, getWidth () - 1, getHeight () - 1 );
-        g2d.setPaint ( Color.WHITE );
-        g2d.drawRect ( 1, 1, getWidth () - 3, getHeight () - 3 );
-
-        g2d.setPaint ( newColor );
-        g2d.fillRect ( 2, 2, getWidth () - 4, getHeight () / 2 - 2 );
-
-        final String newText = LanguageManager.get ( "weblaf.colorchooser.color.new" );
-        Point nts = LafUtils.getTextCenterShear ( fm, newText );
-        g2d.setPaint ( newHSBColor.getBrightness () >= 0.7f && newHSBColor.getSaturation () < 0.7f ? Color.BLACK : Color.WHITE );
-        g2d.drawString ( newText, getWidth () / 2 + nts.x, 2 + ( getHeight () - 4 ) / 4 + nts.y );
-
-        g2d.setPaint ( oldColor );
-        g2d.fillRect ( 2, getHeight () / 2, getWidth () - 4, getHeight () - getHeight () / 2 - 2 );
-
-        final String currentText = LanguageManager.get ( "weblaf.colorchooser.color.current" );
-        Point cts = LafUtils.getTextCenterShear ( fm, currentText );
-        g2d.setPaint ( oldHSBColor.getBrightness () >= 0.7f && oldHSBColor.getSaturation () < 0.7f ? Color.BLACK : Color.WHITE );
-        g2d.drawString ( currentText, getWidth () / 2 + cts.x, 2 + ( getHeight () - 4 ) * 3 / 4 + cts.y );
-
-        SwingUtils.restoreTextAntialias ( g2d, hints );
+    public void paint(Graphics g) {
+        super.paint(g);
+        
+        Graphics2D g2d = (Graphics2D) g;
+        FontMetrics fm = g2d.getFontMetrics();
+        
+        Map hints = SwingUtils.setupTextAntialias(g2d);
+        
+        g2d.setPaint(Color.GRAY);
+        g2d.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
+        g2d.setPaint(Color.WHITE);
+        g2d.drawRect(1, 1, getWidth() - 3, getHeight() - 3);
+        
+        g2d.setPaint(newColor);
+        g2d.fillRect(2, 2, getWidth() - 4, getHeight() / 2 - 2);
+        
+        final String newText = LanguageManager
+                .get("weblaf.colorchooser.color.new");
+        Point nts = LafUtils.getTextCenterShear(fm, newText);
+        g2d.setPaint(newHSBColor.getBrightness() >= 0.7f
+                && newHSBColor.getSaturation() < 0.7f ? Color.BLACK
+                : Color.WHITE);
+        g2d.drawString(newText, getWidth() / 2 + nts.x, 2 + (getHeight() - 4)
+                / 4 + nts.y);
+        
+        g2d.setPaint(oldColor);
+        g2d.fillRect(2, getHeight() / 2, getWidth() - 4, getHeight()
+                - getHeight() / 2 - 2);
+        
+        final String currentText = LanguageManager
+                .get("weblaf.colorchooser.color.current");
+        Point cts = LafUtils.getTextCenterShear(fm, currentText);
+        g2d.setPaint(oldHSBColor.getBrightness() >= 0.7f
+                && oldHSBColor.getSaturation() < 0.7f ? Color.BLACK
+                : Color.WHITE);
+        g2d.drawString(currentText, getWidth() / 2 + cts.x, 2
+                + (getHeight() - 4) * 3 / 4 + cts.y);
+        
+        SwingUtils.restoreTextAntialias(g2d, hints);
     }
-
-    public Color getNewColor ()
-    {
+    
+    public Color getNewColor() {
         return newColor;
     }
-
-    public void setNewColor ( Color newColor )
-    {
+    
+    public void setNewColor(Color newColor) {
         this.newColor = newColor;
-        this.newHSBColor = new HSBColor ( newColor );
-        this.repaint ();
+        this.newHSBColor = new HSBColor(newColor);
+        this.repaint();
     }
-
-    public Color getOldColor ()
-    {
+    
+    public Color getOldColor() {
         return oldColor;
     }
-
-    public void setOldColor ( Color oldColor )
-    {
+    
+    public void setOldColor(Color oldColor) {
         this.oldColor = oldColor;
-        this.oldHSBColor = new HSBColor ( oldColor );
-        this.repaint ();
+        this.oldHSBColor = new HSBColor(oldColor);
+        this.repaint();
     }
-
-    public void addDoubleColorFieldListener ( DoubleColorFieldListener listener )
-    {
-        listeners.add ( listener );
+    
+    public void addDoubleColorFieldListener(DoubleColorFieldListener listener) {
+        listeners.add(listener);
     }
-
-    public void removeDoubleColorFieldListener ( DoubleColorFieldListener listener )
-    {
-        listeners.remove ( listener );
+    
+    public void removeDoubleColorFieldListener(DoubleColorFieldListener listener) {
+        listeners.remove(listener);
     }
-
-    private void newColorPressed ()
-    {
-        for ( DoubleColorFieldListener listener : CollectionUtils.copy ( listeners ) )
-        {
-            listener.newColorPressed ( newColor );
+    
+    private void newColorPressed() {
+        for (DoubleColorFieldListener listener : CollectionUtils
+                .copy(listeners)) {
+            listener.newColorPressed(newColor);
         }
     }
-
-    private void oldColorPressed ()
-    {
-        for ( DoubleColorFieldListener listener : CollectionUtils.copy ( listeners ) )
-        {
-            listener.oldColorPressed ( oldColor );
+    
+    private void oldColorPressed() {
+        for (DoubleColorFieldListener listener : CollectionUtils
+                .copy(listeners)) {
+            listener.oldColorPressed(oldColor);
         }
     }
 }

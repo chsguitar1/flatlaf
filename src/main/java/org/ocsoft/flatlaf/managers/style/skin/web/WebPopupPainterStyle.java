@@ -25,39 +25,38 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class WebPopupPainterStyle
-{
+public final class WebPopupPainterStyle {
     /**
      * Popup style.
      */
     public static PopupStyle popupStyle = PopupStyle.dropdown;
-
+    
     /**
      * Popup border color.
      */
-    public static Color borderColor = new Color ( 128, 128, 128, 128 );
-
+    public static Color borderColor = new Color(128, 128, 128, 128);
+    
     /**
      * Popup corners rounding.
      */
     public static int round = FlatLafStyleConstants.bigRound;
-
+    
     /**
      * Popup shade width.
      */
     public static int shadeWidth = 12;
-
+    
     /**
      * Popup shade transparency.
      */
     public static float shadeTransparency = 0.75f;
-
+    
     /**
-     * Popup dropdown style corner width.
-     * Should not be larger than shade width in current implementation.
+     * Popup dropdown style corner width. Should not be larger than shade width
+     * in current implementation.
      */
     public static int cornerWidth = 6;
-
+    
     /**
      * Popup background transparency.
      */

@@ -28,42 +28,35 @@ import org.ocsoft.flatlaf.utils.swing.WebDefaultCellEditor;
  * @author Mikle Garin
  */
 
-public class WebDateEditor extends WebDefaultCellEditor<WebDateField>
-{
-    public WebDateEditor ()
-    {
-        super ();
-
-        editorComponent = new WebDateField ( false );
-        editorComponent.setFireSelectionWithoutChanges ( true );
-        editorComponent.addDateSelectionListener ( new DateSelectionListener ()
-        {
+public class WebDateEditor extends WebDefaultCellEditor<WebDateField> {
+    public WebDateEditor() {
+        super();
+        
+        editorComponent = new WebDateField(false);
+        editorComponent.setFireSelectionWithoutChanges(true);
+        editorComponent.addDateSelectionListener(new DateSelectionListener() {
             @Override
-            public void dateSelected ( final Date date )
-            {
-                stopCellEditing ();
+            public void dateSelected(final Date date) {
+                stopCellEditing();
             }
-        } );
-
-        final WebButton popupButton = editorComponent.getPopupButton ();
-        popupButton.setRound ( 0 );
-        popupButton.setLeftRightSpacing ( 0 );
-        popupButton.setDrawSides ( false, true, false, false );
-
-        delegate = new EditorDelegate ()
-        {
+        });
+        
+        final WebButton popupButton = editorComponent.getPopupButton();
+        popupButton.setRound(0);
+        popupButton.setLeftRightSpacing(0);
+        popupButton.setDrawSides(false, true, false, false);
+        
+        delegate = new EditorDelegate() {
             @Override
-            public void setValue ( final Object value )
-            {
-                editorComponent.setDate ( ( Date ) value );
+            public void setValue(final Object value) {
+                editorComponent.setDate((Date) value);
             }
-
+            
             @Override
-            public Object getCellEditorValue ()
-            {
+            public Object getCellEditorValue() {
                 // Updating value from field to make sure it is up-to-date
-                editorComponent.updateDateFromField ( false );
-                return editorComponent.getDate ();
+                editorComponent.updateDateFromField(false);
+                return editorComponent.getDate();
             }
         };
     }

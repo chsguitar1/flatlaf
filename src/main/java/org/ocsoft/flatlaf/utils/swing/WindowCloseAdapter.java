@@ -26,78 +26,68 @@ import java.awt.event.WindowListener;
  * @author Mikle Garin
  */
 
-public abstract class WindowCloseAdapter implements ComponentListener, WindowListener
-{
+public abstract class WindowCloseAdapter implements ComponentListener,
+        WindowListener {
     @Override
-    public void componentResized ( final ComponentEvent e )
-    {
+    public void componentResized(final ComponentEvent e) {
         // Do nothing
     }
-
+    
     @Override
-    public void componentMoved ( final ComponentEvent e )
-    {
+    public void componentMoved(final ComponentEvent e) {
         // Do nothing
     }
-
+    
     @Override
-    public void componentShown ( final ComponentEvent e )
-    {
+    public void componentShown(final ComponentEvent e) {
         // Do nothing
     }
-
+    
     @Override
-    public void componentHidden ( final ComponentEvent e )
-    {
-        closed ( e );
+    public void componentHidden(final ComponentEvent e) {
+        closed(e);
     }
-
+    
     @Override
-    public void windowOpened ( final WindowEvent e )
-    {
+    public void windowOpened(final WindowEvent e) {
         // Do nothing
     }
-
+    
     @Override
-    public void windowClosing ( final WindowEvent e )
-    {
+    public void windowClosing(final WindowEvent e) {
         // Do nothing
     }
-
+    
     @Override
-    public void windowClosed ( final WindowEvent e )
-    {
-        closed ( e );
+    public void windowClosed(final WindowEvent e) {
+        closed(e);
     }
-
+    
     @Override
-    public void windowIconified ( final WindowEvent e )
-    {
+    public void windowIconified(final WindowEvent e) {
         // Do nothing
     }
-
+    
     @Override
-    public void windowDeiconified ( final WindowEvent e )
-    {
+    public void windowDeiconified(final WindowEvent e) {
         // Do nothing
     }
-
+    
     @Override
-    public void windowActivated ( final WindowEvent e )
-    {
+    public void windowActivated(final WindowEvent e) {
         // Do nothing
     }
-
+    
     @Override
-    public void windowDeactivated ( final WindowEvent e )
-    {
+    public void windowDeactivated(final WindowEvent e) {
         // Do nothing
     }
-
+    
     /**
      * Notifies that window just closed.
      *
-     * @param e component event
+     * @param e
+     *            component event
      */
-    public abstract void closed ( ComponentEvent e );
+    public abstract void closed(ComponentEvent e);
 }

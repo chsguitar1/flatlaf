@@ -27,14 +27,13 @@ import org.ocsoft.flatlaf.managers.language.data.Value;
  * @author Mikle Garin
  */
 
-public class DialogLU extends DefaultLanguageUpdater<Dialog>
-{
+public class DialogLU extends DefaultLanguageUpdater<Dialog> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void update ( final Dialog c, final String key, final Value value, final Object... data )
-    {
-        c.setTitle ( getDefaultText ( value, data ) );
+    public void update(final Dialog c, final String key, final Value value,
+            final Object... data) {
+        c.setTitle(getDefaultText(value, data));
     }
 }

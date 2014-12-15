@@ -27,34 +27,28 @@ import java.awt.*;
  * User: mgarin Date: 24.02.12 Time: 16:18
  */
 
-public class TwoSidesPanel extends WebPanel implements SwingConstants
-{
-    public TwoSidesPanel ( Component start, Component end )
-    {
-        this ( HORIZONTAL, start, end );
+public class TwoSidesPanel extends WebPanel implements SwingConstants {
+    public TwoSidesPanel(Component start, Component end) {
+        this(HORIZONTAL, start, end);
     }
-
-    public TwoSidesPanel ( int orientation, Component start, Component end )
-    {
-        this ( orientation, 0, start, end );
+    
+    public TwoSidesPanel(int orientation, Component start, Component end) {
+        this(orientation, 0, start, end);
     }
-
-    public TwoSidesPanel ( int orientation, int spacing, Component start, Component end )
-    {
-        super ();
-
-        setOpaque ( false );
-        setLayout ( new BorderLayout ( spacing, spacing ) );
-
-        if ( orientation == HORIZONTAL )
-        {
-            add ( start, BorderLayout.LINE_START );
-            add ( end, BorderLayout.LINE_END );
-        }
-        else
-        {
-            add ( start, BorderLayout.PAGE_START );
-            add ( end, BorderLayout.PAGE_END );
+    
+    public TwoSidesPanel(int orientation, int spacing, Component start,
+            Component end) {
+        super();
+        
+        setOpaque(false);
+        setLayout(new BorderLayout(spacing, spacing));
+        
+        if (orientation == HORIZONTAL) {
+            add(start, BorderLayout.LINE_START);
+            add(end, BorderLayout.LINE_END);
+        } else {
+            add(start, BorderLayout.PAGE_START);
+            add(end, BorderLayout.PAGE_END);
         }
     }
 }

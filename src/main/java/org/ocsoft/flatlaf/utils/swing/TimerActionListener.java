@@ -27,22 +27,23 @@ import java.awt.event.ActionListener;
  * @see org.ocsoft.flatlaf.utils.swing.WebTimer
  */
 
-public abstract class TimerActionListener implements ActionListener
-{
+public abstract class TimerActionListener implements ActionListener {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void actionPerformed ( final ActionEvent e )
-    {
-        timerActionPerformed ( e, ( WebTimer ) e.getSource () );
+    public void actionPerformed(final ActionEvent e) {
+        timerActionPerformed(e, (WebTimer) e.getSource());
     }
-
+    
     /**
      * Simply an extended version of {@code actionPerformed()} method.
      *
-     * @param e     action event
-     * @param timer timer which forced this action
+     * @param e
+     *            action event
+     * @param timer
+     *            timer which forced this action
      */
-    public abstract void timerActionPerformed ( final ActionEvent e, final WebTimer timer );
+    public abstract void timerActionPerformed(final ActionEvent e,
+            final WebTimer timer);
 }

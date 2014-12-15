@@ -25,13 +25,12 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * User: mgarin Date: 11/16/11 Time: 2:01 PM
  */
 
-public final class WebOptionPaneStyle
-{
+public final class WebOptionPaneStyle {
     /**
      * Highlight control buttons with specific colors
      */
     public static boolean highlightControlButtons = FlatLafStyleConstants.highlightControlButtons;
-
+    
     /**
      * Option pane background color
      */

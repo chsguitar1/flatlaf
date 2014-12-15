@@ -29,37 +29,34 @@ import java.io.File;
  * @author Mikle Garin
  */
 
-public class FilesFilter extends AbstractFileFilter
-{
+public class FilesFilter extends AbstractFileFilter {
     /**
      * Filter icon.
      */
-    public static final ImageIcon ICON = new ImageIcon ( DirectoriesFilter.class.getResource ( "icons/file.png" ) );
-
+    public static final ImageIcon ICON = new ImageIcon(
+            DirectoriesFilter.class.getResource("icons/file.png"));
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public ImageIcon getIcon ()
-    {
+    public ImageIcon getIcon() {
         return ICON;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getDescription ()
-    {
-        return LanguageManager.get ( "weblaf.file.filter.files" );
+    public String getDescription() {
+        return LanguageManager.get("weblaf.file.filter.files");
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean accept ( final File file )
-    {
-        return file.isFile ();
+    public boolean accept(final File file) {
+        return file.isFile();
     }
 }

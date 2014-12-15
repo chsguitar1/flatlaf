@@ -25,19 +25,20 @@ import java.util.List;
  * @author Mikle Garin
  */
 
-public interface ChildsListener<E extends AsyncUniqueNode>
-{
+public interface ChildsListener<E extends AsyncUniqueNode> {
     /**
      * Informs model that childs were loaded successfully.
      *
-     * @param childs list of loaded childs
+     * @param childs
+     *            list of loaded childs
      */
-    public void childsLoadCompleted ( List<E> childs );
-
+    public void childsLoadCompleted(List<E> childs);
+    
     /**
      * Informs model that childs load failed due to the specified exception.
      *
-     * @param cause exception
+     * @param cause
+     *            exception
      */
-    public void childsLoadFailed ( Throwable cause );
+    public void childsLoadFailed(Throwable cause);
 }

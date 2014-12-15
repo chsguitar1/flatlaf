@@ -21,14 +21,13 @@ package org.ocsoft.flatlaf.extended.transition.effects.blocks;
  * User: mgarin Date: 04.10.12 Time: 16:47
  */
 
-public enum BlockType
-{
+public enum BlockType {
     // Any random block type each time (always first in enum)
     random,
-
+    
     // Fill (and fade-in) blocks in a specific direction
     cascade,
-
+    
     // Fill (and fade-in) random blocks
     randomize
 }

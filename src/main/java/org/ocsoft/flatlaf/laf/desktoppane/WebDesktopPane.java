@@ -27,36 +27,27 @@ import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
  * User: mgarin Date: 24.08.11 Time: 17:46
  */
 
-public class WebDesktopPane extends JDesktopPane
-{
-    public WebDesktopPane ()
-    {
-        super ();
+public class WebDesktopPane extends JDesktopPane {
+    public WebDesktopPane() {
+        super();
     }
-
-    public WebDesktopPaneUI getWebUI ()
-    {
-        return ( WebDesktopPaneUI ) getUI ();
+    
+    public WebDesktopPaneUI getWebUI() {
+        return (WebDesktopPaneUI) getUI();
     }
-
+    
     @Override
-    public void updateUI ()
-    {
-        if ( getUI () == null || !( getUI () instanceof WebDesktopPaneUI ) )
-        {
-            try
-            {
-                setUI ( ( WebDesktopPaneUI ) ReflectUtils.createInstance ( FlatLafSettings.desktopPaneUI ) );
+    public void updateUI() {
+        if (getUI() == null || !(getUI() instanceof WebDesktopPaneUI)) {
+            try {
+                setUI((WebDesktopPaneUI) ReflectUtils
+                        .createInstance(FlatLafSettings.desktopPaneUI));
+            } catch (final Throwable e) {
+                FlatLafLogger.error(this, e);
+                setUI(new WebDesktopPaneUI());
             }
-            catch ( final Throwable e )
-            {
-                FlatLafLogger.error ( this, e );
-                setUI ( new WebDesktopPaneUI () );
-            }
-        }
-        else
-        {
-            setUI ( getUI () );
+        } else {
+            setUI(getUI());
         }
     }
 }

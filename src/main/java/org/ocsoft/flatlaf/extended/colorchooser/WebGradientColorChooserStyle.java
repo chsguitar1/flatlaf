@@ -26,38 +26,38 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * User: mgarin Date: 23.11.12 Time: 19:10
  */
 
-public final class WebGradientColorChooserStyle
-{
+public final class WebGradientColorChooserStyle {
     /**
      * Decoration shade width
      */
     public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Default chooser line width
      */
     public static int lineWidth = 20;
-
+    
     /**
      * Default gripper size
      */
-    public static Dimension gripperSize = new Dimension ( 11, 19 );
-
+    public static Dimension gripperSize = new Dimension(11, 19);
+    
     /**
      * Default chooser margin
      */
     public static Insets margin = FlatLafStyleConstants.emptyMargin;
-
+    
     /**
      * Should draw labels by default
      */
     public static boolean paintLabels = true;
-
+    
     /**
      * Default labels font
      */
-    public static Font labelsFont = FlatLafSettings.globalControlFont.deriveFont ( 10f );
-
+    public static Font labelsFont = FlatLafSettings.globalControlFont
+            .deriveFont(10f);
+    
     /**
      * Default labels foreground
      */

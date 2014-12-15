@@ -31,58 +31,46 @@ import java.util.List;
  * User: mgarin Date: 19.01.12 Time: 16:20
  */
 
-public class ImageDropHandler extends TransferHandler
-{
+public class ImageDropHandler extends TransferHandler {
     @Override
-    public boolean canImport ( final TransferHandler.TransferSupport info )
-    {
-        return isDropEnabled ();
+    public boolean canImport(final TransferHandler.TransferSupport info) {
+        return isDropEnabled();
     }
-
+    
     @Override
-    public boolean importData ( final TransferHandler.TransferSupport info )
-    {
-        return info.isDrop () && importData ( info.getTransferable () );
+    public boolean importData(final TransferHandler.TransferSupport info) {
+        return info.isDrop() && importData(info.getTransferable());
     }
-
-    public boolean importData ( final Transferable t )
-    {
-        if ( isDropEnabled () )
-        {
-            final List<ImageIcon> images = new ArrayList<ImageIcon> ();
-
+    
+    public boolean importData(final Transferable t) {
+        if (isDropEnabled()) {
+            final List<ImageIcon> images = new ArrayList<ImageIcon>();
+            
             // Check imported files
-            final List<File> files = DragUtils.getImportedFiles ( t );
-            if ( files != null )
-            {
-                for ( final File file : files )
-                {
-                    images.add ( new ImageIcon ( file.getAbsolutePath () ) );
+            final List<File> files = DragUtils.getImportedFiles(t);
+            if (files != null) {
+                for (final File file : files) {
+                    images.add(new ImageIcon(file.getAbsolutePath()));
                 }
             }
-
+            
             // Check imported raw image
-            final Image image = DragUtils.getImportedImage ( t );
-            if ( image != null )
-            {
-                images.add ( new ImageIcon ( image ) );
+            final Image image = DragUtils.getImportedImage(t);
+            if (image != null) {
+                images.add(new ImageIcon(image));
             }
-
-            return isDropEnabled () && imagesImported ( images );
-        }
-        else
-        {
+            
+            return isDropEnabled() && imagesImported(images);
+        } else {
             return false;
         }
     }
-
-    protected boolean isDropEnabled ()
-    {
+    
+    protected boolean isDropEnabled() {
         return true;
     }
-
-    protected boolean imagesImported ( final List<ImageIcon> images )
-    {
+    
+    protected boolean imagesImported(final List<ImageIcon> images) {
         return true;
     }
 }

@@ -17,7 +17,6 @@
 
 package org.ocsoft.flatlaf.utils.general;
 
-
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
@@ -31,143 +30,134 @@ import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
  * @author Mikle Garin
  */
 
-@XStreamAlias ( "Pair" )
-public class Pair<K, V> implements Serializable, Cloneable
-{
+@XStreamAlias("Pair")
+public class Pair<K, V> implements Serializable, Cloneable {
     /**
      * Key of this {@code Pair}.
      */
     @XStreamAsAttribute
     public K key;
-
+    
     /**
      * Value of this this {@code Pair}.
      */
     @XStreamAsAttribute
     public V value;
-
+    
     /**
      * Constructs a new pair with {@code null} key and value.
      */
-    public Pair ()
-    {
-        this ( null, null );
+    public Pair() {
+        this(null, null);
     }
-
+    
     /**
      * Constructs a new pair with {@code null} value.
      *
-     * @param key The key for this pair
+     * @param key
+     *            The key for this pair
      */
-    public Pair ( final K key )
-    {
-        this ( key, null );
+    public Pair(final K key) {
+        this(key, null);
     }
-
+    
     /**
      * Constructs a new pair
      *
-     * @param key   The key for this pair
-     * @param value The value to use for this pair
+     * @param key
+     *            The key for this pair
+     * @param value
+     *            The value to use for this pair
      */
-    public Pair ( final K key, final V value )
-    {
-        super ();
+    public Pair(final K key, final V value) {
+        super();
         this.key = key;
         this.value = value;
     }
-
+    
     /**
      * Gets the key for this pair.
      *
      * @return key for this pair
      */
-    public K getKey ()
-    {
+    public K getKey() {
         return key;
     }
-
+    
     /**
      * Sets the key for this pair.
      *
-     * @param key new key for this pair
+     * @param key
+     *            new key for this pair
      */
-    public void setKey ( final K key )
-    {
+    public void setKey(final K key) {
         this.key = key;
     }
-
+    
     /**
      * Gets the value for this pair.
      *
      * @return value for this pair
      */
-    public V getValue ()
-    {
+    public V getValue() {
         return value;
     }
-
+    
     /**
      * Sets the value for this pair.
      *
-     * @param value new value for this pair
+     * @param value
+     *            new value for this pair
      */
-    public void setValue ( final V value )
-    {
+    public void setValue(final V value) {
         this.value = value;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String toString ()
-    {
+    public String toString() {
         return key + "=" + value;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public int hashCode ()
-    {
-        return key.hashCode () * 13 + ( value == null ? 0 : value.hashCode () );
+    public int hashCode() {
+        return key.hashCode() * 13 + (value == null ? 0 : value.hashCode());
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean equals ( final Object o )
-    {
-        if ( this == o )
-        {
+    public boolean equals(final Object o) {
+        if (this == o) {
             return true;
         }
-        if ( o instanceof Pair )
-        {
-            final Pair pair = ( Pair ) o;
-            return !( key != null ? !key.equals ( pair.key ) : pair.key != null ) &&
-                    !( value != null ? !value.equals ( pair.value ) : pair.value != null );
+        if (o instanceof Pair) {
+            final Pair pair = (Pair) o;
+            return !(key != null ? !key.equals(pair.key) : pair.key != null)
+                    && !(value != null ? !value.equals(pair.value)
+                            : pair.value != null);
         }
         return false;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Pair<K, V> clone ()
-    {
-        if ( getKey () instanceof Cloneable && getValue () instanceof Cloneable )
-        {
-            return ( Pair<K, V> ) new Pair ( ReflectUtils.cloneSafely ( ( Cloneable ) getKey () ),
-                    ReflectUtils.cloneSafely ( ( Cloneable ) getValue () ) );
-        }
-        else
-        {
-            throw new RuntimeException ( "Both key and value should implement Cloneable!" );
+    public Pair<K, V> clone() {
+        if (getKey() instanceof Cloneable && getValue() instanceof Cloneable) {
+            return (Pair<K, V>) new Pair(
+                    ReflectUtils.cloneSafely((Cloneable) getKey()),
+                    ReflectUtils.cloneSafely((Cloneable) getValue()));
+        } else {
+            throw new RuntimeException(
+                    "Both key and value should implement Cloneable!");
         }
     }
 }

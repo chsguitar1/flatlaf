@@ -37,317 +37,299 @@ import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
  * @author Mikle Garin
  */
 
-@XStreamAlias ("GradientData")
-public class GradientData implements Serializable, Cloneable, DefaultValue
-{
+@XStreamAlias("GradientData")
+public class GradientData implements Serializable, Cloneable, DefaultValue {
     /**
      * Comparator to sort colors data on change.
      */
-    private static final transient GradientColorDataComparator locationsComparator = new GradientColorDataComparator ();
-
+    private static final transient GradientColorDataComparator locationsComparator = new GradientColorDataComparator();
+    
     /**
      * All available colors data.
      */
-    @XStreamImplicit (itemFieldName = "Color")
+    @XStreamImplicit(itemFieldName = "Color")
     private List<GradientColorData> gradientColorsData;
-
+    
     /**
      * Constructs GradientData object with empty data list.
      */
-    public GradientData ()
-    {
-        super ();
-        gradientColorsData = new ArrayList<GradientColorData> ();
+    public GradientData() {
+        super();
+        gradientColorsData = new ArrayList<GradientColorData>();
     }
-
+    
     /**
      * Constructs GradientData object with a specified data list.
      */
-    public GradientData ( List<GradientColorData> gradientColorsData )
-    {
-        super ();
-        setGradientColorsData ( gradientColorsData );
+    public GradientData(List<GradientColorData> gradientColorsData) {
+        super();
+        setGradientColorsData(gradientColorsData);
     }
-
+    
     /**
-     * Returns whether there is a GradientColorData for specified location or not.
+     * Returns whether there is a GradientColorData for specified location or
+     * not.
      *
-     * @param location location to search for GradientColorData
-     * @return true if there is a GradientColorData for specified location, false otherwise
+     * @param location
+     *            location to search for GradientColorData
+     * @return true if there is a GradientColorData for specified location,
+     *         false otherwise
      */
-    public boolean containtsLocation ( float location )
-    {
-        for ( GradientColorData gradientColorData : gradientColorsData )
-        {
-            if ( gradientColorData.getLocation () == location )
-            {
+    public boolean containtsLocation(float location) {
+        for (GradientColorData gradientColorData : gradientColorsData) {
+            if (gradientColorData.getLocation() == location) {
                 return true;
             }
         }
         return false;
     }
-
+    
     /**
      * Adds GradientColorData into data list and sorts the list.
      *
-     * @param gradientColorData GradientColorData to add
+     * @param gradientColorData
+     *            GradientColorData to add
      */
-    public void addGradientColorData ( GradientColorData gradientColorData )
-    {
-        gradientColorsData.add ( gradientColorData );
-        sort ();
+    public void addGradientColorData(GradientColorData gradientColorData) {
+        gradientColorsData.add(gradientColorData);
+        sort();
     }
-
+    
     /**
-     * Adds GradientColorData with the specified location and color into data list and sorts the list.
+     * Adds GradientColorData with the specified location and color into data
+     * list and sorts the list.
      *
-     * @param location GradientColorData location
-     * @param color    GradientColorData color
+     * @param location
+     *            GradientColorData location
+     * @param color
+     *            GradientColorData color
      */
-    public void addGradientColorData ( float location, Color color )
-    {
-        gradientColorsData.add ( new GradientColorData ( location, color ) );
-        sort ();
+    public void addGradientColorData(float location, Color color) {
+        gradientColorsData.add(new GradientColorData(location, color));
+        sort();
     }
-
+    
     /**
      * Removes GradientColorData from data list and sorts the list.
      *
-     * @param gradientColorData GradientColorData to remove
+     * @param gradientColorData
+     *            GradientColorData to remove
      */
-    public void removeGradientColorData ( GradientColorData gradientColorData )
-    {
-        gradientColorsData.remove ( gradientColorData );
-        sort ();
+    public void removeGradientColorData(GradientColorData gradientColorData) {
+        gradientColorsData.remove(gradientColorData);
+        sort();
     }
-
+    
     /**
      * Returns sorted data list.
      *
      * @return sorted data list
      */
-    public List<GradientColorData> getGradientColorsData ()
-    {
-        sort ();
+    public List<GradientColorData> getGradientColorsData() {
+        sort();
         return gradientColorsData;
     }
-
+    
     /**
      * Sets data list and sorts it.
      *
-     * @param gradientColorsData new data list
+     * @param gradientColorsData
+     *            new data list
      */
-    public void setGradientColorsData ( List<GradientColorData> gradientColorsData )
-    {
+    public void setGradientColorsData(List<GradientColorData> gradientColorsData) {
         this.gradientColorsData = gradientColorsData;
-        sort ();
+        sort();
     }
-
+    
     /**
      * Returns an array of fractions for LinearGradientPaint.
      *
      * @return an array of fractions for LinearGradientPaint
      */
-    public float[] getFractions ()
-    {
-        sort ();
-        float[] fractions = new float[ gradientColorsData.size () ];
-        for ( int i = 0; i < gradientColorsData.size (); i++ )
-        {
-            fractions[ i ] = gradientColorsData.get ( i ).getLocation ();
+    public float[] getFractions() {
+        sort();
+        float[] fractions = new float[gradientColorsData.size()];
+        for (int i = 0; i < gradientColorsData.size(); i++) {
+            fractions[i] = gradientColorsData.get(i).getLocation();
         }
         return fractions;
     }
-
+    
     /**
      * Returns an array of colors for LinearGradientPaint.
      *
      * @return an array of colors for LinearGradientPaint
      */
-    public Color[] getColors ()
-    {
-        sort ();
-        Color[] colors = new Color[ gradientColorsData.size () ];
-        for ( int i = 0; i < gradientColorsData.size (); i++ )
-        {
-            colors[ i ] = gradientColorsData.get ( i ).getColor ();
+    public Color[] getColors() {
+        sort();
+        Color[] colors = new Color[gradientColorsData.size()];
+        for (int i = 0; i < gradientColorsData.size(); i++) {
+            colors[i] = gradientColorsData.get(i).getColor();
         }
         return colors;
     }
-
+    
     /**
      * Returns data list size.
      *
      * @return data list size
      */
-    public int size ()
-    {
-        return gradientColorsData.size ();
+    public int size() {
+        return gradientColorsData.size();
     }
-
+    
     /**
      * Returns GradientColorData at the specified index.
      *
-     * @param index GradientColorData index
+     * @param index
+     *            GradientColorData index
      * @return GradientColorData at the specified index
      */
-    public GradientColorData get ( int index )
-    {
-        return gradientColorsData.get ( index );
+    public GradientColorData get(int index) {
+        return gradientColorsData.get(index);
     }
-
+    
     /**
      * Returns location for GradientColorData at the specified index.
      *
-     * @param index GradientColorData index
+     * @param index
+     *            GradientColorData index
      * @return location for GradientColorData at the specified index
      */
-    public float getLocation ( int index )
-    {
-        return get ( index ).getLocation ();
+    public float getLocation(int index) {
+        return get(index).getLocation();
     }
-
+    
     /**
      * Returns color for GradientColorData at the specified index.
      *
-     * @param index GradientColorData index
+     * @param index
+     *            GradientColorData index
      * @return color for GradientColorData at the specified index
      */
-    public Color getColor ( int index )
-    {
-        return get ( index ).getColor ();
+    public Color getColor(int index) {
+        return get(index).getColor();
     }
-
+    
     /**
      * Returns first GradientColorData.
      *
      * @return first GradientColorData
      */
-    public GradientColorData getFirst ()
-    {
-        return size () > 0 ? gradientColorsData.get ( 0 ) : null;
+    public GradientColorData getFirst() {
+        return size() > 0 ? gradientColorsData.get(0) : null;
     }
-
+    
     /**
      * Returns last GradientColorData.
      *
      * @return last GradientColorData
      */
-    public GradientColorData getLast ()
-    {
-        return size () > 0 ? gradientColorsData.get ( size () - 1 ) : null;
+    public GradientColorData getLast() {
+        return size() > 0 ? gradientColorsData.get(size() - 1) : null;
     }
-
+    
     /**
-     * Returns calculated color for the specified location.
-     * This method will return color for any location between 0f and 1f even if there is no data at the specified location.
+     * Returns calculated color for the specified location. This method will
+     * return color for any location between 0f and 1f even if there is no data
+     * at the specified location.
      *
-     * @param location color location
+     * @param location
+     *            color location
      * @return calculated color for the specified location
      */
-    public Color getColorForLocation ( final float location )
-    {
+    public Color getColorForLocation(final float location) {
         // Ignore call when data is empty
-        if ( size () == 0 )
-        {
+        if (size() == 0) {
             return null;
         }
-
+        
         // Before first color
-        if ( location <= getFirst ().getLocation () )
-        {
-            return SwingUtils.copy ( get ( 0 ).getColor () );
+        if (location <= getFirst().getLocation()) {
+            return SwingUtils.copy(get(0).getColor());
         }
-
+        
         // After last color
-        if ( location >= getLast ().getLocation () )
-        {
-            return SwingUtils.copy ( getLast ().getColor () );
+        if (location >= getLast().getLocation()) {
+            return SwingUtils.copy(getLast().getColor());
         }
-
+        
         // Middle color
         int nextIndex = -1;
-        for ( int i = 0; i < size (); i++ )
-        {
-            if ( getLocation ( i ) > location )
-            {
+        for (int i = 0; i < size(); i++) {
+            if (getLocation(i) > location) {
                 nextIndex = i;
                 break;
             }
         }
-
-        final float before = getLocation ( nextIndex - 1 );
+        
+        final float before = getLocation(nextIndex - 1);
         final float current = location - before;
-        final float after = getLocation ( nextIndex ) - before;
-
+        final float after = getLocation(nextIndex) - before;
+        
         final float progress = current / after;
-        final Color c1 = getColor ( nextIndex - 1 );
-        final Color c2 = getColor ( nextIndex );
-
-        return ColorUtils.getIntermediateColor ( c1, c2, progress );
+        final Color c1 = getColor(nextIndex - 1);
+        final Color c2 = getColor(nextIndex);
+        
+        return ColorUtils.getIntermediateColor(c1, c2, progress);
     }
-
+    
     /**
      * Sorts data list.
      */
-    public void sort ()
-    {
-        Collections.sort ( gradientColorsData, locationsComparator );
+    public void sort() {
+        Collections.sort(gradientColorsData, locationsComparator);
     }
-
+    
     /**
-     * Returns whether this GradientData is equal to the specified object or not.
+     * Returns whether this GradientData is equal to the specified object or
+     * not.
      *
-     * @param obj object to compare with
-     * @return true if this GradientData is equal to the specified object, false otherwise
+     * @param obj
+     *            object to compare with
+     * @return true if this GradientData is equal to the specified object, false
+     *         otherwise
      */
-    public boolean equals ( final Object obj )
-    {
-        if ( obj == null || !( obj instanceof GradientData ) )
-        {
+    public boolean equals(final Object obj) {
+        if (obj == null || !(obj instanceof GradientData)) {
             return false;
         }
-
-        final GradientData other = ( GradientData ) obj;
-        if ( size () != other.size () )
-        {
+        
+        final GradientData other = (GradientData) obj;
+        if (size() != other.size()) {
             return false;
         }
-
-        for ( int i = 0; i < size (); i++ )
-        {
-            if ( !get ( i ).equals ( other.get ( i ) ) )
-            {
+        
+        for (int i = 0; i < size(); i++) {
+            if (!get(i).equals(other.get(i))) {
                 return false;
             }
         }
         return true;
     }
-
+    
     /**
      * Returns cloned GradientData.
      *
      * @return cloned GradientData
      */
     @Override
-    public GradientData clone ()
-    {
-        return new GradientData ( CollectionUtils.clone ( gradientColorsData ) );
+    public GradientData clone() {
+        return new GradientData(CollectionUtils.clone(gradientColorsData));
     }
-
+    
     /**
      * Returns default GradientData value.
      *
      * @return default GradientData value
      */
-    public static GradientData getDefaultValue ()
-    {
-        GradientData gradientData = new GradientData ();
-        gradientData.addGradientColorData ( 0f, Color.RED );
-        gradientData.addGradientColorData ( 0.25f, Color.YELLOW );
-        gradientData.addGradientColorData ( 0.5f, Color.GREEN );
-        gradientData.addGradientColorData ( 0.75f, Color.CYAN );
-        gradientData.addGradientColorData ( 1f, Color.BLUE );
+    public static GradientData getDefaultValue() {
+        GradientData gradientData = new GradientData();
+        gradientData.addGradientColorData(0f, Color.RED);
+        gradientData.addGradientColorData(0.25f, Color.YELLOW);
+        gradientData.addGradientColorData(0.5f, Color.GREEN);
+        gradientData.addGradientColorData(0.75f, Color.CYAN);
+        gradientData.addGradientColorData(1f, Color.BLUE);
         return gradientData;
     }
 }

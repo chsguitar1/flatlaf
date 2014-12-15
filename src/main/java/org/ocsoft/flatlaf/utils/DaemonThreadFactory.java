@@ -8,19 +8,18 @@ import java.util.concurrent.ThreadFactory;
  * @author Adolph C.
  */
 
-public class DaemonThreadFactory implements ThreadFactory
-{
+public class DaemonThreadFactory implements ThreadFactory {
     /**
      * Constructs a new daemon thread.
      *
-     * @param r a runnable to be executed by new thread instance
+     * @param r
+     *            a runnable to be executed by new thread instance
      * @return constructed thread.
      */
     @Override
-    public Thread newThread ( final Runnable r )
-    {
-        final Thread dThread = new Thread ( r );
-        dThread.setDaemon ( true );
+    public Thread newThread(final Runnable r) {
+        final Thread dThread = new Thread(r);
+        dThread.setDaemon(true);
         return dThread;
     }
 }

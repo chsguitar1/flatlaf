@@ -32,97 +32,92 @@ import java.util.List;
  * @author Mikle Garin
  */
 
-public class SimpleCheckIcon extends CheckIcon
-{
+public class SimpleCheckIcon extends CheckIcon {
     /**
      * Check icons for all states.
      */
-    public static List<ImageIcon> CHECK_STATES = new ArrayList<ImageIcon> ();
-    public static List<ImageIcon> DISABLED_CHECK_STATES = new ArrayList<ImageIcon> ();
-
+    public static List<ImageIcon> CHECK_STATES = new ArrayList<ImageIcon>();
+    public static List<ImageIcon> DISABLED_CHECK_STATES = new ArrayList<ImageIcon>();
+    
     /**
      * Check icons initialization.
      */
-    static
-    {
-        for ( int i = 1; i <= 4; i++ )
-        {
-            final ImageIcon icon = new ImageIcon ( WebCheckBoxUI.class.getResource ( "icons/c" + i + ".png" ) );
-            CHECK_STATES.add ( icon );
-            DISABLED_CHECK_STATES.add ( ImageUtils.getDisabledCopy ( "WebCheckBox.disabled.check." + i, icon ) );
+    static {
+        for (int i = 1; i <= 4; i++) {
+            final ImageIcon icon = new ImageIcon(
+                    WebCheckBoxUI.class.getResource("icons/c" + i + ".png"));
+            CHECK_STATES.add(icon);
+            DISABLED_CHECK_STATES.add(ImageUtils.getDisabledCopy(
+                    "WebCheckBox.disabled.check." + i, icon));
         }
     }
-
+    
     /**
      * Current step.
      */
     protected int step = -1;
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void doStep ()
-    {
+    public void doStep() {
         step = nextState == CheckState.checked ? step + 1 : step - 1;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void resetStep ()
-    {
+    public void resetStep() {
         step = state == CheckState.checked ? 3 : -1;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isTransitionCompleted ()
-    {
-        return nextState == CheckState.unchecked && step == -1 || nextState == CheckState.checked && step == 3;
+    public boolean isTransitionCompleted() {
+        return nextState == CheckState.unchecked && step == -1
+                || nextState == CheckState.checked && step == 3;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void finishTransition ()
-    {
+    public void finishTransition() {
         this.state = nextState;
         this.nextState = null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public int getIconWidth ()
-    {
+    public int getIconWidth() {
         return 16;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public int getIconHeight ()
-    {
+    public int getIconHeight() {
         return 16;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void paintIcon ( final Component c, final Graphics2D g2d, final int x, final int y, final int w, final int h )
-    {
-        if ( step > -1 )
-        {
-            final ImageIcon icon = enabled ? CHECK_STATES.get ( step ) : DISABLED_CHECK_STATES.get ( step );
-            g2d.drawImage ( icon.getImage (), x + w / 2 - getIconWidth () / 2, y + h / 2 - getIconHeight () / 2, null );
+    public void paintIcon(final Component c, final Graphics2D g2d, final int x,
+            final int y, final int w, final int h) {
+        if (step > -1) {
+            final ImageIcon icon = enabled ? CHECK_STATES.get(step)
+                    : DISABLED_CHECK_STATES.get(step);
+            g2d.drawImage(icon.getImage(), x + w / 2 - getIconWidth() / 2, y
+                    + h / 2 - getIconHeight() / 2, null);
         }
     }
 }

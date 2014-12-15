@@ -39,203 +39,206 @@ import java.awt.geom.RoundRectangle2D;
  * @author Mikle Garin
  */
 
-public class WebInternalFrameUI extends BasicInternalFrameUI
-{
+public class WebInternalFrameUI extends BasicInternalFrameUI {
     /**
      * Style settings.
      */
     protected int sideSpacing = 1;
-
+    
     /**
      * Panel focus tracker.
      */
     protected FocusTracker focusTracker;
-
+    
     /**
      * Whether internal frame is focused or owns focused component or not.
      */
     protected boolean focused = false;
-
+    
     /**
      * Constructs new internal frame UI.
      *
-     * @param b internal frame to which this UI will be applied
+     * @param b
+     *            internal frame to which this UI will be applied
      */
-    public WebInternalFrameUI ( final JInternalFrame b )
-    {
-        super ( b );
+    public WebInternalFrameUI(final JInternalFrame b) {
+        super(b);
     }
-
+    
     /**
-     * Returns an instance of the WebInternalFrameUI for the specified component.
-     * This tricky method is used by UIManager to create component UIs when needed.
+     * Returns an instance of the WebInternalFrameUI for the specified
+     * component. This tricky method is used by UIManager to create component
+     * UIs when needed.
      *
-     * @param c component that will use UI instance
+     * @param c
+     *            component that will use UI instance
      * @return instance of the WebInternalFrameUI
      */
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebInternalFrameUI ( ( JInternalFrame ) c );
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebInternalFrameUI((JInternalFrame) c);
     }
-
+    
     /**
      * Installs UI in the specified component.
      *
-     * @param c component for this UI
+     * @param c
+     *            component for this UI
      */
     @Override
-    public void installUI ( final JComponent c )
-    {
-        super.installUI ( c );
-
+    public void installUI(final JComponent c) {
+        super.installUI(c);
+        
         // Default settings
-        SwingUtils.setOrientation ( frame );
-        LookAndFeel.installProperty ( frame, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
-        frame.setBackground ( new Color ( 90, 90, 90, 220 ) );
-        frame.setBorder ( LafUtils.createWebBorder ( 0, 0, 0, 0 ) );
-
+        SwingUtils.setOrientation(frame);
+        LookAndFeel.installProperty(frame, FlatLookAndFeel.OPAQUE_PROPERTY,
+                Boolean.FALSE);
+        frame.setBackground(new Color(90, 90, 90, 220));
+        frame.setBorder(LafUtils.createWebBorder(0, 0, 0, 0));
+        
         // Focus tracker for the panel content
-        focusTracker = new DefaultFocusTracker ()
-        {
+        focusTracker = new DefaultFocusTracker() {
             @Override
-            public void focusChanged ( final boolean focused )
-            {
+            public void focusChanged(final boolean focused) {
                 WebInternalFrameUI.this.focused = focused;
-                frame.repaint ();
+                frame.repaint();
             }
         };
-        FocusManager.addFocusTracker ( frame, focusTracker );
+        FocusManager.addFocusTracker(frame, focusTracker);
     }
-
+    
     /**
      * Uninstalls UI from the specified component.
      *
-     * @param c component with this UI
+     * @param c
+     *            component with this UI
      */
     @Override
-    public void uninstallUI ( final JComponent c )
-    {
+    public void uninstallUI(final JComponent c) {
         // Removing focus tracker
-        FocusManager.removeFocusTracker ( focusTracker );
-
-        super.uninstallUI ( c );
+        FocusManager.removeFocusTracker(focusTracker);
+        
+        super.uninstallUI(c);
     }
-
+    
     /**
      * Creates and returns internal pane north panel.
      *
-     * @param w internal pane to process
+     * @param w
+     *            internal pane to process
      * @return north panel for specified internal frame
      */
     @Override
-    protected JComponent createNorthPane ( final JInternalFrame w )
-    {
-        titlePane = new WebInternalFrameTitlePane ( w );
+    protected JComponent createNorthPane(final JInternalFrame w) {
+        titlePane = new WebInternalFrameTitlePane(w);
         return titlePane;
     }
-
+    
     /**
      * Creates and returns internal pane west panel.
      *
-     * @param w internal pane to process
+     * @param w
+     *            internal pane to process
      * @return west panel for specified internal frame
      */
     @Override
-    protected JComponent createWestPane ( final JInternalFrame w )
-    {
+    protected JComponent createWestPane(final JInternalFrame w) {
         // todo Proper internal frame resize
-        return new JComponent ()
-        {
+        return new JComponent() {
             {
-                setOpaque ( false );
+                setOpaque(false);
             }
-
+            
             @Override
-            public Dimension getPreferredSize ()
-            {
-                return new Dimension ( 4 + sideSpacing, 0 );
+            public Dimension getPreferredSize() {
+                return new Dimension(4 + sideSpacing, 0);
             }
         };
     }
-
+    
     /**
      * Creates and returns internal pane east panel.
      *
-     * @param w internal pane to process
+     * @param w
+     *            internal pane to process
      * @return east panel for specified internal frame
      */
     @Override
-    protected JComponent createEastPane ( final JInternalFrame w )
-    {
+    protected JComponent createEastPane(final JInternalFrame w) {
         // todo Proper internal frame resize
-        return new JComponent ()
-        {
+        return new JComponent() {
             {
-                setOpaque ( false );
+                setOpaque(false);
             }
-
+            
             @Override
-            public Dimension getPreferredSize ()
-            {
-                return new Dimension ( 4 + sideSpacing, 0 );
+            public Dimension getPreferredSize() {
+                return new Dimension(4 + sideSpacing, 0);
             }
         };
     }
-
+    
     /**
      * Creates and returns internal pane south panel.
      *
-     * @param w internal pane to process
+     * @param w
+     *            internal pane to process
      * @return south panel for specified internal frame
      */
     @Override
-    protected JComponent createSouthPane ( final JInternalFrame w )
-    {
+    protected JComponent createSouthPane(final JInternalFrame w) {
         // todo Proper internal frame resize
-        return new JComponent ()
-        {
+        return new JComponent() {
             {
-                setOpaque ( false );
+                setOpaque(false);
             }
-
+            
             @Override
-            public Dimension getPreferredSize ()
-            {
-                return new Dimension ( 0, 4 + sideSpacing );
+            public Dimension getPreferredSize() {
+                return new Dimension(0, 4 + sideSpacing);
             }
         };
     }
-
+    
     /**
      * Paints internal frame.
      *
-     * @param g graphics
-     * @param c component
+     * @param g
+     *            graphics
+     * @param c
+     *            component
      */
     @Override
-    public void paint ( final Graphics g, final JComponent c )
-    {
-        final Graphics2D g2d = ( Graphics2D ) g;
-        final Object aa = GraphicsUtils.setupAntialias ( g2d );
-
-        // Shape border = LafUtils.getWebBorderShape ( c, StyleConstants.shadeWidth, StyleConstants.round );
-
-        final Insets insets = c.getInsets ();
-        final RoundRectangle2D innerBorder =
-                new RoundRectangle2D.Double ( insets.left + 3 + sideSpacing, insets.top + titlePane.getHeight () - 1,
-                        c.getWidth () - 1 - insets.left - 3 - sideSpacing - insets.right - 3 - sideSpacing,
-                        c.getHeight () - 1 - insets.top - titlePane.getHeight () + 1 - insets.bottom - 3 -
-                                sideSpacing, ( FlatLafStyleConstants.bigRound - 1 ) * 2, ( FlatLafStyleConstants.bigRound - 1 ) * 2
-                );
-
+    public void paint(final Graphics g, final JComponent c) {
+        final Graphics2D g2d = (Graphics2D) g;
+        final Object aa = GraphicsUtils.setupAntialias(g2d);
+        
+        // Shape border = LafUtils.getWebBorderShape ( c,
+        // StyleConstants.shadeWidth, StyleConstants.round );
+        
+        final Insets insets = c.getInsets();
+        final RoundRectangle2D innerBorder = new RoundRectangle2D.Double(
+                insets.left + 3 + sideSpacing, insets.top
+                        + titlePane.getHeight() - 1, c.getWidth() - 1
+                        - insets.left - 3 - sideSpacing - insets.right - 3
+                        - sideSpacing, c.getHeight() - 1 - insets.top
+                        - titlePane.getHeight() + 1 - insets.bottom - 3
+                        - sideSpacing,
+                (FlatLafStyleConstants.bigRound - 1) * 2,
+                (FlatLafStyleConstants.bigRound - 1) * 2);
+        
         // Border and background
-        LafUtils.drawWebStyle ( g2d, c, c.isEnabled () && focused ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor,
-                FlatLafStyleConstants.shadeWidth, FlatLafStyleConstants.bigRound, true, false );
-
+        LafUtils.drawWebStyle(
+                g2d,
+                c,
+                c.isEnabled() && focused ? FlatLafStyleConstants.fieldFocusColor
+                        : FlatLafStyleConstants.shadeColor,
+                FlatLafStyleConstants.shadeWidth,
+                FlatLafStyleConstants.bigRound, true, false);
+        
         // Inner border
-        g2d.setPaint ( Color.GRAY );
-        g2d.draw ( innerBorder );
-
-        GraphicsUtils.restoreAntialias ( g2d, aa );
+        g2d.setPaint(Color.GRAY);
+        g2d.draw(innerBorder);
+        
+        GraphicsUtils.restoreAntialias(g2d, aa);
     }
 }

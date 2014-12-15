@@ -31,109 +31,107 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
  * @author Mikle Garin
  */
 
-@XStreamAlias ( "GradientColorData" )
-public class GradientColorData implements Serializable, Cloneable
-{
+@XStreamAlias("GradientColorData")
+public class GradientColorData implements Serializable, Cloneable {
     /**
      * GradientData location.
      */
     @XStreamAsAttribute
     private float location;
-
+    
     /**
      * GradientData color.
      */
     @XStreamAsAttribute
     private Color color;
-
+    
     /**
      * Constructs GradientColorData with zero location and white color.
      */
-    public GradientColorData ()
-    {
-        super ();
+    public GradientColorData() {
+        super();
         this.location = 0f;
         this.color = Color.WHITE;
     }
-
+    
     /**
      * Constructs GradientColorData with the specified location and color.
      *
-     * @param location GradientColorData location
-     * @param color    GradientColorData color
+     * @param location
+     *            GradientColorData location
+     * @param color
+     *            GradientColorData color
      */
-    public GradientColorData ( float location, Color color )
-    {
-        super ();
+    public GradientColorData(float location, Color color) {
+        super();
         this.location = location;
         this.color = color;
     }
-
+    
     /**
      * Returns GradientColorData color.
      *
      * @return GradientColorData color
      */
-    public Color getColor ()
-    {
+    public Color getColor() {
         return color;
     }
-
+    
     /**
      * Sets GradientColorData color.
      *
-     * @param color new GradientColorData color
+     * @param color
+     *            new GradientColorData color
      */
-    public void setColor ( Color color )
-    {
+    public void setColor(Color color) {
         this.color = color;
     }
-
+    
     /**
      * Returns GradientColorData location.
      *
      * @return GradientColorData location
      */
-    public float getLocation ()
-    {
+    public float getLocation() {
         return location;
     }
-
+    
     /**
      * Sets GradientColorData location.
      *
-     * @param location new GradientColorData location
+     * @param location
+     *            new GradientColorData location
      */
-    public void setLocation ( float location )
-    {
+    public void setLocation(float location) {
         this.location = location;
     }
-
+    
     /**
-     * Returns whether this GradientColorData is equal to the specified object or not.
+     * Returns whether this GradientColorData is equal to the specified object
+     * or not.
      *
-     * @param obj object to compare with
-     * @return true if this GradientColorData is equal to the specified object, false otherwise
+     * @param obj
+     *            object to compare with
+     * @return true if this GradientColorData is equal to the specified object,
+     *         false otherwise
      */
-    public boolean equals ( Object obj )
-    {
-        if ( obj == null || !( obj instanceof GradientColorData ) )
-        {
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof GradientColorData)) {
             return false;
         }
-
-        GradientColorData other = ( GradientColorData ) obj;
-        return Float.compare ( getLocation (), other.getLocation () ) == 0 && getColor ().equals ( other.getColor () );
+        
+        GradientColorData other = (GradientColorData) obj;
+        return Float.compare(getLocation(), other.getLocation()) == 0
+                && getColor().equals(other.getColor());
     }
-
+    
     /**
      * Returns cloned GradientColorData.
      *
      * @return cloned GradientColorData
      */
     @Override
-    public GradientColorData clone ()
-    {
-        return new GradientColorData ( location, SwingUtils.copy ( color ) );
+    public GradientColorData clone() {
+        return new GradientColorData(location, SwingUtils.copy(color));
     }
 }

@@ -25,70 +25,55 @@ import java.net.URL;
  * User: mgarin Date: 08.11.12 Time: 13:20
  */
 
-public class OrientedIcon extends ImageIcon
-{
-    public OrientedIcon ()
-    {
-        super ();
+public class OrientedIcon extends ImageIcon {
+    public OrientedIcon() {
+        super();
     }
-
-    public OrientedIcon ( byte[] imageData )
-    {
-        super ( imageData );
+    
+    public OrientedIcon(byte[] imageData) {
+        super(imageData);
     }
-
-    public OrientedIcon ( byte[] imageData, String description )
-    {
-        super ( imageData, description );
+    
+    public OrientedIcon(byte[] imageData, String description) {
+        super(imageData, description);
     }
-
-    public OrientedIcon ( Image image )
-    {
-        super ( image );
+    
+    public OrientedIcon(Image image) {
+        super(image);
     }
-
-    public OrientedIcon ( Image image, String description )
-    {
-        super ( image, description );
+    
+    public OrientedIcon(Image image, String description) {
+        super(image, description);
     }
-
-    public OrientedIcon ( URL location )
-    {
-        super ( location );
+    
+    public OrientedIcon(URL location) {
+        super(location);
     }
-
-    public OrientedIcon ( URL location, String description )
-    {
-        super ( location, description );
+    
+    public OrientedIcon(URL location, String description) {
+        super(location, description);
     }
-
-    public OrientedIcon ( String filename )
-    {
-        super ( filename );
+    
+    public OrientedIcon(String filename) {
+        super(filename);
     }
-
-    public OrientedIcon ( String filename, String description )
-    {
-        super ( filename, description );
+    
+    public OrientedIcon(String filename, String description) {
+        super(filename, description);
     }
-
-    public OrientedIcon ( ImageIcon icon )
-    {
-        super ( icon.getImage () );
+    
+    public OrientedIcon(ImageIcon icon) {
+        super(icon.getImage());
     }
-
+    
     @Override
-    public void paintIcon ( Component c, Graphics g, int x, int y )
-    {
-        int w = getIconWidth ();
-        int h = getIconHeight ();
-        if ( c == null || c.getComponentOrientation ().isLeftToRight () )
-        {
-            g.drawImage ( getImage (), x, y, w, h, getImageObserver () );
-        }
-        else
-        {
-            g.drawImage ( getImage (), x + w, y, -w, h, getImageObserver () );
+    public void paintIcon(Component c, Graphics g, int x, int y) {
+        int w = getIconWidth();
+        int h = getIconHeight();
+        if (c == null || c.getComponentOrientation().isLeftToRight()) {
+            g.drawImage(getImage(), x, y, w, h, getImageObserver());
+        } else {
+            g.drawImage(getImage(), x + w, y, -w, h, getImageObserver());
         }
     }
 }

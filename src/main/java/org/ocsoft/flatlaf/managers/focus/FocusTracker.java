@@ -20,35 +20,40 @@ package org.ocsoft.flatlaf.managers.focus;
 import java.awt.*;
 
 /**
- * Advanced interface that allows you to track focus behavior within component and its childs.
- * Note that method names are made longer to avoid clashing with other component methods in case you implement tracker interface.
+ * Advanced interface that allows you to track focus behavior within component
+ * and its childs. Note that method names are made longer to avoid clashing with
+ * other component methods in case you implement tracker interface.
  *
  * @author Mikle Garin
  */
 
-public interface FocusTracker
-{
+public interface FocusTracker {
     /**
      * Returns whether tracking is currently enabled or not.
      *
      * @return true if tracking is currently enabled, false otherwise
      */
-    public boolean isTrackingEnabled ();
-
+    public boolean isTrackingEnabled();
+    
     /**
      * Returns whether specified component is involved with this tracker or not.
-     * This basically asks whether this object counts towards this tracker focus changes or not.
+     * This basically asks whether this object counts towards this tracker focus
+     * changes or not.
      *
-     * @param component component to check for involvement
-     * @param tracked   tracked component
-     * @return true if the specified component is involved with this tracker, false otherwise
+     * @param component
+     *            component to check for involvement
+     * @param tracked
+     *            tracked component
+     * @return true if the specified component is involved with this tracker,
+     *         false otherwise
      */
-    public boolean isInvolved ( Component component, Component tracked );
-
+    public boolean isInvolved(Component component, Component tracked);
+    
     /**
      * Informs about component(s) focus changes depending on tracker settings.
      *
-     * @param focused whether tracked component(s) is focused or not
+     * @param focused
+     *            whether tracked component(s) is focused or not
      */
-    public void focusChanged ( boolean focused );
+    public void focusChanged(boolean focused);
 }

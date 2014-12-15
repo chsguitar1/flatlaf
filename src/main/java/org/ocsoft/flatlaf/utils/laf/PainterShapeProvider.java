@@ -20,20 +20,22 @@ package org.ocsoft.flatlaf.utils.laf;
 import java.awt.*;
 
 /**
- * This interface provides a single method for requesting painted component shape.
- * This can be used by painters to provide their shape for various usage cases.
+ * This interface provides a single method for requesting painted component
+ * shape. This can be used by painters to provide their shape for various usage
+ * cases.
  *
  * @author Mikle Garin
  */
 
-public interface PainterShapeProvider<E extends Component>
-{
+public interface PainterShapeProvider<E extends Component> {
     /**
      * Returns painted component shape.
      *
-     * @param component component to process
-     * @param bounds    bounds for painter visual data
+     * @param component
+     *            component to process
+     * @param bounds
+     *            bounds for painter visual data
      * @return painted component shape
      */
-    public Shape provideShape ( final E component, final Rectangle bounds );
+    public Shape provideShape(final E component, final Rectangle bounds);
 }

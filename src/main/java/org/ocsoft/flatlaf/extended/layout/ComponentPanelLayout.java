@@ -27,86 +27,74 @@ import java.util.Map;
  * User: mgarin Date: 30.05.12 Time: 17:54
  */
 
-public class ComponentPanelLayout extends AbstractLayoutManager
-{
-    protected List<Component> components = new ArrayList<Component> ();
-    protected Map<Component, Integer> yShift = new HashMap<Component, Integer> ();
-
-    public List<Component> getComponents ()
-    {
+public class ComponentPanelLayout extends AbstractLayoutManager {
+    protected List<Component> components = new ArrayList<Component>();
+    protected Map<Component, Integer> yShift = new HashMap<Component, Integer>();
+    
+    public List<Component> getComponents() {
         return components;
     }
-
-    public void setComponentShift ( Component component, Integer shift )
-    {
-        yShift.put ( component, shift );
+    
+    public void setComponentShift(Component component, Integer shift) {
+        yShift.put(component, shift);
     }
-
-    public Integer getComponentShift ( Component component )
-    {
-        return yShift.get ( component );
+    
+    public Integer getComponentShift(Component component) {
+        return yShift.get(component);
     }
-
-    public int indexOf ( Component component )
-    {
-        return components.indexOf ( component );
+    
+    public int indexOf(Component component) {
+        return components.indexOf(component);
     }
-
-    public Component getComponent ( int index )
-    {
-        return components.get ( index );
+    
+    public Component getComponent(int index) {
+        return components.get(index);
     }
-
+    
     @Override
-    public void addComponent ( Component component, Object constraints )
-    {
-        components.add ( component );
+    public void addComponent(Component component, Object constraints) {
+        components.add(component);
     }
-
+    
     @Override
-    public void removeComponent ( Component component )
-    {
-        components.remove ( component );
+    public void removeComponent(Component component) {
+        components.remove(component);
     }
-
-    public void insertLayoutComponent ( int index, Component comp )
-    {
-        components.add ( index, comp );
+    
+    public void insertLayoutComponent(int index, Component comp) {
+        components.add(index, comp);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Dimension preferredLayoutSize ( Container parent )
-    {
-        Insets insets = parent.getInsets ();
+    public Dimension preferredLayoutSize(Container parent) {
+        Insets insets = parent.getInsets();
         int width = insets.left + insets.right;
         int height = insets.top + insets.bottom;
-        for ( Component component : components )
-        {
-            Dimension ps = component.getPreferredSize ();
-            width = Math.max ( width, insets.left + ps.width + insets.right );
+        for (Component component : components) {
+            Dimension ps = component.getPreferredSize();
+            width = Math.max(width, insets.left + ps.width + insets.right);
             height += ps.height;
         }
-        return new Dimension ( width, height );
+        return new Dimension(width, height);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void layoutContainer ( Container parent )
-    {
-        Insets insets = parent.getInsets ();
+    public void layoutContainer(Container parent) {
+        Insets insets = parent.getInsets();
         int y = insets.top;
-        for ( Component component : components )
-        {
-            Dimension ps = component.getPreferredSize ();
-
-            Integer shift = yShift.get ( component );
-            component.setBounds ( insets.left, shift == null ? y : y + shift, parent.getWidth () - insets.left - insets.right, ps.height );
-
+        for (Component component : components) {
+            Dimension ps = component.getPreferredSize();
+            
+            Integer shift = yShift.get(component);
+            component.setBounds(insets.left, shift == null ? y : y + shift,
+                    parent.getWidth() - insets.left - insets.right, ps.height);
+            
             y += ps.height;
         }
     }

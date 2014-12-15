@@ -20,21 +20,20 @@ package org.ocsoft.flatlaf.utils.swing;
 /**
  * This interface provides a single method for data request of any type.
  * <p/>
- * It is used within the WebLaF library for many purposes, for example:
- * - Providing popup location and bounds
- * - Providing data for language string formatters
- * - Providing specific component state value
- * and there are many others.
+ * It is used within the WebLaF library for many purposes, for example: -
+ * Providing popup location and bounds - Providing data for language string
+ * formatters - Providing specific component state value and there are many
+ * others.
  *
- * @param <T> provided data type
+ * @param <T>
+ *            provided data type
  * @author Mikle Garin
  */
-public interface DataProvider<T>
-{
+public interface DataProvider<T> {
     /**
      * Returns data of the specified type.
      *
      * @return data
      */
-    public T provide ();
+    public T provide();
 }

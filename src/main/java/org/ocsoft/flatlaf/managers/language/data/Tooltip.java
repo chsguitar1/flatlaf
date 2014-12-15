@@ -26,115 +26,98 @@ import java.io.Serializable;
  * User: mgarin Date: 27.04.12 Time: 16:15
  */
 
-@XStreamAlias ("tooltip")
-@XStreamConverter (TooltipConverter.class)
-public final class Tooltip implements Serializable, Cloneable
-{
+@XStreamAlias("tooltip")
+@XStreamConverter(TooltipConverter.class)
+public final class Tooltip implements Serializable, Cloneable {
     private TooltipType type;
     private TooltipWay way;
     private Integer delay;
     private String text;
-
-    public Tooltip ()
-    {
-        super ();
+    
+    public Tooltip() {
+        super();
     }
-
-    public Tooltip ( final String text )
-    {
-        super ();
-        setText ( text );
+    
+    public Tooltip(final String text) {
+        super();
+        setText(text);
     }
-
-    public Tooltip ( final Integer delay, final String text )
-    {
-        super ();
-        setDelay ( delay );
-        setText ( text );
+    
+    public Tooltip(final Integer delay, final String text) {
+        super();
+        setDelay(delay);
+        setText(text);
     }
-
-    public Tooltip ( final TooltipWay way, final String text )
-    {
-        super ();
-        setWay ( way );
-        setText ( text );
+    
+    public Tooltip(final TooltipWay way, final String text) {
+        super();
+        setWay(way);
+        setText(text);
     }
-
-    public Tooltip ( final TooltipWay way, final Integer delay, final String text )
-    {
-        super ();
-        setWay ( way );
-        setDelay ( delay );
-        setText ( text );
+    
+    public Tooltip(final TooltipWay way, final Integer delay, final String text) {
+        super();
+        setWay(way);
+        setDelay(delay);
+        setText(text);
     }
-
-    public Tooltip ( final TooltipType type, final String text )
-    {
-        super ();
-        setType ( type );
-        setText ( text );
+    
+    public Tooltip(final TooltipType type, final String text) {
+        super();
+        setType(type);
+        setText(text);
     }
-
-    public Tooltip ( final TooltipType type, final TooltipWay way, final Integer delay, final String text )
-    {
-        super ();
-        setType ( type );
-        setWay ( way );
-        setDelay ( delay );
-        setText ( text );
+    
+    public Tooltip(final TooltipType type, final TooltipWay way,
+            final Integer delay, final String text) {
+        super();
+        setType(type);
+        setWay(way);
+        setDelay(delay);
+        setText(text);
     }
-
-    public TooltipType getType ()
-    {
+    
+    public TooltipType getType() {
         return type;
     }
-
-    public void setType ( final TooltipType type )
-    {
+    
+    public void setType(final TooltipType type) {
         this.type = type;
     }
-
-    public TooltipWay getWay ()
-    {
+    
+    public TooltipWay getWay() {
         return way;
     }
-
-    public void setWay ( final TooltipWay way )
-    {
+    
+    public void setWay(final TooltipWay way) {
         this.way = way;
     }
-
-    public Integer getDelay ()
-    {
+    
+    public Integer getDelay() {
         return delay;
     }
-
-    public void setDelay ( final Integer delay )
-    {
+    
+    public void setDelay(final Integer delay) {
         this.delay = delay;
     }
-
-    public String getText ()
-    {
+    
+    public String getText() {
         return text;
     }
-
-    public void setText ( final String text )
-    {
+    
+    public void setText(final String text) {
         this.text = text;
     }
-
+    
     @Override
-    public Tooltip clone ()
-    {
-        return new Tooltip ( type, way, delay, text );
+    public Tooltip clone() {
+        return new Tooltip(type, way, delay, text);
     }
-
+    
     @Override
-    public String toString ()
-    {
-        return text + ( type != null ? " (" + type + ")" : "" ) +
-                ( delay != null ? " (" + delay + "ms delay)" : "" ) +
-                ( way != null ? " (" + way + ")" : "" );
+    public String toString() {
+        return text + (type != null ? " (" + type + ")" : "")
+                + (delay != null ? " (" + delay + "ms delay)" : "")
+                + (way != null ? " (" + way + ")" : "");
     }
 }

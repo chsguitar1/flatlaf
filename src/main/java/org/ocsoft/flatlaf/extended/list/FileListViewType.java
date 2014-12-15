@@ -23,15 +23,15 @@ package org.ocsoft.flatlaf.extended.list;
  * @author Mikle Garin
  */
 
-public enum FileListViewType
-{
+public enum FileListViewType {
     /**
      * Display only file icon/thumbnail and its name.
      */
     icons,
-
+    
     /**
-     * Display file icon/thumbnail, its name, description and some additional information.
+     * Display file icon/thumbnail, its name, description and some additional
+     * information.
      */
     tiles
 }

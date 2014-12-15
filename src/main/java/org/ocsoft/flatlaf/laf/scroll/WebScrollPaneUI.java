@@ -39,312 +39,297 @@ import java.beans.PropertyChangeListener;
  * User: mgarin Date: 29.04.11 Time: 15:34
  */
 
-public class WebScrollPaneUI extends BasicScrollPaneUI implements ShapeProvider
-{
+public class WebScrollPaneUI extends BasicScrollPaneUI implements ShapeProvider {
     /**
      * todo 1. Implement optional shade layer
      */
-
+    
     private boolean drawBorder = WebScrollPaneStyle.drawBorder;
     private Color borderColor = WebScrollPaneStyle.borderColor;
     private Color darkBorder = WebScrollPaneStyle.darkBorder;
-
+    
     private int round = WebScrollPaneStyle.round;
     private int shadeWidth = WebScrollPaneStyle.shadeWidth;
     private Insets margin = WebScrollPaneStyle.margin;
-
+    
     private boolean drawFocus = WebScrollPaneStyle.drawFocus;
     private boolean drawBackground = WebScrollPaneStyle.drawBackground;
-
+    
     private WebScrollPaneCorner lowerTrailing;
     private WebScrollPaneCorner lowerLeading;
     private WebScrollPaneCorner upperTrailing;
     private PropertyChangeListener propertyChangeListener;
-
+    
     /**
      * Scroll pane focus tracker.
      */
     protected FocusTracker focusTracker;
-
+    
     private boolean focused = false;
-
-    @SuppressWarnings ("UnusedParameters")
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebScrollPaneUI ();
+    
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebScrollPaneUI();
     }
-
+    
     @Override
-    public void installUI ( final JComponent c )
-    {
-        super.installUI ( c );
-
+    public void installUI(final JComponent c) {
+        super.installUI(c);
+        
         // Default settings
-        SwingUtils.setOrientation ( scrollpane );
-        LookAndFeel.installProperty ( scrollpane, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
-        scrollpane.setBackground ( FlatLafStyleConstants.backgroundColor );
-
+        SwingUtils.setOrientation(scrollpane);
+        LookAndFeel.installProperty(scrollpane,
+                FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE);
+        scrollpane.setBackground(FlatLafStyleConstants.backgroundColor);
+        
         // Updating scroll bars
         // todo Remove these when scroll pane painter will be completed
-        final ScrollBarUI vui = scrollpane.getVerticalScrollBar ().getUI ();
-        if ( vui instanceof WebScrollBarUI )
-        {
-            final WebScrollBarUI ui = ( WebScrollBarUI ) vui;
-            ui.setPaintTrack ( drawBorder );
+        final ScrollBarUI vui = scrollpane.getVerticalScrollBar().getUI();
+        if (vui instanceof WebScrollBarUI) {
+            final WebScrollBarUI ui = (WebScrollBarUI) vui;
+            ui.setPaintTrack(drawBorder);
         }
-        final ScrollBarUI hui = scrollpane.getHorizontalScrollBar ().getUI ();
-        if ( hui instanceof WebScrollBarUI )
-        {
-            final WebScrollBarUI ui = ( WebScrollBarUI ) hui;
-            ui.setPaintTrack ( drawBorder );
+        final ScrollBarUI hui = scrollpane.getHorizontalScrollBar().getUI();
+        if (hui instanceof WebScrollBarUI) {
+            final WebScrollBarUI ui = (WebScrollBarUI) hui;
+            ui.setPaintTrack(drawBorder);
         }
-
+        
         // Special
-        LafUtils.setScrollBarStyleId ( scrollpane, "scroll-pane" );
-
-        //        // Shade layer
-        //        final WebPanel shadeLayer = new WebPanel ( new AbstractPainter ()
-        //        {
-        //            final int shadeWidth = 15;
-        //            final float transparency = 0.7f;
+        LafUtils.setScrollBarStyleId(scrollpane, "scroll-pane");
+        
+        // // Shade layer
+        // final WebPanel shadeLayer = new WebPanel ( new AbstractPainter ()
+        // {
+        // final int shadeWidth = 15;
+        // final float transparency = 0.7f;
         //
-        //            @Override
-        //            public void paint ( final Graphics2D g2d, final Rectangle bounds, final Component c )
-        //            {
-        //                final JViewport viewport = scrollpane.getViewport ();
-        //                final Component vc = viewport.getView ();
-        //                if ( vc != null && vc instanceof JComponent )
-        //                {
-        //                    final JComponent view = ( JComponent ) vc;
-        //                    final Rectangle vr = view.getVisibleRect ();
+        // @Override
+        // public void paint ( final Graphics2D g2d, final Rectangle bounds,
+        // final Component c )
+        // {
+        // final JViewport viewport = scrollpane.getViewport ();
+        // final Component vc = viewport.getView ();
+        // if ( vc != null && vc instanceof JComponent )
+        // {
+        // final JComponent view = ( JComponent ) vc;
+        // final Rectangle vr = view.getVisibleRect ();
         //
-        //                    final int topY = vr.y;
-        //                    if ( topY > 0 )
-        //                    {
-        //                        final float max = topY / 2;
-        //                        final float opacity = ( shadeWidth < max ? 1f : ( 1f - ( shadeWidth - max ) / shadeWidth ) ) * transparency;
-        //                        final NinePatchIcon npi = NinePatchUtils.getShadeIcon ( shadeWidth, 0, opacity );
-        //                        final Dimension ps = npi.getPreferredSize ();
-        //                        npi.paintIcon ( g2d, -shadeWidth * 2, shadeWidth - ps.height, vr.width + shadeWidth * 4, ps.height );
-        //                    }
+        // final int topY = vr.y;
+        // if ( topY > 0 )
+        // {
+        // final float max = topY / 2;
+        // final float opacity = ( shadeWidth < max ? 1f : ( 1f - ( shadeWidth -
+        // max ) / shadeWidth ) ) * transparency;
+        // final NinePatchIcon npi = NinePatchUtils.getShadeIcon ( shadeWidth,
+        // 0, opacity );
+        // final Dimension ps = npi.getPreferredSize ();
+        // npi.paintIcon ( g2d, -shadeWidth * 2, shadeWidth - ps.height,
+        // vr.width + shadeWidth * 4, ps.height );
+        // }
         //
-        //                    final int bottomY = vr.y + vr.height;
-        //                    final int height = view.getHeight ();
-        //                    if ( bottomY < height )
-        //                    {
-        //                        final float max = ( height - bottomY ) / 2;
-        //                        final float opacity = ( shadeWidth < max ? 1f : ( 1f - ( shadeWidth - max ) / shadeWidth ) ) * transparency;
-        //                        final NinePatchIcon npi = NinePatchUtils.getShadeIcon ( shadeWidth, 0, opacity );
-        //                        final Dimension ps = npi.getPreferredSize ();
-        //                        npi.paintIcon ( g2d, -shadeWidth * 2, vr.height - shadeWidth, vr.width + shadeWidth * 4, ps.height );
-        //                    }
-        //                }
-        //            }
-        //        } );
-        //        scrollpane.add ( shadeLayer, scrollpane.getComponentCount () );
-        //        scrollpane.setLayout ( new WebScrollPaneLayout.UIResource ( shadeLayer ) );
-
+        // final int bottomY = vr.y + vr.height;
+        // final int height = view.getHeight ();
+        // if ( bottomY < height )
+        // {
+        // final float max = ( height - bottomY ) / 2;
+        // final float opacity = ( shadeWidth < max ? 1f : ( 1f - ( shadeWidth -
+        // max ) / shadeWidth ) ) * transparency;
+        // final NinePatchIcon npi = NinePatchUtils.getShadeIcon ( shadeWidth,
+        // 0, opacity );
+        // final Dimension ps = npi.getPreferredSize ();
+        // npi.paintIcon ( g2d, -shadeWidth * 2, vr.height - shadeWidth,
+        // vr.width + shadeWidth * 4, ps.height );
+        // }
+        // }
+        // }
+        // } );
+        // scrollpane.add ( shadeLayer, scrollpane.getComponentCount () );
+        // scrollpane.setLayout ( new WebScrollPaneLayout.UIResource (
+        // shadeLayer ) );
+        
         // Border
-        updateBorder ();
-
+        updateBorder();
+        
         // Styled scroll pane corner
-        scrollpane.setCorner ( JScrollPane.LOWER_LEADING_CORNER, getLowerLeadingCorner () );
-        scrollpane.setCorner ( JScrollPane.LOWER_TRAILING_CORNER, getLowerTrailingCorner () );
-        scrollpane.setCorner ( JScrollPane.UPPER_TRAILING_CORNER, getUpperTrailing () );
-        propertyChangeListener = new PropertyChangeListener ()
-        {
+        scrollpane.setCorner(JScrollPane.LOWER_LEADING_CORNER,
+                getLowerLeadingCorner());
+        scrollpane.setCorner(JScrollPane.LOWER_TRAILING_CORNER,
+                getLowerTrailingCorner());
+        scrollpane.setCorner(JScrollPane.UPPER_TRAILING_CORNER,
+                getUpperTrailing());
+        propertyChangeListener = new PropertyChangeListener() {
             @Override
-            public void propertyChange ( final PropertyChangeEvent evt )
-            {
-                scrollpane.setCorner ( JScrollPane.LOWER_LEADING_CORNER, getLowerLeadingCorner () );
-                scrollpane.setCorner ( JScrollPane.LOWER_TRAILING_CORNER, getLowerTrailingCorner () );
-                scrollpane.setCorner ( JScrollPane.UPPER_TRAILING_CORNER, getUpperTrailing () );
+            public void propertyChange(final PropertyChangeEvent evt) {
+                scrollpane.setCorner(JScrollPane.LOWER_LEADING_CORNER,
+                        getLowerLeadingCorner());
+                scrollpane.setCorner(JScrollPane.LOWER_TRAILING_CORNER,
+                        getLowerTrailingCorner());
+                scrollpane.setCorner(JScrollPane.UPPER_TRAILING_CORNER,
+                        getUpperTrailing());
             }
         };
-        scrollpane.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
-
+        scrollpane.addPropertyChangeListener(
+                FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener);
+        
         // Focus tracker for the scroll pane content
-        focusTracker = new DefaultFocusTracker ()
-        {
+        focusTracker = new DefaultFocusTracker() {
             @Override
-            public boolean isTrackingEnabled ()
-            {
+            public boolean isTrackingEnabled() {
                 return drawBorder && drawFocus;
             }
-
+            
             @Override
-            public void focusChanged ( final boolean focused )
-            {
+            public void focusChanged(final boolean focused) {
                 WebScrollPaneUI.this.focused = focused;
-                scrollpane.repaint ();
+                scrollpane.repaint();
             }
         };
-        FocusManager.addFocusTracker ( scrollpane, focusTracker );
+        FocusManager.addFocusTracker(scrollpane, focusTracker);
     }
-
+    
     @Override
-    public void uninstallUI ( final JComponent c )
-    {
-        scrollpane.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
-        scrollpane.remove ( getLowerLeadingCorner () );
-        scrollpane.remove ( getLowerTrailingCorner () );
-        scrollpane.remove ( getUpperTrailing () );
-
-        FocusManager.removeFocusTracker ( focusTracker );
-
-        super.uninstallUI ( c );
+    public void uninstallUI(final JComponent c) {
+        scrollpane.removePropertyChangeListener(
+                FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener);
+        scrollpane.remove(getLowerLeadingCorner());
+        scrollpane.remove(getLowerTrailingCorner());
+        scrollpane.remove(getUpperTrailing());
+        
+        FocusManager.removeFocusTracker(focusTracker);
+        
+        super.uninstallUI(c);
     }
-
-    private WebScrollPaneCorner getLowerLeadingCorner ()
-    {
-        if ( lowerLeading == null )
-        {
-            lowerLeading = new WebScrollPaneCorner ( JScrollPane.LOWER_LEADING_CORNER );
+    
+    private WebScrollPaneCorner getLowerLeadingCorner() {
+        if (lowerLeading == null) {
+            lowerLeading = new WebScrollPaneCorner(
+                    JScrollPane.LOWER_LEADING_CORNER);
         }
         return lowerLeading;
     }
-
-    private WebScrollPaneCorner getLowerTrailingCorner ()
-    {
-        if ( lowerTrailing == null )
-        {
-            lowerTrailing = new WebScrollPaneCorner ( JScrollPane.LOWER_TRAILING_CORNER );
+    
+    private WebScrollPaneCorner getLowerTrailingCorner() {
+        if (lowerTrailing == null) {
+            lowerTrailing = new WebScrollPaneCorner(
+                    JScrollPane.LOWER_TRAILING_CORNER);
         }
         return lowerTrailing;
     }
-
-    private WebScrollPaneCorner getUpperTrailing ()
-    {
-        if ( upperTrailing == null )
-        {
-            upperTrailing = new WebScrollPaneCorner ( JScrollPane.UPPER_TRAILING_CORNER );
+    
+    private WebScrollPaneCorner getUpperTrailing() {
+        if (upperTrailing == null) {
+            upperTrailing = new WebScrollPaneCorner(
+                    JScrollPane.UPPER_TRAILING_CORNER);
         }
         return upperTrailing;
     }
-
+    
     @Override
-    public Shape provideShape ()
-    {
-        return LafUtils.getWebBorderShape ( scrollpane, getShadeWidth (), getRound () );
+    public Shape provideShape() {
+        return LafUtils.getWebBorderShape(scrollpane, getShadeWidth(),
+                getRound());
     }
-
-    private void updateBorder ()
-    {
-        if ( scrollpane != null )
-        {
+    
+    private void updateBorder() {
+        if (scrollpane != null) {
             // Preserve old borders
-            if ( SwingUtils.isPreserveBorders ( scrollpane ) )
-            {
+            if (SwingUtils.isPreserveBorders(scrollpane)) {
                 return;
             }
-
+            
             final Insets insets;
-            if ( drawBorder )
-            {
-                insets = new Insets ( shadeWidth + 1 + margin.top, shadeWidth + 1 + margin.left, shadeWidth + 1 + margin.bottom,
-                        shadeWidth + 1 + margin.right );
+            if (drawBorder) {
+                insets = new Insets(shadeWidth + 1 + margin.top, shadeWidth + 1
+                        + margin.left, shadeWidth + 1 + margin.bottom,
+                        shadeWidth + 1 + margin.right);
+            } else {
+                insets = new Insets(margin.top, margin.left, margin.bottom,
+                        margin.right);
             }
-            else
-            {
-                insets = new Insets ( margin.top, margin.left, margin.bottom, margin.right );
-            }
-            scrollpane.setBorder ( LafUtils.createWebBorder ( insets ) );
+            scrollpane.setBorder(LafUtils.createWebBorder(insets));
         }
     }
-
-    public boolean isDrawBorder ()
-    {
+    
+    public boolean isDrawBorder() {
         return drawBorder;
     }
-
-    public void setDrawBorder ( final boolean drawBorder )
-    {
+    
+    public void setDrawBorder(final boolean drawBorder) {
         this.drawBorder = drawBorder;
-        updateBorder ();
+        updateBorder();
     }
-
-    public int getRound ()
-    {
+    
+    public int getRound() {
         return round;
     }
-
-    public void setRound ( final int round )
-    {
+    
+    public void setRound(final int round) {
         this.round = round;
     }
-
-    public int getShadeWidth ()
-    {
+    
+    public int getShadeWidth() {
         return shadeWidth;
     }
-
-    public void setShadeWidth ( final int shadeWidth )
-    {
+    
+    public void setShadeWidth(final int shadeWidth) {
         this.shadeWidth = shadeWidth;
-        updateBorder ();
+        updateBorder();
     }
-
-    public Insets getMargin ()
-    {
+    
+    public Insets getMargin() {
         return margin;
     }
-
-    public void setMargin ( final Insets margin )
-    {
+    
+    public void setMargin(final Insets margin) {
         this.margin = margin;
-        updateBorder ();
+        updateBorder();
     }
-
-    public boolean isDrawFocus ()
-    {
+    
+    public boolean isDrawFocus() {
         return drawFocus;
     }
-
-    public void setDrawFocus ( final boolean drawFocus )
-    {
+    
+    public void setDrawFocus(final boolean drawFocus) {
         this.drawFocus = drawFocus;
     }
-
-    public boolean isDrawBackground ()
-    {
+    
+    public boolean isDrawBackground() {
         return drawBackground;
     }
-
-    public void setDrawBackground ( final boolean drawBackground )
-    {
+    
+    public void setDrawBackground(final boolean drawBackground) {
         this.drawBackground = drawBackground;
     }
-
-    public Color getBorderColor ()
-    {
+    
+    public Color getBorderColor() {
         return borderColor;
     }
-
-    public void setBorderColor ( final Color borderColor )
-    {
+    
+    public void setBorderColor(final Color borderColor) {
         this.borderColor = borderColor;
     }
-
-    public Color getDarkBorder ()
-    {
+    
+    public Color getDarkBorder() {
         return darkBorder;
     }
-
-    public void setDarkBorder ( final Color darkBorder )
-    {
+    
+    public void setDarkBorder(final Color darkBorder) {
         this.darkBorder = darkBorder;
     }
-
+    
     @Override
-    public void paint ( final Graphics g, final JComponent c )
-    {
-        if ( drawBorder )
-        {
+    public void paint(final Graphics g, final JComponent c) {
+        if (drawBorder) {
             // Border, background and shade
-            LafUtils.drawWebStyle ( ( Graphics2D ) g, c, drawFocus && focused ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor,
-                    shadeWidth, round, drawBackground, false );
+            LafUtils.drawWebStyle(
+                    (Graphics2D) g,
+                    c,
+                    drawFocus && focused ? FlatLafStyleConstants.fieldFocusColor
+                            : FlatLafStyleConstants.shadeColor, shadeWidth,
+                    round, drawBackground, false);
         }
-
-        super.paint ( g, c );
+        
+        super.paint(g, c);
     }
 }

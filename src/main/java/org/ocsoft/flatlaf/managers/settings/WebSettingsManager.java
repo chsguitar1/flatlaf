@@ -33,33 +33,38 @@ import org.ocsoft.flatlaf.managers.settings.processors.*;
  * @author Mikle Garin
  */
 
-public class WebSettingsManager
-{
+public class WebSettingsManager {
     /**
      * Whether SettingsManager is initialized or not.
      */
     protected static boolean initialized = false;
-
+    
     /**
      * Initializes SettingsManager.
      */
-    public static synchronized void initialize ()
-    {
-        if ( !initialized )
-        {
+    public static synchronized void initialize() {
+        if (!initialized) {
             initialized = true;
-
+            
             // Ensure SettingsManager is initialized
-            SettingsManager.initialize ();
-
+            SettingsManager.initialize();
+            
             // Register additional component settings processors
-            ComponentSettingsManager.registerSettingsProcessor ( WebDocumentPane.class, WebDocumentPaneSettingsProcessor.class );
-            ComponentSettingsManager.registerSettingsProcessor ( WebTree.class, WebTreeSettingsProcessor.class );
-            ComponentSettingsManager.registerSettingsProcessor ( WebDateField.class, WebDateFieldSettingsProcessor.class );
-            ComponentSettingsManager.registerSettingsProcessor ( WebCollapsiblePane.class, WebCollapsiblePaneSettingsProcessor.class );
-            ComponentSettingsManager.registerSettingsProcessor ( WebAccordion.class, WebAccordionSettingsProcessor.class );
-            ComponentSettingsManager
-                    .registerSettingsProcessor ( WebGradientColorChooser.class, WebGradientColorChooserSettingsProcessor.class );
+            ComponentSettingsManager.registerSettingsProcessor(
+                    WebDocumentPane.class,
+                    WebDocumentPaneSettingsProcessor.class);
+            ComponentSettingsManager.registerSettingsProcessor(WebTree.class,
+                    WebTreeSettingsProcessor.class);
+            ComponentSettingsManager.registerSettingsProcessor(
+                    WebDateField.class, WebDateFieldSettingsProcessor.class);
+            ComponentSettingsManager.registerSettingsProcessor(
+                    WebCollapsiblePane.class,
+                    WebCollapsiblePaneSettingsProcessor.class);
+            ComponentSettingsManager.registerSettingsProcessor(
+                    WebAccordion.class, WebAccordionSettingsProcessor.class);
+            ComponentSettingsManager.registerSettingsProcessor(
+                    WebGradientColorChooser.class,
+                    WebGradientColorChooserSettingsProcessor.class);
         }
     }
 }

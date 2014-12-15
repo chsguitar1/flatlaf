@@ -23,22 +23,18 @@ import java.text.DateFormat;
  * User: mgarin Date: 31.10.12 Time: 16:15
  */
 
-public class WebDateRenderer extends WebTableCellRenderer.UIResource
-{
+public class WebDateRenderer extends WebTableCellRenderer.UIResource {
     private DateFormat formatter;
-
-    public WebDateRenderer ()
-    {
-        super ();
+    
+    public WebDateRenderer() {
+        super();
     }
-
+    
     @Override
-    public void setValue ( Object value )
-    {
-        if ( formatter == null )
-        {
-            formatter = DateFormat.getDateInstance ();
+    public void setValue(Object value) {
+        if (formatter == null) {
+            formatter = DateFormat.getDateInstance();
         }
-        setText ( ( value == null ) ? "" : formatter.format ( value ) );
+        setText((value == null) ? "" : formatter.format(value));
     }
 }

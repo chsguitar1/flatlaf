@@ -22,27 +22,30 @@ import java.awt.event.WindowAdapter;
 import org.ocsoft.flatlaf.utils.swing.SwingMethods;
 
 /**
- * This interface provides a set of methods that should be added into windows that supports custom WebLaF events.
- * Basically all these methods are already implemented in EventUtils but it is much easier to call them directly from window.
+ * This interface provides a set of methods that should be added into windows
+ * that supports custom WebLaF events. Basically all these methods are already
+ * implemented in EventUtils but it is much easier to call them directly from
+ * window.
  *
  * @author Mikle Garin
  */
 
-public interface WindowEventMethods extends SwingMethods
-{
+public interface WindowEventMethods extends SwingMethods {
     /**
      * Shortcut method for window closing event.
      *
-     * @param runnable window event runnable
+     * @param runnable
+     *            window event runnable
      * @return used window adapter
      */
-    public WindowAdapter onClosing ( final WindowEventRunnable runnable );
-
+    public WindowAdapter onClosing(final WindowEventRunnable runnable);
+    
     /**
      * Shortcut method for window close event.
      *
-     * @param runnable component event runnable
+     * @param runnable
+     *            component event runnable
      * @return used window close adapter
      */
-    public WindowCloseAdapter onClose ( final ComponentEventRunnable runnable );
+    public WindowCloseAdapter onClose(final ComponentEventRunnable runnable);
 }

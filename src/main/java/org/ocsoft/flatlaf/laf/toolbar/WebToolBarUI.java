@@ -47,15 +47,15 @@ import java.beans.PropertyChangeListener;
  * User: mgarin Date: 17.08.11 Time: 23:06
  */
 
-public class WebToolBarUI extends BasicToolBarUI implements ShapeProvider, BorderMethods
-{
+public class WebToolBarUI extends BasicToolBarUI implements ShapeProvider,
+        BorderMethods {
     public static final int gripperSpace = 5;
-
+    
     private Color topBgColor = WebToolBarStyle.topBgColor;
     private Color bottomBgColor = WebToolBarStyle.bottomBgColor;
     private Color borderColor = WebToolBarStyle.borderColor;
     private Color disabledBorderColor = WebToolBarStyle.disabledBorderColor;
-
+    
     private boolean undecorated = WebToolBarStyle.undecorated;
     private int round = WebToolBarStyle.round;
     private int shadeWidth = WebToolBarStyle.shadeWidth;
@@ -63,581 +63,519 @@ public class WebToolBarUI extends BasicToolBarUI implements ShapeProvider, Borde
     private int spacing = WebToolBarStyle.spacing;
     private ToolbarStyle toolbarStyle = WebToolBarStyle.toolbarStyle;
     private Painter painter = WebToolBarStyle.painter;
-
-    private final Color middleColor = new Color ( 158, 158, 158 );
-    private final Color[] gradient = new Color[]{ FlatLafStyleConstants.transparent, middleColor, middleColor, FlatLafStyleConstants.transparent };
+    
+    private final Color middleColor = new Color(158, 158, 158);
+    private final Color[] gradient = new Color[] {
+            FlatLafStyleConstants.transparent, middleColor, middleColor,
+            FlatLafStyleConstants.transparent };
     private final float[] fractions = { 0f, 0.33f, 0.66f, 1f };
-
+    
     private AncestorListener ancestorListener;
     private PropertyChangeListener propertyChangeListener;
     private PropertyChangeListener componentOrientationListener;
-
-    @SuppressWarnings ("UnusedParameters")
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebToolBarUI ();
+    
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebToolBarUI();
     }
-
+    
     @Override
-    public void installUI ( final JComponent c )
-    {
-        super.installUI ( c );
-
+    public void installUI(final JComponent c) {
+        super.installUI(c);
+        
         // Default settings
-        SwingUtils.setOrientation ( toolBar );
-        LookAndFeel.installProperty ( toolBar, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
-        PainterSupport.installPainter ( toolBar, this.painter );
-
+        SwingUtils.setOrientation(toolBar);
+        LookAndFeel.installProperty(toolBar, FlatLookAndFeel.OPAQUE_PROPERTY,
+                Boolean.FALSE);
+        PainterSupport.installPainter(toolBar, this.painter);
+        
         // Updating border and layout
-        updateBorder ();
-        updateLayout ( toolBar );
-
+        updateBorder();
+        updateLayout(toolBar);
+        
         // Border and layout update listeners
-        ancestorListener = new AncestorAdapter ()
-        {
+        ancestorListener = new AncestorAdapter() {
             @Override
-            public void ancestorAdded ( final AncestorEvent event )
-            {
-                updateBorder ();
-                updateLayout ( toolBar );
+            public void ancestorAdded(final AncestorEvent event) {
+                updateBorder();
+                updateLayout(toolBar);
             }
         };
-        toolBar.addAncestorListener ( ancestorListener );
-        propertyChangeListener = new PropertyChangeListener ()
-        {
+        toolBar.addAncestorListener(ancestorListener);
+        propertyChangeListener = new PropertyChangeListener() {
             @Override
-            public void propertyChange ( final PropertyChangeEvent evt )
-            {
-                updateBorder ();
-                updateLayout ( toolBar );
+            public void propertyChange(final PropertyChangeEvent evt) {
+                updateBorder();
+                updateLayout(toolBar);
             }
         };
-        toolBar.addPropertyChangeListener ( FlatLookAndFeel.TOOLBAR_FLOATABLE_PROPERTY, propertyChangeListener );
-        componentOrientationListener = new PropertyChangeListener ()
-        {
+        toolBar.addPropertyChangeListener(
+                FlatLookAndFeel.TOOLBAR_FLOATABLE_PROPERTY,
+                propertyChangeListener);
+        componentOrientationListener = new PropertyChangeListener() {
             @Override
-            public void propertyChange ( final PropertyChangeEvent evt )
-            {
-                updateBorder ();
+            public void propertyChange(final PropertyChangeEvent evt) {
+                updateBorder();
             }
         };
-        toolBar.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, componentOrientationListener );
+        toolBar.addPropertyChangeListener(FlatLookAndFeel.ORIENTATION_PROPERTY,
+                componentOrientationListener);
     }
-
+    
     @Override
-    public void uninstallUI ( final JComponent c )
-    {
-        PainterSupport.uninstallPainter ( toolBar, this.painter );
-
-        c.removeAncestorListener ( ancestorListener );
-        c.removePropertyChangeListener ( FlatLookAndFeel.TOOLBAR_FLOATABLE_PROPERTY, propertyChangeListener );
-        c.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, componentOrientationListener );
-
-        super.uninstallUI ( c );
-
+    public void uninstallUI(final JComponent c) {
+        PainterSupport.uninstallPainter(toolBar, this.painter);
+        
+        c.removeAncestorListener(ancestorListener);
+        c.removePropertyChangeListener(
+                FlatLookAndFeel.TOOLBAR_FLOATABLE_PROPERTY,
+                propertyChangeListener);
+        c.removePropertyChangeListener(FlatLookAndFeel.ORIENTATION_PROPERTY,
+                componentOrientationListener);
+        
+        super.uninstallUI(c);
+        
         // Swing doesn't cleanup this value on its own
         toolBar = null;
     }
-
+    
     @Override
-    public Shape provideShape ()
-    {
-        if ( painter != null || undecorated )
-        {
-            return SwingUtils.size ( toolBar );
-        }
-        else
-        {
-            return LafUtils.getWebBorderShape ( toolBar, getShadeWidth (), getRound () );
+    public Shape provideShape() {
+        if (painter != null || undecorated) {
+            return SwingUtils.size(toolBar);
+        } else {
+            return LafUtils.getWebBorderShape(toolBar, getShadeWidth(),
+                    getRound());
         }
     }
-
-    public boolean isUndecorated ()
-    {
+    
+    public boolean isUndecorated() {
         return undecorated;
     }
-
-    public void setUndecorated ( final boolean undecorated )
-    {
+    
+    public void setUndecorated(final boolean undecorated) {
         this.undecorated = undecorated;
-
+        
         // Updating border
-        updateBorder ();
-
+        updateBorder();
+        
         // Updating opaque value
-        if ( painter != null && !undecorated )
-        {
-            toolBar.setOpaque ( false );
+        if (painter != null && !undecorated) {
+            toolBar.setOpaque(false);
         }
     }
-
-    public Painter getPainter ()
-    {
+    
+    public Painter getPainter() {
         return painter;
     }
-
-    public void setPainter ( final Painter painter )
-    {
-        PainterSupport.uninstallPainter ( toolBar, this.painter );
-
+    
+    public void setPainter(final Painter painter) {
+        PainterSupport.uninstallPainter(toolBar, this.painter);
+        
         this.painter = painter;
-        PainterSupport.installPainter ( toolBar, this.painter );
-        updateBorder ();
+        PainterSupport.installPainter(toolBar, this.painter);
+        updateBorder();
     }
-
-    public int getRound ()
-    {
-        if ( undecorated )
-        {
+    
+    public int getRound() {
+        if (undecorated) {
             return 0;
-        }
-        else
-        {
+        } else {
             return round;
         }
     }
-
-    public void setRound ( final int round )
-    {
+    
+    public void setRound(final int round) {
         this.round = round;
     }
-
-    public Color getTopBgColor ()
-    {
+    
+    public Color getTopBgColor() {
         return topBgColor;
     }
-
-    public void setTopBgColor ( final Color topBgColor )
-    {
+    
+    public void setTopBgColor(final Color topBgColor) {
         this.topBgColor = topBgColor;
     }
-
-    public Color getBottomBgColor ()
-    {
+    
+    public Color getBottomBgColor() {
         return bottomBgColor;
     }
-
-    public void setBottomBgColor ( final Color bottomBgColor )
-    {
+    
+    public void setBottomBgColor(final Color bottomBgColor) {
         this.bottomBgColor = bottomBgColor;
     }
-
-    public Color getBorderColor ()
-    {
+    
+    public Color getBorderColor() {
         return borderColor;
     }
-
-    public void setBorderColor ( final Color borderColor )
-    {
+    
+    public void setBorderColor(final Color borderColor) {
         this.borderColor = borderColor;
     }
-
-    public Color getDisabledBorderColor ()
-    {
+    
+    public Color getDisabledBorderColor() {
         return disabledBorderColor;
     }
-
-    public void setDisabledBorderColor ( final Color disabledBorderColor )
-    {
+    
+    public void setDisabledBorderColor(final Color disabledBorderColor) {
         this.disabledBorderColor = disabledBorderColor;
     }
-
-    public int getShadeWidth ()
-    {
-        if ( undecorated )
-        {
+    
+    public int getShadeWidth() {
+        if (undecorated) {
             return 0;
-        }
-        else
-        {
+        } else {
             return shadeWidth;
         }
     }
-
-    public void setShadeWidth ( final int shadeWidth )
-    {
+    
+    public void setShadeWidth(final int shadeWidth) {
         this.shadeWidth = shadeWidth;
-        updateBorder ();
+        updateBorder();
     }
-
-    public Insets getMargin ()
-    {
+    
+    public Insets getMargin() {
         return margin;
     }
-
-    public void setMargin ( final Insets margin )
-    {
+    
+    public void setMargin(final Insets margin) {
         this.margin = margin;
-        updateBorder ();
+        updateBorder();
     }
-
-    public ToolbarStyle getToolbarStyle ()
-    {
+    
+    public ToolbarStyle getToolbarStyle() {
         return toolbarStyle;
     }
-
-    public void setToolbarStyle ( final ToolbarStyle toolbarStyle )
-    {
+    
+    public void setToolbarStyle(final ToolbarStyle toolbarStyle) {
         this.toolbarStyle = toolbarStyle;
-        updateBorder ();
+        updateBorder();
     }
-
-    public int getSpacing ()
-    {
+    
+    public int getSpacing() {
         return spacing;
     }
-
-    public void setSpacing ( final int spacing )
-    {
+    
+    public void setSpacing(final int spacing) {
         this.spacing = spacing;
-        updateLayout ( toolBar );
+        updateLayout(toolBar);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void updateBorder ()
-    {
-        if ( toolBar != null )
-        {
+    public void updateBorder() {
+        if (toolBar != null) {
             // Preserve old borders
-            if ( SwingUtils.isPreserveBorders ( toolBar ) )
-            {
+            if (SwingUtils.isPreserveBorders(toolBar)) {
                 return;
             }
-
-            if ( painter != null )
-            {
+            
+            if (painter != null) {
                 // Background insets
-                final Insets bi = painter.getMargin ( toolBar );
-                toolBar.setBorder ( LafUtils.createWebBorder ( margin.top + bi.top, margin.left + bi.left, margin.bottom + bi.bottom,
-                        margin.right + bi.right ) );
-            }
-            else if ( !undecorated )
-            {
+                final Insets bi = painter.getMargin(toolBar);
+                toolBar.setBorder(LafUtils.createWebBorder(margin.top + bi.top,
+                        margin.left + bi.left, margin.bottom + bi.bottom,
+                        margin.right + bi.right));
+            } else if (!undecorated) {
                 // Web-style insets
-                final int gripperSpacing = toolBar.isFloatable () ? gripperSpace : 0;
-                final boolean horizontal = toolBar.getOrientation () == WebToolBar.HORIZONTAL;
-                final boolean ltr = toolBar.getComponentOrientation ().isLeftToRight ();
-                if ( toolbarStyle.equals ( ToolbarStyle.standalone ) )
-                {
-                    if ( isFloating () )
-                    {
-                        toolBar.setBorder ( LafUtils.createWebBorder ( margin.top + ( !horizontal ? gripperSpacing : 0 ),
-                                margin.left + ( horizontal && ltr ? gripperSpacing : 0 ), margin.bottom,
-                                margin.right + ( horizontal && !ltr ? gripperSpacing : 0 ) ) );
+                final int gripperSpacing = toolBar.isFloatable() ? gripperSpace
+                        : 0;
+                final boolean horizontal = toolBar.getOrientation() == WebToolBar.HORIZONTAL;
+                final boolean ltr = toolBar.getComponentOrientation()
+                        .isLeftToRight();
+                if (toolbarStyle.equals(ToolbarStyle.standalone)) {
+                    if (isFloating()) {
+                        toolBar.setBorder(LafUtils.createWebBorder(margin.top
+                                + (!horizontal ? gripperSpacing : 0),
+                                margin.left
+                                        + (horizontal && ltr ? gripperSpacing
+                                                : 0), margin.bottom,
+                                margin.right
+                                        + (horizontal && !ltr ? gripperSpacing
+                                                : 0)));
+                    } else {
+                        toolBar.setBorder(LafUtils.createWebBorder(margin.top
+                                + 1 + shadeWidth
+                                + (!horizontal ? gripperSpacing : 0),
+                                margin.left
+                                        + 1
+                                        + shadeWidth
+                                        + (horizontal && ltr ? gripperSpacing
+                                                : 0), margin.bottom + 1
+                                        + shadeWidth, margin.right
+                                        + 1
+                                        + shadeWidth
+                                        + (horizontal && !ltr ? gripperSpacing
+                                                : 0)));
                     }
-                    else
-                    {
-                        toolBar.setBorder ( LafUtils.createWebBorder ( margin.top + 1 + shadeWidth + ( !horizontal ? gripperSpacing : 0 ),
-                                margin.left + 1 + shadeWidth +
-                                        ( horizontal && ltr ? gripperSpacing : 0 ), margin.bottom + 1 + shadeWidth,
-                                margin.right + 1 + shadeWidth +
-                                        ( horizontal && !ltr ? gripperSpacing : 0 )
-                        ) );
+                } else {
+                    if (isFloating()) {
+                        toolBar.setBorder(LafUtils.createWebBorder(margin.top
+                                + (!horizontal ? gripperSpacing : 0),
+                                margin.left
+                                        + (horizontal && ltr ? gripperSpacing
+                                                : 0), margin.bottom,
+                                margin.right
+                                        + (horizontal && !ltr ? gripperSpacing
+                                                : 0)));
+                    } else {
+                        toolBar.setBorder(LafUtils.createWebBorder(margin.top
+                                + (!horizontal ? gripperSpacing : 0),
+                                margin.left
+                                        + (horizontal && ltr ? gripperSpacing
+                                                : 0)
+                                        + (!horizontal && !ltr ? 1 : 0),
+                                margin.bottom + (horizontal ? 1 : 0),
+                                margin.right
+                                        + (horizontal && !ltr ? gripperSpacing
+                                                : 0)
+                                        + (!horizontal && ltr ? 1 : 0)));
                     }
                 }
-                else
-                {
-                    if ( isFloating () )
-                    {
-                        toolBar.setBorder ( LafUtils.createWebBorder ( margin.top + ( !horizontal ? gripperSpacing : 0 ),
-                                margin.left + ( horizontal && ltr ? gripperSpacing : 0 ), margin.bottom,
-                                margin.right + ( horizontal && !ltr ? gripperSpacing : 0 ) ) );
-                    }
-                    else
-                    {
-                        toolBar.setBorder ( LafUtils.createWebBorder ( margin.top + ( !horizontal ? gripperSpacing : 0 ),
-                                margin.left + ( horizontal && ltr ? gripperSpacing : 0 ) +
-                                        ( !horizontal && !ltr ? 1 : 0 ), margin.bottom + ( horizontal ? 1 : 0 ),
-                                margin.right + ( horizontal && !ltr ? gripperSpacing : 0 ) +
-                                        ( !horizontal && ltr ? 1 : 0 )
-                        ) );
-                    }
-                }
-            }
-            else
-            {
+            } else {
                 // Empty insets
-                toolBar.setBorder ( LafUtils.createWebBorder ( margin.top, margin.left, margin.bottom, margin.right ) );
+                toolBar.setBorder(LafUtils.createWebBorder(margin.top,
+                        margin.left, margin.bottom, margin.right));
             }
         }
     }
-
-    private void updateLayout ( final JComponent c )
-    {
-        final ToolbarLayout layout = new ToolbarLayout ( spacing, toolBar.getOrientation () );
-        if ( c.getLayout () instanceof ToolbarLayout )
-        {
-            final ToolbarLayout old = ( ToolbarLayout ) c.getLayout ();
-            layout.setConstraints ( old.getConstraints () );
+    
+    private void updateLayout(final JComponent c) {
+        final ToolbarLayout layout = new ToolbarLayout(spacing,
+                toolBar.getOrientation());
+        if (c.getLayout() instanceof ToolbarLayout) {
+            final ToolbarLayout old = (ToolbarLayout) c.getLayout();
+            layout.setConstraints(old.getConstraints());
         }
-        c.setLayout ( layout );
+        c.setLayout(layout);
     }
-
+    
     @Override
-    public void paint ( final Graphics g, final JComponent c )
-    {
-        if ( painter != null )
-        {
+    public void paint(final Graphics g, final JComponent c) {
+        if (painter != null) {
             // Use background painter instead of default UI graphics
-            painter.paint ( ( Graphics2D ) g, SwingUtils.size ( c ), c );
-        }
-        else if ( !undecorated )
-        {
-            final Graphics2D g2d = ( Graphics2D ) g;
-            final Object aa = GraphicsUtils.setupAntialias ( g2d );
-
-            final boolean horizontal = toolBar.getOrientation () == WebToolBar.HORIZONTAL;
-            final boolean ltr = c.getComponentOrientation ().isLeftToRight ();
-
+            painter.paint((Graphics2D) g, SwingUtils.size(c), c);
+        } else if (!undecorated) {
+            final Graphics2D g2d = (Graphics2D) g;
+            final Object aa = GraphicsUtils.setupAntialias(g2d);
+            
+            final boolean horizontal = toolBar.getOrientation() == WebToolBar.HORIZONTAL;
+            final boolean ltr = c.getComponentOrientation().isLeftToRight();
+            
             // Painting border and background
-            if ( isFloating () )
-            {
-                if ( horizontal )
-                {
-                    g2d.setPaint ( new GradientPaint ( 0, c.getHeight () / 2, topBgColor, 0, c.getHeight (), bottomBgColor ) );
+            if (isFloating()) {
+                if (horizontal) {
+                    g2d.setPaint(new GradientPaint(0, c.getHeight() / 2,
+                            topBgColor, 0, c.getHeight(), bottomBgColor));
+                } else {
+                    g2d.setPaint(new GradientPaint(c.getWidth() / 2, 0,
+                            topBgColor, c.getWidth(), 0, bottomBgColor));
                 }
-                else
-                {
-                    g2d.setPaint ( new GradientPaint ( c.getWidth () / 2, 0, topBgColor, c.getWidth (), 0, bottomBgColor ) );
-                }
-                g2d.fillRect ( 0, 0, c.getWidth (), c.getHeight () );
-            }
-            else
-            {
-                if ( toolbarStyle.equals ( ToolbarStyle.standalone ) )
-                {
-                    final RoundRectangle2D rr = new RoundRectangle2D.Double ( shadeWidth, shadeWidth, c.getWidth () - shadeWidth * 2 - 1,
-                            c.getHeight () - shadeWidth * 2 - 1, round, round );
-
-                    if ( c.isEnabled () )
-                    {
-                        GraphicsUtils.drawShade ( g2d, rr, FlatLafStyleConstants.shadeColor, shadeWidth );
+                g2d.fillRect(0, 0, c.getWidth(), c.getHeight());
+            } else {
+                if (toolbarStyle.equals(ToolbarStyle.standalone)) {
+                    final RoundRectangle2D rr = new RoundRectangle2D.Double(
+                            shadeWidth, shadeWidth, c.getWidth() - shadeWidth
+                                    * 2 - 1,
+                            c.getHeight() - shadeWidth * 2 - 1, round, round);
+                    
+                    if (c.isEnabled()) {
+                        GraphicsUtils.drawShade(g2d, rr,
+                                FlatLafStyleConstants.shadeColor, shadeWidth);
                     }
-
-                    if ( horizontal )
-                    {
-                        g2d.setPaint ( new GradientPaint ( 0, c.getHeight () / 2, topBgColor, 0, c.getHeight (), bottomBgColor ) );
+                    
+                    if (horizontal) {
+                        g2d.setPaint(new GradientPaint(0, c.getHeight() / 2,
+                                topBgColor, 0, c.getHeight(), bottomBgColor));
+                    } else {
+                        g2d.setPaint(new GradientPaint(c.getWidth() / 2, 0,
+                                topBgColor, c.getWidth(), 0, bottomBgColor));
                     }
-                    else
-                    {
-                        g2d.setPaint ( new GradientPaint ( c.getWidth () / 2, 0, topBgColor, c.getWidth (), 0, bottomBgColor ) );
+                    g2d.fill(rr);
+                    
+                    g2d.setPaint(c.isEnabled() ? borderColor
+                            : disabledBorderColor);
+                    g2d.draw(rr);
+                } else {
+                    if (horizontal) {
+                        g2d.setPaint(new GradientPaint(0, c.getHeight() / 2,
+                                topBgColor, 0, c.getHeight(), bottomBgColor));
+                    } else {
+                        g2d.setPaint(new GradientPaint(c.getWidth() / 2, 0,
+                                topBgColor, c.getWidth(), 0, bottomBgColor));
                     }
-                    g2d.fill ( rr );
-
-                    g2d.setPaint ( c.isEnabled () ? borderColor : disabledBorderColor );
-                    g2d.draw ( rr );
-                }
-                else
-                {
-                    if ( horizontal )
-                    {
-                        g2d.setPaint ( new GradientPaint ( 0, c.getHeight () / 2, topBgColor, 0, c.getHeight (), bottomBgColor ) );
-                    }
-                    else
-                    {
-                        g2d.setPaint ( new GradientPaint ( c.getWidth () / 2, 0, topBgColor, c.getWidth (), 0, bottomBgColor ) );
-                    }
-                    g2d.fillRect ( 0, 0, c.getWidth (), c.getHeight () );
-
-                    g2d.setPaint ( c.isEnabled () ? borderColor : disabledBorderColor );
-                    if ( horizontal )
-                    {
-                        g2d.drawLine ( 0, c.getHeight () - 1, c.getWidth () - 1, c.getHeight () - 1 );
-                    }
-                    else
-                    {
-                        if ( ltr )
-                        {
-                            g2d.drawLine ( c.getWidth () - 1, 0, c.getWidth () - 1, c.getHeight () - 1 );
-                        }
-                        else
-                        {
-                            g2d.drawLine ( 0, 0, 0, c.getHeight () - 1 );
+                    g2d.fillRect(0, 0, c.getWidth(), c.getHeight());
+                    
+                    g2d.setPaint(c.isEnabled() ? borderColor
+                            : disabledBorderColor);
+                    if (horizontal) {
+                        g2d.drawLine(0, c.getHeight() - 1, c.getWidth() - 1,
+                                c.getHeight() - 1);
+                    } else {
+                        if (ltr) {
+                            g2d.drawLine(c.getWidth() - 1, 0, c.getWidth() - 1,
+                                    c.getHeight() - 1);
+                        } else {
+                            g2d.drawLine(0, 0, 0, c.getHeight() - 1);
                         }
                     }
                 }
             }
-
+            
             // Painting gripper
-            if ( toolBar.isFloatable () )
-            {
-                if ( toolBar.getOrientation () == WebToolBar.HORIZONTAL )
-                {
+            if (toolBar.isFloatable()) {
+                if (toolBar.getOrientation() == WebToolBar.HORIZONTAL) {
                     final int gradY = shadeWidth + 1;
-                    final int gradEndY = c.getHeight () - shadeWidth - 2;
-                    if ( gradEndY > gradY )
-                    {
-                        g2d.setPaint ( new LinearGradientPaint ( 0, gradY, 0, gradEndY, fractions, gradient ) );
-
+                    final int gradEndY = c.getHeight() - shadeWidth - 2;
+                    if (gradEndY > gradY) {
+                        g2d.setPaint(new LinearGradientPaint(0, gradY, 0,
+                                gradEndY, fractions, gradient));
+                        
                         // Determining gripper X coordinate
-                        int x = toolbarStyle.equals ( ToolbarStyle.standalone ) ?
-                                shadeWidth + 1 + margin.left + ( isFloating () ? -1 : 1 ) : margin.left + gripperSpace / 2 - 1;
-                        if ( !ltr )
-                        {
-                            x = c.getWidth () - x - 2;
+                        int x = toolbarStyle.equals(ToolbarStyle.standalone) ? shadeWidth
+                                + 1 + margin.left + (isFloating() ? -1 : 1)
+                                : margin.left + gripperSpace / 2 - 1;
+                        if (!ltr) {
+                            x = c.getWidth() - x - 2;
                         }
-
+                        
                         // Painting gripper
-                        for ( int i = c.getHeight () / 2 - 3; i >= gradY; i -= 4 )
-                        {
-                            g2d.fillRect ( x, i, 2, 2 );
+                        for (int i = c.getHeight() / 2 - 3; i >= gradY; i -= 4) {
+                            g2d.fillRect(x, i, 2, 2);
                         }
-                        for ( int i = c.getHeight () / 2 + 1; i + 2 <= gradEndY; i += 4 )
-                        {
-                            g2d.fillRect ( x, i, 2, 2 );
+                        for (int i = c.getHeight() / 2 + 1; i + 2 <= gradEndY; i += 4) {
+                            g2d.fillRect(x, i, 2, 2);
                         }
                     }
-                }
-                else
-                {
+                } else {
                     final int gradX = shadeWidth + 1;
-                    final int gradEndX = c.getWidth () - shadeWidth - 2;
-                    if ( gradEndX > gradX )
-                    {
-                        g2d.setPaint ( new LinearGradientPaint ( gradX, 0, gradEndX, 0, fractions, gradient ) );
-
+                    final int gradEndX = c.getWidth() - shadeWidth - 2;
+                    if (gradEndX > gradX) {
+                        g2d.setPaint(new LinearGradientPaint(gradX, 0,
+                                gradEndX, 0, fractions, gradient));
+                        
                         // Determining gripper Y coordinate
-                        final int y =
-                                toolbarStyle.equals ( ToolbarStyle.standalone ) ? shadeWidth + 1 + margin.top + ( isFloating () ? -1 : 1 ) :
-                                        margin.top + gripperSpace / 2 - 1;
-
+                        final int y = toolbarStyle
+                                .equals(ToolbarStyle.standalone) ? shadeWidth
+                                + 1 + margin.top + (isFloating() ? -1 : 1)
+                                : margin.top + gripperSpace / 2 - 1;
+                        
                         // Painting gripper
-                        for ( int i = c.getWidth () / 2 - 3; i >= gradX; i -= 4 )
-                        {
-                            g2d.fillRect ( i, y, 2, 2 );
+                        for (int i = c.getWidth() / 2 - 3; i >= gradX; i -= 4) {
+                            g2d.fillRect(i, y, 2, 2);
                         }
-                        for ( int i = c.getWidth () / 2 + 1; i + 2 <= gradEndX; i += 4 )
-                        {
-                            g2d.fillRect ( i, y, 2, 2 );
+                        for (int i = c.getWidth() / 2 + 1; i + 2 <= gradEndX; i += 4) {
+                            g2d.fillRect(i, y, 2, 2);
                         }
                     }
                 }
             }
-
-            GraphicsUtils.restoreAntialias ( g2d, aa );
+            
+            GraphicsUtils.restoreAntialias(g2d, aa);
         }
     }
-
+    
     @Override
-    public Dimension getPreferredSize ( final JComponent c )
-    {
-        Dimension ps = c.getLayout () != null ? c.getLayout ().preferredLayoutSize ( c ) : null;
-        if ( painter != null )
-        {
-            ps = SwingUtils.max ( ps, painter.getPreferredSize ( c ) );
+    public Dimension getPreferredSize(final JComponent c) {
+        Dimension ps = c.getLayout() != null ? c.getLayout()
+                .preferredLayoutSize(c) : null;
+        if (painter != null) {
+            ps = SwingUtils.max(ps, painter.getPreferredSize(c));
         }
         return ps;
     }
-
+    
     @Override
-    protected RootPaneContainer createFloatingWindow ( final JToolBar toolbar )
-    {
-        class ToolBarDialog extends WebDialog
-        {
-            public ToolBarDialog ( final Frame owner, final String title, final boolean modal )
-            {
-                super ( owner, title, modal );
+    protected RootPaneContainer createFloatingWindow(final JToolBar toolbar) {
+        class ToolBarDialog extends WebDialog {
+            public ToolBarDialog(final Frame owner, final String title,
+                    final boolean modal) {
+                super(owner, title, modal);
             }
-
-            public ToolBarDialog ( final Dialog owner, final String title, final boolean modal )
-            {
-                super ( owner, title, modal );
+            
+            public ToolBarDialog(final Dialog owner, final String title,
+                    final boolean modal) {
+                super(owner, title, modal);
             }
-
+            
             // Override createRootPane() to automatically resize
             // the frame when contents change
             @Override
-            protected JRootPane createRootPane ()
-            {
-                final JRootPane rootPane = new JRootPane ()
-                {
+            protected JRootPane createRootPane() {
+                final JRootPane rootPane = new JRootPane() {
                     private boolean packing = false;
-
+                    
                     @Override
-                    public void validate ()
-                    {
-                        super.validate ();
-                        if ( !packing )
-                        {
+                    public void validate() {
+                        super.validate();
+                        if (!packing) {
                             packing = true;
-                            pack ();
+                            pack();
                             packing = false;
                         }
                     }
                 };
-                rootPane.setOpaque ( true );
+                rootPane.setOpaque(true);
                 return rootPane;
             }
         }
-
+        
         final JDialog dialog;
-        final Window window = SwingUtils.getWindowAncestor ( toolbar );
-        if ( window instanceof Frame )
-        {
-            dialog = new ToolBarDialog ( ( Frame ) window, toolbar.getName (), false );
+        final Window window = SwingUtils.getWindowAncestor(toolbar);
+        if (window instanceof Frame) {
+            dialog = new ToolBarDialog((Frame) window, toolbar.getName(), false);
+        } else if (window instanceof Dialog) {
+            dialog = new ToolBarDialog((Dialog) window, toolbar.getName(),
+                    false);
+        } else {
+            dialog = new ToolBarDialog((Frame) null, toolbar.getName(), false);
         }
-        else if ( window instanceof Dialog )
-        {
-            dialog = new ToolBarDialog ( ( Dialog ) window, toolbar.getName (), false );
-        }
-        else
-        {
-            dialog = new ToolBarDialog ( ( Frame ) null, toolbar.getName (), false );
-        }
-
-        dialog.getRootPane ().setName ( "ToolBar.FloatingWindow" );
-        dialog.setTitle ( toolbar.getName () );
-        dialog.setResizable ( false );
-        final WindowListener wl = createFrameListener ();
-        dialog.addWindowListener ( wl );
-        //        dialog.setUndecorated ( true );
+        
+        dialog.getRootPane().setName("ToolBar.FloatingWindow");
+        dialog.setTitle(toolbar.getName());
+        dialog.setResizable(false);
+        final WindowListener wl = createFrameListener();
+        dialog.addWindowListener(wl);
+        // dialog.setUndecorated ( true );
         return dialog;
     }
-
+    
     @Override
-    protected DragWindow createDragWindow ( final JToolBar toolbar )
-    {
-        final DragWindow dragWindow = super.createDragWindow ( toolbar );
-        ProprietaryUtils.setWindowOpacity ( dragWindow, 0.5f );
+    protected DragWindow createDragWindow(final JToolBar toolbar) {
+        final DragWindow dragWindow = super.createDragWindow(toolbar);
+        ProprietaryUtils.setWindowOpacity(dragWindow, 0.5f);
         return dragWindow;
     }
-
+    
     @Override
-    protected void installRolloverBorders ( final JComponent c )
-    {
+    protected void installRolloverBorders(final JComponent c) {
         // Do not touch any elements here as it will break WebLaF borders
     }
-
+    
     @Override
-    protected void installNonRolloverBorders ( final JComponent c )
-    {
+    protected void installNonRolloverBorders(final JComponent c) {
         // Do not touch any elements here as it will break WebLaF borders
     }
-
+    
     @Override
-    protected void installNormalBorders ( final JComponent c )
-    {
+    protected void installNormalBorders(final JComponent c) {
         // Do not touch any elements here as it will break WebLaF borders
     }
-
+    
     @Override
-    protected void setBorderToRollover ( final Component c )
-    {
+    protected void setBorderToRollover(final Component c) {
         // Do not touch any elements here as it will break WebLaF borders
     }
-
+    
     @Override
-    protected void setBorderToNonRollover ( final Component c )
-    {
+    protected void setBorderToNonRollover(final Component c) {
         // Do not touch any elements here as it will break WebLaF borders
     }
-
+    
     @Override
-    protected void setBorderToNormal ( final Component c )
-    {
+    protected void setBorderToNormal(final Component c) {
         // Do not touch any elements here as it will break WebLaF borders
     }
 }

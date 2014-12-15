@@ -31,65 +31,60 @@ import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
  * @author Mikle Garin
  */
 
-public class WebGradientColorChooserSettingsProcessor extends SettingsProcessor<WebGradientColorChooser, GradientData>
-{
+public class WebGradientColorChooserSettingsProcessor extends
+        SettingsProcessor<WebGradientColorChooser, GradientData> {
     /**
      * Gradient change listener.
      */
     private ChangeListener changeListener;
-
+    
     /**
      * Constructs SettingsProcessor using the specified SettingsProcessorData.
      *
-     * @param data SettingsProcessorData
+     * @param data
+     *            SettingsProcessorData
      */
-    public WebGradientColorChooserSettingsProcessor ( final SettingsProcessorData data )
-    {
-        super ( data );
+    public WebGradientColorChooserSettingsProcessor(
+            final SettingsProcessorData data) {
+        super(data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doInit ( final WebGradientColorChooser gradientColorChooser )
-    {
-        changeListener = new ChangeListener ()
-        {
+    protected void doInit(final WebGradientColorChooser gradientColorChooser) {
+        changeListener = new ChangeListener() {
             @Override
-            public void stateChanged ( final ChangeEvent e )
-            {
-                save ();
+            public void stateChanged(final ChangeEvent e) {
+                save();
             }
         };
-        gradientColorChooser.addChangeListener ( changeListener );
+        gradientColorChooser.addChangeListener(changeListener);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doDestroy ( final WebGradientColorChooser gradientColorChooser )
-    {
-        gradientColorChooser.removeChangeListener ( changeListener );
+    protected void doDestroy(final WebGradientColorChooser gradientColorChooser) {
+        gradientColorChooser.removeChangeListener(changeListener);
         changeListener = null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doLoad ( final WebGradientColorChooser gradientColorChooser )
-    {
-        gradientColorChooser.setGradientData ( loadValue () );
+    protected void doLoad(final WebGradientColorChooser gradientColorChooser) {
+        gradientColorChooser.setGradientData(loadValue());
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doSave ( final WebGradientColorChooser gradientColorChooser )
-    {
-        saveValue ( gradientColorChooser.getGradientData () );
+    protected void doSave(final WebGradientColorChooser gradientColorChooser) {
+        saveValue(gradientColorChooser.getGradientData());
     }
 }

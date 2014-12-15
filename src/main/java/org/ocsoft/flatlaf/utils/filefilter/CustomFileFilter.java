@@ -25,66 +25,64 @@ import javax.swing.*;
  * @author Mikle Garin
  */
 
-public abstract class CustomFileFilter extends AbstractFileFilter
-{
+public abstract class CustomFileFilter extends AbstractFileFilter {
     /**
      * File filter icon.
      */
     protected ImageIcon icon;
-
+    
     /**
      * File filter description.
      */
     protected String description;
-
+    
     /**
      * Constructs new custom file filter.
      *
-     * @param icon        file filter icon
-     * @param description file filter description
+     * @param icon
+     *            file filter icon
+     * @param description
+     *            file filter description
      */
-    public CustomFileFilter ( final ImageIcon icon, final String description )
-    {
-        super ();
+    public CustomFileFilter(final ImageIcon icon, final String description) {
+        super();
         this.icon = icon;
         this.description = description;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public ImageIcon getIcon ()
-    {
+    public ImageIcon getIcon() {
         return icon;
     }
-
+    
     /**
      * Sets file filter icon.
      *
-     * @param icon new file filter icon
+     * @param icon
+     *            new file filter icon
      */
-    public void setIcon ( final ImageIcon icon )
-    {
+    public void setIcon(final ImageIcon icon) {
         this.icon = icon;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getDescription ()
-    {
+    public String getDescription() {
         return description;
     }
-
+    
     /**
      * Sets short file filter description.
      *
-     * @param description new short file filter description
+     * @param description
+     *            new short file filter description
      */
-    public void setDescription ( final String description )
-    {
+    public void setDescription(final String description) {
         this.description = description;
     }
 }

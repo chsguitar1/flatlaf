@@ -37,147 +37,128 @@ import java.awt.geom.Line2D;
  * User: mgarin Date: 15.08.11 Time: 20:24
  */
 
-public class WebMenuBarUI extends BasicMenuBarUI implements ShapeProvider, BorderMethods
-{
+public class WebMenuBarUI extends BasicMenuBarUI implements ShapeProvider,
+        BorderMethods {
     private boolean undecorated = WebMenuBarStyle.undecorated;
     private int round = WebMenuBarStyle.round;
     private int shadeWidth = WebMenuBarStyle.shadeWidth;
     private MenuBarStyle menuBarStyle = WebMenuBarStyle.menuBarStyle;
     private Color borderColor = WebMenuBarStyle.borderColor;
-
-    @SuppressWarnings ("UnusedParameters")
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebMenuBarUI ();
+    
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebMenuBarUI();
     }
-
+    
     @Override
-    public void installUI ( final JComponent c )
-    {
-        super.installUI ( c );
-
+    public void installUI(final JComponent c) {
+        super.installUI(c);
+        
         // Default settings
-        SwingUtils.setOrientation ( menuBar );
-        LookAndFeel.installProperty ( menuBar, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
-        menuBar.setLayout ( new ToolbarLayout ( 0 ) );
-
+        SwingUtils.setOrientation(menuBar);
+        LookAndFeel.installProperty(menuBar, FlatLookAndFeel.OPAQUE_PROPERTY,
+                Boolean.FALSE);
+        menuBar.setLayout(new ToolbarLayout(0));
+        
         // Updating border
-        updateBorder ();
+        updateBorder();
     }
-
+    
     @Override
-    public Shape provideShape ()
-    {
-        return LafUtils.getWebBorderShape ( menuBar, getShadeWidth (), getRound () );
+    public Shape provideShape() {
+        return LafUtils.getWebBorderShape(menuBar, getShadeWidth(), getRound());
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void updateBorder ()
-    {
+    public void updateBorder() {
         // Preserve old borders
-        if ( SwingUtils.isPreserveBorders ( menuBar ) )
-        {
+        if (SwingUtils.isPreserveBorders(menuBar)) {
             return;
         }
-
+        
         final Insets insets;
-        if ( !undecorated )
-        {
-            if ( menuBarStyle.equals ( MenuBarStyle.attached ) )
-            {
-                insets = new Insets ( 0, 0, 1 + shadeWidth, 0 );
+        if (!undecorated) {
+            if (menuBarStyle.equals(MenuBarStyle.attached)) {
+                insets = new Insets(0, 0, 1 + shadeWidth, 0);
+            } else {
+                insets = new Insets(1 + shadeWidth, 1 + shadeWidth,
+                        1 + shadeWidth, 1 + shadeWidth);
             }
-            else
-            {
-                insets = new Insets ( 1 + shadeWidth, 1 + shadeWidth, 1 + shadeWidth, 1 + shadeWidth );
-            }
+        } else {
+            insets = new Insets(0, 0, 0, 0);
         }
-        else
-        {
-            insets = new Insets ( 0, 0, 0, 0 );
-        }
-        menuBar.setBorder ( LafUtils.createWebBorder ( insets ) );
+        menuBar.setBorder(LafUtils.createWebBorder(insets));
     }
-
-    public boolean isUndecorated ()
-    {
+    
+    public boolean isUndecorated() {
         return undecorated;
     }
-
-    public void setUndecorated ( final boolean undecorated )
-    {
+    
+    public void setUndecorated(final boolean undecorated) {
         this.undecorated = undecorated;
-        updateBorder ();
+        updateBorder();
     }
-
-    public MenuBarStyle getMenuBarStyle ()
-    {
+    
+    public MenuBarStyle getMenuBarStyle() {
         return menuBarStyle;
     }
-
-    public void setMenuBarStyle ( final MenuBarStyle menuBarStyle )
-    {
+    
+    public void setMenuBarStyle(final MenuBarStyle menuBarStyle) {
         this.menuBarStyle = menuBarStyle;
-        updateBorder ();
+        updateBorder();
     }
-
-    public Color getBorderColor ()
-    {
+    
+    public Color getBorderColor() {
         return borderColor;
     }
-
-    public void setBorderColor ( final Color borderColor )
-    {
+    
+    public void setBorderColor(final Color borderColor) {
         this.borderColor = borderColor;
     }
-
-    public int getRound ()
-    {
+    
+    public int getRound() {
         return round;
     }
-
-    public void setRound ( final int round )
-    {
+    
+    public void setRound(final int round) {
         this.round = round;
     }
-
-    public int getShadeWidth ()
-    {
+    
+    public int getShadeWidth() {
         return shadeWidth;
     }
-
-    public void setShadeWidth ( final int shadeWidth )
-    {
+    
+    public void setShadeWidth(final int shadeWidth) {
         this.shadeWidth = shadeWidth;
-        updateBorder ();
+        updateBorder();
     }
-
+    
     @Override
-    public void paint ( final Graphics g, final JComponent c )
-    {
-        if ( !undecorated )
-        {
-            final Graphics2D g2d = ( Graphics2D ) g;
-
-            if ( menuBarStyle == MenuBarStyle.attached )
-            {
-                final Shape border =
-                        new Line2D.Double ( 0, c.getHeight () - 1 - shadeWidth, c.getWidth () - 1, c.getHeight () - 1 - shadeWidth );
-
-                GraphicsUtils.drawShade ( g2d, border, FlatLafStyleConstants.shadeColor, shadeWidth );
-
-                g2d.setPaint ( new GradientPaint ( 0, 0, FlatLafStyleConstants.topBgColor, 0, c.getHeight (), new Color ( 235, 235, 235 ) ) );
-                g2d.fillRect ( 0, 0, c.getWidth (), c.getHeight () - shadeWidth );
-
-                g2d.setPaint ( borderColor );
-                g2d.draw ( border );
-            }
-            else
-            {
-                LafUtils.drawWebStyle ( g2d, c, FlatLafStyleConstants.shadeColor, shadeWidth, round, true, true, borderColor );
+    public void paint(final Graphics g, final JComponent c) {
+        if (!undecorated) {
+            final Graphics2D g2d = (Graphics2D) g;
+            
+            if (menuBarStyle == MenuBarStyle.attached) {
+                final Shape border = new Line2D.Double(0, c.getHeight() - 1
+                        - shadeWidth, c.getWidth() - 1, c.getHeight() - 1
+                        - shadeWidth);
+                
+                GraphicsUtils.drawShade(g2d, border,
+                        FlatLafStyleConstants.shadeColor, shadeWidth);
+                
+                g2d.setPaint(new GradientPaint(0, 0,
+                        FlatLafStyleConstants.topBgColor, 0, c.getHeight(),
+                        new Color(235, 235, 235)));
+                g2d.fillRect(0, 0, c.getWidth(), c.getHeight() - shadeWidth);
+                
+                g2d.setPaint(borderColor);
+                g2d.draw(border);
+            } else {
+                LafUtils.drawWebStyle(g2d, c, FlatLafStyleConstants.shadeColor,
+                        shadeWidth, round, true, true, borderColor);
             }
         }
     }

@@ -21,10 +21,8 @@ package org.ocsoft.flatlaf.extended.transition;
  * User: mgarin Date: 09.11.12 Time: 13:57
  */
 
-public class MultiComponentTransition extends ComponentTransition
-{
-    public MultiComponentTransition ()
-    {
-        super ();
+public class MultiComponentTransition extends ComponentTransition {
+    public MultiComponentTransition() {
+        super();
     }
 }

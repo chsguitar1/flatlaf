@@ -25,32 +25,29 @@ import java.util.List;
  * @author Mikle Garin
  */
 
-public abstract class AsyncTreeModelAdapter<E extends AsyncUniqueNode> implements AsyncTreeModelListener<E>
-{
+public abstract class AsyncTreeModelAdapter<E extends AsyncUniqueNode>
+        implements AsyncTreeModelListener<E> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void childsLoadStarted ( final E parent )
-    {
+    public void childsLoadStarted(final E parent) {
         // Do nothing by default
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void childsLoadCompleted ( final E parent, final List<E> childs )
-    {
+    public void childsLoadCompleted(final E parent, final List<E> childs) {
         // Do nothing by default
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void childsLoadFailed ( final E parent, final Throwable cause )
-    {
+    public void childsLoadFailed(final E parent, final Throwable cause) {
         // Do nothing by default
     }
 }

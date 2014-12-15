@@ -28,61 +28,59 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class WebToolBarStyle
-{
+public final class WebToolBarStyle {
     /**
      * Top toolbar background color.
      */
     public static Color topBgColor = Color.WHITE;
-
+    
     /**
      * Bottom toolbar background color.
      */
-    public static Color bottomBgColor = new Color ( 229, 233, 238 );
-
+    public static Color bottomBgColor = new Color(229, 233, 238);
+    
     /**
      * Toolbar border color.
      */
-    public static Color borderColor = new Color ( 139, 144, 151 );
-
+    public static Color borderColor = new Color(139, 144, 151);
+    
     /**
      * Toolbar disabled border color.
      */
     public static Color disabledBorderColor = FlatLafStyleConstants.disabledBorderColor;
-
+    
     /**
      * Whether should decorate toolbar with web-styled background or not.
      */
     public static boolean undecorated = false;
-
+    
     /**
      * Toolbar corners rounding.
      */
     public static int round = FlatLafStyleConstants.largeRound;
-
+    
     /**
      * Toolbar shade width.
      */
     public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
-
+    
     /**
      * Toolbar margin.
      */
-    public static Insets margin = new Insets ( 1, 1, 1, 1 );
-
+    public static Insets margin = new Insets(1, 1, 1, 1);
+    
     /**
      * Spacing between toolbar components.
      */
     public static int spacing = FlatLafStyleConstants.spacing;
-
+    
     /**
      * Toolbar style.
      */
     public static ToolbarStyle toolbarStyle = ToolbarStyle.standalone;
-
+    
     /**
-     * Toolbar painter.
-     * If set it will override WebLaF styling.
+     * Toolbar painter. If set it will override WebLaF styling.
      */
     public static Painter painter = null;
 }

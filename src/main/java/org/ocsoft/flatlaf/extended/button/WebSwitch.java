@@ -38,335 +38,319 @@ import org.ocsoft.flatlaf.utils.swing.WebTimer;
  * @author Mikle Garin
  */
 
-public class WebSwitch extends WebPanel
-{
+public class WebSwitch extends WebPanel {
     /**
      * Switch action listeners.
      */
-    private final List<ActionListener> actionListeners = new ArrayList<ActionListener> ( 1 );
-
+    private final List<ActionListener> actionListeners = new ArrayList<ActionListener>(
+            1);
+    
     /**
      * Style settings.
      */
     private boolean animate = WebSwitchStyle.animate;
-
+    
     /**
      * Runtime variables.
      */
     private boolean selected = false;
     private boolean animating = false;
     private WebTimer animator;
-
+    
     /**
      * UI elements.
      */
     private final WebSwitchGripper gripper;
     private WebLabel leftComponent;
     private WebLabel rightComponent;
-
+    
     /**
      * Constructs a deselected switch.
      */
-    public WebSwitch ()
-    {
-        this ( false );
+    public WebSwitch() {
+        this(false);
     }
-
+    
     /**
      * Cstructs either selected or deselected switch.
      *
-     * @param selected whether switch is selected or not
+     * @param selected
+     *            whether switch is selected or not
      */
-    public WebSwitch ( final boolean selected )
-    {
-        super ( true, new WebSwitchLayout () );
-
+    public WebSwitch(final boolean selected) {
+        super(true, new WebSwitchLayout());
+        
         // Switch syling
-        putClientProperty ( SwingUtils.HANDLES_ENABLE_STATE, true );
-        setRound ( WebSwitchStyle.round );
-        setPaintFocus ( true );
-        setFocusable ( true );
-
+        putClientProperty(SwingUtils.HANDLES_ENABLE_STATE, true);
+        setRound(WebSwitchStyle.round);
+        setPaintFocus(true);
+        setFocusable(true);
+        
         // Switch gripper
-        gripper = new WebSwitchGripper ();
-        add ( gripper, WebSwitchLayout.GRIPPER );
-
+        gripper = new WebSwitchGripper();
+        add(gripper, WebSwitchLayout.GRIPPER);
+        
         // Left switch label
-        leftComponent = new WebLabel ( "ON", WebLabel.CENTER );
-        leftComponent.setBoldFont ();
-        leftComponent.setMargin ( 2, 5, 2, 5 );
-        leftComponent.setDrawShade ( true );
-        leftComponent.setForeground ( Color.DARK_GRAY );
-        add ( leftComponent, WebSwitchLayout.LEFT );
-
+        leftComponent = new WebLabel("ON", WebLabel.CENTER);
+        leftComponent.setBoldFont();
+        leftComponent.setMargin(2, 5, 2, 5);
+        leftComponent.setDrawShade(true);
+        leftComponent.setForeground(Color.DARK_GRAY);
+        add(leftComponent, WebSwitchLayout.LEFT);
+        
         // Right switch label
-        rightComponent = new WebLabel ( "OFF", WebLabel.CENTER );
-        rightComponent.setBoldFont ();
-        rightComponent.setMargin ( 2, 5, 2, 5 );
-        rightComponent.setDrawShade ( true );
-        rightComponent.setForeground ( Color.DARK_GRAY );
-        add ( rightComponent, WebSwitchLayout.RIGHT );
-
+        rightComponent = new WebLabel("OFF", WebLabel.CENTER);
+        rightComponent.setBoldFont();
+        rightComponent.setMargin(2, 5, 2, 5);
+        rightComponent.setDrawShade(true);
+        rightComponent.setForeground(Color.DARK_GRAY);
+        add(rightComponent, WebSwitchLayout.RIGHT);
+        
         // Switch animator
-        createAnimator ();
-
+        createAnimator();
+        
         // Selection switch listener
-        final MouseAdapter mouseAdapter = new MouseAdapter ()
-        {
+        final MouseAdapter mouseAdapter = new MouseAdapter() {
             @Override
-            public void mousePressed ( final MouseEvent e )
-            {
-                if ( SwingUtils.isLeftMouseButton ( e ) && isEnabled () )
-                {
-                    requestFocusInWindow ();
-                    setSelected ( !isSelected () );
+            public void mousePressed(final MouseEvent e) {
+                if (SwingUtils.isLeftMouseButton(e) && isEnabled()) {
+                    requestFocusInWindow();
+                    setSelected(!isSelected());
                 }
             }
         };
-        gripper.addMouseListener ( mouseAdapter );
-        addMouseListener ( mouseAdapter );
-
+        gripper.addMouseListener(mouseAdapter);
+        addMouseListener(mouseAdapter);
+        
         // Initial selection
-        setSelected ( selected, false );
+        setSelected(selected, false);
     }
-
+    
     /**
      * Initializes switch animator.
      */
-    private void createAnimator ()
-    {
-        animator = new WebTimer ( "WebSwitch.animator", FlatLafStyleConstants.maxAnimationDelay, new ActionListener ()
-        {
-            @Override
-            public void actionPerformed ( final ActionEvent e )
-            {
-                // Updating gripper location
-                final WebSwitchLayout switchLayout = getSwitchLayout ();
-                switchLayout.setGripperLocation ( switchLayout.getGripperLocation () + ( selected ? 0.1f : -0.1f ) );
-
-                // Checking what to do
-                if ( selected && switchLayout.getGripperLocation () >= 1f || !selected && switchLayout.getGripperLocation () <= 0f )
-                {
-                    // Updating final gripper and view
-                    switchLayout.setGripperLocation ( selected ? 1f : 0f );
-                    revalidate ();
-
-                    // Finishing animation
-                    animating = false;
-                    animator.stop ();
-                }
-                else
-                {
-                    // Updating view
-                    revalidate ();
-                }
-            }
-        } );
+    private void createAnimator() {
+        animator = new WebTimer("WebSwitch.animator",
+                FlatLafStyleConstants.maxAnimationDelay, new ActionListener() {
+                    @Override
+                    public void actionPerformed(final ActionEvent e) {
+                        // Updating gripper location
+                        final WebSwitchLayout switchLayout = getSwitchLayout();
+                        switchLayout.setGripperLocation(switchLayout
+                                .getGripperLocation()
+                                + (selected ? 0.1f : -0.1f));
+                        
+                        // Checking what to do
+                        if (selected && switchLayout.getGripperLocation() >= 1f
+                                || !selected
+                                && switchLayout.getGripperLocation() <= 0f) {
+                            // Updating final gripper and view
+                            switchLayout.setGripperLocation(selected ? 1f : 0f);
+                            revalidate();
+                            
+                            // Finishing animation
+                            animating = false;
+                            animator.stop();
+                        } else {
+                            // Updating view
+                            revalidate();
+                        }
+                    }
+                });
     }
-
+    
     /**
      * Starts animation.
      */
-    private void startAnimation ()
-    {
-        if ( !animating )
-        {
+    private void startAnimation() {
+        if (!animating) {
             animating = true;
-            animator.start ();
+            animator.start();
         }
     }
-
+    
     /**
      * Returns actual switch layout.
      *
      * @return actual switch layout
      */
-    public WebSwitchLayout getSwitchLayout ()
-    {
-        return ( WebSwitchLayout ) getLayout ();
+    public WebSwitchLayout getSwitchLayout() {
+        return (WebSwitchLayout) getLayout();
     }
-
+    
     /**
      * Returns switch gripper.
      *
      * @return switch gripper
      */
-    public WebSwitchGripper getGripper ()
-    {
+    public WebSwitchGripper getGripper() {
         return gripper;
     }
-
+    
     /**
      * Returns left switch component.
      *
      * @return left switch component
      */
-    public WebLabel getLeftComponent ()
-    {
+    public WebLabel getLeftComponent() {
         return leftComponent;
     }
-
+    
     /**
      * Sets new left switch component.
      *
-     * @param leftComponent new left switch component
+     * @param leftComponent
+     *            new left switch component
      */
-    public void setLeftComponent ( final WebLabel leftComponent )
-    {
-        if ( this.leftComponent != null )
-        {
-            remove ( this.leftComponent );
+    public void setLeftComponent(final WebLabel leftComponent) {
+        if (this.leftComponent != null) {
+            remove(this.leftComponent);
         }
         this.leftComponent = leftComponent;
-        add ( leftComponent, WebSwitchLayout.LEFT );
-        revalidate ();
+        add(leftComponent, WebSwitchLayout.LEFT);
+        revalidate();
     }
-
+    
     /**
      * Returns right switch component.
      *
      * @return right switch component
      */
-    public WebLabel getRightComponent ()
-    {
+    public WebLabel getRightComponent() {
         return rightComponent;
     }
-
+    
     /**
      * Sets new right switch component.
      *
-     * @param rightComponent new right switch component
+     * @param rightComponent
+     *            new right switch component
      */
-    public void setRightComponent ( final WebLabel rightComponent )
-    {
-        if ( this.rightComponent != null )
-        {
-            remove ( this.rightComponent );
+    public void setRightComponent(final WebLabel rightComponent) {
+        if (this.rightComponent != null) {
+            remove(this.rightComponent);
         }
         this.rightComponent = rightComponent;
-        add ( rightComponent, WebSwitchLayout.RIGHT );
-        revalidate ();
+        add(rightComponent, WebSwitchLayout.RIGHT);
+        revalidate();
     }
-
+    
     /**
      * Sets whether switch is enabled or not.
      *
-     * @param enabled whether switch is enabled or not
+     * @param enabled
+     *            whether switch is enabled or not
      */
     @Override
-    public void setEnabled ( final boolean enabled )
-    {
-        super.setEnabled ( enabled );
-        gripper.setEnabled ( enabled );
-        leftComponent.setEnabled ( enabled );
-        rightComponent.setEnabled ( enabled );
+    public void setEnabled(final boolean enabled) {
+        super.setEnabled(enabled);
+        gripper.setEnabled(enabled);
+        leftComponent.setEnabled(enabled);
+        rightComponent.setEnabled(enabled);
     }
-
+    
     /**
      * Sets switch corners rounding.
      *
-     * @param round switch corners rounding
+     * @param round
+     *            switch corners rounding
      */
     @Override
-    public WebPanel setRound ( final int round )
-    {
-        if ( gripper != null )
-        {
-            gripper.setRound ( Math.max ( round - 3, 0 ) );
+    public WebPanel setRound(final int round) {
+        if (gripper != null) {
+            gripper.setRound(Math.max(round - 3, 0));
         }
-        return super.setRound ( round );
+        return super.setRound(round);
     }
-
+    
     /**
      * Returns whether switch is selected or not.
      *
      * @return true if switch is selected, false otherwise
      */
-    public boolean isSelected ()
-    {
+    public boolean isSelected() {
         return selected;
     }
-
+    
     /**
      * Sets whether switch is selected or not.
      *
-     * @param selected whether switch is selected or not
+     * @param selected
+     *            whether switch is selected or not
      */
-    public void setSelected ( final boolean selected )
-    {
-        setSelected ( selected, animate );
+    public void setSelected(final boolean selected) {
+        setSelected(selected, animate);
     }
-
+    
     /**
-     * Sets whether switch is selected or not and animates the transition if requested.
+     * Sets whether switch is selected or not and animates the transition if
+     * requested.
      *
-     * @param selected whether switch is selected or not
-     * @param animate  whether switch should animate the transition or not
+     * @param selected
+     *            whether switch is selected or not
+     * @param animate
+     *            whether switch should animate the transition or not
      */
-    public void setSelected ( final boolean selected, final boolean animate )
-    {
+    public void setSelected(final boolean selected, final boolean animate) {
         this.selected = selected;
-        if ( animate )
-        {
-            startAnimation ();
+        if (animate) {
+            startAnimation();
+        } else {
+            getSwitchLayout().setGripperLocation(selected ? 1f : 0f);
+            revalidate();
         }
-        else
-        {
-            getSwitchLayout ().setGripperLocation ( selected ? 1f : 0f );
-            revalidate ();
-        }
-        fireActionPerformed ();
+        fireActionPerformed();
     }
-
+    
     /**
      * Returns whether switch should animate all transition by default or not.
      *
-     * @return true if switch should animate all transition by default, false otherwise
+     * @return true if switch should animate all transition by default, false
+     *         otherwise
      */
-    public boolean isAnimate ()
-    {
+    public boolean isAnimate() {
         return animate;
     }
-
+    
     /**
      * Sets whether switch should animate all transition by default or not.
      *
-     * @param animate whether switch should animate all transition by default or not
+     * @param animate
+     *            whether switch should animate all transition by default or not
      */
-    public void setAnimate ( final boolean animate )
-    {
+    public void setAnimate(final boolean animate) {
         this.animate = animate;
     }
-
+    
     /**
      * Adds new switch action listener.
      *
-     * @param actionListener switch action listener
+     * @param actionListener
+     *            switch action listener
      */
-    public void addActionListener ( final ActionListener actionListener )
-    {
-        actionListeners.add ( actionListener );
+    public void addActionListener(final ActionListener actionListener) {
+        actionListeners.add(actionListener);
     }
-
+    
     /**
      * Removes switch action listener.
      *
-     * @param actionListener switch action listener
+     * @param actionListener
+     *            switch action listener
      */
-    public void removeActionListener ( final ActionListener actionListener )
-    {
-        actionListeners.remove ( actionListener );
+    public void removeActionListener(final ActionListener actionListener) {
+        actionListeners.remove(actionListener);
     }
-
+    
     /**
      * Fires that switch action is performed.
      */
-    private void fireActionPerformed ()
-    {
-        final ActionEvent actionEvent = new ActionEvent ( WebSwitch.this, 0, "Selection changed" );
-        for ( final ActionListener actionListener : CollectionUtils.copy ( actionListeners ) )
-        {
-            actionListener.actionPerformed ( actionEvent );
+    private void fireActionPerformed() {
+        final ActionEvent actionEvent = new ActionEvent(WebSwitch.this, 0,
+                "Selection changed");
+        for (final ActionListener actionListener : CollectionUtils
+                .copy(actionListeners)) {
+            actionListener.actionPerformed(actionEvent);
         }
     }
 }

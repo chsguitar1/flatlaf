@@ -20,43 +20,48 @@ package org.ocsoft.flatlaf.extended.window;
 import org.ocsoft.flatlaf.utils.swing.SwingMethods;
 
 /**
- * This interface provides a set of methods that should be added into popover that supports custom WebLaF events.
- * Basically all these methods are already implemented in EventUtils but it is much easier to call them directly from popover.
+ * This interface provides a set of methods that should be added into popover
+ * that supports custom WebLaF events. Basically all these methods are already
+ * implemented in EventUtils but it is much easier to call them directly from
+ * popover.
  *
  * @author Mikle Garin
  */
 
-public interface PopOverEventMethods extends SwingMethods
-{
+public interface PopOverEventMethods extends SwingMethods {
     /**
      * Shortcut method for popover open event.
      *
-     * @param runnable popover event runnable
+     * @param runnable
+     *            popover event runnable
      * @return used popover adapter
      */
-    public PopOverAdapter onOpen ( final PopOverEventRunnable runnable );
-
+    public PopOverAdapter onOpen(final PopOverEventRunnable runnable);
+    
     /**
      * Shortcut method for popover reopen event.
      *
-     * @param runnable popover event runnable
+     * @param runnable
+     *            popover event runnable
      * @return used popover adapter
      */
-    public PopOverAdapter onReopen ( final PopOverEventRunnable runnable );
-
+    public PopOverAdapter onReopen(final PopOverEventRunnable runnable);
+    
     /**
      * Shortcut method for popover detach event.
      *
-     * @param runnable popover event runnable
+     * @param runnable
+     *            popover event runnable
      * @return used popover adapter
      */
-    public PopOverAdapter onDetach ( final PopOverEventRunnable runnable );
-
+    public PopOverAdapter onDetach(final PopOverEventRunnable runnable);
+    
     /**
      * Shortcut method for popover close event.
      *
-     * @param runnable popover event runnable
+     * @param runnable
+     *            popover event runnable
      * @return used popover adapter
      */
-    public PopOverAdapter onClose ( final PopOverEventRunnable runnable );
+    public PopOverAdapter onClose(final PopOverEventRunnable runnable);
 }

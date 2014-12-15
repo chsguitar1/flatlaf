@@ -30,66 +30,57 @@ import org.ocsoft.flatlaf.utils.FileUtils;
  * @author Mikle Garin
  */
 
-public class WebFileTreeCellEditor extends WebTreeCellEditor<WebTextField>
-{
+public class WebFileTreeCellEditor extends WebTreeCellEditor<WebTextField> {
     /**
      * Constructs new file tree cell editor.
      */
-    public WebFileTreeCellEditor ()
-    {
-        super ();
+    public WebFileTreeCellEditor() {
+        super();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void initialize ( final WebTextField editor )
-    {
+    protected void initialize(final WebTextField editor) {
         this.editorComponent = editor;
         this.clickCountToStart = 3;
         this.autoUpdateLeadingIcon = false;
-        this.delegate = new FileNameEditorDelegate ();
-        editor.addActionListener ( delegate );
+        this.delegate = new FileNameEditorDelegate();
+        editor.addActionListener(delegate);
     }
-
+    
     /**
      * Custom editor delegate for WebFileTableCellEditor.
      */
-    protected class FileNameEditorDelegate extends EditorDelegate<FileTreeNode>
-    {
+    protected class FileNameEditorDelegate extends EditorDelegate<FileTreeNode> {
         /**
          * {@inheritDoc}
          */
         @Override
-        public void setValue ( final FileTreeNode value )
-        {
-            final File file = value.getFile ();
-            editorComponent.setLeadingComponent ( new WebImage ( FileUtils.getFileIcon ( file ) ) );
-            FileUtils.displayFileName ( editorComponent, file );
-            super.setValue ( value );
+        public void setValue(final FileTreeNode value) {
+            final File file = value.getFile();
+            editorComponent.setLeadingComponent(new WebImage(FileUtils
+                    .getFileIcon(file)));
+            FileUtils.displayFileName(editorComponent, file);
+            super.setValue(value);
         }
-
+        
         /**
          * {@inheritDoc}
          */
         @Override
-        public boolean stopCellEditing ()
-        {
-            final File file = value.getFile ();
-            final String newName = editorComponent.getText ();
-            if ( !newName.equals ( file.getName () ) )
-            {
-                final File renamed = new File ( file.getParent (), newName );
-                if ( file.renameTo ( renamed ) )
-                {
-                    value.setFile ( renamed );
+        public boolean stopCellEditing() {
+            final File file = value.getFile();
+            final String newName = editorComponent.getText();
+            if (!newName.equals(file.getName())) {
+                final File renamed = new File(file.getParent(), newName);
+                if (file.renameTo(renamed)) {
+                    value.setFile(renamed);
                 }
-                return super.stopCellEditing ();
-            }
-            else
-            {
-                super.cancelCellEditing ();
+                return super.stopCellEditing();
+            } else {
+                super.cancelCellEditing();
                 return true;
             }
         }

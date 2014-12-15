@@ -18,18 +18,21 @@
 package org.ocsoft.flatlaf.managers.settings;
 
 /**
- * This interface notifies that any implementing class is going to provide public static getDefaultValue method that will give you the
- * default class instance when called. This method is used by SettingsManager when settings "get" methods called without default value.
+ * This interface notifies that any implementing class is going to provide
+ * public static getDefaultValue method that will give you the default class
+ * instance when called. This method is used by SettingsManager when settings
+ * "get" methods called without default value.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How to use SettingsManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How
+ *      to use SettingsManager</a>
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  */
 
-public interface DefaultValue
-{
+public interface DefaultValue {
     /**
-     * Define similar method in implementing class to provide its default value for other classes usage:
-     * {@code public static T getDefaultValue ();}
+     * Define similar method in implementing class to provide its default value
+     * for other classes usage: {@code public static T getDefaultValue ();}
      */
 }

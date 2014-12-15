@@ -30,41 +30,46 @@ import java.awt.image.BufferedImage;
  * @see org.ocsoft.flatlaf.managers.drag.DragManager
  */
 
-public interface DragViewHandler<T>
-{
+public interface DragViewHandler<T> {
     /**
      * Returns object flavor that can be used to retrieve dragged object.
      *
      * @return object flavor that can be used to retrieve dragged object
      */
-    public DataFlavor getObjectFlavor ();
-
+    public DataFlavor getObjectFlavor();
+    
     /**
-     * Returns image object representation.
-     * This method is called once per drag operation to initialize dragged object view.
+     * Returns image object representation. This method is called once per drag
+     * operation to initialize dragged object view.
      *
-     * @param object object to create image representation for
-     * @param event  drag source drag event
+     * @param object
+     *            object to create image representation for
+     * @param event
+     *            drag source drag event
      * @return image object representation
      */
-    public BufferedImage getView ( T object, DragSourceDragEvent event );
-
+    public BufferedImage getView(T object, DragSourceDragEvent event);
+    
     /**
      * Returns image object representation location relative to mouse location.
      * This method is called each time image location should be updated.
      *
-     * @param object object return image representation location for
-     * @param event  drag source drag event
+     * @param object
+     *            object return image representation location for
+     * @param event
+     *            drag source drag event
      * @return image object representation location relative to mouse location
      */
-    public Point getViewRelativeLocation ( T object, DragSourceDragEvent event );
-
+    public Point getViewRelativeLocation(T object, DragSourceDragEvent event);
+    
     /**
-     * Notifies about drag operation end.
-     * This method is called once per drag operation.
+     * Notifies about drag operation end. This method is called once per drag
+     * operation.
      *
-     * @param object dragged object
-     * @param event  drag source drop event
+     * @param object
+     *            dragged object
+     * @param event
+     *            drag source drop event
      */
-    public void dragEnded ( T object, DragSourceDropEvent event );
+    public void dragEnded(T object, DragSourceDropEvent event);
 }

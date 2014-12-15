@@ -23,19 +23,22 @@ import org.ocsoft.flatlaf.utils.general.Pair;
 import org.ocsoft.flatlaf.utils.swing.SwingMethods;
 
 /**
- * This interface provides a set of methods that should be added into text components that supports custom WebLaF events.
- * Basically all these methods are already implemented in EventUtils but it is much easier to call them directly from text component.
+ * This interface provides a set of methods that should be added into text
+ * components that supports custom WebLaF events. Basically all these methods
+ * are already implemented in EventUtils but it is much easier to call them
+ * directly from text component.
  *
  * @author Mikle Garin
  */
 
-public interface DocumentEventMethods extends SwingMethods
-{
+public interface DocumentEventMethods extends SwingMethods {
     /**
      * Shortcut method for document change event.
      *
-     * @param runnable document event runnable
+     * @param runnable
+     *            document event runnable
      * @return used document change and property change listeners
      */
-    public Pair<DocumentChangeListener, PropertyChangeListener> onChange ( final DocumentEventRunnable runnable );
+    public Pair<DocumentChangeListener, PropertyChangeListener> onChange(
+            final DocumentEventRunnable runnable);
 }

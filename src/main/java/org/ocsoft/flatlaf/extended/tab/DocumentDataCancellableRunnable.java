@@ -23,16 +23,18 @@ package org.ocsoft.flatlaf.extended.tab;
  * @author Mikle Garin
  */
 
-public interface DocumentDataCancellableRunnable<T extends DocumentData>
-{
+public interface DocumentDataCancellableRunnable<T extends DocumentData> {
     /**
-     * Performs action according to provided event data.
-     * Returns whether event should be cancelled or not according to performed actions.
+     * Performs action according to provided event data. Returns whether event
+     * should be cancelled or not according to performed actions.
      *
-     * @param document document
-     * @param pane     pane data
-     * @param index    document index within pane
+     * @param document
+     *            document
+     * @param pane
+     *            pane data
+     * @param index
+     *            document index within pane
      * @return true if event should be cancelled, false otherwise
      */
-    public boolean run ( T document, PaneData<T> pane, int index );
+    public boolean run(T document, PaneData<T> pane, int index);
 }

@@ -30,152 +30,159 @@ import org.ocsoft.flatlaf.managers.language.data.Record;
  * @author Mikle Garin
  */
 
-public class LanguageUtils
-{
+public class LanguageUtils {
     /**
      * Returns proper initial component text.
      *
-     * @param text text provided into component constructor
-     * @param data language data, may not be passed
+     * @param text
+     *            text provided into component constructor
+     * @param data
+     *            language data, may not be passed
      * @return proper initial component text
      */
-    public static String getInitialText ( final String text, final Object... data )
-    {
-        return LanguageManager.isCheckComponentsTextForTranslations () ?
-                LanguageManager.contains ( text ) ? LanguageManager.get ( text, data ) : text : text;
+    public static String getInitialText(final String text, final Object... data) {
+        return LanguageManager.isCheckComponentsTextForTranslations() ? LanguageManager
+                .contains(text) ? LanguageManager.get(text, data) : text : text;
     }
-
+    
     /**
      * Registers proper initial component language key.
      *
-     * @param component translated component
-     * @param text      text provided into component constructor
-     * @param data      language data, may not be passed
+     * @param component
+     *            translated component
+     * @param text
+     *            text provided into component constructor
+     * @param data
+     *            language data, may not be passed
      */
-    public static void registerInitialLanguage ( final LanguageMethods component, final String text, final Object... data )
-    {
-        if ( LanguageManager.isCheckComponentsTextForTranslations () && LanguageManager.contains ( text ) )
-        {
-            component.setLanguage ( text, data );
+    public static void registerInitialLanguage(final LanguageMethods component,
+            final String text, final Object... data) {
+        if (LanguageManager.isCheckComponentsTextForTranslations()
+                && LanguageManager.contains(text)) {
+            component.setLanguage(text, data);
         }
     }
-
+    
     /**
-     * Returns all dictionary keys.
-     * This method returns complete keys for each record, not just record keys.
+     * Returns all dictionary keys. This method returns complete keys for each
+     * record, not just record keys.
      *
-     * @param dictionary dictionary to gather keys for
+     * @param dictionary
+     *            dictionary to gather keys for
      * @return all dictionary keys
      */
-    public static List<String> gatherKeys ( final Dictionary dictionary )
-    {
-        final List<String> keys = new ArrayList<String> ();
-        gatherKeys ( dictionary.getPrefix (), dictionary, keys );
+    public static List<String> gatherKeys(final Dictionary dictionary) {
+        final List<String> keys = new ArrayList<String>();
+        gatherKeys(dictionary.getPrefix(), dictionary, keys);
         return keys;
     }
-
+    
     /**
-     * Returns all dictionary keys.
-     * This method returns complete keys for each record, not just record keys.
+     * Returns all dictionary keys. This method returns complete keys for each
+     * record, not just record keys.
      *
-     * @param prefix     key prefix
-     * @param dictionary dictionary to gather keys for
-     * @param keys       list to gather keys into
+     * @param prefix
+     *            key prefix
+     * @param dictionary
+     *            dictionary to gather keys for
+     * @param keys
+     *            list to gather keys into
      */
-    private static void gatherKeys ( String prefix, final Dictionary dictionary, final List<String> keys )
-    {
+    private static void gatherKeys(String prefix, final Dictionary dictionary,
+            final List<String> keys) {
         // Determining prefix
-        prefix = fixKeyPrefix ( prefix );
-
+        prefix = fixKeyPrefix(prefix);
+        
         // Gathering keys
-        if ( dictionary.getRecords () != null )
-        {
-            for ( final Record record : dictionary.getRecords () )
-            {
-                keys.add ( prefix + record.getKey () );
+        if (dictionary.getRecords() != null) {
+            for (final Record record : dictionary.getRecords()) {
+                keys.add(prefix + record.getKey());
             }
         }
-        if ( dictionary.getSubdictionaries () != null )
-        {
-            for ( final Dictionary subDictionary : dictionary.getSubdictionaries () )
-            {
-                gatherKeys ( combineKeyPrefix ( prefix, subDictionary ), subDictionary, keys );
+        if (dictionary.getSubdictionaries() != null) {
+            for (final Dictionary subDictionary : dictionary
+                    .getSubdictionaries()) {
+                gatherKeys(combineKeyPrefix(prefix, subDictionary),
+                        subDictionary, keys);
             }
         }
     }
-
+    
     /**
      * Merges specified dictionary with the global dictionary.
      *
-     * @param dictionary dictionary to merge
+     * @param dictionary
+     *            dictionary to merge
      */
-    public static void mergeDictionary ( final Dictionary dictionary, final Dictionary mergeInto )
-    {
-        mergeDictionary ( dictionary.getPrefix (), dictionary, mergeInto );
+    public static void mergeDictionary(final Dictionary dictionary,
+            final Dictionary mergeInto) {
+        mergeDictionary(dictionary.getPrefix(), dictionary, mergeInto);
     }
-
+    
     /**
      * Merges specified dictionary with the global dictionary.
      *
-     * @param prefix     dictionary prefix
-     * @param dictionary dictionary to merge
+     * @param prefix
+     *            dictionary prefix
+     * @param dictionary
+     *            dictionary to merge
      */
-    private static void mergeDictionary ( String prefix, final Dictionary dictionary, final Dictionary mergeInto )
-    {
+    private static void mergeDictionary(String prefix,
+            final Dictionary dictionary, final Dictionary mergeInto) {
         // Determining prefix
-        prefix = fixKeyPrefix ( prefix );
-
+        prefix = fixKeyPrefix(prefix);
+        
         // Merging current level records
-        if ( dictionary.getRecords () != null )
-        {
-            for ( final Record record : dictionary.getRecords () )
-            {
-                final Record clone = record.clone ();
-                clone.setKey ( prefix + clone.getKey () );
-                mergeInto.addRecord ( clone );
+        if (dictionary.getRecords() != null) {
+            for (final Record record : dictionary.getRecords()) {
+                final Record clone = record.clone();
+                clone.setKey(prefix + clone.getKey());
+                mergeInto.addRecord(clone);
             }
         }
-
+        
         // Merging language information data
-        if ( dictionary.getLanguageInfos () != null )
-        {
-            for ( final LanguageInfo info : dictionary.getLanguageInfos () )
-            {
-                mergeInto.addLanguageInfo ( info );
+        if (dictionary.getLanguageInfos() != null) {
+            for (final LanguageInfo info : dictionary.getLanguageInfos()) {
+                mergeInto.addLanguageInfo(info);
             }
         }
-
+        
         // Parsing subdictionaries
-        if ( dictionary.getSubdictionaries () != null )
-        {
-            for ( final Dictionary subDictionary : dictionary.getSubdictionaries () )
-            {
-                mergeDictionary ( combineKeyPrefix ( prefix, subDictionary ), subDictionary, mergeInto );
+        if (dictionary.getSubdictionaries() != null) {
+            for (final Dictionary subDictionary : dictionary
+                    .getSubdictionaries()) {
+                mergeDictionary(combineKeyPrefix(prefix, subDictionary),
+                        subDictionary, mergeInto);
             }
         }
     }
-
+    
     /**
      * Returns fixed key prefix.
      *
-     * @param prefix key prefix
+     * @param prefix
+     *            key prefix
      * @return fixed key prefix
      */
-    private static String fixKeyPrefix ( final String prefix )
-    {
-        return prefix != null && !prefix.equals ( "" ) && !prefix.endsWith ( "." ) ? prefix + "." : "";
+    private static String fixKeyPrefix(final String prefix) {
+        return prefix != null && !prefix.equals("") && !prefix.endsWith(".") ? prefix
+                + "."
+                : "";
     }
-
+    
     /**
      * Combines key prefix with dictionary prefix.
      *
-     * @param prefix     key prefix
-     * @param dictionary dictionary
+     * @param prefix
+     *            key prefix
+     * @param dictionary
+     *            dictionary
      * @return key prefix combined with dictionary prefix
      */
-    private static String combineKeyPrefix ( final String prefix, final Dictionary dictionary )
-    {
-        final String sp = dictionary.getPrefix ();
-        return prefix + ( sp != null && !sp.equals ( "" ) ? sp : "" );
+    private static String combineKeyPrefix(final String prefix,
+            final Dictionary dictionary) {
+        final String sp = dictionary.getPrefix();
+        return prefix + (sp != null && !sp.equals("") ? sp : "");
     }
 }

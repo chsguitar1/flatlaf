@@ -43,265 +43,256 @@ import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 
 /**
- * This custom proxy authenticator provides an authentication dialog with proxy host, port, login and password fields.
- * It will also remember entered proxy settings if user asks to.
+ * This custom proxy authenticator provides an authentication dialog with proxy
+ * host, port, login and password fields. It will also remember entered proxy
+ * settings if user asks to.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-ProxyManager">How to use ProxyManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-ProxyManager">How
+ *      to use ProxyManager</a>
  * @see org.ocsoft.flatlaf.managers.proxy.WebProxyManager
  * @see org.ocsoft.flatlaf.managers.proxy.ProxyManager
  */
 
-public class WebProxyAuthenticator extends Authenticator
-{
+public class WebProxyAuthenticator extends Authenticator {
     /**
      * Authentication dialog icon.
      */
-    public static final ImageIcon AUTH_ICON = new ImageIcon ( WebProxyAuthenticator.class.getResource ( "icons/auth.png" ) );
-
+    public static final ImageIcon AUTH_ICON = new ImageIcon(
+            WebProxyAuthenticator.class.getResource("icons/auth.png"));
+    
     /**
      * Authentication dialog.
      */
     private AuthDialog authDialog = null;
-
+    
     /**
      * Returns custom password authentication.
      *
      * @return custom password authentication
      */
     @Override
-    protected PasswordAuthentication getPasswordAuthentication ()
-    {
-        return getProxyAuthentification ();
+    protected PasswordAuthentication getPasswordAuthentication() {
+        return getProxyAuthentification();
     }
-
+    
     /**
-     * Returns new custom password authentication.
-     * This method might also pop authentication dialog if needed.
+     * Returns new custom password authentication. This method might also pop
+     * authentication dialog if needed.
      *
      * @return new custom password authentication
      */
-    private PasswordAuthentication getProxyAuthentification ()
-    {
-        // This method cannot wait for auth dialog since it is mostly called from EDT
-        final ProxySettings proxySettings = ProxyManager.getProxySettings ().clone ();
+    private PasswordAuthentication getProxyAuthentification() {
+        // This method cannot wait for auth dialog since it is mostly called
+        // from EDT
+        final ProxySettings proxySettings = ProxyManager.getProxySettings()
+                .clone();
         final PasswordAuthentication auth;
-        if ( authDialog != null )
-        {
+        if (authDialog != null) {
             // Ignore while auth dialog is showing
             auth = null;
-        }
-        else if ( proxySettings.isUseProxyAuthentification () )
-        {
+        } else if (proxySettings.isUseProxyAuthentification()) {
             // Creating auth from settings
-            auth = createAuthentification ( proxySettings );
-        }
-        else
-        {
+            auth = createAuthentification(proxySettings);
+        } else {
             // Ask user for login/pass
-            authDialog = new AuthDialog ( proxySettings );
-            authDialog.setVisible ( true );
-
-            if ( authDialog.getResult () == WebOptionPane.OK_OPTION )
-            {
+            authDialog = new AuthDialog(proxySettings);
+            authDialog.setVisible(true);
+            
+            if (authDialog.getResult() == WebOptionPane.OK_OPTION) {
                 // Update settings
-                proxySettings.setUseProxyAuthentification ( true );
-                proxySettings.setProxyLogin ( authDialog.getLogin () );
-                proxySettings.setProxyPassword ( new String ( authDialog.getPassword () ) );
-
+                proxySettings.setUseProxyAuthentification(true);
+                proxySettings.setProxyLogin(authDialog.getLogin());
+                proxySettings.setProxyPassword(new String(authDialog
+                        .getPassword()));
+                
                 // Setup updated settings
-                ProxyManager.setProxySettings ( proxySettings, authDialog.isSaveSettings () );
-
+                ProxyManager.setProxySettings(proxySettings,
+                        authDialog.isSaveSettings());
+                
                 // Determined authentification
-                auth = createAuthentification ( proxySettings );
-            }
-            else
-            {
-                final ProxySettings updatedSettings = ProxyManager.getProxySettings ();
-                if ( updatedSettings.isUseProxyAuthentification () )
-                {
+                auth = createAuthentification(proxySettings);
+            } else {
+                final ProxySettings updatedSettings = ProxyManager
+                        .getProxySettings();
+                if (updatedSettings.isUseProxyAuthentification()) {
                     // Settings came from somewhere else
-                    auth = createAuthentification ( updatedSettings );
-                }
-                else
-                {
+                    auth = createAuthentification(updatedSettings);
+                } else {
                     // Null authentification
                     auth = null;
                 }
             }
-
+            
             authDialog = null;
         }
         return auth;
     }
-
+    
     /**
      * Returns newly created custom password authentication.
      *
-     * @param proxySettings proxy settings
+     * @param proxySettings
+     *            proxy settings
      * @return newly created custom password authentication
      */
-    private PasswordAuthentication createAuthentification ( final ProxySettings proxySettings )
-    {
-        return new PasswordAuthentication ( proxySettings.getProxyLogin (), proxySettings.getProxyPassword ().toCharArray () );
+    private PasswordAuthentication createAuthentification(
+            final ProxySettings proxySettings) {
+        return new PasswordAuthentication(proxySettings.getProxyLogin(),
+                proxySettings.getProxyPassword().toCharArray());
     }
-
+    
     /**
      * Proxy authentication dialog.
      */
-    private class AuthDialog extends WebExtendedOptionPane
-    {
+    private class AuthDialog extends WebExtendedOptionPane {
         /**
          * Proxy login field.
          */
         private final WebTextField loginField;
-
+        
         /**
          * Proxy password field.
          */
         private final WebPasswordField passwordField;
-
+        
         /**
          * Save settings check box.
          */
         private final WebCheckBox saveSettings;
-
+        
         /**
-         * Constructs new proxy authentication dialog based on specified proxy settings.
+         * Constructs new proxy authentication dialog based on specified proxy
+         * settings.
          *
-         * @param proxySettings proxy settings
+         * @param proxySettings
+         *            proxy settings
          */
-        public AuthDialog ( final ProxySettings proxySettings )
-        {
-            super ( SwingUtils.getActiveWindow (), null, null, LanguageManager.get ( "weblaf.proxy.auth.title" ),
-                    WebOptionPane.OK_CANCEL_OPTION, WebOptionPane.PLAIN_MESSAGE );
-
-
-            final JPanel authPanel = new JPanel ();
-            authPanel.setOpaque ( false );
-            final TableLayout authLayout = new TableLayout ( new double[][]{ { TableLayout.PREFERRED, TableLayout.FILL },
-                    { TableLayout.PREFERRED, TableLayout.PREFERRED, TableLayout.PREFERRED, TableLayout.PREFERRED } } );
-            authLayout.setHGap ( 4 );
-            authLayout.setVGap ( 4 );
-            authPanel.setLayout ( authLayout );
-
-
-            final WebLabel hostLabel = new WebLabel ();
-            hostLabel.setLanguage ( "weblaf.proxy.auth.host" );
-            hostLabel.setHorizontalAlignment ( WebLabel.RIGHT );
-            hostLabel.setEnabled ( false );
-            authPanel.add ( hostLabel, "0,0" );
-
-            final WebTextField hostValue = new WebTextField ( proxySettings.getProxyHost (), 10 );
-            hostValue.setEnabled ( false );
-            hostValue.putClientProperty ( GroupPanel.FILL_CELL, true );
-
-            final WebLabel portLabel = new WebLabel ();
-            portLabel.setLanguage ( "weblaf.proxy.auth.port" );
-            portLabel.setHorizontalAlignment ( WebLabel.RIGHT );
-            portLabel.setEnabled ( false );
-
-            final WebTextField portValue = new WebTextField ( proxySettings.getProxyPort () );
-            portValue.setEnabled ( false );
-
-            authPanel.add ( new GroupPanel ( 2, hostValue, portLabel, portValue ), "1,0" );
-
-
-            authPanel.add ( new WebSeparator ( WebSeparator.HORIZONTAL ), "0,1,1,1" );
-
-
-            final WebLabel loginLabel = new WebLabel ();
-            loginLabel.setLanguage ( "weblaf.proxy.auth.login" );
-            loginLabel.setHorizontalAlignment ( WebLabel.RIGHT );
-            authPanel.add ( loginLabel, "0,2" );
-
-            loginField = new WebTextField ( 12 );
-            loginField.addAncestorListener ( new AncestorAdapter ()
-            {
+        public AuthDialog(final ProxySettings proxySettings) {
+            super(SwingUtils.getActiveWindow(), null, null, LanguageManager
+                    .get("weblaf.proxy.auth.title"),
+                    WebOptionPane.OK_CANCEL_OPTION, WebOptionPane.PLAIN_MESSAGE);
+            
+            final JPanel authPanel = new JPanel();
+            authPanel.setOpaque(false);
+            final TableLayout authLayout = new TableLayout(new double[][] {
+                    { TableLayout.PREFERRED, TableLayout.FILL },
+                    { TableLayout.PREFERRED, TableLayout.PREFERRED,
+                            TableLayout.PREFERRED, TableLayout.PREFERRED } });
+            authLayout.setHGap(4);
+            authLayout.setVGap(4);
+            authPanel.setLayout(authLayout);
+            
+            final WebLabel hostLabel = new WebLabel();
+            hostLabel.setLanguage("weblaf.proxy.auth.host");
+            hostLabel.setHorizontalAlignment(WebLabel.RIGHT);
+            hostLabel.setEnabled(false);
+            authPanel.add(hostLabel, "0,0");
+            
+            final WebTextField hostValue = new WebTextField(
+                    proxySettings.getProxyHost(), 10);
+            hostValue.setEnabled(false);
+            hostValue.putClientProperty(GroupPanel.FILL_CELL, true);
+            
+            final WebLabel portLabel = new WebLabel();
+            portLabel.setLanguage("weblaf.proxy.auth.port");
+            portLabel.setHorizontalAlignment(WebLabel.RIGHT);
+            portLabel.setEnabled(false);
+            
+            final WebTextField portValue = new WebTextField(
+                    proxySettings.getProxyPort());
+            portValue.setEnabled(false);
+            
+            authPanel.add(new GroupPanel(2, hostValue, portLabel, portValue),
+                    "1,0");
+            
+            authPanel.add(new WebSeparator(WebSeparator.HORIZONTAL), "0,1,1,1");
+            
+            final WebLabel loginLabel = new WebLabel();
+            loginLabel.setLanguage("weblaf.proxy.auth.login");
+            loginLabel.setHorizontalAlignment(WebLabel.RIGHT);
+            authPanel.add(loginLabel, "0,2");
+            
+            loginField = new WebTextField(12);
+            loginField.addAncestorListener(new AncestorAdapter() {
                 @Override
-                public void ancestorAdded ( final AncestorEvent event )
-                {
-                    loginField.requestFocusInWindow ();
+                public void ancestorAdded(final AncestorEvent event) {
+                    loginField.requestFocusInWindow();
                 }
-            } );
-            authPanel.add ( loginField, "1,2" );
-
-
-            final WebLabel passLabel = new WebLabel ();
-            passLabel.setLanguage ( "weblaf.proxy.auth.pass" );
-            passLabel.setHorizontalAlignment ( WebLabel.RIGHT );
-            authPanel.add ( passLabel, "0,3" );
-
-            passwordField = new WebPasswordField ( 12 );
-            authPanel.add ( passwordField, "1,3" );
-
-
-            HotkeyManager.registerHotkey ( authPanel, authPanel, Hotkey.ENTER, new HotkeyRunnable ()
-            {
-                @Override
-                public void run ( final KeyEvent e )
-                {
-                    clickOk ();
-                }
-            } );
-            HotkeyManager.registerHotkey ( authPanel, authPanel, Hotkey.ESCAPE, new HotkeyRunnable ()
-            {
-                @Override
-                public void run ( final KeyEvent e )
-                {
-                    clickCancel ();
-                }
-            } );
-
-            SwingUtils.equalizeComponentsHeights ( hostValue, loginField, passwordField );
-
-            setContent ( authPanel );
-
-
-            saveSettings = new WebCheckBox ( "Save proxy settings" );
-            saveSettings.registerSettings ( ProxyManager.SETTINGS_GROUP, ProxyManager.SAVE_SETTINGS, true );
-            setSpecialComponent ( saveSettings );
+            });
+            authPanel.add(loginField, "1,2");
+            
+            final WebLabel passLabel = new WebLabel();
+            passLabel.setLanguage("weblaf.proxy.auth.pass");
+            passLabel.setHorizontalAlignment(WebLabel.RIGHT);
+            authPanel.add(passLabel, "0,3");
+            
+            passwordField = new WebPasswordField(12);
+            authPanel.add(passwordField, "1,3");
+            
+            HotkeyManager.registerHotkey(authPanel, authPanel, Hotkey.ENTER,
+                    new HotkeyRunnable() {
+                        @Override
+                        public void run(final KeyEvent e) {
+                            clickOk();
+                        }
+                    });
+            HotkeyManager.registerHotkey(authPanel, authPanel, Hotkey.ESCAPE,
+                    new HotkeyRunnable() {
+                        @Override
+                        public void run(final KeyEvent e) {
+                            clickCancel();
+                        }
+                    });
+            
+            SwingUtils.equalizeComponentsHeights(hostValue, loginField,
+                    passwordField);
+            
+            setContent(authPanel);
+            
+            saveSettings = new WebCheckBox("Save proxy settings");
+            saveSettings.registerSettings(ProxyManager.SETTINGS_GROUP,
+                    ProxyManager.SAVE_SETTINGS, true);
+            setSpecialComponent(saveSettings);
         }
-
+        
         /**
          * Returns proxy login.
          *
          * @return proxy login
          */
-        public String getLogin ()
-        {
-            return loginField.getText ();
+        public String getLogin() {
+            return loginField.getText();
         }
-
+        
         /**
          * Returns proxy password.
          *
          * @return proxy password
          */
-        public char[] getPassword ()
-        {
-            return passwordField.getPassword ();
+        public char[] getPassword() {
+            return passwordField.getPassword();
         }
-
+        
         /**
          * Returns whether save proxy settings or not.
          *
          * @return true if save proxy settings, false otherwise
          */
-        public boolean isSaveSettings ()
-        {
-            return saveSettings.isSelected ();
+        public boolean isSaveSettings() {
+            return saveSettings.isSelected();
         }
-
+        
         /**
          * Returns large dialog icon.
          *
-         * @param messageType dialog message type
+         * @param messageType
+         *            dialog message type
          * @return large dialog icon
          */
         @Override
-        protected ImageIcon getLargeIcon ( final int messageType )
-        {
+        protected ImageIcon getLargeIcon(final int messageType) {
             return AUTH_ICON;
         }
     }

@@ -23,13 +23,12 @@ package org.ocsoft.flatlaf.extended.window;
  * @author Mikle Garin
  */
 
-public enum PopOverSourcePoint
-{
+public enum PopOverSourcePoint {
     /**
      * Popup relative to appropriate component side.
      */
     componentSide,
-
+    
     /**
      * Popup relative to component center.
      */

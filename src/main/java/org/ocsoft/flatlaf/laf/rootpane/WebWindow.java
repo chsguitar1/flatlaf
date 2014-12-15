@@ -37,478 +37,480 @@ import java.awt.event.WindowAdapter;
 import java.util.List;
 
 /**
- * This JWindow extenstion class provides some additional methods and options to manipulate window behavior.
+ * This JWindow extenstion class provides some additional methods and options to
+ * manipulate window behavior.
  *
  * @author Mikle Garin
  */
 
-public class WebWindow extends JWindow implements WindowEventMethods, LanguageContainerMethods, SettingsMethods, WindowMethods<WebWindow>
-{
+public class WebWindow extends JWindow implements WindowEventMethods,
+        LanguageContainerMethods, SettingsMethods, WindowMethods<WebWindow> {
     /**
      * Whether should close window on focus loss or not.
      */
     protected boolean closeOnFocusLoss = false;
-
+    
     /**
      * Window focus tracker.
      */
     protected DefaultFocusTracker focusTracker;
-
+    
     /**
-     * Creates a window with no specified owner. This window will not be focusable.
+     * Creates a window with no specified owner. This window will not be
+     * focusable.
      * <p/>
-     * This constructor sets the component's locale property to the value returned by {@code JComponent.getDefaultLocale}.
+     * This constructor sets the component's locale property to the value
+     * returned by {@code JComponent.getDefaultLocale}.
      */
-    public WebWindow ()
-    {
-        super ();
-        initialize ();
+    public WebWindow() {
+        super();
+        initialize();
     }
-
+    
     /**
-     * Creates a window with the specified {@code GraphicsConfiguration} of a screen device. This window will not be focusable.
+     * Creates a window with the specified {@code GraphicsConfiguration} of a
+     * screen device. This window will not be focusable.
      * <p/>
-     * This constructor sets the component's locale property to the value returned by {@code JComponent.getDefaultLocale}.
+     * This constructor sets the component's locale property to the value
+     * returned by {@code JComponent.getDefaultLocale}.
      *
-     * @param gc the {@code GraphicsConfiguration} that is used to construct the new window with; if gc is {@code null},
-     *           the system default {@code GraphicsConfiguration} is assumed
+     * @param gc
+     *            the {@code GraphicsConfiguration} that is used to construct
+     *            the new window with; if gc is {@code null}, the system default
+     *            {@code GraphicsConfiguration} is assumed
      */
-    public WebWindow ( final GraphicsConfiguration gc )
-    {
-        super ( gc );
-        initialize ();
+    public WebWindow(final GraphicsConfiguration gc) {
+        super(gc);
+        initialize();
     }
-
+    
     /**
-     * Creates a window with the specified owner frame.
-     * If {@code owner} is {@code null}, the shared owner will be used and this window will not be focusable.
-     * Also, this window will not be focusable unless its owner is showing on the screen.
+     * Creates a window with the specified owner frame. If {@code owner} is
+     * {@code null}, the shared owner will be used and this window will not be
+     * focusable. Also, this window will not be focusable unless its owner is
+     * showing on the screen.
      * <p/>
-     * This constructor sets the component's locale property to the value returned by {@code JComponent.getDefaultLocale}.
+     * This constructor sets the component's locale property to the value
+     * returned by {@code JComponent.getDefaultLocale}.
      *
-     * @param owner the frame from which the window is displayed
+     * @param owner
+     *            the frame from which the window is displayed
      */
-    public WebWindow ( final Frame owner )
-    {
-        super ( owner );
-        initialize ();
+    public WebWindow(final Frame owner) {
+        super(owner);
+        initialize();
     }
-
+    
     /**
-     * Creates a window with the owner window from the specified component.
-     * This window will not be focusable unless its owner is showing on the screen.
-     * If {@code owner} is {@code null}, the shared owner will be used and this window will not be focusable.
+     * Creates a window with the owner window from the specified component. This
+     * window will not be focusable unless its owner is showing on the screen.
+     * If {@code owner} is {@code null}, the shared owner will be used and this
+     * window will not be focusable.
      * <p/>
-     * This constructor sets the component's locale property to the value returned by {@code JComponent.getDefaultLocale}.
+     * This constructor sets the component's locale property to the value
+     * returned by {@code JComponent.getDefaultLocale}.
      *
-     * @param owner the componnt from which parent window this window is displayed
+     * @param owner
+     *            the componnt from which parent window this window is displayed
      */
-    public WebWindow ( final Component owner )
-    {
-        super ( SwingUtils.getWindowAncestor ( owner ) );
-        initialize ();
+    public WebWindow(final Component owner) {
+        super(SwingUtils.getWindowAncestor(owner));
+        initialize();
     }
-
+    
     /**
-     * Creates a window with the specified owner window. This window will not be focusable unless its owner is showing on the screen.
-     * If {@code owner} is {@code null}, the shared owner will be used and this window will not be focusable.
+     * Creates a window with the specified owner window. This window will not be
+     * focusable unless its owner is showing on the screen. If {@code owner} is
+     * {@code null}, the shared owner will be used and this window will not be
+     * focusable.
      * <p/>
-     * This constructor sets the component's locale property to the value returned by {@code JComponent.getDefaultLocale}.
+     * This constructor sets the component's locale property to the value
+     * returned by {@code JComponent.getDefaultLocale}.
      *
-     * @param owner the window from which the window is displayed
+     * @param owner
+     *            the window from which the window is displayed
      */
-    public WebWindow ( final Window owner )
-    {
-        super ( owner );
-        initialize ();
+    public WebWindow(final Window owner) {
+        super(owner);
+        initialize();
     }
-
+    
     /**
-     * Creates a window with the specified owner window and {@code GraphicsConfiguration} of a screen device.
-     * If {@code owner} is {@code null}, the shared owner will be used and this window will not be focusable.
+     * Creates a window with the specified owner window and
+     * {@code GraphicsConfiguration} of a screen device. If {@code owner} is
+     * {@code null}, the shared owner will be used and this window will not be
+     * focusable.
      * <p/>
-     * This constructor sets the component's locale property to the value returned by {@code JComponent.getDefaultLocale}.
+     * This constructor sets the component's locale property to the value
+     * returned by {@code JComponent.getDefaultLocale}.
      *
-     * @param owner the window from which the window is displayed
-     * @param gc    the {@code GraphicsConfiguration} that is used to construct the new window with; if gc is {@code null},
-     *              the system default {@code GraphicsConfiguration} is assumed, unless {@code owner} is also null, in which
-     *              case the {@code GraphicsConfiguration} from the shared owner frame will be used
+     * @param owner
+     *            the window from which the window is displayed
+     * @param gc
+     *            the {@code GraphicsConfiguration} that is used to construct
+     *            the new window with; if gc is {@code null}, the system default
+     *            {@code GraphicsConfiguration} is assumed, unless {@code owner}
+     *            is also null, in which case the {@code GraphicsConfiguration}
+     *            from the shared owner frame will be used
      */
-    public WebWindow ( final Window owner, final GraphicsConfiguration gc )
-    {
-        super ( owner, gc );
-        initialize ();
+    public WebWindow(final Window owner, final GraphicsConfiguration gc) {
+        super(owner, gc);
+        initialize();
     }
-
+    
     /**
      * Additional initializtion of WebWindow settings.
      */
-    protected void initialize ()
-    {
-        setFocusable ( true );
-        SwingUtils.setOrientation ( this );
-
+    protected void initialize() {
+        setFocusable(true);
+        SwingUtils.setOrientation(this);
+        
         // Adding focus tracker for this window
         // It is stored into a separate field to avoid its disposal from memory
-        focusTracker = new DefaultFocusTracker ( true )
-        {
+        focusTracker = new DefaultFocusTracker(true) {
             @Override
-            public boolean isTrackingEnabled ()
-            {
-                return isShowing () && closeOnFocusLoss;
+            public boolean isTrackingEnabled() {
+                return isShowing() && closeOnFocusLoss;
             }
-
+            
             @Override
-            public void focusChanged ( final boolean focused )
-            {
-                if ( closeOnFocusLoss && isShowing () && !focused )
-                {
-                    dispose ();
+            public void focusChanged(final boolean focused) {
+                if (closeOnFocusLoss && isShowing() && !focused) {
+                    dispose();
                 }
             }
         };
-        FocusManager.addFocusTracker ( this, focusTracker );
+        FocusManager.addFocusTracker(this, focusTracker);
     }
-
+    
     /**
      * Returns whether should close window on focus loss or not.
      *
      * @return true if should close window on focus loss, false otherwise
      */
-    public boolean isCloseOnFocusLoss ()
-    {
+    public boolean isCloseOnFocusLoss() {
         return closeOnFocusLoss;
     }
-
+    
     /**
      * Sets whether should close window on focus loss or not.
      *
-     * @param closeOnFocusLoss whether should close window on focus loss or not
+     * @param closeOnFocusLoss
+     *            whether should close window on focus loss or not
      */
-    public void setCloseOnFocusLoss ( final boolean closeOnFocusLoss )
-    {
+    public void setCloseOnFocusLoss(final boolean closeOnFocusLoss) {
         this.closeOnFocusLoss = closeOnFocusLoss;
     }
-
+    
     /**
-     * Returns focusable childs that don't force window to close even if it set to close on focus loss.
+     * Returns focusable childs that don't force window to close even if it set
+     * to close on focus loss.
      *
-     * @return focusable childs that don't force window to close even if it set to close on focus loss
+     * @return focusable childs that don't force window to close even if it set
+     *         to close on focus loss
      */
-    public List<Component> getFocusableChilds ()
-    {
-        return focusTracker.getCustomChildren ();
+    public List<Component> getFocusableChilds() {
+        return focusTracker.getCustomChildren();
     }
-
+    
     /**
-     * Adds focusable child that won't force window to close even if it set to close on focus loss.
+     * Adds focusable child that won't force window to close even if it set to
+     * close on focus loss.
      *
-     * @param child focusable child that won't force window to close even if it set to close on focus loss
+     * @param child
+     *            focusable child that won't force window to close even if it
+     *            set to close on focus loss
      */
-    public void addFocusableChild ( final Component child )
-    {
-        focusTracker.addCustomChild ( child );
+    public void addFocusableChild(final Component child) {
+        focusTracker.addCustomChild(child);
     }
-
+    
     /**
-     * Removes focusable child that doesn't force window to close even if it set to close on focus loss.
+     * Removes focusable child that doesn't force window to close even if it set
+     * to close on focus loss.
      *
-     * @param child focusable child that doesn't force window to close even if it set to close on focus loss
+     * @param child
+     *            focusable child that doesn't force window to close even if it
+     *            set to close on focus loss
      */
-    public void removeFocusableChild ( final Component child )
-    {
-        focusTracker.removeCustomChild ( child );
+    public void removeFocusableChild(final Component child) {
+        focusTracker.removeCustomChild(child);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WindowAdapter onClosing ( final WindowEventRunnable runnable )
-    {
-        return EventUtils.onClosing ( this, runnable );
+    public WindowAdapter onClosing(final WindowEventRunnable runnable) {
+        return EventUtils.onClosing(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WindowCloseAdapter onClose ( final ComponentEventRunnable runnable )
-    {
-        return EventUtils.onClose ( this, runnable );
+    public WindowCloseAdapter onClose(final ComponentEventRunnable runnable) {
+        return EventUtils.onClose(this, runnable);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setLanguageContainerKey ( final String key )
-    {
-        LanguageManager.registerLanguageContainer ( this, key );
+    public void setLanguageContainerKey(final String key) {
+        LanguageManager.registerLanguageContainer(this, key);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void removeLanguageContainerKey ()
-    {
-        LanguageManager.unregisterLanguageContainer ( this );
+    public void removeLanguageContainerKey() {
+        LanguageManager.unregisterLanguageContainer(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getLanguageContainerKey ()
-    {
-        return LanguageManager.getLanguageContainerKey ( this );
+    public String getLanguageContainerKey() {
+        return LanguageManager.getLanguageContainerKey(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String key )
-    {
-        SettingsManager.registerComponent ( this, key );
+    public void registerSettings(final String key) {
+        SettingsManager.registerComponent(this, key);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public <T extends DefaultValue> void registerSettings ( final String key, final Class<T> defaultValueClass )
-    {
-        SettingsManager.registerComponent ( this, key, defaultValueClass );
+    public <T extends DefaultValue> void registerSettings(final String key,
+            final Class<T> defaultValueClass) {
+        SettingsManager.registerComponent(this, key, defaultValueClass);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String key, final Object defaultValue )
-    {
-        SettingsManager.registerComponent ( this, key, defaultValue );
+    public void registerSettings(final String key, final Object defaultValue) {
+        SettingsManager.registerComponent(this, key, defaultValue);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String group, final String key )
-    {
-        SettingsManager.registerComponent ( this, group, key );
+    public void registerSettings(final String group, final String key) {
+        SettingsManager.registerComponent(this, group, key);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public <T extends DefaultValue> void registerSettings ( final String group, final String key, final Class<T> defaultValueClass )
-    {
-        SettingsManager.registerComponent ( this, group, key, defaultValueClass );
+    public <T extends DefaultValue> void registerSettings(final String group,
+            final String key, final Class<T> defaultValueClass) {
+        SettingsManager.registerComponent(this, group, key, defaultValueClass);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String group, final String key, final Object defaultValue )
-    {
-        SettingsManager.registerComponent ( this, group, key, defaultValue );
+    public void registerSettings(final String group, final String key,
+            final Object defaultValue) {
+        SettingsManager.registerComponent(this, group, key, defaultValue);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String key, final boolean loadInitialSettings, final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, key, loadInitialSettings, applySettingsChanges );
+    public void registerSettings(final String key,
+            final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, key, loadInitialSettings,
+                applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public <T extends DefaultValue> void registerSettings ( final String key, final Class<T> defaultValueClass,
-                                                            final boolean loadInitialSettings, final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, key, defaultValueClass, loadInitialSettings, applySettingsChanges );
+    public <T extends DefaultValue> void registerSettings(final String key,
+            final Class<T> defaultValueClass,
+            final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, key, defaultValueClass,
+                loadInitialSettings, applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String key, final Object defaultValue, final boolean loadInitialSettings,
-                                   final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, key, defaultValue, loadInitialSettings, applySettingsChanges );
+    public void registerSettings(final String key, final Object defaultValue,
+            final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, key, defaultValue,
+                loadInitialSettings, applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public <T extends DefaultValue> void registerSettings ( final String group, final String key, final Class<T> defaultValueClass,
-                                                            final boolean loadInitialSettings, final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, group, key, defaultValueClass, loadInitialSettings, applySettingsChanges );
+    public <T extends DefaultValue> void registerSettings(final String group,
+            final String key, final Class<T> defaultValueClass,
+            final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, group, key, defaultValueClass,
+                loadInitialSettings, applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final String group, final String key, final Object defaultValue, final boolean loadInitialSettings,
-                                   final boolean applySettingsChanges )
-    {
-        SettingsManager.registerComponent ( this, group, key, defaultValue, loadInitialSettings, applySettingsChanges );
+    public void registerSettings(final String group, final String key,
+            final Object defaultValue, final boolean loadInitialSettings,
+            final boolean applySettingsChanges) {
+        SettingsManager.registerComponent(this, group, key, defaultValue,
+                loadInitialSettings, applySettingsChanges);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void registerSettings ( final SettingsProcessor settingsProcessor )
-    {
-        SettingsManager.registerComponent ( this, settingsProcessor );
+    public void registerSettings(final SettingsProcessor settingsProcessor) {
+        SettingsManager.registerComponent(this, settingsProcessor);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void unregisterSettings ()
-    {
-        SettingsManager.unregisterComponent ( this );
+    public void unregisterSettings() {
+        SettingsManager.unregisterComponent(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void loadSettings ()
-    {
-        SettingsManager.loadComponentSettings ( this );
+    public void loadSettings() {
+        SettingsManager.loadComponentSettings(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void saveSettings ()
-    {
-        SettingsManager.saveComponentSettings ( this );
+    public void saveSettings() {
+        SettingsManager.saveComponentSettings(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebWindow setWindowOpaque ( final boolean opaque )
-    {
-        return WindowUtils.setWindowOpaque ( this, opaque );
+    public WebWindow setWindowOpaque(final boolean opaque) {
+        return WindowUtils.setWindowOpaque(this, opaque);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isWindowOpaque ()
-    {
-        return WindowUtils.isWindowOpaque ( this );
+    public boolean isWindowOpaque() {
+        return WindowUtils.isWindowOpaque(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebWindow setWindowOpacity ( final float opacity )
-    {
-        return WindowUtils.setWindowOpacity ( this, opacity );
+    public WebWindow setWindowOpacity(final float opacity) {
+        return WindowUtils.setWindowOpacity(this, opacity);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public float getWindowOpacity ()
-    {
-        return WindowUtils.getWindowOpacity ( this );
+    public float getWindowOpacity() {
+        return WindowUtils.getWindowOpacity(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebWindow center ()
-    {
-        return WindowUtils.center ( this );
+    public WebWindow center() {
+        return WindowUtils.center(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebWindow center ( final Component relativeTo )
-    {
-        return WindowUtils.center ( this, relativeTo );
+    public WebWindow center(final Component relativeTo) {
+        return WindowUtils.center(this, relativeTo);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebWindow center ( final int width, final int height )
-    {
-        return WindowUtils.center ( this, width, height );
+    public WebWindow center(final int width, final int height) {
+        return WindowUtils.center(this, width, height);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebWindow center ( final Component relativeTo, final int width, final int height )
-    {
-        return WindowUtils.center ( this, relativeTo, width, height );
+    public WebWindow center(final Component relativeTo, final int width,
+            final int height) {
+        return WindowUtils.center(this, relativeTo, width, height);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebWindow packToWidth ( final int width )
-    {
-        return WindowUtils.packToWidth ( this, width );
+    public WebWindow packToWidth(final int width) {
+        return WindowUtils.packToWidth(this, width);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebWindow packToHeight ( final int height )
-    {
-        return WindowUtils.packToHeight ( this, height );
+    public WebWindow packToHeight(final int height) {
+        return WindowUtils.packToHeight(this, height);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebWindow packAndCenter ()
-    {
-        return WindowUtils.packAndCenter ( this );
+    public WebWindow packAndCenter() {
+        return WindowUtils.packAndCenter(this);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public WebWindow packAndCenter ( final boolean animate )
-    {
-        return WindowUtils.packAndCenter ( this, animate );
+    public WebWindow packAndCenter(final boolean animate) {
+        return WindowUtils.packAndCenter(this, animate);
     }
 }

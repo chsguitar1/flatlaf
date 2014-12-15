@@ -27,111 +27,92 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * User: mgarin Date: 09.11.12 Time: 14:34
  */
 
-public abstract class DefaultTransitionEffect implements TransitionEffect
-{
+public abstract class DefaultTransitionEffect implements TransitionEffect {
     protected static final String DIRECTION = "DIRECTION";
-
-    protected Map<String, Object> effectSettings = new HashMap<String, Object> ();
+    
+    protected Map<String, Object> effectSettings = new HashMap<String, Object>();
     protected boolean animating = false;
-
+    
     /**
      * Default methods
      */
-
+    
     @Override
-    public long getAnimationDelay ()
-    {
+    public long getAnimationDelay() {
         return FlatLafStyleConstants.avgAnimationDelay;
     }
-
+    
     @Override
-    public boolean isAnimating ()
-    {
+    public boolean isAnimating() {
         return animating;
     }
-
-    public Direction getDirection ()
-    {
-        return get ( DIRECTION, Direction.random );
+    
+    public Direction getDirection() {
+        return get(DIRECTION, Direction.random);
     }
-
-    public void setDirection ( Direction direction )
-    {
-        put ( DIRECTION, direction );
+    
+    public void setDirection(Direction direction) {
+        put(DIRECTION, direction);
     }
-
+    
     /**
      * Effect settings storage
      */
-
-    protected Map<String, Object> getEffectSettings ()
-    {
+    
+    protected Map<String, Object> getEffectSettings() {
         return effectSettings;
     }
-
-    protected void setEffectSettings ( Map<String, Object> effectSettings )
-    {
+    
+    protected void setEffectSettings(Map<String, Object> effectSettings) {
         this.effectSettings = effectSettings;
     }
-
-    protected void put ( String property, Object value )
-    {
-        effectSettings.put ( property, value );
+    
+    protected void put(String property, Object value) {
+        effectSettings.put(property, value);
     }
-
-    protected void remove ( String property )
-    {
-        effectSettings.remove ( property );
+    
+    protected void remove(String property) {
+        effectSettings.remove(property);
     }
-
-    protected void clearSettings ()
-    {
-        effectSettings.clear ();
+    
+    protected void clearSettings() {
+        effectSettings.clear();
     }
-
-    protected <T> T get ( String property, T defaultValue )
-    {
-        if ( effectSettings.containsKey ( property ) )
-        {
-            return ( T ) effectSettings.get ( property );
-        }
-        else
-        {
+    
+    protected <T> T get(String property, T defaultValue) {
+        if (effectSettings.containsKey(property)) {
+            return (T) effectSettings.get(property);
+        } else {
             return defaultValue;
         }
     }
-
+    
     /**
      * Default animation methods
      */
-
+    
     @Override
-    public boolean performAnimationTick ( ImageTransition transition )
-    {
-        if ( !animating )
-        {
+    public boolean performAnimationTick(ImageTransition transition) {
+        if (!animating) {
             animating = true;
-            prepareAnimation ( transition );
+            prepareAnimation(transition);
             return false;
-        }
-        else
-        {
-            boolean finished = performAnimation ( transition );
-            if ( finished )
-            {
+        } else {
+            boolean finished = performAnimation(transition);
+            if (finished) {
                 animating = false;
             }
             return finished;
         }
     }
-
+    
     /**
      * Initial animation tick used for preparations
      */
-    public abstract void prepareAnimation ( ImageTransition imageTransition );
-
+    public abstract void prepareAnimation(ImageTransition imageTransition);
+    
     /**
      * Single animation tick
      */
-    public abstract boolean performAnimation ( ImageTransition imageTransition );
+    public abstract boolean performAnimation(ImageTransition imageTransition);
 }

@@ -28,50 +28,51 @@ import java.awt.*;
  * User: mgarin Date: 29.01.13 Time: 15:44
  */
 
-public final class WebCollapsiblePaneStyle
-{
+public final class WebCollapsiblePaneStyle {
     /**
      * Whether animate transition between states or not.
      */
     public static boolean animate = FlatLafStyleConstants.animate;
-
+    
     /**
      * Collapsed state icon.
      */
-    public static ImageIcon expandIcon = new ImageIcon ( WebCollapsiblePane.class.getResource ( "icons/arrow.png" ) );
-
+    public static ImageIcon expandIcon = new ImageIcon(
+            WebCollapsiblePane.class.getResource("icons/arrow.png"));
+    
     /**
      * Expanded state icon.
      */
-    public static ImageIcon collapseIcon = ImageUtils.rotateImage180 ( expandIcon );
-
+    public static ImageIcon collapseIcon = ImageUtils
+            .rotateImage180(expandIcon);
+    
     /**
      * State icon margin.
      */
-    public static Insets stateIconMargin = new Insets ( 5, 5, 5, 5 );
-
+    public static Insets stateIconMargin = new Insets(5, 5, 5, 5);
+    
     /**
      * Whether rotate state icon according to title pane position or not.
      */
     public static boolean rotateStateIcon = true;
-
+    
     /**
      * Whether display state icon in title pane or not.
      */
     public static boolean showStateIcon = true;
-
+    
     /**
      * State icon position in title pane.
      */
     public static int stateIconPostion = SwingConstants.RIGHT;
-
+    
     /**
      * Title pane position in collapsible pane.
      */
     public static int titlePanePostion = SwingConstants.TOP;
-
+    
     /**
      * Content margin.
      */
-    public static Insets contentMargin = new Insets ( 0, 0, 0, 0 );
+    public static Insets contentMargin = new Insets(0, 0, 0, 0);
 }

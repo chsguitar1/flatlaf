@@ -23,75 +23,85 @@ import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.data.Value;
 
 /**
- * This class provides language default updates for JTabbedPane component.
- * By default it uses provided language key and tab indices to determine single tab translation key.
- * Basically if you provide "my.tab" language key for tabbed pane, first tab translation should have "my.tab.0" key.
- * It can also depend on tab component name instead of the tab index if configured to do so.
+ * This class provides language default updates for JTabbedPane component. By
+ * default it uses provided language key and tab indices to determine single tab
+ * translation key. Basically if you provide "my.tab" language key for tabbed
+ * pane, first tab translation should have "my.tab.0" key. It can also depend on
+ * tab component name instead of the tab index if configured to do so.
  *
  * @author Mikle Garin
  */
 
-public class JTabbedPaneLU extends DefaultLanguageUpdater<JTabbedPane>
-{
+public class JTabbedPaneLU extends DefaultLanguageUpdater<JTabbedPane> {
     /**
-     * Whether should use tab component name to determine tab translation key or not.
+     * Whether should use tab component name to determine tab translation key or
+     * not.
      */
     protected boolean useComponentNames = LanguageUpdaterSettings.useTabComponentNames;
-
+    
     /**
-     * Constructs new LanguageUpdater for JTabbedPane component with default settings.
+     * Constructs new LanguageUpdater for JTabbedPane component with default
+     * settings.
      */
-    public JTabbedPaneLU ()
-    {
-        super ();
+    public JTabbedPaneLU() {
+        super();
     }
-
+    
     /**
-     * Constructs new LanguageUpdater for JTabbedPane component with specified settings.
+     * Constructs new LanguageUpdater for JTabbedPane component with specified
+     * settings.
      *
-     * @param useComponentNames whether should use tab component name to determine tab translation key or not
+     * @param useComponentNames
+     *            whether should use tab component name to determine tab
+     *            translation key or not
      */
-    public JTabbedPaneLU ( final boolean useComponentNames )
-    {
-        super ();
+    public JTabbedPaneLU(final boolean useComponentNames) {
+        super();
         this.useComponentNames = useComponentNames;
     }
-
+    
     /**
-     * Returns whether should use tab component name to determine tab translation key or not.
+     * Returns whether should use tab component name to determine tab
+     * translation key or not.
      *
-     * @return true if should use tab component name to determine tab translation key, false otherwise
+     * @return true if should use tab component name to determine tab
+     *         translation key, false otherwise
      */
-    public boolean isUseComponentNames ()
-    {
+    public boolean isUseComponentNames() {
         return useComponentNames;
     }
-
+    
     /**
-     * Sets whether should use tab component name to determine tab translation key or not.
+     * Sets whether should use tab component name to determine tab translation
+     * key or not.
      *
-     * @param useComponentNames whether should use tab component name to determine tab translation key or not
+     * @param useComponentNames
+     *            whether should use tab component name to determine tab
+     *            translation key or not
      */
-    public void setUseComponentNames ( final boolean useComponentNames )
-    {
+    public void setUseComponentNames(final boolean useComponentNames) {
         this.useComponentNames = useComponentNames;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void update ( final JTabbedPane c, final String key, final Value value, final Object... data )
-    {
+    public void update(final JTabbedPane c, final String key,
+            final Value value, final Object... data) {
         // Running through all tabs
-        for ( int i = 0; i < c.getTabCount (); i++ )
-        {
+        for (int i = 0; i < c.getTabCount(); i++) {
             // Updating tab text and mnemonic
-            final String tabKey = useComponentNames ? c.getComponentAt ( i ).getName () : "" + i;
-            final Value tabValue = LanguageManager.getNotNullValue ( c, key, tabKey );
-            final String text = getDefaultText ( tabValue, data );
-            c.setTitleAt ( i, text != null ? text : null );
-            c.setMnemonicAt ( i, text != null && value.getMnemonic () != null ? value.getMnemonic () : 0 );
+            final String tabKey = useComponentNames ? c.getComponentAt(i)
+                    .getName() : "" + i;
+            final Value tabValue = LanguageManager.getNotNullValue(c, key,
+                    tabKey);
+            final String text = getDefaultText(tabValue, data);
+            c.setTitleAt(i, text != null ? text : null);
+            c.setMnemonicAt(
+                    i,
+                    text != null && value.getMnemonic() != null ? value
+                            .getMnemonic() : 0);
         }
     }
 }

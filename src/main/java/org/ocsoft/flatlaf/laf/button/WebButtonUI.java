@@ -52,15 +52,16 @@ import java.util.Map;
  * @author Mikle Garin
  */
 
-public class WebButtonUI extends BasicButtonUI implements ShapeProvider, SwingConstants, BorderMethods
-{
+public class WebButtonUI extends BasicButtonUI implements ShapeProvider,
+        SwingConstants, BorderMethods {
     /**
-     * todo 1. Properly check situations when button sides are painted within multi-row/column WebButtonGroup
-     * todo 2. Properly paint side-borders when grouped buttons are rollover decorated only
+     * todo 1. Properly check situations when button sides are painted within
+     * multi-row/column WebButtonGroup todo 2. Properly paint side-borders when
+     * grouped buttons are rollover decorated only
      */
-
-    protected static final Stroke defaultInnerShade = new BasicStroke ( 3f );
-
+    
+    protected static final Stroke defaultInnerShade = new BasicStroke(3f);
+    
     protected Color topBgColor = WebButtonStyle.topBgColor;
     protected Color bottomBgColor = WebButtonStyle.bottomBgColor;
     protected Color topSelectedBgColor = WebButtonStyle.topSelectedBgColor;
@@ -88,1085 +89,1009 @@ public class WebButtonUI extends BasicButtonUI implements ShapeProvider, SwingCo
     protected boolean undecorated = WebButtonStyle.undecorated;
     protected Painter painter = WebButtonStyle.painter;
     protected boolean moveIconOnPress = WebButtonStyle.moveIconOnPress;
-
+    
     protected boolean drawTop = true;
     protected boolean drawLeft = true;
     protected boolean drawBottom = true;
     protected boolean drawRight = true;
-
+    
     protected boolean drawTopLine = false;
     protected boolean drawLeftLine = false;
     protected boolean drawBottomLine = false;
     protected boolean drawRightLine = false;
-
-    protected Color transparentShineColor = new Color ( shineColor.getRed (), shineColor.getGreen (), shineColor.getBlue (), 0 );
-
+    
+    protected Color transparentShineColor = new Color(shineColor.getRed(),
+            shineColor.getGreen(), shineColor.getBlue(), 0);
+    
     protected boolean rollover = false;
     protected float transparency = 0f;
-
+    
     protected Point mousePoint = null;
     protected WebTimer animator = null;
     protected AbstractButton button = null;
-
+    
     // Cached old values from button to restore on LAF change.
     protected boolean oldFocusPainted;
     protected boolean oldContentAreaFilled;
     protected boolean oldBorderPainted;
     protected boolean oldFocusable;
-
+    
     protected MouseAdapter mouseAdapter;
     protected AncestorListener ancestorListener;
     protected PropertyChangeListener propertyChangeListener;
-
-    @SuppressWarnings ( "UnusedParameters" )
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebButtonUI ();
+    
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebButtonUI();
     }
-
+    
     @Override
-    public void installUI ( final JComponent c )
-    {
-        super.installUI ( c );
-
+    public void installUI(final JComponent c) {
+        super.installUI(c);
+        
         // Saving button to local variable
-        button = ( AbstractButton ) c;
-
+        button = (AbstractButton) c;
+        
         // Saving old button settings
-        oldFocusPainted = button.isFocusPainted ();
-        oldContentAreaFilled = button.isContentAreaFilled ();
-        oldBorderPainted = button.isBorderPainted ();
-        oldFocusable = button.isFocusable ();
-
+        oldFocusPainted = button.isFocusPainted();
+        oldContentAreaFilled = button.isContentAreaFilled();
+        oldBorderPainted = button.isBorderPainted();
+        oldFocusable = button.isFocusable();
+        
         // Default settings
-        SwingUtils.setOrientation ( button );
-        button.setFocusPainted ( false );
-        button.setContentAreaFilled ( false );
-        button.setBorderPainted ( false );
-        button.setFocusable ( true );
-        LookAndFeel.installProperty ( button, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
-        PainterSupport.installPainter ( button, this.painter );
-
+        SwingUtils.setOrientation(button);
+        button.setFocusPainted(false);
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
+        button.setFocusable(true);
+        LookAndFeel.installProperty(button, FlatLookAndFeel.OPAQUE_PROPERTY,
+                Boolean.FALSE);
+        PainterSupport.installPainter(button, this.painter);
+        
         // Updating border
-        updateBorder ();
-
+        updateBorder();
+        
         // Rollover listener
-        mouseAdapter = new MouseAdapter ()
-        {
+        mouseAdapter = new MouseAdapter() {
             @Override
-            public void mouseEntered ( final MouseEvent e )
-            {
+            public void mouseEntered(final MouseEvent e) {
                 rollover = true;
-                button.getModel ().setRollover ( true );
-                mousePoint = e.getPoint ();
-
-                stopAnimator ();
-                if ( painter == null &&
-                        animate && ( rolloverShine || rolloverDecoratedOnly || rolloverShadeOnly ) )
-                {
-                    animator = new WebTimer ( "WebButtonUI.fadeInTimer", FlatLafStyleConstants.fastAnimationDelay, new ActionListener ()
-                    {
-                        @Override
-                        public void actionPerformed ( final ActionEvent e )
-                        {
-                            transparency += 0.075f;
-                            if ( transparency >= 1f )
-                            {
-                                transparency = 1f;
-                                animator.stop ();
-                            }
-                            updateTransparentShineColor ();
-                            if ( c.isEnabled () )
-                            {
-                                c.repaint ();
-                            }
-                        }
-                    } );
-                    animator.start ();
-                }
-                else
-                {
+                button.getModel().setRollover(true);
+                mousePoint = e.getPoint();
+                
+                stopAnimator();
+                if (painter == null
+                        && animate
+                        && (rolloverShine || rolloverDecoratedOnly || rolloverShadeOnly)) {
+                    animator = new WebTimer("WebButtonUI.fadeInTimer",
+                            FlatLafStyleConstants.fastAnimationDelay,
+                            new ActionListener() {
+                                @Override
+                                public void actionPerformed(final ActionEvent e) {
+                                    transparency += 0.075f;
+                                    if (transparency >= 1f) {
+                                        transparency = 1f;
+                                        animator.stop();
+                                    }
+                                    updateTransparentShineColor();
+                                    if (c.isEnabled()) {
+                                        c.repaint();
+                                    }
+                                }
+                            });
+                    animator.start();
+                } else {
                     transparency = 1f;
-                    updateTransparentShineColor ();
-                    c.repaint ();
+                    updateTransparentShineColor();
+                    c.repaint();
                 }
-
-                refresh ( c );
+                
+                refresh(c);
             }
-
+            
             @Override
-            public void mouseExited ( final MouseEvent e )
-            {
-                mousePoint = e.getPoint ();
-
-                stopAnimator ();
-                if ( painter == null &&
-                        animate && ( rolloverShine || rolloverDecoratedOnly || rolloverShadeOnly ) )
-                {
-                    animator = new WebTimer ( "WebButtonUI.fadeOutTimer", FlatLafStyleConstants.fastAnimationDelay, new ActionListener ()
-                    {
-                        @Override
-                        public void actionPerformed ( final ActionEvent e )
-                        {
-                            transparency -= 0.075f;
-                            if ( transparency <= 0f )
-                            {
-                                rollover = false;
-                                button.getModel ().setRollover ( false );
-                                transparency = 0f;
-                                mousePoint = null;
-                                animator.stop ();
-                            }
-                            updateTransparentShineColor ();
-                            if ( c.isEnabled () )
-                            {
-                                c.repaint ();
-                            }
-                        }
-                    } );
-                    animator.start ();
-                }
-                else
-                {
+            public void mouseExited(final MouseEvent e) {
+                mousePoint = e.getPoint();
+                
+                stopAnimator();
+                if (painter == null
+                        && animate
+                        && (rolloverShine || rolloverDecoratedOnly || rolloverShadeOnly)) {
+                    animator = new WebTimer("WebButtonUI.fadeOutTimer",
+                            FlatLafStyleConstants.fastAnimationDelay,
+                            new ActionListener() {
+                                @Override
+                                public void actionPerformed(final ActionEvent e) {
+                                    transparency -= 0.075f;
+                                    if (transparency <= 0f) {
+                                        rollover = false;
+                                        button.getModel().setRollover(false);
+                                        transparency = 0f;
+                                        mousePoint = null;
+                                        animator.stop();
+                                    }
+                                    updateTransparentShineColor();
+                                    if (c.isEnabled()) {
+                                        c.repaint();
+                                    }
+                                }
+                            });
+                    animator.start();
+                } else {
                     rollover = false;
-                    button.getModel ().setRollover ( false );
+                    button.getModel().setRollover(false);
                     transparency = 0f;
                     mousePoint = null;
-                    updateTransparentShineColor ();
-                    c.repaint ();
+                    updateTransparentShineColor();
+                    c.repaint();
                 }
-
-                refresh ( c );
+                
+                refresh(c);
             }
-
+            
             @Override
-            public void mouseReleased ( final MouseEvent e )
-            {
+            public void mouseReleased(final MouseEvent e) {
                 // Fix for highlight stuck
-                if ( !c.isShowing () || windowLostFocus () )
-                {
+                if (!c.isShowing() || windowLostFocus()) {
                     mousePoint = null;
-                    c.repaint ();
+                    c.repaint();
                 }
             }
-
-            private boolean windowLostFocus ()
-            {
-                final Window wa = SwingUtils.getWindowAncestor ( c );
-                return wa == null || !wa.isVisible () || !wa.isActive ();
+            
+            private boolean windowLostFocus() {
+                final Window wa = SwingUtils.getWindowAncestor(c);
+                return wa == null || !wa.isVisible() || !wa.isActive();
             }
-
-            private void stopAnimator ()
-            {
-                if ( animator != null )
-                {
-                    animator.stop ();
+            
+            private void stopAnimator() {
+                if (animator != null) {
+                    animator.stop();
                 }
             }
-
+            
             @Override
-            public void mouseDragged ( final MouseEvent e )
-            {
-                mousePoint = e.getPoint ();
-                if ( painter == null && rolloverShine )
-                {
-                    refresh ( c );
+            public void mouseDragged(final MouseEvent e) {
+                mousePoint = e.getPoint();
+                if (painter == null && rolloverShine) {
+                    refresh(c);
                 }
             }
-
+            
             @Override
-            public void mouseMoved ( final MouseEvent e )
-            {
-                mousePoint = e.getPoint ();
-                if ( painter == null && rolloverShine )
-                {
-                    refresh ( c );
+            public void mouseMoved(final MouseEvent e) {
+                mousePoint = e.getPoint();
+                if (painter == null && rolloverShine) {
+                    refresh(c);
                 }
             }
-
-            private void refresh ( final JComponent c )
-            {
-                if ( c.isEnabled () )
-                {
-                    if ( animator == null || !animator.isRunning () )
-                    {
-                        c.repaint ();
+            
+            private void refresh(final JComponent c) {
+                if (c.isEnabled()) {
+                    if (animator == null || !animator.isRunning()) {
+                        c.repaint();
                     }
                 }
             }
         };
-        c.addMouseListener ( mouseAdapter );
-        c.addMouseMotionListener ( mouseAdapter );
-
+        c.addMouseListener(mouseAdapter);
+        c.addMouseMotionListener(mouseAdapter);
+        
         // Ancestor listener
-        ancestorListener = new AncestorAdapter ()
-        {
+        ancestorListener = new AncestorAdapter() {
             @Override
-            public void ancestorRemoved ( final AncestorEvent event )
-            {
+            public void ancestorRemoved(final AncestorEvent event) {
                 rollover = false;
-                button.getModel ().setRollover ( false );
+                button.getModel().setRollover(false);
                 transparency = 0f;
                 mousePoint = null;
-                updateTransparentShineColor ();
-                c.repaint ();
+                updateTransparentShineColor();
+                c.repaint();
             }
         };
-        c.addAncestorListener ( ancestorListener );
-
+        c.addAncestorListener(ancestorListener);
+        
         // Orientation change listener
-        propertyChangeListener = new PropertyChangeListener ()
-        {
+        propertyChangeListener = new PropertyChangeListener() {
             @Override
-            public void propertyChange ( final PropertyChangeEvent evt )
-            {
-                updateBorder ();
+            public void propertyChange(final PropertyChangeEvent evt) {
+                updateBorder();
             }
         };
-        c.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        c.addPropertyChangeListener(FlatLookAndFeel.ORIENTATION_PROPERTY,
+                propertyChangeListener);
     }
-
+    
     @Override
-    public void uninstallUI ( final JComponent c )
-    {
-        PainterSupport.uninstallPainter ( button, this.painter );
-
-        c.removeMouseListener ( mouseAdapter );
-        c.removeMouseMotionListener ( mouseAdapter );
-        c.removeAncestorListener ( ancestorListener );
-        c.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
-
-        button.setBorderPainted ( oldBorderPainted );
-        button.setContentAreaFilled ( oldContentAreaFilled );
-        button.setFocusPainted ( oldFocusPainted );
-        button.setFocusable ( oldFocusable );
-
-        super.uninstallUI ( c );
+    public void uninstallUI(final JComponent c) {
+        PainterSupport.uninstallPainter(button, this.painter);
+        
+        c.removeMouseListener(mouseAdapter);
+        c.removeMouseMotionListener(mouseAdapter);
+        c.removeAncestorListener(ancestorListener);
+        c.removePropertyChangeListener(FlatLookAndFeel.ORIENTATION_PROPERTY,
+                propertyChangeListener);
+        
+        button.setBorderPainted(oldBorderPainted);
+        button.setContentAreaFilled(oldContentAreaFilled);
+        button.setFocusPainted(oldFocusPainted);
+        button.setFocusable(oldFocusable);
+        
+        super.uninstallUI(c);
     }
-
+    
     @Override
-    public Shape provideShape ()
-    {
-        if ( painter != null || undecorated )
-        {
-            return SwingUtils.size ( button );
-        }
-        else
-        {
-            return getButtonShape ( button, true );
+    public Shape provideShape() {
+        if (painter != null || undecorated) {
+            return SwingUtils.size(button);
+        } else {
+            return getButtonShape(button, true);
         }
     }
-
-    public Color getTopBgColor ()
-    {
+    
+    public Color getTopBgColor() {
         return topBgColor;
     }
-
-    public void setTopBgColor ( final Color topBgColor )
-    {
+    
+    public void setTopBgColor(final Color topBgColor) {
         this.topBgColor = topBgColor;
     }
-
-    public Color getBottomBgColor ()
-    {
+    
+    public Color getBottomBgColor() {
         return bottomBgColor;
     }
-
-    public void setBottomBgColor ( final Color bottomBgColor )
-    {
+    
+    public void setBottomBgColor(final Color bottomBgColor) {
         this.bottomBgColor = bottomBgColor;
     }
-
-    public Color getTopSelectedBgColor ()
-    {
+    
+    public Color getTopSelectedBgColor() {
         return topSelectedBgColor;
     }
-
-    public void setTopSelectedBgColor ( final Color topSelectedBgColor )
-    {
+    
+    public void setTopSelectedBgColor(final Color topSelectedBgColor) {
         this.topSelectedBgColor = topSelectedBgColor;
     }
-
-    public Color getBottomSelectedBgColor ()
-    {
+    
+    public Color getBottomSelectedBgColor() {
         return bottomSelectedBgColor;
     }
-
-    public void setBottomSelectedBgColor ( final Color bottomSelectedBgColor )
-    {
+    
+    public void setBottomSelectedBgColor(final Color bottomSelectedBgColor) {
         this.bottomSelectedBgColor = bottomSelectedBgColor;
     }
-
-    public Color getSelectedForeground ()
-    {
+    
+    public Color getSelectedForeground() {
         return selectedForeground;
     }
-
-    public void setSelectedForeground ( final Color selectedForeground )
-    {
+    
+    public void setSelectedForeground(final Color selectedForeground) {
         this.selectedForeground = selectedForeground;
     }
-
-    public boolean isRolloverDarkBorderOnly ()
-    {
+    
+    public boolean isRolloverDarkBorderOnly() {
         return rolloverDarkBorderOnly;
     }
-
-    public void setRolloverDarkBorderOnly ( final boolean rolloverDarkBorderOnly )
-    {
+    
+    public void setRolloverDarkBorderOnly(final boolean rolloverDarkBorderOnly) {
         this.rolloverDarkBorderOnly = rolloverDarkBorderOnly;
     }
-
-    public boolean isRolloverShine ()
-    {
+    
+    public boolean isRolloverShine() {
         return rolloverShine;
     }
-
-    public void setRolloverShine ( final boolean rolloverShine )
-    {
+    
+    public void setRolloverShine(final boolean rolloverShine) {
         this.rolloverShine = rolloverShine;
     }
-
-    public Color getShineColor ()
-    {
+    
+    public Color getShineColor() {
         return shineColor;
     }
-
-    public void setShineColor ( final Color shineColor )
-    {
+    
+    public void setShineColor(final Color shineColor) {
         this.shineColor = shineColor;
-        updateTransparentShineColor ();
+        updateTransparentShineColor();
     }
-
-    private void updateTransparentShineColor ()
-    {
-        transparentShineColor = new Color ( shineColor.getRed (), shineColor.getGreen (), shineColor.getBlue (),
-                Math.round ( transparency * shineColor.getAlpha () ) );
+    
+    private void updateTransparentShineColor() {
+        transparentShineColor = new Color(shineColor.getRed(),
+                shineColor.getGreen(), shineColor.getBlue(),
+                Math.round(transparency * shineColor.getAlpha()));
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void updateBorder ()
-    {
-        if ( button != null )
-        {
+    public void updateBorder() {
+        if (button != null) {
             // Preserve old borders
-            //            if ( SwingUtils.isPreserveBorders ( button ) )
-            //            {
-            //                return;
-            //            }
-
+            // if ( SwingUtils.isPreserveBorders ( button ) )
+            // {
+            // return;
+            // }
+            
             // Installing newly created border
-            button.setBorder ( LafUtils.createWebBorder ( getBorderInsets () ) );
+            button.setBorder(LafUtils.createWebBorder(getBorderInsets()));
         }
     }
-
+    
     /**
      * Returns component border insets used for WebLaF border.
      *
      * @return component border insets
      */
-    protected Insets getBorderInsets ()
-    {
+    protected Insets getBorderInsets() {
         // Actual margin
-        final boolean ltr = button.getComponentOrientation ().isLeftToRight ();
-        final Insets m = new Insets ( margin.top, ( ltr ? margin.left : margin.right ) + leftRightSpacing, margin.bottom,
-                ( ltr ? margin.right : margin.left ) + leftRightSpacing );
-
+        final boolean ltr = button.getComponentOrientation().isLeftToRight();
+        final Insets m = new Insets(margin.top, (ltr ? margin.left
+                : margin.right) + leftRightSpacing, margin.bottom,
+                (ltr ? margin.right : margin.left) + leftRightSpacing);
+        
         // Applying border
-        if ( painter != null )
-        {
+        if (painter != null) {
             // Painter borders
-            final Insets pi = painter.getMargin ( button );
+            final Insets pi = painter.getMargin(button);
             m.top += pi.top;
             m.bottom += pi.bottom;
             m.left += ltr ? pi.left : pi.right;
             m.right += ltr ? pi.right : pi.left;
-        }
-        else if ( !undecorated )
-        {
+        } else if (!undecorated) {
             // Styling borders
             final boolean actualDrawLeft = ltr ? drawLeft : drawRight;
-            final boolean actualDrawLeftLine = ltr ? drawLeftLine : drawRightLine;
+            final boolean actualDrawLeftLine = ltr ? drawLeftLine
+                    : drawRightLine;
             final boolean actualDrawRight = ltr ? drawRight : drawLeft;
-            final boolean actualDrawRightLine = ltr ? drawRightLine : drawLeftLine;
-            m.top += ( drawTop ? ( shadeWidth + 1 ) : drawTopLine ? 1 : 0 ) + innerShadeWidth;
-            m.left += ( actualDrawLeft ? ( shadeWidth + 1 ) : actualDrawLeftLine ? 1 : 0 ) + innerShadeWidth;
-            m.bottom += ( drawBottom ? ( shadeWidth + 1 ) : drawBottomLine ? 1 : 0 ) + innerShadeWidth;
-            m.right += ( actualDrawRight ? ( shadeWidth + 1 ) : actualDrawRightLine ? 1 : 0 ) + innerShadeWidth;
+            final boolean actualDrawRightLine = ltr ? drawRightLine
+                    : drawLeftLine;
+            m.top += (drawTop ? (shadeWidth + 1) : drawTopLine ? 1 : 0)
+                    + innerShadeWidth;
+            m.left += (actualDrawLeft ? (shadeWidth + 1)
+                    : actualDrawLeftLine ? 1 : 0)
+                    + innerShadeWidth;
+            m.bottom += (drawBottom ? (shadeWidth + 1) : drawBottomLine ? 1 : 0)
+                    + innerShadeWidth;
+            m.right += (actualDrawRight ? (shadeWidth + 1)
+                    : actualDrawRightLine ? 1 : 0) + innerShadeWidth;
         }
-
+        
         return m;
     }
-
-    public boolean isDrawShade ()
-    {
+    
+    public boolean isDrawShade() {
         return drawShade;
     }
-
-    public void setDrawShade ( final boolean drawShade )
-    {
+    
+    public void setDrawShade(final boolean drawShade) {
         this.drawShade = drawShade;
     }
-
-    public boolean isRolloverShadeOnly ()
-    {
+    
+    public boolean isRolloverShadeOnly() {
         return rolloverShadeOnly;
     }
-
-    public void setRolloverShadeOnly ( final boolean rolloverShadeOnly )
-    {
+    
+    public void setRolloverShadeOnly(final boolean rolloverShadeOnly) {
         this.rolloverShadeOnly = rolloverShadeOnly;
     }
-
-    public boolean isShowDisabledShade ()
-    {
+    
+    public boolean isShowDisabledShade() {
         return showDisabledShade;
     }
-
-    public void setShowDisabledShade ( final boolean showDisabledShade )
-    {
+    
+    public void setShowDisabledShade(final boolean showDisabledShade) {
         this.showDisabledShade = showDisabledShade;
     }
-
-    public int getShadeWidth ()
-    {
+    
+    public int getShadeWidth() {
         return shadeWidth;
     }
-
-    public void setShadeWidth ( final int shadeWidth )
-    {
+    
+    public void setShadeWidth(final int shadeWidth) {
         this.shadeWidth = shadeWidth;
-        updateBorder ();
+        updateBorder();
     }
-
-    public Insets getMargin ()
-    {
+    
+    public Insets getMargin() {
         return margin;
     }
-
-    public void setMargin ( final Insets margin )
-    {
+    
+    public void setMargin(final Insets margin) {
         this.margin = margin;
-        updateBorder ();
+        updateBorder();
     }
-
-    public Color getShadeColor ()
-    {
+    
+    public Color getShadeColor() {
         return shadeColor;
     }
-
-    public void setShadeColor ( final Color shadeColor )
-    {
+    
+    public void setShadeColor(final Color shadeColor) {
         this.shadeColor = shadeColor;
     }
-
-    public int getInnerShadeWidth ()
-    {
+    
+    public int getInnerShadeWidth() {
         return innerShadeWidth;
     }
-
-    public void setInnerShadeWidth ( final int innerShadeWidth )
-    {
+    
+    public void setInnerShadeWidth(final int innerShadeWidth) {
         this.innerShadeWidth = innerShadeWidth;
-        updateBorder ();
+        updateBorder();
     }
-
-    public Color getInnerShadeColor ()
-    {
+    
+    public Color getInnerShadeColor() {
         return innerShadeColor;
     }
-
-    public void setInnerShadeColor ( final Color innerShadeColor )
-    {
+    
+    public void setInnerShadeColor(final Color innerShadeColor) {
         this.innerShadeColor = innerShadeColor;
     }
-
-    public Color getDefaultButtonShadeColor ()
-    {
+    
+    public Color getDefaultButtonShadeColor() {
         return defaultButtonShadeColor;
     }
-
-    public void setDefaultButtonShadeColor ( final Color defaultButtonShadeColor )
-    {
+    
+    public void setDefaultButtonShadeColor(final Color defaultButtonShadeColor) {
         this.defaultButtonShadeColor = defaultButtonShadeColor;
     }
-
-    public int getLeftRightSpacing ()
-    {
+    
+    public int getLeftRightSpacing() {
         return leftRightSpacing;
     }
-
-    public void setLeftRightSpacing ( final int leftRightSpacing )
-    {
+    
+    public void setLeftRightSpacing(final int leftRightSpacing) {
         this.leftRightSpacing = leftRightSpacing;
-        updateBorder ();
+        updateBorder();
     }
-
-    public int getRound ()
-    {
+    
+    public int getRound() {
         return round;
     }
-
-    public void setRound ( final int round )
-    {
+    
+    public void setRound(final int round) {
         this.round = round;
     }
-
-    public boolean isShadeToggleIcon ()
-    {
+    
+    public boolean isShadeToggleIcon() {
         return shadeToggleIcon;
     }
-
-    public void setShadeToggleIcon ( final boolean shadeToggleIcon )
-    {
+    
+    public void setShadeToggleIcon(final boolean shadeToggleIcon) {
         this.shadeToggleIcon = shadeToggleIcon;
     }
-
-    public float getShadeToggleIconTransparency ()
-    {
+    
+    public float getShadeToggleIconTransparency() {
         return shadeToggleIconTransparency;
     }
-
-    public void setShadeToggleIconTransparency ( final float shadeToggleIconTransparency )
-    {
+    
+    public void setShadeToggleIconTransparency(
+            final float shadeToggleIconTransparency) {
         this.shadeToggleIconTransparency = shadeToggleIconTransparency;
     }
-
-    public boolean isUndecorated ()
-    {
+    
+    public boolean isUndecorated() {
         return undecorated;
     }
-
-    public void setUndecorated ( final boolean undecorated )
-    {
+    
+    public void setUndecorated(final boolean undecorated) {
         this.undecorated = undecorated;
-        updateBorder ();
+        updateBorder();
     }
-
-    public Painter getPainter ()
-    {
+    
+    public Painter getPainter() {
         return painter;
     }
-
-    public void setPainter ( final Painter painter )
-    {
-        PainterSupport.uninstallPainter ( button, this.painter );
-
+    
+    public void setPainter(final Painter painter) {
+        PainterSupport.uninstallPainter(button, this.painter);
+        
         this.painter = painter;
-        PainterSupport.installPainter ( button, this.painter );
-        updateBorder ();
+        PainterSupport.installPainter(button, this.painter);
+        updateBorder();
     }
-
-    public boolean isMoveIconOnPress ()
-    {
+    
+    public boolean isMoveIconOnPress() {
         return moveIconOnPress;
     }
-
-    public void setMoveIconOnPress ( final boolean moveIconOnPress )
-    {
+    
+    public void setMoveIconOnPress(final boolean moveIconOnPress) {
         this.moveIconOnPress = moveIconOnPress;
     }
-
-    public boolean isRolloverDecoratedOnly ()
-    {
+    
+    public boolean isRolloverDecoratedOnly() {
         return rolloverDecoratedOnly;
     }
-
-    public void setRolloverDecoratedOnly ( final boolean rolloverDecoratedOnly )
-    {
+    
+    public void setRolloverDecoratedOnly(final boolean rolloverDecoratedOnly) {
         this.rolloverDecoratedOnly = rolloverDecoratedOnly;
     }
-
-    public boolean isAnimate ()
-    {
+    
+    public boolean isAnimate() {
         return animate;
     }
-
-    public void setAnimate ( final boolean animate )
-    {
+    
+    public void setAnimate(final boolean animate) {
         this.animate = animate;
     }
-
-    public boolean isDrawFocus ()
-    {
+    
+    public boolean isDrawFocus() {
         return drawFocus;
     }
-
-    public void setDrawFocus ( final boolean drawFocus )
-    {
+    
+    public void setDrawFocus(final boolean drawFocus) {
         this.drawFocus = drawFocus;
     }
-
-    public boolean isDrawBottom ()
-    {
+    
+    public boolean isDrawBottom() {
         return drawBottom;
     }
-
-    public void setDrawBottom ( final boolean drawBottom )
-    {
+    
+    public void setDrawBottom(final boolean drawBottom) {
         this.drawBottom = drawBottom;
-        updateBorder ();
+        updateBorder();
     }
-
-    public boolean isDrawLeft ()
-    {
+    
+    public boolean isDrawLeft() {
         return drawLeft;
     }
-
-    public void setDrawLeft ( final boolean drawLeft )
-    {
+    
+    public void setDrawLeft(final boolean drawLeft) {
         this.drawLeft = drawLeft;
-        updateBorder ();
+        updateBorder();
     }
-
-    public boolean isDrawRight ()
-    {
+    
+    public boolean isDrawRight() {
         return drawRight;
     }
-
-    public void setDrawRight ( final boolean drawRight )
-    {
+    
+    public void setDrawRight(final boolean drawRight) {
         this.drawRight = drawRight;
-        updateBorder ();
+        updateBorder();
     }
-
-    public boolean isDrawTop ()
-    {
+    
+    public boolean isDrawTop() {
         return drawTop;
     }
-
-    public void setDrawTop ( final boolean drawTop )
-    {
+    
+    public void setDrawTop(final boolean drawTop) {
         this.drawTop = drawTop;
-        updateBorder ();
+        updateBorder();
     }
-
-    public void setDrawSides ( final boolean top, final boolean left, final boolean bottom, final boolean right )
-    {
+    
+    public void setDrawSides(final boolean top, final boolean left,
+            final boolean bottom, final boolean right) {
         this.drawTop = top;
         this.drawLeft = left;
         this.drawBottom = bottom;
         this.drawRight = right;
-        updateBorder ();
+        updateBorder();
     }
-
-    public boolean isDrawTopLine ()
-    {
+    
+    public boolean isDrawTopLine() {
         return drawTopLine;
     }
-
-    public void setDrawTopLine ( final boolean drawTopLine )
-    {
+    
+    public void setDrawTopLine(final boolean drawTopLine) {
         this.drawTopLine = drawTopLine;
-        updateBorder ();
+        updateBorder();
     }
-
-    public boolean isDrawLeftLine ()
-    {
+    
+    public boolean isDrawLeftLine() {
         return drawLeftLine;
     }
-
-    public void setDrawLeftLine ( final boolean drawLeftLine )
-    {
+    
+    public void setDrawLeftLine(final boolean drawLeftLine) {
         this.drawLeftLine = drawLeftLine;
-        updateBorder ();
+        updateBorder();
     }
-
-    public boolean isDrawBottomLine ()
-    {
+    
+    public boolean isDrawBottomLine() {
         return drawBottomLine;
     }
-
-    public void setDrawBottomLine ( final boolean drawBottomLine )
-    {
+    
+    public void setDrawBottomLine(final boolean drawBottomLine) {
         this.drawBottomLine = drawBottomLine;
-        updateBorder ();
+        updateBorder();
     }
-
-    public boolean isDrawRightLine ()
-    {
+    
+    public boolean isDrawRightLine() {
         return drawRightLine;
     }
-
-    public void setDrawRightLine ( final boolean drawRightLine )
-    {
+    
+    public void setDrawRightLine(final boolean drawRightLine) {
         this.drawRightLine = drawRightLine;
-        updateBorder ();
+        updateBorder();
     }
-
-    public void setDrawLines ( final boolean top, final boolean left, final boolean bottom, final boolean right )
-    {
+    
+    public void setDrawLines(final boolean top, final boolean left,
+            final boolean bottom, final boolean right) {
         this.drawTopLine = top;
         this.drawLeftLine = left;
         this.drawBottomLine = bottom;
         this.drawRightLine = right;
-        updateBorder ();
+        updateBorder();
     }
-
-    public boolean isRollover ()
-    {
+    
+    public boolean isRollover() {
         return rollover;
     }
-
+    
     @Override
-    public void paint ( final Graphics g, final JComponent c )
-    {
-        final AbstractButton button = ( AbstractButton ) c;
-        final ButtonModel buttonModel = button.getModel ();
-
-        final Graphics2D g2d = ( Graphics2D ) g;
-        final Object aa = GraphicsUtils.setupAntialias ( g2d );
-
-        if ( painter != null || !undecorated )
-        {
-            if ( painter != null )
-            {
+    public void paint(final Graphics g, final JComponent c) {
+        final AbstractButton button = (AbstractButton) c;
+        final ButtonModel buttonModel = button.getModel();
+        
+        final Graphics2D g2d = (Graphics2D) g;
+        final Object aa = GraphicsUtils.setupAntialias(g2d);
+        
+        if (painter != null || !undecorated) {
+            if (painter != null) {
                 // Use background painter instead of default UI graphics
-                painter.paint ( g2d, SwingUtils.size ( c ), c );
-            }
-            else if ( !undecorated )
-            {
-                final boolean pressed = buttonModel.isPressed () || buttonModel.isSelected ();
-                final Shape borderShape = getButtonShape ( button, true );
-                if ( isDrawButton ( c, buttonModel ) )
-                {
+                painter.paint(g2d, SwingUtils.size(c), c);
+            } else if (!undecorated) {
+                final boolean pressed = buttonModel.isPressed()
+                        || buttonModel.isSelected();
+                final Shape borderShape = getButtonShape(button, true);
+                if (isDrawButton(c, buttonModel)) {
                     // Rollover decorated only transparency
-                    final boolean animatedTransparency = animate && rolloverDecoratedOnly && !pressed;
-                    final Composite oldComposite = GraphicsUtils.setupAlphaComposite ( g2d, transparency, animatedTransparency );
-
+                    final boolean animatedTransparency = animate
+                            && rolloverDecoratedOnly && !pressed;
+                    final Composite oldComposite = GraphicsUtils
+                            .setupAlphaComposite(g2d, transparency,
+                                    animatedTransparency);
+                    
                     // Shade
-                    if ( drawShade && ( c.isEnabled () || isInButtonGroup ( button ) || showDisabledShade ) &&
-                            ( !rolloverShadeOnly || rollover ) )
-                    {
-                        final boolean setInner = !animatedTransparency && rolloverShadeOnly;
-                        final Composite oc = GraphicsUtils.setupAlphaComposite ( g2d, transparency, setInner );
-                        if ( shadeWidth < 3 )
-                        {
-                            GraphicsUtils.drawShade ( g2d, borderShape, getShadeColor ( c ), shadeWidth );
-                        }
-                        else
-                        {
+                    if (drawShade
+                            && (c.isEnabled() || isInButtonGroup(button) || showDisabledShade)
+                            && (!rolloverShadeOnly || rollover)) {
+                        final boolean setInner = !animatedTransparency
+                                && rolloverShadeOnly;
+                        final Composite oc = GraphicsUtils.setupAlphaComposite(
+                                g2d, transparency, setInner);
+                        if (shadeWidth < 3) {
+                            GraphicsUtils.drawShade(g2d, borderShape,
+                                    getShadeColor(c), shadeWidth);
+                        } else {
                             // todo Properly paint shade color
-
-                            final int w = button.getWidth ();
-                            final int h = button.getHeight ();
-
+                            
+                            final int w = button.getWidth();
+                            final int h = button.getHeight();
+                            
                             // Changing line marks in case of RTL orientation
-                            final boolean ltr = button.getComponentOrientation ().isLeftToRight ();
-                            final boolean actualPaintLeft = ltr ? drawLeft : drawRight;
-                            final boolean actualPaintRight = ltr ? drawRight : drawLeft;
-
+                            final boolean ltr = button
+                                    .getComponentOrientation().isLeftToRight();
+                            final boolean actualPaintLeft = ltr ? drawLeft
+                                    : drawRight;
+                            final boolean actualPaintRight = ltr ? drawRight
+                                    : drawLeft;
+                            
                             // Retrieve shade 9-patch icon
-                            final NinePatchIcon shade = NinePatchUtils.getShadeIcon ( shadeWidth, round * 2, transparency );
-
+                            final NinePatchIcon shade = NinePatchUtils
+                                    .getShadeIcon(shadeWidth, round * 2,
+                                            transparency);
+                            
                             // Calculate shade bounds and paint it
                             final int x = actualPaintLeft ? 0 : -shadeWidth * 2;
-                            final int width = w + ( actualPaintLeft ? 0 : shadeWidth * 2 ) + ( actualPaintRight ? 0 : shadeWidth * 2 );
+                            final int width = w
+                                    + (actualPaintLeft ? 0 : shadeWidth * 2)
+                                    + (actualPaintRight ? 0 : shadeWidth * 2);
                             final int y = drawTop ? 0 : -shadeWidth * 2;
-                            final int height = h + ( drawTop ? 0 : shadeWidth * 2 ) + ( drawBottom ? 0 : shadeWidth * 2 );
-                            shade.paintIcon ( g2d, x, y, width, height );
+                            final int height = h
+                                    + (drawTop ? 0 : shadeWidth * 2)
+                                    + (drawBottom ? 0 : shadeWidth * 2);
+                            shade.paintIcon(g2d, x, y, width, height);
                         }
-                        GraphicsUtils.restoreComposite ( g2d, oc, setInner );
+                        GraphicsUtils.restoreComposite(g2d, oc, setInner);
                     }
-
+                    
                     // Background
-                    g2d.setPaint ( new GradientPaint ( 0, drawTop ? shadeWidth : 0, getCurrentTopBgColor ( pressed ), 0,
-                            button.getHeight () - ( drawBottom ? shadeWidth : 0 ), getCurrentBottomBgColor ( pressed ) ) );
-                    g2d.fill ( getButtonShape ( button, false ) );
-
+                    g2d.setPaint(new GradientPaint(0, drawTop ? shadeWidth : 0,
+                            getCurrentTopBgColor(pressed), 0, button
+                                    .getHeight()
+                                    - (drawBottom ? shadeWidth : 0),
+                            getCurrentBottomBgColor(pressed)));
+                    g2d.fill(getButtonShape(button, false));
+                    
                     // Cursor-following highlight
-                    if ( rolloverShine && mousePoint != null && c.isEnabled () )
-                    {
-                        final Shape oldClip = GraphicsUtils.intersectClip ( g2d, borderShape );
-                        g2d.setPaint ( new RadialGradientPaint ( mousePoint.x, c.getHeight (), c.getWidth (), new float[]{ 0f, 1f },
-                                new Color[]{ transparentShineColor, FlatLafStyleConstants.transparent } ) );
-                        g2d.fill ( borderShape );
-                        GraphicsUtils.restoreClip ( g2d, oldClip );
+                    if (rolloverShine && mousePoint != null && c.isEnabled()) {
+                        final Shape oldClip = GraphicsUtils.intersectClip(g2d,
+                                borderShape);
+                        g2d.setPaint(new RadialGradientPaint(mousePoint.x, c
+                                .getHeight(), c.getWidth(), new float[] { 0f,
+                                1f }, new Color[] { transparentShineColor,
+                                FlatLafStyleConstants.transparent }));
+                        g2d.fill(borderShape);
+                        GraphicsUtils.restoreClip(g2d, oldClip);
                     }
-
+                    
                     // Inner shade
-                    if ( pressed )
-                    {
-                        GraphicsUtils.drawShade ( g2d, borderShape, innerShadeColor, innerShadeWidth, borderShape );
+                    if (pressed) {
+                        GraphicsUtils.drawShade(g2d, borderShape,
+                                innerShadeColor, innerShadeWidth, borderShape);
                     }
-
+                    
                     // Default button inner shade
-                    if ( isDefaultButton () )
-                    {
-                        final Shape oldClip = GraphicsUtils.setupClip ( g2d, borderShape );
-                        final Stroke stroke = GraphicsUtils.setupStroke ( g2d, defaultInnerShade );
-                        g2d.setPaint ( defaultButtonShadeColor );
-                        g2d.draw ( borderShape );
-                        GraphicsUtils.restoreStroke ( g2d, stroke );
-                        GraphicsUtils.restoreClip ( g2d, oldClip );
+                    if (isDefaultButton()) {
+                        final Shape oldClip = GraphicsUtils.setupClip(g2d,
+                                borderShape);
+                        final Stroke stroke = GraphicsUtils.setupStroke(g2d,
+                                defaultInnerShade);
+                        g2d.setPaint(defaultButtonShadeColor);
+                        g2d.draw(borderShape);
+                        GraphicsUtils.restoreStroke(g2d, stroke);
+                        GraphicsUtils.restoreClip(g2d, oldClip);
                     }
-
+                    
                     // Border
-                    g2d.setPaint ( c.isEnabled () ? rolloverDarkBorderOnly && rollover ? getBorderColor () :
-                            !rolloverDarkBorderOnly ? FlatLafStyleConstants.darkBorderColor : FlatLafStyleConstants.borderColor :
-                            FlatLafStyleConstants.disabledBorderColor );
-                    g2d.draw ( borderShape );
-
+                    g2d.setPaint(c.isEnabled() ? rolloverDarkBorderOnly
+                            && rollover ? getBorderColor()
+                            : !rolloverDarkBorderOnly ? FlatLafStyleConstants.darkBorderColor
+                                    : FlatLafStyleConstants.borderColor
+                            : FlatLafStyleConstants.disabledBorderColor);
+                    g2d.draw(borderShape);
+                    
                     // Changing line marks in case of RTL orientation
-                    final boolean ltr = button.getComponentOrientation ().isLeftToRight ();
+                    final boolean ltr = button.getComponentOrientation()
+                            .isLeftToRight();
                     final boolean actualDrawLeft = ltr ? drawLeft : drawRight;
-                    final boolean actualDrawLeftLine = ltr ? drawLeftLine : drawRightLine;
+                    final boolean actualDrawLeftLine = ltr ? drawLeftLine
+                            : drawRightLine;
                     final boolean actualDrawRight = ltr ? drawRight : drawLeft;
-                    final boolean actualDrawRightLine = ltr ? drawRightLine : drawLeftLine;
-
+                    final boolean actualDrawRightLine = ltr ? drawRightLine
+                            : drawLeftLine;
+                    
                     // Side-border
-                    if ( !drawTop && drawTopLine )
-                    {
+                    if (!drawTop && drawTopLine) {
                         final int x = actualDrawLeft ? shadeWidth : 0;
-                        g2d.setPaint ( c.isEnabled () || isAfterEnabledButton ( button ) ? FlatLafStyleConstants.darkBorderColor :
-                                FlatLafStyleConstants.disabledBorderColor );
-                        g2d.drawLine ( x, 0, x + c.getWidth () - ( actualDrawLeft ? shadeWidth : 0 ) -
-                                ( actualDrawRight ? shadeWidth + 1 : 0 ), 0 );
+                        g2d.setPaint(c.isEnabled()
+                                || isAfterEnabledButton(button) ? FlatLafStyleConstants.darkBorderColor
+                                : FlatLafStyleConstants.disabledBorderColor);
+                        g2d.drawLine(x, 0, x + c.getWidth()
+                                - (actualDrawLeft ? shadeWidth : 0)
+                                - (actualDrawRight ? shadeWidth + 1 : 0), 0);
                     }
-                    if ( !actualDrawLeft && actualDrawLeftLine )
-                    {
+                    if (!actualDrawLeft && actualDrawLeftLine) {
                         final int y = drawTop ? shadeWidth : 0;
-                        g2d.setPaint ( c.isEnabled () || isAfterEnabledButton ( button ) ? FlatLafStyleConstants.darkBorderColor :
-                                FlatLafStyleConstants.disabledBorderColor );
-                        g2d.drawLine ( 0, y, 0, y + c.getHeight () - ( drawTop ? shadeWidth : 0 ) -
-                                ( drawBottom ? shadeWidth + 1 : 0 ) );
+                        g2d.setPaint(c.isEnabled()
+                                || isAfterEnabledButton(button) ? FlatLafStyleConstants.darkBorderColor
+                                : FlatLafStyleConstants.disabledBorderColor);
+                        g2d.drawLine(0, y, 0, y + c.getHeight()
+                                - (drawTop ? shadeWidth : 0)
+                                - (drawBottom ? shadeWidth + 1 : 0));
                     }
-                    if ( !drawBottom && drawBottomLine )
-                    {
+                    if (!drawBottom && drawBottomLine) {
                         final int x = actualDrawLeft ? shadeWidth : 0;
-                        g2d.setPaint ( c.isEnabled () || isBeforeEnabledButton ( button ) ? FlatLafStyleConstants.darkBorderColor :
-                                FlatLafStyleConstants.disabledBorderColor );
-                        g2d.drawLine ( x, c.getHeight () - 1, x + c.getWidth () - ( actualDrawLeft ? shadeWidth : 0 ) -
-                                ( actualDrawRight ? shadeWidth + 1 : 0 ), c.getHeight () - 1 );
+                        g2d.setPaint(c.isEnabled()
+                                || isBeforeEnabledButton(button) ? FlatLafStyleConstants.darkBorderColor
+                                : FlatLafStyleConstants.disabledBorderColor);
+                        g2d.drawLine(x, c.getHeight() - 1, x + c.getWidth()
+                                - (actualDrawLeft ? shadeWidth : 0)
+                                - (actualDrawRight ? shadeWidth + 1 : 0),
+                                c.getHeight() - 1);
                     }
-                    if ( !actualDrawRight && actualDrawRightLine )
-                    {
+                    if (!actualDrawRight && actualDrawRightLine) {
                         final int y = drawTop ? shadeWidth : 0;
-                        g2d.setPaint ( c.isEnabled () || isBeforeEnabledButton ( button ) ? FlatLafStyleConstants.darkBorderColor :
-                                FlatLafStyleConstants.disabledBorderColor );
-                        g2d.drawLine ( c.getWidth () - 1, y, c.getWidth () - 1, y + c.getHeight () - ( drawTop ? shadeWidth : 0 ) -
-                                ( drawBottom ? shadeWidth + 1 : 0 ) );
+                        g2d.setPaint(c.isEnabled()
+                                || isBeforeEnabledButton(button) ? FlatLafStyleConstants.darkBorderColor
+                                : FlatLafStyleConstants.disabledBorderColor);
+                        g2d.drawLine(c.getWidth() - 1, y, c.getWidth() - 1, y
+                                + c.getHeight() - (drawTop ? shadeWidth : 0)
+                                - (drawBottom ? shadeWidth + 1 : 0));
                     }
-
-                    GraphicsUtils.restoreComposite ( g2d, oldComposite, animatedTransparency );
+                    
+                    GraphicsUtils.restoreComposite(g2d, oldComposite,
+                            animatedTransparency);
                 }
             }
         }
-
+        
         // Special text and icon translation effect on button press
-        if ( buttonModel.isPressed () && moveIconOnPress )
-        {
-            g2d.translate ( 1, 1 );
+        if (buttonModel.isPressed() && moveIconOnPress) {
+            g2d.translate(1, 1);
         }
-
-        GraphicsUtils.restoreAntialias ( g2d, aa );
-
+        
+        GraphicsUtils.restoreAntialias(g2d, aa);
+        
         // Default text and icon drawing
-        final Map hints = SwingUtils.setupTextAntialias ( g2d );
-        super.paint ( g, c );
-        SwingUtils.restoreTextAntialias ( g2d, hints );
+        final Map hints = SwingUtils.setupTextAntialias(g2d);
+        super.paint(g, c);
+        SwingUtils.restoreTextAntialias(g2d, hints);
     }
-
+    
     /**
      * Returns whether this button is default within its root pane or not.
      *
-     * @return true if this button is default within its root pane, false otherwise
+     * @return true if this button is default within its root pane, false
+     *         otherwise
      */
-    protected boolean isDefaultButton ()
-    {
-        return button instanceof JButton && ( ( JButton ) button ).isDefaultButton ();
+    protected boolean isDefaultButton() {
+        return button instanceof JButton
+                && ((JButton) button).isDefaultButton();
     }
-
+    
     /**
      * Returns current top background color.
      *
-     * @param pressed whether button is pressed or not
+     * @param pressed
+     *            whether button is pressed or not
      * @return current top background color
      */
-    protected Color getCurrentTopBgColor ( final boolean pressed )
-    {
+    protected Color getCurrentTopBgColor(final boolean pressed) {
         return pressed ? topSelectedBgColor : topBgColor;
     }
-
+    
     /**
      * Returns current bottom background color.
      *
-     * @param pressed whether button is pressed or not
+     * @param pressed
+     *            whether button is pressed or not
      * @return current bottom background color
      */
-    protected Color getCurrentBottomBgColor ( final boolean pressed )
-    {
+    protected Color getCurrentBottomBgColor(final boolean pressed) {
         return pressed ? bottomSelectedBgColor : bottomBgColor;
     }
-
+    
     /**
-     * Returns whether this button placed after another enabled button inside a WebButtonGroup container or not.
-     * This check is required to paint button sides with proper colors.
+     * Returns whether this button placed after another enabled button inside a
+     * WebButtonGroup container or not. This check is required to paint button
+     * sides with proper colors.
      *
-     * @param button this button
-     * @return true if this button placed after another enabled button inside a WebButtonGroup container, false otherwise
+     * @param button
+     *            this button
+     * @return true if this button placed after another enabled button inside a
+     *         WebButtonGroup container, false otherwise
      */
-    protected boolean isAfterEnabledButton ( final AbstractButton button )
-    {
-        final Container container = button.getParent ();
-        if ( container != null && container instanceof WebButtonGroup )
-        {
-            final int zOrder = container.getComponentZOrder ( button );
-            if ( zOrder > 0 )
-            {
-                final WebButtonGroup group = ( WebButtonGroup ) container;
-                final Component before = group.getComponent ( zOrder - 1 );
-                if ( before instanceof WebButton )
-                {
-                    return before.isEnabled ();
+    protected boolean isAfterEnabledButton(final AbstractButton button) {
+        final Container container = button.getParent();
+        if (container != null && container instanceof WebButtonGroup) {
+            final int zOrder = container.getComponentZOrder(button);
+            if (zOrder > 0) {
+                final WebButtonGroup group = (WebButtonGroup) container;
+                final Component before = group.getComponent(zOrder - 1);
+                if (before instanceof WebButton) {
+                    return before.isEnabled();
                 }
             }
         }
         return false;
     }
-
+    
     /**
-     * Returns whether this button placed before another enabled button inside a WebButtonGroup container or not.
-     * This check is required to paint button sides with proper colors.
+     * Returns whether this button placed before another enabled button inside a
+     * WebButtonGroup container or not. This check is required to paint button
+     * sides with proper colors.
      *
-     * @param button this button
-     * @return true if this button placed before another enabled button inside a WebButtonGroup container, false otherwise
+     * @param button
+     *            this button
+     * @return true if this button placed before another enabled button inside a
+     *         WebButtonGroup container, false otherwise
      */
-    protected boolean isBeforeEnabledButton ( final AbstractButton button )
-    {
-        final Container container = button.getParent ();
-        if ( container != null && container instanceof WebButtonGroup )
-        {
-            final int zOrder = container.getComponentZOrder ( button );
-            if ( zOrder < container.getComponentCount () - 1 )
-            {
-                final WebButtonGroup group = ( WebButtonGroup ) container;
-                final Component before = group.getComponent ( zOrder + 1 );
-                if ( before instanceof WebButton )
-                {
-                    return before.isEnabled ();
+    protected boolean isBeforeEnabledButton(final AbstractButton button) {
+        final Container container = button.getParent();
+        if (container != null && container instanceof WebButtonGroup) {
+            final int zOrder = container.getComponentZOrder(button);
+            if (zOrder < container.getComponentCount() - 1) {
+                final WebButtonGroup group = (WebButtonGroup) container;
+                final Component before = group.getComponent(zOrder + 1);
+                if (before instanceof WebButton) {
+                    return before.isEnabled();
                 }
             }
         }
         return false;
     }
-
+    
     /**
      * Returns whether this button is inside WebButtonGroup or not.
      *
-     * @param button this button
+     * @param button
+     *            this button
      * @return true if this button is inside WebButtonGroup, false otherwise
      */
-    protected boolean isInButtonGroup ( final AbstractButton button )
-    {
-        final Container container = button.getParent ();
+    protected boolean isInButtonGroup(final AbstractButton button) {
+        final Container container = button.getParent();
         return container != null && container instanceof WebButtonGroup;
     }
-
-    private Color getShadeColor ( final JComponent c )
-    {
-        return isFocusActive ( c ) ? FlatLafStyleConstants.fieldFocusColor : shadeColor;
+    
+    private Color getShadeColor(final JComponent c) {
+        return isFocusActive(c) ? FlatLafStyleConstants.fieldFocusColor
+                : shadeColor;
     }
-
-    private boolean isFocusActive ( final JComponent c )
-    {
-        return c.isEnabled () && drawFocus && c.isFocusOwner ();
+    
+    private boolean isFocusActive(final JComponent c) {
+        return c.isEnabled() && drawFocus && c.isFocusOwner();
     }
-
-    private boolean isDrawButton ( final JComponent c, final ButtonModel buttonModel )
-    {
-        return rolloverDecoratedOnly && rollover && c.isEnabled () ||
-                animate && transparency > 0f && c.isEnabled () || !rolloverDecoratedOnly ||
-                buttonModel.isSelected () || buttonModel.isPressed ();
+    
+    private boolean isDrawButton(final JComponent c,
+            final ButtonModel buttonModel) {
+        return rolloverDecoratedOnly && rollover && c.isEnabled() || animate
+                && transparency > 0f && c.isEnabled() || !rolloverDecoratedOnly
+                || buttonModel.isSelected() || buttonModel.isPressed();
     }
-
+    
     @Override
-    protected void paintText ( final Graphics g, final JComponent c, final Rectangle textRect, final String text )
-    {
-        final AbstractButton b = ( AbstractButton ) c;
-        final ButtonModel model = b.getModel ();
-        final FontMetrics fm = SwingUtils.getFontMetrics ( c, g );
-        final int mnemonicIndex = b.getDisplayedMnemonicIndex ();
-
+    protected void paintText(final Graphics g, final JComponent c,
+            final Rectangle textRect, final String text) {
+        final AbstractButton b = (AbstractButton) c;
+        final ButtonModel model = b.getModel();
+        final FontMetrics fm = SwingUtils.getFontMetrics(c, g);
+        final int mnemonicIndex = b.getDisplayedMnemonicIndex();
+        
         // Drawing text
-        if ( model.isEnabled () )
-        {
+        if (model.isEnabled()) {
             // Drawing normal text
-            g.setColor ( model.isPressed () || model.isSelected () ? selectedForeground : b.getForeground () );
-            SwingUtils.drawStringUnderlineCharAt ( g, text, mnemonicIndex, textRect.x + getTextShiftOffset (),
-                    textRect.y + fm.getAscent () + getTextShiftOffset () );
-        }
-        else
-        {
+            g.setColor(model.isPressed() || model.isSelected() ? selectedForeground
+                    : b.getForeground());
+            SwingUtils.drawStringUnderlineCharAt(g, text, mnemonicIndex,
+                    textRect.x + getTextShiftOffset(),
+                    textRect.y + fm.getAscent() + getTextShiftOffset());
+        } else {
             // Drawing disabled text
-            g.setColor ( b.getBackground ().brighter () );
-            SwingUtils.drawStringUnderlineCharAt ( g, text, mnemonicIndex, textRect.x, textRect.y + fm.getAscent () );
-            g.setColor ( b.getBackground ().darker () );
-            SwingUtils.drawStringUnderlineCharAt ( g, text, mnemonicIndex, textRect.x - 1, textRect.y + fm.getAscent () - 1 );
+            g.setColor(b.getBackground().brighter());
+            SwingUtils.drawStringUnderlineCharAt(g, text, mnemonicIndex,
+                    textRect.x, textRect.y + fm.getAscent());
+            g.setColor(b.getBackground().darker());
+            SwingUtils.drawStringUnderlineCharAt(g, text, mnemonicIndex,
+                    textRect.x - 1, textRect.y + fm.getAscent() - 1);
         }
     }
-
-    private Color getBorderColor ()
-    {
-        return ColorUtils.getIntermediateColor ( FlatLafStyleConstants.borderColor, FlatLafStyleConstants.darkBorderColor, transparency );
+    
+    private Color getBorderColor() {
+        return ColorUtils.getIntermediateColor(
+                FlatLafStyleConstants.borderColor,
+                FlatLafStyleConstants.darkBorderColor, transparency);
     }
-
+    
     @Override
-    protected void paintIcon ( final Graphics g, final JComponent c, final Rectangle iconRect )
-    {
-        final AbstractButton button = ( AbstractButton ) c;
-        final ButtonModel buttonModel = button.getModel ();
-        final Graphics2D g2d = ( Graphics2D ) g;
-
-        final boolean shadeToggleIcon = this.shadeToggleIcon && button instanceof JToggleButton &&
-                !buttonModel.isSelected ();
-        final Composite old = GraphicsUtils.setupAlphaComposite ( g2d, shadeToggleIconTransparency, shadeToggleIcon );
-
-        super.paintIcon ( g, c, iconRect );
-
-        GraphicsUtils.restoreComposite ( g2d, old, shadeToggleIcon );
+    protected void paintIcon(final Graphics g, final JComponent c,
+            final Rectangle iconRect) {
+        final AbstractButton button = (AbstractButton) c;
+        final ButtonModel buttonModel = button.getModel();
+        final Graphics2D g2d = (Graphics2D) g;
+        
+        final boolean shadeToggleIcon = this.shadeToggleIcon
+                && button instanceof JToggleButton && !buttonModel.isSelected();
+        final Composite old = GraphicsUtils.setupAlphaComposite(g2d,
+                shadeToggleIconTransparency, shadeToggleIcon);
+        
+        super.paintIcon(g, c, iconRect);
+        
+        GraphicsUtils.restoreComposite(g2d, old, shadeToggleIcon);
     }
-
-    protected Shape getButtonShape ( final AbstractButton button, final boolean border )
-    {
+    
+    protected Shape getButtonShape(final AbstractButton button,
+            final boolean border) {
         // Changing line marks in case of RTL orientation
-        final boolean ltr = button.getComponentOrientation ().isLeftToRight ();
+        final boolean ltr = button.getComponentOrientation().isLeftToRight();
         final boolean actualDrawLeft = ltr ? drawLeft : drawRight;
         final boolean actualDrawRight = ltr ? drawRight : drawLeft;
-
+        
         // Determining border coordinates
         final int x = actualDrawLeft ? shadeWidth : -shadeWidth - round - 1;
         final int y = drawTop ? shadeWidth : -shadeWidth - round - 1;
-        final int maxX = actualDrawRight ? button.getWidth () - shadeWidth - 1 : button.getWidth () + shadeWidth + round;
-        final int maxY = drawBottom ? button.getHeight () - shadeWidth - 1 : button.getHeight () + shadeWidth + round;
+        final int maxX = actualDrawRight ? button.getWidth() - shadeWidth - 1
+                : button.getWidth() + shadeWidth + round;
+        final int maxY = drawBottom ? button.getHeight() - shadeWidth - 1
+                : button.getHeight() + shadeWidth + round;
         final int width = maxX - x;
         final int height = maxY - y;
-
+        
         // Creating border shape
-        if ( round > 0 )
-        {
-            return new RoundRectangle2D.Double ( x, y, width, height, round * 2 + ( border ? 0 : 1 ), round * 2 + ( border ? 0 : 1 ) );
-        }
-        else
-        {
-            return new Rectangle2D.Double ( x, y, width, height );
+        if (round > 0) {
+            return new RoundRectangle2D.Double(x, y, width, height, round * 2
+                    + (border ? 0 : 1), round * 2 + (border ? 0 : 1));
+        } else {
+            return new Rectangle2D.Double(x, y, width, height);
         }
     }
-
+    
     @Override
-    public Dimension getPreferredSize ( final JComponent c )
-    {
-        Dimension ps = super.getPreferredSize ( c );
-
+    public Dimension getPreferredSize(final JComponent c) {
+        Dimension ps = super.getPreferredSize(c);
+        
         // Background painter preferred size
-        if ( painter != null )
-        {
-            ps = SwingUtils.max ( ps, painter.getPreferredSize ( c ) );
+        if (painter != null) {
+            ps = SwingUtils.max(ps, painter.getPreferredSize(c));
         }
-
+        
         return ps;
     }
 }

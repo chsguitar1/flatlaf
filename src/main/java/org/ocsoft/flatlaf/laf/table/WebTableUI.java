@@ -39,127 +39,125 @@ import java.util.Date;
  * @author Mikle Garin
  */
 
-public class WebTableUI extends BasicTableUI
-{
+public class WebTableUI extends BasicTableUI {
     /**
      * Table listeners.
      */
     private AncestorAdapter ancestorAdapter;
-
+    
     /**
-     * Returns an instance of the WebTreeUI for the specified component.
-     * This tricky method is used by UIManager to create component UIs when needed.
+     * Returns an instance of the WebTreeUI for the specified component. This
+     * tricky method is used by UIManager to create component UIs when needed.
      *
-     * @param c component that will use UI instance
+     * @param c
+     *            component that will use UI instance
      * @return instance of the WebTreeUI
      */
-    @SuppressWarnings ( "UnusedParameters" )
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebTableUI ();
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebTableUI();
     }
-
+    
     /**
      * Installs UI in the specified component.
      *
-     * @param c component for this UI
+     * @param c
+     *            component for this UI
      */
     @Override
-    public void installUI ( final JComponent c )
-    {
-        super.installUI ( c );
-
+    public void installUI(final JComponent c) {
+        super.installUI(c);
+        
         // Default settings
-        SwingUtils.setOrientation ( table );
-        LookAndFeel.installProperty ( table, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
-        table.setFillsViewportHeight ( false );
-        table.setBackground ( WebTableStyle.background );
-        table.setForeground ( WebTableStyle.foreground );
-        table.setSelectionBackground ( WebTableStyle.selectionBackground );
-        table.setSelectionForeground ( WebTableStyle.selectionForeground );
-        table.setRowHeight ( WebTableStyle.rowHeight );
-        table.setShowHorizontalLines ( WebTableStyle.showHorizontalLines );
-        table.setShowVerticalLines ( WebTableStyle.showVerticalLines );
-        table.setIntercellSpacing ( WebTableStyle.cellsSpacing );
-
+        SwingUtils.setOrientation(table);
+        LookAndFeel.installProperty(table, FlatLookAndFeel.OPAQUE_PROPERTY,
+                Boolean.FALSE);
+        table.setFillsViewportHeight(false);
+        table.setBackground(WebTableStyle.background);
+        table.setForeground(WebTableStyle.foreground);
+        table.setSelectionBackground(WebTableStyle.selectionBackground);
+        table.setSelectionForeground(WebTableStyle.selectionForeground);
+        table.setRowHeight(WebTableStyle.rowHeight);
+        table.setShowHorizontalLines(WebTableStyle.showHorizontalLines);
+        table.setShowVerticalLines(WebTableStyle.showVerticalLines);
+        table.setIntercellSpacing(WebTableStyle.cellsSpacing);
+        
         // todo Save and restore old renderers/editors on uninstall
         // Configuring default renderers
-        table.setDefaultRenderer ( Object.class, new WebTableCellRenderer () );
-        table.setDefaultRenderer ( Number.class, new WebNumberRenderer () );
-        table.setDefaultRenderer ( Double.class, new WebDoubleRenderer () );
-        table.setDefaultRenderer ( Float.class, new WebDoubleRenderer () );
-        table.setDefaultRenderer ( Date.class, new WebDateRenderer () );
-        table.setDefaultRenderer ( Icon.class, new WebIconRenderer () );
-        table.setDefaultRenderer ( ImageIcon.class, new WebIconRenderer () );
-        table.setDefaultRenderer ( Boolean.class, new WebBooleanRenderer () );
+        table.setDefaultRenderer(Object.class, new WebTableCellRenderer());
+        table.setDefaultRenderer(Number.class, new WebNumberRenderer());
+        table.setDefaultRenderer(Double.class, new WebDoubleRenderer());
+        table.setDefaultRenderer(Float.class, new WebDoubleRenderer());
+        table.setDefaultRenderer(Date.class, new WebDateRenderer());
+        table.setDefaultRenderer(Icon.class, new WebIconRenderer());
+        table.setDefaultRenderer(ImageIcon.class, new WebIconRenderer());
+        table.setDefaultRenderer(Boolean.class, new WebBooleanRenderer());
         // todo Additional renderers:
-        // table.setDefaultRenderer ( Dimension.class,  );
-        // table.setDefaultRenderer ( Point.class,  );
-        // table.setDefaultRenderer ( File.class,  );
-        // table.setDefaultRenderer ( Color.class,  );
-        // table.setDefaultRenderer ( List.class,  );
-
+        // table.setDefaultRenderer ( Dimension.class, );
+        // table.setDefaultRenderer ( Point.class, );
+        // table.setDefaultRenderer ( File.class, );
+        // table.setDefaultRenderer ( Color.class, );
+        // table.setDefaultRenderer ( List.class, );
+        
         // Configuring default editors
-        table.setDefaultEditor ( Object.class, new WebGenericEditor () );
-        table.setDefaultEditor ( Number.class, new WebNumberEditor () );
-        table.setDefaultEditor ( Boolean.class, new WebBooleanEditor () );
-        table.setDefaultEditor ( Date.class, new WebDateEditor () );
+        table.setDefaultEditor(Object.class, new WebGenericEditor());
+        table.setDefaultEditor(Number.class, new WebNumberEditor());
+        table.setDefaultEditor(Boolean.class, new WebBooleanEditor());
+        table.setDefaultEditor(Date.class, new WebDateEditor());
         // todo Additional editors:
-        // table.setDefaultEditor ( Dimension.class,  );
-        // table.setDefaultEditor ( Point.class,  );
-        // table.setDefaultEditor ( File.class,  );
-        // table.setDefaultEditor ( Color.class,  );
-        // table.setDefaultEditor ( List.class,  );
-
+        // table.setDefaultEditor ( Dimension.class, );
+        // table.setDefaultEditor ( Point.class, );
+        // table.setDefaultEditor ( File.class, );
+        // table.setDefaultEditor ( Color.class, );
+        // table.setDefaultEditor ( List.class, );
+        
         // Configuring scrollpane corner
-        configureEnclosingScrollPaneUI ( table );
-        ancestorAdapter = new AncestorAdapter ()
-        {
+        configureEnclosingScrollPaneUI(table);
+        ancestorAdapter = new AncestorAdapter() {
             @Override
-            public void ancestorAdded ( final AncestorEvent event )
-            {
-                configureEnclosingScrollPaneUI ( table );
+            public void ancestorAdded(final AncestorEvent event) {
+                configureEnclosingScrollPaneUI(table);
             }
         };
-        table.addAncestorListener ( ancestorAdapter );
+        table.addAncestorListener(ancestorAdapter);
     }
-
+    
     /**
      * Uninstalls UI from the specified component.
      *
-     * @param c component with this UI
+     * @param c
+     *            component with this UI
      */
     @Override
-    public void uninstallUI ( final JComponent c )
-    {
-        table.removeAncestorListener ( ancestorAdapter );
-
-        super.uninstallUI ( c );
+    public void uninstallUI(final JComponent c) {
+        table.removeAncestorListener(ancestorAdapter);
+        
+        super.uninstallUI(c);
     }
-
+    
     /**
      * Configures table scroll pane with UI specific settings.
      *
-     * @param table table to process
+     * @param table
+     *            table to process
      */
-    protected void configureEnclosingScrollPaneUI ( final JTable table )
-    {
+    protected void configureEnclosingScrollPaneUI(final JTable table) {
         // Retrieving table scroll pane if it has one
-        final JScrollPane scrollPane = SwingUtils.getScrollPane ( table );
-        if ( scrollPane != null )
-        {
+        final JScrollPane scrollPane = SwingUtils.getScrollPane(table);
+        if (scrollPane != null) {
             // Make certain we are the viewPort's view and not, for
             // example, the rowHeaderView of the scrollPane -
             // an implementor of fixed columns might do this.
-            final JViewport viewport = scrollPane.getViewport ();
-            if ( viewport == null || viewport.getView () != table )
-            {
+            final JViewport viewport = scrollPane.getViewport();
+            if (viewport == null || viewport.getView() != table) {
                 return;
             }
-
+            
             // Adding both corners to the scroll pane for both orientation cases
-            scrollPane.setCorner ( JScrollPane.UPPER_LEADING_CORNER, new WebTableCorner ( false ) );
-            scrollPane.setCorner ( JScrollPane.UPPER_TRAILING_CORNER, new WebTableCorner ( true ) );
+            scrollPane.setCorner(JScrollPane.UPPER_LEADING_CORNER,
+                    new WebTableCorner(false));
+            scrollPane.setCorner(JScrollPane.UPPER_TRAILING_CORNER,
+                    new WebTableCorner(true));
         }
     }
 }

@@ -23,48 +23,47 @@ package org.ocsoft.flatlaf.managers.language;
  * @author Mikle Garin
  */
 
-public interface LanguageConstants
-{
+public interface LanguageConstants {
     /**
      * English language.
      */
     public static final String ENGLISH = "en";
-
+    
     /**
      * Russian language.
      */
     public static final String RUSSIAN = "ru";
-
+    
     /**
      * Polish language.
      */
     public static final String POLISH = "pl";
-
+    
     /**
      * Arabic language.
      */
     public static final String ARABIC = "ar";
-
+    
     /**
      * Spanish language.
      */
     public static final String SPANISH = "es";
-
+    
     /**
      * French language.
      */
     public static final String FRENCH = "fr";
-
+    
     /**
      * Portuguese language.
      */
     public static final String PORTUGUESE = "pt";
-
+    
     /**
      * Portuguese language.
      */
     public static final String GERMAN = "de";
-
+    
     /**
      * Italian language.
      */

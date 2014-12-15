@@ -29,88 +29,81 @@ import java.awt.event.ItemListener;
  * Custom SettingsProcessor for AbstractButton component.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How to use SettingsManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-SettingsManager">How
+ *      to use SettingsManager</a>
  * @see org.ocsoft.flatlaf.managers.settings.SettingsManager
  * @see org.ocsoft.flatlaf.managers.settings.SettingsProcessor
  */
 
-public class AbstractButtonSettingsProcessor extends SettingsProcessor<AbstractButton, Boolean>
-{
+public class AbstractButtonSettingsProcessor extends
+        SettingsProcessor<AbstractButton, Boolean> {
     /**
      * Button state change listener.
      */
     private ItemListener itemListener;
-
+    
     /**
      * Constructs SettingsProcessor using the specified SettingsProcessorData.
      *
-     * @param data SettingsProcessorData
+     * @param data
+     *            SettingsProcessorData
      */
-    public AbstractButtonSettingsProcessor ( final SettingsProcessorData data )
-    {
-        super ( data );
+    public AbstractButtonSettingsProcessor(final SettingsProcessorData data) {
+        super(data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Boolean getDefaultValue ()
-    {
-        Boolean defaultValue = super.getDefaultValue ();
-        if ( defaultValue == null )
-        {
+    public Boolean getDefaultValue() {
+        Boolean defaultValue = super.getDefaultValue();
+        if (defaultValue == null) {
             defaultValue = false;
         }
         return defaultValue;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doInit ( final AbstractButton abstractButton )
-    {
-        itemListener = new ItemListener ()
-        {
+    protected void doInit(final AbstractButton abstractButton) {
+        itemListener = new ItemListener() {
             @Override
-            public void itemStateChanged ( final ItemEvent e )
-            {
-                save ();
+            public void itemStateChanged(final ItemEvent e) {
+                save();
             }
         };
-        abstractButton.addItemListener ( itemListener );
+        abstractButton.addItemListener(itemListener);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void doDestroy ( final AbstractButton abstractButton )
-    {
-        abstractButton.removeItemListener ( itemListener );
+    public void doDestroy(final AbstractButton abstractButton) {
+        abstractButton.removeItemListener(itemListener);
         itemListener = null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void doLoad ( final AbstractButton abstractButton )
-    {
-        final boolean newValue = loadValue ();
-        if ( abstractButton.isSelected () != newValue )
-        {
-            abstractButton.setSelected ( newValue );
+    public void doLoad(final AbstractButton abstractButton) {
+        final boolean newValue = loadValue();
+        if (abstractButton.isSelected() != newValue) {
+            abstractButton.setSelected(newValue);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void doSave ( final AbstractButton abstractButton )
-    {
-        saveValue ( abstractButton.isSelected () );
+    public void doSave(final AbstractButton abstractButton) {
+        saveValue(abstractButton.isSelected());
     }
 }

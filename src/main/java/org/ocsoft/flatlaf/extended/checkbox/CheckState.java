@@ -23,21 +23,20 @@ package org.ocsoft.flatlaf.extended.checkbox;
  * @author Mikle Garin
  */
 
-public enum CheckState
-{
+public enum CheckState {
     /**
      * When checkbox is not checked.
      */
     unchecked,
-
+    
     /**
      * When checkbox is checked.
      */
     checked,
-
+    
     /**
-     * When checkbox is partially checked. Shortly - mixed state.
-     * This is a third custom checkbox state specially for WebTristateCheckBox.
+     * When checkbox is partially checked. Shortly - mixed state. This is a
+     * third custom checkbox state specially for WebTristateCheckBox.
      */
     mixed
 }

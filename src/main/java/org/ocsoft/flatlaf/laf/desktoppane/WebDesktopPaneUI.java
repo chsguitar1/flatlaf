@@ -30,23 +30,21 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
  * User: mgarin Date: 17.08.11 Time: 23:14
  */
 
-public class WebDesktopPaneUI extends BasicDesktopPaneUI
-{
-    @SuppressWarnings ( "UnusedParameters" )
-    public static ComponentUI createUI ( final JComponent c )
-    {
-        return new WebDesktopPaneUI ();
+public class WebDesktopPaneUI extends BasicDesktopPaneUI {
+    @SuppressWarnings("UnusedParameters")
+    public static ComponentUI createUI(final JComponent c) {
+        return new WebDesktopPaneUI();
     }
-
+    
     @Override
-    public void installUI ( final JComponent c )
-    {
-        super.installUI ( c );
-
+    public void installUI(final JComponent c) {
+        super.installUI(c);
+        
         // Default settings
-        SwingUtils.setOrientation ( c );
-        LookAndFeel.installProperty ( c, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.TRUE );
-        c.setBorder ( LafUtils.createWebBorder ( 0, 0, 0, 0 ) );
-        c.setBackground ( FlatLafStyleConstants.backgroundColor );
+        SwingUtils.setOrientation(c);
+        LookAndFeel.installProperty(c, FlatLookAndFeel.OPAQUE_PROPERTY,
+                Boolean.TRUE);
+        c.setBorder(LafUtils.createWebBorder(0, 0, 0, 0));
+        c.setBackground(FlatLafStyleConstants.backgroundColor);
     }
 }

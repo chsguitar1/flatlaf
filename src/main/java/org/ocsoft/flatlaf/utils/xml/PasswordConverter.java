@@ -25,17 +25,14 @@ import com.thoughtworks.xstream.converters.basic.StringConverter;
  * User: mgarin Date: 05.05.12 Time: 16:15
  */
 
-public class PasswordConverter extends StringConverter
-{
+public class PasswordConverter extends StringConverter {
     @Override
-    public Object fromString ( String str )
-    {
-        return EncryptionUtils.decrypt ( ( String ) super.fromString ( str ) );
+    public Object fromString(String str) {
+        return EncryptionUtils.decrypt((String) super.fromString(str));
     }
-
+    
     @Override
-    public String toString ( Object obj )
-    {
-        return EncryptionUtils.encrypt ( super.toString ( obj ) );
+    public String toString(Object obj) {
+        return EncryptionUtils.encrypt(super.toString(obj));
     }
 }

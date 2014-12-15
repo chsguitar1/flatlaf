@@ -23,11 +23,9 @@ import javax.swing.*;
  * User: mgarin Date: 31.10.12 Time: 16:13
  */
 
-public class WebNumberRenderer extends WebTableCellRenderer.UIResource
-{
-    public WebNumberRenderer ()
-    {
-        super ();
-        setHorizontalAlignment ( JLabel.RIGHT );
+public class WebNumberRenderer extends WebTableCellRenderer.UIResource {
+    public WebNumberRenderer() {
+        super();
+        setHorizontalAlignment(JLabel.RIGHT);
     }
 }

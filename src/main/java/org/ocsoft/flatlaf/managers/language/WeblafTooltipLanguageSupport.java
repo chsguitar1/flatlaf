@@ -38,77 +38,69 @@ import java.util.WeakHashMap;
  * @author Mikle Garin
  */
 
-public class WeblafTooltipLanguageSupport implements TooltipLanguageSupport
-{
+public class WeblafTooltipLanguageSupport implements TooltipLanguageSupport {
     /**
-     * Components custom WebLaF tooltips cache.
-     * Used for proper tooltips disposal and update.
+     * Components custom WebLaF tooltips cache. Used for proper tooltips
+     * disposal and update.
      */
-    protected final Map<Component, List<WebCustomTooltip>> tooltipsCache = new WeakHashMap<Component, List<WebCustomTooltip>> ();
-
+    protected final Map<Component, List<WebCustomTooltip>> tooltipsCache = new WeakHashMap<Component, List<WebCustomTooltip>>();
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void setupTooltip ( final Component component, final Value value )
-    {
+    public void setupTooltip(final Component component, final Value value) {
         // Removing old cached tooltips
         final boolean swingComponent = component instanceof JComponent;
-        if ( tooltipsCache.containsKey ( component ) )
-        {
+        if (tooltipsCache.containsKey(component)) {
             // Clearing Swing tooltip
-            if ( swingComponent )
-            {
-                ( ( JComponent ) component ).setToolTipText ( null );
+            if (swingComponent) {
+                ((JComponent) component).setToolTipText(null);
             }
-
+            
             // Clearing WebLaF tooltips
-            TooltipManager.removeTooltips ( component, tooltipsCache.get ( component ) );
-            tooltipsCache.get ( component ).clear ();
+            TooltipManager.removeTooltips(component,
+                    tooltipsCache.get(component));
+            tooltipsCache.get(component).clear();
         }
         // Adding new tooltips
-        if ( value != null && value.getTooltips () != null && value.getTooltips ().size () > 0 )
-        {
-            for ( final Tooltip tooltip : value.getTooltips () )
-            {
-                if ( tooltip.getType ().equals ( TooltipType.swing ) )
-                {
-                    if ( swingComponent )
-                    {
-                        ( ( JComponent ) component ).setToolTipText ( tooltip.getText () );
+        if (value != null && value.getTooltips() != null
+                && value.getTooltips().size() > 0) {
+            for (final Tooltip tooltip : value.getTooltips()) {
+                if (tooltip.getType().equals(TooltipType.swing)) {
+                    if (swingComponent) {
+                        ((JComponent) component).setToolTipText(tooltip
+                                .getText());
                     }
-                }
-                else
-                {
-                    if ( tooltip.getDelay () != null )
-                    {
-                        cacheTip ( TooltipManager.setTooltip ( component, tooltip.getText (), tooltip.getWay (), tooltip.getDelay () ) );
-                    }
-                    else
-                    {
-                        cacheTip ( TooltipManager.setTooltip ( component, tooltip.getText () ) );
+                } else {
+                    if (tooltip.getDelay() != null) {
+                        cacheTip(TooltipManager.setTooltip(component,
+                                tooltip.getText(), tooltip.getWay(),
+                                tooltip.getDelay()));
+                    } else {
+                        cacheTip(TooltipManager.setTooltip(component,
+                                tooltip.getText()));
                     }
                 }
             }
         }
     }
-
+    
     /**
      * Caches created custom tooltip.
      *
-     * @param tooltip tooltip to cache
+     * @param tooltip
+     *            tooltip to cache
      */
-    protected void cacheTip ( final WebCustomTooltip tooltip )
-    {
-        final Component component = tooltip.getComponent ();
-
+    protected void cacheTip(final WebCustomTooltip tooltip) {
+        final Component component = tooltip.getComponent();
+        
         // Creating array if it is needed
-        if ( !tooltipsCache.containsKey ( component ) )
-        {
-            tooltipsCache.put ( component, new ArrayList<WebCustomTooltip> () );
+        if (!tooltipsCache.containsKey(component)) {
+            tooltipsCache.put(component, new ArrayList<WebCustomTooltip>());
         }
-
+        
         // Updating cache
-        tooltipsCache.get ( component ).add ( tooltip );
+        tooltipsCache.get(component).add(tooltip);
     }
 }

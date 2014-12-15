@@ -26,25 +26,24 @@ import java.util.EventListener;
  * @see org.ocsoft.flatlaf.managers.popup.WebPopup
  */
 
-public interface PopupListener extends EventListener
-{
+public interface PopupListener extends EventListener {
     /**
      * Notifies that popup will now be opened.
      */
-    public void popupWillBeOpened ();
-
+    public void popupWillBeOpened();
+    
     /**
      * Notifies that popup was opened.
      */
-    public void popupOpened ();
-
+    public void popupOpened();
+    
     /**
      * Notifies that popup will now be closed.
      */
-    public void popupWillBeClosed ();
-
+    public void popupWillBeClosed();
+    
     /**
      * Notifies that popup was closed.
      */
-    public void popupClosed ();
+    public void popupClosed();
 }

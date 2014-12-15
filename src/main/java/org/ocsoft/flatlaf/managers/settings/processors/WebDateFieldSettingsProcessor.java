@@ -30,69 +30,63 @@ import org.ocsoft.flatlaf.managers.settings.SettingsProcessorData;
  * @author Mikle Garin
  */
 
-public class WebDateFieldSettingsProcessor extends SettingsProcessor<WebDateField, Long>
-{
+public class WebDateFieldSettingsProcessor extends
+        SettingsProcessor<WebDateField, Long> {
     /**
      * Date selection change listener.
      */
     private DateSelectionListener selectionListener;
-
+    
     /**
      * Constructs SettingsProcessor using the specified SettingsProcessorData.
      *
-     * @param data SettingsProcessorData
+     * @param data
+     *            SettingsProcessorData
      */
-    public WebDateFieldSettingsProcessor ( final SettingsProcessorData data )
-    {
-        super ( data );
+    public WebDateFieldSettingsProcessor(final SettingsProcessorData data) {
+        super(data);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doInit ( final WebDateField dateField )
-    {
-        selectionListener = new DateSelectionListener ()
-        {
+    protected void doInit(final WebDateField dateField) {
+        selectionListener = new DateSelectionListener() {
             @Override
-            public void dateSelected ( final Date date )
-            {
-                save ();
+            public void dateSelected(final Date date) {
+                save();
             }
         };
-        dateField.addDateSelectionListener ( selectionListener );
+        dateField.addDateSelectionListener(selectionListener);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doDestroy ( final WebDateField dateField )
-    {
-        dateField.removeDateSelectionListener ( selectionListener );
+    protected void doDestroy(final WebDateField dateField) {
+        dateField.removeDateSelectionListener(selectionListener);
         selectionListener = null;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doLoad ( final WebDateField dateField )
-    {
-        final Long date = loadValue ();
-        final Date value = date != null ? new Date ( date ) : null;
-        dateField.setDate ( value );
+    protected void doLoad(final WebDateField dateField) {
+        final Long date = loadValue();
+        final Date value = date != null ? new Date(date) : null;
+        dateField.setDate(value);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void doSave ( final WebDateField dateField )
-    {
-        final Date date = dateField.getDate ();
-        final Long value = date != null ? date.getTime () : null;
-        saveValue ( value );
+    protected void doSave(final WebDateField dateField) {
+        final Date date = dateField.getDate();
+        final Long value = date != null ? date.getTime() : null;
+        saveValue(value);
     }
 }

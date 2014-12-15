@@ -21,9 +21,6 @@ package org.ocsoft.flatlaf.laf.tabbedpane;
  * User: mgarin Date: 26.07.12 Time: 18:20
  */
 
-public enum TabStretchType
-{
-    never,
-    multiline,
-    always
+public enum TabStretchType {
+    never, multiline, always
 }

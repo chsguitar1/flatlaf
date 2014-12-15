@@ -26,29 +26,28 @@ import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
  * @author Mikle Garin
  */
 
-public final class WebFileListStyle
-{
+public final class WebFileListStyle {
     /**
-     * Whether to generate image file thumbnails or not.
-     * Thumbnails generation might slow down list rendering in some cases.
+     * Whether to generate image file thumbnails or not. Thumbnails generation
+     * might slow down list rendering in some cases.
      */
     public static boolean generateThumbnails = true;
-
+    
     /**
      * Preferred visible column count.
      */
     public static int preferredColumnCount = 3;
-
+    
     /**
      * Preferred visible row count.
      */
     public static int preferredRowCount = 3;
-
+    
     /**
      * File view mode.
      */
     public static FileListViewType fileListViewType = FileListViewType.tiles;
-
+    
     /**
      * File filter.
      */

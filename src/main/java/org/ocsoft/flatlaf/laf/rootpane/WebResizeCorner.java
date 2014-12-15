@@ -28,30 +28,30 @@ import java.awt.*;
  * User: mgarin Date: 02.11.11 Time: 15:56
  */
 
-public class WebResizeCorner extends JComponent
-{
-    public static final ImageIcon cornerIcon = new ImageIcon ( WebResizeCorner.class.getResource ( "icons/corner.png" ) );
-
-    private static final Dimension preferredSize = new Dimension ( cornerIcon.getIconWidth (), cornerIcon.getIconHeight () );
-
-    public WebResizeCorner ()
-    {
-        super ();
-        SwingUtils.setOrientation ( this );
-        setCursor ( Cursor.getPredefinedCursor ( Cursor.SE_RESIZE_CURSOR ) );
-        WindowResizeAdapter.install ( this, WindowResizeAdapter.SOUTH_EAST );
+public class WebResizeCorner extends JComponent {
+    public static final ImageIcon cornerIcon = new ImageIcon(
+            WebResizeCorner.class.getResource("icons/corner.png"));
+    
+    private static final Dimension preferredSize = new Dimension(
+            cornerIcon.getIconWidth(), cornerIcon.getIconHeight());
+    
+    public WebResizeCorner() {
+        super();
+        SwingUtils.setOrientation(this);
+        setCursor(Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR));
+        WindowResizeAdapter.install(this, WindowResizeAdapter.SOUTH_EAST);
     }
-
+    
     @Override
-    protected void paintComponent ( Graphics g )
-    {
-        super.paintComponent ( g );
-        g.drawImage ( cornerIcon.getImage (), getWidth () - cornerIcon.getIconWidth (), getHeight () - cornerIcon.getIconHeight (), null );
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(cornerIcon.getImage(),
+                getWidth() - cornerIcon.getIconWidth(), getHeight()
+                        - cornerIcon.getIconHeight(), null);
     }
-
+    
     @Override
-    public Dimension getPreferredSize ()
-    {
+    public Dimension getPreferredSize() {
         return preferredSize;
     }
 }

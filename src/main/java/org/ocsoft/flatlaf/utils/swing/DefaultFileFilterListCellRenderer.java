@@ -31,28 +31,27 @@ import java.awt.*;
  * @author Mikle Garin
  */
 
-public class DefaultFileFilterListCellRenderer extends WebComboBoxCellRenderer
-{
+public class DefaultFileFilterListCellRenderer extends WebComboBoxCellRenderer {
     /**
      * Constructs a default file filter cell renderer.
      */
-    public DefaultFileFilterListCellRenderer ()
-    {
-        super ();
+    public DefaultFileFilterListCellRenderer() {
+        super();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public Component getListCellRendererComponent ( final JList list, final Object value, final int index, final boolean isSelected,
-                                                    final boolean cellHasFocus )
-    {
-        final AbstractFileFilter abstractFileFilter = ( AbstractFileFilter ) value;
-        final WebComboBoxElement renderer =
-                ( WebComboBoxElement ) super.getListCellRendererComponent ( list, "", index, isSelected, cellHasFocus );
-        renderer.setIcon ( abstractFileFilter.getIcon () );
-        renderer.setText ( abstractFileFilter.getDescription () );
+    public Component getListCellRendererComponent(final JList list,
+            final Object value, final int index, final boolean isSelected,
+            final boolean cellHasFocus) {
+        final AbstractFileFilter abstractFileFilter = (AbstractFileFilter) value;
+        final WebComboBoxElement renderer = (WebComboBoxElement) super
+                .getListCellRendererComponent(list, "", index, isSelected,
+                        cellHasFocus);
+        renderer.setIcon(abstractFileFilter.getIcon());
+        renderer.setText(abstractFileFilter.getDescription());
         return renderer;
     }
 }

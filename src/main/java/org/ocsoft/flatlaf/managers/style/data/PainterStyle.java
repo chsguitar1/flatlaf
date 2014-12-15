@@ -24,121 +24,114 @@ import java.util.Map;
  * Painter style information class.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-StyleManager">How to use StyleManager</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-StyleManager">How
+ *      to use StyleManager</a>
  * @see org.ocsoft.flatlaf.managers.style.StyleManager
  */
 
-public final class PainterStyle implements Serializable
-{
+public final class PainterStyle implements Serializable {
     /**
-     * Painter ID.
-     * Refers to painter type.
-     * It is required since a lot of components has more than just one painter.
+     * Painter ID. Refers to painter type. It is required since a lot of
+     * components has more than just one painter.
      */
     private String id;
-
+    
     /**
      * Whether this is base component painter or not.
      */
     private boolean base;
-
+    
     /**
-     * Painter class canonical name.
-     * Used for painter instantiation.
+     * Painter class canonical name. Used for painter instantiation.
      */
     private String painterClass;
-
+    
     /**
-     * Painter properties.
-     * Contains parsed paintr settings.
+     * Painter properties. Contains parsed paintr settings.
      */
     private Map<String, Object> properties;
-
+    
     /**
      * Constructs new painter style information.
      */
-    public PainterStyle ()
-    {
-        super ();
+    public PainterStyle() {
+        super();
     }
-
+    
     /**
      * Returns painter ID.
      *
      * @return painter ID
      */
-    public String getId ()
-    {
+    public String getId() {
         return id;
     }
-
+    
     /**
      * Sets painter ID.
      *
-     * @param id new painter ID
+     * @param id
+     *            new painter ID
      */
-    public void setId ( final String id )
-    {
+    public void setId(final String id) {
         this.id = id;
     }
-
+    
     /**
      * Returns whether this is base component painter or not.
      *
      * @return true if this is base component painter, false otherwise
      */
-    public boolean isBase ()
-    {
+    public boolean isBase() {
         return base;
     }
-
+    
     /**
      * Sets whether this is base component painter or not.
      *
-     * @param base whether this is base component painter or not
+     * @param base
+     *            whether this is base component painter or not
      */
-    public void setBase ( final boolean base )
-    {
+    public void setBase(final boolean base) {
         this.base = base;
     }
-
+    
     /**
      * Returns painter class canonical name.
      *
      * @return painter class canonical name
      */
-    public String getPainterClass ()
-    {
+    public String getPainterClass() {
         return painterClass;
     }
-
+    
     /**
      * Sets painter class canonical name.
      *
-     * @param painterClass new painter class canonical name
+     * @param painterClass
+     *            new painter class canonical name
      */
-    public void setPainterClass ( final String painterClass )
-    {
+    public void setPainterClass(final String painterClass) {
         this.painterClass = painterClass;
     }
-
+    
     /**
      * Returns painter properties.
      *
      * @return painter properties
      */
-    public Map<String, Object> getProperties ()
-    {
+    public Map<String, Object> getProperties() {
         return properties;
     }
-
+    
     /**
      * Sets painter properties.
      *
-     * @param properties new painter properties
+     * @param properties
+     *            new painter properties
      */
-    public void setProperties ( final Map<String, Object> properties )
-    {
+    public void setProperties(final Map<String, Object> properties) {
         this.properties = properties;
     }
 }

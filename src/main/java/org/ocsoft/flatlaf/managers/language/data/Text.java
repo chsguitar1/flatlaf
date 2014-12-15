@@ -28,58 +28,48 @@ import com.thoughtworks.xstream.annotations.XStreamConverter;
  * User: mgarin Date: 16.05.12 Time: 17:17
  */
 
-@XStreamAlias ("text")
-@XStreamConverter (TextConverter.class)
-public final class Text implements Serializable, Cloneable
-{
+@XStreamAlias("text")
+@XStreamConverter(TextConverter.class)
+public final class Text implements Serializable, Cloneable {
     private String text;
     private String state;
-
-    public Text ()
-    {
-        this ( "" );
+    
+    public Text() {
+        this("");
     }
-
-    public Text ( String text )
-    {
-        this ( text, null );
+    
+    public Text(String text) {
+        this(text, null);
     }
-
-    public Text ( String text, String state )
-    {
-        super ();
+    
+    public Text(String text, String state) {
+        super();
         this.text = text;
         this.state = state;
     }
-
-    public String getText ()
-    {
+    
+    public String getText() {
         return text;
     }
-
-    public void setText ( String text )
-    {
+    
+    public void setText(String text) {
         this.text = text;
     }
-
-    public String getState ()
-    {
+    
+    public String getState() {
         return state;
     }
-
-    public void setState ( String state )
-    {
+    
+    public void setState(String state) {
         this.state = state;
     }
-
+    
     @Override
-    public Text clone ()
-    {
-        return new Text ( text, state );
+    public Text clone() {
+        return new Text(text, state);
     }
-
-    public String toString ()
-    {
-        return TextUtils.shortenText ( text, 50, true );
+    
+    public String toString() {
+        return TextUtils.shortenText(text, 50, true);
     }
 }

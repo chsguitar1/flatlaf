@@ -29,65 +29,67 @@ import org.ocsoft.flatlaf.laf.tree.WebTreeUI;
  * @author Mikle Garin
  */
 
-public class SampleTreeCellRenderer extends WebAsyncTreeCellRenderer
-{
+public class SampleTreeCellRenderer extends WebAsyncTreeCellRenderer {
     /**
      * Returns custom tree cell renderer component
      *
-     * @param tree       tree
-     * @param value      cell value
-     * @param isSelected whether cell is selected or not
-     * @param expanded   whether cell is expanded or not
-     * @param leaf       whether cell is leaf or not
-     * @param row        cell row number
-     * @param hasFocus   whether cell has focusor not
+     * @param tree
+     *            tree
+     * @param value
+     *            cell value
+     * @param isSelected
+     *            whether cell is selected or not
+     * @param expanded
+     *            whether cell is expanded or not
+     * @param leaf
+     *            whether cell is leaf or not
+     * @param row
+     *            cell row number
+     * @param hasFocus
+     *            whether cell has focusor not
      * @return renderer component
      */
     @Override
-    public WebTreeElement getTreeCellRendererComponent ( final JTree tree, final Object value, final boolean isSelected,
-                                                         final boolean expanded, final boolean leaf, final int row, final boolean hasFocus )
-    {
-        super.getTreeCellRendererComponent ( tree, value, isSelected, expanded, leaf, row, hasFocus );
-
-        if ( value instanceof SampleNode )
-        {
-            final SampleNode node = ( SampleNode ) value;
-
+    public WebTreeElement getTreeCellRendererComponent(final JTree tree,
+            final Object value, final boolean isSelected,
+            final boolean expanded, final boolean leaf, final int row,
+            final boolean hasFocus) {
+        super.getTreeCellRendererComponent(tree, value, isSelected, expanded,
+                leaf, row, hasFocus);
+        
+        if (value instanceof SampleNode) {
+            final SampleNode node = (SampleNode) value;
+            
             // Node icon
-            if ( !node.isLoading () )
-            {
+            if (!node.isLoading()) {
                 // Type icon
                 final ImageIcon icon;
-                switch ( node.getType () )
-                {
-                    case root:
-                    {
-                        icon = WebTreeUI.ROOT_ICON;
-                        break;
-                    }
-                    case folder:
-                    {
-                        icon = expanded ? WebTreeUI.OPEN_ICON : WebTreeUI.CLOSED_ICON;
-                        break;
-                    }
-                    case leaf:
-                    {
-                        icon = WebTreeUI.LEAF_ICON;
-                        break;
-                    }
-                    default:
-                    {
-                        icon = null;
-                        break;
-                    }
+                switch (node.getType()) {
+                case root: {
+                    icon = WebTreeUI.ROOT_ICON;
+                    break;
                 }
-                setIcon ( node.isFailed () ? getFailedStateIcon ( icon ) : icon );
+                case folder: {
+                    icon = expanded ? WebTreeUI.OPEN_ICON
+                            : WebTreeUI.CLOSED_ICON;
+                    break;
+                }
+                case leaf: {
+                    icon = WebTreeUI.LEAF_ICON;
+                    break;
+                }
+                default: {
+                    icon = null;
+                    break;
+                }
+                }
+                setIcon(node.isFailed() ? getFailedStateIcon(icon) : icon);
             }
-
+            
             // Node text
-            setText ( node.getName () );
+            setText(node.getName());
         }
-
+        
         return this;
     }
 }

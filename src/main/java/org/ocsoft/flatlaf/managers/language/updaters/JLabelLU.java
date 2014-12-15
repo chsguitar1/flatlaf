@@ -27,14 +27,13 @@ import org.ocsoft.flatlaf.managers.language.data.Value;
  * @author Mikle Garin
  */
 
-public class JLabelLU extends DefaultLanguageUpdater<JLabel>
-{
+public class JLabelLU extends DefaultLanguageUpdater<JLabel> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void update ( final JLabel c, final String key, final Value value, final Object... data )
-    {
-        c.setText ( getDefaultText ( value, data ) );
+    public void update(final JLabel c, final String key, final Value value,
+            final Object... data) {
+        c.setText(getDefaultText(value, data));
     }
 }

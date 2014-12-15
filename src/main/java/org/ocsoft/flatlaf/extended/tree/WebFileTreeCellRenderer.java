@@ -30,63 +30,63 @@ import java.io.File;
  * @author Mikle Garin
  */
 
-public class WebFileTreeCellRenderer extends WebAsyncTreeCellRenderer
-{
+public class WebFileTreeCellRenderer extends WebAsyncTreeCellRenderer {
     /**
      * Returns custom tree cell renderer component.
      *
-     * @param tree       tree
-     * @param value      cell value
-     * @param isSelected whether cell is selected or not
-     * @param expanded   whether cell is expanded or not
-     * @param leaf       whether cell is leaf or not
-     * @param row        cell row number
-     * @param hasFocus   whether cell has focus or not
+     * @param tree
+     *            tree
+     * @param value
+     *            cell value
+     * @param isSelected
+     *            whether cell is selected or not
+     * @param expanded
+     *            whether cell is expanded or not
+     * @param leaf
+     *            whether cell is leaf or not
+     * @param row
+     *            cell row number
+     * @param hasFocus
+     *            whether cell has focus or not
      * @return cell renderer component
      */
     @Override
-    public WebTreeElement getTreeCellRendererComponent ( final JTree tree, final Object value, final boolean isSelected,
-                                                         final boolean expanded, final boolean leaf, final int row, final boolean hasFocus )
-    {
-        super.getTreeCellRendererComponent ( tree, value, isSelected, expanded, leaf, row, hasFocus );
-
+    public WebTreeElement getTreeCellRendererComponent(final JTree tree,
+            final Object value, final boolean isSelected,
+            final boolean expanded, final boolean leaf, final int row,
+            final boolean hasFocus) {
+        super.getTreeCellRendererComponent(tree, value, isSelected, expanded,
+                leaf, row, hasFocus);
+        
         // Values
-        final FileTreeNode node = ( FileTreeNode ) value;
-        final File file = node.getFile ();
-
+        final FileTreeNode node = (FileTreeNode) value;
+        final File file = node.getFile();
+        
         // File icon
-        if ( !node.isLoading () )
-        {
-            final ImageIcon icon = file != null ? FileUtils.getFileIcon ( file, false ) : null;
-            setIcon ( node.isFailed () ? getFailedStateIcon ( icon ) : icon );
+        if (!node.isLoading()) {
+            final ImageIcon icon = file != null ? FileUtils.getFileIcon(file,
+                    false) : null;
+            setIcon(node.isFailed() ? getFailedStateIcon(icon) : icon);
         }
-
+        
         // File name
-        if ( node.getName () != null )
-        {
-            setText ( node.getName () );
-        }
-        else if ( file != null )
-        {
-            String name = FileUtils.getDisplayFileName ( file );
-            if ( name != null && !name.trim ().equals ( "" ) )
-            {
-                setText ( name );
-            }
-            else
-            {
-                name = file.getName ();
-                if ( !name.trim ().equals ( "" ) )
-                {
-                    setText ( name != null ? name : "" );
-                }
-                else
-                {
-                    setText ( FileUtils.getFileDescription ( file, null ).getDescription () );
+        if (node.getName() != null) {
+            setText(node.getName());
+        } else if (file != null) {
+            String name = FileUtils.getDisplayFileName(file);
+            if (name != null && !name.trim().equals("")) {
+                setText(name);
+            } else {
+                name = file.getName();
+                if (!name.trim().equals("")) {
+                    setText(name != null ? name : "");
+                } else {
+                    setText(FileUtils.getFileDescription(file, null)
+                            .getDescription());
                 }
             }
         }
-
+        
         return this;
     }
 }

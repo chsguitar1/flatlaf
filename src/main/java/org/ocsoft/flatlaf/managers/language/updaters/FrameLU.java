@@ -27,14 +27,13 @@ import org.ocsoft.flatlaf.managers.language.data.Value;
  * @author Mikle Garin
  */
 
-public class FrameLU extends DefaultLanguageUpdater<Frame>
-{
+public class FrameLU extends DefaultLanguageUpdater<Frame> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public void update ( final Frame c, final String key, final Value value, final Object... data )
-    {
-        c.setTitle ( getDefaultText ( value, data ) );
+    public void update(final Frame c, final String key, final Value value,
+            final Object... data) {
+        c.setTitle(getDefaultText(value, data));
     }
 }

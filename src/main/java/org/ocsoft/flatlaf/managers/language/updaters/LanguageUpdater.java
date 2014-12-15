@@ -22,28 +22,33 @@ import java.awt.*;
 import org.ocsoft.flatlaf.managers.language.data.Value;
 
 /**
- * This interface provides basic methods required for updating component language-dependant variables.
- * There is also a predefined set of language updaters which are registered on LanguageManager initialization.
+ * This interface provides basic methods required for updating component
+ * language-dependant variables. There is also a predefined set of language
+ * updaters which are registered on LanguageManager initialization.
  *
  * @author Mikle Garin
  */
 
-public interface LanguageUpdater<E extends Component>
-{
+public interface LanguageUpdater<E extends Component> {
     /**
-     * Returns class which instance should be updated using this LanguageUpdater.
+     * Returns class which instance should be updated using this
+     * LanguageUpdater.
      *
      * @return class type to update
      */
-    public Class getComponentClass ();
-
+    public Class getComponentClass();
+    
     /**
      * Updates component language-dependant variables.
      *
-     * @param c     component
-     * @param key   language key
-     * @param value language value
-     * @param data  formatting data
+     * @param c
+     *            component
+     * @param key
+     *            language key
+     * @param value
+     *            language value
+     * @param data
+     *            formatting data
      */
-    public void update ( E c, String key, Value value, Object... data );
+    public void update(E c, String key, Value value, Object... data);
 }

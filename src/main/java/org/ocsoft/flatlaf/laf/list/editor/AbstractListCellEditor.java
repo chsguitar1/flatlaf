@@ -27,514 +27,476 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * An abstract list cell editor that provides basic method implementations for list cell editor creation.
+ * An abstract list cell editor that provides basic method implementations for
+ * list cell editor creation.
  *
- * @param <E> Editor component type
- * @param <T> Editor value type
+ * @param <E>
+ *            Editor component type
+ * @param <T>
+ *            Editor value type
  * @author Mikle Garin
  */
 
-public abstract class AbstractListCellEditor<E extends Component, T> implements ListCellEditor<E, T>
-{
+public abstract class AbstractListCellEditor<E extends Component, T> implements
+        ListCellEditor<E, T> {
     /**
      * Last edited cell index.
      */
     protected int editedCell = -1;
-
+    
     /**
      * Old value from the edited cell.
      */
     protected T oldValue;
-
+    
     /**
      * Currently active editor.
      */
     protected E editor;
-
+    
     /**
      * List resize adapter.
      */
     protected ComponentAdapter editorPositionUpdater;
-
+    
     /**
      * List mouse adapter.
      */
     protected MouseAdapter mouseAdapter = null;
-
+    
     /**
      * Amount of mouse clicks required to start editing cell.
      */
     protected int clicksToEdit = 2;
-
+    
     /**
      * List key adapter.
      */
     protected KeyAdapter keyAdapter = null;
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void install ( final JList list )
-    {
+    public void install(final JList list) {
         // Installing edit bounds updater
-        editorPositionUpdater = new ComponentAdapter ()
-        {
+        editorPositionUpdater = new ComponentAdapter() {
             @Override
-            public void componentResized ( final ComponentEvent e )
-            {
-                checkEditorBounds ();
+            public void componentResized(final ComponentEvent e) {
+                checkEditorBounds();
             }
-
-            private void checkEditorBounds ()
-            {
-                if ( isEditing () )
-                {
-                    final Rectangle newBounds = getEditorBounds ( list, editedCell, oldValue );
-                    if ( newBounds != null && !newBounds.equals ( editor.getBounds () ) )
-                    {
-                        editor.setBounds ( newBounds );
-                        list.revalidate ();
-                        list.repaint ();
+            
+            private void checkEditorBounds() {
+                if (isEditing()) {
+                    final Rectangle newBounds = getEditorBounds(list,
+                            editedCell, oldValue);
+                    if (newBounds != null
+                            && !newBounds.equals(editor.getBounds())) {
+                        editor.setBounds(newBounds);
+                        list.revalidate();
+                        list.repaint();
                     }
                 }
             }
         };
-        list.addComponentListener ( editorPositionUpdater );
-
+        list.addComponentListener(editorPositionUpdater);
+        
         // Installing start edit actions in the list
-        installStartEditActions ( list );
+        installStartEditActions(list);
     }
-
+    
     /**
      * Installs start edit actions in the list.
      *
-     * @param list list to process
+     * @param list
+     *            list to process
      */
-    protected void installStartEditActions ( final JList list )
-    {
-        mouseAdapter = new MouseAdapter ()
-        {
+    protected void installStartEditActions(final JList list) {
+        mouseAdapter = new MouseAdapter() {
             @Override
-            public void mouseClicked ( final MouseEvent e )
-            {
-                if ( getClicksToEdit () > 0 && e.getClickCount () == getClicksToEdit () && SwingUtilities.isLeftMouseButton ( e ) )
-                {
-                    final Point point = e.getPoint ();
-                    final int index = list.getUI ().locationToIndex ( list, point );
-                    if ( index >= 0 && index < list.getModel ().getSize () )
-                    {
-                        final Rectangle cell = list.getCellBounds ( index, index );
-                        if ( cell.contains ( point ) )
-                        {
-                            startEdit ( list, index );
+            public void mouseClicked(final MouseEvent e) {
+                if (getClicksToEdit() > 0
+                        && e.getClickCount() == getClicksToEdit()
+                        && SwingUtilities.isLeftMouseButton(e)) {
+                    final Point point = e.getPoint();
+                    final int index = list.getUI().locationToIndex(list, point);
+                    if (index >= 0 && index < list.getModel().getSize()) {
+                        final Rectangle cell = list.getCellBounds(index, index);
+                        if (cell.contains(point)) {
+                            startEdit(list, index);
                         }
                     }
                 }
             }
         };
-        list.addMouseListener ( mouseAdapter );
-
-        keyAdapter = new KeyAdapter ()
-        {
+        list.addMouseListener(mouseAdapter);
+        
+        keyAdapter = new KeyAdapter() {
             @Override
-            public void keyReleased ( final KeyEvent e )
-            {
-                if ( Hotkey.F2.isTriggered ( e ) )
-                {
-                    startEdit ( list, list.getSelectedIndex () );
+            public void keyReleased(final KeyEvent e) {
+                if (Hotkey.F2.isTriggered(e)) {
+                    startEdit(list, list.getSelectedIndex());
                 }
             }
         };
-        list.addKeyListener ( keyAdapter );
+        list.addKeyListener(keyAdapter);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void uninstall ( final JList list )
-    {
+    public void uninstall(final JList list) {
         // Uninstalling edit bounds updater
-        list.removeComponentListener ( editorPositionUpdater );
-
+        list.removeComponentListener(editorPositionUpdater);
+        
         // Uninstalling start edit actions from the list
-        uninstallStartEditActions ( list );
+        uninstallStartEditActions(list);
     }
-
+    
     /**
      * Uninstalls start edit actions from the list.
      *
-     * @param list list to process
+     * @param list
+     *            list to process
      */
-    protected void uninstallStartEditActions ( final JList list )
-    {
-        if ( mouseAdapter != null )
-        {
-            list.removeMouseListener ( mouseAdapter );
+    protected void uninstallStartEditActions(final JList list) {
+        if (mouseAdapter != null) {
+            list.removeMouseListener(mouseAdapter);
         }
-        if ( keyAdapter != null )
-        {
-            list.removeKeyListener ( keyAdapter );
+        if (keyAdapter != null) {
+            list.removeKeyListener(keyAdapter);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isCellEditable ( final JList list, final int index, final T value )
-    {
-        if ( list instanceof WebList )
-        {
-            return ( ( WebList ) list ).isEditable () && list.isEnabled ();
-        }
-        else
-        {
-            return list.isEnabled ();
+    public boolean isCellEditable(final JList list, final int index,
+            final T value) {
+        if (list instanceof WebList) {
+            return ((WebList) list).isEditable() && list.isEnabled();
+        } else {
+            return list.isEnabled();
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public E getCellEditor ( final JList list, final int index, final T value )
-    {
+    public E getCellEditor(final JList list, final int index, final T value) {
         // Creating editor component
-        editor = createCellEditor ( list, index, value );
-        createCellEditorListeners ( list, index, value );
+        editor = createCellEditor(list, index, value);
+        createCellEditorListeners(list, index, value);
         return editor;
     }
-
+    
     /**
      * Creates list cell editor component for the cell nder specified index.
      *
-     * @param list  list to process
-     * @param index cell index
-     * @param value cell value
+     * @param list
+     *            list to process
+     * @param index
+     *            cell index
+     * @param value
+     *            cell value
      * @return list cell editor created for the cell under specified index
      */
-    protected abstract E createCellEditor ( JList list, int index, T value );
-
+    protected abstract E createCellEditor(JList list, int index, T value);
+    
     /**
      * Creates listeners for list cell editor component.
      *
-     * @param list  list to process
-     * @param index cell index
-     * @param value cell value
+     * @param list
+     *            list to process
+     * @param index
+     *            cell index
+     * @param value
+     *            cell value
      */
-    @SuppressWarnings ("UnusedParameters")
-    protected void createCellEditorListeners ( final JList list, final int index, final T value )
-    {
+    @SuppressWarnings("UnusedParameters")
+    protected void createCellEditorListeners(final JList list, final int index,
+            final T value) {
         // Editing stop on focus loss event
-        final FocusAdapter focusAdapter = new FocusAdapter ()
-        {
+        final FocusAdapter focusAdapter = new FocusAdapter() {
             @Override
-            public void focusLost ( final FocusEvent e )
-            {
-                stopEdit ( list );
+            public void focusLost(final FocusEvent e) {
+                stopEdit(list);
             }
         };
-        editor.addFocusListener ( focusAdapter );
-
+        editor.addFocusListener(focusAdapter);
+        
         // Editing stop and cancel on key events
-        editor.addKeyListener ( new KeyAdapter ()
-        {
+        editor.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyReleased ( final KeyEvent e )
-            {
-                if ( Hotkey.ENTER.isTriggered ( e ) )
-                {
+            public void keyReleased(final KeyEvent e) {
+                if (Hotkey.ENTER.isTriggered(e)) {
                     // To avoid double-saving
-                    editor.removeFocusListener ( focusAdapter );
-
-                    stopEdit ( list );
-                    list.requestFocusInWindow ();
-                }
-                else if ( Hotkey.ESCAPE.isTriggered ( e ) )
-                {
+                    editor.removeFocusListener(focusAdapter);
+                    
+                    stopEdit(list);
+                    list.requestFocusInWindow();
+                } else if (Hotkey.ESCAPE.isTriggered(e)) {
                     // To avoid saving
-                    editor.removeFocusListener ( focusAdapter );
-
-                    cancelEdit ( list );
-                    list.requestFocusInWindow ();
+                    editor.removeFocusListener(focusAdapter);
+                    
+                    cancelEdit(list);
+                    list.requestFocusInWindow();
                 }
             }
-        } );
+        });
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void startEdit ( final JList list, final int index )
-    {
+    public void startEdit(final JList list, final int index) {
         // Checking that selection is not empty
-        if ( index == -1 )
-        {
+        if (index == -1) {
             return;
         }
-
+        
         // Checking if selected cell is editable
-        oldValue = ( T ) list.getModel ().getElementAt ( index );
-        if ( !isCellEditable ( list, index, oldValue ) )
-        {
+        oldValue = (T) list.getModel().getElementAt(index);
+        if (!isCellEditable(list, index, oldValue)) {
             oldValue = null;
             return;
         }
-
+        
         // Creating cell editor for the selected cell
-        editor = getCellEditor ( list, index, oldValue );
-
+        editor = getCellEditor(list, index, oldValue);
+        
         // Updating initial cell editor bounds in the list
-        editor.setBounds ( getEditorBounds ( list, index, oldValue ) );
-
+        editor.setBounds(getEditorBounds(list, index, oldValue));
+        
         // Adding cell editor onto the list
-        addEditor ( list );
-
+        addEditor(list);
+        
         // Requesting focus into the cell editor
-        if ( editor.isFocusable () )
-        {
-            editor.requestFocusInWindow ();
+        if (editor.isFocusable()) {
+            editor.requestFocusInWindow();
         }
-
+        
         // Notifying about editing start
-        editStarted ( list, index );
+        editStarted(list, index);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void cancelEdit ( final JList list )
-    {
+    public void cancelEdit(final JList list) {
         // Removing cell editor from the list
-        removeEditor ( list );
-
+        removeEditor(list);
+        
         // Notifying about editing cancel
-        editCancelled ( list, editedCell );
+        editCancelled(list, editedCell);
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean stopEdit ( final JList list )
-    {
-        if ( !isEditing () )
-        {
+    public boolean stopEdit(final JList list) {
+        if (!isEditing()) {
             return false;
         }
-
+        
         // Saving selected indices to restore them later
-        final int[] indices = list.getSelectedIndices ();
-
+        final int[] indices = list.getSelectedIndices();
+        
         // Checking whether value has changed or not
-        final T newValue = getCellEditorValue ( list, editedCell, oldValue );
-        final boolean changed = updateListModel ( list, editedCell, oldValue, newValue, true );
-
+        final T newValue = getCellEditorValue(list, editedCell, oldValue);
+        final boolean changed = updateListModel(list, editedCell, oldValue,
+                newValue, true);
+        
         // Removing cell editor from the list
-        removeEditor ( list );
-
+        removeEditor(list);
+        
         // Firing either edit stopped or cancelled
-        if ( changed )
-        {
+        if (changed) {
             // Restoring selected indices
-            list.setSelectedIndices ( indices );
-
+            list.setSelectedIndices(indices);
+            
             // Notifying about editing stop
-            editStopped ( list, editedCell, oldValue, newValue );
-        }
-        else
-        {
+            editStopped(list, editedCell, oldValue, newValue);
+        } else {
             // Notifying about editing cancel
-            editCancelled ( list, editedCell );
+            editCancelled(list, editedCell);
         }
         return true;
     }
-
+    
     /**
      * Adds cell editor into the list.
      *
-     * @param list list to process
+     * @param list
+     *            list to process
      */
-    protected void addEditor ( final JList list )
-    {
-        list.add ( editor );
-        list.revalidate ();
-        list.repaint ();
+    protected void addEditor(final JList list) {
+        list.add(editor);
+        list.revalidate();
+        list.repaint();
     }
-
+    
     /**
      * Removes cell editor from the list.
      *
-     * @param list list to process
+     * @param list
+     *            list to process
      */
-    protected void removeEditor ( final JList list )
-    {
-        list.remove ( editor );
-        list.revalidate ();
-        list.repaint ();
+    protected void removeEditor(final JList list) {
+        list.remove(editor);
+        list.revalidate();
+        list.repaint();
     }
-
+    
     /**
      * Returns list cell editor bounds within the cell.
      *
-     * @param list       list to process
-     * @param index      cell index
-     * @param value      cell value
-     * @param cellBounds cell bounds
+     * @param list
+     *            list to process
+     * @param index
+     *            cell index
+     * @param value
+     *            cell value
+     * @param cellBounds
+     *            cell bounds
      * @return list cell editor bounds within the list
      */
-    protected Rectangle getEditorBounds ( final JList list, final int index, final T value, final Rectangle cellBounds )
-    {
-        return new Rectangle ( 0, 0, cellBounds.width, cellBounds.height );
+    protected Rectangle getEditorBounds(final JList list, final int index,
+            final T value, final Rectangle cellBounds) {
+        return new Rectangle(0, 0, cellBounds.width, cellBounds.height);
     }
-
+    
     /**
      * Returns list cell editor bounds within the list.
      *
-     * @param list  list to process
-     * @param index cell index
-     * @param value cell value
+     * @param list
+     *            list to process
+     * @param index
+     *            cell index
+     * @param value
+     *            cell value
      * @return cell editor bounds for the cell under the specified index
      */
-    protected Rectangle getEditorBounds ( final JList list, final int index, final T value )
-    {
-        final Rectangle cellBounds = list.getCellBounds ( index, index );
-        if ( cellBounds != null )
-        {
-            final Rectangle editorBounds = getEditorBounds ( list, index, value, cellBounds );
-            return new Rectangle ( cellBounds.x + editorBounds.x, cellBounds.y + editorBounds.y, editorBounds.width, editorBounds.height );
-        }
-        else
-        {
+    protected Rectangle getEditorBounds(final JList list, final int index,
+            final T value) {
+        final Rectangle cellBounds = list.getCellBounds(index, index);
+        if (cellBounds != null) {
+            final Rectangle editorBounds = getEditorBounds(list, index, value,
+                    cellBounds);
+            return new Rectangle(cellBounds.x + editorBounds.x, cellBounds.y
+                    + editorBounds.y, editorBounds.width, editorBounds.height);
+        } else {
             return null;
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean updateListModel ( final JList list, final int index, final T oldValue, final T newValue, final boolean updateSelection )
-    {
+    public boolean updateListModel(final JList list, final int index,
+            final T oldValue, final T newValue, final boolean updateSelection) {
         // Checking if value has changed
-        if ( CompareUtils.equals ( oldValue, newValue ) )
-        {
+        if (CompareUtils.equals(oldValue, newValue)) {
             return false;
         }
-
+        
         // Updating list model
-        final ListModel model = list.getModel ();
-        if ( model instanceof DefaultListModel )
-        {
-            final DefaultListModel defaultListModel = ( DefaultListModel ) model;
-            defaultListModel.setElementAt ( newValue, index );
+        final ListModel model = list.getModel();
+        if (model instanceof DefaultListModel) {
+            final DefaultListModel defaultListModel = (DefaultListModel) model;
+            defaultListModel.setElementAt(newValue, index);
             return true;
-        }
-        else if ( model instanceof AbstractListModel )
-        {
-            final Object[] values = new Object[ model.getSize () ];
-            for ( int i = 0; i < model.getSize (); i++ )
-            {
-                if ( editedCell != i )
-                {
-                    values[ i ] = model.getElementAt ( i );
-                }
-                else
-                {
-                    values[ i ] = newValue;
+        } else if (model instanceof AbstractListModel) {
+            final Object[] values = new Object[model.getSize()];
+            for (int i = 0; i < model.getSize(); i++) {
+                if (editedCell != i) {
+                    values[i] = model.getElementAt(i);
+                } else {
+                    values[i] = newValue;
                 }
             }
-            list.setModel ( new AbstractListModel ()
-            {
+            list.setModel(new AbstractListModel() {
                 @Override
-                public int getSize ()
-                {
+                public int getSize() {
                     return values.length;
                 }
-
+                
                 @Override
-                public Object getElementAt ( final int index )
-                {
-                    return values[ index ];
+                public Object getElementAt(final int index) {
+                    return values[index];
                 }
-            } );
+            });
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void editStarted ( final JList list, final int index )
-    {
+    public void editStarted(final JList list, final int index) {
         editedCell = index;
-        if ( list instanceof WebList )
-        {
-            ( ( WebList ) list ).fireEditStarted ( index );
+        if (list instanceof WebList) {
+            ((WebList) list).fireEditStarted(index);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void editStopped ( final JList list, final int index, final T oldValue, final T newValue )
-    {
+    public void editStopped(final JList list, final int index,
+            final T oldValue, final T newValue) {
         editedCell = -1;
-        if ( list instanceof WebList )
-        {
-            ( ( WebList ) list ).fireEditFinished ( index, oldValue, newValue );
+        if (list instanceof WebList) {
+            ((WebList) list).fireEditFinished(index, oldValue, newValue);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public void editCancelled ( final JList list, final int index )
-    {
+    public void editCancelled(final JList list, final int index) {
         editedCell = -1;
-        if ( list instanceof WebList )
-        {
-            ( ( WebList ) list ).fireEditCancelled ( index );
+        if (list instanceof WebList) {
+            ((WebList) list).fireEditCancelled(index);
         }
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean isEditing ()
-    {
+    public boolean isEditing() {
         return editedCell != -1;
     }
-
+    
     /**
      * Returns amount of mouse clicks required to start editing cell.
      *
      * @return amount of mouse clicks required to start editing cell
      */
-    public int getClicksToEdit ()
-    {
+    public int getClicksToEdit() {
         return clicksToEdit;
     }
-
+    
     /**
      * Sets amount of mouse clicks required to start editing cell.
      *
-     * @param clicksToEdit amount of mouse clicks required to start editing cell
+     * @param clicksToEdit
+     *            amount of mouse clicks required to start editing cell
      */
-    public void setClicksToEdit ( final int clicksToEdit )
-    {
+    public void setClicksToEdit(final int clicksToEdit) {
         this.clicksToEdit = clicksToEdit;
     }
 }

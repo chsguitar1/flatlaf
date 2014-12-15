@@ -27,65 +27,64 @@ import org.ocsoft.flatlaf.extended.checkbox.CheckState;
  * @author Mikle Garin
  */
 
-public final class CheckStateChange<E extends DefaultMutableTreeNode>
-{
+public final class CheckStateChange<E extends DefaultMutableTreeNode> {
     /**
      * Node which state was changed.
      */
     private final E node;
-
+    
     /**
      * Old node check state.
      */
     private final CheckState oldState;
-
+    
     /**
      * New node check state.
      */
     private final CheckState newState;
-
+    
     /**
      * Constructs new check state change information object.
      *
-     * @param node     node which state was changed
-     * @param oldState old node check state
-     * @param newState new node check state
+     * @param node
+     *            node which state was changed
+     * @param oldState
+     *            old node check state
+     * @param newState
+     *            new node check state
      */
-    public CheckStateChange ( final E node, final CheckState oldState, final CheckState newState )
-    {
-        super ();
+    public CheckStateChange(final E node, final CheckState oldState,
+            final CheckState newState) {
+        super();
         this.node = node;
         this.oldState = oldState;
         this.newState = newState;
     }
-
+    
     /**
      * Returns node which state was changed.
      *
      * @return node which state was changed
      */
-    public E getNode ()
-    {
+    public E getNode() {
         return node;
     }
-
+    
     /**
      * Returns old node check state.
      *
      * @return old node check state
      */
-    public CheckState getOldState ()
-    {
+    public CheckState getOldState() {
         return oldState;
     }
-
+    
     /**
      * Returns new node check state.
      *
      * @return new node check state
      */
-    public CheckState getNewState ()
-    {
+    public CheckState getNewState() {
         return newState;
     }
 }

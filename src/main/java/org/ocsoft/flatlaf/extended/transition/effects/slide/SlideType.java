@@ -21,17 +21,16 @@ package org.ocsoft.flatlaf.extended.transition.effects.slide;
  * User: mgarin Date: 28.10.11 Time: 13:12
  */
 
-public enum SlideType
-{
+public enum SlideType {
     // Any random slide type each time (always first in enum)
     random,
-
+    
     // Move new image over old one
     moveNew,
-
+    
     // Move old image away
     moveOld,
-
+    
     // Move both images - new image replaces the old one
     moveBoth
 }

@@ -18,13 +18,12 @@
 package org.ocsoft.flatlaf.utils.laf;
 
 /**
- * This interface provides method for requesting component shade settings.
- * This can be used by components to provide their shape for various usage cases.
+ * This interface provides method for requesting component shade settings. This
+ * can be used by components to provide their shape for various usage cases.
  *
  * @author Mikle Garin
  */
 
-public interface ShadeProvider
-{
+public interface ShadeProvider {
     // todo
 }

@@ -23,28 +23,23 @@ import java.awt.*;
  * User: mgarin Date: 12/2/11 Time: 12:59 PM
  */
 
-public class ShapeProducer
-{
+public class ShapeProducer {
     private Component produceFor;
-
-    public ShapeProducer ( Component produceFor )
-    {
-        super ();
-        setProduceFor ( produceFor );
+    
+    public ShapeProducer(Component produceFor) {
+        super();
+        setProduceFor(produceFor);
     }
-
-    public Component getProduceFor ()
-    {
+    
+    public Component getProduceFor() {
         return produceFor;
     }
-
-    public void setProduceFor ( Component produceFor )
-    {
+    
+    public void setProduceFor(Component produceFor) {
         this.produceFor = produceFor;
     }
-
-    public Shape produce ()
-    {
+    
+    public Shape produce() {
         return null;
     }
 }

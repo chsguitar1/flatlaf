@@ -28,62 +28,60 @@ import java.awt.datatransfer.DataFlavor;
  * Custom DragViewHandler for WebDocumentPane document.
  *
  * @author Mikle Garin
- * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-WebDocumentPane">How to use WebDocumentPane</a>
+ * @see <a
+ *      href="https://github.com/mgarin/weblaf/wiki/How-to-use-WebDocumentPane">How
+ *      to use WebDocumentPane</a>
  * @see org.ocsoft.flatlaf.extended.tab.WebDocumentPane
  * @see org.ocsoft.flatlaf.managers.drag.DragManager
  */
 
-public class DocumentDragViewHandler<T extends DocumentData> extends SimpleDragViewHandler<T>
-{
+public class DocumentDragViewHandler<T extends DocumentData> extends
+        SimpleDragViewHandler<T> {
     /**
      * Document pane which provides this DragViewHandler.
      */
     protected final WebDocumentPane documentPane;
-
+    
     /**
      * Constructs custom DragViewHandler for DocumentData object.
      *
-     * @param documentPane document pane which provides this DragViewHandler
+     * @param documentPane
+     *            document pane which provides this DragViewHandler
      */
-    public DocumentDragViewHandler ( final WebDocumentPane documentPane )
-    {
-        super ();
+    public DocumentDragViewHandler(final WebDocumentPane documentPane) {
+        super();
         this.documentPane = documentPane;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    public DataFlavor getObjectFlavor ()
-    {
+    public DataFlavor getObjectFlavor() {
         return DocumentTransferable.flavor;
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected FontMetrics getFontMetrics ( final T document )
-    {
-        return documentPane.getFontMetrics ( documentPane.getFont () );
+    protected FontMetrics getFontMetrics(final T document) {
+        return documentPane.getFontMetrics(documentPane.getFont());
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected Icon getIcon ( final T document )
-    {
-        return document.getIcon ();
+    protected Icon getIcon(final T document) {
+        return document.getIcon();
     }
-
+    
     /**
      * {@inheritDoc}
      */
     @Override
-    protected String getText ( final T document )
-    {
-        return document.getActualTitle ();
+    protected String getText(final T document) {
+        return document.getActualTitle();
     }
 }

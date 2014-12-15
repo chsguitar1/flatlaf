@@ -23,9 +23,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  * User: mgarin Date: 27.04.12 Time: 16:16
  */
 
-@XStreamAlias ("TooltipType")
-public enum TooltipType
-{
-    swing,
-    weblaf
+@XStreamAlias("TooltipType")
+public enum TooltipType {
+    swing, weblaf
 }

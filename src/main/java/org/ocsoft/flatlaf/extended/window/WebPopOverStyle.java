@@ -27,49 +27,48 @@ import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
  * @author Mikle Garin
  */
 
-public final class WebPopOverStyle
-{
+public final class WebPopOverStyle {
     /**
      * Whether WebPopOver should be movable or not.
      */
     public static boolean movable = true;
-
+    
     /**
      * Default WebPopOver display source point.
      */
     public static PopOverSourcePoint popOverSourcePoint = PopOverSourcePoint.componentSide;
-
+    
     /**
      * WebPopOver border color.
      */
-    public static Color borderColor = new Color ( 128, 128, 128, 128 );
-
+    public static Color borderColor = new Color(128, 128, 128, 128);
+    
     /**
      * WebPopOver background color.
      */
     public static Color contentBackgroundColor = Color.WHITE;
-
+    
     /**
      * WebPopOver corners rounding.
      */
     public static int round = FlatLafStyleConstants.bigRound;
-
+    
     /**
      * WebPopOver shade width.
      */
     public static int shadeWidth = 20;
-
+    
     /**
      * WebPopOver shade transparency.
      */
     public static float shadeTransparency = 0.75f;
-
+    
     /**
-     * WebPopOver dropdown style corner width.
-     * Should not be larger than shade width in current implementation.
+     * WebPopOver dropdown style corner width. Should not be larger than shade
+     * width in current implementation.
      */
     public static int cornerWidth = 10;
-
+    
     /**
      * WebPopOver background transparency.
      */

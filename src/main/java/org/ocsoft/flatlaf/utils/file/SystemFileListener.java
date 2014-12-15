@@ -25,19 +25,21 @@ import java.io.File;
  * @author Mikle Garin
  */
 
-public interface SystemFileListener
-{
+public interface SystemFileListener {
     /**
      * Informs that tracked file was modified.
      *
-     * @param file tracked file
+     * @param file
+     *            tracked file
      */
-    public void modified ( final File file );
-
+    public void modified(final File file);
+    
     /**
-     * Informs that tracked file was deleted, renamed or moved and cannot be tracked anymore.
+     * Informs that tracked file was deleted, renamed or moved and cannot be
+     * tracked anymore.
      *
-     * @param file tracked file
+     * @param file
+     *            tracked file
      */
-    public void unbound ( final File file );
+    public void unbound(final File file);
 }
