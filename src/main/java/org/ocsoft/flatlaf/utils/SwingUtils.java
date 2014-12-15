@@ -33,8 +33,8 @@ import org.ocsoft.flatlaf.extended.date.WebDateField;
 import org.ocsoft.flatlaf.extended.filechooser.WebFileChooserField;
 import org.ocsoft.flatlaf.extended.filechooser.WebPathField;
 import org.ocsoft.flatlaf.extended.panel.WebCollapsiblePane;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.rootpane.WebRootPaneUI;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyRunnable;
@@ -138,8 +138,8 @@ public final class SwingUtils
      */
     public static boolean getHonorUserBorders ( final JComponent component )
     {
-        return Boolean.getBoolean ( WebLookAndFeel.PROPERTY_HONOR_USER_BORDERS ) ||
-                Boolean.TRUE.equals ( component.getClientProperty ( WebLookAndFeel.PROPERTY_HONOR_USER_BORDER ) );
+        return Boolean.getBoolean ( FlatLookAndFeel.PROPERTY_HONOR_USER_BORDERS ) ||
+                Boolean.TRUE.equals ( component.getClientProperty ( FlatLookAndFeel.PROPERTY_HONOR_USER_BORDER ) );
     }
 
     /**
@@ -224,7 +224,7 @@ public final class SwingUtils
      */
     public static void packColumnWidths ( final JTable table )
     {
-        packColumnWidths ( table, StyleConstants.spacing );
+        packColumnWidths ( table, FlatLafStyleConstants.spacing );
     }
 
     /**
@@ -249,7 +249,7 @@ public final class SwingUtils
      */
     public static void packColumnWidth ( final JTable table, final int col )
     {
-        packColumnWidth ( table, col, StyleConstants.spacing );
+        packColumnWidth ( table, col, FlatLafStyleConstants.spacing );
     }
 
     /**
@@ -557,7 +557,7 @@ public final class SwingUtils
      */
     public static void updateGlobalOrientations ()
     {
-        updateGlobalOrientations ( WebLookAndFeel.getOrientation () );
+        updateGlobalOrientations ( FlatLookAndFeel.getOrientation () );
     }
 
     /**
@@ -605,7 +605,7 @@ public final class SwingUtils
      */
     public static void setOrientation ( final Component component, final boolean forced )
     {
-        final ComponentOrientation orientation = WebLookAndFeel.getOrientation ();
+        final ComponentOrientation orientation = FlatLookAndFeel.getOrientation ();
         if ( forced || orientation.isLeftToRight () != component.getComponentOrientation ().isLeftToRight () )
         {
             component.setComponentOrientation ( orientation );
@@ -630,7 +630,7 @@ public final class SwingUtils
      */
     public static void applyOrientation ( final Component component, final boolean forced )
     {
-        final ComponentOrientation orientation = WebLookAndFeel.getOrientation ();
+        final ComponentOrientation orientation = FlatLookAndFeel.getOrientation ();
         if ( forced || orientation.isLeftToRight () != component.getComponentOrientation ().isLeftToRight () )
         {
             component.applyComponentOrientation ( orientation );
@@ -2913,7 +2913,7 @@ public final class SwingUtils
      */
     public static Map setupTextAntialias ( final Graphics2D g2d )
     {
-        return setupTextAntialias ( g2d, StyleConstants.textRenderingHints );
+        return setupTextAntialias ( g2d, FlatLafStyleConstants.textRenderingHints );
     }
 
     /**

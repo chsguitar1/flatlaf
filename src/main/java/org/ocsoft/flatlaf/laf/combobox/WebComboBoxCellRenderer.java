@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.combobox;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.swing.RendererListener;
 
 import java.awt.*;
@@ -72,8 +72,8 @@ public class WebComboBoxCellRenderer implements ListCellRenderer
                 fireRevalidate ();
             }
         };
-        this.boxRenderer.addPropertyChangeListener ( WebLookAndFeel.PAINTER_PROPERTY, listener );
-        this.elementRenderer.addPropertyChangeListener ( WebLookAndFeel.PAINTER_PROPERTY, listener );
+        this.boxRenderer.addPropertyChangeListener ( FlatLookAndFeel.PAINTER_PROPERTY, listener );
+        this.elementRenderer.addPropertyChangeListener ( FlatLookAndFeel.PAINTER_PROPERTY, listener );
     }
 
     /**

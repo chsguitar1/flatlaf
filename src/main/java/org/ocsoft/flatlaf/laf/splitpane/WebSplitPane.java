@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.splitpane;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 
@@ -165,7 +165,7 @@ public class WebSplitPane extends JSplitPane
         {
             try
             {
-                setUI ( ( WebSplitPaneUI ) ReflectUtils.createInstance ( WebLookAndFeel.splitPaneUI ) );
+                setUI ( ( WebSplitPaneUI ) ReflectUtils.createInstance ( FlatLookAndFeel.splitPaneUI ) );
             }
             catch ( final Throwable e )
             {

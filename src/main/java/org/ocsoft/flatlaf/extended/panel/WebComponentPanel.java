@@ -21,7 +21,7 @@ import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.layout.ComponentPanelLayout;
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
@@ -490,8 +490,8 @@ public class WebComponentPanel extends WebPanel
          * Style settings.
          */
         protected float[] fractions = { 0f, 0.25f, 0.75f, 1f };
-        protected Color[] lightColors = { StyleConstants.transparent, Color.WHITE, Color.WHITE, StyleConstants.transparent };
-        protected Color[] darkColors = { StyleConstants.transparent, Color.GRAY, Color.GRAY, StyleConstants.transparent };
+        protected Color[] lightColors = { FlatLafStyleConstants.transparent, Color.WHITE, Color.WHITE, FlatLafStyleConstants.transparent };
+        protected Color[] darkColors = { FlatLafStyleConstants.transparent, Color.GRAY, Color.GRAY, FlatLafStyleConstants.transparent };
 
         /**
          * {@inheritDoc}
@@ -514,14 +514,14 @@ public class WebComponentPanel extends WebPanel
             if ( panel.isFocused () )
             {
                 // Background
-                g2d.setPaint ( new GradientPaint ( bounds.x, bounds.y, StyleConstants.topBgColor, bounds.x, bounds.y + bounds.height,
-                        StyleConstants.bottomBgColor ) );
+                g2d.setPaint ( new GradientPaint ( bounds.x, bounds.y, FlatLafStyleConstants.topBgColor, bounds.x, bounds.y + bounds.height,
+                        FlatLafStyleConstants.bottomBgColor ) );
                 g2d.fill ( bounds );
 
                 // Borders
                 final Integer shift = getContainerLayout ().getComponentShift ( panel );
                 final boolean moved = panel.isDragged () && shift != null && shift != 0;
-                g2d.setPaint ( StyleConstants.darkBorderColor );
+                g2d.setPaint ( FlatLafStyleConstants.darkBorderColor );
                 if ( notFirst || moved )
                 {
                     g2d.drawLine ( bounds.x, bounds.y, bounds.x + bounds.width - 1, bounds.y );

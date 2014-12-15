@@ -21,7 +21,7 @@ import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.extended.painter.PartialDecoration;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.focus.FocusTracker;
@@ -694,7 +694,7 @@ public class WebDecorationPainter<E extends JComponent> extends AbstractPainter<
         {
             // Paint shape-based small shade
             final Composite oc = GraphicsUtils.setupAlphaComposite ( g2d, shadeTransparency, shadeTransparency < 1f );
-            final Color shadeColor = paintFocus && focused ? StyleConstants.fieldFocusColor : StyleConstants.shadeColor;
+            final Color shadeColor = paintFocus && focused ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor;
             GraphicsUtils.drawShade ( g2d, borderShape, shadeColor, shadeWidth );
             GraphicsUtils.restoreComposite ( g2d, oc, shadeTransparency < 1f );
         }

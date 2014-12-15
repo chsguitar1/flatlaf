@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.panel;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 
 import java.awt.*;
@@ -33,7 +33,7 @@ public final class WebCollapsiblePaneStyle
     /**
      * Whether animate transition between states or not.
      */
-    public static boolean animate = StyleConstants.animate;
+    public static boolean animate = FlatLafStyleConstants.animate;
 
     /**
      * Collapsed state icon.

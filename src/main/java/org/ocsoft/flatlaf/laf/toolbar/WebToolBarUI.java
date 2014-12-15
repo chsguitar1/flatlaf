@@ -26,8 +26,8 @@ import javax.swing.plaf.basic.BasicToolBarUI;
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.rootpane.WebDialog;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -65,7 +65,7 @@ public class WebToolBarUI extends BasicToolBarUI implements ShapeProvider, Borde
     private Painter painter = WebToolBarStyle.painter;
 
     private final Color middleColor = new Color ( 158, 158, 158 );
-    private final Color[] gradient = new Color[]{ StyleConstants.transparent, middleColor, middleColor, StyleConstants.transparent };
+    private final Color[] gradient = new Color[]{ FlatLafStyleConstants.transparent, middleColor, middleColor, FlatLafStyleConstants.transparent };
     private final float[] fractions = { 0f, 0.33f, 0.66f, 1f };
 
     private AncestorListener ancestorListener;
@@ -85,7 +85,7 @@ public class WebToolBarUI extends BasicToolBarUI implements ShapeProvider, Borde
 
         // Default settings
         SwingUtils.setOrientation ( toolBar );
-        LookAndFeel.installProperty ( toolBar, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( toolBar, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
         PainterSupport.installPainter ( toolBar, this.painter );
 
         // Updating border and layout
@@ -112,7 +112,7 @@ public class WebToolBarUI extends BasicToolBarUI implements ShapeProvider, Borde
                 updateLayout ( toolBar );
             }
         };
-        toolBar.addPropertyChangeListener ( WebLookAndFeel.TOOLBAR_FLOATABLE_PROPERTY, propertyChangeListener );
+        toolBar.addPropertyChangeListener ( FlatLookAndFeel.TOOLBAR_FLOATABLE_PROPERTY, propertyChangeListener );
         componentOrientationListener = new PropertyChangeListener ()
         {
             @Override
@@ -121,7 +121,7 @@ public class WebToolBarUI extends BasicToolBarUI implements ShapeProvider, Borde
                 updateBorder ();
             }
         };
-        toolBar.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, componentOrientationListener );
+        toolBar.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, componentOrientationListener );
     }
 
     @Override
@@ -130,8 +130,8 @@ public class WebToolBarUI extends BasicToolBarUI implements ShapeProvider, Borde
         PainterSupport.uninstallPainter ( toolBar, this.painter );
 
         c.removeAncestorListener ( ancestorListener );
-        c.removePropertyChangeListener ( WebLookAndFeel.TOOLBAR_FLOATABLE_PROPERTY, propertyChangeListener );
-        c.removePropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, componentOrientationListener );
+        c.removePropertyChangeListener ( FlatLookAndFeel.TOOLBAR_FLOATABLE_PROPERTY, propertyChangeListener );
+        c.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, componentOrientationListener );
 
         super.uninstallUI ( c );
 
@@ -414,7 +414,7 @@ public class WebToolBarUI extends BasicToolBarUI implements ShapeProvider, Borde
 
                     if ( c.isEnabled () )
                     {
-                        GraphicsUtils.drawShade ( g2d, rr, StyleConstants.shadeColor, shadeWidth );
+                        GraphicsUtils.drawShade ( g2d, rr, FlatLafStyleConstants.shadeColor, shadeWidth );
                     }
 
                     if ( horizontal )

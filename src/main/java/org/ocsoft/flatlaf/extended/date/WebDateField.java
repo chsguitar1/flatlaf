@@ -21,8 +21,8 @@ import javax.swing.*;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.rootpane.WebWindow;
 import org.ocsoft.flatlaf.laf.text.WebFormattedTextField;
@@ -334,7 +334,7 @@ public class WebDateField extends WebFormattedTextField implements ShapeProvider
             // Calendar
             calendar = new WebCalendar ( date );
             calendar.setPaintFocus ( false );
-            calendar.setRound ( StyleConstants.smallRound );
+            calendar.setRound ( FlatLafStyleConstants.smallRound );
             calendar.setShadeWidth ( 0 );
 
             // Customizing calendar
@@ -354,7 +354,7 @@ public class WebDateField extends WebFormattedTextField implements ShapeProvider
 
             // Correct popup positioning
             updatePopupLocation ();
-            ancestor.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, new PropertyChangeListener ()
+            ancestor.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, new PropertyChangeListener ()
             {
                 @Override
                 public void propertyChange ( final PropertyChangeEvent evt )

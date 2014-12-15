@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.scroll;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.language.LanguageContainerMethods;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.log.Log;
@@ -233,7 +233,7 @@ public class WebScrollPane extends JScrollPane implements ShapeProvider, SizeMet
         {
             try
             {
-                setUI ( ( WebScrollPaneUI ) ReflectUtils.createInstance ( WebLookAndFeel.scrollPaneUI ) );
+                setUI ( ( WebScrollPaneUI ) ReflectUtils.createInstance ( FlatLookAndFeel.scrollPaneUI ) );
             }
             catch ( final Throwable e )
             {

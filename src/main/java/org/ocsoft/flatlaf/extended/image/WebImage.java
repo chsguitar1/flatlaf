@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.image;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.managers.tooltip.ToolTipMethods;
@@ -190,7 +190,7 @@ public class WebImage extends JComponent implements EventMethods, ToolTipMethods
         SwingUtils.setOrientation ( this );
         setOpaque ( false );
 
-        addPropertyChangeListener ( WebLookAndFeel.ENABLED_PROPERTY, new PropertyChangeListener ()
+        addPropertyChangeListener ( FlatLookAndFeel.ENABLED_PROPERTY, new PropertyChangeListener ()
         {
             @Override
             public void propertyChange ( final PropertyChangeEvent evt )

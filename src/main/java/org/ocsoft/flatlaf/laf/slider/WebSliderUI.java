@@ -25,8 +25,8 @@ import javax.swing.plaf.basic.BasicSliderUI;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.label.WebLabelStyle;
 import org.ocsoft.flatlaf.utils.ColorUtils;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
@@ -111,8 +111,8 @@ public class WebSliderUI extends BasicSliderUI implements BorderMethods
 
         // Default settings
         SwingUtils.setOrientation ( slider );
-        LookAndFeel.installProperty ( slider, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
-        slider.setForeground ( StyleConstants.textColor );
+        LookAndFeel.installProperty ( slider, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        slider.setForeground ( FlatLafStyleConstants.textColor );
         PainterSupport.installPainter ( slider, this.painter );
         updateBorder ();
 
@@ -125,7 +125,7 @@ public class WebSliderUI extends BasicSliderUI implements BorderMethods
                 updateBorder ();
             }
         };
-        slider.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        slider.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
 
         // Rollover mouse wheel scroll
         mouseWheelListener = new MouseWheelListener ()
@@ -233,7 +233,7 @@ public class WebSliderUI extends BasicSliderUI implements BorderMethods
     {
         PainterSupport.uninstallPainter ( slider, this.painter );
 
-        slider.removePropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        slider.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
         slider.removeMouseWheelListener ( mouseWheelListener );
         slider.removeChangeListener ( changeListener );
         slider.removeMouseListener ( mouseAdapter );
@@ -557,7 +557,7 @@ public class WebSliderUI extends BasicSliderUI implements BorderMethods
             g2d.fill ( ts );
 
             // Thumb border
-            g2d.setPaint ( slider.isEnabled () ? StyleConstants.darkBorderColor : StyleConstants.disabledBorderColor );
+            g2d.setPaint ( slider.isEnabled () ? FlatLafStyleConstants.darkBorderColor : FlatLafStyleConstants.disabledBorderColor );
             g2d.draw ( ts );
 
             // Thumb focus
@@ -570,7 +570,7 @@ public class WebSliderUI extends BasicSliderUI implements BorderMethods
 
     protected Color getBorderColor ()
     {
-        return ColorUtils.getIntermediateColor ( StyleConstants.borderColor, StyleConstants.darkBorderColor, getProgress () );
+        return ColorUtils.getIntermediateColor ( FlatLafStyleConstants.borderColor, FlatLafStyleConstants.darkBorderColor, getProgress () );
     }
 
     protected float getProgress ()
@@ -673,7 +673,7 @@ public class WebSliderUI extends BasicSliderUI implements BorderMethods
             // Track shade
             if ( slider.isEnabled () )
             {
-                GraphicsUtils.drawShade ( g2d, ss, slider.isFocusOwner () ? StyleConstants.fieldFocusColor : StyleConstants.shadeColor,
+                GraphicsUtils.drawShade ( g2d, ss, slider.isFocusOwner () ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor,
                         trackShadeWidth );
             }
 
@@ -698,7 +698,7 @@ public class WebSliderUI extends BasicSliderUI implements BorderMethods
             // Progress shade
             if ( slider.isEnabled () )
             {
-                GraphicsUtils.drawShade ( g2d, ps, StyleConstants.shadeColor, progressShadeWidth );
+                GraphicsUtils.drawShade ( g2d, ps, FlatLafStyleConstants.shadeColor, progressShadeWidth );
             }
 
             // Progress background
@@ -720,7 +720,7 @@ public class WebSliderUI extends BasicSliderUI implements BorderMethods
             g2d.fill ( ps );
 
             // Progress border
-            g2d.setPaint ( slider.isEnabled () ? StyleConstants.darkBorderColor : StyleConstants.disabledBorderColor );
+            g2d.setPaint ( slider.isEnabled () ? FlatLafStyleConstants.darkBorderColor : FlatLafStyleConstants.disabledBorderColor );
             g2d.draw ( ps );
         }
 
@@ -728,8 +728,8 @@ public class WebSliderUI extends BasicSliderUI implements BorderMethods
         {
             // Track border
             g2d.setPaint ( slider.isEnabled () ?
-                    ( rolloverDarkBorderOnly && !isDragging () ? getBorderColor () : StyleConstants.darkBorderColor ) :
-                    StyleConstants.disabledBorderColor );
+                    ( rolloverDarkBorderOnly && !isDragging () ? getBorderColor () : FlatLafStyleConstants.darkBorderColor ) :
+                    FlatLafStyleConstants.disabledBorderColor );
             g2d.draw ( ss );
         }
 

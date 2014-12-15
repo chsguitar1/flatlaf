@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.managers.style.skin.web;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * @author Mikle Garin
@@ -40,7 +40,7 @@ public final class WebPopupPainterStyle
     /**
      * Popup corners rounding.
      */
-    public static int round = StyleConstants.bigRound;
+    public static int round = FlatLafStyleConstants.bigRound;
 
     /**
      * Popup shade width.

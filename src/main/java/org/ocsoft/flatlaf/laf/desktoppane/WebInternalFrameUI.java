@@ -21,8 +21,8 @@ import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.focus.FocusTracker;
@@ -90,7 +90,7 @@ public class WebInternalFrameUI extends BasicInternalFrameUI
 
         // Default settings
         SwingUtils.setOrientation ( frame );
-        LookAndFeel.installProperty ( frame, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( frame, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
         frame.setBackground ( new Color ( 90, 90, 90, 220 ) );
         frame.setBorder ( LafUtils.createWebBorder ( 0, 0, 0, 0 ) );
 
@@ -225,12 +225,12 @@ public class WebInternalFrameUI extends BasicInternalFrameUI
                 new RoundRectangle2D.Double ( insets.left + 3 + sideSpacing, insets.top + titlePane.getHeight () - 1,
                         c.getWidth () - 1 - insets.left - 3 - sideSpacing - insets.right - 3 - sideSpacing,
                         c.getHeight () - 1 - insets.top - titlePane.getHeight () + 1 - insets.bottom - 3 -
-                                sideSpacing, ( StyleConstants.bigRound - 1 ) * 2, ( StyleConstants.bigRound - 1 ) * 2
+                                sideSpacing, ( FlatLafStyleConstants.bigRound - 1 ) * 2, ( FlatLafStyleConstants.bigRound - 1 ) * 2
                 );
 
         // Border and background
-        LafUtils.drawWebStyle ( g2d, c, c.isEnabled () && focused ? StyleConstants.fieldFocusColor : StyleConstants.shadeColor,
-                StyleConstants.shadeWidth, StyleConstants.bigRound, true, false );
+        LafUtils.drawWebStyle ( g2d, c, c.isEnabled () && focused ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor,
+                FlatLafStyleConstants.shadeWidth, FlatLafStyleConstants.bigRound, true, false );
 
         // Inner border
         g2d.setPaint ( Color.GRAY );

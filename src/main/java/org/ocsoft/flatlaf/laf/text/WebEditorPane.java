@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.text;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -94,7 +94,7 @@ public class WebEditorPane extends JEditorPane
         {
             try
             {
-                setUI ( ( WebEditorPaneUI ) ReflectUtils.createInstance ( WebLookAndFeel.editorPaneUI ) );
+                setUI ( ( WebEditorPaneUI ) ReflectUtils.createInstance ( FlatLookAndFeel.editorPaneUI ) );
             }
             catch ( final Throwable e )
             {

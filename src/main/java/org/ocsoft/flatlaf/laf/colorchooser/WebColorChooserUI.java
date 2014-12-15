@@ -24,7 +24,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicColorChooserUI;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 
 import java.awt.*;
 
@@ -55,7 +55,7 @@ public class WebColorChooserUI extends BasicColorChooserUI
         chooser = ( JColorChooser ) c;
         selectionModel = chooser.getSelectionModel ();
 
-        LookAndFeel.installProperty ( chooser, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( chooser, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
         chooser.setLayout ( new BorderLayout () );
 
         colorChooserPanel = new WebColorChooserPanel ( false );

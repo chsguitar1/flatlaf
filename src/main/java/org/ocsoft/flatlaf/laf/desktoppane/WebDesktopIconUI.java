@@ -21,7 +21,7 @@ import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicDesktopIconUI;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 
@@ -47,7 +47,7 @@ public class WebDesktopIconUI extends BasicDesktopIconUI
         // Default settings
         SwingUtils.setOrientation ( c );
         c.setBorder ( LafUtils.createWebBorder ( 0, 0, 0, 0 ) );
-        LookAndFeel.installProperty ( c, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( c, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
     }
 
     @Override

@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.scroll;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.style.StyleManager;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
@@ -270,7 +270,7 @@ public class WebScrollBar extends JScrollBar implements Styleable, SizeMethods<W
         {
             try
             {
-                setUI ( ( WebScrollBarUI ) ReflectUtils.createInstance ( WebLookAndFeel.scrollBarUI ) );
+                setUI ( ( WebScrollBarUI ) ReflectUtils.createInstance ( FlatLookAndFeel.scrollBarUI ) );
             }
             catch ( final Throwable e )
             {

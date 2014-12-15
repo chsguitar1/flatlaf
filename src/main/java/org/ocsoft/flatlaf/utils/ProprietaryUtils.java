@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.utils;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.SystemUtils;
@@ -239,7 +239,7 @@ public final class ProprietaryUtils
     protected static void setupOpacityBackgroundColor ( final boolean opaque, final Component component )
             throws NoSuchMethodException, InvocationTargetException, IllegalAccessException
     {
-        final Color bg = opaque ? StyleConstants.backgroundColor : StyleConstants.transparent;
+        final Color bg = opaque ? FlatLafStyleConstants.backgroundColor : FlatLafStyleConstants.transparent;
         ReflectUtils.callMethod ( component, "setBackground", bg );
     }
 

@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.managers.plugin;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.GlobalConstants;
+import org.ocsoft.flatlaf.global.FlatLafConstants;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.plugin.data.*;
 import org.ocsoft.flatlaf.utils.*;
@@ -441,7 +441,7 @@ public abstract class PluginManager<T extends Plugin>
         // Checking sub-directories recursively
         if ( checkRecursively )
         {
-            final File[] subfolders = dir.listFiles ( GlobalConstants.DIRECTORIES_FILTER );
+            final File[] subfolders = dir.listFiles ( FlatLafConstants.DIRECTORIES_FILTER );
             if ( subfolders != null )
             {
                 for ( final File subfolder : subfolders )

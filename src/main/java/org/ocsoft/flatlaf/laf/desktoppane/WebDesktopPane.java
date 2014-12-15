@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.desktoppane;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 
@@ -46,7 +46,7 @@ public class WebDesktopPane extends JDesktopPane
         {
             try
             {
-                setUI ( ( WebDesktopPaneUI ) ReflectUtils.createInstance ( WebLookAndFeel.desktopPaneUI ) );
+                setUI ( ( WebDesktopPaneUI ) ReflectUtils.createInstance ( FlatLookAndFeel.desktopPaneUI ) );
             }
             catch ( final Throwable e )
             {

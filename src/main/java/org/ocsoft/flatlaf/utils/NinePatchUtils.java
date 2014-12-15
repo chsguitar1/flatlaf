@@ -28,7 +28,7 @@ import java.util.Map;
 
 import org.ocsoft.flatlaf.extended.painter.NinePatchIconPainter;
 import org.ocsoft.flatlaf.extended.painter.NinePatchStatePainter;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.graphics.filters.ShadowFilter;
 import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
@@ -116,7 +116,7 @@ public final class NinePatchUtils
         final Graphics2D g2d = shade.createGraphics ();
         GraphicsUtils.setupAntialias ( g2d );
         g2d.setComposite ( AlphaComposite.getInstance ( AlphaComposite.SRC_IN ) );
-        g2d.setPaint ( StyleConstants.transparent );
+        g2d.setPaint ( FlatLafStyleConstants.transparent );
         g2d.fillRoundRect ( shadeWidth, shadeWidth, width - shadeWidth * 2, width - shadeWidth * 2, round * 2, round * 2 );
         g2d.dispose ();
 
@@ -189,7 +189,7 @@ public final class NinePatchUtils
         final Graphics2D g2d = shade.createGraphics ();
         GraphicsUtils.setupAntialias ( g2d );
         g2d.setComposite ( AlphaComposite.getInstance ( AlphaComposite.SRC_IN ) );
-        g2d.setPaint ( StyleConstants.transparent );
+        g2d.setPaint ( FlatLafStyleConstants.transparent );
         g2d.fill ( area );
         g2d.dispose ();
 

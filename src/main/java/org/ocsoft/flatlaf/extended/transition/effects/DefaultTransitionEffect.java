@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.ocsoft.flatlaf.extended.transition.ImageTransition;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 09.11.12 Time: 14:34
@@ -41,7 +41,7 @@ public abstract class DefaultTransitionEffect implements TransitionEffect
     @Override
     public long getAnimationDelay ()
     {
-        return StyleConstants.avgAnimationDelay;
+        return FlatLafStyleConstants.avgAnimationDelay;
     }
 
     @Override

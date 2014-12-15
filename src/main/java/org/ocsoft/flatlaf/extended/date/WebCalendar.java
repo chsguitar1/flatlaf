@@ -26,7 +26,7 @@ import org.ocsoft.flatlaf.extended.transition.effects.Direction;
 import org.ocsoft.flatlaf.extended.transition.effects.fade.FadeTransitionEffect;
 import org.ocsoft.flatlaf.extended.transition.effects.slide.SlideTransitionEffect;
 import org.ocsoft.flatlaf.extended.transition.effects.slide.SlideType;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.button.WebToggleButton;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
@@ -160,7 +160,7 @@ public class WebCalendar extends WebPanel
         this.shownDate = date != null ? new Date ( date.getTime () ) : new Date ();
 
         setPaintFocus ( true );
-        setRound ( StyleConstants.smallRound );
+        setRound ( FlatLafStyleConstants.smallRound );
         setLayout ( new BorderLayout ( 0, 0 ) );
         putClientProperty ( SwingUtils.HANDLES_ENABLE_STATE, true );
 
@@ -174,7 +174,7 @@ public class WebCalendar extends WebPanel
         header.setOpaque ( false );
         add ( header, BorderLayout.NORTH );
 
-        previousSkip = WebButton.createIconWebButton ( previousSkipIcon, StyleConstants.smallRound, true );
+        previousSkip = WebButton.createIconWebButton ( previousSkipIcon, FlatLafStyleConstants.smallRound, true );
         previousSkip.setDrawFocus ( false );
         previousSkip.addActionListener ( new ActionListener ()
         {
@@ -185,7 +185,7 @@ public class WebCalendar extends WebPanel
             }
         } );
 
-        previous = WebButton.createIconWebButton ( previousIcon, StyleConstants.smallRound, true );
+        previous = WebButton.createIconWebButton ( previousIcon, FlatLafStyleConstants.smallRound, true );
         previous.setDrawFocus ( false );
         previous.addActionListener ( new ActionListener ()
         {
@@ -218,7 +218,7 @@ public class WebCalendar extends WebPanel
         } );
         header.add ( titlePanel, BorderLayout.CENTER );
 
-        next = WebButton.createIconWebButton ( nextIcon, StyleConstants.smallRound, true );
+        next = WebButton.createIconWebButton ( nextIcon, FlatLafStyleConstants.smallRound, true );
         next.setDrawFocus ( false );
         next.addActionListener ( new ActionListener ()
         {
@@ -229,7 +229,7 @@ public class WebCalendar extends WebPanel
             }
         } );
 
-        nextSkip = WebButton.createIconWebButton ( nextSkipIcon, StyleConstants.smallRound, true );
+        nextSkip = WebButton.createIconWebButton ( nextSkipIcon, FlatLafStyleConstants.smallRound, true );
         nextSkip.setDrawFocus ( false );
         nextSkip.addActionListener ( new ActionListener ()
         {
@@ -252,8 +252,8 @@ public class WebCalendar extends WebPanel
         weekHeaders.setPaintSides ( true, false, true, false );
         weekHeaders.setShadeWidth ( 0 );
         weekHeaders.setOpaque ( false );
-        weekHeaders.setMargin ( StyleConstants.shadeWidth, StyleConstants.shadeWidth - 1, StyleConstants.shadeWidth + 1,
-                StyleConstants.shadeWidth - 1 );
+        weekHeaders.setMargin ( FlatLafStyleConstants.shadeWidth, FlatLafStyleConstants.shadeWidth - 1, FlatLafStyleConstants.shadeWidth + 1,
+                FlatLafStyleConstants.shadeWidth - 1 );
         weekHeaders.setLayout ( new TableLayout ( new double[][]{
                 { TableLayout.FILL, TableLayout.PREFERRED, TableLayout.FILL, TableLayout.PREFERRED, TableLayout.FILL, TableLayout.PREFERRED,
                         TableLayout.FILL, TableLayout.PREFERRED, TableLayout.FILL, TableLayout.PREFERRED, TableLayout.FILL,
@@ -365,8 +365,8 @@ public class WebCalendar extends WebPanel
     {
         final WebPanel monthDays = new WebPanel ();
         monthDays.setOpaque ( false );
-        monthDays.setMargin ( StyleConstants.shadeWidth - 1, StyleConstants.shadeWidth - 1, StyleConstants.shadeWidth - 1,
-                StyleConstants.shadeWidth - 1 );
+        monthDays.setMargin ( FlatLafStyleConstants.shadeWidth - 1, FlatLafStyleConstants.shadeWidth - 1, FlatLafStyleConstants.shadeWidth - 1,
+                FlatLafStyleConstants.shadeWidth - 1 );
         final TableLayout layout = new TableLayout ( new double[][]{
                 { TableLayout.FILL, TableLayout.PREFERRED, TableLayout.FILL, TableLayout.PREFERRED, TableLayout.FILL, TableLayout.PREFERRED,
                         TableLayout.FILL, TableLayout.PREFERRED, TableLayout.FILL, TableLayout.PREFERRED, TableLayout.FILL,
@@ -535,7 +535,7 @@ public class WebCalendar extends WebPanel
             day.setText ( "" + calendar.get ( Calendar.DAY_OF_MONTH ) );
             day.setRolloverDecoratedOnly ( true );
             day.setHorizontalAlignment ( WebButton.RIGHT );
-            day.setRound ( StyleConstants.smallRound );
+            day.setRound ( FlatLafStyleConstants.smallRound );
             day.setFocusable ( false );
             day.addItemListener ( new ItemListener ()
             {
@@ -579,7 +579,7 @@ public class WebCalendar extends WebPanel
             day.setSelected ( selected );
             day.setRolloverDecoratedOnly ( true );
             day.setHorizontalAlignment ( WebButton.RIGHT );
-            day.setRound ( StyleConstants.smallRound );
+            day.setRound ( FlatLafStyleConstants.smallRound );
             day.setFocusable ( false );
             day.addActionListener ( new ActionListener ()
             {
@@ -623,7 +623,7 @@ public class WebCalendar extends WebPanel
             day.setText ( "" + calendar.get ( Calendar.DAY_OF_MONTH ) );
             day.setRolloverDecoratedOnly ( true );
             day.setHorizontalAlignment ( WebButton.RIGHT );
-            day.setRound ( StyleConstants.smallRound );
+            day.setRound ( FlatLafStyleConstants.smallRound );
             day.setFocusable ( false );
             day.addItemListener ( new ItemListener ()
             {

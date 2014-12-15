@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.panel;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * WebPanel style class.
@@ -44,13 +44,13 @@ public final class WebPanelStyle
      * Panel corners rounding.
      * This variable doesn't affect anything if panel is undecorated.
      */
-    public static int round = StyleConstants.smallRound;
+    public static int round = FlatLafStyleConstants.smallRound;
 
     /**
      * Panel shade width.
      * This variable doesn't affect anything if panel is undecorated.
      */
-    public static int shadeWidth = StyleConstants.shadeWidth;
+    public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Panel shade transparency.
@@ -60,7 +60,7 @@ public final class WebPanelStyle
     /**
      * Panel margin.
      */
-    public static Insets margin = StyleConstants.emptyMargin;
+    public static Insets margin = FlatLafStyleConstants.emptyMargin;
 
     /**
      * Panel border stroke.
@@ -71,12 +71,12 @@ public final class WebPanelStyle
     /**
      * Decoration border color.
      */
-    public static Color borderColor = StyleConstants.darkBorderColor;
+    public static Color borderColor = FlatLafStyleConstants.darkBorderColor;
 
     /**
      * Disabled decoration border color.
      */
-    public static Color disabledBorderColor = StyleConstants.disabledBorderColor;
+    public static Color disabledBorderColor = FlatLafStyleConstants.disabledBorderColor;
 
     /**
      * Whether should paint background or not.
@@ -91,5 +91,5 @@ public final class WebPanelStyle
     /**
      * Panel background color.
      */
-    public static Color backgroundColor = StyleConstants.backgroundColor;
+    public static Color backgroundColor = FlatLafStyleConstants.backgroundColor;
 }

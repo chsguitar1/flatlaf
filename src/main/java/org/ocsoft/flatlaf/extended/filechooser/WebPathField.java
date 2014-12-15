@@ -26,8 +26,8 @@ import javax.swing.filechooser.FileSystemView;
 
 import org.ocsoft.flatlaf.extended.drag.FileDragAndDropHandler;
 import org.ocsoft.flatlaf.extended.layout.HorizontalFlowLayout;
-import org.ocsoft.flatlaf.global.GlobalConstants;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.button.WebToggleButton;
 import org.ocsoft.flatlaf.laf.list.WebList;
@@ -76,7 +76,7 @@ public class WebPathField extends WebPanel
 
     protected static FileSystemView fsv = FileSystemView.getFileSystemView ();
 
-    protected AbstractFileFilter fileFilter = GlobalConstants.DIRECTORIES_FILTER;
+    protected AbstractFileFilter fileFilter = FlatLafConstants.DIRECTORIES_FILTER;
 
     protected int preferredWidth = -1;
     protected boolean filesDropEnabled = true;
@@ -676,7 +676,7 @@ public class WebPathField extends WebPanel
             for ( final File file : parents )
             {
                 final WebButton wb = new WebButton ();
-                wb.setRound ( !SystemUtils.isWindows () && first ? StyleConstants.smallRound : 0 );
+                wb.setRound ( !SystemUtils.isWindows () && first ? FlatLafStyleConstants.smallRound : 0 );
                 wb.setShadeWidth ( 0 );
                 wb.setLeftRightSpacing ( 0 );
                 wb.setRolloverDecoratedOnly ( true );

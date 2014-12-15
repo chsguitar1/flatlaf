@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.painter;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.LafUtils;
 
 import java.lang.ref.WeakReference;
@@ -71,7 +71,7 @@ public final class PainterSupport
             final Boolean opaque = painter.isOpaque ( component );
             if ( opaque != null )
             {
-                LookAndFeel.installProperty ( component, WebLookAndFeel.OPAQUE_PROPERTY, opaque ? Boolean.TRUE : Boolean.FALSE );
+                LookAndFeel.installProperty ( component, FlatLookAndFeel.OPAQUE_PROPERTY, opaque ? Boolean.TRUE : Boolean.FALSE );
             }
 
             // Updating border

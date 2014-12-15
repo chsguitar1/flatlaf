@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.managers.tooltip;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.utils.laf.ShadeType;
 
@@ -80,7 +80,7 @@ public final class WebCustomTooltipStyle
     /**
      * Spacing between tooltip border and tooltip content.
      */
-    public static int contentSpacing = StyleConstants.mediumContentSpacing;
+    public static int contentSpacing = FlatLafStyleConstants.mediumContentSpacing;
 
     /**
      * Additional left and right sides content spacing.
@@ -97,7 +97,7 @@ public final class WebCustomTooltipStyle
     /**
      * Tooltip corners rounding.
      */
-    public static int round = StyleConstants.bigRound;
+    public static int round = FlatLafStyleConstants.bigRound;
 
     /**
      * Decoration shade type.
@@ -135,7 +135,7 @@ public final class WebCustomTooltipStyle
     /**
      * Tooltip text color.
      */
-    public static Color textColor = StyleConstants.tooltipTextColor;
+    public static Color textColor = FlatLafStyleConstants.tooltipTextColor;
 
     /**
      * Hotkey text color.
@@ -145,5 +145,5 @@ public final class WebCustomTooltipStyle
     /**
      * Tooltip background trasparency.
      */
-    public static float trasparency = StyleConstants.mediumTransparent;
+    public static float trasparency = FlatLafStyleConstants.mediumTransparent;
 }

@@ -21,8 +21,8 @@ import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.separator.WebSeparator;
 import org.ocsoft.flatlaf.managers.language.LanguageContainerMethods;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
@@ -131,7 +131,7 @@ public class WebToolBar extends JToolBar implements ShapeProvider, SizeMethods<W
 
     public void addSpacing ()
     {
-        addSpacing ( StyleConstants.contentSpacing );
+        addSpacing ( FlatLafStyleConstants.contentSpacing );
     }
 
     public void addSpacing ( final int spacing )
@@ -141,7 +141,7 @@ public class WebToolBar extends JToolBar implements ShapeProvider, SizeMethods<W
 
     public void addSpacingToEnd ()
     {
-        addSpacingToEnd ( StyleConstants.contentSpacing );
+        addSpacingToEnd ( FlatLafStyleConstants.contentSpacing );
     }
 
     public void addSpacingToEnd ( final int spacing )
@@ -392,7 +392,7 @@ public class WebToolBar extends JToolBar implements ShapeProvider, SizeMethods<W
         {
             try
             {
-                setUI ( ( WebToolBarUI ) ReflectUtils.createInstance ( WebLookAndFeel.toolBarUI ) );
+                setUI ( ( WebToolBarUI ) ReflectUtils.createInstance ( FlatLookAndFeel.toolBarUI ) );
             }
             catch ( final Throwable e )
             {

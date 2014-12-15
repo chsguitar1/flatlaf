@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.painter;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.LafUtils;
 
 import java.awt.*;
@@ -40,9 +40,9 @@ public class WebStylePainter<E extends JComponent> extends AbstractPainter<E>
      */
 
     protected boolean drawBackground = true;
-    protected int round = StyleConstants.smallRound;
+    protected int round = FlatLafStyleConstants.smallRound;
     protected boolean drawFocus = false;
-    protected int shadeWidth = StyleConstants.shadeWidth;
+    protected int shadeWidth = FlatLafStyleConstants.shadeWidth;
     protected boolean fillBackground = true;
     protected boolean webColored = true;
 
@@ -134,7 +134,7 @@ public class WebStylePainter<E extends JComponent> extends AbstractPainter<E>
     {
         if ( drawBackground )
         {
-            LafUtils.drawWebStyle ( g2d, c, drawFocus && c.isFocusOwner () ? StyleConstants.fieldFocusColor : StyleConstants.shadeColor,
+            LafUtils.drawWebStyle ( g2d, c, drawFocus && c.isFocusOwner () ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor,
                     shadeWidth, round, fillBackground, webColored );
         }
     }

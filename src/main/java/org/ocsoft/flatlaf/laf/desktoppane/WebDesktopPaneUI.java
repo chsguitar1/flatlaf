@@ -21,8 +21,8 @@ import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicDesktopPaneUI;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 
@@ -45,8 +45,8 @@ public class WebDesktopPaneUI extends BasicDesktopPaneUI
 
         // Default settings
         SwingUtils.setOrientation ( c );
-        LookAndFeel.installProperty ( c, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.TRUE );
+        LookAndFeel.installProperty ( c, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.TRUE );
         c.setBorder ( LafUtils.createWebBorder ( 0, 0, 0, 0 ) );
-        c.setBackground ( StyleConstants.backgroundColor );
+        c.setBackground ( FlatLafStyleConstants.backgroundColor );
     }
 }

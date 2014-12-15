@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.label;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -699,7 +699,7 @@ public class WebStyledLabel extends JLabel implements EventMethods, ToolTipMetho
         {
             try
             {
-                setUI ( ( WebStyledLabelUI ) ReflectUtils.createInstance ( WebLookAndFeel.styledLabelUI ) );
+                setUI ( ( WebStyledLabelUI ) ReflectUtils.createInstance ( FlatLookAndFeel.styledLabelUI ) );
             }
             catch ( final Throwable e )
             {

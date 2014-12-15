@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.menu;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 31.01.12 Time: 16:39
@@ -35,7 +35,7 @@ public final class WebMenuBarStyle
     /**
      * Decoration rounding
      */
-    public static int round = StyleConstants.bigRound;
+    public static int round = FlatLafStyleConstants.bigRound;
 
     /**
      * Decoration shade width
@@ -50,5 +50,5 @@ public final class WebMenuBarStyle
     /**
      * Decoration shade width
      */
-    public static Color borderColor = StyleConstants.borderColor;
+    public static Color borderColor = FlatLafStyleConstants.borderColor;
 }

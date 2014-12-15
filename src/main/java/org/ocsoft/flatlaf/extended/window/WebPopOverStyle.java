@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.window;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * WebPopOver style class.
@@ -52,7 +52,7 @@ public final class WebPopOverStyle
     /**
      * WebPopOver corners rounding.
      */
-    public static int round = StyleConstants.bigRound;
+    public static int round = FlatLafStyleConstants.bigRound;
 
     /**
      * WebPopOver shade width.

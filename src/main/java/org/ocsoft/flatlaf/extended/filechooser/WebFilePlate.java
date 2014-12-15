@@ -22,7 +22,7 @@ import javax.swing.event.AncestorEvent;
 
 import org.ocsoft.flatlaf.extended.drag.FileDragAndDropHandler;
 import org.ocsoft.flatlaf.extended.layout.TableLayout;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
@@ -57,7 +57,7 @@ public class WebFilePlate extends WebPanel
 
     protected boolean showRemoveButton = true;
     protected boolean showFileExtensions = false;
-    protected final boolean animate = StyleConstants.animate;
+    protected final boolean animate = FlatLafStyleConstants.animate;
 
     private boolean dragEnabled = false;
     private int dragAction = TransferHandler.MOVE;
@@ -116,7 +116,7 @@ public class WebFilePlate extends WebPanel
                 }
                 if ( animate )
                 {
-                    animator = new WebTimer ( "WebFilePlate.fadeInTimer", StyleConstants.animationDelay, new ActionListener ()
+                    animator = new WebTimer ( "WebFilePlate.fadeInTimer", FlatLafStyleConstants.animationDelay, new ActionListener ()
                     {
                         @Override
                         public void actionPerformed ( final ActionEvent e )
@@ -248,7 +248,7 @@ public class WebFilePlate extends WebPanel
     {
         if ( remove == null )
         {
-            remove = WebButton.createIconWebButton ( CROSS_ICON, StyleConstants.smallRound, 3, 1, true, false );
+            remove = WebButton.createIconWebButton ( CROSS_ICON, FlatLafStyleConstants.smallRound, 3, 1, true, false );
             remove.setFocusable ( false );
             remove.addActionListener ( new ActionListener ()
             {
@@ -270,7 +270,7 @@ public class WebFilePlate extends WebPanel
         }
         if ( animate )
         {
-            animator = new WebTimer ( "WebFilePlate.fadeOutTimer", StyleConstants.animationDelay, new ActionListener ()
+            animator = new WebTimer ( "WebFilePlate.fadeOutTimer", FlatLafStyleConstants.animationDelay, new ActionListener ()
             {
                 @Override
                 public void actionPerformed ( final ActionEvent e )

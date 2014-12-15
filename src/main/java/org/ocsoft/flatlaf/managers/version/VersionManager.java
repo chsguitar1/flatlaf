@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.version;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.XmlUtils;
 
 /**
@@ -66,7 +66,7 @@ public class VersionManager
     {
         if ( libraryVersion == null )
         {
-            libraryVersion = XmlUtils.fromXML ( WebLookAndFeel.class.getResource ( "resources/version.xml" ) );
+            libraryVersion = XmlUtils.fromXML ( FlatLookAndFeel.class.getResource ( "resources/version.xml" ) );
         }
         return libraryVersion;
     }

@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.panel;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 
 /**
@@ -56,7 +56,7 @@ public class BorderPanel extends WebPanel
         else
         {
             setOpaque ( true );
-            setBackground ( StyleConstants.backgroundColor );
+            setBackground ( FlatLafStyleConstants.backgroundColor );
         }
     }
 }

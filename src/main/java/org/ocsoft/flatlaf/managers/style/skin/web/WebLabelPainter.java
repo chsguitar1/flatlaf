@@ -23,7 +23,7 @@ import javax.swing.text.View;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.label.LabelPainter;
 import org.ocsoft.flatlaf.laf.label.WebLabelStyle;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
@@ -181,7 +181,7 @@ public class WebLabelPainter<E extends JLabel> extends AbstractPainter<E> implem
     {
         // Applying graphics settings
         final Composite oc = GraphicsUtils.setupAlphaComposite ( g2d, transparency, transparency != null );
-        final Map textHints = drawShade ? StyleConstants.defaultTextRenderingHints : StyleConstants.textRenderingHints;
+        final Map textHints = drawShade ? FlatLafStyleConstants.defaultTextRenderingHints : FlatLafStyleConstants.textRenderingHints;
         final Font oldFont = GraphicsUtils.setupFont ( g2d, label.getFont () );
         final Map oldHints = SwingUtils.setupTextAntialias ( g2d, textHints );
         final Paint oldPaint = g2d.getPaint ();

@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.slider;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 11/15/11 Time: 1:46 PM
@@ -30,12 +30,12 @@ public final class WebSliderStyle
     /**
      * Top track background color
      */
-    public static Color trackBgTop = StyleConstants.topDarkBgColor;
+    public static Color trackBgTop = FlatLafStyleConstants.topDarkBgColor;
 
     /**
      * Bottom track background color
      */
-    public static Color trackBgBottom = StyleConstants.bottomBgColor;
+    public static Color trackBgBottom = FlatLafStyleConstants.bottomBgColor;
 
     /**
      * Track height
@@ -45,12 +45,12 @@ public final class WebSliderStyle
     /**
      * Track round
      */
-    public static int trackRound = StyleConstants.bigRound;
+    public static int trackRound = FlatLafStyleConstants.bigRound;
 
     /**
      * Track shade width
      */
-    public static int trackShadeWidth = StyleConstants.shadeWidth;
+    public static int trackShadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Should draw progress inside slider track
@@ -60,12 +60,12 @@ public final class WebSliderStyle
     /**
      * Progress round
      */
-    public static int progressRound = StyleConstants.smallRound;
+    public static int progressRound = FlatLafStyleConstants.smallRound;
 
     /**
      * Progress shade width
      */
-    public static int progressShadeWidth = StyleConstants.shadeWidth;
+    public static int progressShadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Should draw slider thumb
@@ -75,12 +75,12 @@ public final class WebSliderStyle
     /**
      * Top gripper background color
      */
-    public static Color thumbBgTop = StyleConstants.topBgColor;
+    public static Color thumbBgTop = FlatLafStyleConstants.topBgColor;
 
     /**
      * Bottom gripper background color
      */
-    public static Color thumbBgBottom = StyleConstants.bottomBgColor;
+    public static Color thumbBgBottom = FlatLafStyleConstants.bottomBgColor;
 
     /**
      * Gripper width
@@ -95,12 +95,12 @@ public final class WebSliderStyle
     /**
      * Gripper round
      */
-    public static int thumbRound = StyleConstants.smallRound;
+    public static int thumbRound = FlatLafStyleConstants.smallRound;
 
     /**
      * Gripper shade width
      */
-    public static int thumbShadeWidth = StyleConstants.shadeWidth;
+    public static int thumbShadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Should use angled gripper
@@ -120,10 +120,10 @@ public final class WebSliderStyle
     /**
      * Should animate component
      */
-    public static boolean animated = StyleConstants.animate;
+    public static boolean animated = FlatLafStyleConstants.animate;
 
     /**
      * Dark component border only on mouseover
      */
-    public static boolean rolloverDarkBorderOnly = StyleConstants.rolloverDarkBorderOnly;
+    public static boolean rolloverDarkBorderOnly = FlatLafStyleConstants.rolloverDarkBorderOnly;
 }

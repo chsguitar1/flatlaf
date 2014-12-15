@@ -21,7 +21,7 @@ import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicViewportUI;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 
 /**
@@ -57,7 +57,7 @@ public class WebViewportUI extends BasicViewportUI
 
         // Default settings
         final JViewport viewport = ( JViewport ) c;
-        viewport.setScrollMode ( WebLookAndFeel.getScrollMode () );
+        viewport.setScrollMode ( FlatLookAndFeel.getScrollMode () );
         SwingUtils.setOrientation ( c );
     }
 }

@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.splitpane;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * WebSplitPane style class.
@@ -32,7 +32,7 @@ public final class WebSplitPaneStyle
     /**
      * Default split pane margin.
      */
-    public static Insets margin = StyleConstants.emptyMargin;
+    public static Insets margin = FlatLafStyleConstants.emptyMargin;
 
     /**
      * Split pane divider color when dragged.
@@ -47,5 +47,5 @@ public final class WebSplitPaneStyle
     /**
      * Border color.
      */
-    public static Color dividerBorderColor = StyleConstants.darkBorderColor;
+    public static Color dividerBorderColor = FlatLafStyleConstants.darkBorderColor;
 }

@@ -26,8 +26,8 @@ import javax.swing.plaf.basic.BasicButtonUI;
 import org.ocsoft.flatlaf.extended.painter.AdaptivePainter;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.TexturePainter;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.scroll.WebScrollBarUI;
@@ -153,7 +153,7 @@ public final class LafUtils
     {
         try
         {
-            ReflectUtils.callMethod ( component, "firePropertyChange", WebLookAndFeel.PAINTER_PROPERTY, oldPainter, newPainter );
+            ReflectUtils.callMethod ( component, "firePropertyChange", FlatLookAndFeel.PAINTER_PROPERTY, oldPainter, newPainter );
         }
         catch ( final NoSuchMethodException e )
         {
@@ -446,7 +446,7 @@ public final class LafUtils
 
     public static void drawAlphaLayer ( final Graphics2D g2d, final int x, final int y, final int width, final int height )
     {
-        drawAlphaLayer ( g2d, x, y, width, height, StyleConstants.ALPHA_RECT_SIZE );
+        drawAlphaLayer ( g2d, x, y, width, height, FlatLafStyleConstants.ALPHA_RECT_SIZE );
     }
 
     public static void drawAlphaLayer ( final Graphics2D g2d, final Rectangle rectangle, final int size )
@@ -456,7 +456,7 @@ public final class LafUtils
 
     public static void drawAlphaLayer ( final Graphics2D g2d, final int x, final int y, final int width, final int height, final int size )
     {
-        drawAlphaLayer ( g2d, x, y, width, height, size, StyleConstants.LIGHT_ALPHA, StyleConstants.DARK_ALPHA );
+        drawAlphaLayer ( g2d, x, y, width, height, size, FlatLafStyleConstants.LIGHT_ALPHA, FlatLafStyleConstants.DARK_ALPHA );
     }
 
     public static void drawAlphaLayer ( final Graphics2D g2d, final Rectangle rectangle, final int size, final Color light,
@@ -511,7 +511,7 @@ public final class LafUtils
 
     public static Shape drawWebStyle ( final Graphics2D g2d, final JComponent component )
     {
-        return drawWebStyle ( g2d, component, StyleConstants.shadeColor, StyleConstants.shadeWidth, StyleConstants.smallRound );
+        return drawWebStyle ( g2d, component, FlatLafStyleConstants.shadeColor, FlatLafStyleConstants.shadeWidth, FlatLafStyleConstants.smallRound );
     }
 
     public static Shape drawWebStyle ( final Graphics2D g2d, final JComponent component, final Color shadeColor, final int shadeWidth,
@@ -529,15 +529,15 @@ public final class LafUtils
     public static Shape drawWebStyle ( final Graphics2D g2d, final JComponent component, final Color shadeColor, final int shadeWidth,
                                        final int round, final boolean fillBackground, final boolean webColored )
     {
-        return drawWebStyle ( g2d, component, shadeColor, shadeWidth, round, fillBackground, webColored, StyleConstants.darkBorderColor,
-                StyleConstants.disabledBorderColor );
+        return drawWebStyle ( g2d, component, shadeColor, shadeWidth, round, fillBackground, webColored, FlatLafStyleConstants.darkBorderColor,
+                FlatLafStyleConstants.disabledBorderColor );
     }
 
     public static Shape drawWebStyle ( final Graphics2D g2d, final JComponent component, final Color shadeColor, final int shadeWidth,
                                        final int round, final boolean fillBackground, final boolean webColored, final float opacity )
     {
-        return drawWebStyle ( g2d, component, shadeColor, shadeWidth, round, fillBackground, webColored, StyleConstants.darkBorderColor,
-                StyleConstants.disabledBorderColor, opacity );
+        return drawWebStyle ( g2d, component, shadeColor, shadeWidth, round, fillBackground, webColored, FlatLafStyleConstants.darkBorderColor,
+                FlatLafStyleConstants.disabledBorderColor, opacity );
     }
 
     public static Shape drawWebStyle ( final Graphics2D g2d, final JComponent component, final Color shadeColor, final int shadeWidth,
@@ -635,7 +635,7 @@ public final class LafUtils
         }
         else
         {
-            final GradientPaint gp = new GradientPaint ( x1, y1, StyleConstants.topBgColor, x2, y2, StyleConstants.bottomBgColor );
+            final GradientPaint gp = new GradientPaint ( x1, y1, FlatLafStyleConstants.topBgColor, x2, y2, FlatLafStyleConstants.bottomBgColor );
             gradientCache.put ( key, gp );
             return gp;
         }
@@ -694,8 +694,8 @@ public final class LafUtils
             if ( webColored )
             {
                 final Rectangle shapeBounds = borderShape.getBounds ();
-                g2d.setPaint ( new GradientPaint ( 0, shapeBounds.y, StyleConstants.topBgColor, 0, shapeBounds.y + shapeBounds.height,
-                        StyleConstants.bottomBgColor ) );
+                g2d.setPaint ( new GradientPaint ( 0, shapeBounds.y, FlatLafStyleConstants.topBgColor, 0, shapeBounds.y + shapeBounds.height,
+                        FlatLafStyleConstants.bottomBgColor ) );
                 g2d.fill ( borderShape );
             }
             else
@@ -735,14 +735,14 @@ public final class LafUtils
                                          final int round, final Boolean mouseover, final Boolean hasFocus )
     {
         return drawWebFocus ( g2d, component, focusType, shadeWidth, round, mouseover, hasFocus,
-                focusType.equals ( FocusType.componentFocus ) ? StyleConstants.focusColor : StyleConstants.fieldFocusColor );
+                focusType.equals ( FocusType.componentFocus ) ? FlatLafStyleConstants.focusColor : FlatLafStyleConstants.fieldFocusColor );
     }
 
     public static boolean drawWebFocus ( final Graphics2D g2d, final JComponent component, final FocusType focusType, final int shadeWidth,
                                          final int round, final Boolean mouseover, final Boolean hasFocus, final Color color )
     {
         return drawWebFocus ( g2d, component, focusType, shadeWidth, round, mouseover, hasFocus, color,
-                focusType.equals ( FocusType.componentFocus ) ? StyleConstants.focusStroke : StyleConstants.fieldFocusStroke );
+                focusType.equals ( FocusType.componentFocus ) ? FlatLafStyleConstants.focusStroke : FlatLafStyleConstants.fieldFocusStroke );
     }
 
     public static boolean drawWebFocus ( final Graphics2D g2d, final JComponent component, final FocusType focusType, final int shadeWidth,
@@ -828,9 +828,9 @@ public final class LafUtils
         if ( hasFocus && focusType.equals ( FocusType.componentFocus ) )
         {
             final Object aa = GraphicsUtils.setupAntialias ( g2d );
-            final Stroke os = GraphicsUtils.setupStroke ( g2d, StyleConstants.focusStroke );
+            final Stroke os = GraphicsUtils.setupStroke ( g2d, FlatLafStyleConstants.focusStroke );
 
-            g2d.setPaint ( StyleConstants.focusColor );
+            g2d.setPaint ( FlatLafStyleConstants.focusColor );
             g2d.draw ( shape );
 
             GraphicsUtils.restoreStroke ( g2d, os );
@@ -839,9 +839,9 @@ public final class LafUtils
         else if ( focusType.equals ( FocusType.fieldFocus ) && ( hasFocus || mouseover != null && mouseover ) )
         {
             final Object aa = GraphicsUtils.setupAntialias ( g2d );
-            final Stroke os = GraphicsUtils.setupStroke ( g2d, StyleConstants.fieldFocusStroke );
+            final Stroke os = GraphicsUtils.setupStroke ( g2d, FlatLafStyleConstants.fieldFocusStroke );
 
-            g2d.setPaint ( hasFocus ? StyleConstants.fieldFocusColor : StyleConstants.transparentFieldFocusColor );
+            g2d.setPaint ( hasFocus ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.transparentFieldFocusColor );
             g2d.draw ( shape );
 
             GraphicsUtils.restoreStroke ( g2d, os );

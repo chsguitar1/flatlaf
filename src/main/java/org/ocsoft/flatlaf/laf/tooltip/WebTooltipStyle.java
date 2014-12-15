@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.tooltip;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * WebTooltip style class.
@@ -32,7 +32,7 @@ public final class WebTooltipStyle
     /**
      * Tooltip text color.
      */
-    public static Color textColor = StyleConstants.tooltipTextColor;
+    public static Color textColor = FlatLafStyleConstants.tooltipTextColor;
 
     /**
      * Tooltip background color.
@@ -42,7 +42,7 @@ public final class WebTooltipStyle
     /**
      * Tooltip background trasparency.
      */
-    public static float trasparency = StyleConstants.mediumTransparent;
+    public static float trasparency = FlatLafStyleConstants.mediumTransparent;
 
     /**
      * Tooltip content margin.
@@ -52,5 +52,5 @@ public final class WebTooltipStyle
     /**
      * Decoration rounding.
      */
-    public static int round = StyleConstants.smallRound;
+    public static int round = FlatLafStyleConstants.smallRound;
 }

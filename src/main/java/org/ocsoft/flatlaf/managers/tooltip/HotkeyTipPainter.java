@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.managers.tooltip;
 import java.awt.*;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.style.skin.web.WebLabelPainter;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 
@@ -38,7 +38,7 @@ public class HotkeyTipPainter<T extends HotkeyTipLabel> extends WebLabelPainter<
      * Style constants.
      */
     public static Color bg = new Color ( 255, 255, 255, 178 );
-    public static int round = StyleConstants.smallRound;
+    public static int round = FlatLafStyleConstants.smallRound;
 
     /**
      * Constructs new hotkey tip painter.

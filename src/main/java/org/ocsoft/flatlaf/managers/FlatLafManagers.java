@@ -46,7 +46,7 @@ import org.ocsoft.flatlaf.managers.version.VersionManager;
  * @see org.ocsoft.flatlaf.managers.drag.DragManager
  */
 
-public class WebLafManagers
+public class FlatLafManagers
 {
     /**
      * Initializes WebLaF managers.

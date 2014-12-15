@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.menu;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.style.skin.web.PopupStyle;
 import org.ocsoft.flatlaf.managers.style.skin.web.WebPopupPainterStyle;
 import org.ocsoft.flatlaf.utils.ProprietaryUtils;
@@ -56,7 +56,7 @@ public final class WebPopupMenuStyle
      * Popup menu corners rounding.
      * This value might vary depending on available underlying system features.
      */
-    public static int round = ProprietaryUtils.isWindowTransparencyAllowed () ? WebPopupPainterStyle.round : StyleConstants.smallRound;
+    public static int round = ProprietaryUtils.isWindowTransparencyAllowed () ? WebPopupPainterStyle.round : FlatLafStyleConstants.smallRound;
 
     /**
      * Popup menu shade width.
@@ -89,7 +89,7 @@ public final class WebPopupMenuStyle
     /**
      * Popup menu margin.
      */
-    public static Insets margin = StyleConstants.emptyMargin;
+    public static Insets margin = FlatLafStyleConstants.emptyMargin;
 
     /**
      * Spacing between different popup menus.

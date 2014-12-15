@@ -23,8 +23,8 @@ import javax.swing.plaf.basic.BasicPopupMenuUI;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.style.StyleManager;
 import org.ocsoft.flatlaf.managers.style.skin.web.PopupStyle;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -144,7 +144,7 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants, 
                 }
             }
         };
-        popupMenu.addPropertyChangeListener ( WebLookAndFeel.VISIBLE_PROPERTY, popupMenuTypeUpdater );
+        popupMenu.addPropertyChangeListener ( FlatLookAndFeel.VISIBLE_PROPERTY, popupMenuTypeUpdater );
 
         // Popup orientation change listener
         orientationChangeListener = new PropertyChangeListener ()
@@ -155,7 +155,7 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants, 
                 popupMenu.setVisible ( false );
             }
         };
-        popupMenu.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
+        popupMenu.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
 
         // Special listeners which set proper popup window opacity when needed
         if ( transparent )
@@ -193,7 +193,7 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants, 
                     }
                 }
             };
-            popupMenu.addPropertyChangeListener ( WebLookAndFeel.VISIBLE_PROPERTY, visibilityChangeListener );
+            popupMenu.addPropertyChangeListener ( FlatLookAndFeel.VISIBLE_PROPERTY, visibilityChangeListener );
         }
         else
         {
@@ -219,7 +219,7 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants, 
                         }
                     }
                 };
-                popupMenu.addPropertyChangeListener ( WebLookAndFeel.VISIBLE_PROPERTY, jdkSevenFixListener );
+                popupMenu.addPropertyChangeListener ( FlatLookAndFeel.VISIBLE_PROPERTY, jdkSevenFixListener );
             }
         }
     }
@@ -233,13 +233,13 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants, 
     public void uninstallUI ( final JComponent c )
     {
         // Removing listeners
-        popupMenu.removePropertyChangeListener ( WebLookAndFeel.VISIBLE_PROPERTY, popupMenuTypeUpdater );
+        popupMenu.removePropertyChangeListener ( FlatLookAndFeel.VISIBLE_PROPERTY, popupMenuTypeUpdater );
         popupMenuTypeUpdater = null;
-        popupMenu.removePropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
+        popupMenu.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
         orientationChangeListener = null;
         if ( transparent )
         {
-            popupMenu.removePropertyChangeListener ( WebLookAndFeel.VISIBLE_PROPERTY, visibilityChangeListener );
+            popupMenu.removePropertyChangeListener ( FlatLookAndFeel.VISIBLE_PROPERTY, visibilityChangeListener );
             visibilityChangeListener = null;
         }
         else
@@ -247,7 +247,7 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants, 
             // Workaround for menu with non-opaque parent window
             if ( SystemUtils.isJava7orAbove () )
             {
-                popupMenu.removePropertyChangeListener ( WebLookAndFeel.VISIBLE_PROPERTY, jdkSevenFixListener );
+                popupMenu.removePropertyChangeListener ( FlatLookAndFeel.VISIBLE_PROPERTY, jdkSevenFixListener );
                 jdkSevenFixListener = null;
             }
         }
@@ -283,7 +283,7 @@ public class WebPopupMenuUI extends BasicPopupMenuUI implements SwingConstants, 
     @Override
     public Shape provideShape ()
     {
-        return LafUtils.getWebBorderShape ( popupMenu, 0, StyleConstants.smallRound );
+        return LafUtils.getWebBorderShape ( popupMenu, 0, FlatLafStyleConstants.smallRound );
     }
 
     /**

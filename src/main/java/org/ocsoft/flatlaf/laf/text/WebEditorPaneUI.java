@@ -22,8 +22,8 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicEditorPaneUI;
 import javax.swing.text.JTextComponent;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 
 import java.awt.*;
@@ -50,11 +50,11 @@ public class WebEditorPaneUI extends BasicEditorPaneUI
 
         // Default settings
         SwingUtils.setOrientation ( textComponent );
-        LookAndFeel.installProperty ( textComponent, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.TRUE );
+        LookAndFeel.installProperty ( textComponent, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.TRUE );
         textComponent.setMargin ( new Insets ( 2, 2, 2, 2 ) );
         textComponent.setFocusable ( true );
         textComponent.setBackground ( Color.WHITE );
-        textComponent.setSelectionColor ( StyleConstants.textSelectionColor );
+        textComponent.setSelectionColor ( FlatLafStyleConstants.textSelectionColor );
         textComponent.setForeground ( Color.BLACK );
         textComponent.setSelectedTextColor ( Color.BLACK );
         textComponent.setCaretColor ( Color.GRAY );

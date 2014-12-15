@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.radiobutton;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyInfo;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
@@ -344,7 +344,7 @@ public class WebRadioButton extends JRadioButton
         {
             try
             {
-                setUI ( ( WebRadioButtonUI ) ReflectUtils.createInstance ( WebLookAndFeel.radioButtonUI ) );
+                setUI ( ( WebRadioButtonUI ) ReflectUtils.createInstance ( FlatLookAndFeel.radioButtonUI ) );
             }
             catch ( final Throwable e )
             {

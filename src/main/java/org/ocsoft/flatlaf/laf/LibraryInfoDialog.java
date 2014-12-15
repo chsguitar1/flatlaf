@@ -25,7 +25,7 @@ import org.ocsoft.flatlaf.extended.label.WebLinkLabel;
 import org.ocsoft.flatlaf.extended.layout.VerticalFlowLayout;
 import org.ocsoft.flatlaf.extended.panel.GroupPanel;
 import org.ocsoft.flatlaf.extended.window.ComponentMoveAdapter;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.rootpane.WebFrame;
@@ -102,7 +102,7 @@ public class LibraryInfoDialog extends WebFrame
     private LibraryInfoDialog ()
     {
         super ();
-        setIconImages ( WebLookAndFeel.getImages () );
+        setIconImages ( FlatLookAndFeel.getImages () );
         setLanguage ( "weblaf.info.title" );
         ComponentMoveAdapter.install ( this );
 
@@ -158,9 +158,9 @@ public class LibraryInfoDialog extends WebFrame
         @Override
         protected void paintComponent ( final Graphics g )
         {
-            g.setColor ( StyleConstants.backgroundColor );
+            g.setColor ( FlatLafStyleConstants.backgroundColor );
             g.fillRect ( 0, 0, getWidth (), getHeight () - 1 );
-            g.setColor ( StyleConstants.darkBorderColor );
+            g.setColor ( FlatLafStyleConstants.darkBorderColor );
             g.drawLine ( 0, getHeight () - 1, getWidth () - 1, getHeight () - 1 );
         }
 
@@ -207,7 +207,7 @@ public class LibraryInfoDialog extends WebFrame
     {
         final VersionInfo versionInfo = VersionManager.getLibraryVersion ();
 
-        final WebImage icon = new WebImage ( WebLookAndFeel.getIcon ( 32 ) );
+        final WebImage icon = new WebImage ( FlatLookAndFeel.getIcon ( 32 ) );
 
         final WebLinkLabel version = new WebLinkLabel ( versionInfo.toString () );
         version.setLink ( "http://weblookandfeel.com", false );
@@ -461,7 +461,7 @@ public class LibraryInfoDialog extends WebFrame
     public static void main ( final String[] args )
     {
         // L&F
-        WebLookAndFeel.install ();
+        FlatLookAndFeel.install ();
 
         // Orientation change listener
         HotkeyManager.registerHotkey ( Hotkey.ALT_R, new HotkeyRunnable ()
@@ -469,7 +469,7 @@ public class LibraryInfoDialog extends WebFrame
             @Override
             public void run ( final KeyEvent e )
             {
-                WebLookAndFeel.changeOrientation ();
+                FlatLookAndFeel.changeOrientation ();
             }
         } );
 

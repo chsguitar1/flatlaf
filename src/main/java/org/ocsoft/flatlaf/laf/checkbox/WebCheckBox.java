@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.checkbox;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyInfo;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
@@ -354,7 +354,7 @@ public class WebCheckBox extends JCheckBox
         {
             try
             {
-                setUI ( ( WebCheckBoxUI ) ReflectUtils.createInstance ( WebLookAndFeel.checkBoxUI ) );
+                setUI ( ( WebCheckBoxUI ) ReflectUtils.createInstance ( FlatLookAndFeel.checkBoxUI ) );
             }
             catch ( final Throwable e )
             {

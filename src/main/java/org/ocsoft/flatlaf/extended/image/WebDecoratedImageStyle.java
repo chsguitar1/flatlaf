@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.image;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.laf.ShadeType;
 
 import java.awt.*;
@@ -68,7 +68,7 @@ public final class WebDecoratedImageStyle implements SwingConstants
     /**
      * Image corners round, use 0 to disable rounding
      */
-    public static int round = StyleConstants.decorationRound;
+    public static int round = FlatLafStyleConstants.decorationRound;
 
     /**
      * Blur center horizontal alignment

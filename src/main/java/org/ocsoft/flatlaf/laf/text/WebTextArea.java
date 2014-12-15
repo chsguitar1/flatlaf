@@ -21,7 +21,7 @@ import javax.swing.*;
 import javax.swing.text.Document;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -185,7 +185,7 @@ public class WebTextArea extends JTextArea
         {
             try
             {
-                setUI ( ( WebTextAreaUI ) ReflectUtils.createInstance ( WebLookAndFeel.textAreaUI ) );
+                setUI ( ( WebTextAreaUI ) ReflectUtils.createInstance ( FlatLookAndFeel.textAreaUI ) );
             }
             catch ( final Throwable e )
             {

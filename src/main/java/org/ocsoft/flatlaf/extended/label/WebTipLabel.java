@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.label;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.layout.TableLayout;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.managers.settings.SettingsManager;
@@ -127,7 +127,7 @@ public class WebTipLabel extends JComponent implements SwingConstants, ActionLis
     public void actionPerformed ( final ActionEvent e )
     {
         hideButton.setEnabled ( false );
-        timer = new WebTimer ( "WebTipLabel.animator", StyleConstants.animationDelay, new ActionListener ()
+        timer = new WebTimer ( "WebTipLabel.animator", FlatLafStyleConstants.animationDelay, new ActionListener ()
         {
             @Override
             public void actionPerformed ( final ActionEvent e )

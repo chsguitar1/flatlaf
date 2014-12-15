@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.tabbedpane;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.language.LanguageContainerMethods;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -302,7 +302,7 @@ public class WebTabbedPane extends JTabbedPane
         {
             try
             {
-                setUI ( ( WebTabbedPaneUI ) ReflectUtils.createInstance ( WebLookAndFeel.tabbedPaneUI ) );
+                setUI ( ( WebTabbedPaneUI ) ReflectUtils.createInstance ( FlatLookAndFeel.tabbedPaneUI ) );
             }
             catch ( final Throwable e )
             {

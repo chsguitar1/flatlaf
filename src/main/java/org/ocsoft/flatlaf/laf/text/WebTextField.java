@@ -21,8 +21,8 @@ import javax.swing.*;
 import javax.swing.text.Document;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -325,7 +325,7 @@ public class WebTextField extends JTextField
         {
             try
             {
-                setUI ( ( WebTextFieldUI ) ReflectUtils.createInstance ( WebLookAndFeel.textFieldUI ) );
+                setUI ( ( WebTextFieldUI ) ReflectUtils.createInstance ( FlatLookAndFeel.textFieldUI ) );
             }
             catch ( final Throwable e )
             {
@@ -1223,17 +1223,17 @@ public class WebTextField extends JTextField
 
     public static WebTextField createWebTextField ()
     {
-        return createWebTextField ( StyleConstants.drawBorder );
+        return createWebTextField ( FlatLafStyleConstants.drawBorder );
     }
 
     public static WebTextField createWebTextField ( final boolean drawBorder )
     {
-        return createWebTextField ( drawBorder, StyleConstants.bigRound );
+        return createWebTextField ( drawBorder, FlatLafStyleConstants.bigRound );
     }
 
     public static WebTextField createWebTextField ( final boolean drawBorder, final int round )
     {
-        return createWebTextField ( drawBorder, round, StyleConstants.shadeWidth );
+        return createWebTextField ( drawBorder, round, FlatLafStyleConstants.shadeWidth );
     }
 
     public static WebTextField createWebTextField ( final boolean drawBorder, final int round, final int shadeWidth )

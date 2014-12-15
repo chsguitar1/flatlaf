@@ -23,7 +23,7 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.settings.DefaultValue;
@@ -1462,7 +1462,7 @@ public class WebTree<E extends DefaultMutableTreeNode> extends JTree implements 
         {
             try
             {
-                setUI ( ( WebTreeUI ) ReflectUtils.createInstance ( WebLookAndFeel.treeUI ) );
+                setUI ( ( WebTreeUI ) ReflectUtils.createInstance ( FlatLookAndFeel.treeUI ) );
             }
             catch ( final Throwable e )
             {

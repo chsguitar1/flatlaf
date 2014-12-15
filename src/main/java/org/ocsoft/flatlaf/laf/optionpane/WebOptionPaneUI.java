@@ -21,8 +21,8 @@ import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicOptionPaneUI;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.managers.language.LM;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -57,7 +57,7 @@ public class WebOptionPaneUI extends BasicOptionPaneUI
 
         // Default settings
         SwingUtils.setOrientation ( optionPane );
-        LookAndFeel.installProperty ( optionPane, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( optionPane, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
         optionPane.setBackground ( WebOptionPaneStyle.backgroundColor );
         optionPane.setBorder ( LafUtils.createWebBorder ( 15, 15, 15, 15 ) );
     }
@@ -192,11 +192,11 @@ public class WebOptionPaneUI extends BasicOptionPaneUI
                     defaultOptions = new WebButton[ 2 ];
 
                     defaultOptions[ 0 ] = new WebButton ( "" );
-                    defaultOptions[ 0 ].setShineColor ( StyleConstants.greenHighlight );
+                    defaultOptions[ 0 ].setShineColor ( FlatLafStyleConstants.greenHighlight );
                     defaultOptions[ 0 ].setLanguage ( "weblaf.optionpane.yes" );
 
                     defaultOptions[ 1 ] = new WebButton ( "" );
-                    defaultOptions[ 1 ].setShineColor ( StyleConstants.redHighlight );
+                    defaultOptions[ 1 ].setShineColor ( FlatLafStyleConstants.redHighlight );
                     defaultOptions[ 1 ].setLanguage ( "weblaf.optionpane.no" );
                 }
                 else if ( type == JOptionPane.YES_NO_CANCEL_OPTION )
@@ -204,15 +204,15 @@ public class WebOptionPaneUI extends BasicOptionPaneUI
                     defaultOptions = new WebButton[ 3 ];
 
                     defaultOptions[ 0 ] = new WebButton ( "" );
-                    defaultOptions[ 0 ].setShineColor ( StyleConstants.greenHighlight );
+                    defaultOptions[ 0 ].setShineColor ( FlatLafStyleConstants.greenHighlight );
                     defaultOptions[ 0 ].setLanguage ( "weblaf.optionpane.yes" );
 
                     defaultOptions[ 1 ] = new WebButton ( "" );
-                    defaultOptions[ 1 ].setShineColor ( StyleConstants.redHighlight );
+                    defaultOptions[ 1 ].setShineColor ( FlatLafStyleConstants.redHighlight );
                     defaultOptions[ 1 ].setLanguage ( "weblaf.optionpane.no" );
 
                     defaultOptions[ 2 ] = new WebButton ( "" );
-                    defaultOptions[ 2 ].setShineColor ( StyleConstants.yellowHighlight );
+                    defaultOptions[ 2 ].setShineColor ( FlatLafStyleConstants.yellowHighlight );
                     defaultOptions[ 2 ].setLanguage ( "weblaf.optionpane.cancel" );
                 }
                 else if ( type == JOptionPane.OK_CANCEL_OPTION )
@@ -220,11 +220,11 @@ public class WebOptionPaneUI extends BasicOptionPaneUI
                     defaultOptions = new WebButton[ 2 ];
 
                     defaultOptions[ 0 ] = new WebButton ( "" );
-                    defaultOptions[ 0 ].setShineColor ( StyleConstants.greenHighlight );
+                    defaultOptions[ 0 ].setShineColor ( FlatLafStyleConstants.greenHighlight );
                     defaultOptions[ 0 ].setLanguage ( "weblaf.optionpane.ok" );
 
                     defaultOptions[ 1 ] = new WebButton ( "" );
-                    defaultOptions[ 1 ].setShineColor ( StyleConstants.redHighlight );
+                    defaultOptions[ 1 ].setShineColor ( FlatLafStyleConstants.redHighlight );
                     defaultOptions[ 1 ].setLanguage ( "weblaf.optionpane.cancel" );
                 }
                 else
@@ -232,7 +232,7 @@ public class WebOptionPaneUI extends BasicOptionPaneUI
                     defaultOptions = new WebButton[ 1 ];
 
                     defaultOptions[ 0 ] = new WebButton ( "" );
-                    defaultOptions[ 0 ].setShineColor ( StyleConstants.greenHighlight );
+                    defaultOptions[ 0 ].setShineColor ( FlatLafStyleConstants.greenHighlight );
                     defaultOptions[ 0 ].setLanguage ( "weblaf.optionpane.ok" );
                 }
 

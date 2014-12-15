@@ -27,7 +27,7 @@ import org.ocsoft.flatlaf.extended.colorchooser.DoubleColorField;
 import org.ocsoft.flatlaf.extended.colorchooser.DoubleColorFieldListener;
 import org.ocsoft.flatlaf.extended.layout.TableLayout;
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBox;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
@@ -367,9 +367,9 @@ public class WebColorChooserPanel extends WebPanel implements DialogOptions
         final WebButton ok = new WebButton ();
         ok.setLanguage ( "weblaf.colorchooser.choose" );
         ok.addHotkey ( WebColorChooserPanel.this, Hotkey.ENTER );
-        if ( StyleConstants.highlightControlButtons )
+        if ( FlatLafStyleConstants.highlightControlButtons )
         {
-            ok.setShineColor ( StyleConstants.greenHighlight );
+            ok.setShineColor ( FlatLafStyleConstants.greenHighlight );
         }
         ok.addActionListener ( new ActionListener ()
         {
@@ -396,9 +396,9 @@ public class WebColorChooserPanel extends WebPanel implements DialogOptions
         final WebButton reset = new WebButton ();
         reset.setLanguage ( "weblaf.colorchooser.reset" );
         reset.addHotkey ( WebColorChooserPanel.this, Hotkey.ALT_R );
-        if ( StyleConstants.highlightControlButtons )
+        if ( FlatLafStyleConstants.highlightControlButtons )
         {
-            reset.setShineColor ( StyleConstants.blueHighlight );
+            reset.setShineColor ( FlatLafStyleConstants.blueHighlight );
         }
         reset.addActionListener ( new ActionListener ()
         {
@@ -414,9 +414,9 @@ public class WebColorChooserPanel extends WebPanel implements DialogOptions
         final WebButton cancel = new WebButton ();
         cancel.setLanguage ( "weblaf.colorchooser.cancel" );
         cancel.addHotkey ( WebColorChooserPanel.this, Hotkey.ESCAPE );
-        if ( StyleConstants.highlightControlButtons )
+        if ( FlatLafStyleConstants.highlightControlButtons )
         {
-            cancel.setShineColor ( StyleConstants.redHighlight );
+            cancel.setShineColor ( FlatLafStyleConstants.redHighlight );
         }
         cancel.addActionListener ( new ActionListener ()
         {

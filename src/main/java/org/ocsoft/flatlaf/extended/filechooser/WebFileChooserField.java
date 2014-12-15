@@ -22,7 +22,7 @@ import javax.swing.*;
 import org.ocsoft.flatlaf.extended.drag.FileDragAndDropHandler;
 import org.ocsoft.flatlaf.extended.layout.HorizontalFlowLayout;
 import org.ocsoft.flatlaf.extended.panel.CenterPanel;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.filechooser.WebFileChooser;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
@@ -164,7 +164,7 @@ public class WebFileChooserField extends WebPanel
 
             chooseButton = new WebButton ( "..." );
             chooseButton.setRound ( WebFileChooserField.this.getRound () );
-            chooseButton.setLeftRightSpacing ( StyleConstants.smallLeftRightSpacing );
+            chooseButton.setLeftRightSpacing ( FlatLafStyleConstants.smallLeftRightSpacing );
             chooseButton.setDrawFocus ( false );
             chooseButton.setDrawLeft ( false );
             chooseButton.setDrawLeftLine ( true );
@@ -432,8 +432,8 @@ public class WebFileChooserField extends WebPanel
                 final WebButton remove = new WebButton ( CROSS_ICON );
                 remove.setLeftRightSpacing ( 0 );
                 remove.setInnerShadeWidth ( 2 );
-                remove.setRound ( StyleConstants.smallRound );
-                remove.setShadeWidth ( StyleConstants.shadeWidth );
+                remove.setRound ( FlatLafStyleConstants.smallRound );
+                remove.setShadeWidth ( FlatLafStyleConstants.shadeWidth );
                 remove.setFocusable ( false );
                 remove.setRolloverDecoratedOnly ( true );
                 remove.addActionListener ( new ActionListener ()

@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.label;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
@@ -154,7 +154,7 @@ public class WebVerticalLabel extends WebLabel
         {
             try
             {
-                setUI ( ( WebVerticalLabelUI ) ReflectUtils.createInstance ( WebLookAndFeel.verticalLabelUI ) );
+                setUI ( ( WebVerticalLabelUI ) ReflectUtils.createInstance ( FlatLookAndFeel.verticalLabelUI ) );
 
             }
             catch ( final Throwable e )

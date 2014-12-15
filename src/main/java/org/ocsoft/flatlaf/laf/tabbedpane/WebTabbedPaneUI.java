@@ -25,7 +25,7 @@ import javax.swing.text.View;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
@@ -83,7 +83,7 @@ public class WebTabbedPaneUI extends BasicTabbedPaneUI implements ShapeProvider,
 
         // Default settings
         SwingUtils.setOrientation ( tabPane );
-        tabPane.setBackground ( StyleConstants.backgroundColor );
+        tabPane.setBackground ( FlatLafStyleConstants.backgroundColor );
         PainterSupport.installPainter ( tabPane, this.painter );
 
         // Updating border
@@ -520,7 +520,7 @@ public class WebTabbedPaneUI extends BasicTabbedPaneUI implements ShapeProvider,
         if ( tabbedPaneStyle.equals ( TabbedPaneStyle.standalone ) )
         {
             final GeneralPath shadeShape = createTabShape ( TabShapeType.shade, tabPlacement, x, y, w, h, isSelected );
-            GraphicsUtils.drawShade ( g2d, shadeShape, StyleConstants.shadeColor, shadeWidth,
+            GraphicsUtils.drawShade ( g2d, shadeShape, FlatLafStyleConstants.shadeColor, shadeWidth,
                     new Rectangle2D.Double ( 0, 0, tabPane.getWidth (), y + h ), round > 0 );
         }
 
@@ -551,14 +551,14 @@ public class WebTabbedPaneUI extends BasicTabbedPaneUI implements ShapeProvider,
         }
 
         // Tab border
-        g2d.setPaint ( StyleConstants.darkBorderColor );
+        g2d.setPaint ( FlatLafStyleConstants.darkBorderColor );
         g2d.draw ( borderShape );
 
         // Tab focus
         final boolean drawFocus = isSelected && tabPane.isFocusOwner ();
         if ( tabbedPaneStyle.equals ( TabbedPaneStyle.standalone ) )
         {
-            LafUtils.drawCustomWebFocus ( g2d, null, StyleConstants.focusType, borderShape, null, drawFocus );
+            LafUtils.drawCustomWebFocus ( g2d, null, FlatLafStyleConstants.focusType, borderShape, null, drawFocus );
         }
         //        else if ( drawFocus )
         //        {
@@ -774,7 +774,7 @@ public class WebTabbedPaneUI extends BasicTabbedPaneUI implements ShapeProvider,
             final GeneralPath clip = new GeneralPath ( GeneralPath.WIND_EVEN_ODD );
             clip.append ( new Rectangle2D.Double ( 0, 0, tabPane.getWidth (), tabPane.getHeight () ), false );
             clip.append ( bs, false );
-            GraphicsUtils.drawShade ( g2d, bs, StyleConstants.shadeColor, shadeWidth, clip, round > 0 );
+            GraphicsUtils.drawShade ( g2d, bs, FlatLafStyleConstants.shadeColor, shadeWidth, clip, round > 0 );
 
             //            // Corners covering for large round
             //            if ( round > 2 )
@@ -818,11 +818,11 @@ public class WebTabbedPaneUI extends BasicTabbedPaneUI implements ShapeProvider,
             }
 
             // Area border
-            g2d.setPaint ( StyleConstants.darkBorderColor );
+            g2d.setPaint ( FlatLafStyleConstants.darkBorderColor );
             g2d.draw ( bs );
 
             // Area focus
-            LafUtils.drawCustomWebFocus ( g2d, null, StyleConstants.focusType, bs, null, tabPane.isFocusOwner () );
+            LafUtils.drawCustomWebFocus ( g2d, null, FlatLafStyleConstants.focusType, bs, null, tabPane.isFocusOwner () );
         }
         else
         {

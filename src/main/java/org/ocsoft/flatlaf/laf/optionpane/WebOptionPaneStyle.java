@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.optionpane;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 11/16/11 Time: 2:01 PM
@@ -30,10 +30,10 @@ public final class WebOptionPaneStyle
     /**
      * Highlight control buttons with specific colors
      */
-    public static boolean highlightControlButtons = StyleConstants.highlightControlButtons;
+    public static boolean highlightControlButtons = FlatLafStyleConstants.highlightControlButtons;
 
     /**
      * Option pane background color
      */
-    public static Color backgroundColor = StyleConstants.backgroundColor;
+    public static Color backgroundColor = FlatLafStyleConstants.backgroundColor;
 }

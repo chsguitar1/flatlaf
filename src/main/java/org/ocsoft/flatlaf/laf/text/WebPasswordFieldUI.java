@@ -24,8 +24,8 @@ import javax.swing.text.JTextComponent;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.language.LM;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -90,12 +90,12 @@ public class WebPasswordFieldUI extends BasicPasswordFieldUI implements ShapePro
 
         // Default settings
         SwingUtils.setOrientation ( passwordField );
-        LookAndFeel.installProperty ( passwordField, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( passwordField, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
         passwordField.putClientProperty ( SwingUtils.HANDLES_ENABLE_STATE, true );
         passwordField.setFocusable ( true );
         passwordField.setMargin ( WebPasswordFieldStyle.margin );
         passwordField.setBackground ( Color.WHITE );
-        passwordField.setSelectionColor ( StyleConstants.textSelectionColor );
+        passwordField.setSelectionColor ( FlatLafStyleConstants.textSelectionColor );
         passwordField.setForeground ( Color.BLACK );
         passwordField.setSelectedTextColor ( Color.BLACK );
         passwordField.setCaretColor ( Color.GRAY );
@@ -129,7 +129,7 @@ public class WebPasswordFieldUI extends BasicPasswordFieldUI implements ShapePro
                 updateInnerComponents ();
             }
         };
-        passwordField.addPropertyChangeListener ( WebLookAndFeel.ENABLED_PROPERTY, accessibleChangeListener );
+        passwordField.addPropertyChangeListener ( FlatLookAndFeel.ENABLED_PROPERTY, accessibleChangeListener );
 
         orientationChangeListener = new PropertyChangeListener ()
         {
@@ -139,7 +139,7 @@ public class WebPasswordFieldUI extends BasicPasswordFieldUI implements ShapePro
                 updateBorder ();
             }
         };
-        passwordField.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
+        passwordField.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
 
         marginChangeListener = new PropertyChangeListener ()
         {
@@ -149,7 +149,7 @@ public class WebPasswordFieldUI extends BasicPasswordFieldUI implements ShapePro
                 updateBorder ();
             }
         };
-        passwordField.addPropertyChangeListener ( WebLookAndFeel.MARGIN_PROPERTY, marginChangeListener );
+        passwordField.addPropertyChangeListener ( FlatLookAndFeel.MARGIN_PROPERTY, marginChangeListener );
 
         componentResizeListener = new ComponentAdapter ()
         {
@@ -169,9 +169,9 @@ public class WebPasswordFieldUI extends BasicPasswordFieldUI implements ShapePro
         passwordField.putClientProperty ( SwingUtils.HANDLES_ENABLE_STATE, null );
 
         passwordField.removeFocusListener ( focusListener );
-        passwordField.removePropertyChangeListener ( WebLookAndFeel.ENABLED_PROPERTY, accessibleChangeListener );
-        passwordField.removePropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
-        passwordField.removePropertyChangeListener ( WebLookAndFeel.MARGIN_PROPERTY, marginChangeListener );
+        passwordField.removePropertyChangeListener ( FlatLookAndFeel.ENABLED_PROPERTY, accessibleChangeListener );
+        passwordField.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
+        passwordField.removePropertyChangeListener ( FlatLookAndFeel.MARGIN_PROPERTY, marginChangeListener );
 
         cleanupLeadingComponent ();
         cleanupTrailingComponent ();
@@ -572,7 +572,7 @@ public class WebPasswordFieldUI extends BasicPasswordFieldUI implements ShapePro
                 final Color shadeColor;
                 if ( drawShade )
                 {
-                    shadeColor = drawFocus && c.isFocusOwner () ? StyleConstants.fieldFocusColor : StyleConstants.shadeColor;
+                    shadeColor = drawFocus && c.isFocusOwner () ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor;
                 }
                 else
                 {

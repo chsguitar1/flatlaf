@@ -20,8 +20,8 @@ package org.ocsoft.flatlaf.extended.dock;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.window.TestFrame;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.button.WebButtonStyle;
 import org.ocsoft.flatlaf.laf.button.WebToggleButton;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
@@ -75,28 +75,28 @@ public class WebDockablePane extends WebPanel
         {
             g2d.setPaint ( buttonsPaneBackground );
             g2d.fill ( info.topButtonsPaneBounds );
-            g2d.setPaint ( StyleConstants.darkBorderColor );
+            g2d.setPaint ( FlatLafStyleConstants.darkBorderColor );
             g2d.drawLine ( x, y, x2, y );
         }
         if ( info.hasLeftButtons )
         {
             g2d.setPaint ( buttonsPaneBackground );
             g2d.fill ( info.leftButtonsPaneBounds );
-            g2d.setPaint ( StyleConstants.darkBorderColor );
+            g2d.setPaint ( FlatLafStyleConstants.darkBorderColor );
             g2d.drawLine ( x, y, x, y2 );
         }
         if ( info.hasRightButtons )
         {
             g2d.setPaint ( buttonsPaneBackground );
             g2d.fill ( info.rightButtonsPaneBounds );
-            g2d.setPaint ( StyleConstants.darkBorderColor );
+            g2d.setPaint ( FlatLafStyleConstants.darkBorderColor );
             g2d.drawLine ( x2, y, x2, y2 );
         }
         if ( info.hasBottomButtons )
         {
             g2d.setPaint ( buttonsPaneBackground );
             g2d.fill ( info.bottomButtonsPaneBounds );
-            g2d.setPaint ( StyleConstants.darkBorderColor );
+            g2d.setPaint ( FlatLafStyleConstants.darkBorderColor );
             g2d.drawLine ( x, y2, x2, y2 );
         }
     }
@@ -111,7 +111,7 @@ public class WebDockablePane extends WebPanel
         WebButtonStyle.round = 0;
         WebButtonStyle.drawFocus = false;
         //        WebButtonStyle.shadeWidth = 0;
-        WebLookAndFeel.install ();
+        FlatLookAndFeel.install ();
 
 
         final WebDockablePane pane = new WebDockablePane ();

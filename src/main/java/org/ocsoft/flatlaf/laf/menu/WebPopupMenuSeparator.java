@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.menu;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 
@@ -145,7 +145,7 @@ public class WebPopupMenuSeparator extends JSeparator
         {
             try
             {
-                setUI ( ( WebPopupMenuSeparatorUI ) ReflectUtils.createInstance ( WebLookAndFeel.popupMenuSeparatorUI ) );
+                setUI ( ( WebPopupMenuSeparatorUI ) ReflectUtils.createInstance ( FlatLookAndFeel.popupMenuSeparatorUI ) );
             }
             catch ( final Throwable e )
             {

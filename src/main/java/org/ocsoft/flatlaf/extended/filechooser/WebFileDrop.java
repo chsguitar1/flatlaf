@@ -21,7 +21,7 @@ import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.drag.FileDragAndDropHandler;
 import org.ocsoft.flatlaf.extended.layout.WrapFlowLayout;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -57,7 +57,7 @@ public class WebFileDrop extends WebPanel implements LanguageMethods
     protected static final BasicStroke dashStroke =
             new BasicStroke ( 3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1f, new float[]{ 8f, 8f }, 0f );
 
-    protected int dashRound = StyleConstants.smallRound;
+    protected int dashRound = FlatLafStyleConstants.smallRound;
     protected int dashSideSpacing = 10;
 
     protected Color dropBackground = new Color ( 242, 242, 242 );
@@ -133,7 +133,7 @@ public class WebFileDrop extends WebPanel implements LanguageMethods
                 {
                     stopAnimator ();
                     filesCount = selectedFiles.size ();
-                    animator = new WebTimer ( "WebFileDrop.textFadeOutTimer", StyleConstants.animationDelay, new ActionListener ()
+                    animator = new WebTimer ( "WebFileDrop.textFadeOutTimer", FlatLafStyleConstants.animationDelay, new ActionListener ()
                     {
                         @Override
                         public void actionPerformed ( final ActionEvent e )
@@ -156,7 +156,7 @@ public class WebFileDrop extends WebPanel implements LanguageMethods
                 {
                     stopAnimator ();
                     filesCount = selectedFiles.size ();
-                    animator = new WebTimer ( "WebFileDrop.textFadeInTimer", StyleConstants.animationDelay, new ActionListener ()
+                    animator = new WebTimer ( "WebFileDrop.textFadeInTimer", FlatLafStyleConstants.animationDelay, new ActionListener ()
                     {
                         @Override
                         public void actionPerformed ( final ActionEvent e )

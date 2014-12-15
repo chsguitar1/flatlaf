@@ -23,8 +23,8 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -81,7 +81,7 @@ public class WebSplitPaneUI extends BasicSplitPaneUI implements BorderMethods
 
         // Default settings
         SwingUtils.setOrientation ( splitPane );
-        LookAndFeel.installProperty ( splitPane, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( splitPane, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
         splitPane.setBorder ( LafUtils.createWebBorder ( 0 ) );
         splitPane.setDividerSize ( 6 );
 
@@ -97,7 +97,7 @@ public class WebSplitPaneUI extends BasicSplitPaneUI implements BorderMethods
                 updateBorder ();
             }
         };
-        splitPane.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        splitPane.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
     }
 
     /**
@@ -108,7 +108,7 @@ public class WebSplitPaneUI extends BasicSplitPaneUI implements BorderMethods
     @Override
     public void uninstallUI ( final JComponent c )
     {
-        splitPane.removePropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        splitPane.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
 
         super.uninstallUI ( c );
     }
@@ -228,7 +228,7 @@ public class WebSplitPaneUI extends BasicSplitPaneUI implements BorderMethods
             protected final Border border = BorderFactory.createEmptyBorder ( 0, 0, 0, 0 );
 
             protected final Color color = new Color ( 158, 158, 158 );
-            protected final Color[] gradient = new Color[]{ StyleConstants.transparent, color, color, StyleConstants.transparent };
+            protected final Color[] gradient = new Color[]{ FlatLafStyleConstants.transparent, color, color, FlatLafStyleConstants.transparent };
 
             @Override
             public Border getBorder ()

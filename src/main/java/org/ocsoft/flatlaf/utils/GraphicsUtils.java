@@ -22,7 +22,7 @@ import java.awt.geom.Area;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.laf.ShadeType;
 
 /**
@@ -403,7 +403,7 @@ public final class GraphicsUtils
 
     public static void drawShade ( final Graphics2D g2d, final Shape shape, final Color shadeColor, final int width )
     {
-        drawShade ( g2d, shape, StyleConstants.shadeType, shadeColor, width );
+        drawShade ( g2d, shape, FlatLafStyleConstants.shadeType, shadeColor, width );
     }
 
     public static void drawShade ( final Graphics2D g2d, final Shape shape, final ShadeType shadeType, final Color shadeColor,
@@ -414,7 +414,7 @@ public final class GraphicsUtils
 
     public static void drawShade ( final Graphics2D g2d, final Shape shape, final Color shadeColor, final int width, final Shape clip )
     {
-        drawShade ( g2d, shape, StyleConstants.shadeType, shadeColor, width, clip, true );
+        drawShade ( g2d, shape, FlatLafStyleConstants.shadeType, shadeColor, width, clip, true );
     }
 
     public static void drawShade ( final Graphics2D g2d, final Shape shape, final ShadeType shadeType, final Color shadeColor,
@@ -425,7 +425,7 @@ public final class GraphicsUtils
 
     public static void drawShade ( final Graphics2D g2d, final Shape shape, final Color shadeColor, final int width, final boolean round )
     {
-        drawShade ( g2d, shape, StyleConstants.shadeType, shadeColor, width, null, round );
+        drawShade ( g2d, shape, FlatLafStyleConstants.shadeType, shadeColor, width, null, round );
     }
 
     public static void drawShade ( final Graphics2D g2d, final Shape shape, final ShadeType shadeType, final Color shadeColor,
@@ -437,7 +437,7 @@ public final class GraphicsUtils
     public static void drawShade ( final Graphics2D g2d, final Shape shape, final Color shadeColor, final int width, final Shape clip,
                                    final boolean round )
     {
-        drawShade ( g2d, shape, StyleConstants.shadeType, shadeColor, width, clip, round );
+        drawShade ( g2d, shape, FlatLafStyleConstants.shadeType, shadeColor, width, clip, round );
     }
 
     public static void drawShade ( final Graphics2D g2d, final Shape shape, final ShadeType shadeType, final Color shadeColor, int width,
@@ -471,10 +471,10 @@ public final class GraphicsUtils
         if ( shadeType.equals ( ShadeType.simple ) )
         {
             // Drawing simple shade
-            if ( StyleConstants.simpleShadeTransparency < 1f )
+            if ( FlatLafStyleConstants.simpleShadeTransparency < 1f )
             {
                 g2d.setComposite (
-                        AlphaComposite.getInstance ( AlphaComposite.SRC_OVER, StyleConstants.simpleShadeTransparency * currentComposite ) );
+                        AlphaComposite.getInstance ( AlphaComposite.SRC_OVER, FlatLafStyleConstants.simpleShadeTransparency * currentComposite ) );
             }
             g2d.setStroke ( getStroke ( width * 2, round ? BasicStroke.CAP_ROUND : BasicStroke.CAP_BUTT ) );
             g2d.draw ( shape );

@@ -78,7 +78,7 @@ public class AltProcessor implements KeyEventPostProcessor
                     MenuElement[] path = msm.getSelectedPath ();
                     if ( path.length <= 0 )
                     {
-                        WebLookAndFeel.setMnemonicHidden ( true );
+                        FlatLookAndFeel.setMnemonicHidden ( true );
                         repaintMnemonicsInWindow ( winAncestor );
                     }
                 }
@@ -113,14 +113,14 @@ public class AltProcessor implements KeyEventPostProcessor
         {
             // In case combobox had focus
             menuCanceledOnPress = false;
-            WebLookAndFeel.setMnemonicHidden ( false );
+            FlatLookAndFeel.setMnemonicHidden ( false );
             repaintMnemonicsInWindow ( winAncestor );
             ev.consume ();
         }
         else
         {
             menuCanceledOnPress = false;
-            WebLookAndFeel.setMnemonicHidden ( false );
+            FlatLookAndFeel.setMnemonicHidden ( false );
             repaintMnemonicsInWindow ( winAncestor );
             JMenuBar mbar = root != null ? root.getJMenuBar () : null;
             if ( mbar == null && winAncestor instanceof JFrame )
@@ -142,7 +142,7 @@ public class AltProcessor implements KeyEventPostProcessor
     {
         if ( menuCanceledOnPress )
         {
-            WebLookAndFeel.setMnemonicHidden ( true );
+            FlatLookAndFeel.setMnemonicHidden ( true );
             repaintMnemonicsInWindow ( winAncestor );
             return;
         }
@@ -165,9 +165,9 @@ public class AltProcessor implements KeyEventPostProcessor
                 path[ 1 ] = menu;
                 msm.setSelectedPath ( path );
             }
-            else if ( !WebLookAndFeel.isMnemonicHidden () )
+            else if ( !FlatLookAndFeel.isMnemonicHidden () )
             {
-                WebLookAndFeel.setMnemonicHidden ( true );
+                FlatLookAndFeel.setMnemonicHidden ( true );
                 repaintMnemonicsInWindow ( winAncestor );
             }
         }
@@ -175,7 +175,7 @@ public class AltProcessor implements KeyEventPostProcessor
         {
             if ( ( msm.getSelectedPath () )[ 0 ] instanceof ComboPopup )
             {
-                WebLookAndFeel.setMnemonicHidden ( true );
+                FlatLookAndFeel.setMnemonicHidden ( true );
                 repaintMnemonicsInWindow ( winAncestor );
             }
         }

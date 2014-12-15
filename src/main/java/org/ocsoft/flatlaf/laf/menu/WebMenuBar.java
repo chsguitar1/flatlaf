@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.menu;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
@@ -111,7 +111,7 @@ public class WebMenuBar extends JMenuBar implements ShapeProvider
         {
             try
             {
-                setUI ( ( WebMenuBarUI ) ReflectUtils.createInstance ( WebLookAndFeel.menuBarUI ) );
+                setUI ( ( WebMenuBarUI ) ReflectUtils.createInstance ( FlatLookAndFeel.menuBarUI ) );
             }
             catch ( final Throwable e )
             {

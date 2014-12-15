@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.colorchooser;
 import javax.swing.*;
 import javax.swing.colorchooser.ColorSelectionModel;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.DialogOptions;
@@ -115,7 +115,7 @@ public class WebColorChooser extends JColorChooser implements DialogOptions
         {
             try
             {
-                setUI ( ( WebColorChooserUI ) ReflectUtils.createInstance ( WebLookAndFeel.colorChooserUI ) );
+                setUI ( ( WebColorChooserUI ) ReflectUtils.createInstance ( FlatLookAndFeel.colorChooserUI ) );
             }
             catch ( final Throwable e )
             {

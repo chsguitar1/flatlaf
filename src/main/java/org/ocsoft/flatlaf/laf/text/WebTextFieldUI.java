@@ -24,8 +24,8 @@ import javax.swing.text.JTextComponent;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.language.LM;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -91,12 +91,12 @@ public class WebTextFieldUI extends BasicTextFieldUI implements ShapeProvider, S
 
         // Default settings
         SwingUtils.setOrientation ( textField );
-        LookAndFeel.installProperty ( textField, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( textField, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
         textField.putClientProperty ( SwingUtils.HANDLES_ENABLE_STATE, true );
         textField.setFocusable ( true );
         textField.setMargin ( WebTextFieldStyle.margin );
         textField.setBackground ( Color.WHITE );
-        textField.setSelectionColor ( StyleConstants.textSelectionColor );
+        textField.setSelectionColor ( FlatLafStyleConstants.textSelectionColor );
         textField.setForeground ( Color.BLACK );
         textField.setSelectedTextColor ( Color.BLACK );
         textField.setCaretColor ( Color.GRAY );
@@ -130,7 +130,7 @@ public class WebTextFieldUI extends BasicTextFieldUI implements ShapeProvider, S
                 updateInnerComponents ();
             }
         };
-        textField.addPropertyChangeListener ( WebLookAndFeel.ENABLED_PROPERTY, accessibleChangeListener );
+        textField.addPropertyChangeListener ( FlatLookAndFeel.ENABLED_PROPERTY, accessibleChangeListener );
 
         orientationChangeListener = new PropertyChangeListener ()
         {
@@ -140,7 +140,7 @@ public class WebTextFieldUI extends BasicTextFieldUI implements ShapeProvider, S
                 updateBorder ();
             }
         };
-        textField.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
+        textField.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
 
         marginChangeListener = new PropertyChangeListener ()
         {
@@ -150,7 +150,7 @@ public class WebTextFieldUI extends BasicTextFieldUI implements ShapeProvider, S
                 updateBorder ();
             }
         };
-        textField.addPropertyChangeListener ( WebLookAndFeel.MARGIN_PROPERTY, marginChangeListener );
+        textField.addPropertyChangeListener ( FlatLookAndFeel.MARGIN_PROPERTY, marginChangeListener );
 
         componentResizeListener = new ComponentAdapter ()
         {
@@ -170,9 +170,9 @@ public class WebTextFieldUI extends BasicTextFieldUI implements ShapeProvider, S
         textField.putClientProperty ( SwingUtils.HANDLES_ENABLE_STATE, null );
 
         textField.removeFocusListener ( focusListener );
-        textField.removePropertyChangeListener ( WebLookAndFeel.ENABLED_PROPERTY, accessibleChangeListener );
-        textField.removePropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
-        textField.removePropertyChangeListener ( WebLookAndFeel.MARGIN_PROPERTY, marginChangeListener );
+        textField.removePropertyChangeListener ( FlatLookAndFeel.ENABLED_PROPERTY, accessibleChangeListener );
+        textField.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
+        textField.removePropertyChangeListener ( FlatLookAndFeel.MARGIN_PROPERTY, marginChangeListener );
 
         cleanupLeadingComponent ();
         cleanupTrailingComponent ();
@@ -188,7 +188,7 @@ public class WebTextFieldUI extends BasicTextFieldUI implements ShapeProvider, S
     {
         super.propertyChange ( evt );
 
-        if ( evt.getPropertyName ().equals ( WebLookAndFeel.ENABLED_PROPERTY ) )
+        if ( evt.getPropertyName ().equals ( FlatLookAndFeel.ENABLED_PROPERTY ) )
         {
             SwingUtils.setEnabledRecursively ( leadingComponent, textField.isEnabled () );
             SwingUtils.setEnabledRecursively ( trailingComponent, textField.isEnabled () );
@@ -585,7 +585,7 @@ public class WebTextFieldUI extends BasicTextFieldUI implements ShapeProvider, S
                 final Color shadeColor;
                 if ( drawShade )
                 {
-                    shadeColor = drawFocus && c.isFocusOwner () ? StyleConstants.fieldFocusColor : StyleConstants.shadeColor;
+                    shadeColor = drawFocus && c.isFocusOwner () ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor;
                 }
                 else
                 {

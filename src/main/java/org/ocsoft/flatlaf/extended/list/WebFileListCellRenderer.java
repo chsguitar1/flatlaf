@@ -20,8 +20,8 @@ package org.ocsoft.flatlaf.extended.list;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.layout.AbstractLayoutManager;
-import org.ocsoft.flatlaf.global.GlobalConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.list.WebListCellRenderer;
 import org.ocsoft.flatlaf.utils.FileUtils;
@@ -141,7 +141,7 @@ public class WebFileListCellRenderer extends WebListCellRenderer
         add ( descriptionLabel );
         add ( sizeLabel );
 
-        fileList.addPropertyChangeListener ( WebLookAndFeel.ENABLED_PROPERTY, new PropertyChangeListener ()
+        fileList.addPropertyChangeListener ( FlatLookAndFeel.ENABLED_PROPERTY, new PropertyChangeListener ()
         {
             @Override
             public void propertyChange ( final PropertyChangeEvent evt )
@@ -154,7 +154,7 @@ public class WebFileListCellRenderer extends WebListCellRenderer
             }
         } );
 
-        fileList.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, new PropertyChangeListener ()
+        fileList.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, new PropertyChangeListener ()
         {
             @Override
             public void propertyChange ( final PropertyChangeEvent evt )
@@ -363,7 +363,7 @@ public class WebFileListCellRenderer extends WebListCellRenderer
             {
                 final String absolutePath = element.getFile ().getAbsolutePath ();
                 final String ext = FileUtils.getFileExtPart ( element.getFile ().getName (), false ).toLowerCase ();
-                if ( fileList.isGenerateThumbnails () && GlobalConstants.IMAGE_FORMATS.contains ( ext ) )
+                if ( fileList.isGenerateThumbnails () && FlatLafConstants.IMAGE_FORMATS.contains ( ext ) )
                 {
                     final ImageIcon thumb = element.getEnabledThumbnail () != null ? element.getEnabledThumbnail () :
                             ImageUtils.createThumbnailIcon ( absolutePath, thumbSize );

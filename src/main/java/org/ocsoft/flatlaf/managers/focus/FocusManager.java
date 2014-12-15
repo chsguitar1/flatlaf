@@ -24,7 +24,7 @@ import java.lang.ref.WeakReference;
 import java.util.*;
 import java.util.List;
 
-import org.ocsoft.flatlaf.global.GlobalConstants;
+import org.ocsoft.flatlaf.global.FlatLafConstants;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.CollectionUtils;
 
@@ -120,7 +120,7 @@ public class FocusManager
                     focusOwner = new WeakReference<Component> ( newFocus );
 
                     // Debug info
-                    if ( GlobalConstants.DEBUG )
+                    if ( FlatLafConstants.DEBUG )
                     {
                         final String oldName = oldFocus != null ? oldFocus.getClass ().getName () : null;
                         final String newName = newFocus != null ? newFocus.getClass ().getName () : null;

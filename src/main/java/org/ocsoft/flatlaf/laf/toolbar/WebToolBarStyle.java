@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.toolbar;
 import java.awt.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * WebToolBar style class.
@@ -48,7 +48,7 @@ public final class WebToolBarStyle
     /**
      * Toolbar disabled border color.
      */
-    public static Color disabledBorderColor = StyleConstants.disabledBorderColor;
+    public static Color disabledBorderColor = FlatLafStyleConstants.disabledBorderColor;
 
     /**
      * Whether should decorate toolbar with web-styled background or not.
@@ -58,12 +58,12 @@ public final class WebToolBarStyle
     /**
      * Toolbar corners rounding.
      */
-    public static int round = StyleConstants.largeRound;
+    public static int round = FlatLafStyleConstants.largeRound;
 
     /**
      * Toolbar shade width.
      */
-    public static int shadeWidth = StyleConstants.shadeWidth;
+    public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Toolbar margin.
@@ -73,7 +73,7 @@ public final class WebToolBarStyle
     /**
      * Spacing between toolbar components.
      */
-    public static int spacing = StyleConstants.spacing;
+    public static int spacing = FlatLafStyleConstants.spacing;
 
     /**
      * Toolbar style.

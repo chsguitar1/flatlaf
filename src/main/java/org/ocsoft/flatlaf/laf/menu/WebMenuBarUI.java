@@ -22,8 +22,8 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicMenuBarUI;
 
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
@@ -58,7 +58,7 @@ public class WebMenuBarUI extends BasicMenuBarUI implements ShapeProvider, Borde
 
         // Default settings
         SwingUtils.setOrientation ( menuBar );
-        LookAndFeel.installProperty ( menuBar, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( menuBar, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
         menuBar.setLayout ( new ToolbarLayout ( 0 ) );
 
         // Updating border
@@ -167,9 +167,9 @@ public class WebMenuBarUI extends BasicMenuBarUI implements ShapeProvider, Borde
                 final Shape border =
                         new Line2D.Double ( 0, c.getHeight () - 1 - shadeWidth, c.getWidth () - 1, c.getHeight () - 1 - shadeWidth );
 
-                GraphicsUtils.drawShade ( g2d, border, StyleConstants.shadeColor, shadeWidth );
+                GraphicsUtils.drawShade ( g2d, border, FlatLafStyleConstants.shadeColor, shadeWidth );
 
-                g2d.setPaint ( new GradientPaint ( 0, 0, StyleConstants.topBgColor, 0, c.getHeight (), new Color ( 235, 235, 235 ) ) );
+                g2d.setPaint ( new GradientPaint ( 0, 0, FlatLafStyleConstants.topBgColor, 0, c.getHeight (), new Color ( 235, 235, 235 ) ) );
                 g2d.fillRect ( 0, 0, c.getWidth (), c.getHeight () - shadeWidth );
 
                 g2d.setPaint ( borderColor );
@@ -177,7 +177,7 @@ public class WebMenuBarUI extends BasicMenuBarUI implements ShapeProvider, Borde
             }
             else
             {
-                LafUtils.drawWebStyle ( g2d, c, StyleConstants.shadeColor, shadeWidth, round, true, true, borderColor );
+                LafUtils.drawWebStyle ( g2d, c, FlatLafStyleConstants.shadeColor, shadeWidth, round, true, true, borderColor );
             }
         }
     }

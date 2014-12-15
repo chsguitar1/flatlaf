@@ -20,8 +20,8 @@ package org.ocsoft.flatlaf.managers.effects;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.window.TestFrame;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.toolbar.WebToolBar;
 import org.ocsoft.flatlaf.managers.glasspane.GlassPaneManager;
@@ -61,7 +61,7 @@ public class EffectsManager
         component.setVisible ( false );
 
         // Animating fade 
-        WebTimer.repeat ( "EffectsManager.fadeOut", StyleConstants.avgAnimationDelay, new ActionListener ()
+        WebTimer.repeat ( "EffectsManager.fadeOut", FlatLafStyleConstants.avgAnimationDelay, new ActionListener ()
         {
             private int opacity = 100;
 
@@ -86,7 +86,7 @@ public class EffectsManager
 
     public static void main ( final String[] args )
     {
-        WebLookAndFeel.install ();
+        FlatLookAndFeel.install ();
 
         final WebButton b1 = new WebButton ( "1" );
         b1.addActionListener ( new ActionListener ()

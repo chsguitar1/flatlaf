@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.progressbar;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * WebProgressBar style class.
@@ -67,17 +67,17 @@ public final class WebProgressBarStyle
     /**
      * Decoration rounding.
      */
-    public static int round = StyleConstants.bigRound;
+    public static int round = FlatLafStyleConstants.bigRound;
 
     /**
      * Inner progress rounding.
      */
-    public static int innerRound = StyleConstants.smallRound;
+    public static int innerRound = FlatLafStyleConstants.smallRound;
 
     /**
      * Decoration shade width.
      */
-    public static int shadeWidth = StyleConstants.shadeWidth;
+    public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Whether should paint border for indeterminate state or not.

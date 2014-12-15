@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.tree;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * WebTree style class.
@@ -57,12 +57,12 @@ public final class WebTreeStyle
     /**
      * Nodes selection rounding.
      */
-    public static int selectionRound = StyleConstants.smallRound;
+    public static int selectionRound = FlatLafStyleConstants.smallRound;
 
     /**
      * Nodes selection shade width.
      */
-    public static int selectionShadeWidth = StyleConstants.shadeWidth;
+    public static int selectionShadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Should allow selector.
@@ -82,7 +82,7 @@ public final class WebTreeStyle
     /**
      * Selector rounding.
      */
-    public static int selectorRound = StyleConstants.smallRound;
+    public static int selectorRound = FlatLafStyleConstants.smallRound;
 
     /**
      * Selector border stroke.
@@ -105,7 +105,7 @@ public final class WebTreeStyle
      * Selection background color.
      * It is used only when webColoredSelection is set to false.
      */
-    public static Color selectionBackgroundColor = StyleConstants.bottomBgColor;
+    public static Color selectionBackgroundColor = FlatLafStyleConstants.bottomBgColor;
 
     /**
      * Drop cell highlight shade width.

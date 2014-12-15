@@ -25,7 +25,7 @@ import javax.swing.text.View;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.MathUtils;
@@ -92,7 +92,7 @@ public class WebMenuItemUI extends BasicMenuItemUI implements BorderMethods
 
         // Default settings
         SwingUtils.setOrientation ( menuItem );
-        LookAndFeel.installProperty ( menuItem, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( menuItem, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
         menuItem.setIconTextGap ( WebMenuItemStyle.iconTextGap );
         PainterSupport.installPainter ( menuItem, this.painter );
         updateBorder ();
@@ -106,7 +106,7 @@ public class WebMenuItemUI extends BasicMenuItemUI implements BorderMethods
                 updateBorder ();
             }
         };
-        menuItem.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        menuItem.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
 
         // Button model change listener
         buttonModelChangeListener = MenuItemChangeListener.install ( menuItem );
@@ -124,7 +124,7 @@ public class WebMenuItemUI extends BasicMenuItemUI implements BorderMethods
         PainterSupport.uninstallPainter ( menuItem, this.painter );
 
         // Removing listeners
-        menuItem.removePropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        menuItem.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
         propertyChangeListener = null;
         MenuItemChangeListener.uninstall ( buttonModelChangeListener, menuItem );
         buttonModelChangeListener = null;
@@ -593,7 +593,7 @@ public class WebMenuItemUI extends BasicMenuItemUI implements BorderMethods
         }
         else
         {
-            final int mnem = WebLookAndFeel.isMnemonicHidden () ? -1 : menuItem.getDisplayedMnemonicIndex ();
+            final int mnem = FlatLookAndFeel.isMnemonicHidden () ? -1 : menuItem.getDisplayedMnemonicIndex ();
             SwingUtils.drawStringUnderlineCharAt ( g2d, menuItem.getText (), mnem, x, y + h / 2 + LafUtils.getTextCenterShearY ( fm ) );
         }
     }

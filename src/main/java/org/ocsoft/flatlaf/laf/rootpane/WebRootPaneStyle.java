@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.rootpane;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButtonStyle;
 import org.ocsoft.flatlaf.utils.ProprietaryUtils;
 
@@ -46,12 +46,12 @@ public final class WebRootPaneStyle
     /**
      * Window border color.
      */
-    public static Color borderColor = StyleConstants.borderColor;
+    public static Color borderColor = FlatLafStyleConstants.borderColor;
 
     /**
      * Window inner border color.
      */
-    public static Color innerBorderColor = StyleConstants.innerBorderColor;
+    public static Color innerBorderColor = FlatLafStyleConstants.innerBorderColor;
 
     /**
      * Active window shade width.
@@ -69,7 +69,7 @@ public final class WebRootPaneStyle
      * Window shape rounding.
      * This value might vary depending on available underlying system features.
      */
-    public static int round = ProprietaryUtils.isWindowTransparencyAllowed () ? StyleConstants.largeRound : 0;
+    public static int round = ProprietaryUtils.isWindowTransparencyAllowed () ? FlatLafStyleConstants.largeRound : 0;
 
     /**
      * Window content margin.

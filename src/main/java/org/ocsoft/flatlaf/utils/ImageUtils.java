@@ -22,8 +22,8 @@ import com.mortennobel.imagescaling.ResampleOp;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.GlobalConstants;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.graphics.filters.ShadowFilter;
 import org.ocsoft.flatlaf.managers.log.Log;
 
@@ -48,7 +48,7 @@ public final class ImageUtils
      * Default cached image data parts separator
      */
 
-    public static final String IMAGE_CACHE_SEPARATOR = StyleConstants.SEPARATOR;
+    public static final String IMAGE_CACHE_SEPARATOR = FlatLafStyleConstants.SEPARATOR;
 
     /**
      * Checks if the specified image pixel is fully transparent
@@ -631,11 +631,11 @@ public final class ImageUtils
         final Graphics2D g2d = image.createGraphics ();
         GraphicsUtils.setupAntialias ( g2d );
         g2d.setPaint ( Color.GRAY );
-        g2d.drawRoundRect ( 0, 0, width - 1, height - 1, StyleConstants.largeRound, StyleConstants.bigRound );
+        g2d.drawRoundRect ( 0, 0, width - 1, height - 1, FlatLafStyleConstants.largeRound, FlatLafStyleConstants.bigRound );
         g2d.setPaint ( Color.WHITE );
-        g2d.drawRoundRect ( 1, 1, width - 3, height - 3, StyleConstants.bigRound, StyleConstants.bigRound );
+        g2d.drawRoundRect ( 1, 1, width - 3, height - 3, FlatLafStyleConstants.bigRound, FlatLafStyleConstants.bigRound );
         g2d.setPaint ( color );
-        g2d.fillRoundRect ( 2, 2, width - 4, height - 4, StyleConstants.bigRound, StyleConstants.bigRound );
+        g2d.fillRoundRect ( 2, 2, width - 4, height - 4, FlatLafStyleConstants.bigRound, FlatLafStyleConstants.bigRound );
         g2d.dispose ();
         return image;
     }
@@ -713,7 +713,7 @@ public final class ImageUtils
 
     public static boolean isImageLoadable ( final String name )
     {
-        return GlobalConstants.IMAGE_FORMATS.contains ( FileUtils.getFileExtPart ( name, false ).toLowerCase () );
+        return FlatLafConstants.IMAGE_FORMATS.contains ( FileUtils.getFileExtPart ( name, false ).toLowerCase () );
     }
 
     /**
@@ -1205,7 +1205,7 @@ public final class ImageUtils
 
         final BufferedImage bi2 = createCompatibleImage ( bi );
         final Graphics2D g2d = bi2.createGraphics ();
-        GraphicsUtils.setupAlphaComposite ( g2d, StyleConstants.disabledIconsTransparency );
+        GraphicsUtils.setupAlphaComposite ( g2d, FlatLafStyleConstants.disabledIconsTransparency );
         g2d.drawImage ( bi, 0, 0, null );
         g2d.dispose ();
 
@@ -1289,7 +1289,7 @@ public final class ImageUtils
         g2d.drawImage ( bufferedImage, shadeWidth, shadeWidth, null );
         g2d.setClip ( old );
 
-        GraphicsUtils.drawShade ( g2d, border, StyleConstants.shadeColor, shadeWidth );
+        GraphicsUtils.drawShade ( g2d, border, FlatLafStyleConstants.shadeColor, shadeWidth );
 
         g2d.setPaint ( new LinearGradientPaint ( 0, shadeWidth, 0, height - shadeWidth, new float[]{ 0f, 0.5f, 1f },
                 new Color[]{ new Color ( 125, 125, 125, 48 ), new Color ( 125, 125, 125, 0 ), new Color ( 125, 125, 125, 48 ) } ) );
@@ -1310,7 +1310,7 @@ public final class ImageUtils
     public static BufferedImage createImageShade ( final int w, final int h, final Shape shape, final int shadeWidth,
                                                    final float shadeOpacity )
     {
-        return createImageShade ( w, h, shape, shadeWidth, shadeOpacity, StyleConstants.transparent );
+        return createImageShade ( w, h, shape, shadeWidth, shadeOpacity, FlatLafStyleConstants.transparent );
     }
 
     public static BufferedImage createImageShade ( final int w, final int h, final Shape shape, final int shadeWidth,

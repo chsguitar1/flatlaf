@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.spinner;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 11/15/11 Time: 1:41 PM
@@ -28,20 +28,20 @@ public final class WebSpinnerStyle
     /**
      * Draw spinner border
      */
-    public static boolean drawBorder = StyleConstants.drawBorder;
+    public static boolean drawBorder = FlatLafStyleConstants.drawBorder;
 
     /**
      * Draw spinner focus.
      */
-    public static boolean drawFocus = StyleConstants.drawFocus;
+    public static boolean drawFocus = FlatLafStyleConstants.drawFocus;
 
     /**
      * Decoration rounding
      */
-    public static int round = StyleConstants.bigRound;
+    public static int round = FlatLafStyleConstants.bigRound;
 
     /**
      * Decoration shade width
      */
-    public static int shadeWidth = StyleConstants.shadeWidth;
+    public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
 }

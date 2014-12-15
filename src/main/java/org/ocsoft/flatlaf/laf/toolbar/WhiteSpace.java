@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.toolbar;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 
 import java.awt.*;
@@ -50,7 +50,7 @@ public class WhiteSpace extends JComponent implements SwingConstants
      */
     public WhiteSpace ()
     {
-        this ( StyleConstants.contentSpacing );
+        this ( FlatLafStyleConstants.contentSpacing );
     }
 
     /**

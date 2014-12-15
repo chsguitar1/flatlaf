@@ -27,8 +27,8 @@ import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.tree.*;
 
 import org.ocsoft.flatlaf.extended.tree.WebCheckBoxTree;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.*;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
 
@@ -138,7 +138,7 @@ public class WebTreeUI extends BasicTreeUI
         this.leftToRight = tree.getComponentOrientation ().isLeftToRight ();
 
         // Overwrite indent in case WebLookAndFeel is not installed as L&F
-        if ( !WebLookAndFeel.isInstalled () )
+        if ( !FlatLookAndFeel.isInstalled () )
         {
             setRightChildIndent ( WebTreeStyle.nodeLineIndent );
             setLeftChildIndent ( WebTreeStyle.nodeLineIndent );
@@ -163,7 +163,7 @@ public class WebTreeUI extends BasicTreeUI
                 leftToRight = tree.getComponentOrientation ().isLeftToRight ();
             }
         };
-        tree.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
+        tree.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
         SwingUtils.setOrientation ( tree );
 
         // Drop location change listener
@@ -187,7 +187,7 @@ public class WebTreeUI extends BasicTreeUI
                 }
             }
         };
-        tree.addPropertyChangeListener ( WebLookAndFeel.DROP_LOCATION, dropLocationChangeListener );
+        tree.addPropertyChangeListener ( FlatLookAndFeel.DROP_LOCATION, dropLocationChangeListener );
 
         // Selection listener
         treeSelectionListener = new TreeSelectionListener ()
@@ -527,8 +527,8 @@ public class WebTreeUI extends BasicTreeUI
     @Override
     public void uninstallUI ( final JComponent c )
     {
-        tree.removePropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
-        tree.removePropertyChangeListener ( WebLookAndFeel.DROP_LOCATION, dropLocationChangeListener );
+        tree.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, orientationChangeListener );
+        tree.removePropertyChangeListener ( FlatLookAndFeel.DROP_LOCATION, dropLocationChangeListener );
         tree.removeTreeSelectionListener ( treeSelectionListener );
         tree.removeTreeExpansionListener ( treeExpansionListener );
         tree.removeMouseListener ( mouseAdapter );
@@ -1263,7 +1263,7 @@ public class WebTreeUI extends BasicTreeUI
                 // Painting selection
                 LafUtils.drawCustomWebBorder ( g2d, tree,
                         new RoundRectangle2D.Double ( rect.x, rect.y, rect.width, rect.height, selectionRound * 2, selectionRound * 2 ),
-                        StyleConstants.shadeColor, selectionShadeWidth, true, webColoredSelection, selectionBorderColor,
+                        FlatLafStyleConstants.shadeColor, selectionShadeWidth, true, webColoredSelection, selectionBorderColor,
                         selectionBorderColor, selectionBackgroundColor );
             }
         }
@@ -1291,7 +1291,7 @@ public class WebTreeUI extends BasicTreeUI
                 final Composite old = GraphicsUtils.setupAlphaComposite ( g2d, 0.35f );
                 LafUtils.drawCustomWebBorder ( g2d, tree,
                         new RoundRectangle2D.Double ( rect.x, rect.y, rect.width, rect.height, selectionRound * 2, selectionRound * 2 ),
-                        StyleConstants.shadeColor, selectionShadeWidth, true, webColoredSelection, selectionBorderColor,
+                        FlatLafStyleConstants.shadeColor, selectionShadeWidth, true, webColoredSelection, selectionBorderColor,
                         selectionBorderColor, selectionBackgroundColor );
                 GraphicsUtils.restoreComposite ( g2d, old );
             }

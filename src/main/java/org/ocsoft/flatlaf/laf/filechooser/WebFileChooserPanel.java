@@ -33,8 +33,8 @@ import org.ocsoft.flatlaf.extended.list.FileListViewType;
 import org.ocsoft.flatlaf.extended.list.WebFileList;
 import org.ocsoft.flatlaf.extended.panel.GroupPanel;
 import org.ocsoft.flatlaf.extended.tree.WebFileTree;
-import org.ocsoft.flatlaf.global.GlobalConstants;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.combobox.WebComboBox;
 import org.ocsoft.flatlaf.laf.combobox.WebComboBoxCellRenderer;
@@ -302,7 +302,7 @@ public class WebFileChooserPanel extends WebPanel
         // Updating view data
         updateSelectionMode ();
         updateDirectoryComponentFilters ();
-        setFileFilter ( GlobalConstants.ALL_FILES_FILTER );
+        setFileFilter ( FlatLafConstants.ALL_FILES_FILTER );
         restoreButtonText ();
     }
 
@@ -940,8 +940,8 @@ public class WebFileChooserPanel extends WebPanel
 
         approveButton = new WebButton ( "", APPROVE_ICON );
         //        approveButton.addHotkey ( WebFileChooserPanel.this, Hotkey.CTRL_ENTER ).setHotkeyDisplayWay ( TooltipWay.up );
-        approveButton.setRolloverShine ( StyleConstants.highlightControlButtons );
-        approveButton.setShineColor ( StyleConstants.greenHighlight );
+        approveButton.setRolloverShine ( FlatLafStyleConstants.highlightControlButtons );
+        approveButton.setShineColor ( FlatLafStyleConstants.greenHighlight );
         approveButton.putClientProperty ( GroupPanel.FILL_CELL, true );
         approveButton.setEnabled ( false );
         approveButton.addActionListener ( new ActionListener ()
@@ -956,8 +956,8 @@ public class WebFileChooserPanel extends WebPanel
         cancelButton = new WebButton ( "", CANCEL_ICON );
         cancelButton.setLanguage ( "weblaf.filechooser.cancel" );
         //        cancelButton.addHotkey ( WebFileChooserPanel.this, Hotkey.ESCAPE ).setHotkeyDisplayWay ( TooltipWay.up );
-        cancelButton.setRolloverShine ( StyleConstants.highlightControlButtons );
-        cancelButton.setShineColor ( StyleConstants.redHighlight );
+        cancelButton.setRolloverShine ( FlatLafStyleConstants.highlightControlButtons );
+        cancelButton.setShineColor ( FlatLafStyleConstants.redHighlight );
         cancelButton.putClientProperty ( GroupPanel.FILL_CELL, true );
         cancelButton.addActionListener ( new ActionListener ()
         {
@@ -1506,8 +1506,8 @@ public class WebFileChooserPanel extends WebPanel
      */
     protected void updateDirectoryComponentFilters ()
     {
-        pathField.setFileFilter ( applyHiddenFilesFilter ( GlobalConstants.DIRECTORIES_FILTER ) );
-        fileTree.setFileFilter ( applyHiddenFilesFilter ( GlobalConstants.DIRECTORIES_FILTER ) );
+        pathField.setFileFilter ( applyHiddenFilesFilter ( FlatLafConstants.DIRECTORIES_FILTER ) );
+        fileTree.setFileFilter ( applyHiddenFilesFilter ( FlatLafConstants.DIRECTORIES_FILTER ) );
     }
 
     /**
@@ -1518,7 +1518,7 @@ public class WebFileChooserPanel extends WebPanel
      */
     protected GroupedFileFilter applyOrDirectoriesFilter ( final AbstractFileFilter fileFilter )
     {
-        return new GroupedFileFilter ( FilterGroupType.OR, fileFilter, GlobalConstants.DIRECTORIES_FILTER );
+        return new GroupedFileFilter ( FilterGroupType.OR, fileFilter, FlatLafConstants.DIRECTORIES_FILTER );
     }
 
     /**

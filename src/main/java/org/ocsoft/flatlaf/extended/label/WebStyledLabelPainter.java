@@ -21,7 +21,7 @@ import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.style.skin.web.WebLabelPainter;
 import org.ocsoft.flatlaf.utils.FontUtils;
@@ -253,7 +253,7 @@ public class WebStyledLabelPainter<E extends WebStyledLabel> extends WebLabelPai
         final int endX = w + startX;
 
         int mnemonicIndex = label.getDisplayedMnemonicIndex ();
-        if ( UIManager.getLookAndFeel () instanceof WebLookAndFeel && WebLookAndFeel.isMnemonicHidden () ||
+        if ( UIManager.getLookAndFeel () instanceof FlatLookAndFeel && FlatLookAndFeel.isMnemonicHidden () ||
                 UIManager.getLookAndFeel () instanceof WindowsLookAndFeel && WindowsLookAndFeel.isMnemonicHidden () )
         {
             mnemonicIndex = -1;

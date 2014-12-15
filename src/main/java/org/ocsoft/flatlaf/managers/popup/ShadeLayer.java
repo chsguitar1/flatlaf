@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.managers.popup;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.layout.AlignLayout;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
 
@@ -210,7 +210,7 @@ public class ShadeLayer extends PopupLayer
             if ( animate )
             {
                 opacity = 0;
-                animator = new WebTimer ( "ShadeLayer.fadeIn", StyleConstants.animationDelay, new ActionListener ()
+                animator = new WebTimer ( "ShadeLayer.fadeIn", FlatLafStyleConstants.animationDelay, new ActionListener ()
                 {
                     @Override
                     public void actionPerformed ( final ActionEvent e )

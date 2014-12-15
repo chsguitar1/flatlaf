@@ -21,8 +21,8 @@ import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.icon.OrientedIcon;
 import org.ocsoft.flatlaf.extended.label.WebVerticalLabel;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
@@ -244,7 +244,7 @@ public class WebCollapsiblePane extends WebPanel implements SwingConstants, Shap
         setPaintFocus ( true );
         setUndecorated ( false );
         setWebColoredBackground ( false );
-        setRound ( StyleConstants.smallRound );
+        setRound ( FlatLafStyleConstants.smallRound );
         setLayout ( new BorderLayout ( 0, 0 ) );
 
         // Header
@@ -349,7 +349,7 @@ public class WebCollapsiblePane extends WebPanel implements SwingConstants, Shap
             contentPanel.add ( this.content, BorderLayout.CENTER );
         }
 
-        addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, new PropertyChangeListener ()
+        addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, new PropertyChangeListener ()
         {
             @Override
             public void propertyChange ( final PropertyChangeEvent evt )
@@ -665,7 +665,7 @@ public class WebCollapsiblePane extends WebPanel implements SwingConstants, Shap
 
         if ( animate && isShowing () )
         {
-            animator = new WebTimer ( "WebCollapsiblePane.collapseTimer", StyleConstants.fastAnimationDelay, new ActionListener ()
+            animator = new WebTimer ( "WebCollapsiblePane.collapseTimer", FlatLafStyleConstants.fastAnimationDelay, new ActionListener ()
             {
                 @Override
                 public void actionPerformed ( final ActionEvent e )
@@ -757,7 +757,7 @@ public class WebCollapsiblePane extends WebPanel implements SwingConstants, Shap
 
         if ( animate && isShowing () )
         {
-            animator = new WebTimer ( "WebCollapsiblePane.expandTimer", StyleConstants.fastAnimationDelay, new ActionListener ()
+            animator = new WebTimer ( "WebCollapsiblePane.expandTimer", FlatLafStyleConstants.fastAnimationDelay, new ActionListener ()
             {
                 @Override
                 public void actionPerformed ( final ActionEvent e )

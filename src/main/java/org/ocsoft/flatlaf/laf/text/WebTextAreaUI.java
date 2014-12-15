@@ -24,8 +24,8 @@ import javax.swing.text.JTextComponent;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.language.LM;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -73,9 +73,9 @@ public class WebTextAreaUI extends BasicTextAreaUI implements BorderMethods, Swi
 
         // Default settings
         SwingUtils.setOrientation ( textComponent );
-        LookAndFeel.installProperty ( textComponent, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.TRUE );
+        LookAndFeel.installProperty ( textComponent, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.TRUE );
         textComponent.setBackground ( Color.WHITE );
-        textComponent.setSelectionColor ( StyleConstants.textSelectionColor );
+        textComponent.setSelectionColor ( FlatLafStyleConstants.textSelectionColor );
         textComponent.setForeground ( Color.BLACK );
         textComponent.setSelectedTextColor ( Color.BLACK );
         textComponent.setCaretColor ( Color.GRAY );
@@ -109,7 +109,7 @@ public class WebTextAreaUI extends BasicTextAreaUI implements BorderMethods, Swi
                 updateBorder ();
             }
         };
-        textComponent.addPropertyChangeListener ( WebLookAndFeel.MARGIN_PROPERTY, marginChangeListener );
+        textComponent.addPropertyChangeListener ( FlatLookAndFeel.MARGIN_PROPERTY, marginChangeListener );
     }
 
     @Override
@@ -120,7 +120,7 @@ public class WebTextAreaUI extends BasicTextAreaUI implements BorderMethods, Swi
         PainterSupport.uninstallPainter ( component, this.painter );
 
         component.removeFocusListener ( focusListener );
-        component.removePropertyChangeListener ( WebLookAndFeel.MARGIN_PROPERTY, marginChangeListener );
+        component.removePropertyChangeListener ( FlatLookAndFeel.MARGIN_PROPERTY, marginChangeListener );
 
         super.uninstallUI ( c );
     }

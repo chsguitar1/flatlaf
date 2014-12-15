@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.text;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 import java.awt.*;
 
@@ -35,27 +35,27 @@ public final class WebTextFieldStyle
     /**
      * Whether should draw border or not.
      */
-    public static boolean drawBorder = StyleConstants.drawBorder;
+    public static boolean drawBorder = FlatLafStyleConstants.drawBorder;
 
     /**
      * Whether should draw focus or not.
      */
-    public static boolean drawFocus = StyleConstants.drawFocus;
+    public static boolean drawFocus = FlatLafStyleConstants.drawFocus;
 
     /**
      * Field corners rounding.
      */
-    public static int round = StyleConstants.smallRound;
+    public static int round = FlatLafStyleConstants.smallRound;
 
     /**
      * Whether should draw shade or not.
      */
-    public static boolean drawShade = StyleConstants.drawShade;
+    public static boolean drawShade = FlatLafStyleConstants.drawShade;
 
     /**
      * Field shade width.
      */
-    public static int shadeWidth = StyleConstants.shadeWidth;
+    public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Whether should draw background or not.
@@ -76,7 +76,7 @@ public final class WebTextFieldStyle
     /**
      * Field content spacing.
      */
-    public static int componentSpacing = StyleConstants.contentSpacing;
+    public static int componentSpacing = FlatLafStyleConstants.contentSpacing;
 
     /**
      * Field margin.

@@ -23,8 +23,8 @@ import javax.swing.plaf.basic.BasicRootPaneUI;
 
 import org.ocsoft.flatlaf.extended.panel.WebButtonGroup;
 import org.ocsoft.flatlaf.extended.window.ComponentMoveAdapter;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
@@ -133,7 +133,7 @@ public class WebRootPaneUI extends BasicRootPaneUI implements SwingConstants
 
         // Default settings
         SwingUtils.setOrientation ( root );
-        root.setBackground ( StyleConstants.backgroundColor );
+        root.setBackground ( FlatLafStyleConstants.backgroundColor );
 
         // Decoration
         installWindowDecorations ();
@@ -478,7 +478,7 @@ public class WebRootPaneUI extends BasicRootPaneUI implements SwingConstants
         }
 
         // Install decorations
-        if ( propertyName.equals ( WebLookAndFeel.WINDOW_DECORATION_STYLE_PROPERTY ) )
+        if ( propertyName.equals ( FlatLookAndFeel.WINDOW_DECORATION_STYLE_PROPERTY ) )
         {
             final JRootPane root = ( JRootPane ) e.getSource ();
             final int style = root.getWindowDecorationStyle ();
@@ -586,8 +586,8 @@ public class WebRootPaneUI extends BasicRootPaneUI implements SwingConstants
                 titleComponent.repaint ();
             }
         };
-        window.addPropertyChangeListener ( WebLookAndFeel.WINDOW_ICON_PROPERTY, titleChangeListener );
-        window.addPropertyChangeListener ( WebLookAndFeel.WINDOW_TITLE_PROPERTY, titleChangeListener );
+        window.addPropertyChangeListener ( FlatLookAndFeel.WINDOW_ICON_PROPERTY, titleChangeListener );
+        window.addPropertyChangeListener ( FlatLookAndFeel.WINDOW_TITLE_PROPERTY, titleChangeListener );
 
         // Listen to window resizability changes
         resizableChangeListener = new PropertyChangeListener ()
@@ -598,7 +598,7 @@ public class WebRootPaneUI extends BasicRootPaneUI implements SwingConstants
                 updateButtons ();
             }
         };
-        window.addPropertyChangeListener ( WebLookAndFeel.WINDOW_RESIZABLE_PROPERTY, resizableChangeListener );
+        window.addPropertyChangeListener ( FlatLookAndFeel.WINDOW_RESIZABLE_PROPERTY, resizableChangeListener );
 
         if ( isFrame () )
         {
@@ -619,9 +619,9 @@ public class WebRootPaneUI extends BasicRootPaneUI implements SwingConstants
     protected void uninstallListeners ()
     {
         window.removeWindowFocusListener ( windowFocusListener );
-        window.removePropertyChangeListener ( WebLookAndFeel.WINDOW_ICON_PROPERTY, titleChangeListener );
-        window.removePropertyChangeListener ( WebLookAndFeel.WINDOW_TITLE_PROPERTY, titleChangeListener );
-        window.removePropertyChangeListener ( WebLookAndFeel.WINDOW_RESIZABLE_PROPERTY, resizableChangeListener );
+        window.removePropertyChangeListener ( FlatLookAndFeel.WINDOW_ICON_PROPERTY, titleChangeListener );
+        window.removePropertyChangeListener ( FlatLookAndFeel.WINDOW_TITLE_PROPERTY, titleChangeListener );
+        window.removePropertyChangeListener ( FlatLookAndFeel.WINDOW_RESIZABLE_PROPERTY, resizableChangeListener );
         if ( isFrame () )
         {
             window.removeWindowStateListener ( windowStateListener );

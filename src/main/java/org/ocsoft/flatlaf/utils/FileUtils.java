@@ -21,8 +21,8 @@ import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.text.JTextComponent;
 
-import org.ocsoft.flatlaf.global.GlobalConstants;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.proxy.ProxyManager;
@@ -877,7 +877,7 @@ public final class FileUtils
     {
         if ( files != null )
         {
-            Collections.sort ( files, GlobalConstants.FILE_COMPARATOR );
+            Collections.sort ( files, FlatLafConstants.FILE_COMPARATOR );
         }
         return files;
     }
@@ -892,7 +892,7 @@ public final class FileUtils
     {
         if ( files != null )
         {
-            Arrays.sort ( files, GlobalConstants.FILE_COMPARATOR );
+            Arrays.sort ( files, FlatLafConstants.FILE_COMPARATOR );
         }
         return files;
     }
@@ -1104,7 +1104,7 @@ public final class FileUtils
         }
         else
         {
-            filter = new CustomFileFilter ( GlobalConstants.ALL_FILES_FILTER.getIcon (),
+            filter = new CustomFileFilter ( FlatLafConstants.ALL_FILES_FILTER.getIcon (),
                     LanguageManager.get ( "weblaf.file.filter.custom" ) )
             {
                 @Override
@@ -1132,7 +1132,7 @@ public final class FileUtils
         }
         else
         {
-            filter = new CustomFileFilter ( GlobalConstants.ALL_FILES_FILTER.getIcon (), fileFilter.getDescription () )
+            filter = new CustomFileFilter ( FlatLafConstants.ALL_FILES_FILTER.getIcon (), fileFilter.getDescription () )
             {
                 @Override
                 public boolean accept ( final File file )
@@ -1714,7 +1714,7 @@ public final class FileUtils
      */
     public static File downloadFile ( final String url, final File dstFile )
     {
-        return downloadFile ( url, dstFile, false, null, GlobalConstants.SHORT_TIMEOUT, null );
+        return downloadFile ( url, dstFile, false, null, FlatLafConstants.SHORT_TIMEOUT, null );
     }
 
     /**
@@ -1728,7 +1728,7 @@ public final class FileUtils
      */
     public static File downloadFile ( final String url, final File dstFile, final FileDownloadListener listener )
     {
-        return downloadFile ( url, dstFile, false, null, GlobalConstants.SHORT_TIMEOUT, listener );
+        return downloadFile ( url, dstFile, false, null, FlatLafConstants.SHORT_TIMEOUT, listener );
     }
 
     /**
@@ -2755,7 +2755,7 @@ public final class FileUtils
     private static String getStandartFileIconCacheKey ( final String extension, final boolean large, final float transparency,
                                                         final boolean enabled )
     {
-        return extension + StyleConstants.SEPARATOR + large + StyleConstants.SEPARATOR + transparency + StyleConstants.SEPARATOR + enabled;
+        return extension + FlatLafStyleConstants.SEPARATOR + large + FlatLafStyleConstants.SEPARATOR + transparency + FlatLafStyleConstants.SEPARATOR + enabled;
     }
 
     /**
@@ -2796,7 +2796,7 @@ public final class FileUtils
      */
     public static ImageIcon getIconResource ( final Class nearClass, final String resource, final float transparency )
     {
-        final String key = nearClass.getCanonicalName () + StyleConstants.SEPARATOR + resource + StyleConstants.SEPARATOR + transparency;
+        final String key = nearClass.getCanonicalName () + FlatLafStyleConstants.SEPARATOR + resource + FlatLafStyleConstants.SEPARATOR + transparency;
         if ( resourceIconsCache.containsKey ( key ) )
         {
             return resourceIconsCache.get ( key );

@@ -24,8 +24,8 @@ import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicListUI;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.managers.tooltip.WebCustomTooltip;
 import org.ocsoft.flatlaf.utils.GeometryUtils;
@@ -102,7 +102,7 @@ public class WebListUI extends BasicListUI
 
         // Default settings
         SwingUtils.setOrientation ( list );
-        LookAndFeel.installProperty ( list, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.TRUE );
+        LookAndFeel.installProperty ( list, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.TRUE );
         list.setBackground ( new ColorUIResource ( WebListStyle.background ) );
         list.setForeground ( new ColorUIResource ( WebListStyle.foreground ) );
 
@@ -506,7 +506,7 @@ public class WebListUI extends BasicListUI
 
             LafUtils.drawCustomWebBorder ( g2d, list,
                     new RoundRectangle2D.Double ( rect.x, rect.y, rect.width, rect.height, selectionRound * 2, selectionRound * 2 ),
-                    StyleConstants.shadeColor, selectionShadeWidth, true, webColoredSelection, selectionBorderColor, selectionBorderColor,
+                    FlatLafStyleConstants.shadeColor, selectionShadeWidth, true, webColoredSelection, selectionBorderColor, selectionBorderColor,
                     selectionBackgroundColor );
 
             GraphicsUtils.restoreComposite ( g2d, oc, !isSelected );

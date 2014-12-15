@@ -19,8 +19,8 @@ package org.ocsoft.flatlaf.extended.colorchooser;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 
 /**
  * User: mgarin Date: 23.11.12 Time: 19:10
@@ -31,7 +31,7 @@ public final class WebGradientColorChooserStyle
     /**
      * Decoration shade width
      */
-    public static int shadeWidth = StyleConstants.shadeWidth;
+    public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Default chooser line width
@@ -46,7 +46,7 @@ public final class WebGradientColorChooserStyle
     /**
      * Default chooser margin
      */
-    public static Insets margin = StyleConstants.emptyMargin;
+    public static Insets margin = FlatLafStyleConstants.emptyMargin;
 
     /**
      * Should draw labels by default
@@ -56,7 +56,7 @@ public final class WebGradientColorChooserStyle
     /**
      * Default labels font
      */
-    public static Font labelsFont = WebLookAndFeel.globalControlFont.deriveFont ( 10f );
+    public static Font labelsFont = FlatLookAndFeel.globalControlFont.deriveFont ( 10f );
 
     /**
      * Default labels foreground

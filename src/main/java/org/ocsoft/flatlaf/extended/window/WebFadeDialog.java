@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.window;
 import java.awt.*;
 import java.awt.event.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.rootpane.WebDialog;
 import org.ocsoft.flatlaf.utils.MathUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
@@ -42,7 +42,7 @@ public class WebFadeDialog extends WebDialog implements ActionListener, WindowFo
     {
         super ();
 
-        updater = new WebTimer ( "WebFadeDialog.updater", StyleConstants.fastAnimationDelay, this );
+        updater = new WebTimer ( "WebFadeDialog.updater", FlatLafStyleConstants.fastAnimationDelay, this );
         addWindowFocusListener ( this );
         addWindowListener ( this );
     }

@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.rootpane;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 
@@ -46,7 +46,7 @@ public class WebRootPane extends JRootPane
         {
             try
             {
-                setUI ( ( WebRootPaneUI ) ReflectUtils.createInstance ( WebLookAndFeel.rootPaneUI ) );
+                setUI ( ( WebRootPaneUI ) ReflectUtils.createInstance ( FlatLookAndFeel.rootPaneUI ) );
             }
             catch ( final Throwable e )
             {

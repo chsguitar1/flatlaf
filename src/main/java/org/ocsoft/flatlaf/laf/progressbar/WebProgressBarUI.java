@@ -22,8 +22,8 @@ import javax.swing.event.AncestorEvent;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicProgressBarUI;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
@@ -94,7 +94,7 @@ public class WebProgressBarUI extends BasicProgressBarUI implements ShapeProvide
 
         // Default settings
         SwingUtils.setOrientation ( progressBar );
-        LookAndFeel.installProperty ( progressBar, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( progressBar, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
         progressBar.setBorderPainted ( false );
         progressBar.setForeground ( Color.DARK_GRAY );
 
@@ -301,7 +301,7 @@ public class WebProgressBarUI extends BasicProgressBarUI implements ShapeProvide
                 if ( progressBar.isIndeterminate () )
                 {
                     animationLocation = 0;
-                    animator = new WebTimer ( "WebProgressBarUI.animator", StyleConstants.animationDelay, new ActionListener ()
+                    animator = new WebTimer ( "WebProgressBarUI.animator", FlatLafStyleConstants.animationDelay, new ActionListener ()
                     {
                         @Override
                         public void actionPerformed ( final ActionEvent e )
@@ -329,7 +329,7 @@ public class WebProgressBarUI extends BasicProgressBarUI implements ShapeProvide
                 else
                 {
                     animationLocation = -determinateAnimationWidth;
-                    animator = new WebTimer ( "WebProgressBarUI.animator", StyleConstants.animationDelay, new ActionListener ()
+                    animator = new WebTimer ( "WebProgressBarUI.animator", FlatLafStyleConstants.animationDelay, new ActionListener ()
                     {
                         @Override
                         public void actionPerformed ( final ActionEvent e )
@@ -440,7 +440,7 @@ public class WebProgressBarUI extends BasicProgressBarUI implements ShapeProvide
             final float end = 0.5f + percentage;
             g2d.setPaint ( new LinearGradientPaint ( 0, 0, progressBar.getWidth (), 0,
                     new float[]{ start / 2, start, end, end + ( 1f - end ) / 2 },
-                    new Color[]{ StyleConstants.transparent, highlightWhite, highlightWhite, StyleConstants.transparent } ) );
+                    new Color[]{ FlatLafStyleConstants.transparent, highlightWhite, highlightWhite, FlatLafStyleConstants.transparent } ) );
             g2d.fill ( is );
         }
 
@@ -449,7 +449,7 @@ public class WebProgressBarUI extends BasicProgressBarUI implements ShapeProvide
         // Inner border
         if ( c.isEnabled () )
         {
-            GraphicsUtils.drawShade ( g2d, is, StyleConstants.shadeColor, shadeWidth );
+            GraphicsUtils.drawShade ( g2d, is, FlatLafStyleConstants.shadeColor, shadeWidth );
         }
         g2d.setPaint ( c.isEnabled () ? Color.GRAY : Color.LIGHT_GRAY );
         g2d.draw ( is );
@@ -473,7 +473,7 @@ public class WebProgressBarUI extends BasicProgressBarUI implements ShapeProvide
 
             if ( c.isEnabled () )
             {
-                GraphicsUtils.drawShade ( g2d, is, StyleConstants.shadeColor, shadeWidth );
+                GraphicsUtils.drawShade ( g2d, is, FlatLafStyleConstants.shadeColor, shadeWidth );
             }
 
             if ( progressBar.getOrientation () == JProgressBar.HORIZONTAL )
@@ -506,7 +506,7 @@ public class WebProgressBarUI extends BasicProgressBarUI implements ShapeProvide
                 {
                     g2d.setPaint ( new RadialGradientPaint ( shadeWidth * 2 + animationLocation + determinateAnimationWidth / 2,
                             progressBar.getHeight () / 2, determinateAnimationWidth / 2, new float[]{ 0f, 1f },
-                            new Color[]{ highlightDarkWhite, StyleConstants.transparent } ) );
+                            new Color[]{ highlightDarkWhite, FlatLafStyleConstants.transparent } ) );
                 }
                 else
                 {
@@ -514,14 +514,14 @@ public class WebProgressBarUI extends BasicProgressBarUI implements ShapeProvide
                     {
                         g2d.setPaint ( new RadialGradientPaint ( c.getWidth () / 2, c.getHeight () - shadeWidth * 2 - animationLocation -
                                 determinateAnimationWidth / 2, determinateAnimationWidth / 2, new float[]{ 0f, 1f },
-                                new Color[]{ highlightDarkWhite, StyleConstants.transparent }
+                                new Color[]{ highlightDarkWhite, FlatLafStyleConstants.transparent }
                         ) );
                     }
                     else
                     {
                         g2d.setPaint ( new RadialGradientPaint ( c.getWidth () / 2,
                                 shadeWidth * 2 + animationLocation + determinateAnimationWidth / 2, determinateAnimationWidth / 2,
-                                new float[]{ 0f, 1f }, new Color[]{ highlightDarkWhite, StyleConstants.transparent } ) );
+                                new float[]{ 0f, 1f }, new Color[]{ highlightDarkWhite, FlatLafStyleConstants.transparent } ) );
                     }
                 }
                 g2d.fill ( is );
@@ -555,7 +555,7 @@ public class WebProgressBarUI extends BasicProgressBarUI implements ShapeProvide
                 g2d.setPaint ( Color.WHITE );
                 g2d.drawString ( string, progressBar.getWidth () / 2 + ts.x + 1, progressBar.getHeight () / 2 + ts.y + 1 );
             }
-            g2d.setPaint ( progressBar.isEnabled () ? progressBar.getForeground () : StyleConstants.disabledTextColor );
+            g2d.setPaint ( progressBar.isEnabled () ? progressBar.getForeground () : FlatLafStyleConstants.disabledTextColor );
             g2d.drawString ( string, progressBar.getWidth () / 2 + ts.x, progressBar.getHeight () / 2 + ts.y );
 
             if ( progressBar.getOrientation () == JProgressBar.VERTICAL )
@@ -571,7 +571,7 @@ public class WebProgressBarUI extends BasicProgressBarUI implements ShapeProvide
 
         if ( c.isEnabled () )
         {
-            GraphicsUtils.drawShade ( g2d, bs, StyleConstants.shadeColor, shadeWidth );
+            GraphicsUtils.drawShade ( g2d, bs, FlatLafStyleConstants.shadeColor, shadeWidth );
         }
 
         if ( progressBar.getOrientation () == JProgressBar.HORIZONTAL )

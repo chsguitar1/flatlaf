@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.text;
 import javax.swing.*;
 import javax.swing.text.StyledDocument;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -83,7 +83,7 @@ public class WebTextPane extends JTextPane
         {
             try
             {
-                setUI ( ( WebTextPaneUI ) ReflectUtils.createInstance ( WebLookAndFeel.textPaneUI ) );
+                setUI ( ( WebTextPaneUI ) ReflectUtils.createInstance ( FlatLookAndFeel.textPaneUI ) );
             }
             catch ( final Throwable e )
             {

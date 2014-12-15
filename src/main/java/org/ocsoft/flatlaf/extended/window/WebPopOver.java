@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.window;
 import javax.swing.*;
 import javax.swing.event.AncestorEvent;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.rootpane.WebDialog;
 import org.ocsoft.flatlaf.managers.style.StyleManager;
@@ -1193,7 +1193,7 @@ public class WebPopOver extends WebDialog implements Styleable, PopOverEventMeth
                 windowFollowAdapter.updateLastLocation ();
             }
         };
-        addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, orientationListener );
+        addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, orientationListener );
 
         // Removing all listeners on window close event
         addPopOverListener ( new PopOverAdapter ()
@@ -1220,7 +1220,7 @@ public class WebPopOver extends WebDialog implements Styleable, PopOverEventMeth
                 {
                     ( ( JComponent ) invoker ).removeAncestorListener ( ancestorAdapter );
                 }
-                removePropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, orientationListener );
+                removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, orientationListener );
             }
         } );
     }

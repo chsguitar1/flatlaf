@@ -22,8 +22,8 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicSpinnerUI;
 import javax.swing.text.JTextComponent;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.text.WebTextFieldUI;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -62,7 +62,7 @@ public class WebSpinnerUI extends BasicSpinnerUI implements ShapeProvider, Borde
 
         // Default settings
         SwingUtils.setOrientation ( spinner );
-        LookAndFeel.installProperty ( spinner, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( spinner, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
         spinner.setBackground ( Color.WHITE );
 
         // Updating border
@@ -145,7 +145,7 @@ public class WebSpinnerUI extends BasicSpinnerUI implements ShapeProvider, Borde
     {
         // Border, background and shade
         LafUtils.drawWebStyle ( ( Graphics2D ) g, c,
-                drawFocus && SwingUtils.hasFocusOwner ( spinner ) ? StyleConstants.fieldFocusColor : StyleConstants.shadeColor, shadeWidth,
+                drawFocus && SwingUtils.hasFocusOwner ( spinner ) ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor, shadeWidth,
                 round );
 
         super.paint ( g, c );
@@ -154,7 +154,7 @@ public class WebSpinnerUI extends BasicSpinnerUI implements ShapeProvider, Borde
     @Override
     protected Component createNextButton ()
     {
-        final WebButton nextButton = WebButton.createIconWebButton ( UP_ICON, StyleConstants.smallRound, 1, 2 );
+        final WebButton nextButton = WebButton.createIconWebButton ( UP_ICON, FlatLafStyleConstants.smallRound, 1, 2 );
         nextButton.setLeftRightSpacing ( 1 );
         nextButton.setDrawFocus ( false );
         nextButton.setFocusable ( false );
@@ -168,7 +168,7 @@ public class WebSpinnerUI extends BasicSpinnerUI implements ShapeProvider, Borde
     @Override
     protected Component createPreviousButton ()
     {
-        final WebButton previousButton = WebButton.createIconWebButton ( DOWN_ICON, StyleConstants.smallRound, 1, 2 );
+        final WebButton previousButton = WebButton.createIconWebButton ( DOWN_ICON, FlatLafStyleConstants.smallRound, 1, 2 );
         previousButton.setLeftRightSpacing ( 1 );
         previousButton.setDrawFocus ( false );
         previousButton.setFocusable ( false );

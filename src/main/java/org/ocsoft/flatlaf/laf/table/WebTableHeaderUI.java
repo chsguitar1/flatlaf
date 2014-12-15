@@ -24,8 +24,8 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.table.renderers.WebTableHeaderCellRenderer;
 import org.ocsoft.flatlaf.utils.CompareUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
@@ -56,7 +56,7 @@ public class WebTableHeaderUI extends BasicTableHeaderUI
 
         // Default settings
         SwingUtils.setOrientation ( header );
-        LookAndFeel.installProperty ( header, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.TRUE );
+        LookAndFeel.installProperty ( header, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.TRUE );
 
         // Default renderer
         header.setDefaultRenderer ( new WebTableHeaderCellRenderer ()
@@ -184,7 +184,7 @@ public class WebTableHeaderUI extends BasicTableHeaderUI
         final boolean ltr = header.getComponentOrientation ().isLeftToRight ();
 
         // Left side border
-        g.setColor ( StyleConstants.borderColor );
+        g.setColor ( FlatLafStyleConstants.borderColor );
         g.drawLine ( rect.x - 1, rect.y + 2, rect.x - 1, rect.y + rect.height - 4 );
 
         // Painting dragged cell renderer

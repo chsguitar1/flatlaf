@@ -29,8 +29,8 @@ import javax.swing.plaf.basic.BasicComboPopup;
 import javax.swing.plaf.basic.ComboPopup;
 
 import org.ocsoft.flatlaf.extended.layout.AbstractLayoutManager;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.list.WebListUI;
 import org.ocsoft.flatlaf.laf.scroll.WebScrollBarUI;
@@ -99,7 +99,7 @@ public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider, Bor
         // Default settings
         SwingUtils.setOrientation ( comboBox );
         comboBox.setFocusable ( true );
-        LookAndFeel.installProperty ( comboBox, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( comboBox, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
 
         // Updating border
         updateBorder ();
@@ -159,7 +159,7 @@ public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider, Bor
                 installRendererListener ( e.getNewValue () );
             }
         };
-        comboBox.addPropertyChangeListener ( WebLookAndFeel.RENDERER_PROPERTY, rendererChangeListener );
+        comboBox.addPropertyChangeListener ( FlatLookAndFeel.RENDERER_PROPERTY, rendererChangeListener );
 
         // Enabled property change listener
         // This is a workaround to allow box renderer properly inherit enabled state
@@ -171,7 +171,7 @@ public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider, Bor
                 listBox.setEnabled ( comboBox.isEnabled () );
             }
         };
-        comboBox.addPropertyChangeListener ( WebLookAndFeel.ENABLED_PROPERTY, enabledStateListener );
+        comboBox.addPropertyChangeListener ( FlatLookAndFeel.ENABLED_PROPERTY, enabledStateListener );
     }
 
     /**
@@ -180,9 +180,9 @@ public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider, Bor
     @Override
     public void uninstallUI ( final JComponent c )
     {
-        comboBox.removePropertyChangeListener ( WebLookAndFeel.ENABLED_PROPERTY, enabledStateListener );
+        comboBox.removePropertyChangeListener ( FlatLookAndFeel.ENABLED_PROPERTY, enabledStateListener );
 
-        comboBox.removePropertyChangeListener ( WebLookAndFeel.RENDERER_PROPERTY, rendererChangeListener );
+        comboBox.removePropertyChangeListener ( FlatLookAndFeel.RENDERER_PROPERTY, rendererChangeListener );
         uninstallRendererListener ( comboBox.getRenderer () );
         rendererListener = null;
 
@@ -341,7 +341,7 @@ public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider, Bor
             protected JScrollPane createScroller ()
             {
                 final JScrollPane scroll = super.createScroller ();
-                if ( WebLookAndFeel.isInstalled () )
+                if ( FlatLookAndFeel.isInstalled () )
                 {
                     scroll.setOpaque ( false );
                     scroll.getViewport ().setOpaque ( false );
@@ -650,19 +650,19 @@ public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider, Bor
         if ( drawBorder )
         {
             // Border and background
-            final Color shadeColor = drawFocus && isFocused () ? StyleConstants.fieldFocusColor : StyleConstants.shadeColor;
+            final Color shadeColor = drawFocus && isFocused () ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor;
             final boolean popupVisible = isPopupVisible ( comboBox );
             final Color backgroundColor = !popupVisible ? comboBox.getBackground () : expandedBgColor;
             LafUtils.drawWebStyle ( g2d, comboBox, shadeColor, shadeWidth, round, true, webColoredBackground && !popupVisible,
-                    StyleConstants.darkBorderColor, StyleConstants.disabledBorderColor, backgroundColor, 1f );
+                    FlatLafStyleConstants.darkBorderColor, FlatLafStyleConstants.disabledBorderColor, backgroundColor, 1f );
         }
         else
         {
             // Simple background
             final boolean pressed = isPopupVisible ( comboBox );
             final Rectangle cb = SwingUtils.size ( comboBox );
-            g2d.setPaint ( new GradientPaint ( 0, shadeWidth, pressed ? StyleConstants.topSelectedBgColor : StyleConstants.topBgColor, 0,
-                    comboBox.getHeight () - shadeWidth, pressed ? StyleConstants.bottomSelectedBgColor : StyleConstants.bottomBgColor ) );
+            g2d.setPaint ( new GradientPaint ( 0, shadeWidth, pressed ? FlatLafStyleConstants.topSelectedBgColor : FlatLafStyleConstants.topBgColor, 0,
+                    comboBox.getHeight () - shadeWidth, pressed ? FlatLafStyleConstants.bottomSelectedBgColor : FlatLafStyleConstants.bottomBgColor ) );
             g2d.fillRect ( cb.x, cb.y, cb.width, cb.height );
         }
 
@@ -673,7 +673,7 @@ public class WebComboBoxUI extends BasicComboBoxUI implements ShapeProvider, Bor
             final Insets insets = comboBox.getInsets ();
             final int lx = ltr ? comboBox.getWidth () - insets.right - arrow.getWidth () - 1 : insets.left + arrow.getWidth ();
 
-            g2d.setPaint ( comboBox.isEnabled () ? StyleConstants.borderColor : StyleConstants.disabledBorderColor );
+            g2d.setPaint ( comboBox.isEnabled () ? FlatLafStyleConstants.borderColor : FlatLafStyleConstants.disabledBorderColor );
             g2d.drawLine ( lx, insets.top + 1, lx, comboBox.getHeight () - insets.bottom - 2 );
         }
     }

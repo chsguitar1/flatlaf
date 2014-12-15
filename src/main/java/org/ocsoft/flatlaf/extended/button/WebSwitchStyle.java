@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.button;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 04.01.13 Time: 17:09
@@ -28,20 +28,20 @@ public final class WebSwitchStyle
     /**
      * Decoration rounding
      */
-    public static int round = StyleConstants.bigRound;
+    public static int round = FlatLafStyleConstants.bigRound;
 
     /**
      * Decoration rounding
      */
-    public static int gripperRound = Math.max ( 0, StyleConstants.bigRound - 3 );
+    public static int gripperRound = Math.max ( 0, FlatLafStyleConstants.bigRound - 3 );
 
     /**
      * Decoration shade width
      */
-    public static int shadeWidth = StyleConstants.shadeWidth;
+    public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Animate component
      */
-    public static boolean animate = StyleConstants.animate;
+    public static boolean animate = FlatLafStyleConstants.animate;
 }

@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.breadcrumb;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.ColorUtils;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.ShapeCache;
@@ -60,7 +60,7 @@ public final class BreadcrumbUtils
     public static final Color[] progressLineColors = new Color[]{ progressSideColor, Color.GRAY, progressSideColor };
     public static final float[] shadeFractions = new float[]{ 0f, 0.25f, 0.75f, 1f };
     public static final Color[] shadeColors =
-            new Color[]{ StyleConstants.transparent, StyleConstants.shadeColor, StyleConstants.shadeColor, StyleConstants.transparent };
+            new Color[]{ FlatLafStyleConstants.transparent, FlatLafStyleConstants.shadeColor, FlatLafStyleConstants.shadeColor, FlatLafStyleConstants.transparent };
 
     /**
      * Returns breadcrumb element margin.

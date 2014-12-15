@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.scroll;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 11/15/11 Time: 4:51 PM
@@ -40,22 +40,22 @@ public final class WebScrollPaneStyle
     /**
      * Draw border
      */
-    public static boolean drawBorder = StyleConstants.drawBorder;
+    public static boolean drawBorder = FlatLafStyleConstants.drawBorder;
 
     /**
      * Decoration rounding
      */
-    public static int round = StyleConstants.smallRound;
+    public static int round = FlatLafStyleConstants.smallRound;
 
     /**
      * Decoration shade width
      */
-    public static int shadeWidth = StyleConstants.shadeWidth;
+    public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Default scroll pane margin
      */
-    public static Insets margin = StyleConstants.emptyMargin;
+    public static Insets margin = FlatLafStyleConstants.emptyMargin;
 
     /**
      * Draw focus when ancestor of focused component

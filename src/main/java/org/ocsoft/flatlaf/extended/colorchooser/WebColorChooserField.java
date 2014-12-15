@@ -24,7 +24,7 @@ import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.extended.window.PopOverAlignment;
 import org.ocsoft.flatlaf.extended.window.PopOverDirection;
 import org.ocsoft.flatlaf.extended.window.WebPopOver;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.colorchooser.ColorChooserListener;
 import org.ocsoft.flatlaf.laf.colorchooser.WebColorChooserPanel;
@@ -662,7 +662,7 @@ public class WebColorChooserField extends WebTextField
                     }
                 }
             } );
-            ancestor.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, new PropertyChangeListener ()
+            ancestor.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, new PropertyChangeListener ()
             {
                 @Override
                 public void propertyChange ( final PropertyChangeEvent evt )

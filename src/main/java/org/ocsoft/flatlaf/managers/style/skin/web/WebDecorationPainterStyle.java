@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.managers.style.skin.web;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * @author Mikle Garin
@@ -42,13 +42,13 @@ public final class WebDecorationPainterStyle
      * Decoration corners rounding.
      * This variable doesn't affect anything if undecorated.
      */
-    public static int round = StyleConstants.smallRound;
+    public static int round = FlatLafStyleConstants.smallRound;
 
     /**
      * Decoration shade width.
      * This variable doesn't affect anything if undecorated.
      */
-    public static int shadeWidth = StyleConstants.shadeWidth;
+    public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Decoration shade transparency.
@@ -64,12 +64,12 @@ public final class WebDecorationPainterStyle
     /**
      * Decoration border color.
      */
-    public static Color borderColor = StyleConstants.darkBorderColor;
+    public static Color borderColor = FlatLafStyleConstants.darkBorderColor;
 
     /**
      * Disabled decoration border color.
      */
-    public static Color disabledBorderColor = StyleConstants.disabledBorderColor;
+    public static Color disabledBorderColor = FlatLafStyleConstants.disabledBorderColor;
 
     /**
      * Whether should paint decoration background or not.
@@ -86,5 +86,5 @@ public final class WebDecorationPainterStyle
     /**
      * Decoration background color.
      */
-    public static Color backgroundColor = StyleConstants.backgroundColor;
+    public static Color backgroundColor = FlatLafStyleConstants.backgroundColor;
 }

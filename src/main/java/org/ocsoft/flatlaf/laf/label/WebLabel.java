@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.label;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -464,7 +464,7 @@ public class WebLabel extends JLabel
         {
             try
             {
-                setUI ( ( WebLabelUI ) ReflectUtils.createInstance ( WebLookAndFeel.labelUI ) );
+                setUI ( ( WebLabelUI ) ReflectUtils.createInstance ( FlatLookAndFeel.labelUI ) );
             }
             catch ( final Throwable e )
             {

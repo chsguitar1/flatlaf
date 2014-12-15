@@ -20,8 +20,8 @@ package org.ocsoft.flatlaf.laf.button;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyInfo;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyManager;
@@ -589,7 +589,7 @@ public class WebButton extends JButton
         {
             try
             {
-                setUI ( ( WebButtonUI ) ReflectUtils.createInstance ( WebLookAndFeel.buttonUI ) );
+                setUI ( ( WebButtonUI ) ReflectUtils.createInstance ( FlatLookAndFeel.buttonUI ) );
             }
             catch ( final Throwable e )
             {
@@ -1338,40 +1338,40 @@ public class WebButton extends JButton
 
     public static WebButton createIconWebButton ( final ImageIcon imageIcon )
     {
-        return createIconWebButton ( imageIcon, StyleConstants.smallRound );
+        return createIconWebButton ( imageIcon, FlatLafStyleConstants.smallRound );
     }
 
     public static WebButton createIconWebButton ( final ImageIcon imageIcon, final int round )
     {
-        return createIconWebButton ( imageIcon, round, StyleConstants.shadeWidth );
+        return createIconWebButton ( imageIcon, round, FlatLafStyleConstants.shadeWidth );
     }
 
     public static WebButton createIconWebButton ( final ImageIcon imageIcon, final int round, final int shadeWidth )
     {
-        return createIconWebButton ( imageIcon, round, shadeWidth, StyleConstants.innerShadeWidth );
+        return createIconWebButton ( imageIcon, round, shadeWidth, FlatLafStyleConstants.innerShadeWidth );
     }
 
     public static WebButton createIconWebButton ( final ImageIcon imageIcon, final int round, final int shadeWidth,
                                                   final int innerShadeWidth )
     {
-        return createIconWebButton ( imageIcon, round, shadeWidth, innerShadeWidth, StyleConstants.rolloverDecoratedOnly );
+        return createIconWebButton ( imageIcon, round, shadeWidth, innerShadeWidth, FlatLafStyleConstants.rolloverDecoratedOnly );
     }
 
     public static WebButton createIconWebButton ( final ImageIcon imageIcon, final boolean rolloverDecoratedOnly )
     {
-        return createIconWebButton ( imageIcon, StyleConstants.smallRound, rolloverDecoratedOnly );
+        return createIconWebButton ( imageIcon, FlatLafStyleConstants.smallRound, rolloverDecoratedOnly );
     }
 
     public static WebButton createIconWebButton ( final ImageIcon imageIcon, final int round, final boolean rolloverDecoratedOnly )
     {
-        return createIconWebButton ( imageIcon, round, StyleConstants.shadeWidth, StyleConstants.innerShadeWidth, rolloverDecoratedOnly,
-                StyleConstants.undecorated );
+        return createIconWebButton ( imageIcon, round, FlatLafStyleConstants.shadeWidth, FlatLafStyleConstants.innerShadeWidth, rolloverDecoratedOnly,
+                FlatLafStyleConstants.undecorated );
     }
 
     public static WebButton createIconWebButton ( final ImageIcon imageIcon, final int round, final int shadeWidth,
                                                   final int innerShadeWidth, final boolean rolloverDecoratedOnly )
     {
-        return createIconWebButton ( imageIcon, round, shadeWidth, innerShadeWidth, rolloverDecoratedOnly, StyleConstants.undecorated );
+        return createIconWebButton ( imageIcon, round, shadeWidth, innerShadeWidth, rolloverDecoratedOnly, FlatLafStyleConstants.undecorated );
     }
 
     public static WebButton createIconWebButton ( final ImageIcon imageIcon, final int round, final int shadeWidth,

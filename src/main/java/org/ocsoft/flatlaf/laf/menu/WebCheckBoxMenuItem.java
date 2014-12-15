@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.menu;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -486,7 +486,7 @@ public class WebCheckBoxMenuItem extends JCheckBoxMenuItem implements LanguageMe
         {
             try
             {
-                setUI ( ( WebCheckBoxMenuItemUI ) ReflectUtils.createInstance ( WebLookAndFeel.checkBoxMenuItemUI ) );
+                setUI ( ( WebCheckBoxMenuItemUI ) ReflectUtils.createInstance ( FlatLookAndFeel.checkBoxMenuItemUI ) );
             }
             catch ( final Throwable e )
             {

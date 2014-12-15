@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.button;
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButtonUI;
 
 import java.awt.*;
@@ -155,7 +155,7 @@ public class WebSplitButtonUI extends WebButtonUI
 
         // Painting split button line
         final int lineX = ltr ? rect.x : rect.x + rect.width - 1;
-        g.setColor ( c.isEnabled () ? StyleConstants.borderColor : StyleConstants.disabledBorderColor );
+        g.setColor ( c.isEnabled () ? FlatLafStyleConstants.borderColor : FlatLafStyleConstants.disabledBorderColor );
         g.drawLine ( lineX, rect.y + 1, lineX, rect.y + rect.height - 2 );
     }
 

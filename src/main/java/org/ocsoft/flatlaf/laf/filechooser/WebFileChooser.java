@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.filechooser;
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.language.LanguageContainerMethods;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -314,7 +314,7 @@ public class WebFileChooser extends JFileChooser implements LanguageMethods, Lan
         {
             try
             {
-                setUI ( ( WebFileChooserUI ) ReflectUtils.createInstance ( WebLookAndFeel.fileChooserUI ) );
+                setUI ( ( WebFileChooserUI ) ReflectUtils.createInstance ( FlatLookAndFeel.fileChooserUI ) );
             }
             catch ( final Throwable e )
             {

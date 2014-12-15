@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.combobox;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.managers.log.Log;
@@ -266,7 +266,7 @@ public class WebComboBox extends JComboBox
         {
             try
             {
-                setUI ( ( WebComboBoxUI ) ReflectUtils.createInstance ( WebLookAndFeel.comboBoxUI ) );
+                setUI ( ( WebComboBoxUI ) ReflectUtils.createInstance ( FlatLookAndFeel.comboBoxUI ) );
             }
             catch ( final Throwable e )
             {

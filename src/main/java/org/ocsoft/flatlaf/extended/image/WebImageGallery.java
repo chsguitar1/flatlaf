@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.image;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.scroll.WebScrollPane;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
@@ -254,7 +254,7 @@ public class WebImageGallery extends JComponent
         }
 
         progress = 0f;
-        reflectionMover = new WebTimer ( "WebImageGallery.reflectionMoveTimer", StyleConstants.fastAnimationDelay, new ActionListener ()
+        reflectionMover = new WebTimer ( "WebImageGallery.reflectionMoveTimer", FlatLafStyleConstants.fastAnimationDelay, new ActionListener ()
         {
             @Override
             public void actionPerformed ( final ActionEvent e )

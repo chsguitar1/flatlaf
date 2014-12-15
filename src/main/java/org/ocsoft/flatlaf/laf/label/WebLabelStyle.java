@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.label;
 import java.awt.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * WebLabel style class.
@@ -33,7 +33,7 @@ public final class WebLabelStyle
     /**
      * Label margin.
      */
-    public static Insets margin = StyleConstants.emptyMargin;
+    public static Insets margin = FlatLafStyleConstants.emptyMargin;
 
     /**
      * Label background painter.
@@ -44,7 +44,7 @@ public final class WebLabelStyle
     /**
      * Label background color.
      */
-    public static Color backgroundColor = StyleConstants.backgroundColor;
+    public static Color backgroundColor = FlatLafStyleConstants.backgroundColor;
 
     /**
      * Draw shade behind the text.

@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.managers.popup;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 14.06.12 Time: 17:54
@@ -28,5 +28,5 @@ public final class ShadeLayerStyle
     /**
      * Animate popup appearance
      */
-    public static boolean animate = StyleConstants.animate;
+    public static boolean animate = FlatLafStyleConstants.animate;
 }

@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.breadcrumb;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.laf.ShadeType;
 
 /**
@@ -46,27 +46,27 @@ public final class WebBreadcrumbStyle
     /**
      * Breadcrumb element border color
      */
-    public static Color borderColor = StyleConstants.darkBorderColor;
+    public static Color borderColor = FlatLafStyleConstants.darkBorderColor;
 
     /**
      * Breadcrumb element border color
      */
-    public static Color disabledBorderColor = StyleConstants.disabledBorderColor;
+    public static Color disabledBorderColor = FlatLafStyleConstants.disabledBorderColor;
 
     /**
      * Breadcrumb top color
      */
-    public static Color bgTop = StyleConstants.topBgColor;
+    public static Color bgTop = FlatLafStyleConstants.topBgColor;
 
     /**
      * Breadcrumb bottom color
      */
-    public static Color bgBottom = StyleConstants.bottomBgColor;
+    public static Color bgBottom = FlatLafStyleConstants.bottomBgColor;
 
     /**
      * Breadcrumb bottom selected color
      */
-    public static Color selectedBgColor = StyleConstants.selectedBgColor;
+    public static Color selectedBgColor = FlatLafStyleConstants.selectedBgColor;
 
     /**
      * Default breadcrumb element margin

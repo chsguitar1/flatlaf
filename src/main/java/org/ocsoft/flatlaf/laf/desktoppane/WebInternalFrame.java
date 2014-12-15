@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.desktoppane;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
 import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
@@ -115,7 +115,7 @@ public class WebInternalFrame extends JInternalFrame implements LanguageMethods
         {
             try
             {
-                setUI ( ( WebInternalFrameUI ) ReflectUtils.createInstance ( WebLookAndFeel.internalFrameUI, this ) );
+                setUI ( ( WebInternalFrameUI ) ReflectUtils.createInstance ( FlatLookAndFeel.internalFrameUI, this ) );
             }
             catch ( final Throwable e )
             {

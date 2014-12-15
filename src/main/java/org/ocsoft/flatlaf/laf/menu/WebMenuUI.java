@@ -25,8 +25,8 @@ import javax.swing.text.View;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.*;
 import org.ocsoft.flatlaf.utils.swing.BorderMethods;
 
@@ -103,7 +103,7 @@ public class WebMenuUI extends BasicMenuUI implements BorderMethods
 
         // Default settings
         SwingUtils.setOrientation ( menuItem );
-        LookAndFeel.installProperty ( menuItem, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( menuItem, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
         menuItem.setBackground ( selectedBottomBg );
         menuItem.setIconTextGap ( WebMenuItemStyle.iconTextGap );
         PainterSupport.installPainter ( menuItem, this.painter );
@@ -118,7 +118,7 @@ public class WebMenuUI extends BasicMenuUI implements BorderMethods
                 updateBorder ();
             }
         };
-        menuItem.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        menuItem.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
 
         // Rollover listener
         mouseAdapter = new MouseAdapter ()
@@ -155,7 +155,7 @@ public class WebMenuUI extends BasicMenuUI implements BorderMethods
         PainterSupport.uninstallPainter ( menuItem, this.painter );
 
         // Removing listeners
-        menuItem.removePropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        menuItem.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
         propertyChangeListener = null;
         menuItem.removeMouseListener ( mouseAdapter );
         mouseAdapter = null;
@@ -545,8 +545,8 @@ public class WebMenuUI extends BasicMenuUI implements BorderMethods
             {
                 if ( menu.isEnabled () && ( selected || mouseover ) )
                 {
-                    LafUtils.drawWebStyle ( g2d, menu, StyleConstants.shadeColor, shadeWidth, round, menu.isEnabled (),
-                            !selected && mouseover, selected ? StyleConstants.averageBorderColor : StyleConstants.borderColor );
+                    LafUtils.drawWebStyle ( g2d, menu, FlatLafStyleConstants.shadeColor, shadeWidth, round, menu.isEnabled (),
+                            !selected && mouseover, selected ? FlatLafStyleConstants.averageBorderColor : FlatLafStyleConstants.borderColor );
                 }
             }
         }
@@ -605,7 +605,7 @@ public class WebMenuUI extends BasicMenuUI implements BorderMethods
         }
         else
         {
-            final int mnem = WebLookAndFeel.isMnemonicHidden () ? -1 : menu.getDisplayedMnemonicIndex ();
+            final int mnem = FlatLookAndFeel.isMnemonicHidden () ? -1 : menu.getDisplayedMnemonicIndex ();
             SwingUtils.drawStringUnderlineCharAt ( g2d, menu.getText (), mnem, x, y + h / 2 + LafUtils.getTextCenterShearY ( fm ) );
         }
     }

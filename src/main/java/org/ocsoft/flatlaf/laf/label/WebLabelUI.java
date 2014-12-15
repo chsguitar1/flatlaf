@@ -23,7 +23,7 @@ import javax.swing.plaf.basic.BasicLabelUI;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.style.StyleManager;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
@@ -105,7 +105,7 @@ public class WebLabelUI extends BasicLabelUI implements Styleable, BorderMethods
                 updateBorder ();
             }
         };
-        label.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        label.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
     }
 
     /**
@@ -117,7 +117,7 @@ public class WebLabelUI extends BasicLabelUI implements Styleable, BorderMethods
     public void uninstallUI ( final JComponent c )
     {
         // Removing label listeners
-        label.removePropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        label.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
 
         // Uninstalling applied skin
         StyleManager.removeSkin ( label );

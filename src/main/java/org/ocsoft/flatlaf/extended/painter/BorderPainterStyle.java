@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.painter;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * BorderPainter style class.
@@ -32,17 +32,17 @@ public final class BorderPainterStyle
     /**
      * Border width.
      */
-    public static int width = StyleConstants.borderWidth;
+    public static int width = FlatLafStyleConstants.borderWidth;
 
     /**
      * Border round.
      */
-    public static int round = StyleConstants.bigRound;
+    public static int round = FlatLafStyleConstants.bigRound;
 
     /**
      * Border color.
      */
-    public static Color color = StyleConstants.borderColor;
+    public static Color color = FlatLafStyleConstants.borderColor;
 
     /**
      * Border stroke.

@@ -30,7 +30,7 @@ import org.ocsoft.flatlaf.extended.label.WebMultiLineLabelUI;
 import org.ocsoft.flatlaf.extended.label.WebStyledLabelUI;
 import org.ocsoft.flatlaf.extended.label.WebVerticalLabelUI;
 import org.ocsoft.flatlaf.extended.tab.DocumentPaneState;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButtonUI;
 import org.ocsoft.flatlaf.laf.button.WebToggleButtonUI;
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxUI;
@@ -71,7 +71,7 @@ import org.ocsoft.flatlaf.laf.tree.TreeState;
 import org.ocsoft.flatlaf.laf.tree.WebTreeUI;
 import org.ocsoft.flatlaf.laf.viewport.WebViewportStyle;
 import org.ocsoft.flatlaf.laf.viewport.WebViewportUI;
-import org.ocsoft.flatlaf.managers.WebLafManagers;
+import org.ocsoft.flatlaf.managers.FlatLafManagers;
 import org.ocsoft.flatlaf.utils.*;
 import org.ocsoft.flatlaf.utils.swing.SwingLazyValue;
 
@@ -91,7 +91,7 @@ import java.util.WeakHashMap;
  * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-build-WebLaF-from-sources">How to build WebLaF from sources</a>
  */
 
-public class WebLookAndFeel extends BasicLookAndFeel
+public class FlatLookAndFeel extends BasicLookAndFeel
 {
     /**
      * todo 1. Install default UI classes automatically (not manually) using SupportedComponent enumeration
@@ -509,9 +509,9 @@ public class WebLookAndFeel extends BasicLookAndFeel
     {
         super.initSystemColorDefaults ( table );
 
-        final String textColor = ColorUtils.getHexColor ( StyleConstants.textColor );
-        final String textHighlightColor = ColorUtils.getHexColor ( StyleConstants.textSelectionColor );
-        final String inactiveTextColor = ColorUtils.getHexColor ( StyleConstants.disabledTextColor );
+        final String textColor = ColorUtils.getHexColor ( FlatLafStyleConstants.textColor );
+        final String textHighlightColor = ColorUtils.getHexColor ( FlatLafStyleConstants.textSelectionColor );
+        final String inactiveTextColor = ColorUtils.getHexColor ( FlatLafStyleConstants.disabledTextColor );
 
         final String[] defaultSystemColors =
                 { "menu", "#ffffff", "menuText", textColor, "textHighlight", textHighlightColor, "textHighlightText", textColor,
@@ -547,11 +547,11 @@ public class WebLookAndFeel extends BasicLookAndFeel
         // JLabels
         final Color controlText = table.getColor ( "controlText" );
         table.put ( "Label.foreground", controlText );
-        table.put ( "Label.disabledForeground", StyleConstants.disabledTextColor );
+        table.put ( "Label.disabledForeground", FlatLafStyleConstants.disabledTextColor );
 
         // JTextFields
         final Object textComponentBorder =
-                new SwingLazyValue ( "javax.swing.plaf.BorderUIResource.LineBorderUIResource", new Object[]{ StyleConstants.shadeColor } );
+                new SwingLazyValue ( "javax.swing.plaf.BorderUIResource.LineBorderUIResource", new Object[]{ FlatLafStyleConstants.shadeColor } );
         table.put ( "TextField.border", textComponentBorder );
 
         // JTextAreas
@@ -569,8 +569,8 @@ public class WebLookAndFeel extends BasicLookAndFeel
         table.put ( "OptionPane.isYesLast", SystemUtils.isMac () ? Boolean.TRUE : Boolean.FALSE );
 
         // HTML image icons
-        table.put ( "html.pendingImage", StyleConstants.htmlPendingIcon );
-        table.put ( "html.missingImage", StyleConstants.htmlMissingIcon );
+        table.put ( "html.pendingImage", FlatLafStyleConstants.htmlPendingIcon );
+        table.put ( "html.missingImage", FlatLafStyleConstants.htmlMissingIcon );
 
         // Scroll bars minimum size
         table.put ( "ScrollBar.minimumThumbSize", new Dimension ( WebScrollBarStyle.minThumbWidth, WebScrollBarStyle.minThumbHeight ) );
@@ -584,11 +584,11 @@ public class WebLookAndFeel extends BasicLookAndFeel
         table.put ( "Tree.expandedIcon", WebTreeUI.COLLAPSE_ICON );
         // Tree default selection style
         table.put ( "Tree.textForeground", Color.BLACK );
-        table.put ( "Tree.textBackground", StyleConstants.transparent );
+        table.put ( "Tree.textBackground", FlatLafStyleConstants.transparent );
         table.put ( "Tree.selectionForeground", Color.BLACK );
-        table.put ( "Tree.selectionBackground", StyleConstants.transparent );
-        table.put ( "Tree.selectionBorderColor", StyleConstants.transparent );
-        table.put ( "Tree.dropCellBackground", StyleConstants.transparent );
+        table.put ( "Tree.selectionBackground", FlatLafStyleConstants.transparent );
+        table.put ( "Tree.selectionBorderColor", FlatLafStyleConstants.transparent );
+        table.put ( "Tree.dropCellBackground", FlatLafStyleConstants.transparent );
         // Tree default renderer content margins
         table.put ( "Tree.rendererMargins", new InsetsUIResource ( 4, 4, 4, 6 ) );
         table.put ( "Tree.rendererFillBackground", Boolean.FALSE );
@@ -845,7 +845,7 @@ public class WebLookAndFeel extends BasicLookAndFeel
                 if ( evt.getPropertyName ().equals ( LOOK_AND_FEEL_PROPERTY ) )
                 {
                     // Initializing managers if WebLaF was installed
-                    if ( evt.getNewValue () instanceof WebLookAndFeel )
+                    if ( evt.getNewValue () instanceof FlatLookAndFeel )
                     {
                         // Web decoration for frames and dialogs
                         JFrame.setDefaultLookAndFeelDecorated ( decorateFrames );
@@ -928,7 +928,7 @@ public class WebLookAndFeel extends BasicLookAndFeel
     public static boolean install ( final boolean updateExistingComponents )
     {
         // Installing LookAndFeel
-        if ( LafUtils.setupLookAndFeelSafely ( WebLookAndFeel.class ) )
+        if ( LafUtils.setupLookAndFeelSafely ( FlatLookAndFeel.class ) )
         {
             // Updating already created components tree
             if ( updateExistingComponents )
@@ -953,7 +953,7 @@ public class WebLookAndFeel extends BasicLookAndFeel
      */
     public static boolean isInstalled ()
     {
-        return UIManager.getLookAndFeel ().getClass ().getCanonicalName ().equals ( WebLookAndFeel.class.getCanonicalName () );
+        return UIManager.getLookAndFeel ().getClass ().getCanonicalName ().equals ( FlatLookAndFeel.class.getCanonicalName () );
     }
 
     /**
@@ -962,7 +962,7 @@ public class WebLookAndFeel extends BasicLookAndFeel
      */
     public static void initializeManagers ()
     {
-        WebLafManagers.initialize ();
+        FlatLafManagers.initialize ();
     }
 
     /**
@@ -1025,7 +1025,7 @@ public class WebLookAndFeel extends BasicLookAndFeel
     {
         if ( icons == null )
         {
-            icons = XmlUtils.loadImagesList ( WebLookAndFeel.class.getResource ( "resources/icons.xml" ) );
+            icons = XmlUtils.loadImagesList ( FlatLookAndFeel.class.getResource ( "resources/icons.xml" ) );
         }
     }
 
@@ -1091,7 +1091,7 @@ public class WebLookAndFeel extends BasicLookAndFeel
      */
     public static void setDecorateFrames ( final boolean decorateFrames )
     {
-        WebLookAndFeel.decorateFrames = decorateFrames;
+        FlatLookAndFeel.decorateFrames = decorateFrames;
         JFrame.setDefaultLookAndFeelDecorated ( decorateFrames );
     }
 
@@ -1112,7 +1112,7 @@ public class WebLookAndFeel extends BasicLookAndFeel
      */
     public static void setDecorateDialogs ( final boolean decorateDialogs )
     {
-        WebLookAndFeel.decorateDialogs = decorateDialogs;
+        FlatLookAndFeel.decorateDialogs = decorateDialogs;
         JDialog.setDefaultLookAndFeelDecorated ( decorateDialogs );
     }
 
@@ -1154,7 +1154,7 @@ public class WebLookAndFeel extends BasicLookAndFeel
      */
     public static void setScrollMode ( final int scrollMode )
     {
-        WebLookAndFeel.scrollMode = scrollMode;
+        FlatLookAndFeel.scrollMode = scrollMode;
     }
 
     /**
@@ -1222,7 +1222,7 @@ public class WebLookAndFeel extends BasicLookAndFeel
      */
     public static void setOrientation ( final ComponentOrientation orientation )
     {
-        WebLookAndFeel.orientation = orientation;
+        FlatLookAndFeel.orientation = orientation;
         SwingUtils.updateGlobalOrientations ();
     }
 

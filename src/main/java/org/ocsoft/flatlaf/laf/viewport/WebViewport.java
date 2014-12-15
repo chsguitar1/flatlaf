@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.viewport;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 
@@ -59,7 +59,7 @@ public class WebViewport extends JViewport
         {
             try
             {
-                setUI ( ( WebViewportUI ) ReflectUtils.createInstance ( WebLookAndFeel.viewportUI ) );
+                setUI ( ( WebViewportUI ) ReflectUtils.createInstance ( FlatLookAndFeel.viewportUI ) );
             }
             catch ( final Throwable e )
             {

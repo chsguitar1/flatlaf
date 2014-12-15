@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.layout;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
 
@@ -54,7 +54,7 @@ public class SlidingLayout extends AbstractLayoutManager
         }
 
         slideY = 0;
-        animator = new WebTimer ( "SlidingLayout.slideInTimer", StyleConstants.avgAnimationDelay, new ActionListener ()
+        animator = new WebTimer ( "SlidingLayout.slideInTimer", FlatLafStyleConstants.avgAnimationDelay, new ActionListener ()
         {
             @Override
             public void actionPerformed ( ActionEvent e )
@@ -92,7 +92,7 @@ public class SlidingLayout extends AbstractLayoutManager
         }
 
         slideY = height;
-        animator = new WebTimer ( "SlidingLayout.slideOutTimer", StyleConstants.avgAnimationDelay, new ActionListener ()
+        animator = new WebTimer ( "SlidingLayout.slideOutTimer", FlatLafStyleConstants.avgAnimationDelay, new ActionListener ()
         {
             @Override
             public void actionPerformed ( ActionEvent e )

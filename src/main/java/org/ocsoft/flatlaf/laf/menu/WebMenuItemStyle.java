@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.menu;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 import java.awt.*;
 
@@ -35,7 +35,7 @@ public final class WebMenuItemStyle
     /**
      * Menu item content margin.
      */
-    public static Insets margin = StyleConstants.emptyMargin;
+    public static Insets margin = FlatLafStyleConstants.emptyMargin;
 
     /**
      * Spacing between menu item content and its left/right borders.
@@ -46,13 +46,13 @@ public final class WebMenuItemStyle
      * Separate menu item corners rounding.
      * This will be applied to menu items that are placed outside popup menu.
      */
-    public static int round = StyleConstants.smallRound;
+    public static int round = FlatLafStyleConstants.smallRound;
 
     /**
      * Separate menu item shade width.
      * This will be applied to menu items that are placed outside popup menu.
      */
-    public static int shadeWidth = StyleConstants.shadeWidth;
+    public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Disabled menu item foreground.

@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.painter;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * AlphaLayerPainter style class.
@@ -32,15 +32,15 @@ public final class AlphaLayerPainterStyle
     /**
      * Square size.
      */
-    public static int squareSize = StyleConstants.ALPHA_RECT_SIZE;
+    public static int squareSize = FlatLafStyleConstants.ALPHA_RECT_SIZE;
 
     /**
      * Light square color.
      */
-    public static Color lightSquareColor = StyleConstants.LIGHT_ALPHA;
+    public static Color lightSquareColor = FlatLafStyleConstants.LIGHT_ALPHA;
 
     /**
      * Dark square color.
      */
-    public static Color darkSquareColor = StyleConstants.DARK_ALPHA;
+    public static Color darkSquareColor = FlatLafStyleConstants.DARK_ALPHA;
 }

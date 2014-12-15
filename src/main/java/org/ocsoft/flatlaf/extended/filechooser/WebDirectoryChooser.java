@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.filechooser;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.panel.GroupPanel;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.rootpane.WebDialog;
@@ -121,8 +121,8 @@ public class WebDirectoryChooser extends WebDialog implements DialogOptions
         approveButton = new WebButton ( "", OK_ICON );
         approveButton.setLanguage ( "weblaf.ex.dirchooser.choose" );
         approveButton.addHotkey ( WebDirectoryChooser.this, Hotkey.CTRL_ENTER );
-        approveButton.setRolloverShine ( StyleConstants.highlightControlButtons );
-        approveButton.setShineColor ( StyleConstants.greenHighlight );
+        approveButton.setRolloverShine ( FlatLafStyleConstants.highlightControlButtons );
+        approveButton.setShineColor ( FlatLafStyleConstants.greenHighlight );
         approveButton.setEnabled ( false );
         approveButton.addActionListener ( new ActionListener ()
         {
@@ -137,8 +137,8 @@ public class WebDirectoryChooser extends WebDialog implements DialogOptions
         cancelButton = new WebButton ( "", CANCEL_ICON );
         cancelButton.setLanguage ( "weblaf.ex.dirchooser.cancel" );
         cancelButton.addHotkey ( WebDirectoryChooser.this, Hotkey.ESCAPE );
-        cancelButton.setRolloverShine ( StyleConstants.highlightControlButtons );
-        cancelButton.setShineColor ( StyleConstants.redHighlight );
+        cancelButton.setRolloverShine ( FlatLafStyleConstants.highlightControlButtons );
+        cancelButton.setShineColor ( FlatLafStyleConstants.redHighlight );
         cancelButton.addActionListener ( new ActionListener ()
         {
             @Override

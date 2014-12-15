@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.label;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
@@ -42,11 +42,11 @@ public class WebStepLabel extends WebLabel implements ShapeProvider, LanguageMet
      * todo 2. Add custom UI for that kind of component
      */
 
-    private Color topBgColor = StyleConstants.topBgColor;
-    private Color bottomBgColor = StyleConstants.bottomBgColor;
-    private Color selectedBgColor = StyleConstants.selectedBgColor;
-    private Color borderColor = StyleConstants.darkBorderColor;
-    private Color disabledBorderColor = StyleConstants.disabledBorderColor;
+    private Color topBgColor = FlatLafStyleConstants.topBgColor;
+    private Color bottomBgColor = FlatLafStyleConstants.bottomBgColor;
+    private Color selectedBgColor = FlatLafStyleConstants.selectedBgColor;
+    private Color borderColor = FlatLafStyleConstants.darkBorderColor;
+    private Color disabledBorderColor = FlatLafStyleConstants.disabledBorderColor;
 
     private final Stroke stroke = new BasicStroke ( 2.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 1f );
 

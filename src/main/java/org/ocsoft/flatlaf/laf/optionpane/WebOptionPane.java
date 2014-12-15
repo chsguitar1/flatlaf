@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.optionpane;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
 
@@ -77,7 +77,7 @@ public class WebOptionPane extends JOptionPane
         {
             try
             {
-                setUI ( ( WebOptionPaneUI ) ReflectUtils.createInstance ( WebLookAndFeel.optionPaneUI ) );
+                setUI ( ( WebOptionPaneUI ) ReflectUtils.createInstance ( FlatLookAndFeel.optionPaneUI ) );
             }
             catch ( final Throwable e )
             {

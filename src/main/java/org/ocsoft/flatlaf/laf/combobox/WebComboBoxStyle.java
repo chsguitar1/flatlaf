@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.combobox;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 
 import java.awt.*;
@@ -50,7 +50,7 @@ public final class WebComboBoxStyle
     /**
      * Draw combobox border.
      */
-    public static boolean drawBorder = StyleConstants.drawBorder;
+    public static boolean drawBorder = FlatLafStyleConstants.drawBorder;
 
     /**
      * Whether should paint web-styled background or not.
@@ -70,12 +70,12 @@ public final class WebComboBoxStyle
     /**
      * Decoration rounding.
      */
-    public static int round = StyleConstants.smallRound;
+    public static int round = FlatLafStyleConstants.smallRound;
 
     /**
      * Decoration shade width.
      */
-    public static int shadeWidth = StyleConstants.shadeWidth;
+    public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Values scrolling using mouse wheel enabled.

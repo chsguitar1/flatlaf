@@ -21,7 +21,7 @@ import javax.swing.*;
 import javax.swing.event.AncestorEvent;
 
 import org.ocsoft.flatlaf.extended.layout.TableLayout;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.managers.style.skin.web.WebPanelPainter;
@@ -626,7 +626,7 @@ public class WebButtonPopup extends WebPopup
         public void paint ( final Graphics2D g2d, final Rectangle bounds, final WebButtonPopup c )
         {
             LafUtils.drawCustomWebBorder ( g2d, c, getPopupShape ( c ),
-                    button.isFocusable () && button.isDrawFocus () && focused ? StyleConstants.fieldFocusColor : StyleConstants.shadeColor,
+                    button.isFocusable () && button.isDrawFocus () && focused ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor,
                     button.getShadeWidth (), true, isWebColoredBackground () );
         }
     }

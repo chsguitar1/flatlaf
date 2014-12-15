@@ -22,7 +22,7 @@ import javax.swing.*;
 import org.ocsoft.flatlaf.extended.layout.HorizontalFlowLayout;
 import org.ocsoft.flatlaf.extended.layout.VerticalFlowLayout;
 import org.ocsoft.flatlaf.extended.panel.BorderPanel;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.rootpane.WebFrame;
 import org.ocsoft.flatlaf.managers.version.VersionManager;
@@ -645,7 +645,7 @@ public class TestFrame extends WebFrame
      */
     public void configureFrame ()
     {
-        setIconImages ( WebLookAndFeel.getImages () );
+        setIconImages ( FlatLookAndFeel.getImages () );
         setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
         setResizable ( true );
         pack ();

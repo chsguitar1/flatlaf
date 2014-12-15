@@ -37,7 +37,7 @@ import java.util.Map;
  * @author Mikle Garin
  */
 
-public class StyleConstants
+public class FlatLafStyleConstants
 {
     /**
      * System text separator.
@@ -47,7 +47,7 @@ public class StyleConstants
     /**
      * Empty 16x16 icon.
      */
-    public static final ImageIcon EMPTY_ICON = new ImageIcon ( StyleConstants.class.getResource ( "icons/empty.png" ) );
+    public static final ImageIcon EMPTY_ICON = new ImageIcon ( FlatLafStyleConstants.class.getResource ( "icons/empty.png" ) );
 
     /**
      * Transparent color constant.
@@ -256,8 +256,8 @@ public class StyleConstants
     /**
      * HTML renderer icons.
      */
-    public static ImageIcon htmlPendingIcon = new ImageIcon ( StyleConstants.class.getResource ( "icons/html/pendingImage.png" ) );
-    public static ImageIcon htmlMissingIcon = new ImageIcon ( StyleConstants.class.getResource ( "icons/html/missingImage.png" ) );
+    public static ImageIcon htmlPendingIcon = new ImageIcon ( FlatLafStyleConstants.class.getResource ( "icons/html/pendingImage.png" ) );
+    public static ImageIcon htmlMissingIcon = new ImageIcon ( FlatLafStyleConstants.class.getResource ( "icons/html/missingImage.png" ) );
 
     /**
      * Debug option.

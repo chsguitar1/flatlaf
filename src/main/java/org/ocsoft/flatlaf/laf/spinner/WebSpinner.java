@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.spinner;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.managers.log.Log;
@@ -141,7 +141,7 @@ public class WebSpinner extends JSpinner implements EventMethods, ToolTipMethods
         {
             try
             {
-                setUI ( ( WebSpinnerUI ) ReflectUtils.createInstance ( WebLookAndFeel.spinnerUI ) );
+                setUI ( ( WebSpinnerUI ) ReflectUtils.createInstance ( FlatLookAndFeel.spinnerUI ) );
             }
             catch ( final Throwable e )
             {

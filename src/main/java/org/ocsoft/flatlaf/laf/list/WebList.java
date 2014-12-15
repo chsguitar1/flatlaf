@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.list;
 import javax.swing.*;
 import javax.swing.event.ListDataListener;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.list.editor.DefaultListCellEditor;
 import org.ocsoft.flatlaf.laf.list.editor.ListCellEditor;
 import org.ocsoft.flatlaf.laf.list.editor.ListEditListener;
@@ -655,7 +655,7 @@ public class WebList extends JList implements EventMethods, FontMethods<WebList>
         {
             try
             {
-                setUI ( ( WebListUI ) ReflectUtils.createInstance ( WebLookAndFeel.listUI ) );
+                setUI ( ( WebListUI ) ReflectUtils.createInstance ( FlatLookAndFeel.listUI ) );
             }
             catch ( final Throwable e )
             {

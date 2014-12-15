@@ -21,8 +21,8 @@ import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicRadioButtonUI;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.list.WebListElement;
 import org.ocsoft.flatlaf.laf.tree.WebTreeElement;
 import org.ocsoft.flatlaf.utils.*;
@@ -49,7 +49,7 @@ public class WebRadioButtonUI extends BasicRadioButtonUI implements ShapeProvide
 
     static
     {
-        CHECK_STATES.add ( StyleConstants.EMPTY_ICON );
+        CHECK_STATES.add ( FlatLafStyleConstants.EMPTY_ICON );
         for ( int i = 1; i <= 3; i++ )
         {
             CHECK_STATES.add ( new ImageIcon ( WebRadioButtonUI.class.getResource ( "icons/c" + i + ".png" ) ) );
@@ -108,7 +108,7 @@ public class WebRadioButtonUI extends BasicRadioButtonUI implements ShapeProvide
 
         // Default settings
         SwingUtils.setOrientation ( radioButton );
-        LookAndFeel.installProperty ( radioButton, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( radioButton, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
 
         // Initial check state
         checkIcon = radioButton.isSelected () ? CHECK_STATES.size () - 1 : 0;
@@ -418,7 +418,7 @@ public class WebRadioButtonUI extends BasicRadioButtonUI implements ShapeProvide
                 if ( c.isEnabled () )
                 {
                     GraphicsUtils.drawShade ( g2d, shape,
-                            c.isEnabled () && c.isFocusOwner () ? StyleConstants.fieldFocusColor : StyleConstants.shadeColor, shadeWidth );
+                            c.isEnabled () && c.isFocusOwner () ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor, shadeWidth );
                 }
 
                 // Background

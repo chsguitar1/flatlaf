@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.tabbedpane;
 import java.awt.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * WebTabbedPane style class.
@@ -53,17 +53,17 @@ public final class WebTabbedPaneStyle
     /**
      * Bottom selected tab color.
      */
-    public static Color selectedBottomBg = StyleConstants.backgroundColor;
+    public static Color selectedBottomBg = FlatLafStyleConstants.backgroundColor;
 
     /**
      * Decoration rounding.
      */
-    public static int round = StyleConstants.smallRound;
+    public static int round = FlatLafStyleConstants.smallRound;
 
     /**
      * Decoration shade width.
      */
-    public static int shadeWidth = StyleConstants.shadeWidth;
+    public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Whether to rotate tab insets for different tab positions or not.

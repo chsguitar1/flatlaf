@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.button;
 import java.awt.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * WebButton style class.
@@ -33,17 +33,17 @@ public final class WebButtonStyle
     /**
      * Top background color.
      */
-    public static Color topBgColor = StyleConstants.topBgColor;
+    public static Color topBgColor = FlatLafStyleConstants.topBgColor;
 
     /**
      * Bottom background color.
      */
-    public static Color bottomBgColor = StyleConstants.bottomBgColor;
+    public static Color bottomBgColor = FlatLafStyleConstants.bottomBgColor;
 
     /**
      * Top selected background color.
      */
-    public static Color topSelectedBgColor = StyleConstants.selectedBgColor;
+    public static Color topSelectedBgColor = FlatLafStyleConstants.selectedBgColor;
 
     /**
      * Bottom selected background color.
@@ -53,7 +53,7 @@ public final class WebButtonStyle
     /**
      * Selected button foreground.
      */
-    public static Color selectedForeground = StyleConstants.selectedTextColor;
+    public static Color selectedForeground = FlatLafStyleConstants.selectedTextColor;
 
     /**
      * Whether should draw rollover shine or not.
@@ -63,62 +63,62 @@ public final class WebButtonStyle
     /**
      * Rollover shine color.
      */
-    public static Color shineColor = StyleConstants.shineColor;
+    public static Color shineColor = FlatLafStyleConstants.shineColor;
 
     /**
      * Whether should draw dark border on rollover only or not.
      */
-    public static boolean rolloverDarkBorderOnly = StyleConstants.rolloverDarkBorderOnly;
+    public static boolean rolloverDarkBorderOnly = FlatLafStyleConstants.rolloverDarkBorderOnly;
 
     /**
      * Whether should draw shade or not.
      */
-    public static boolean drawShade = StyleConstants.drawShade;
+    public static boolean drawShade = FlatLafStyleConstants.drawShade;
 
     /**
      * Whether should draw shade on rollover only or not.
      */
-    public static boolean rolloverShadeOnly = StyleConstants.rolloverShadeOnly;
+    public static boolean rolloverShadeOnly = FlatLafStyleConstants.rolloverShadeOnly;
 
     /**
      * Whether should draw shade when button is disabled or not.
      */
-    public static boolean showDisabledShade = StyleConstants.showDisabledShade;
+    public static boolean showDisabledShade = FlatLafStyleConstants.showDisabledShade;
 
     /**
      * Button corners rounding.
      */
-    public static int round = StyleConstants.mediumRound;
+    public static int round = FlatLafStyleConstants.mediumRound;
 
     /**
      * Icon button corners rounding.
      */
-    public static int iconRound = StyleConstants.smallRound;
+    public static int iconRound = FlatLafStyleConstants.smallRound;
 
     /**
      * Button shade width.
      */
-    public static int shadeWidth = StyleConstants.shadeWidth;
+    public static int shadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Button margin.
      */
-    public static Insets margin = StyleConstants.emptyMargin;
+    public static Insets margin = FlatLafStyleConstants.emptyMargin;
 
     /**
      * Shade color.
      */
-    public static Color shadeColor = StyleConstants.shadeColor;
+    public static Color shadeColor = FlatLafStyleConstants.shadeColor;
 
     /**
      * Inner shade width.
      */
-    public static int innerShadeWidth = StyleConstants.innerShadeWidth;
+    public static int innerShadeWidth = FlatLafStyleConstants.innerShadeWidth;
 
     /**
      * Inner shade color.
      */
-    public static Color innerShadeColor = StyleConstants.innerShadeColor;
+    public static Color innerShadeColor = FlatLafStyleConstants.innerShadeColor;
 
     /**
      * Default button inner shade color.
@@ -128,7 +128,7 @@ public final class WebButtonStyle
     /**
      * Left and right button content spacing.
      */
-    public static int leftRightSpacing = StyleConstants.leftRightSpacing;
+    public static int leftRightSpacing = FlatLafStyleConstants.leftRightSpacing;
 
     /**
      * Left and right icon button content spacing.
@@ -138,32 +138,32 @@ public final class WebButtonStyle
     /**
      * Whether should make unselected toggle button icon semi-transparent or not.
      */
-    public static boolean shadeToggleIcon = StyleConstants.shadeToggleIcon;
+    public static boolean shadeToggleIcon = FlatLafStyleConstants.shadeToggleIcon;
 
     /**
      * Unselected toggle button icon transparency.
      */
-    public static float shadeToggleIconTransparency = StyleConstants.shadeToggleIconTransparency;
+    public static float shadeToggleIconTransparency = FlatLafStyleConstants.shadeToggleIconTransparency;
 
     /**
      * Whether should draw button focus or not.
      */
-    public static boolean drawFocus = StyleConstants.drawFocus;
+    public static boolean drawFocus = FlatLafStyleConstants.drawFocus;
 
     /**
      * Whether should draw button decoration on rollover only or not.
      */
-    public static boolean rolloverDecoratedOnly = StyleConstants.rolloverDecoratedOnly;
+    public static boolean rolloverDecoratedOnly = FlatLafStyleConstants.rolloverDecoratedOnly;
 
     /**
      * Whether should animate button transitions.
      */
-    public static boolean animate = StyleConstants.animate;
+    public static boolean animate = FlatLafStyleConstants.animate;
 
     /**
      * Whether should undecorate button or not.
      */
-    public static boolean undecorated = StyleConstants.undecorated;
+    public static boolean undecorated = FlatLafStyleConstants.undecorated;
 
     /**
      * Button painter.

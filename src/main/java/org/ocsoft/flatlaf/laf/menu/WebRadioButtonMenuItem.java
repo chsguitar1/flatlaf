@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.menu;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -498,7 +498,7 @@ public class WebRadioButtonMenuItem extends JRadioButtonMenuItem
         {
             try
             {
-                setUI ( ( WebRadioButtonMenuItemUI ) ReflectUtils.createInstance ( WebLookAndFeel.radioButtonMenuItemUI ) );
+                setUI ( ( WebRadioButtonMenuItemUI ) ReflectUtils.createInstance ( FlatLookAndFeel.radioButtonMenuItemUI ) );
             }
             catch ( final Throwable e )
             {

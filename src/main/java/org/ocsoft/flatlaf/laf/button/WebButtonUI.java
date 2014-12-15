@@ -26,8 +26,8 @@ import javax.swing.plaf.basic.BasicButtonUI;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
 import org.ocsoft.flatlaf.extended.panel.WebButtonGroup;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.*;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;
@@ -142,7 +142,7 @@ public class WebButtonUI extends BasicButtonUI implements ShapeProvider, SwingCo
         button.setContentAreaFilled ( false );
         button.setBorderPainted ( false );
         button.setFocusable ( true );
-        LookAndFeel.installProperty ( button, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( button, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
         PainterSupport.installPainter ( button, this.painter );
 
         // Updating border
@@ -162,7 +162,7 @@ public class WebButtonUI extends BasicButtonUI implements ShapeProvider, SwingCo
                 if ( painter == null &&
                         animate && ( rolloverShine || rolloverDecoratedOnly || rolloverShadeOnly ) )
                 {
-                    animator = new WebTimer ( "WebButtonUI.fadeInTimer", StyleConstants.fastAnimationDelay, new ActionListener ()
+                    animator = new WebTimer ( "WebButtonUI.fadeInTimer", FlatLafStyleConstants.fastAnimationDelay, new ActionListener ()
                     {
                         @Override
                         public void actionPerformed ( final ActionEvent e )
@@ -201,7 +201,7 @@ public class WebButtonUI extends BasicButtonUI implements ShapeProvider, SwingCo
                 if ( painter == null &&
                         animate && ( rolloverShine || rolloverDecoratedOnly || rolloverShadeOnly ) )
                 {
-                    animator = new WebTimer ( "WebButtonUI.fadeOutTimer", StyleConstants.fastAnimationDelay, new ActionListener ()
+                    animator = new WebTimer ( "WebButtonUI.fadeOutTimer", FlatLafStyleConstants.fastAnimationDelay, new ActionListener ()
                     {
                         @Override
                         public void actionPerformed ( final ActionEvent e )
@@ -321,7 +321,7 @@ public class WebButtonUI extends BasicButtonUI implements ShapeProvider, SwingCo
                 updateBorder ();
             }
         };
-        c.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        c.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
     }
 
     @Override
@@ -332,7 +332,7 @@ public class WebButtonUI extends BasicButtonUI implements ShapeProvider, SwingCo
         c.removeMouseListener ( mouseAdapter );
         c.removeMouseMotionListener ( mouseAdapter );
         c.removeAncestorListener ( ancestorListener );
-        c.removePropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        c.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
 
         button.setBorderPainted ( oldBorderPainted );
         button.setContentAreaFilled ( oldContentAreaFilled );
@@ -880,7 +880,7 @@ public class WebButtonUI extends BasicButtonUI implements ShapeProvider, SwingCo
                     {
                         final Shape oldClip = GraphicsUtils.intersectClip ( g2d, borderShape );
                         g2d.setPaint ( new RadialGradientPaint ( mousePoint.x, c.getHeight (), c.getWidth (), new float[]{ 0f, 1f },
-                                new Color[]{ transparentShineColor, StyleConstants.transparent } ) );
+                                new Color[]{ transparentShineColor, FlatLafStyleConstants.transparent } ) );
                         g2d.fill ( borderShape );
                         GraphicsUtils.restoreClip ( g2d, oldClip );
                     }
@@ -904,8 +904,8 @@ public class WebButtonUI extends BasicButtonUI implements ShapeProvider, SwingCo
 
                     // Border
                     g2d.setPaint ( c.isEnabled () ? rolloverDarkBorderOnly && rollover ? getBorderColor () :
-                            !rolloverDarkBorderOnly ? StyleConstants.darkBorderColor : StyleConstants.borderColor :
-                            StyleConstants.disabledBorderColor );
+                            !rolloverDarkBorderOnly ? FlatLafStyleConstants.darkBorderColor : FlatLafStyleConstants.borderColor :
+                            FlatLafStyleConstants.disabledBorderColor );
                     g2d.draw ( borderShape );
 
                     // Changing line marks in case of RTL orientation
@@ -919,32 +919,32 @@ public class WebButtonUI extends BasicButtonUI implements ShapeProvider, SwingCo
                     if ( !drawTop && drawTopLine )
                     {
                         final int x = actualDrawLeft ? shadeWidth : 0;
-                        g2d.setPaint ( c.isEnabled () || isAfterEnabledButton ( button ) ? StyleConstants.darkBorderColor :
-                                StyleConstants.disabledBorderColor );
+                        g2d.setPaint ( c.isEnabled () || isAfterEnabledButton ( button ) ? FlatLafStyleConstants.darkBorderColor :
+                                FlatLafStyleConstants.disabledBorderColor );
                         g2d.drawLine ( x, 0, x + c.getWidth () - ( actualDrawLeft ? shadeWidth : 0 ) -
                                 ( actualDrawRight ? shadeWidth + 1 : 0 ), 0 );
                     }
                     if ( !actualDrawLeft && actualDrawLeftLine )
                     {
                         final int y = drawTop ? shadeWidth : 0;
-                        g2d.setPaint ( c.isEnabled () || isAfterEnabledButton ( button ) ? StyleConstants.darkBorderColor :
-                                StyleConstants.disabledBorderColor );
+                        g2d.setPaint ( c.isEnabled () || isAfterEnabledButton ( button ) ? FlatLafStyleConstants.darkBorderColor :
+                                FlatLafStyleConstants.disabledBorderColor );
                         g2d.drawLine ( 0, y, 0, y + c.getHeight () - ( drawTop ? shadeWidth : 0 ) -
                                 ( drawBottom ? shadeWidth + 1 : 0 ) );
                     }
                     if ( !drawBottom && drawBottomLine )
                     {
                         final int x = actualDrawLeft ? shadeWidth : 0;
-                        g2d.setPaint ( c.isEnabled () || isBeforeEnabledButton ( button ) ? StyleConstants.darkBorderColor :
-                                StyleConstants.disabledBorderColor );
+                        g2d.setPaint ( c.isEnabled () || isBeforeEnabledButton ( button ) ? FlatLafStyleConstants.darkBorderColor :
+                                FlatLafStyleConstants.disabledBorderColor );
                         g2d.drawLine ( x, c.getHeight () - 1, x + c.getWidth () - ( actualDrawLeft ? shadeWidth : 0 ) -
                                 ( actualDrawRight ? shadeWidth + 1 : 0 ), c.getHeight () - 1 );
                     }
                     if ( !actualDrawRight && actualDrawRightLine )
                     {
                         final int y = drawTop ? shadeWidth : 0;
-                        g2d.setPaint ( c.isEnabled () || isBeforeEnabledButton ( button ) ? StyleConstants.darkBorderColor :
-                                StyleConstants.disabledBorderColor );
+                        g2d.setPaint ( c.isEnabled () || isBeforeEnabledButton ( button ) ? FlatLafStyleConstants.darkBorderColor :
+                                FlatLafStyleConstants.disabledBorderColor );
                         g2d.drawLine ( c.getWidth () - 1, y, c.getWidth () - 1, y + c.getHeight () - ( drawTop ? shadeWidth : 0 ) -
                                 ( drawBottom ? shadeWidth + 1 : 0 ) );
                     }
@@ -1066,7 +1066,7 @@ public class WebButtonUI extends BasicButtonUI implements ShapeProvider, SwingCo
 
     private Color getShadeColor ( final JComponent c )
     {
-        return isFocusActive ( c ) ? StyleConstants.fieldFocusColor : shadeColor;
+        return isFocusActive ( c ) ? FlatLafStyleConstants.fieldFocusColor : shadeColor;
     }
 
     private boolean isFocusActive ( final JComponent c )
@@ -1109,7 +1109,7 @@ public class WebButtonUI extends BasicButtonUI implements ShapeProvider, SwingCo
 
     private Color getBorderColor ()
     {
-        return ColorUtils.getIntermediateColor ( StyleConstants.borderColor, StyleConstants.darkBorderColor, transparency );
+        return ColorUtils.getIntermediateColor ( FlatLafStyleConstants.borderColor, FlatLafStyleConstants.darkBorderColor, transparency );
     }
 
     @Override

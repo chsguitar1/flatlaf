@@ -21,7 +21,7 @@ import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicSeparatorUI;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;
@@ -65,7 +65,7 @@ public class WebSeparatorUI extends BasicSeparatorUI
 
         // Default settings
         SwingUtils.setOrientation ( separator );
-        LookAndFeel.installProperty ( separator, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( separator, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
 
         // Updating border
         updateBorder ();

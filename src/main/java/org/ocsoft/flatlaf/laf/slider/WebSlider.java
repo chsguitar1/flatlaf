@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.slider;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.managers.log.Log;
@@ -324,7 +324,7 @@ public class WebSlider extends JSlider
         {
             try
             {
-                setUI ( ( WebSliderUI ) ReflectUtils.createInstance ( WebLookAndFeel.sliderUI, this ) );
+                setUI ( ( WebSliderUI ) ReflectUtils.createInstance ( FlatLookAndFeel.sliderUI, this ) );
             }
             catch ( final Throwable e )
             {

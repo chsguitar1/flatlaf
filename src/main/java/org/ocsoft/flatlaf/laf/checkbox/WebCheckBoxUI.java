@@ -23,8 +23,8 @@ import javax.swing.plaf.basic.BasicCheckBoxUI;
 import javax.swing.tree.TreeCellRenderer;
 
 import org.ocsoft.flatlaf.extended.checkbox.CheckState;
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.list.WebListElement;
 import org.ocsoft.flatlaf.utils.*;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
@@ -144,7 +144,7 @@ public class WebCheckBoxUI extends BasicCheckBoxUI implements ShapeProvider
 
         // Default settings
         SwingUtils.setOrientation ( checkBox );
-        LookAndFeel.installProperty ( checkBox, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        LookAndFeel.installProperty ( checkBox, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
         checkBox.setIcon ( createIcon () );
         setAnimated ( isAnimatedByDefault () );
         updateBorder ();
@@ -198,7 +198,7 @@ public class WebCheckBoxUI extends BasicCheckBoxUI implements ShapeProvider
                 checkIcon.setEnabled ( checkBox.isEnabled () );
             }
         };
-        checkBox.addPropertyChangeListener ( WebLookAndFeel.ENABLED_PROPERTY, enabledStateListener );
+        checkBox.addPropertyChangeListener ( FlatLookAndFeel.ENABLED_PROPERTY, enabledStateListener );
     }
 
     /**
@@ -206,7 +206,7 @@ public class WebCheckBoxUI extends BasicCheckBoxUI implements ShapeProvider
      */
     protected void uninstallEnabledStateListeners ()
     {
-        checkBox.removePropertyChangeListener ( WebLookAndFeel.ENABLED_PROPERTY, enabledStateListener );
+        checkBox.removePropertyChangeListener ( FlatLookAndFeel.ENABLED_PROPERTY, enabledStateListener );
     }
 
     /**
@@ -321,7 +321,7 @@ public class WebCheckBoxUI extends BasicCheckBoxUI implements ShapeProvider
                 performStateChanged ();
             }
         };
-        checkBox.addPropertyChangeListener ( WebLookAndFeel.MODEL_PROPERTY, modelChangeListener );
+        checkBox.addPropertyChangeListener ( FlatLookAndFeel.MODEL_PROPERTY, modelChangeListener );
     }
 
     /**
@@ -801,7 +801,7 @@ public class WebCheckBoxUI extends BasicCheckBoxUI implements ShapeProvider
         // Shade
         if ( enabled )
         {
-            final Color shadeColor = checkBox.isFocusOwner () ? StyleConstants.fieldFocusColor : StyleConstants.shadeColor;
+            final Color shadeColor = checkBox.isFocusOwner () ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor;
             GraphicsUtils.drawShade ( g2d, shape, shadeColor, shadeWidth );
         }
 

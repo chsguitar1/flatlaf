@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.menu;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.language.LanguageContainerMethods;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.log.Log;
@@ -535,7 +535,7 @@ public class WebPopupMenu extends JPopupMenu implements Styleable, ShapeProvider
         {
             try
             {
-                setUI ( ( WebPopupMenuUI ) ReflectUtils.createInstance ( WebLookAndFeel.popupMenuUI ) );
+                setUI ( ( WebPopupMenuUI ) ReflectUtils.createInstance ( FlatLookAndFeel.popupMenuUI ) );
             }
             catch ( final Throwable e )
             {

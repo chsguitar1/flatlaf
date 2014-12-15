@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.list;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * WebList style class.
@@ -42,12 +42,12 @@ public final class WebListStyle
     /**
      * Cells selection rounding.
      */
-    public static int selectionRound = StyleConstants.smallRound;
+    public static int selectionRound = FlatLafStyleConstants.smallRound;
 
     /**
      * Cells selection shade width.
      */
-    public static int selectionShadeWidth = StyleConstants.shadeWidth;
+    public static int selectionShadeWidth = FlatLafStyleConstants.shadeWidth;
 
     /**
      * Whether selection should be web-colored or not.
@@ -64,7 +64,7 @@ public final class WebListStyle
      * Selection background color.
      * It is used only when webColoredSelection is set to false.
      */
-    public static Color selectionBackgroundColor = StyleConstants.bottomBgColor;
+    public static Color selectionBackgroundColor = FlatLafStyleConstants.bottomBgColor;
 
     /**
      * Whether should scroll list down to selection automatically or not.

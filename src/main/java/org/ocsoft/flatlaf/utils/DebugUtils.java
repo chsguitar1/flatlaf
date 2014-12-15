@@ -19,8 +19,8 @@ package org.ocsoft.flatlaf.utils;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.GlobalConstants;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.TimeUtils;
 
@@ -40,7 +40,7 @@ public final class DebugUtils
      */
     public static void initTimeDebugInfo ()
     {
-        if ( GlobalConstants.DEBUG )
+        if ( FlatLafConstants.DEBUG )
         {
             TimeUtils.pinNanoTime ();
         }
@@ -54,7 +54,7 @@ public final class DebugUtils
      */
     public static void paintTimeDebugInfo ( final Graphics g )
     {
-        if ( GlobalConstants.DEBUG )
+        if ( FlatLafConstants.DEBUG )
         {
             paintDebugInfoImpl ( ( Graphics2D ) g );
         }
@@ -68,7 +68,7 @@ public final class DebugUtils
      */
     public static void paintTimeDebugInfo ( final Graphics2D g2d )
     {
-        if ( GlobalConstants.DEBUG )
+        if ( FlatLafConstants.DEBUG )
         {
             paintDebugInfoImpl ( g2d );
         }
@@ -82,11 +82,11 @@ public final class DebugUtils
     private static void paintDebugInfoImpl ( final Graphics2D g2d )
     {
         final double ms = TimeUtils.getPassedNanoTime () / 1000000f;
-        final String micro = "" + StyleConstants.DEBUG_FORMAT.format ( ms );
+        final String micro = "" + FlatLafStyleConstants.DEBUG_FORMAT.format ( ms );
         final Rectangle cb = g2d.getClip ().getBounds ();
         final Font font = g2d.getFont ();
 
-        g2d.setFont ( StyleConstants.DEBUG_FONT );
+        g2d.setFont ( FlatLafStyleConstants.DEBUG_FONT );
         final Object aa = GraphicsUtils.setupAntialias ( g2d );
 
         final FontMetrics fm = g2d.getFontMetrics ();

@@ -22,8 +22,8 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.ScrollBarUI;
 import javax.swing.plaf.basic.BasicScrollPaneUI;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.focus.FocusTracker;
@@ -81,8 +81,8 @@ public class WebScrollPaneUI extends BasicScrollPaneUI implements ShapeProvider
 
         // Default settings
         SwingUtils.setOrientation ( scrollpane );
-        LookAndFeel.installProperty ( scrollpane, WebLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
-        scrollpane.setBackground ( StyleConstants.backgroundColor );
+        LookAndFeel.installProperty ( scrollpane, FlatLookAndFeel.OPAQUE_PROPERTY, Boolean.FALSE );
+        scrollpane.setBackground ( FlatLafStyleConstants.backgroundColor );
 
         // Updating scroll bars
         // todo Remove these when scroll pane painter will be completed
@@ -161,7 +161,7 @@ public class WebScrollPaneUI extends BasicScrollPaneUI implements ShapeProvider
                 scrollpane.setCorner ( JScrollPane.UPPER_TRAILING_CORNER, getUpperTrailing () );
             }
         };
-        scrollpane.addPropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        scrollpane.addPropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
 
         // Focus tracker for the scroll pane content
         focusTracker = new DefaultFocusTracker ()
@@ -185,7 +185,7 @@ public class WebScrollPaneUI extends BasicScrollPaneUI implements ShapeProvider
     @Override
     public void uninstallUI ( final JComponent c )
     {
-        scrollpane.removePropertyChangeListener ( WebLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
+        scrollpane.removePropertyChangeListener ( FlatLookAndFeel.ORIENTATION_PROPERTY, propertyChangeListener );
         scrollpane.remove ( getLowerLeadingCorner () );
         scrollpane.remove ( getLowerTrailingCorner () );
         scrollpane.remove ( getUpperTrailing () );
@@ -341,7 +341,7 @@ public class WebScrollPaneUI extends BasicScrollPaneUI implements ShapeProvider
         if ( drawBorder )
         {
             // Border, background and shade
-            LafUtils.drawWebStyle ( ( Graphics2D ) g, c, drawFocus && focused ? StyleConstants.fieldFocusColor : StyleConstants.shadeColor,
+            LafUtils.drawWebStyle ( ( Graphics2D ) g, c, drawFocus && focused ? FlatLafStyleConstants.fieldFocusColor : FlatLafStyleConstants.shadeColor,
                     shadeWidth, round, drawBackground, false );
         }
 

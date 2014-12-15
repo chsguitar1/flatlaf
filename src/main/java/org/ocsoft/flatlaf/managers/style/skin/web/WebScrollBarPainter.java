@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.managers.style.skin.web;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.scroll.ScrollBarPainter;
 import org.ocsoft.flatlaf.laf.scroll.WebScrollBarStyle;
 import org.ocsoft.flatlaf.utils.ColorUtils;
@@ -530,7 +530,7 @@ public class WebScrollBarPainter<E extends JScrollBar> extends AbstractPainter<E
                 {
                     if ( rolloverAnimator == null )
                     {
-                        rolloverAnimator = new WebTimer ( StyleConstants.avgAnimationDelay, new ActionListener ()
+                        rolloverAnimator = new WebTimer ( FlatLafStyleConstants.avgAnimationDelay, new ActionListener ()
                         {
                             @Override
                             public void actionPerformed ( final ActionEvent e )

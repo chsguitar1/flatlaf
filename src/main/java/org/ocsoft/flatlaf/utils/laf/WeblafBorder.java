@@ -25,8 +25,8 @@ import java.awt.*;
  * It usually replaces default/user component border but you can provide a special client property that will disable that behavior.
  *
  * @author Mikle Garin
- * @see org.ocsoft.flatlaf.laf.WebLookAndFeel#PROPERTY_HONOR_USER_BORDER
- * @see org.ocsoft.flatlaf.laf.WebLookAndFeel#PROPERTY_HONOR_USER_BORDERS
+ * @see org.ocsoft.flatlaf.laf.FlatLookAndFeel#PROPERTY_HONOR_USER_BORDER
+ * @see org.ocsoft.flatlaf.laf.FlatLookAndFeel#PROPERTY_HONOR_USER_BORDERS
  */
 
 public final class WeblafBorder extends BorderUIResource.EmptyBorderUIResource

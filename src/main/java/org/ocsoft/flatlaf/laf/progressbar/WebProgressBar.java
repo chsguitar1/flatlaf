@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.progressbar;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
@@ -223,7 +223,7 @@ public class WebProgressBar extends JProgressBar
         {
             try
             {
-                setUI ( ( WebProgressBarUI ) ReflectUtils.createInstance ( WebLookAndFeel.progressBarUI ) );
+                setUI ( ( WebProgressBarUI ) ReflectUtils.createInstance ( FlatLookAndFeel.progressBarUI ) );
             }
             catch ( final Throwable e )
             {

@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.checkbox;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBox;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
@@ -333,7 +333,7 @@ public class WebTristateCheckBox extends WebCheckBox
         {
             try
             {
-                setUI ( ( WebTristateCheckBoxUI ) ReflectUtils.createInstance ( WebLookAndFeel.tristateCheckBoxUI ) );
+                setUI ( ( WebTristateCheckBoxUI ) ReflectUtils.createInstance ( FlatLookAndFeel.tristateCheckBoxUI ) );
             }
             catch ( final Throwable e )
             {

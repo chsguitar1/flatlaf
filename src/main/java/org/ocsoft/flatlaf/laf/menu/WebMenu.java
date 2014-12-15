@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.menu;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;
 import org.ocsoft.flatlaf.managers.language.updaters.LanguageUpdater;
@@ -332,7 +332,7 @@ public class WebMenu extends JMenu implements LanguageMethods, FontMethods<WebMe
         {
             try
             {
-                setUI ( ( WebMenuUI ) ReflectUtils.createInstance ( WebLookAndFeel.menuUI ) );
+                setUI ( ( WebMenuUI ) ReflectUtils.createInstance ( FlatLookAndFeel.menuUI ) );
             }
             catch ( final Throwable e )
             {

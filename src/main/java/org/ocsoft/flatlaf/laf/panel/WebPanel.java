@@ -21,7 +21,7 @@ import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PartialDecoration;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageContainerMethods;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
@@ -998,7 +998,7 @@ public class WebPanel extends JPanel
         {
             try
             {
-                setUI ( ( WebPanelUI ) ReflectUtils.createInstance ( WebLookAndFeel.panelUI ) );
+                setUI ( ( WebPanelUI ) ReflectUtils.createInstance ( FlatLookAndFeel.panelUI ) );
             }
             catch ( final Throwable e )
             {

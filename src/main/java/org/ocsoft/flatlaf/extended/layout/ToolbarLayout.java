@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.layout;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -47,10 +47,10 @@ public class ToolbarLayout extends AbstractLayoutManager implements SwingConstan
     protected Map<Component, String> constraints = new HashMap<Component, String> ();
 
     // Spacing between components
-    protected int spacing = StyleConstants.contentSpacing;
+    protected int spacing = FlatLafStyleConstants.contentSpacing;
 
     // Spacing between left and right (top and bottom) layout parts
-    protected int partsSpacing = StyleConstants.largeContentSpacing;
+    protected int partsSpacing = FlatLafStyleConstants.largeContentSpacing;
 
     // Layout orientation
     protected int orientation = HORIZONTAL;

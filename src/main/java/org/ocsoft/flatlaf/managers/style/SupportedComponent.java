@@ -26,7 +26,7 @@ import org.ocsoft.flatlaf.extended.checkbox.WebTristateCheckBox;
 import org.ocsoft.flatlaf.extended.label.WebMultiLineLabel;
 import org.ocsoft.flatlaf.extended.label.WebStyledLabel;
 import org.ocsoft.flatlaf.extended.label.WebVerticalLabel;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.style.data.ComponentStyleConverter;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.ReflectUtils;
@@ -41,7 +41,7 @@ import java.util.*;
  * @author Mikle Garin
  * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-StyleManager">How to use StyleManager</a>
  * @see org.ocsoft.flatlaf.managers.style.StyleManager
- * @see org.ocsoft.flatlaf.laf.WebLookAndFeel
+ * @see org.ocsoft.flatlaf.laf.FlatLookAndFeel
  */
 
 public enum SupportedComponent
@@ -49,103 +49,103 @@ public enum SupportedComponent
     /**
      * Label-related components.
      */
-    label ( true, JLabel.class, "LabelUI", WebLookAndFeel.labelUI ),
+    label ( true, JLabel.class, "LabelUI", FlatLookAndFeel.labelUI ),
     // linkLabel ( true, WebLinkLabel.class, "LinkLabelUI", WebLookAndFeel.linkLabelUI ),
-    verticalLabel ( true, WebVerticalLabel.class, "VerticalLabelUI", WebLookAndFeel.verticalLabelUI ),
-    multiLineLabel ( false, WebMultiLineLabel.class, "MultiLineLabelUI", WebLookAndFeel.multiLineLabelUI ),
-    styledLabel ( true, WebStyledLabel.class, "StyledLabelUI", WebLookAndFeel.styledLabelUI ),
-    toolTip ( false, JToolTip.class, "ToolTipUI", WebLookAndFeel.toolTipUI ),
+    verticalLabel ( true, WebVerticalLabel.class, "VerticalLabelUI", FlatLookAndFeel.verticalLabelUI ),
+    multiLineLabel ( false, WebMultiLineLabel.class, "MultiLineLabelUI", FlatLookAndFeel.multiLineLabelUI ),
+    styledLabel ( true, WebStyledLabel.class, "StyledLabelUI", FlatLookAndFeel.styledLabelUI ),
+    toolTip ( false, JToolTip.class, "ToolTipUI", FlatLookAndFeel.toolTipUI ),
 
     /**
      * Button-related components.
      */
-    button ( false, JButton.class, "ButtonUI", WebLookAndFeel.buttonUI ),
-    splitButton ( false, WebSplitButton.class, "SplitButtonUI", WebLookAndFeel.splitButtonUI ),
-    toggleButton ( false, JToggleButton.class, "ToggleButtonUI", WebLookAndFeel.toggleButtonUI ),
-    checkBox ( false, JCheckBox.class, "CheckBoxUI", WebLookAndFeel.checkBoxUI ),
-    tristateCheckBox ( false, WebTristateCheckBox.class, "TristateCheckBoxUI", WebLookAndFeel.tristateCheckBoxUI ),
-    radioButton ( false, JRadioButton.class, "RadioButtonUI", WebLookAndFeel.radioButtonUI ),
+    button ( false, JButton.class, "ButtonUI", FlatLookAndFeel.buttonUI ),
+    splitButton ( false, WebSplitButton.class, "SplitButtonUI", FlatLookAndFeel.splitButtonUI ),
+    toggleButton ( false, JToggleButton.class, "ToggleButtonUI", FlatLookAndFeel.toggleButtonUI ),
+    checkBox ( false, JCheckBox.class, "CheckBoxUI", FlatLookAndFeel.checkBoxUI ),
+    tristateCheckBox ( false, WebTristateCheckBox.class, "TristateCheckBoxUI", FlatLookAndFeel.tristateCheckBoxUI ),
+    radioButton ( false, JRadioButton.class, "RadioButtonUI", FlatLookAndFeel.radioButtonUI ),
 
     /**
      * Menu-related components.
      */
-    menuBar ( false, JMenuBar.class, "MenuBarUI", WebLookAndFeel.menuBarUI ),
-    menu ( false, JMenu.class, "MenuUI", WebLookAndFeel.menuUI ),
-    popupMenu ( true, JPopupMenu.class, "PopupMenuUI", WebLookAndFeel.popupMenuUI ),
-    menuItem ( false, JMenuItem.class, "MenuItemUI", WebLookAndFeel.menuItemUI ),
-    checkBoxMenuItem ( false, JCheckBoxMenuItem.class, "CheckBoxMenuItemUI", WebLookAndFeel.checkBoxMenuItemUI ),
-    radioButtonMenuItem ( false, JRadioButtonMenuItem.class, "RadioButtonMenuItemUI", WebLookAndFeel.radioButtonMenuItemUI ),
-    popupMenuSeparator ( false, JPopupMenu.Separator.class, "PopupMenuSeparatorUI", WebLookAndFeel.popupMenuSeparatorUI ),
+    menuBar ( false, JMenuBar.class, "MenuBarUI", FlatLookAndFeel.menuBarUI ),
+    menu ( false, JMenu.class, "MenuUI", FlatLookAndFeel.menuUI ),
+    popupMenu ( true, JPopupMenu.class, "PopupMenuUI", FlatLookAndFeel.popupMenuUI ),
+    menuItem ( false, JMenuItem.class, "MenuItemUI", FlatLookAndFeel.menuItemUI ),
+    checkBoxMenuItem ( false, JCheckBoxMenuItem.class, "CheckBoxMenuItemUI", FlatLookAndFeel.checkBoxMenuItemUI ),
+    radioButtonMenuItem ( false, JRadioButtonMenuItem.class, "RadioButtonMenuItemUI", FlatLookAndFeel.radioButtonMenuItemUI ),
+    popupMenuSeparator ( false, JPopupMenu.Separator.class, "PopupMenuSeparatorUI", FlatLookAndFeel.popupMenuSeparatorUI ),
 
     /**
      * Separator component.
      */
-    separator ( false, JSeparator.class, "SeparatorUI", WebLookAndFeel.separatorUI ),
+    separator ( false, JSeparator.class, "SeparatorUI", FlatLookAndFeel.separatorUI ),
 
     /**
      * Scroll-related components.
      */
-    scrollBar ( true, JScrollBar.class, "ScrollBarUI", WebLookAndFeel.scrollBarUI ),
-    scrollPane ( false, JScrollPane.class, "ScrollPaneUI", WebLookAndFeel.scrollPaneUI ),
-    viewport ( false, JViewport.class, "ViewportUI", WebLookAndFeel.viewportUI ),
+    scrollBar ( true, JScrollBar.class, "ScrollBarUI", FlatLookAndFeel.scrollBarUI ),
+    scrollPane ( false, JScrollPane.class, "ScrollPaneUI", FlatLookAndFeel.scrollPaneUI ),
+    viewport ( false, JViewport.class, "ViewportUI", FlatLookAndFeel.viewportUI ),
 
     /**
      * Text-related components.
      */
-    textField ( false, JTextField.class, "TextFieldUI", WebLookAndFeel.textFieldUI ),
-    passwordField ( false, JPasswordField.class, "PasswordFieldUI", WebLookAndFeel.passwordFieldUI ),
-    formattedTextField ( false, JFormattedTextField.class, "FormattedTextFieldUI", WebLookAndFeel.formattedTextFieldUI ),
-    textArea ( false, JTextArea.class, "TextAreaUI", WebLookAndFeel.textAreaUI ),
-    editorPane ( false, JEditorPane.class, "EditorPaneUI", WebLookAndFeel.editorPaneUI ),
-    textPane ( false, JTextPane.class, "TextPaneUI", WebLookAndFeel.textPaneUI ),
+    textField ( false, JTextField.class, "TextFieldUI", FlatLookAndFeel.textFieldUI ),
+    passwordField ( false, JPasswordField.class, "PasswordFieldUI", FlatLookAndFeel.passwordFieldUI ),
+    formattedTextField ( false, JFormattedTextField.class, "FormattedTextFieldUI", FlatLookAndFeel.formattedTextFieldUI ),
+    textArea ( false, JTextArea.class, "TextAreaUI", FlatLookAndFeel.textAreaUI ),
+    editorPane ( false, JEditorPane.class, "EditorPaneUI", FlatLookAndFeel.editorPaneUI ),
+    textPane ( false, JTextPane.class, "TextPaneUI", FlatLookAndFeel.textPaneUI ),
 
     /**
      * Toolbar-related components.
      */
-    toolBar ( false, JToolBar.class, "ToolBarUI", WebLookAndFeel.toolBarUI ),
-    toolBarSeparator ( false, JToolBar.Separator.class, "ToolBarSeparatorUI", WebLookAndFeel.toolBarSeparatorUI ),
+    toolBar ( false, JToolBar.class, "ToolBarUI", FlatLookAndFeel.toolBarUI ),
+    toolBarSeparator ( false, JToolBar.Separator.class, "ToolBarSeparatorUI", FlatLookAndFeel.toolBarSeparatorUI ),
 
     /**
      * Table-related components.
      */
-    table ( false, JTable.class, "TableUI", WebLookAndFeel.tableUI ),
-    tableHeader ( false, JTableHeader.class, "TableHeaderUI", WebLookAndFeel.tableHeaderUI ),
+    table ( false, JTable.class, "TableUI", FlatLookAndFeel.tableUI ),
+    tableHeader ( false, JTableHeader.class, "TableHeaderUI", FlatLookAndFeel.tableHeaderUI ),
 
     /**
      * Chooser components.
      */
-    colorChooser ( false, JColorChooser.class, "ColorChooserUI", WebLookAndFeel.colorChooserUI ),
-    fileChooser ( false, JFileChooser.class, "FileChooserUI", WebLookAndFeel.fileChooserUI ),
+    colorChooser ( false, JColorChooser.class, "ColorChooserUI", FlatLookAndFeel.colorChooserUI ),
+    fileChooser ( false, JFileChooser.class, "FileChooserUI", FlatLookAndFeel.fileChooserUI ),
 
     /**
      * Container-related components.
      */
-    panel ( true, JPanel.class, "PanelUI", WebLookAndFeel.panelUI ),
-    rootPane ( false, JRootPane.class, "RootPaneUI", WebLookAndFeel.rootPaneUI ),
-    tabbedPane ( false, JTabbedPane.class, "TabbedPaneUI", WebLookAndFeel.tabbedPaneUI ),
-    splitPane ( false, JSplitPane.class, "SplitPaneUI", WebLookAndFeel.splitPaneUI ),
+    panel ( true, JPanel.class, "PanelUI", FlatLookAndFeel.panelUI ),
+    rootPane ( false, JRootPane.class, "RootPaneUI", FlatLookAndFeel.rootPaneUI ),
+    tabbedPane ( false, JTabbedPane.class, "TabbedPaneUI", FlatLookAndFeel.tabbedPaneUI ),
+    splitPane ( false, JSplitPane.class, "SplitPaneUI", FlatLookAndFeel.splitPaneUI ),
 
     /**
      * Other data-related components.
      */
-    progressBar ( false, JProgressBar.class, "ProgressBarUI", WebLookAndFeel.progressBarUI ),
-    slider ( false, JSlider.class, "SliderUI", WebLookAndFeel.sliderUI ),
-    spinner ( false, JSpinner.class, "SpinnerUI", WebLookAndFeel.spinnerUI ),
-    tree ( false, JTree.class, "TreeUI", WebLookAndFeel.treeUI ),
-    list ( false, JList.class, "ListUI", WebLookAndFeel.listUI ),
-    comboBox ( false, JComboBox.class, "ComboBoxUI", WebLookAndFeel.comboBoxUI ),
+    progressBar ( false, JProgressBar.class, "ProgressBarUI", FlatLookAndFeel.progressBarUI ),
+    slider ( false, JSlider.class, "SliderUI", FlatLookAndFeel.sliderUI ),
+    spinner ( false, JSpinner.class, "SpinnerUI", FlatLookAndFeel.spinnerUI ),
+    tree ( false, JTree.class, "TreeUI", FlatLookAndFeel.treeUI ),
+    list ( false, JList.class, "ListUI", FlatLookAndFeel.listUI ),
+    comboBox ( false, JComboBox.class, "ComboBoxUI", FlatLookAndFeel.comboBoxUI ),
 
     /**
      * Desktop-pane-related components.
      */
-    desktopPane ( false, JDesktopPane.class, "DesktopPaneUI", WebLookAndFeel.desktopPaneUI ),
-    desktopIcon ( false, JInternalFrame.JDesktopIcon.class, "DesktopIconUI", WebLookAndFeel.desktopIconUI ),
-    internalFrame ( false, JInternalFrame.class, "InternalFrameUI", WebLookAndFeel.internalFrameUI ),
+    desktopPane ( false, JDesktopPane.class, "DesktopPaneUI", FlatLookAndFeel.desktopPaneUI ),
+    desktopIcon ( false, JInternalFrame.JDesktopIcon.class, "DesktopIconUI", FlatLookAndFeel.desktopIconUI ),
+    internalFrame ( false, JInternalFrame.class, "InternalFrameUI", FlatLookAndFeel.internalFrameUI ),
 
     /**
      * Option pane component.
      */
-    optionPane ( false, JOptionPane.class, "OptionPaneUI", WebLookAndFeel.optionPaneUI );
+    optionPane ( false, JOptionPane.class, "OptionPaneUI", FlatLookAndFeel.optionPaneUI );
 
     /**
      * Enum constant settings.

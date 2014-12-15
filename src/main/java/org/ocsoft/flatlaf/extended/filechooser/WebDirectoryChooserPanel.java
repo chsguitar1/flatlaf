@@ -26,7 +26,7 @@ import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
 import org.ocsoft.flatlaf.extended.tree.FileTreeNode;
 import org.ocsoft.flatlaf.extended.tree.FileTreeRootType;
 import org.ocsoft.flatlaf.extended.tree.WebFileTree;
-import org.ocsoft.flatlaf.global.GlobalConstants;
+import org.ocsoft.flatlaf.global.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.optionpane.WebOptionPane;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
@@ -82,7 +82,7 @@ public class WebDirectoryChooserPanel extends WebPanel
     /**
      * File filter.
      */
-    protected AbstractFileFilter filter = GlobalConstants.NON_HIDDEN_DIRECTORIES_FILTER;
+    protected AbstractFileFilter filter = FlatLafConstants.NON_HIDDEN_DIRECTORIES_FILTER;
 
     /**
      * Toolbar components.

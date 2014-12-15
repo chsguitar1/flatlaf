@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.separator;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 
 /**
  * WebSeparator style class.
@@ -32,22 +32,22 @@ public final class WebSeparatorStyle
     /**
      * Light upper separator line color.
      */
-    public static Color separatorLightUpperColor = StyleConstants.separatorLightUpperColor;
+    public static Color separatorLightUpperColor = FlatLafStyleConstants.separatorLightUpperColor;
 
     /**
      * Light middle separator line color.
      */
-    public static Color separatorLightColor = StyleConstants.separatorLightColor;
+    public static Color separatorLightColor = FlatLafStyleConstants.separatorLightColor;
 
     /**
      * Upper separator line color.
      */
-    public static Color separatorUpperColor = StyleConstants.separatorUpperColor;
+    public static Color separatorUpperColor = FlatLafStyleConstants.separatorUpperColor;
 
     /**
      * Middle separator line color.
      */
-    public static Color separatorColor = StyleConstants.separatorColor;
+    public static Color separatorColor = FlatLafStyleConstants.separatorColor;
 
     /**
      * Whether should use reversed colors or not.
@@ -67,5 +67,5 @@ public final class WebSeparatorStyle
     /**
      * Default separator margin.
      */
-    public static Insets margin = StyleConstants.emptyMargin;
+    public static Insets margin = FlatLafStyleConstants.emptyMargin;
 }

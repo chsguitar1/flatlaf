@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.utils.filefilter;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.GlobalConstants;
+import org.ocsoft.flatlaf.global.FlatLafConstants;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.utils.FileUtils;
 
@@ -62,6 +62,6 @@ public class ImageFilesFilter extends AbstractFileFilter
     @Override
     public boolean accept ( final File file )
     {
-        return GlobalConstants.IMAGE_FORMATS.contains ( FileUtils.getFileExtPart ( file.getName ().toLowerCase (), false ) );
+        return FlatLafConstants.IMAGE_FORMATS.contains ( FileUtils.getFileExtPart ( file.getName ().toLowerCase (), false ) );
     }
 }

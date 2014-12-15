@@ -23,7 +23,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
 
 /**
@@ -184,11 +184,11 @@ public final class WindowUtils
      * @param window window to process
      * @param <W>    window type
      * @return processed window
-     * @see StyleConstants#animate
+     * @see FlatLafStyleConstants#animate
      */
     public static <W extends Window> W packAndCenter ( final W window )
     {
-        return packAndCenter ( window, StyleConstants.animate );
+        return packAndCenter ( window, FlatLafStyleConstants.animate );
     }
 
     /**

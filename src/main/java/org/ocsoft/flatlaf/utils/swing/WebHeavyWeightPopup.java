@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.utils.swing;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.focus.GlobalFocusListener;
@@ -512,7 +512,7 @@ public class WebHeavyWeightPopup extends WebPanel implements WindowMethods<JWind
             // Animating popup display
             if ( animate )
             {
-                showAnimator = WebTimer.repeat ( StyleConstants.fastAnimationDelay, 0L, new ActionListener ()
+                showAnimator = WebTimer.repeat ( FlatLafStyleConstants.fastAnimationDelay, 0L, new ActionListener ()
                 {
                     @Override
                     public void actionPerformed ( final ActionEvent e )
@@ -601,7 +601,7 @@ public class WebHeavyWeightPopup extends WebPanel implements WindowMethods<JWind
 
             if ( animate )
             {
-                hideAnimator = WebTimer.repeat ( StyleConstants.fastAnimationDelay, 0L, new ActionListener ()
+                hideAnimator = WebTimer.repeat ( FlatLafStyleConstants.fastAnimationDelay, 0L, new ActionListener ()
                 {
                     @Override
                     public void actionPerformed ( final ActionEvent e )

@@ -23,8 +23,8 @@ import javax.swing.filechooser.FileView;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.FileChooserUI;
 
-import org.ocsoft.flatlaf.global.GlobalConstants;
-import org.ocsoft.flatlaf.laf.WebLookAndFeel;
+import org.ocsoft.flatlaf.global.FlatLafConstants;
+import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.LafUtils;
@@ -296,7 +296,7 @@ public class WebFileChooserUI extends FileChooserUI
             }
             else
             {
-                fileChooserPanel.setFileFilter ( GlobalConstants.ALL_FILES_FILTER );
+                fileChooserPanel.setFileFilter ( FlatLafConstants.ALL_FILES_FILTER );
             }
         }
         else if ( prop.equals ( JFileChooser.DIRECTORY_CHANGED_PROPERTY ) )
@@ -339,7 +339,7 @@ public class WebFileChooserUI extends FileChooserUI
         {
             fileChooserPanel.setMultiSelectionEnabled ( fileChooser.isMultiSelectionEnabled () );
         }
-        else if ( prop.equals ( WebLookAndFeel.ORIENTATION_PROPERTY ) )
+        else if ( prop.equals ( FlatLookAndFeel.ORIENTATION_PROPERTY ) )
         {
             fileChooserPanel.applyComponentOrientation ( fileChooser.getComponentOrientation () );
         }
@@ -351,7 +351,7 @@ public class WebFileChooserUI extends FileChooserUI
     @Override
     public FileFilter getAcceptAllFileFilter ( final JFileChooser fc )
     {
-        return GlobalConstants.ALL_FILES_FILTER;
+        return FlatLafConstants.ALL_FILES_FILTER;
     }
 
     /**

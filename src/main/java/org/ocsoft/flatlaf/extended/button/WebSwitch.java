@@ -25,7 +25,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.utils.CollectionUtils;
@@ -135,7 +135,7 @@ public class WebSwitch extends WebPanel
      */
     private void createAnimator ()
     {
-        animator = new WebTimer ( "WebSwitch.animator", StyleConstants.maxAnimationDelay, new ActionListener ()
+        animator = new WebTimer ( "WebSwitch.animator", FlatLafStyleConstants.maxAnimationDelay, new ActionListener ()
         {
             @Override
             public void actionPerformed ( final ActionEvent e )

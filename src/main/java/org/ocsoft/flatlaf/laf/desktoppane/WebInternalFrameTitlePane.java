@@ -21,7 +21,7 @@ import javax.swing.*;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 
 import org.ocsoft.flatlaf.extended.panel.BorderPanel;
-import org.ocsoft.flatlaf.global.StyleConstants;
+import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.WebFonts;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
@@ -45,8 +45,8 @@ public class WebInternalFrameTitlePane extends BasicInternalFrameTitlePane
         super ( f );
 
         setOpaque ( false );
-        setBorder ( BorderFactory.createEmptyBorder ( StyleConstants.shadeWidth, StyleConstants.shadeWidth, StyleConstants.shadeWidth,
-                StyleConstants.shadeWidth ) );
+        setBorder ( BorderFactory.createEmptyBorder ( FlatLafStyleConstants.shadeWidth, FlatLafStyleConstants.shadeWidth, FlatLafStyleConstants.shadeWidth,
+                FlatLafStyleConstants.shadeWidth ) );
 
         if ( !isFrameTitle () )
         {
@@ -65,8 +65,8 @@ public class WebInternalFrameTitlePane extends BasicInternalFrameTitlePane
         // super.paintComponent ( g );
         if ( !isFrameTitle () )
         {
-            LafUtils.drawWebStyle ( ( Graphics2D ) g, WebInternalFrameTitlePane.this, StyleConstants.shadeColor, StyleConstants.shadeWidth,
-                    StyleConstants.bigRound, true, false );
+            LafUtils.drawWebStyle ( ( Graphics2D ) g, WebInternalFrameTitlePane.this, FlatLafStyleConstants.shadeColor, FlatLafStyleConstants.shadeWidth,
+                    FlatLafStyleConstants.bigRound, true, false );
         }
     }
 
@@ -138,7 +138,7 @@ public class WebInternalFrameTitlePane extends BasicInternalFrameTitlePane
                 setEnabled ( frame.isIconifiable () );
                 setRolloverDarkBorderOnly ( false );
                 setShadeWidth ( 0 );
-                setRound ( StyleConstants.bigRound );
+                setRound ( FlatLafStyleConstants.bigRound );
                 setInnerShadeWidth ( 2 );
                 setFocusable ( false );
                 if ( isFrameTitle () )
@@ -166,7 +166,7 @@ public class WebInternalFrameTitlePane extends BasicInternalFrameTitlePane
                 setEnabled ( frame.isMaximizable () );
                 setRolloverDarkBorderOnly ( false );
                 setShadeWidth ( 0 );
-                setRound ( StyleConstants.bigRound );
+                setRound ( FlatLafStyleConstants.bigRound );
                 setInnerShadeWidth ( 2 );
                 setFocusable ( false );
                 setDrawLeft ( false );
@@ -184,7 +184,7 @@ public class WebInternalFrameTitlePane extends BasicInternalFrameTitlePane
                 setEnabled ( frame.isClosable () );
                 setRolloverDarkBorderOnly ( false );
                 setShadeWidth ( 0 );
-                setRound ( StyleConstants.bigRound );
+                setRound ( FlatLafStyleConstants.bigRound );
                 setInnerShadeWidth ( 2 );
                 setFocusable ( false );
                 if ( isFrameTitle () )
