@@ -22,8 +22,8 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicEditorPaneUI;
 import javax.swing.text.JTextComponent;
 
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 
 import java.awt.*;

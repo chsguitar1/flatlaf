@@ -19,12 +19,12 @@ package org.ocsoft.flatlaf.extended.colorchooser;
 
 import javax.swing.*;
 
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.extended.image.WebImage;
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
 import org.ocsoft.flatlaf.extended.window.PopOverAlignment;
 import org.ocsoft.flatlaf.extended.window.PopOverDirection;
 import org.ocsoft.flatlaf.extended.window.WebPopOver;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.colorchooser.ColorChooserListener;
 import org.ocsoft.flatlaf.laf.colorchooser.WebColorChooserPanel;

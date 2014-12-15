@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.tree;
 
 import java.io.File;
 
-import org.ocsoft.flatlaf.laf.FlatLafConstants;
+import org.ocsoft.flatlaf.core.constants.FlatLafFileFilters;
 import org.ocsoft.flatlaf.utils.general.Filter;
 
 /**
@@ -40,7 +40,7 @@ public class FileTreeNodeFilter implements Filter<FileTreeNode>
      */
     public FileTreeNodeFilter ()
     {
-        this ( FlatLafConstants.NON_HIDDEN_ONLY_FILTER );
+        this ( FlatLafFileFilters.NON_HIDDEN_ONLY_FILTER );
     }
 
     /**

@@ -22,8 +22,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.Document;
 
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.extended.image.WebImage;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.menu.WebCheckBoxMenuItem;
 import org.ocsoft.flatlaf.laf.menu.WebPopupMenu;
 import org.ocsoft.flatlaf.laf.text.WebTextField;

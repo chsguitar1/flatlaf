@@ -68,12 +68,12 @@ import javax.swing.UIManager;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.table.JTableHeader;
 
+import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.extended.button.WebSplitButton;
 import org.ocsoft.flatlaf.extended.checkbox.WebTristateCheckBox;
 import org.ocsoft.flatlaf.extended.label.WebMultiLineLabel;
 import org.ocsoft.flatlaf.extended.label.WebStyledLabel;
 import org.ocsoft.flatlaf.extended.label.WebVerticalLabel;
-import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.style.data.ComponentStyleConverter;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.laf.Styleable;
@@ -86,7 +86,7 @@ import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
  * @author Mikle Garin
  * @see <a href="https://github.com/mgarin/weblaf/wiki/How-to-use-StyleManager">How to use StyleManager</a>
  * @see org.ocsoft.flatlaf.managers.style.StyleManager
- * @see org.ocsoft.flatlaf.laf.FlatLookAndFeel
+ * @see org.ocsoft.flatlaf.core.FlatLookAndFeel
  */
 
 public enum SupportedComponent

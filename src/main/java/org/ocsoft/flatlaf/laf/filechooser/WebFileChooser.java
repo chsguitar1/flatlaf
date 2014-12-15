@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.filechooser;
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 
-import org.ocsoft.flatlaf.laf.FlatLafSettings;
+import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.language.LanguageContainerMethods;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;

@@ -19,8 +19,8 @@ package org.ocsoft.flatlaf.laf.scroll;
 
 import javax.swing.*;
 
+import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.style.StyleManager;
 import org.ocsoft.flatlaf.utils.graphics.SizeUtils;
 import org.ocsoft.flatlaf.utils.laf.Styleable;

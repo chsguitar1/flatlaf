@@ -21,7 +21,7 @@ import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicPopupMenuSeparatorUI;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;
 
 import java.awt.*;

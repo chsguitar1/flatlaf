@@ -19,10 +19,10 @@ package org.ocsoft.flatlaf.laf.toolbar;
 
 import javax.swing.*;
 
+import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.laf.separator.WebSeparator;
 import org.ocsoft.flatlaf.managers.language.LanguageContainerMethods;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;

@@ -21,11 +21,11 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.extended.tab.*;
 import org.ocsoft.flatlaf.extended.window.PopOverAdapter;
 import org.ocsoft.flatlaf.extended.window.PopOverEventRunnable;
 import org.ocsoft.flatlaf.extended.window.WebPopOver;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.utils.general.Pair;
 import org.ocsoft.flatlaf.utils.swing.*;

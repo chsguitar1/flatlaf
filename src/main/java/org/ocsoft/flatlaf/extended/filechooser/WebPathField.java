@@ -17,16 +17,44 @@
 
 package org.ocsoft.flatlaf.extended.filechooser;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.AbstractListModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JWindow;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 import javax.swing.filechooser.FileSystemView;
 
+import org.ocsoft.flatlaf.core.constants.FlatLafFileFilters;
 import org.ocsoft.flatlaf.extended.drag.FileDragAndDropHandler;
 import org.ocsoft.flatlaf.extended.layout.HorizontalFlowLayout;
-import org.ocsoft.flatlaf.laf.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.button.WebToggleButton;
@@ -47,13 +75,6 @@ import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.io.File;
-import java.io.FileFilter;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * User: mgarin Date: 05.07.11 Time: 18:20
@@ -76,7 +97,7 @@ public class WebPathField extends WebPanel
 
     protected static FileSystemView fsv = FileSystemView.getFileSystemView ();
 
-    protected AbstractFileFilter fileFilter = FlatLafConstants.DIRECTORIES_FILTER;
+    protected AbstractFileFilter fileFilter = FlatLafFileFilters.DIRECTORIES_FILTER;
 
     protected int preferredWidth = -1;
     protected boolean filesDropEnabled = true;

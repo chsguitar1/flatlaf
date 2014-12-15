@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.tooltip;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLafSettings;
+import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 import org.ocsoft.flatlaf.utils.laf.ShapeProvider;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;

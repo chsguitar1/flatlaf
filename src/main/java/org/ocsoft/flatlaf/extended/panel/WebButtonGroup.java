@@ -19,10 +19,10 @@ package org.ocsoft.flatlaf.extended.panel;
 
 import javax.swing.*;
 
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.extended.layout.HorizontalFlowLayout;
 import org.ocsoft.flatlaf.extended.layout.VerticalFlowLayout;
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.button.WebButtonUI;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;

@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.image;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.managers.tooltip.ToolTipMethods;

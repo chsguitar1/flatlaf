@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.colorchooser;
 import javax.swing.*;
 import javax.swing.colorchooser.ColorSelectionModel;
 
-import org.ocsoft.flatlaf.laf.FlatLafSettings;
+import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.swing.DialogOptions;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;

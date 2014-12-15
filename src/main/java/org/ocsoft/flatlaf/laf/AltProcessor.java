@@ -20,6 +20,7 @@ package org.ocsoft.flatlaf.laf;
 import javax.swing.*;
 import javax.swing.plaf.basic.ComboPopup;
 
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 
 import java.awt.*;

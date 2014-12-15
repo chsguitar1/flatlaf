@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.text;
 import javax.swing.*;
 import javax.swing.text.StyledDocument;
 
-import org.ocsoft.flatlaf.laf.FlatLafSettings;
+import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.LanguageMethods;

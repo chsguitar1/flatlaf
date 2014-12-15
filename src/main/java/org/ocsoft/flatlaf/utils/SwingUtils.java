@@ -96,13 +96,13 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.text.JTextComponent;
 
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.extended.date.WebCalendar;
 import org.ocsoft.flatlaf.extended.date.WebDateField;
 import org.ocsoft.flatlaf.extended.filechooser.WebFileChooserField;
 import org.ocsoft.flatlaf.extended.filechooser.WebPathField;
 import org.ocsoft.flatlaf.extended.panel.WebCollapsiblePane;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.rootpane.WebRootPaneUI;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyRunnable;

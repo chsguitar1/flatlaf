@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.painter;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.LafUtils;
 
 import java.lang.ref.WeakReference;

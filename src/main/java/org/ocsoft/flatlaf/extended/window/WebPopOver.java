@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.window;
 import javax.swing.*;
 import javax.swing.event.AncestorEvent;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.rootpane.WebDialog;
 import org.ocsoft.flatlaf.managers.style.StyleManager;

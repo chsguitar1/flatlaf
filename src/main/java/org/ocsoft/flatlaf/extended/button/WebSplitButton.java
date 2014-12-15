@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.button;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLafSettings;
+import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.menu.PopupMenuWay;
 import org.ocsoft.flatlaf.laf.menu.WebPopupMenuUI;

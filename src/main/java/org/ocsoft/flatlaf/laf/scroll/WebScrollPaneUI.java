@@ -22,8 +22,8 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.ScrollBarUI;
 import javax.swing.plaf.basic.BasicScrollPaneUI;
 
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.focus.FocusTracker;

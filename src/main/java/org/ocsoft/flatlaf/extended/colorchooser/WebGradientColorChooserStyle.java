@@ -19,8 +19,8 @@ package org.ocsoft.flatlaf.extended.colorchooser;
 
 import java.awt.*;
 
+import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.FlatLafSettings;
 
 /**
  * User: mgarin Date: 23.11.12 Time: 19:10

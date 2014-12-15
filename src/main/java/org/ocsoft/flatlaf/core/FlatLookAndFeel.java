@@ -15,7 +15,7 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.laf;
+package org.ocsoft.flatlaf.core;
 
 import javax.swing.*;
 import javax.swing.plaf.InsetsUIResource;
@@ -30,6 +30,9 @@ import org.ocsoft.flatlaf.extended.label.WebMultiLineLabelUI;
 import org.ocsoft.flatlaf.extended.label.WebStyledLabelUI;
 import org.ocsoft.flatlaf.extended.label.WebVerticalLabelUI;
 import org.ocsoft.flatlaf.extended.tab.DocumentPaneState;
+import org.ocsoft.flatlaf.laf.AltProcessor;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.WebLayoutStyle;
 import org.ocsoft.flatlaf.laf.button.WebButtonUI;
 import org.ocsoft.flatlaf.laf.button.WebToggleButtonUI;
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxUI;
@@ -181,90 +184,55 @@ public class FlatLookAndFeel extends BasicLookAndFeel
      * @see #setOrientation(boolean)
      */
     private static ComponentOrientation orientation;
-
-    /**
-     * Reassignable LookAndFeel UI class names.
-     */
-
-
-    /**
-     * Returns WebLookAndFeel name.
-     *
-     * @return WebLookAndFeel name
-     */
+    
+    
     @Override
-    public String getName ()
-    {
-        return "WebLookAndFeel";
+    public String getName() {
+        return "FlatLookAndFeel";
     }
-
-    /**
-     * Returns unique WebLookAndFeel ID.
-     *
-     * @return unique WebLookAndFeel ID
-     */
+    
     @Override
-    public String getID ()
-    {
-        return "WebLookAndFeel";
+    public String getID() {
+        return "FlatLookAndFeel";
     }
-
-    /**
-     * Returns short WebLookAndFeel description.
-     *
-     * @return short WebLookAndFeel description
-     */
+    
     @Override
-    public String getDescription ()
-    {
-        return "Cross-platform stylish Look and Feel";
+    public String getDescription() {
+        return "Cross-platform flat Look and Feel";
     }
-
+    
     /**
-     * Always returns false since WebLookAndFeel is not native for any platform.
-     *
+     * Always returns false since FlatLookAndFeel is not native for any platform.
      * @return false
      */
     @Override
-    public boolean isNativeLookAndFeel ()
-    {
+    public boolean isNativeLookAndFeel() {
         return false;
     }
-
+    
     /**
-     * Always returns true since WebLookAndFeel supports any platform which can run Java applications.
-     *
+     * Always returns true since FlatLookAndFeel supports 
+     * any platform which can run Java applications.
      * @return true
      */
     @Override
-    public boolean isSupportedLookAndFeel ()
-    {
+    public boolean isSupportedLookAndFeel() {
         return true;
     }
-
-    /**
-     * Returns whether window decorations are supported for undelying system.
-     *
-     * @return true if window decorations are supported for undelying system, false otherwise
-     */
+    
     @Override
-    public boolean getSupportsWindowDecorations ()
-    {
+    public boolean getSupportsWindowDecorations() {
         return true;
     }
-
-    /**
-     * Initializes WebLookAndFeel UI classes.
-     *
-     * @param table UIDefaults table
-     */
+    
     @Override
-    protected void initClassDefaults ( final UIDefaults table ) {
+    protected void initClassDefaults(UIDefaults table) {
         FlatLafInitializer.initClassDefaults(table);
     }
-
+    
     /**
-     * Adds some default colors to the {@code UIDefaults} that are not used by WebLookAndFeel directly, but will help custom
+     * Adds some default colors to the {@code UIDefaults} 
+     * that are not used by WebLookAndFeel directly, but will help custom
      * components that assume BasicLookAndFeel conventions.
      *
      * @param table UIDefaults table

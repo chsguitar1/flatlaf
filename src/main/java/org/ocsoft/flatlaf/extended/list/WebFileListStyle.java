@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.list;
 
-import org.ocsoft.flatlaf.laf.FlatLafConstants;
+import org.ocsoft.flatlaf.core.constants.FlatLafFileFilters;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 
 /**
@@ -52,5 +52,5 @@ public final class WebFileListStyle
     /**
      * File filter.
      */
-    public static AbstractFileFilter fileFilter = FlatLafConstants.NON_HIDDEN_ONLY_FILTER;
+    public static AbstractFileFilter fileFilter = FlatLafFileFilters.NON_HIDDEN_ONLY_FILTER;
 }

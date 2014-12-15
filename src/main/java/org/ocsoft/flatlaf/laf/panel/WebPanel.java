@@ -19,9 +19,9 @@ package org.ocsoft.flatlaf.laf.panel;
 
 import javax.swing.*;
 
+import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PartialDecoration;
-import org.ocsoft.flatlaf.laf.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.LanguageContainerMethods;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;

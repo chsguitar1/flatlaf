@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.list;
 import javax.swing.*;
 import javax.swing.event.ListDataListener;
 
-import org.ocsoft.flatlaf.laf.FlatLafSettings;
+import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.laf.list.editor.DefaultListCellEditor;
 import org.ocsoft.flatlaf.laf.list.editor.ListCellEditor;
 import org.ocsoft.flatlaf.laf.list.editor.ListEditListener;

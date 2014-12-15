@@ -17,20 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.filechooser;
 
-import javax.swing.*;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileView;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.FileChooserUI;
-
-import org.ocsoft.flatlaf.laf.FlatLafConstants;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
-import org.ocsoft.flatlaf.managers.language.LanguageManager;
-import org.ocsoft.flatlaf.utils.FileUtils;
-import org.ocsoft.flatlaf.utils.LafUtils;
-import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
-
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -38,6 +25,21 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileView;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.FileChooserUI;
+
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafFileFilters;
+import org.ocsoft.flatlaf.managers.language.LanguageManager;
+import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.LafUtils;
+import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 
 /**
  * Custom UI for JFileChooser component.
@@ -296,7 +298,7 @@ public class WebFileChooserUI extends FileChooserUI
             }
             else
             {
-                fileChooserPanel.setFileFilter ( FlatLafConstants.ALL_FILES_FILTER );
+                fileChooserPanel.setFileFilter ( FlatLafFileFilters.ALL_FILES_FILTER );
             }
         }
         else if ( prop.equals ( JFileChooser.DIRECTORY_CHANGED_PROPERTY ) )
@@ -351,7 +353,7 @@ public class WebFileChooserUI extends FileChooserUI
     @Override
     public FileFilter getAcceptAllFileFilter ( final JFileChooser fc )
     {
-        return FlatLafConstants.ALL_FILES_FILTER;
+        return FlatLafFileFilters.ALL_FILES_FILTER;
     }
 
     /**

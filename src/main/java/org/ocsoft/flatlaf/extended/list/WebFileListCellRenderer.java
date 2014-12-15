@@ -19,9 +19,9 @@ package org.ocsoft.flatlaf.extended.list;
 
 import javax.swing.*;
 
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 import org.ocsoft.flatlaf.extended.layout.AbstractLayoutManager;
-import org.ocsoft.flatlaf.laf.FlatLafConstants;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.list.WebListCellRenderer;
 import org.ocsoft.flatlaf.utils.DaemonThreadFactory;

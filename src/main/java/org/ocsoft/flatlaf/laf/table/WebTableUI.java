@@ -22,7 +22,7 @@ import javax.swing.event.AncestorEvent;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicTableUI;
 
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.table.editors.WebBooleanEditor;
 import org.ocsoft.flatlaf.laf.table.editors.WebDateEditor;
 import org.ocsoft.flatlaf.laf.table.editors.WebGenericEditor;

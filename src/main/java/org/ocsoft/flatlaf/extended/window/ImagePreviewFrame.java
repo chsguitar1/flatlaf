@@ -19,9 +19,9 @@ package org.ocsoft.flatlaf.extended.window;
 
 import javax.swing.*;
 
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.extended.image.WebImage;
 import org.ocsoft.flatlaf.extended.painter.AlphaLayerPainter;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.rootpane.WebFrame;
 

@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.spinner;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLafSettings;
+import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
 import org.ocsoft.flatlaf.managers.tooltip.ToolTipMethods;

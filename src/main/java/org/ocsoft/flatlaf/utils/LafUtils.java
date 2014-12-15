@@ -23,11 +23,11 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.ScrollBarUI;
 import javax.swing.plaf.basic.BasicButtonUI;
 
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.extended.painter.AdaptivePainter;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.TexturePainter;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.scroll.WebScrollBarUI;

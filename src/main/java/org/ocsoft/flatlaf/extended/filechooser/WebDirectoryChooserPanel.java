@@ -17,16 +17,23 @@
 
 package org.ocsoft.flatlaf.extended.filechooser;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.ImageIcon;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.ocsoft.flatlaf.core.constants.FlatLafFileFilters;
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
 import org.ocsoft.flatlaf.extended.tree.FileTreeNode;
 import org.ocsoft.flatlaf.extended.tree.FileTreeRootType;
 import org.ocsoft.flatlaf.extended.tree.WebFileTree;
-import org.ocsoft.flatlaf.laf.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.optionpane.WebOptionPane;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
@@ -40,13 +47,6 @@ import org.ocsoft.flatlaf.managers.tooltip.TooltipManager;
 import org.ocsoft.flatlaf.utils.FileUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This custom component provides a directory chooser functionality.
@@ -82,7 +82,7 @@ public class WebDirectoryChooserPanel extends WebPanel
     /**
      * File filter.
      */
-    protected AbstractFileFilter filter = FlatLafConstants.NON_HIDDEN_DIRECTORIES_FILTER;
+    protected AbstractFileFilter filter = FlatLafFileFilters.NON_HIDDEN_DIRECTORIES_FILTER;
 
     /**
      * Toolbar components.

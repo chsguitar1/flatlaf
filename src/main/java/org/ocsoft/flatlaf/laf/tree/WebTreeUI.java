@@ -26,9 +26,9 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.tree.*;
 
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.extended.tree.WebCheckBoxTree;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.*;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.graphics.GraphicsUtils;

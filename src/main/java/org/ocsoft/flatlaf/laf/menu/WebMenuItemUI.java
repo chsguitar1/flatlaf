@@ -23,9 +23,9 @@ import javax.swing.plaf.basic.BasicHTML;
 import javax.swing.plaf.basic.BasicMenuItemUI;
 import javax.swing.text.View;
 
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.extended.painter.Painter;
 import org.ocsoft.flatlaf.extended.painter.PainterSupport;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.LafUtils;
 import org.ocsoft.flatlaf.utils.MathUtils;
 import org.ocsoft.flatlaf.utils.SwingUtils;

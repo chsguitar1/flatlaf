@@ -21,8 +21,8 @@ import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
+import org.ocsoft.flatlaf.core.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
-import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.managers.focus.DefaultFocusTracker;
 import org.ocsoft.flatlaf.managers.focus.FocusManager;
 import org.ocsoft.flatlaf.managers.focus.FocusTracker;

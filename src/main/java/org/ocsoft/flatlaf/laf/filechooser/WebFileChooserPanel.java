@@ -17,10 +17,48 @@
 
 package org.ocsoft.flatlaf.laf.filechooser;
 
-import javax.swing.*;
-import javax.swing.event.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+import javax.swing.AbstractAction;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DropMode;
+import javax.swing.ImageIcon;
+import javax.swing.JList;
+import javax.swing.JScrollBar;
+import javax.swing.KeyStroke;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.ocsoft.flatlaf.core.constants.FlatLafFileFilters;
 import org.ocsoft.flatlaf.extended.drag.FileDragAndDropHandler;
 import org.ocsoft.flatlaf.extended.filechooser.PathFieldListener;
 import org.ocsoft.flatlaf.extended.filechooser.WebFileChooserField;
@@ -33,7 +71,6 @@ import org.ocsoft.flatlaf.extended.list.FileListViewType;
 import org.ocsoft.flatlaf.extended.list.WebFileList;
 import org.ocsoft.flatlaf.extended.panel.GroupPanel;
 import org.ocsoft.flatlaf.extended.tree.WebFileTree;
-import org.ocsoft.flatlaf.laf.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.combobox.WebComboBox;
@@ -56,7 +93,10 @@ import org.ocsoft.flatlaf.laf.toolbar.WebToolBar;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.language.data.TooltipWay;
-import org.ocsoft.flatlaf.utils.*;
+import org.ocsoft.flatlaf.utils.FileUtils;
+import org.ocsoft.flatlaf.utils.LafUtils;
+import org.ocsoft.flatlaf.utils.SwingUtils;
+import org.ocsoft.flatlaf.utils.TextUtils;
 import org.ocsoft.flatlaf.utils.collection.CollectionUtils;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 import org.ocsoft.flatlaf.utils.filefilter.FilterGroupType;
@@ -66,15 +106,6 @@ import org.ocsoft.flatlaf.utils.swing.AncestorAdapter;
 import org.ocsoft.flatlaf.utils.swing.DataProvider;
 import org.ocsoft.flatlaf.utils.swing.DefaultFileFilterListCellRenderer;
 import org.ocsoft.flatlaf.utils.system.FlatLafSystemUtils;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.io.File;
-import java.io.FileFilter;
-import java.util.*;
-import java.util.List;
 
 /**
  * File chooser panel component.
@@ -303,7 +334,7 @@ public class WebFileChooserPanel extends WebPanel
         // Updating view data
         updateSelectionMode ();
         updateDirectoryComponentFilters ();
-        setFileFilter ( FlatLafConstants.ALL_FILES_FILTER );
+        setFileFilter ( FlatLafFileFilters.ALL_FILES_FILTER );
         restoreButtonText ();
     }
 
@@ -1507,8 +1538,8 @@ public class WebFileChooserPanel extends WebPanel
      */
     protected void updateDirectoryComponentFilters ()
     {
-        pathField.setFileFilter ( applyHiddenFilesFilter ( FlatLafConstants.DIRECTORIES_FILTER ) );
-        fileTree.setFileFilter ( applyHiddenFilesFilter ( FlatLafConstants.DIRECTORIES_FILTER ) );
+        pathField.setFileFilter ( applyHiddenFilesFilter ( FlatLafFileFilters.DIRECTORIES_FILTER ) );
+        fileTree.setFileFilter ( applyHiddenFilesFilter ( FlatLafFileFilters.DIRECTORIES_FILTER ) );
     }
 
     /**
@@ -1519,7 +1550,7 @@ public class WebFileChooserPanel extends WebPanel
      */
     protected GroupedFileFilter applyOrDirectoriesFilter ( final AbstractFileFilter fileFilter )
     {
-        return new GroupedFileFilter ( FilterGroupType.OR, fileFilter, FlatLafConstants.DIRECTORIES_FILTER );
+        return new GroupedFileFilter ( FilterGroupType.OR, fileFilter, FlatLafFileFilters.DIRECTORIES_FILTER );
     }
 
     /**

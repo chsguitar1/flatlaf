@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.menu;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.laf.FlatLafSettings;
+import org.ocsoft.flatlaf.core.FlatLafSettings;
 import org.ocsoft.flatlaf.utils.reflection.ReflectUtils;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
 

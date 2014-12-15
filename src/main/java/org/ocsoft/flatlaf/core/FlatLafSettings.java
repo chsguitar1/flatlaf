@@ -1,4 +1,4 @@
-package org.ocsoft.flatlaf.laf;
+package org.ocsoft.flatlaf.core;
 
 import java.awt.Font;
 
@@ -7,6 +7,7 @@ import org.ocsoft.flatlaf.extended.checkbox.WebTristateCheckBoxUI;
 import org.ocsoft.flatlaf.extended.label.WebMultiLineLabelUI;
 import org.ocsoft.flatlaf.extended.label.WebStyledLabelUI;
 import org.ocsoft.flatlaf.extended.label.WebVerticalLabelUI;
+import org.ocsoft.flatlaf.laf.WebFonts;
 import org.ocsoft.flatlaf.laf.button.WebButtonUI;
 import org.ocsoft.flatlaf.laf.button.WebToggleButtonUI;
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBoxUI;

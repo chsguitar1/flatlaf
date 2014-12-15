@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.tree;
 
 import java.util.Comparator;
 
-import org.ocsoft.flatlaf.laf.FlatLafConstants;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
 
 /**
  * Custom comparator for file tree nodes.

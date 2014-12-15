@@ -17,11 +17,45 @@
 
 package org.ocsoft.flatlaf.utils;
 
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.channels.FileChannel;
+import java.security.MessageDigest;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.ImageIcon;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.text.JTextComponent;
 
-import org.ocsoft.flatlaf.laf.FlatLafConstants;
+import org.ocsoft.flatlaf.core.constants.FlatLafConstants;
+import org.ocsoft.flatlaf.core.constants.FlatLafFileFilters;
+import org.ocsoft.flatlaf.core.constants.FlatLafTimeoutConstants;
 import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.proxy.ProxyManager;
@@ -33,19 +67,6 @@ import org.ocsoft.flatlaf.utils.filefilter.CustomFileFilter;
 import org.ocsoft.flatlaf.utils.general.Filter;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
 import org.ocsoft.flatlaf.utils.system.FlatLafLogger;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.*;
-import java.math.BigInteger;
-import java.net.URI;
-import java.net.URL;
-import java.net.URLConnection;
-import java.nio.channels.FileChannel;
-import java.security.MessageDigest;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
 
 /**
  * This class provides a set of utilities to work with files, file names and their extensions.
@@ -1105,7 +1126,7 @@ public final class FileUtils
         }
         else
         {
-            filter = new CustomFileFilter ( FlatLafConstants.ALL_FILES_FILTER.getIcon (),
+            filter = new CustomFileFilter ( FlatLafFileFilters.ALL_FILES_FILTER.getIcon (),
                     LanguageManager.get ( "weblaf.file.filter.custom" ) )
             {
                 @Override
@@ -1133,7 +1154,7 @@ public final class FileUtils
         }
         else
         {
-            filter = new CustomFileFilter ( FlatLafConstants.ALL_FILES_FILTER.getIcon (), fileFilter.getDescription () )
+            filter = new CustomFileFilter ( FlatLafFileFilters.ALL_FILES_FILTER.getIcon (), fileFilter.getDescription () )
             {
                 @Override
                 public boolean accept ( final File file )
@@ -1715,7 +1736,7 @@ public final class FileUtils
      */
     public static File downloadFile ( final String url, final File dstFile )
     {
-        return downloadFile ( url, dstFile, false, null, FlatLafConstants.SHORT_TIMEOUT, null );
+        return downloadFile ( url, dstFile, false, null, FlatLafTimeoutConstants.SHORT_TIMEOUT, null );
     }
 
     /**
@@ -1729,7 +1750,7 @@ public final class FileUtils
      */
     public static File downloadFile ( final String url, final File dstFile, final FileDownloadListener listener )
     {
-        return downloadFile ( url, dstFile, false, null, FlatLafConstants.SHORT_TIMEOUT, listener );
+        return downloadFile ( url, dstFile, false, null, FlatLafTimeoutConstants.SHORT_TIMEOUT, listener );
     }
 
     /**
