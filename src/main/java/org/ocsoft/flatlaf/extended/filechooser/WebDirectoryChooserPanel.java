@@ -26,7 +26,7 @@ import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
 import org.ocsoft.flatlaf.extended.tree.FileTreeNode;
 import org.ocsoft.flatlaf.extended.tree.FileTreeRootType;
 import org.ocsoft.flatlaf.extended.tree.WebFileTree;
-import org.ocsoft.flatlaf.global.FlatLafConstants;
+import org.ocsoft.flatlaf.laf.FlatLafConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.optionpane.WebOptionPane;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;

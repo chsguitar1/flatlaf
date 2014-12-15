@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.colorchooser;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 
 /**

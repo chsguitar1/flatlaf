@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.tabbedpane;
 import java.awt.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 
 /**
  * WebTabbedPane style class.

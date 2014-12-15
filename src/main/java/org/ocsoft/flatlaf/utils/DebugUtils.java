@@ -19,8 +19,8 @@ package org.ocsoft.flatlaf.utils;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.FlatLafConstants;
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.TimeUtils;
 

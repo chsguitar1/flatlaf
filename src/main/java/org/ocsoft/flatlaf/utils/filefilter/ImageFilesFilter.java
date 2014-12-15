@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.utils.filefilter;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.FlatLafConstants;
+import org.ocsoft.flatlaf.laf.FlatLafConstants;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.utils.FileUtils;
 

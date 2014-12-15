@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.image;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.scroll.WebScrollPane;
 import org.ocsoft.flatlaf.managers.hotkey.Hotkey;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;

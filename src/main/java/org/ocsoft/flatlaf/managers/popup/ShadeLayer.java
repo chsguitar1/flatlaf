@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.managers.popup;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.layout.AlignLayout;
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;
 

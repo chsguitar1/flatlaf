@@ -27,7 +27,7 @@ import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.tree.*;
 
 import org.ocsoft.flatlaf.extended.tree.WebCheckBoxTree;
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.utils.*;
 import org.ocsoft.flatlaf.utils.ninepatch.NinePatchIcon;

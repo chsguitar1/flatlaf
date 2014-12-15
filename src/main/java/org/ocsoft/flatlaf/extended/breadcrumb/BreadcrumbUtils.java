@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.breadcrumb;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.ColorUtils;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.ShapeCache;

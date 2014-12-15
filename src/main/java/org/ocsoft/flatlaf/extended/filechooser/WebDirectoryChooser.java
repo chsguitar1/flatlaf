@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.filechooser;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.panel.GroupPanel;
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.rootpane.WebDialog;

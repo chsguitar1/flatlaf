@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.list;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 
 /**
  * WebList style class.

@@ -24,7 +24,7 @@ import java.lang.ref.WeakReference;
 import java.util.*;
 import java.util.List;
 
-import org.ocsoft.flatlaf.global.FlatLafConstants;
+import org.ocsoft.flatlaf.laf.FlatLafConstants;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.utils.CollectionUtils;
 

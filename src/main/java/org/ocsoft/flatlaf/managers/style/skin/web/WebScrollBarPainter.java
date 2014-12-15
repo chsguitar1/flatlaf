@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.managers.style.skin.web;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.AbstractPainter;
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.scroll.ScrollBarPainter;
 import org.ocsoft.flatlaf.laf.scroll.WebScrollBarStyle;
 import org.ocsoft.flatlaf.utils.ColorUtils;

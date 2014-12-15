@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.scroll;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 11/15/11 Time: 4:51 PM

@@ -24,7 +24,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.ImageIcon;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.label.WebLabel;
 import org.ocsoft.flatlaf.laf.panel.WebPanel;
 import org.ocsoft.flatlaf.laf.tabbedpane.TabbedPaneStyle;

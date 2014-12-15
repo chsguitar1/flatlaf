@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.rootpane;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButtonStyle;
 import org.ocsoft.flatlaf.utils.ProprietaryUtils;
 

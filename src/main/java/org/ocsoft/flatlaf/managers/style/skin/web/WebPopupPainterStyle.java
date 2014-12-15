@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.managers.style.skin.web;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 
 /**
  * @author Mikle Garin

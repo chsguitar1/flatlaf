@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.menu;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 31.01.12 Time: 16:39

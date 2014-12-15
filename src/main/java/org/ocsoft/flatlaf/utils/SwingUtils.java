@@ -33,7 +33,7 @@ import org.ocsoft.flatlaf.extended.date.WebDateField;
 import org.ocsoft.flatlaf.extended.filechooser.WebFileChooserField;
 import org.ocsoft.flatlaf.extended.filechooser.WebPathField;
 import org.ocsoft.flatlaf.extended.panel.WebCollapsiblePane;
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.FlatLookAndFeel;
 import org.ocsoft.flatlaf.laf.rootpane.WebRootPaneUI;
 import org.ocsoft.flatlaf.managers.hotkey.HotkeyData;

@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.extended.filechooser;
 
-import org.ocsoft.flatlaf.global.FlatLafConstants;
+import org.ocsoft.flatlaf.laf.FlatLafConstants;
 import org.ocsoft.flatlaf.utils.filefilter.AbstractFileFilter;
 
 /**

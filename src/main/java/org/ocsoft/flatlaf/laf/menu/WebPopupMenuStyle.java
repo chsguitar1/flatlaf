@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.menu;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.style.skin.web.PopupStyle;
 import org.ocsoft.flatlaf.managers.style.skin.web.WebPopupPainterStyle;
 import org.ocsoft.flatlaf.utils.ProprietaryUtils;

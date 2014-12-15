@@ -22,9 +22,9 @@ import com.mortennobel.imagescaling.ResampleOp;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.FlatLafConstants;
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.graphics.filters.ShadowFilter;
+import org.ocsoft.flatlaf.laf.FlatLafConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.log.Log;
 
 import java.awt.*;

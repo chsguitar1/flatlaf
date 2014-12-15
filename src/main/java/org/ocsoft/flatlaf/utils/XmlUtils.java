@@ -17,29 +17,46 @@
 
 package org.ocsoft.flatlaf.utils;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.ImageIcon;
+
+import org.ocsoft.flatlaf.managers.log.Log;
+import org.ocsoft.flatlaf.utils.collection.ValuesTable;
+import org.ocsoft.flatlaf.utils.general.Pair;
+import org.ocsoft.flatlaf.utils.xml.AliasProvider;
+import org.ocsoft.flatlaf.utils.xml.ColorConverter;
+import org.ocsoft.flatlaf.utils.xml.InsetsConverter;
+import org.ocsoft.flatlaf.utils.xml.PasswordConverter;
+import org.ocsoft.flatlaf.utils.xml.ResourceFile;
+import org.ocsoft.flatlaf.utils.xml.ResourceList;
+import org.ocsoft.flatlaf.utils.xml.ResourceLocation;
+import org.ocsoft.flatlaf.utils.xml.ResourceMap;
+
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.SingleValueConverter;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.xml.DomDriver;
-
-import javax.swing.*;
-
-import org.ocsoft.flatlaf.managers.log.Log;
-import org.ocsoft.flatlaf.managers.plugin.data.PluginDependency;
-import org.ocsoft.flatlaf.managers.plugin.data.PluginInformation;
-import org.ocsoft.flatlaf.managers.plugin.data.PluginLibrary;
-import org.ocsoft.flatlaf.managers.plugin.data.PluginVersion;
-import org.ocsoft.flatlaf.utils.collection.ValuesTable;
-import org.ocsoft.flatlaf.utils.general.Pair;
-import org.ocsoft.flatlaf.utils.xml.*;
-
-import java.awt.*;
-import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class provides a set of utilities to easily serialize and deserialize objects into and from XML.
@@ -126,12 +143,6 @@ public final class XmlUtils
             // Additional WebLaF data classes aliases
             xStream.processAnnotations ( ValuesTable.class );
             xStream.processAnnotations ( Pair.class );
-
-            // Plugin manager classes aliases
-            xStream.processAnnotations ( PluginInformation.class );
-            xStream.processAnnotations ( PluginVersion.class );
-            xStream.processAnnotations ( PluginDependency.class );
-            xStream.processAnnotations ( PluginLibrary.class );
         }
         catch ( final Throwable e )
         {

@@ -25,7 +25,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.glasspane.GlassPaneManager;
 import org.ocsoft.flatlaf.managers.glasspane.WebGlassPane;
 import org.ocsoft.flatlaf.utils.SwingUtils;

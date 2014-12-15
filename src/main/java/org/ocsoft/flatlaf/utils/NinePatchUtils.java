@@ -28,8 +28,8 @@ import java.util.Map;
 
 import org.ocsoft.flatlaf.extended.painter.NinePatchIconPainter;
 import org.ocsoft.flatlaf.extended.painter.NinePatchStatePainter;
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.graphics.filters.ShadowFilter;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.CollectionUtils;
 import org.ocsoft.flatlaf.utils.GraphicsUtils;
 import org.ocsoft.flatlaf.utils.ImageUtils;

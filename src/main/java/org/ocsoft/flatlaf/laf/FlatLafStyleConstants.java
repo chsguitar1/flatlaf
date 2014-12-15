@@ -15,7 +15,7 @@
  * along with WebLookAndFeel library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.ocsoft.flatlaf.global;
+package org.ocsoft.flatlaf.laf;
 
 import javax.swing.*;
 

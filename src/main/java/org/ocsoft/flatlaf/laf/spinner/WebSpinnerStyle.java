@@ -17,7 +17,7 @@
 
 package org.ocsoft.flatlaf.laf.spinner;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 11/15/11 Time: 1:41 PM

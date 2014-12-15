@@ -21,8 +21,8 @@ import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.text.JTextComponent;
 
-import org.ocsoft.flatlaf.global.FlatLafConstants;
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.managers.language.LanguageManager;
 import org.ocsoft.flatlaf.managers.log.Log;
 import org.ocsoft.flatlaf.managers.proxy.ProxyManager;

@@ -27,7 +27,7 @@ import org.ocsoft.flatlaf.extended.colorchooser.DoubleColorField;
 import org.ocsoft.flatlaf.extended.colorchooser.DoubleColorFieldListener;
 import org.ocsoft.flatlaf.extended.layout.TableLayout;
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButton;
 import org.ocsoft.flatlaf.laf.checkbox.WebCheckBox;
 import org.ocsoft.flatlaf.laf.label.WebLabel;

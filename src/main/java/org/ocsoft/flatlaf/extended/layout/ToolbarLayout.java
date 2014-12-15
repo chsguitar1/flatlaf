@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.layout;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 
 import java.awt.*;
 import java.util.HashMap;

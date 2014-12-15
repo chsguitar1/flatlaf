@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.optionpane;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 
 /**
  * User: mgarin Date: 11/16/11 Time: 2:01 PM

@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.tooltip;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 
 /**
  * WebTooltip style class.

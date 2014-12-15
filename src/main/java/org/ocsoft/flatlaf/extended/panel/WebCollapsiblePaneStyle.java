@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.extended.panel;
 
 import javax.swing.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.ImageUtils;
 
 import java.awt.*;

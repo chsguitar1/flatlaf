@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.button;
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.button.WebButtonUI;
 
 import java.awt.*;

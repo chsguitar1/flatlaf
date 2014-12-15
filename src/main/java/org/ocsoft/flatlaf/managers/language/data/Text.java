@@ -17,13 +17,12 @@
 
 package org.ocsoft.flatlaf.managers.language.data;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-
 import java.io.Serializable;
 
-import org.ocsoft.flatlaf.utils.HtmlUtils;
 import org.ocsoft.flatlaf.utils.TextUtils;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 
 /**
  * User: mgarin Date: 16.05.12 Time: 17:17
@@ -81,6 +80,6 @@ public final class Text implements Serializable, Cloneable
 
     public String toString ()
     {
-        return TextUtils.shortenText ( HtmlUtils.getPlainText ( text ), 50, true );
+        return TextUtils.shortenText ( text, 50, true );
     }
 }

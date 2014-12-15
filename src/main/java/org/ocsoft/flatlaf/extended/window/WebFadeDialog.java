@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.extended.window;
 import java.awt.*;
 import java.awt.event.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.laf.rootpane.WebDialog;
 import org.ocsoft.flatlaf.utils.MathUtils;
 import org.ocsoft.flatlaf.utils.swing.WebTimer;

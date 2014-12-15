@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.toolbar;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.layout.ToolbarLayout;
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 import org.ocsoft.flatlaf.utils.SwingUtils;
 
 import java.awt.*;

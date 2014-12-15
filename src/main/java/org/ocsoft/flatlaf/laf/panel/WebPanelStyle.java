@@ -19,7 +19,7 @@ package org.ocsoft.flatlaf.laf.panel;
 
 import java.awt.*;
 
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 
 /**
  * WebPanel style class.

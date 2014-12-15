@@ -20,7 +20,7 @@ package org.ocsoft.flatlaf.laf.text;
 import javax.swing.*;
 
 import org.ocsoft.flatlaf.extended.painter.Painter;
-import org.ocsoft.flatlaf.global.FlatLafStyleConstants;
+import org.ocsoft.flatlaf.laf.FlatLafStyleConstants;
 
 import java.awt.*;
 
