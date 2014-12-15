@@ -84,19 +84,6 @@ task javadocJar(type: Jar, dependsOn:javadoc) {
     from javadoc.destinationDir
 }
 
-task checkPackageNameConvention << {
-    def versionStr = "v" + project.version.toString().replace(".", "_")
-    def dirName = project.group + "." + project.name
-    def pkg = ((dirName + "." + versionStr).replace(".", "/"))
-    if(!file("src/main/java/" + pkg).exists() || !file("src/test/java/" + pkg).exists()) {
-      throw new GradleException('testFrowsPackageNameConvention: Wrong package name detected')
-    }
-}
-
-task testsOnDeploy(dependsOn: checkPackageNameConvention) {
-    description 'Run tests for deploy.'
-}
-
 artifacts {
     archives sourcesJar
     //archives javadocJar
@@ -130,9 +117,6 @@ uploadArchives {
         }
     }
 }
-
-//tests on deploy
-uploadArchives.dependsOn testsOnDeploy
 
 //encoding
 tasks.withType(AbstractCompile) each { it.options.encoding = defaultEncoding }
