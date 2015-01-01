@@ -7,3 +7,8 @@ License
 --------------
 
 派生元のWebLookAndFeelと同様のGPLV3とします。
+
+Original
+--------------
+
+WebLookAndFeel(https://github.com/mgarin/weblaf)
