@@ -1,7 +1,8 @@
 FlatLaF
 ==========
 
-WebLookAndFeel(https://github.com/mgarin/weblaf)をフォークして作成したSwingでFlatUIを実現するためのLookAndFeelです。
+WebLookAndFeel（https://github.com/mgarin/weblaf）をフォークして作成した
+SwingでFlatUIを実現するためのLookAndFeelです。
 
 License
 --------------
@@ -11,4 +12,5 @@ License
 Original
 --------------
 
-WebLookAndFeel(https://github.com/mgarin/weblaf)
+- WebLookAndFeel  
+https://github.com/mgarin/weblaf
